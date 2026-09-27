@@ -106,6 +106,85 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",s
 @media(max-width:850px){.topbar{display:block;padding:8px 16px 6px}.brand img{width:40px}.navlinks{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;margin:6px -16px 0;padding:0 12px 5px;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks a{font-size:13px;padding:7px 10px}.hero{padding:55px 20px}.featured-grid{grid-template-columns:1fr}.featured-visual{min-height:260px;max-height:380px}.video-preview{grid-template-columns:1fr;max-width:320px}.video-preview .notice{text-align:center}.video-preview .creator-nav{justify-content:center}.continue-box{flex-wrap:wrap}}
 @media(max-width:520px){.hero-logo{width:180px}.hero .eyebrow{font-size:10px;letter-spacing:2px}.hero-actions .cta{width:100%;margin:0}.featured-copy{padding:0}.featured-visual{min-height:230px}.section-title{font-size:29px}.chapter{padding:24px 18px}.chapter h2{font-size:28px}.chapter-body p{font-size:17px}.creator-copy{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.creator-card,.toc a{transition:none}}
+
+/* Moonlit editorial redesign */
+:root{--bg:#070f1c;--bg2:#0b1b2b;--panel:#102237;--gold:#c9aa75;--gold2:#e4d2af;--text:#f5f1ea;--muted:#b7c1cb;--line:rgba(217,193,151,.2)}
+html{scroll-padding-top:110px}
+body{background:#070f1c;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;line-height:1.8}
+body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse at 85% 8%,rgba(45,80,111,.12),transparent 40%);z-index:-1}
+button{font:inherit}
+.skip-link{position:fixed;z-index:3000;top:-80px;left:16px;padding:10px 16px;background:var(--gold2);color:#07111d;border-radius:8px}
+.skip-link:focus{top:12px}
+.topbar{background:rgba(7,15,28,.92);border-bottom:1px solid var(--line);padding:10px max(22px,calc((100vw - 1280px)/2));min-height:72px}
+.brand{color:var(--text);font-size:15px;letter-spacing:.025em}
+.brand img{width:48px;background:#0d1723}
+.navlinks a{color:#d7dce1;font-size:14px;padding:8px 13px}
+.navlinks .nav-follow{background:var(--gold2);color:#091827;font-weight:700;margin-left:8px}
+.navlinks .nav-follow:hover{background:#f2dfbb;color:#091827}
+.hero{padding:48px 24px 56px;background:radial-gradient(ellipse at 74% 15%,#142f49 0%,#091726 45%,#070f1c 83%);text-align:left}
+.hero-inner{max-width:1280px;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.87fr);gap:clamp(32px,6vw,100px);align-items:center}
+.hero-copy{padding:30px 0}
+.hero .eyebrow{font-size:13px;letter-spacing:.22em;color:var(--gold2)}
+.hero .eyebrow span{padding:0 8px;color:#71869b}
+.hero h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-size:clamp(44px,5.3vw,78px);font-weight:500;letter-spacing:.05em;line-height:1.38;color:var(--text);margin:26px 0 22px;max-width:8.4em;text-wrap:balance}
+.hero .hero-lede{font-size:clamp(17px,1.55vw,21px);line-height:1.9;color:#c8d0d8;margin:0 0 32px;max-width:28em}
+.hero-actions{justify-content:flex-start;gap:12px}
+.cta{background:var(--gold2);color:#081522;border-radius:3px;font-size:15px;padding:13px 22px;margin:0;font-weight:700;transition:background .2s,transform .2s}
+.cta:hover{background:#f2e1c2;transform:translateY(-2px)}
+.cta.secondary{border:1px solid rgba(228,210,175,.5);color:var(--gold2);background:transparent}
+.cta.secondary:hover{background:rgba(228,210,175,.09)}
+.hero-index{display:flex;gap:20px;flex-wrap:wrap;margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;letter-spacing:.12em;color:#aab8c7}
+.hero-image{position:relative;margin:0;min-height:480px;aspect-ratio:4/4.5;overflow:hidden;background:#112337;box-shadow:24px 24px 0 rgba(201,170,117,.06)}
+.hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(3,10,19,.75))}
+.hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-image figcaption{position:absolute;z-index:1;bottom:23px;left:24px;right:24px;display:flex;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.45);padding-top:9px;font-size:13px;letter-spacing:.08em}
+.wrap{max-width:1180px;padding:20px 24px 90px}
+.panel{background:#0c1c2d;border:1px solid var(--line);border-radius:6px;box-shadow:none;padding:clamp(24px,4vw,50px);margin:22px 0}
+.section-title{font-family:"Noto Serif TC","Songti TC",serif;font-weight:500;color:var(--text);text-align:left;font-size:clamp(29px,3vw,42px)}
+.creator-tag,.chapter-kicker{text-align:left;color:var(--gold2);letter-spacing:.2em;font-size:12px}
+.notice{text-align:left;color:var(--muted);font-size:15px}
+.featured-grid{grid-template-columns:1fr .85fr;gap:50px}
+.featured-copy h2{color:var(--text);font-weight:500}
+.featured-visual{border-radius:2px;min-height:280px}
+.creator-grid{gap:1px;background:var(--line);border:1px solid var(--line)}
+.creator-card{border:0;border-radius:0;background:#0a1929}
+.creator-card:hover{transform:none;background:#12273b}
+.creator-art{min-height:82px;place-items:end start;padding:14px 22px 0;background:none;font-family:Georgia,serif;font-size:40px;color:var(--gold2)}
+.creator-copy{padding:10px 22px 24px}
+.creator-copy h3{font-family:"Noto Serif TC","Songti TC",serif;color:var(--text)}
+.creator-copy a{color:var(--gold2)}
+#creative>.notice{margin-bottom:26px}
+.video-preview iframe{border-radius:3px}
+.creator-nav a,.community-actions a,.community-actions button{border-radius:3px;border-color:rgba(228,210,175,.5)}
+.follow-panel{scroll-margin-top:110px;display:grid;grid-template-columns:1fr auto;gap:16px 34px;align-items:center;margin:26px 0;padding:clamp(28px,4vw,48px);background:linear-gradient(120deg,#152c42,#0d1e30);border:1px solid rgba(228,210,175,.35)}
+.follow-panel h2{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(27px,3vw,38px);font-weight:500;margin:9px 0}
+.follow-panel p{color:var(--muted);margin:0}
+.follow-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;max-width:410px}
+.follow-actions a,.follow-actions button,.directory-link,.reader-controls button{color:var(--gold2);border:1px solid rgba(228,210,175,.48);border-radius:3px;background:transparent;text-decoration:none;padding:10px 14px;cursor:pointer;font-size:14px}
+.follow-actions button{background:var(--gold2);color:#071522;font-weight:700}
+.follow-actions a:hover,.directory-link:hover,.reader-controls button:hover{background:rgba(228,210,175,.12)}
+.follow-feedback{grid-column:1/-1;font-size:14px}
+.follow-feedback:empty{display:none}
+.book-directory{scroll-margin-top:110px}
+.directory-head{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-bottom:24px}
+.directory-head .section-title{margin:9px 0}
+.directory-link{white-space:nowrap}
+.reader-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 25px;color:var(--muted);font-size:14px}
+.reader-controls span{margin-right:6px}
+.reader-controls button{padding:5px 12px;min-width:48px}
+.toc{grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.toc a{border:0;border-radius:0;background:#102236;line-height:1.5;min-height:68px}
+.toc a:hover{background:#19354f;transform:none}
+.toc span{color:var(--gold2);font-size:13px}
+.chapter{background:#0b1a2a;border-radius:4px;box-shadow:none;padding:clamp(24px,5vw,60px);margin:25px 0}
+.chapter h2{color:var(--text);font-family:"Noto Serif TC","Songti TC",serif;font-weight:500}
+.chapter-body{font-size:var(--reader-size,18px)}
+.chapter-body p{font-size:1em;line-height:2.15;color:#e8e5df}
+.chapter-nav a{color:var(--gold2)}
+.progress{background:var(--gold2)}
+@media(max-width:850px){.topbar{min-height:auto}.hero{padding:24px 20px 48px}.hero-inner{grid-template-columns:1fr;gap:22px}.hero-copy{padding:8px 0}.hero h1{font-size:clamp(42px,8vw,65px);max-width:none}.hero-image{min-height:280px;aspect-ratio:16/9}.featured-grid{gap:25px}.follow-panel{grid-template-columns:1fr}.follow-actions{justify-content:flex-start;max-width:none}.toc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.brand{font-size:14px}.hero{padding:24px 18px 34px}.hero h1{font-size:clamp(39px,11vw,52px);line-height:1.35}.hero .hero-lede{font-size:17px}.hero-actions .cta{width:auto;flex:1 1 190px;text-align:center}.hero-index{margin-top:28px;gap:14px}.hero-image{aspect-ratio:4/3;min-height:0}.wrap{padding:10px 16px 70px}.panel{padding:24px 19px}.featured-visual{min-height:220px}.directory-head{display:block}.directory-link{display:inline-block;margin-top:12px}.toc{grid-template-columns:1fr}.toc a{min-height:55px}.chapter-body{font-size:var(--reader-size,18px)}.chapter-body p{font-size:1em}.follow-panel{padding:27px 20px}.follow-actions{display:grid;grid-template-columns:1fr 1fr}.follow-actions button{grid-column:1/-1}.follow-actions a{text-align:center}}
+@media(prefers-reduced-motion:reduce){.cta{transition:none}.cta:hover{transform:none}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -121,6 +200,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",s
 <body id="top">
 
 <div class="progress" id="progress"></div>
+<a class="skip-link" href="#main">跳至主要內容</a>
 
 <header class="topbar">
   <a class="brand" href="#top">
@@ -132,23 +212,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",s
     <a href="#toc">小說</a>
     <a href="#photography">攝影</a>
     <a href="#videos">影片</a>
-    <a href="#community">交流</a>
+    <a href="#community">交流</a><a class="nav-follow" href="#follow">追蹤更新</a>
 
   </nav>
 </header>
 
 <header class="hero">
   <div class="hero-inner">
-    <img class="hero-logo" src="logo.PNG?v=20260927-original-2" alt="喵叔 Logo" onerror="this.style.display='none'">
-    <div class="eyebrow">MOONLIT STORIES · 喵叔的創作宇宙</div>
-    <h1>走進喵叔的文字與光影。</h1>
-    <div class="subtitle">小說 × 攝影 × 影片 × 讀者交流</div>
-    <p>小說、攝影與短片，收藏那些值得再讀一遍的片刻。從一篇故事開始，慢慢逛逛。</p>
-    <div class="hero-actions"><a class="cta" href="books/liangzhongtiankong/index.html">開始閱讀《兩種天空》 →</a><a class="cta secondary" href="#featured">探索精選內容</a></div>
+    <div class="hero-copy">
+      <div class="eyebrow">MOONLIT STORIES <span aria-hidden="true">/</span> 喵叔</div>
+      <h1>故事有時比夜更長。</h1>
+      <p class="hero-lede">從小說讀進一個人的世界，再沿著攝影與影像，遇見故事之外的片刻。</p>
+      <div class="hero-actions"><a class="cta" href="books/liangzhongtiankong/index.html">閱讀《兩種天空》 <span aria-hidden="true">↗</span></a><a class="cta secondary" href="#book">閱讀《浮生歲月》</a></div>
+      <div class="hero-index"><span>小說</span><span>攝影</span><span>短片</span><span>讀者交流</span></div>
+    </div>
+    <figure class="hero-image"><img src="gallery/taipei-101-night-skyline-20260927.jpeg" alt="臺北 101 與城市夜景" fetchpriority="high" decoding="async"><figcaption><span>攝影日記</span><span>臺北，入夜以後</span></figcaption></figure>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
 <div class="continue-box" id="continue-reading" aria-live="polite"><p id="continue-label"></p><a id="continue-link" href="#toc">接續閱讀 →</a></div>
 <section class="panel" id="featured" aria-labelledby="featured-title">
   <div class="featured-grid">
@@ -162,10 +244,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",s
 <article class="creator-card" id="videos"><div class="creator-art" aria-hidden="true">▶</div><div class="creator-copy"><h3>影音分享</h3><p>短影片、創作花絮與生活片段；最新短影音已上架。</p><a href="videos/index.html">進入影音分享 →</a></div></article></div></section>
 <section class="panel" id="featured-short" aria-labelledby="featured-short-title"><p class="creator-tag">LATEST VIDEO · YOUTUBE SHORTS</p><h2 class="section-title" id="featured-short-title">最新短影音</h2><div class="video-preview"><iframe src="https://www.youtube-nocookie.com/embed/p0rR6ZFF2t4" title="喵叔最新 YouTube Shorts" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div><p>用一支短片，看見文字之外的生活片刻。</p><p class="notice">最新影片可直接在此觀看；更多作品收錄於影音分享頁。</p><div class="creator-nav"><a href="videos/index.html">瀏覽所有影片 →</a><a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">前往 YouTube ↗</a></div></div></div></section>
 <section class="panel" id="instagram-reel" aria-label="Instagram 短影音"><p class="creator-tag">INSTAGRAM REELS</p><h2 class="section-title">Instagram 影音分享</h2><div style="max-width:420px;margin:22px auto;text-align:center"><h3 style="color:#f0d48a">Instagram 最新 Reels</h3><div style="max-width:360px;margin:0 auto;aspect-ratio:9/16"><iframe src="https://www.instagram.com/reel/DYN9B8lBuYQ/embed/" title="喵叔 Instagram Reels" loading="lazy" allowfullscreen scrolling="no" style="width:100%;height:100%;border:0;border-radius:18px;background:#fff"></iframe></div><p style="text-align:center"><a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer" style="color:#f0d48a">前往 Instagram 觀看 ↗</a></p></div></section>
+<section class="follow-panel" id="follow" aria-labelledby="follow-title">
+  <div><span class="chapter-kicker">STAY CLOSE · 持續關注</span><h2 id="follow-title">下一個故事，從這裡再見。</h2><p>把網站存起來，或從短片找到喵叔。新作品上架時，隨時回來接著讀。</p></div>
+  <div class="follow-actions"><button type="button" id="save-site">複製網站連結</button><a href="videos/index.html">觀看所有短片 ↗</a><a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer">Instagram 影片 ↗</a></div>
+  <p class="follow-feedback" id="save-feedback" role="status" aria-live="polite"></p>
+</section>
 <section class="panel" id="community"><p class="creator-tag">LET'S TALK</p><h2 class="section-title">讀者與粉絲交流區</h2><p class="notice">讀完小說有感想？想聊寫作、攝影或影片？歡迎留下你的想法。</p><div class="community-actions"><a href="https://github.com/vetjeremy-jpg/miaoshu.github.io/issues/new?template=reader-feedback.yml" target="_blank" rel="noopener noreferrer">✉ 留言給喵叔 ↗</a><a href="https://github.com/vetjeremy-jpg/miaoshu.github.io/issues?q=is%3Aissue" target="_blank" rel="noopener noreferrer">閱讀大家的留言 ↗</a><button type="button" id="share-site">分享網站 ↗</button></div><p class="community-note">留言與回覆使用 GitHub Issues，需登入免費 GitHub 帳號；可在留言頁使用 👍 等表情回應。本站不顯示虛構的按讚數或留言數。</p><p class="community-note" id="share-feedback" role="status" aria-live="polite"></p></section>
-  <section class="panel" id="toc">
-    <h2 class="section-title">《浮生歲月》章節目錄</h2>
-    <p class="notice">楔子與十四個章節。閱讀位置會儲存在此裝置，方便下次接續。</p>
+  <section class="panel book-directory" id="toc">
+    <div class="directory-head"><div><span class="chapter-kicker">THE COMPLETE NOVEL · 全文閱讀</span><h2 class="section-title">《浮生歲月》</h2><p class="notice">楔子與十四個章節。點選章節直接閱讀；本站會在此裝置記住你的閱讀位置。</p></div><a class="directory-link" href="#chapter-1">從楔子開始 ↗</a></div>
+    <div class="reader-controls" aria-label="閱讀字體大小"><span>閱讀字級</span><button type="button" id="font-smaller" aria-label="縮小內文字級">A−</button><button type="button" id="font-larger" aria-label="放大內文字級">A＋</button><button type="button" id="font-reset">還原</button></div>
+    
     <div class="toc"><a href="#chapter-1"><span>01</span>楔子</a>
 <a href="#chapter-2"><span>02</span>第一章：貓一樣的女人</a>
 <a href="#chapter-3"><span>03</span>第二章：在戰火中盛開的玫瑰</a>
@@ -702,6 +790,23 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
     tools.append(share);chapter.querySelector('.chapter-body')?.after(tools);
   });
   if(location.hash.startsWith('#chapter-')){try{show(location.hash.slice(1))}catch(e){}}
+})();
+
+(function(){
+ const root=document.documentElement;
+ const key='miaoshu-reader-font-size';
+ let size=18;
+ try{size=Math.max(16,Math.min(24,Number(localStorage.getItem(key))||18))}catch(e){}
+ function apply(){root.style.setProperty('--reader-size',size+'px');try{localStorage.setItem(key,String(size))}catch(e){}}
+ apply();
+ document.getElementById('font-smaller')?.addEventListener('click',()=>{size=Math.max(16,size-1);apply()});
+ document.getElementById('font-larger')?.addEventListener('click',()=>{size=Math.min(24,size+1);apply()});
+ document.getElementById('font-reset')?.addEventListener('click',()=>{size=18;apply()});
+ document.getElementById('save-site')?.addEventListener('click',async()=>{
+  const feedback=document.getElementById('save-feedback');
+  try{await navigator.clipboard.writeText(location.origin+location.pathname);feedback.textContent='網站連結已複製，可以傳給朋友或存到備忘錄。'}
+  catch(e){feedback.textContent='請從瀏覽器網址列複製網站連結。'}
+ });
 })();
 </script>
 </body>
