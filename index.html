@@ -225,6 +225,11 @@ button{font:inherit}
 .chapter-bookmark:hover{background:rgba(216,168,76,.16)}
 @media(max-width:640px){.shelf-heading{align-items:start;flex-direction:column}.reader-shelf{padding:24px 19px}.chapter-bookmark{margin-left:8px}}
 </style>
+<style>
+.chapter-tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.chapter-tools a{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:var(--gold2);text-decoration:none;border:1px solid rgba(216,168,76,.35);border-radius:999px;padding:10px 16px}
+.chapter-tools a:hover{background:rgba(216,168,76,.15)}
+</style>
 </head>
 <body id="top">
 
@@ -294,7 +299,7 @@ button{font:inherit}
   <div class="follow-actions"><button type="button" id="save-site">複製網站連結</button><a href="videos/index.html">觀看所有短片 ↗</a><a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer">Instagram 影片 ↗</a></div>
   <p class="follow-feedback" id="save-feedback" role="status" aria-live="polite"></p>
 </section>
-<section class="panel" id="community" aria-labelledby="community-title"><p class="creator-tag">LET'S TALK · 讀者交流</p><h2 class="section-title" id="community-title">讀完了，聊聊你的想法。</h2><p class="notice">填上暱稱與想法就能送出，不用註冊帳號。留言經喵叔審核後，會顯示在下方。</p><div class="reader-comment-frame"><iframe src="https://miaoshu-comments.vetjeremy.chatgpt.site/" title="喵叔讀者留言區：免註冊留言與已公開留言" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="community-note">若留言框未顯示，<a href="https://miaoshu-comments.vetjeremy.chatgpt.site/" target="_blank" rel="noopener noreferrer">在新頁面開啟留言區 ↗</a>。也可以到 <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">YouTube</a> 或 <a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer">Instagram</a> 留言。</p><div class="community-actions"><button type="button" id="share-site">分享網站 ↗</button></div><p class="community-note" id="share-feedback" role="status" aria-live="polite"></p></section>
+<section class="panel" id="community" aria-labelledby="community-title"><p class="creator-tag">LET'S TALK · 讀者交流</p><h2 class="section-title" id="community-title">讀完了，聊聊你的想法。</h2><p class="notice">填上暱稱與想法就能送出，不用註冊帳號。留言經喵叔審核後，會顯示在下方。</p><div class="reader-comment-frame"><iframe src="https://miaoshu-comments.vetjeremy.chatgpt.site/" title="喵叔讀者留言區：免註冊留言與已公開留言" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="community-note">若留言框未顯示，<a href="https://miaoshu-comments.vetjeremy.chatgpt.site/" target="_blank" rel="noopener noreferrer">在新頁面開啟留言區 ↗</a>。也可以到 <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">YouTube</a> 或 <a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer">Instagram</a> 留言。</p><div class="community-actions"><button type="button" id="share-site">分享網站 ↗</button><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fvetjeremy-jpg.github.io%2Fmiaoshu.github.io%2F" target="_blank" rel="noopener noreferrer">分享到 LINE ↗</a></div><p class="community-note" id="share-feedback" role="status" aria-live="polite"></p></section>
   <section class="panel book-directory" id="toc">
     <div class="directory-head"><div><span class="chapter-kicker">THE COMPLETE NOVEL · 全文閱讀</span><h2 class="section-title">《浮生歲月》</h2><p class="notice">楔子與十四個章節。點選章節直接閱讀；本站會在此裝置記住你的閱讀位置。</p></div><a class="directory-link" href="#chapter-1">從楔子開始 ↗</a></div>
     <div class="reader-controls" aria-label="閱讀字體大小"><span>閱讀字級</span><button type="button" id="font-smaller" aria-label="縮小內文字級">A−</button><button type="button" id="font-larger" aria-label="放大內文字級">A＋</button><button type="button" id="font-reset">還原</button></div>
@@ -832,7 +837,11 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
         else location.href=url;
       }catch(e){}
     });
-    tools.append(share);chapter.querySelector('.chapter-body')?.after(tools);
+    const line=document.createElement('a');
+    line.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(urlForChapter(chapter.id));
+    line.target='_blank';line.rel='noopener noreferrer';line.textContent='分享到 LINE ↗';
+    const discuss=document.createElement('a');discuss.href='#community';discuss.textContent='讀後留言 ↓';
+    tools.append(share,line,discuss);chapter.querySelector('.chapter-body')?.after(tools);
   });
   if(location.hash.startsWith('#chapter-')){try{show(location.hash.slice(1))}catch(e){}}
 })();
@@ -862,7 +871,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
  const chapters=[...document.querySelectorAll('.chapter[id]')];
  const signature=JSON.stringify({
    chapters:chapters.map(c=>[c.id,c.querySelector('h2')?.textContent,c.querySelector('.chapter-body')?.textContent?.length]),
-   videos:[...document.querySelectorAll('iframe[src*="youtube.com/embed/"]')].map(e=>e.src)
+   videos:[...document.querySelectorAll('iframe[src*="youtube-nocookie.com/embed/"],iframe[src*="youtube.com/embed/"]')].map(e=>e.src)
  });
  const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
  const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
