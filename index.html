@@ -263,8 +263,8 @@ button{font:inherit}
   <h2 class="section-title" id="support-title">喜歡這個故事，就留下你的心意。</h2>
   <div class="support-actions">
     <button type="button" id="like-site" aria-pressed="false">♡ 喜歡作品</button>
-    <button type="button" id="bell-site" aria-pressed="false">♧ 開啟更新提醒</button>
-    <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">訂閱 YouTube 並開啟小鈴鐺 ↗</a>
+    <button type="button" id="bell-site" aria-pressed="false">🔔 開啟更新提醒</button>
+    <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">到 YouTube 訂閱並開啟小鈴鐺 ↗</a>
   </div>
   <p class="support-note">站內喜歡會保存在這台裝置。站內更新提醒會在你下次回訪時顯示新內容；若想收到 YouTube 通知，請到頻道訂閱並開啟小鈴鐺。</p>
   <p class="support-feedback" id="support-feedback" role="status" aria-live="polite"></p>
@@ -848,7 +848,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
  const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
  function pressed(button,active,on,off){button.setAttribute('aria-pressed',String(active));button.textContent=active?on:off}
  pressed(like,get('miaoshu-like-site')==='1','♥ 已喜歡','♡ 喜歡作品');
- pressed(bell,get('miaoshu-bell')==='1','♧ 已開啟站內提醒','♧ 開啟更新提醒');
+ pressed(bell,get('miaoshu-bell')==='1','🔔 已開啟站內提醒','🔔 開啟更新提醒');
  like?.addEventListener('click',()=>{
    const active=like.getAttribute('aria-pressed')!=='true';
    if(!set('miaoshu-like-site',active?'1':'0')){feedback.textContent='瀏覽器未允許儲存喜歡狀態。';return}
@@ -863,7 +863,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
  bell?.addEventListener('click',()=>{
    const active=bell.getAttribute('aria-pressed')!=='true';
    if(!set('miaoshu-bell',active?'1':'0')||(active&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}
-   pressed(bell,active,'♧ 已開啟站內提醒','♧ 開啟更新提醒');
+   pressed(bell,active,'🔔 已開啟站內提醒','🔔 開啟更新提醒');
    feedback.textContent=active?'已開啟。下次回來時，若有新內容會在這裡提醒你。':'已關閉站內更新提醒。';
  });
  chapters.forEach(chapter=>{
