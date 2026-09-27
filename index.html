@@ -848,7 +848,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
       }catch(e){}
     });
     const line=document.createElement('a');
-    line.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(urlForChapter(chapter.id));
+    line.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(location.origin+location.pathname+'#'+chapter.id);
     line.target='_blank';line.rel='noopener noreferrer';line.textContent='分享到 LINE ↗';
     const discuss=document.createElement('a');discuss.href='#community';discuss.textContent='讀後留言 ↓';
     tools.append(share,line,discuss);chapter.querySelector('.chapter-body')?.after(tools);
