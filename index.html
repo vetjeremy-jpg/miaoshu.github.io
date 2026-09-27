@@ -200,6 +200,16 @@ button{font:inherit}
 <meta property="og:url" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"喵叔 Moonlit Stories","alternateName":"喵叔","url":"https://vetjeremy-jpg.github.io/miaoshu.github.io/","inLanguage":"zh-Hant","description":"喵叔官方創作網站，閱讀《浮生歲月》與《兩種天空》，探索寫作札記、攝影日記、影音分享及讀者交流。","publisher":{"@type":"Person","name":"喵叔"}}</script>
+<style>
+.reader-support{text-align:center}
+.support-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px 0}
+.support-actions button,.support-actions a,.chapter-like{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:#f0d48a;background:rgba(216,168,76,.09);border:1px solid rgba(216,168,76,.45);border-radius:999px;padding:12px 20px;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
+.support-actions button:hover,.support-actions a:hover,.chapter-like:hover{background:rgba(216,168,76,.2);transform:translateY(-2px)}
+.support-actions button[aria-pressed="true"],.chapter-like[aria-pressed="true"]{background:#d8a84c;color:#071b33}
+.support-note,.support-feedback{max-width:730px;margin:8px auto;color:#afbed0;font-size:14px;line-height:1.8}
+.support-feedback:not(:empty){color:#f0d48a}
+.chapter-like{margin-top:12px}
+</style>
 </head>
 <body id="top">
 
@@ -248,6 +258,17 @@ button{font:inherit}
 <article class="creator-card" id="videos"><div class="creator-art" aria-hidden="true">▶</div><div class="creator-copy"><h3>影音分享</h3><p>短影片、創作花絮與生活片段；最新短影音已上架。</p><a href="videos/index.html">進入影音分享 →</a></div></article></div></section>
 <section class="panel" id="featured-short" aria-labelledby="featured-short-title"><p class="creator-tag">LATEST VIDEO · YOUTUBE SHORTS</p><h2 class="section-title" id="featured-short-title">最新短影音</h2><div class="video-preview"><iframe src="https://www.youtube-nocookie.com/embed/p0rR6ZFF2t4" title="喵叔最新 YouTube Shorts" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div><p>用一支短片，看見文字之外的生活片刻。</p><p class="notice">最新影片可直接在此觀看；更多作品收錄於影音分享頁。</p><div class="creator-nav"><a href="videos/index.html">瀏覽所有影片 →</a><a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">前往 YouTube ↗</a></div></div></div></section>
 <section class="panel" id="instagram-reel" aria-label="Instagram 短影音"><p class="creator-tag">INSTAGRAM REELS</p><h2 class="section-title">Instagram 影音分享</h2><div style="max-width:420px;margin:22px auto;text-align:center"><h3 style="color:#f0d48a">Instagram 最新 Reels</h3><div style="max-width:360px;margin:0 auto;aspect-ratio:9/16"><iframe src="https://www.instagram.com/reel/DYN9B8lBuYQ/embed/" title="喵叔 Instagram Reels" loading="lazy" allowfullscreen scrolling="no" style="width:100%;height:100%;border:0;border-radius:18px;background:#fff"></iframe></div><p style="text-align:center"><a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer" style="color:#f0d48a">前往 Instagram 觀看 ↗</a></p></div></section>
+<section class="panel reader-support" id="support" aria-labelledby="support-title">
+  <span class="chapter-kicker">READER CORNER · 讀者支持</span>
+  <h2 class="section-title" id="support-title">喜歡這個故事，就留下你的心意。</h2>
+  <div class="support-actions">
+    <button type="button" id="like-site" aria-pressed="false">♡ 喜歡作品</button>
+    <button type="button" id="bell-site" aria-pressed="false">♧ 開啟更新提醒</button>
+    <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">訂閱 YouTube 並開啟小鈴鐺 ↗</a>
+  </div>
+  <p class="support-note">站內喜歡會保存在這台裝置。站內更新提醒會在你下次回訪時顯示新內容；若想收到 YouTube 通知，請到頻道訂閱並開啟小鈴鐺。</p>
+  <p class="support-feedback" id="support-feedback" role="status" aria-live="polite"></p>
+</section>
 <section class="follow-panel" id="follow" aria-labelledby="follow-title">
   <div><span class="chapter-kicker">STAY CLOSE · 持續關注</span><h2 id="follow-title">下一個故事，從這裡再見。</h2><p>把網站存起來，或從短片找到喵叔。新作品上架時，隨時回來接著讀。</p></div>
   <div class="follow-actions"><button type="button" id="save-site">複製網站連結</button><a href="videos/index.html">觀看所有短片 ↗</a><a href="https://www.instagram.com/reel/DYN9B8lBuYQ/" target="_blank" rel="noopener noreferrer">Instagram 影片 ↗</a></div>
@@ -810,6 +831,50 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
   const feedback=document.getElementById('save-feedback');
   try{await navigator.clipboard.writeText(location.origin+location.pathname);feedback.textContent='網站連結已複製，可以傳給朋友或存到備忘錄。'}
   catch(e){feedback.textContent='請從瀏覽器網址列複製網站連結。'}
+ });
+})();
+</script>
+<script>
+(function(){
+ const feedback=document.getElementById('support-feedback');
+ const like=document.getElementById('like-site');
+ const bell=document.getElementById('bell-site');
+ const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const signature=JSON.stringify({
+   chapters:chapters.map(c=>[c.id,c.querySelector('h2')?.textContent,c.querySelector('.chapter-body')?.textContent?.length]),
+   videos:[...document.querySelectorAll('iframe[src*="youtube.com/embed/"]')].map(e=>e.src)
+ });
+ const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+ const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
+ function pressed(button,active,on,off){button.setAttribute('aria-pressed',String(active));button.textContent=active?on:off}
+ pressed(like,get('miaoshu-like-site')==='1','♥ 已喜歡','♡ 喜歡作品');
+ pressed(bell,get('miaoshu-bell')==='1','♧ 已開啟站內提醒','♧ 開啟更新提醒');
+ like?.addEventListener('click',()=>{
+   const active=like.getAttribute('aria-pressed')!=='true';
+   if(!set('miaoshu-like-site',active?'1':'0')){feedback.textContent='瀏覽器未允許儲存喜歡狀態。';return}
+   pressed(like,active,'♥ 已喜歡','♡ 喜歡作品');
+   feedback.textContent=active?'謝謝你喜歡喵叔的作品！':'已取消喜歡。';
+ });
+ if(bell?.getAttribute('aria-pressed')==='true'){
+   const previous=get('miaoshu-content-signature');
+   if(previous&&previous!==signature)feedback.textContent='有新內容了！看看最新章節或影片。';
+   set('miaoshu-content-signature',signature);
+ }
+ bell?.addEventListener('click',()=>{
+   const active=bell.getAttribute('aria-pressed')!=='true';
+   if(!set('miaoshu-bell',active?'1':'0')||(active&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}
+   pressed(bell,active,'♧ 已開啟站內提醒','♧ 開啟更新提醒');
+   feedback.textContent=active?'已開啟。下次回來時，若有新內容會在這裡提醒你。':'已關閉站內更新提醒。';
+ });
+ chapters.forEach(chapter=>{
+   const id=chapter.id,key='miaoshu-like-'+id;
+   const button=document.createElement('button');button.type='button';button.className='chapter-like';
+   pressed(button,get(key)==='1','♥ 已喜歡本章','♡ 喜歡本章');
+   button.addEventListener('click',()=>{
+     const active=button.getAttribute('aria-pressed')!=='true';
+     if(set(key,active?'1':'0'))pressed(button,active,'♥ 已喜歡本章','♡ 喜歡本章');
+   });
+   (chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
  });
 })();
 </script>
