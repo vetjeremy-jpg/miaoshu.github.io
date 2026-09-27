@@ -239,6 +239,17 @@ button{font:inherit}
 @media(max-width:900px){.topbar .brand img{width:60px}}
 @media(max-width:700px){.topbar .brand img{width:56px}.hero-brand-mark{width:min(310px,78vw);margin:0 auto 18px}.hero-copy{text-align:center}.hero-copy .hero-actions{justify-content:center}}
 </style>
+<style>
+.chapter-search{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:18px 0 20px;font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif}
+.chapter-search label{color:var(--gold2)}
+.chapter-search input{flex:1 1 230px;min-width:0;border:1px solid rgba(216,168,76,.35);border-radius:12px;background:#071b33;color:#f7f2e8;padding:11px 14px;font:inherit}
+.chapter-search input::placeholder{color:#afbed0}
+.chapter-search #chapter-search-status{color:#afbed0;font-size:14px}
+.chapter-tools button{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;min-height:44px}
+.chapter-tools .quote-share{color:var(--gold2);background:transparent;border:1px solid rgba(216,168,76,.35);border-radius:999px;padding:10px 16px;cursor:pointer}
+.chapter-tools .quote-share:hover{background:rgba(216,168,76,.15)}
+.chapter-share-feedback{color:var(--gold2);font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;margin:8px 0 0}
+</style>
 </head>
 <body id="top">
 
@@ -299,7 +310,7 @@ button{font:inherit}
   <div class="support-actions">
     <button type="button" id="like-site" aria-pressed="false">♡ 喜歡作品</button>
     <button type="button" id="bell-site" aria-pressed="false">🔔 開啟更新提醒</button>
-    <a href="https://www.youtube.com/shorts/p0rR6ZFF2t4" target="_blank" rel="noopener noreferrer">到 YouTube 訂閱並開啟小鈴鐺 ↗</a>
+    <a href="https://www.youtube.com/@vetjeremylin" target="_blank" rel="noopener noreferrer">到 YouTube 訂閱並開啟小鈴鐺 ↗</a>
   </div>
   <p class="support-note">站內喜歡會保存在這台裝置。站內更新提醒會在你下次回訪時顯示新內容；若想收到 YouTube 通知，請到頻道訂閱並開啟小鈴鐺。</p>
   <p class="support-feedback" id="support-feedback" role="status" aria-live="polite"></p>
@@ -314,6 +325,7 @@ button{font:inherit}
     <div class="directory-head"><div><span class="chapter-kicker">THE COMPLETE NOVEL · 全文閱讀</span><h2 class="section-title">《浮生歲月》</h2><p class="notice">楔子與十四個章節。點選章節直接閱讀；本站會在此裝置記住你的閱讀位置。</p></div><a class="directory-link" href="#chapter-1">從楔子開始 ↗</a></div>
     <div class="reader-controls" aria-label="閱讀字體大小"><span>閱讀字級</span><button type="button" id="font-smaller" aria-label="縮小內文字級">A−</button><button type="button" id="font-larger" aria-label="放大內文字級">A＋</button><button type="button" id="font-reset">還原</button></div>
     
+    <div class="chapter-search"><label for="chapter-search">搜尋章節</label><input id="chapter-search" type="search" placeholder="輸入章節名稱或關鍵字" autocomplete="off" aria-describedby="chapter-search-status"><span id="chapter-search-status" role="status" aria-live="polite"></span></div>
     <div class="toc"><a href="#chapter-1"><span>01</span>楔子</a>
 <a href="#chapter-2"><span>02</span>第一章：貓一樣的女人</a>
 <a href="#chapter-3"><span>03</span>第二章：在戰火中盛開的玫瑰</a>
@@ -950,6 +962,43 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
    (chapter.querySelector('.chapter-like')||chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
  });
  render();
+})();
+</script>
+<script>
+(function(){
+ const input=document.getElementById('chapter-search');
+ const links=[...document.querySelectorAll('#toc .toc a[href^="#chapter-"]')];
+ const status=document.getElementById('chapter-search-status');
+ input?.addEventListener('input',()=>{
+   const term=input.value.trim().toLocaleLowerCase('zh-Hant');
+   let count=0;
+   links.forEach(link=>{
+     const chapter=document.querySelector(link.getAttribute('href'));
+     const matches=!term||link.textContent.toLocaleLowerCase('zh-Hant').includes(term)||chapter?.querySelector('.chapter-body')?.textContent?.toLocaleLowerCase('zh-Hant').includes(term);
+     link.hidden=!matches;if(matches)count++;
+   });
+   status.textContent=term?count+' 個符合的章節':'';
+ });
+ document.querySelectorAll('.chapter[id]').forEach(chapter=>{
+   const toolbar=chapter.querySelector('.chapter-tools');
+   if(!toolbar)return;
+   const button=document.createElement('button');button.type='button';button.className='quote-share';button.textContent='分享選取文字';
+   const feedback=document.createElement('p');feedback.className='chapter-share-feedback';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
+   button.addEventListener('click',async()=>{
+     const selection=window.getSelection(),quote=selection?.toString().trim();
+     const range=selection?.rangeCount?selection.getRangeAt(0):null;
+     if(!quote||!range||!chapter.contains(range.commonAncestorContainer)){feedback.textContent='請先在本章選取想分享的文字。';return}
+     const excerpt=quote.slice(0,160)+(quote.length>160?'…':'');
+     const url=location.origin+location.pathname+'#'+chapter.id;
+     const title='喵叔《浮生歲月》・'+(chapter.querySelector('h2')?.textContent||'章節');
+     try{
+       if(navigator.share){await navigator.share({title,text:'「'+excerpt+'」',url});feedback.textContent='已開啟分享選單。'}
+       else if(navigator.clipboard){await navigator.clipboard.writeText('「'+excerpt+'」\n'+title+'\n'+url);feedback.textContent='摘錄與章節連結已複製。'}
+       else feedback.textContent='請使用瀏覽器的分享功能。';
+     }catch(e){if(e.name!=='AbortError')feedback.textContent='分享未完成，請再試一次。'}
+   });
+   toolbar.append(button);toolbar.after(feedback);
+ });
 })();
 </script>
 </body>
