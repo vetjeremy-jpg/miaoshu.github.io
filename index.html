@@ -210,6 +210,21 @@ button{font:inherit}
 .support-feedback:not(:empty){color:#f0d48a}
 .chapter-like{margin-top:12px}
 </style>
+<style>
+.reader-shelf{padding:27px 32px}
+.shelf-heading{display:flex;justify-content:space-between;align-items:end;gap:16px}
+.shelf-heading h2{margin:6px 0;color:var(--gold2);font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(22px,3vw,30px);line-height:1.4}
+.shelf-heading a,.saved-chapters a{color:var(--gold2);text-underline-offset:4px}
+.shelf-note{color:var(--muted);font-size:14px;margin:6px 0 14px}
+.saved-chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;list-style:none;margin:0;padding:0}
+.saved-chapters li{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:13px;padding:13px 16px;line-height:1.5}
+.saved-chapters li a{display:block;text-decoration:none;font-weight:600}
+.saved-chapters .empty-shelf{grid-column:1/-1;color:var(--muted)}
+.chapter-bookmark{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;background:transparent;color:var(--gold2);border:1px solid rgba(216,168,76,.45);border-radius:999px;padding:10px 17px;margin:12px 0 0 10px;cursor:pointer}
+.chapter-bookmark[aria-pressed="true"]{background:rgba(216,168,76,.2)}
+.chapter-bookmark:hover{background:rgba(216,168,76,.16)}
+@media(max-width:640px){.shelf-heading{align-items:start;flex-direction:column}.reader-shelf{padding:24px 19px}.chapter-bookmark{margin-left:8px}}
+</style>
 </head>
 <body id="top">
 
@@ -246,6 +261,11 @@ button{font:inherit}
 
 <main class="wrap" id="main">
 <div class="continue-box" id="continue-reading" aria-live="polite"><p id="continue-label"></p><a id="continue-link" href="#toc">接續閱讀 →</a></div>
+<section class="panel reader-shelf" id="reading-list" aria-labelledby="reading-list-title">
+  <div class="shelf-heading"><div><span class="chapter-kicker">MY SHELF · 我的書籤</span><h2 id="reading-list-title">留著喜歡的段落，下次接著讀。</h2></div><a href="#toc">瀏覽章節 →</a></div>
+  <p class="shelf-note">收藏與閱讀進度保存在這台裝置，無須登入。</p>
+  <ul id="saved-chapters" class="saved-chapters" aria-live="polite"><li class="empty-shelf">還沒有收藏章節。閱讀時點選「收藏本章」即可加入。</li></ul>
+</section>
 <section class="panel" id="featured" aria-labelledby="featured-title">
   <div class="featured-grid">
     <div class="featured-copy"><span class="chapter-kicker">START HERE · 精選作品</span><h2 id="featured-title">今晚，讀一段《兩種天空》。</h2><p>從小說進入喵叔的世界；讀完故事，再看看攝影日記裡的臺北光影，或用一支短片稍作停留。</p><div class="feature-actions"><a class="cta" href="books/liangzhongtiankong/index.html">閱讀完整小說 →</a><a class="cta secondary" href="gallery/index.html">欣賞攝影 →</a></div></div>
@@ -876,6 +896,41 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
    });
    (chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
  });
+})();
+</script>
+<script>
+(function(){
+ const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const shelf=document.getElementById('saved-chapters');
+ const storageKey='miaoshu-saved-chapters';
+ function read(){
+   try{
+     const value=JSON.parse(localStorage.getItem(storageKey)||'[]');
+     return Array.isArray(value)?value.filter(id=>typeof id==='string'&&chapters.some(c=>c.id===id)):[];
+   }catch(e){return []}
+ }
+ function render(){
+   const saved=read();
+   shelf.replaceChildren();
+   if(!saved.length){const li=document.createElement('li');li.className='empty-shelf';li.textContent='還沒有收藏章節。閱讀時點選「收藏本章」即可加入。';shelf.append(li)}
+   saved.forEach(id=>{
+     const chapter=document.getElementById(id),li=document.createElement('li'),link=document.createElement('a');
+     link.href='#'+id;link.textContent=chapter.querySelector('h2')?.textContent||'前往章節';li.append(link);shelf.append(li);
+   });
+   chapters.forEach(chapter=>{
+     const button=chapter.querySelector('.chapter-bookmark');
+     if(button){const active=saved.includes(chapter.id);button.setAttribute('aria-pressed',String(active));button.textContent=active?'▣ 已收藏':'▢ 收藏本章'}
+   });
+ }
+ chapters.forEach(chapter=>{
+   const button=document.createElement('button');button.type='button';button.className='chapter-bookmark';button.setAttribute('aria-label','收藏或取消收藏'+(chapter.querySelector('h2')?.textContent||'本章'));
+   button.addEventListener('click',()=>{
+     const saved=read(),next=saved.includes(chapter.id)?saved.filter(id=>id!==chapter.id):[chapter.id,...saved];
+     try{localStorage.setItem(storageKey,JSON.stringify(next));render()}catch(e){button.textContent='無法儲存，請檢查瀏覽器設定'}
+   });
+   (chapter.querySelector('.chapter-like')||chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
+ });
+ render();
 })();
 </script>
 </body>
