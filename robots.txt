@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vetjeremy-jpg.github.io/miaoshu.github.io/sitemap.xml
