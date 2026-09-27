@@ -230,6 +230,15 @@ button{font:inherit}
 .chapter-tools a{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:var(--gold2);text-decoration:none;border:1px solid rgba(216,168,76,.35);border-radius:999px;padding:10px 16px}
 .chapter-tools a:hover{background:rgba(216,168,76,.15)}
 </style>
+<style>
+/* Let the author's original mark lead the first impression. */
+.topbar .brand{gap:13px}
+.topbar .brand img{width:72px;max-width:none;height:auto;display:block;background:#0d1723}
+.hero-brand-mark{display:block;width:clamp(230px,27vw,370px);height:auto;max-width:100%;aspect-ratio:1536/989;object-fit:contain;margin:0 0 18px;background:#0d1723;border:1px solid rgba(216,168,76,.22);border-radius:8px;box-shadow:0 22px 55px rgba(0,0,0,.24)}
+.hero-copy .eyebrow{letter-spacing:.18em}
+@media(max-width:900px){.topbar .brand img{width:60px}}
+@media(max-width:700px){.topbar .brand img{width:56px}.hero-brand-mark{width:min(310px,78vw);margin:0 auto 18px}.hero-copy{text-align:center}.hero-copy .hero-actions{justify-content:center}}
+</style>
 </head>
 <body id="top">
 
@@ -254,6 +263,7 @@ button{font:inherit}
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-copy">
+      <img class="hero-brand-mark" src="logo.PNG?v=20260927-original-2" alt="喵叔 Moonlit Stories 標誌" width="1536" height="989" fetchpriority="high">
       <div class="eyebrow">MOONLIT STORIES <span aria-hidden="true">/</span> 喵叔</div>
       <h1>故事有時比夜更長。</h1>
       <p class="hero-lede">從小說讀進一個人的世界，再沿著攝影與影像，遇見故事之外的片刻。</p>
