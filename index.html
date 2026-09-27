@@ -313,7 +313,7 @@ button{font:inherit}
     <button type="button" id="bell-site" aria-pressed="false">🔔 開啟更新提醒</button>
     <a href="https://www.youtube.com/@vetjeremylin" target="_blank" rel="noopener noreferrer">到 YouTube 訂閱並開啟小鈴鐺 ↗</a>
   </div>
-  <p class="support-note">站內喜歡會保存在這台裝置。站內更新提醒會在你下次回訪時顯示新內容；若想收到 YouTube 通知，請到頻道訂閱並開啟小鈴鐺。</p>
+  <p class="support-note">讚數由全站讀者共同累積，無須登入；這台裝置會記住你是否按過。站內更新提醒會在你下次回訪時顯示新內容；若想收到 YouTube 通知，請到頻道訂閱並開啟小鈴鐺。</p>
   <p class="support-feedback" id="support-feedback" role="status" aria-live="polite"></p>
 </section>
 <section class="follow-panel" id="follow" aria-labelledby="follow-title">
@@ -888,25 +888,69 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
 </script>
 <script>
 (function(){
+ const endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
  const feedback=document.getElementById('support-feedback');
  const like=document.getElementById('like-site');
  const bell=document.getElementById('bell-site');
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const buttons=new Map();
+ const counts={};
+ const liked=new Set();
+ const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+ const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
+ let visitorId=get('miaoshu-anonymous-visitor');
+ if(!visitorId||!/^[0-9a-f-]{36}$/i.test(visitorId)){visitorId=crypto.randomUUID();set('miaoshu-anonymous-visitor',visitorId)}
+ function render(key){
+   const button=buttons.get(key);if(!button)return;
+   const active=liked.has(key),n=Number(counts[key]||0);
+   button.setAttribute('aria-pressed',String(active));
+   button.textContent=(active?'♥':'♡')+' '+(key==='site'?(active?'已喜歡作品':'喜歡作品'):(active?'已喜歡本章':'喜歡本章'))+' · '+n;
+ }
+ async function send(key,active){
+   const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,visitorId,liked:active})});
+   const result=await response.json();
+   if(!response.ok)throw new Error(result.message||'按讚暫時無法使用。');
+   counts[key]=result.count;
+   if(result.liked)liked.add(key);else liked.delete(key);
+   render(key);
+ }
+ function register(key,button){
+   buttons.set(key,button);button.disabled=true;button.textContent=key==='site'?'♡ 喜歡作品 · 載入中':'♡ 喜歡本章 · 載入中';
+   button.addEventListener('click',async()=>{
+     button.disabled=true;
+     try{await send(key,!liked.has(key));if(key==='site')feedback.textContent=liked.has(key)?'謝謝你喜歡喵叔的作品！':'已取消喜歡。'}
+     catch(error){feedback.textContent=error instanceof Error?error.message:'按讚暫時無法使用。'}
+     finally{button.disabled=false}
+   });
+ }
+ if(like)register('site',like);
+ chapters.forEach(chapter=>{
+   const button=document.createElement('button');button.type='button';button.className='chapter-like';
+   register(chapter.id,button);
+   (chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
+ });
+ async function loadLikes(){
+   try{
+     const response=await fetch(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'});
+     if(!response.ok)throw new Error('按讚暫時無法載入。');
+     const data=await response.json();
+     Object.assign(counts,data.counts||{});
+     (data.liked||[]).forEach(key=>liked.add(key));
+     for(const [key,button] of buttons){button.disabled=false;render(key)}
+     if(get('miaoshu-like-migrated')!=='1'){
+       const legacy=[...buttons.keys()].filter(key=>get(key==='site'?'miaoshu-like-site':'miaoshu-like-'+key)==='1'&&!liked.has(key));
+       try{for(const key of legacy)await send(key,true);set('miaoshu-like-migrated','1')}
+       catch(e){feedback.textContent='先前的按讚尚未同步，稍後重新整理即可重試。'}
+     }
+   }catch(e){feedback.textContent='共用讚數暫時無法載入，請稍後重新整理。';for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'}
+ }
+ loadLikes();
  const signature=JSON.stringify({
    chapters:chapters.map(c=>[c.id,c.querySelector('h2')?.textContent,c.querySelector('.chapter-body')?.textContent?.length]),
    videos:[...document.querySelectorAll('iframe[src*="youtube-nocookie.com/embed/"],iframe[src*="youtube.com/embed/"]')].map(e=>e.src)
  });
- const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
- const set=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
- function pressed(button,active,on,off){button.setAttribute('aria-pressed',String(active));button.textContent=active?on:off}
- pressed(like,get('miaoshu-like-site')==='1','♥ 已喜歡','♡ 喜歡作品');
- pressed(bell,get('miaoshu-bell')==='1','🔔 已開啟站內提醒','🔔 開啟更新提醒');
- like?.addEventListener('click',()=>{
-   const active=like.getAttribute('aria-pressed')!=='true';
-   if(!set('miaoshu-like-site',active?'1':'0')){feedback.textContent='瀏覽器未允許儲存喜歡狀態。';return}
-   pressed(like,active,'♥ 已喜歡','♡ 喜歡作品');
-   feedback.textContent=active?'謝謝你喜歡喵叔的作品！':'已取消喜歡。';
- });
+ function bellText(active){bell?.setAttribute('aria-pressed',String(active));if(bell)bell.textContent=active?'🔔 已開啟站內提醒':'🔔 開啟更新提醒'}
+ bellText(get('miaoshu-bell')==='1');
  if(bell?.getAttribute('aria-pressed')==='true'){
    const previous=get('miaoshu-content-signature');
    if(previous&&previous!==signature)feedback.textContent='有新內容了！看看最新章節或影片。';
@@ -915,18 +959,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{const 
  bell?.addEventListener('click',()=>{
    const active=bell.getAttribute('aria-pressed')!=='true';
    if(!set('miaoshu-bell',active?'1':'0')||(active&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}
-   pressed(bell,active,'🔔 已開啟站內提醒','🔔 開啟更新提醒');
-   feedback.textContent=active?'已開啟。下次回來時，若有新內容會在這裡提醒你。':'已關閉站內更新提醒。';
- });
- chapters.forEach(chapter=>{
-   const id=chapter.id,key='miaoshu-like-'+id;
-   const button=document.createElement('button');button.type='button';button.className='chapter-like';
-   pressed(button,get(key)==='1','♥ 已喜歡本章','♡ 喜歡本章');
-   button.addEventListener('click',()=>{
-     const active=button.getAttribute('aria-pressed')!=='true';
-     if(set(key,active?'1':'0'))pressed(button,active,'♥ 已喜歡本章','♡ 喜歡本章');
-   });
-   (chapter.querySelector('.chapter-tools')||chapter.querySelector('.chapter-body'))?.after(button);
+   bellText(active);feedback.textContent=active?'已開啟。下次回來時，若有新內容會在這裡提醒你。':'已關閉站內更新提醒。';
  });
 })();
 </script>
