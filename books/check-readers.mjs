@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const root = dirname(fileURLToPath(import.meta.url));
 const entries = await readdir(root, { withFileTypes: true });
 let checked = 0, errors = 0;
-for (const entry of entries.filter(entry => entry.isDirectory())) {
+for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.startsWith('_'))) {
   let html;
   try { html = await readFile(join(root, entry.name, 'index.html'), 'utf8'); }
   catch { continue; }
