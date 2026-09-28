@@ -19,7 +19,7 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
   const requirements = [
-    ['共用樣式', 'href="../reader.css"'], ['共用功能', 'src="../reader.js"'],
+    ['共用樣式', 'href="../reader.css"'], ['共用功能', 'src="../reader.js'],
     ['專屬書籍 ID', `data-book-id="${entry.name}"`], ['書籍標題', 'data-book-title='],
     ['章節目錄', 'id="toc"'], ['閱讀進度', 'id="progress"'],
     ['繼續閱讀', 'id="continue-reading"'], ['書籤', 'id="saved-chapters"'],
