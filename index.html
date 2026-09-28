@@ -251,7 +251,18 @@ button{font:inherit}
 .chapter-tools .quote-share:hover{background:rgba(216,168,76,.15)}
 .chapter-share-feedback{color:var(--gold2);font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;margin:8px 0 0}
 </style>
-<script>if(/^#(?:book|toc|chapter-(?:[1-9]|1[0-5]))$/.test(location.hash)){location.replace('books/fushengsuiyue/index.html'+(location.hash==='#book'?'#toc':location.hash))}</script>
+<style>
+#book{scroll-margin-top:115px}
+.novels-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:25px}
+.novel-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:clamp(22px,3vw,34px);border:1px solid rgba(228,210,175,.28);border-radius:18px;background:linear-gradient(145deg,#10243a,#091a2b)}
+.novel-number{font-size:12px;letter-spacing:.18em;color:var(--gold2)}
+.novel-card h3{font:500 clamp(25px,3vw,34px)/1.4 "Noto Serif TC","Songti TC",serif;margin:16px 0 8px;color:var(--text)}
+.novel-card p{color:var(--muted);line-height:1.8;margin:0 0 23px}
+.novel-card a{margin-top:auto;min-height:44px;display:inline-flex;align-items:center;color:var(--gold2);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
+.novel-card a:hover{text-decoration:underline}
+@media(max-width:700px){.novels-grid{grid-template-columns:1fr}}
+</style>
+<script>if(/^#(?:toc|chapter-(?:[1-9]|1[0-5]))$/.test(location.hash)){location.replace('books/fushengsuiyue/index.html'+location.hash)}</script>
 <style>
 .latest-update{background:linear-gradient(135deg,#10243a,#0b1b2c);border-color:rgba(228,210,175,.4)}
 .update-heading{display:flex;justify-content:space-between;align-items:center;gap:18px}.update-heading time{color:var(--gold2);white-space:nowrap}
@@ -272,7 +283,7 @@ button{font:inherit}
   </a>
   <nav class="navlinks">
     <a href="#featured">精選</a>
-    <a href="books/fushengsuiyue/index.html#toc">小說</a>
+    <a href="#book">小說</a>
     <a href="#photography">攝影</a>
     <a href="#videos">影片</a>
     <a href="#community">交流</a><a class="nav-follow" href="#follow">追蹤更新</a>
@@ -311,6 +322,17 @@ button{font:inherit}
   <div class="update-heading"><div><span class="chapter-kicker">WHAT'S NEW · 最近更新</span><h2 class="section-title" id="updates-title">從上次看到的地方，繼續讀下去。</h2></div><time datetime="2026-09-28">2026.09.28</time></div>
   <p class="notice">《浮生歲月》已整理成與《兩種天空》一致的獨立閱讀頁，楔子與十四章完整保留。你可以直接跳到章節、調整字級，或接續上次的進度。</p>
   <div class="update-actions"><a class="cta" href="books/fushengsuiyue/index.html#toc">閱讀《浮生歲月》 →</a><a class="cta secondary" href="books/liangzhongtiankong/index.html#toc">閱讀《兩種天空》 →</a><a href="videos/index.html">觀看最新短片 ↗</a></div>
+</section>
+<section class="panel novels" id="book" aria-labelledby="novels-title">
+  <span class="chapter-kicker">THE BOOKS · 小說書房</span>
+  <h2 class="section-title" id="novels-title">挑一本故事，從今晚開始。</h2>
+  <p class="notice">每部小說都有獨立的全文閱讀頁、章節目錄與閱讀進度。選擇一部，從楔子或上次停下的地方讀起。</p>
+  <div class="novels-grid">
+    <!-- BOOKS:START -->
+    <article class="novel-card"><span class="novel-number">01 / NOVEL</span><h3>《浮生歲月》</h3><p>從楔子到第十四章，沿著歲月與命運讀完一段完整故事。</p><a href="books/fushengsuiyue/index.html#toc" aria-label="閱讀《浮生歲月》章節目錄">閱讀《浮生歲月》 →</a></article>
+    <article class="novel-card"><span class="novel-number">02 / NOVEL</span><h3>《兩種天空》</h3><p>走進《兩種天空》的獨立閱讀頁，依章節慢慢閱讀。</p><a href="books/liangzhongtiankong/index.html#toc" aria-label="閱讀《兩種天空》章節目錄">閱讀《兩種天空》 →</a></article>
+    <!-- BOOKS:END -->
+  </div>
 </section>
 <section class="panel" id="creative"><p class="creator-tag">WELCOME TO MOONLIT STORIES</p><h2 class="section-title">喵叔的創作空間</h2><p class="notice">文字是故事，照片是片刻，影片則把來不及說完的心情留下。</p><div class="creator-grid"><article class="creator-card"><div class="creator-art" aria-hidden="true">✦</div><div class="creator-copy"><h3>小說書房</h3><p>《浮生歲月》與《兩種天空》完整閱讀。</p><a href="books/fushengsuiyue/index.html#toc">閱讀《浮生歲月》 →</a><a href="books/liangzhongtiankong/index.html">閱讀《兩種天空》 →</a></div></article>
 <article class="creator-card"><div class="creator-art" aria-hidden="true">✎</div><div class="creator-copy"><h3>寫作札記</h3><p>從兩部小說開始的閱讀指南；新札記上架後也會收錄在這裡。</p><a href="posts/index.html">找到閱讀起點 →</a></div></article>
