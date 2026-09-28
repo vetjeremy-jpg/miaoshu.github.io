@@ -19,6 +19,6 @@
 ```
 
 2. 執行 `node books/create-novel.mjs books/new-story.json`。產生器會建立 `books/new-story/index.html`，套用同款頁首、小說封面區、目錄、章節、頁尾與共用互動。小說資料 JSON 請一併保留，供日後修改與重新產生。不要直接改動共用功能的 HTML 結構。
-3. 在首頁 `index.html` 的小說區加入新書連結。執行 `node books/check-readers.mjs`，確認所有小說都有完整閱讀元件和連續的章節目錄。GitHub Actions 也會在後續提交時執行同一項檢查。
+3. 產生器會同步更新首頁「小說書房」，為新書加入入口；重新產生同一書籍也會更新其卡片，不會重複加入。執行 `node books/check-readers.mjs`，確認所有小說都有完整閱讀元件、連續章節目錄及首頁入口。GitHub Actions 也會在後續提交時執行同一項檢查。
 
 如需手動製作頁面，可參考 `books/_template/index.html`，但必須填妥 SEO 資料、移除 `noindex` 並通過同一項檢查。\n\n調整所有小說的介面時，修改 `books/reader.css` 或 `books/reader.js`。既有正文不用重寫；新書使用產生器即可繼承後續的共用介面更新。
