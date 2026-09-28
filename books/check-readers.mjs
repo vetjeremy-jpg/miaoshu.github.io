@@ -6,12 +6,18 @@ import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const entries = await readdir(root, { withFileTypes: true });
+const homepage = await readFile(join(root, '..', 'index.html'), 'utf8');
+const library = homepage.match(/<!-- BOOKS:START -->([\s\S]*?)<!-- BOOKS:END -->/)?.[1];
 let checked = 0, errors = 0;
+if (!library || !homepage.includes('id="book"')) { console.error('首頁缺少小說書房或列表標記'); errors++; }
 for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.startsWith('_'))) {
   let html;
   try { html = await readFile(join(root, entry.name, 'index.html'), 'utf8'); }
-  catch { continue; }
+  catch { console.error(`${entry.name} 缺少獨立閱讀頁 index.html`); errors++; continue; }
   checked++;
+  if (library && (!library.includes(`data-book-id="${entry.name}"`) || !library.includes(`books/${entry.name}/index.html#toc`))) {
+    console.error(`${entry.name} 未加入首頁小說書房`); errors++;
+  }
   const requirements = [
     ['共用樣式', 'href="../reader.css"'], ['共用功能', 'src="../reader.js"'],
     ['專屬書籍 ID', `data-book-id="${entry.name}"`], ['書籍標題', 'data-book-title='],
