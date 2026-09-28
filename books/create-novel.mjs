@@ -57,7 +57,7 @@ const html = `<!doctype html>
 <div id="text">${text}</div>
 <p class="reader-end"><a href="#toc">↑ 回到章節目錄</a>　<a href="../../index.html#community">與喵叔聊聊讀後感 ↗</a></p>
 </main><footer>© 喵叔 Moonlit Stories · <a href="../../index.html">回到首頁</a></footer>
-<script src="../reader.js" defer></script>
+<script src="../reader.js?v=20260928-shelf" defer></script>
 </body></html>
 `;
 const bookRoot = dirname(new URL(import.meta.url).pathname);
