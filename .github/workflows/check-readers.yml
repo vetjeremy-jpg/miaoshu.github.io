@@ -1,0 +1,19 @@
+name: Check novel readers
+on:
+  push:
+    paths:
+      - 'books/**'
+      - '.github/workflows/check-readers.yml'
+  pull_request:
+    paths:
+      - 'books/**'
+      - '.github/workflows/check-readers.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node books/check-readers.mjs
