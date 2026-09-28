@@ -13,6 +13,7 @@
  }
  const box=document.getElementById('continue-reading'),label=document.getElementById('continue-label'),resume=document.getElementById('continue-link');
  const valid=id=>chapters.find(chapter=>chapter.id===id);
+ set('chapter-titles',JSON.stringify(Object.fromEntries(chapters.map(chapter=>[chapter.id,chapter.querySelector('h2')?.textContent||'章節']))));
  function show(id){const chapter=valid(id);if(!chapter||!box)return;label.textContent='上次讀到'+bookTitle+'：'+chapter.querySelector('h2').textContent;resume.href='#'+id;box.classList.add('is-visible')}
  show(get('chapter'));
  const progress=document.getElementById('progress');
@@ -25,7 +26,7 @@
    if(progress)progress.style.width=(h?scrollY/h*100:0)+'%';
    let current;
    for(const chapter of chapters){if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
-   if(current&&last!==current.id){last=current.id;set('chapter',last);show(last)}
+   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
   });
  }
  addEventListener('scroll',onScroll,{passive:true});
