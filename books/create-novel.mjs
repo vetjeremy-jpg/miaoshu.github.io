@@ -60,7 +60,22 @@ const html = `<!doctype html>
 <script src="../reader.js" defer></script>
 </body></html>
 `;
-const destination = join(dirname(new URL(import.meta.url).pathname), id, 'index.html');
+const bookRoot = dirname(new URL(import.meta.url).pathname);
+const destination = join(bookRoot, id, 'index.html');
+const homepage = resolve(bookRoot, '..', 'index.html');
+const homepageHtml = await readFile(homepage, 'utf8');
+const startMarker = '<!-- BOOKS:START -->', endMarker = '<!-- BOOKS:END -->';
+const begin = homepageHtml.indexOf(startMarker), end = homepageHtml.indexOf(endMarker);
+if (begin < 0 || end < begin) throw new Error('首頁找不到小說列表標記，請先修復 index.html。');
+const cards = homepageHtml.slice(begin, end);
+const existing = new RegExp('<article class="novel-card" data-book-id="' + id + '">[\\s\\S]*?<\\/article>');
+const oldCard = cards.match(existing)?.[0];
+const number = oldCard?.match(/<span class="novel-number">(\\d+)/)?.[1] || String((cards.match(/class="novel-card"/g) || []).length + 1).padStart(2, '0');
+const card = `<article class="novel-card" data-book-id="${id}"><span class="novel-number">${number} / NOVEL</span><h3>${e(name)}</h3><p>${e(description)}</p><a href="books/${id}/index.html#toc" aria-label="閱讀${e(name)}章節目錄">閱讀${e(name)} →</a></article>`;
+const updatedHomepage = oldCard
+  ? homepageHtml.replace(oldCard, card)
+  : homepageHtml.replace(endMarker, '    ' + card + '\\n    ' + endMarker);
 await mkdir(dirname(destination), { recursive: true });
 await writeFile(destination, html);
-console.log(`已產生 ${destination}；請在首頁加入小說連結。`);
+await writeFile(homepage, updatedHomepage);
+console.log(`已產生 ${destination}，並更新首頁小說書房。`);
