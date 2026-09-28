@@ -74,7 +74,7 @@ const number = oldCard?.match(/<span class="novel-number">(\\d+)/)?.[1] || Strin
 const card = `<article class="novel-card" data-book-id="${id}"><span class="novel-number">${number} / NOVEL</span><h3>${e(name)}</h3><p>${e(description)}</p><a href="books/${id}/index.html#toc" aria-label="閱讀${e(name)}章節目錄">閱讀${e(name)} →</a></article>`;
 const updatedHomepage = oldCard
   ? homepageHtml.replace(oldCard, card)
-  : homepageHtml.replace(endMarker, '    ' + card + '\\n    ' + endMarker);
+  : homepageHtml.replace(endMarker, '    ' + card + '\n    ' + endMarker);
 await mkdir(dirname(destination), { recursive: true });
 await writeFile(destination, html);
 await writeFile(homepage, updatedHomepage);
