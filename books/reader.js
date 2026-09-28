@@ -6,6 +6,11 @@
  const prefix='miaoshu-'+bookId+'-';
  const get=(key)=>{try{return localStorage.getItem(prefix+key)}catch(e){return null}};
  const set=(key,value)=>{try{localStorage.setItem(prefix+key,value);return true}catch(e){return false}};
+ if(bookId==='fushengsuiyue'){
+  for(const [next,old] of [['chapter','miaoshu-reading-chapter'],['font-size','miaoshu-reader-font-size'],['bookmarks','miaoshu-saved-chapters']]){
+   if(get(next)===null){try{const value=localStorage.getItem(old);if(value!==null)set(next,value)}catch(e){}}
+  }
+ }
  const box=document.getElementById('continue-reading'),label=document.getElementById('continue-label'),resume=document.getElementById('continue-link');
  const valid=id=>chapters.find(chapter=>chapter.id===id);
  function show(id){const chapter=valid(id);if(!chapter||!box)return;label.textContent='上次讀到'+bookTitle+'：'+chapter.querySelector('h2').textContent;resume.href='#'+id;box.classList.add('is-visible')}
@@ -72,4 +77,22 @@
   feedback.after(bookmark);
  });
  renderShelf();
+ if(bookId==='fushengsuiyue'){
+  const endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
+  let visitorId;
+  try{visitorId=localStorage.getItem('miaoshu-anonymous-visitor')}catch(e){}
+  if(!visitorId||!/^[0-9a-f-]{36}$/i.test(visitorId)){visitorId=crypto.randomUUID();try{localStorage.setItem('miaoshu-anonymous-visitor',visitorId)}catch(e){}}
+  const buttons=new Map(),counts={},liked=new Set();
+  function render(key){const button=buttons.get(key);if(!button)return;const active=liked.has(key);button.disabled=false;button.setAttribute('aria-pressed',String(active));button.textContent=(active?'♥ 已喜歡本章':'♡ 喜歡本章')+' · '+Number(counts[key]||0)}
+  chapters.forEach(chapter=>{
+   const button=document.createElement('button');button.type='button';button.className='chapter-like';button.disabled=true;button.textContent='♡ 喜歡本章 · 載入中';button.setAttribute('aria-label','喜歡或取消喜歡'+chapter.querySelector('h2').textContent);
+   chapter.querySelector('.chapter-bookmark').after(button);buttons.set(chapter.id,button);
+   button.addEventListener('click',async()=>{
+    button.disabled=true;
+    try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:chapter.id,visitorId,liked:!liked.has(chapter.id)})});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');counts[chapter.id]=data.count;if(data.liked)liked.add(chapter.id);else liked.delete(chapter.id);render(chapter.id)}
+    catch(e){button.disabled=false;button.textContent='♡ 按讚失敗，請重試'}
+   });
+  });
+  fetch(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(response=>{if(!response.ok)throw Error();return response.json()}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
+ }
 })();
