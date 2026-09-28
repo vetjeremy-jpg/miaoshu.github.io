@@ -77,19 +77,23 @@
   feedback.after(bookmark);
  });
  renderShelf();
- if(bookId==='fushengsuiyue'){
+ {
   const endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
   let visitorId;
   try{visitorId=localStorage.getItem('miaoshu-anonymous-visitor')}catch(e){}
   if(!visitorId||!/^[0-9a-f-]{36}$/i.test(visitorId)){visitorId=crypto.randomUUID();try{localStorage.setItem('miaoshu-anonymous-visitor',visitorId)}catch(e){}}
+  // Keep the original keys for 《浮生歲月》 so existing likes are preserved.
+  // Other books use book-scoped keys to avoid sharing counts across novels.
+  const likeKey=chapter=>bookId==='fushengsuiyue'?chapter.id:bookId+'-'+chapter.id;
   const buttons=new Map(),counts={},liked=new Set();
   function render(key){const button=buttons.get(key);if(!button)return;const active=liked.has(key);button.disabled=false;button.setAttribute('aria-pressed',String(active));button.textContent=(active?'♥ 已喜歡本章':'♡ 喜歡本章')+' · '+Number(counts[key]||0)}
   chapters.forEach(chapter=>{
    const button=document.createElement('button');button.type='button';button.className='chapter-like';button.disabled=true;button.textContent='♡ 喜歡本章 · 載入中';button.setAttribute('aria-label','喜歡或取消喜歡'+chapter.querySelector('h2').textContent);
-   chapter.querySelector('.chapter-bookmark').after(button);buttons.set(chapter.id,button);
+   const key=likeKey(chapter);
+   chapter.querySelector('.chapter-bookmark').after(button);buttons.set(key,button);
    button.addEventListener('click',async()=>{
     button.disabled=true;
-    try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:chapter.id,visitorId,liked:!liked.has(chapter.id)})});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');counts[chapter.id]=data.count;if(data.liked)liked.add(chapter.id);else liked.delete(chapter.id);render(chapter.id)}
+    try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,visitorId,liked:!liked.has(key)})});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');counts[key]=data.count;if(data.liked)liked.add(key);else liked.delete(key);render(key)}
     catch(e){button.disabled=false;button.textContent='♡ 按讚失敗，請重試'}
    });
   });
