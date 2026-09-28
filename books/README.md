@@ -1,12 +1,24 @@
-# 喵叔小說頁統一版型
+# 喵叔小說閱讀頁標準
 
-以《浮生歲月》為視覺與閱讀模式基準。《兩種天空》已套用相同的深色編排、章節目錄、閱讀字級、搜尋、書籤、接續閱讀與分享工具。
+《浮生歲月》是本站所有小說的閱讀設計基準。現有的《兩種天空》也使用同一套 `reader.css` 與 `reader.js`，包括全文目錄、章節搜尋、字級調整、閱讀進度、書籤、章節分享、讀後留言入口及各章按讚。每本書以 `data-book-id` 分開儲存進度、書籤與按讚資料；《浮生歲月》的既有按讚鍵保留，以免舊數字消失。
 
-新增小說時：
-1. 將 `books/_template/index.html` 複製到 `books/<作品代稱>/index.html`。
-2. 更換書名、簡介、章數及每章標題，填入原文；章節使用連續的 `chapter-1`、`chapter-2` 等 ID，目錄的錨點與前後章連結要一致。
-3. 將 `data-book-id` 改成作品專屬代稱，以免不同小說的書籤和閱讀進度互相覆蓋。
-4. 發布前移除模板的 `noindex`，加入正確的 canonical、分享預覽與 Book 結構化資料；在首頁小說區加入作品入口。
-5. 版面和互動功能共用 `books/reader.css` 及 `books/reader.js`；新增作品直接沿用，不另寫一套樣式。
+## 新增小說
 
-不要把模板連結到正式導覽。若要修改所有獨立小說頁的閱讀介面，先修改共用檔案並檢查既有作品。
+1. 準備一個 UTF-8 JSON 檔，內容如下。`id` 是網址資料夾名稱，只能使用英文小寫字母、數字及連字號。每個段落放在 `paragraphs` 中，產生器會安全地轉成 HTML。
+
+```json
+{
+  "id": "new-story",
+  "title": "新故事",
+  "description": "這部小說的簡短介紹。",
+  "chapters": [
+    { "title": "楔子", "paragraphs": ["第一段正文。", "第二段正文。"] },
+    { "title": "第一章：相遇", "paragraphs": ["第一章正文。"] }
+  ]
+}
+```
+
+2. 執行 `node books/create-novel.mjs books/new-story.json`。產生器會建立 `books/new-story/index.html`，套用同款頁首、小說封面區、目錄、章節、頁尾與共用互動。小說資料 JSON 請一併保留，供日後修改與重新產生。不要直接改動共用功能的 HTML 結構。
+3. 在首頁 `index.html` 的小說區加入新書連結。執行 `node books/check-readers.mjs`，確認所有小說都有完整閱讀元件和連續的章節目錄。GitHub Actions 也會在後續提交時執行同一項檢查。
+
+如需手動製作頁面，可參考 `books/_template/index.html`，但必須填妥 SEO 資料、移除 `noindex` 並通過同一項檢查。\n\n調整所有小說的介面時，修改 `books/reader.css` 或 `books/reader.js`。既有正文不用重寫；新書使用產生器即可繼承後續的共用介面更新。
