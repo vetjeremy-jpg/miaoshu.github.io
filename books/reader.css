@@ -85,3 +85,15 @@ footer{text-align:center;color:#8ea3b9;padding:36px 20px;border-top:1px solid va
 .hero h1 .book-subtitle{display:block;font-size:.48em;margin-top:12px}
 .chapter-body .opening-verse-line{text-indent:0;text-align:center}
 .chapter-body .opening-verse-line:first-of-type{margin-top:1.5em}
+
+/* Moonlit atelier: three-dimensional reading room shared by all novels */
+body{background:radial-gradient(ellipse at 50% 0%,rgba(45,74,101,.26),transparent 52%),linear-gradient(160deg,#050e1a,#0a1b2c 60%,#06101c);background-attachment:fixed}
+.topbar{box-shadow:0 10px 25px #0005,inset 0 -1px 0 #d7b77744}
+.hero,.panel,.chapter,.book-directory,.reader-tools{border-color:rgba(216,184,121,.28)!important;box-shadow:inset 0 1px 0 rgba(255,240,209,.1),0 12px 0 -9px #030a14,0 28px 52px #0006!important}
+.hero{background-image:radial-gradient(ellipse at 50% 5%,rgba(84,113,139,.24),transparent 65%),linear-gradient(150deg,#142a3e,#081522)!important}
+.chapter{position:relative;background-image:linear-gradient(105deg,rgba(255,255,255,.04),transparent 20%),linear-gradient(145deg,#12253a,#091522)!important;border-left:3px solid rgba(207,167,100,.53)!important}
+.chapter:before{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(211,175,114,.09);border-radius:12px}
+.chapter-kicker{letter-spacing:.2em}.chapter h2{filter:drop-shadow(0 3px 7px #0007)}
+.chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:transform .2s,background .2s,box-shadow .2s}
+.chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:translateY(-2px);box-shadow:0 6px 13px #0004}
+@media(prefers-reduced-motion:reduce){.chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:none}.chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:none}}
