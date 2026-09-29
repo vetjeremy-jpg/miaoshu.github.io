@@ -11,43 +11,14 @@
 <style>
 :root{color-scheme:dark;--bg:#07111f;--panel:#0e1d2e;--line:#a9997655;--gold:#e5d2ae;--muted:#adbacb}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 8%,#183a56 0,transparent 38%),var(--bg);color:#f7f3e9;font:17px/1.8 system-ui,"PingFang TC","Noto Sans TC",sans-serif}a{color:var(--gold)}a:focus-visible,button:focus-visible{outline:3px solid #f0d48a;outline-offset:4px}.skip{position:absolute;left:-9999px;top:10px;background:var(--gold);color:var(--bg);padding:8px}.skip:focus{left:12px;z-index:10}.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px max(20px,calc((100vw - 1100px)/2));background:#07111ff0;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.brand{display:flex;align-items:center;gap:11px;color:#f7f3e9;text-decoration:none;font-weight:700}.brand img{width:54px;height:39px;object-fit:contain}.top nav{display:flex;flex-wrap:wrap;gap:18px}.top nav a{text-decoration:none;font-size:14px}.wrap{max-width:1100px;margin:auto;padding:55px 24px 90px}.eyebrow{color:var(--gold);letter-spacing:.18em;font-size:12px;font-weight:700}.hero{max-width:720px;margin-bottom:48px}.hero h1{font:normal clamp(42px,7vw,76px)/1.2 Georgia,"Noto Serif TC",serif;letter-spacing:.03em;margin:12px 0 18px}.hero p{color:var(--muted);max-width:620px}.rule{width:75px;height:2px;background:var(--gold);margin-top:30px}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);gap:36px;align-items:start}.stage,.playlist,.reel{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:26px}.stage h2,.playlist h2,.reel h2{font:normal 30px/1.35 Georgia,"Noto Serif TC",serif;margin:0 0 12px}.stage p,.playlist p,.reel p{color:var(--muted);margin:0 0 18px}.screen{aspect-ratio:9/16;max-width:390px;margin:24px auto;background:linear-gradient(145deg,#112f4b,#08111e);border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;overflow:hidden}.screen iframe{width:100%;height:100%;border:0}.play-primary{border:1px solid var(--gold);border-radius:999px;background:var(--gold);color:var(--bg);padding:13px 23px;font:700 16px inherit;cursor:pointer}.screen .play-primary{font:700 16px system-ui,sans-serif;min-height:55px}.stage-link{display:inline-block;margin-top:15px;text-decoration:none}.playlist ol{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}.playlist li{border-bottom:1px solid var(--line)}.video-pick{display:flex;align-items:center;gap:15px;width:100%;padding:17px 3px;background:transparent;border:0;color:#f7f3e9;text-align:left;cursor:pointer;font:inherit}.video-pick:hover,.video-pick[aria-current="true"]{color:var(--gold)}.video-pick>span:last-child{margin-left:auto;white-space:nowrap;font-size:13px}.video-number{color:var(--gold);font-weight:700}.video-pick small{display:block;color:var(--muted);font-size:12px}.reel{margin-top:36px;display:flex;gap:28px;align-items:center;justify-content:space-between}.reel a,.next a{display:inline-block;border:1px solid var(--line);border-radius:999px;text-decoration:none;padding:10px 18px;margin:6px 8px 6px 0}.reel a:hover,.next a:hover{background:var(--gold);color:var(--bg)}.next{margin-top:55px;padding:25px 0;border-top:1px solid var(--line)}.next h2{font:normal 27px Georgia,"Noto Serif TC",serif}footer{text-align:center;border-top:1px solid var(--line);padding:27px;color:var(--muted);font-size:13px}@media(max-width:760px){.top{align-items:flex-start}.top nav{justify-content:flex-end;gap:8px 14px}.layout{grid-template-columns:1fr}.wrap{padding-top:34px}.reel{display:block}.stage,.playlist,.reel{padding:20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* Moonlit atelier — shared dimensional art direction */
-:root{--atelier-gold:#d8b879;--atelier-ivory:#f4e8d1}
-body{background-image:radial-gradient(ellipse at 18% 3%,rgba(88,118,148,.15),transparent 38%),radial-gradient(ellipse at 86% 60%,rgba(145,105,56,.08),transparent 38%),linear-gradient(155deg,#050e1b,#0a2037 47%,#061321)!important}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.19;background:repeating-linear-gradient(115deg,transparent 0 5px,rgba(255,239,199,.018) 6px 7px);mask-image:linear-gradient(#000,transparent 85%)}
-main,header,footer,.topbar,.top{position:relative}
-.panel,.journal,.journal-card,.card,.creator-card,.reader-shelf,.featured-grid,.latest-update,.follow-panel,.stage,.playlist,.reel,.next,.video-preview,.reader-comment-frame,figure{border:1px solid rgba(220,183,117,.28)!important;background-image:linear-gradient(135deg,rgba(255,255,255,.07),transparent 30%),linear-gradient(155deg,rgba(21,49,73,.97),rgba(7,20,35,.97))!important;box-shadow:inset 0 1px 0 rgba(255,239,205,.15),inset 0 -1px 0 rgba(0,0,0,.55),0 15px 0 -10px rgba(7,13,22,.9),0 28px 48px rgba(0,0,0,.33)!important;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
-.panel:hover,.journal-card:hover,.card:hover,.creator-card:hover,.stage:hover,.playlist:hover,.reel:hover,.next:hover,figure:hover{border-color:rgba(237,201,135,.48)!important;box-shadow:inset 0 1px 0 rgba(255,239,205,.2),0 18px 0 -12px rgba(7,13,22,.9),0 35px 65px rgba(0,0,0,.44)!important}
-.creator-card,.journal-card,.card,figure,.video-pick,.album-photos a{transform:translateZ(0)}
-.creator-card:hover,.journal-card:hover,.card:hover,figure:hover{transform:translateY(-5px)}
-.hero,.intro{position:relative;isolation:isolate}
-.hero:after,.intro:after{content:"";position:absolute;inset:20px;pointer-events:none;border:1px solid rgba(218,181,114,.17);border-radius:24px;box-shadow:inset 0 0 50px rgba(0,0,0,.12)}
-.section-title,h1,h2{ text-shadow:0 2px 15px rgba(0,0,0,.26)}
-.cta,button,.journal-actions a,.stage-link,.video-pick,.creator-copy a{transition:transform .25s,box-shadow .25s,background .25s}
-.cta:hover,button:hover,.journal-actions a:hover,.stage-link:hover,.creator-copy a:hover{transform:translateY(-2px)}
-img{max-width:100%}
-@media(prefers-reduced-motion:reduce){.panel,.journal-card,.card,.creator-card,figure,.cta,button,.journal-actions a,.stage-link,.video-pick{transition:none!important;transform:none!important}}
 
-.stage{position:relative;isolation:isolate}.screen{position:relative;overflow:hidden;border:9px solid #1c2833!important;border-radius:18px;box-shadow:inset 0 0 0 2px #9d8054,inset 0 0 35px #0009,0 12px 0 -5px #101923,0 24px 35px #0008!important}.screen:after{content:"";position:absolute;inset:0;pointer-events:none;border:1px solid #e2bd7e55;border-radius:8px}.playlist{perspective:900px}.video-pick{box-shadow:inset 0 1px 0 #fff2,0 7px 15px #0005;transition:transform .25s,box-shadow .25s}.video-pick:hover{transform:translateX(5px);box-shadow:0 10px 20px #0007}.reel{box-shadow:inset 0 1px 0 #fff2,0 20px 40px #0007!important}
-@media(prefers-reduced-motion:reduce){.video-pick:hover{transform:none}}
-
-/* Atelier II — private screening room */
-.stage{border:1px solid #b08b55!important;box-shadow:inset 0 0 0 7px #d5b47713,0 16px 0 -9px #17130e,0 35px 55px #0009!important}
-.screen{background:radial-gradient(ellipse at 50% 30%,#28445b,#050b13 75%)!important;border:10px ridge #9e7a48!important;outline:3px solid #0c1521;outline-offset:2px;box-shadow:inset 0 0 0 3px #1c2a38,inset 0 0 45px #000c,0 17px 0 -8px #20170e,0 28px 40px #000a!important}
-.screen iframe{position:relative;z-index:1}
-.video-pick{border-left:3px solid #c7a36d!important}
-.video-pick:hover{border-left-color:#f1d49b!important}
-.reel{border:1px solid #b08b55!important}
-.hero:before{content:"✦";display:block;text-align:center;color:#d8b879;font-size:20px}
-
-/* Grand Atelier III: private cinema architecture */
-.stage{box-shadow:inset 0 0 0 7px #d5b47714,inset 0 1px 0 #fff2,0 10px 0 -6px #392b1b,0 22px 0 -14px #9b794a,0 40px 60px #000b!important}
-.screen{border:12px ridge #977348!important;box-shadow:inset 0 0 0 4px #152437,inset 0 0 55px #000d,0 12px 0 -5px #261a10,0 24px 0 -13px #a78554,0 42px 55px #000c!important}
-.playlist,.reel,.next{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -5px #182638,0 23px 40px #0009!important}
-.video-pick{border:1px solid #d8b87955;box-shadow:inset 0 1px 0 #fff2,0 5px 10px #0006}
-
-/* Grand Atelier IV: sculpted screening stage */
-.stage{position:relative;isolation:isolate}.stage:after{content:"";position:absolute;inset:11px;border:1px solid #d8ba8029;border-radius:14px;pointer-events:none}.screen{isolation:isolate}.screen:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 25%,#c4a26d16,transparent 68%)}.video-pick{transition:transform .25s,box-shadow .25s,border-color .25s}.video-pick:hover{border-color:#d8ba8099;box-shadow:inset 0 1px 0 #fff2,0 9px 18px #0009}
+/* Editorial cinema: understated frames and clear controls */
+body{background:#091824}
+.stage,.playlist,.reel,.next{background:#102639!important;border:1px solid #c7aa7940!important;box-shadow:none!important}
+.stage:after,.screen:before{display:none}
+.screen{border:1px solid #c7aa7955!important;border-radius:9px;outline:0;box-shadow:none!important;background:#07111b!important}
+.video-pick{box-shadow:none;transform:none}
+.video-pick:hover{transform:none;box-shadow:none}
 </style></head>
 <body><a class="skip" href="#main">跳至內容</a><header class="top"><a class="brand" href="../index.html"><img src="../logo.PNG" alt="">喵叔 Moonlit Stories</a><nav aria-label="網站導覽"><a href="../index.html#toc">小說</a><a href="../gallery/">攝影</a><a href="../index.html#community">交流</a></nav></header>
 <main class="wrap" id="main"><header class="hero"><span class="eyebrow">MOONLIT STORIES / VIDEO JOURNAL</span><h1>讓故事，繼續流動。</h1><p>從小說的字句走向鏡頭裡的片刻。選一支短片觀看，再沿著你喜歡的線索回到作品。</p><div class="rule"></div></header>
