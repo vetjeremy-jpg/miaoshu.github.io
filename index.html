@@ -287,6 +287,19 @@ body{background:linear-gradient(180deg,#0a1826,#0d2132 48%,#091825);color:#f0eee
 a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4px}
 @media(max-width:650px){.panel{margin:22px 0;padding:24px 19px}.hero{padding-top:42px}.section-title:after{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Complete book titles: prioritize legibility over decorative cover elements */
+#book .book-cover{padding:12px 8px;gap:5px}
+#book .cover-title{display:block;flex:0 1 auto;width:100%;max-height:none!important;overflow:visible!important;white-space:normal;word-break:normal;overflow-wrap:anywhere;text-wrap:balance;font:600 clamp(11px,1.15vw,15px)/1.45 "Noto Serif TC","Songti TC",serif;letter-spacing:0}
+#book .novel-card[data-book-id="fushengsuiyue"] .cover-title,#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:12px;line-height:1.45}
+#book .book-spine span{font-size:8px;letter-spacing:0;max-height:100%;overflow:visible;line-height:1.1}
+#book .cover-ornament{margin-bottom:0}
+#book .cover-rule{margin:4px auto}
+#book .cover-rule-bottom{margin:4px auto}
+#book .cover-emblem{margin-top:0;font-size:15px}
+#book .book-details h3{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;white-space:normal;overflow-wrap:anywhere;text-wrap:balance}
+#book .book-read{height:auto!important;white-space:normal;text-align:center}
+@media(max-width:650px){#book .cover-title{font-size:12px;line-height:1.4}#book .novel-card[data-book-id="fushengsuiyue"] .cover-title,#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:10.5px}#book .cover-imprint{font-size:6px;letter-spacing:0}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
