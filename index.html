@@ -252,6 +252,34 @@ img{max-width:100%}
 .book-cover{box-shadow:inset 0 0 0 5px #d6b67813,inset 0 0 0 6px #d6b67875,inset -15px 0 15px #0008,5px 4px 7px #0009}.book-spine{width:19px}.book-pages{width:10px}
 .book-details{position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){.book-object,.book-object:hover,.book-object:focus-visible,.album-photos a:hover img{transform:none}}
+
+/* Atelier II — architectural library, gilded detailing, tactile surfaces */
+:root{--museum-brass:#d5b477;--museum-glow:rgba(247,213,148,.22)}
+.topbar{box-shadow:inset 0 -1px 0 #d8b87955,0 13px 35px #0008}
+.hero{isolation:isolate}.hero:before{background:linear-gradient(135deg,rgba(242,207,140,.07),transparent 27%,transparent 73%,rgba(242,207,140,.04));box-shadow:inset 0 0 90px #0006,0 0 0 1px #d8b87918}
+.hero-inner:before{content:"✦";display:block;color:#dfc18a;font-size:20px;letter-spacing:1em;margin-bottom:20px;text-shadow:0 0 24px #d6ac63aa}
+.section-title{letter-spacing:.055em}.section-title:after{content:"";display:block;width:90px;height:1px;margin:15px auto 0;background:linear-gradient(90deg,transparent,#d8b879,transparent);box-shadow:0 0 10px #d8b87955}
+.bookshelf-scene{overflow:visible;perspective:1300px}
+.bookshelf-top{padding:9px 12px 28px;background:radial-gradient(ellipse at 50% -20%,#d7ae6655,transparent 70%);font-size:12px}
+.bookshelf-top span{display:inline-block;padding:7px 24px;border:1px solid #c5a16a77;border-radius:2px;background:linear-gradient(#49321c,#1c140f);box-shadow:inset 0 1px 0 #ffe5a64d,0 6px 12px #0009}
+.bookshelf-top:before{content:"";position:absolute;top:4px;left:10%;right:10%;height:12px;background:linear-gradient(90deg,transparent,#b18a4c55 20%,#ebce8a66 50%,#b18a4c55 80%,transparent);filter:blur(9px)}
+.novel-card{background-image:radial-gradient(ellipse at 50% 15%,rgba(242,201,126,.16),transparent 64%),linear-gradient(90deg,#0003,transparent 13%,transparent 87%,#0004)!important}
+.novel-card:after{content:"";position:absolute;bottom:14px;left:18%;right:18%;height:12px;border-radius:50%;background:#000a;filter:blur(8px);pointer-events:none}
+.book-object{z-index:2;transform-origin:35% 70%;filter:drop-shadow(12px 14px 5px #000d)}
+.book-cover{background-image:linear-gradient(95deg,#0008,transparent 13%,#fff2 23%,transparent 36%,transparent 72%,#0006),radial-gradient(circle at 75% 20%,#fff2,transparent 42%),linear-gradient(145deg,var(--cover-top),var(--cover-bottom))}
+.book-cover:after{content:"";position:absolute;inset:15px 13px;border:1px solid #d9ba7e55;pointer-events:none}
+.book-object:hover .book-cover,.book-object:focus-visible .book-cover{box-shadow:inset 0 0 0 5px #d6b67819,inset 0 0 0 6px #d6b678aa,inset -15px 0 15px #0008,8px 7px 13px #000b,0 0 18px #d8b87944}
+.book-object:focus-visible{outline:3px solid #f4dbab;outline-offset:7px}
+.book-details h3{color:#f5dbab;text-shadow:0 2px 8px #000b}
+.book-read{position:relative;z-index:3;box-shadow:inset 0 1px 0 #fff2,0 4px 9px #0008}
+#featured .featured-visual,.creator-card,.album-photos a,.video-preview,.reader-comment-frame{position:relative}
+.creator-card:after,.video-preview:after{content:"";position:absolute;inset:8px;border:1px solid #d5b47733;border-radius:13px;pointer-events:none}
+.creator-card:hover .creator-art{filter:brightness(1.16)}
+.album-photos a{border:7px solid #1b2b39;outline:1px solid #cba56b66;outline-offset:-3px}
+.album-photos img{box-shadow:0 15px 25px #0009}
+#support .support-actions button,.community-actions button{background-image:linear-gradient(135deg,#233f57,#0c2035);border:1px solid #d8b87966;box-shadow:inset 0 1px 0 #fff3,0 8px 17px #0007}
+@media(max-width:650px){.bookshelf-top span{padding:6px 10px;font-size:9px}.novel-card:after{bottom:12px}.hero-inner:before{margin-bottom:9px}}
+@media(prefers-reduced-motion:reduce){.book-object:hover,.book-object:focus-visible{transform:none}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
