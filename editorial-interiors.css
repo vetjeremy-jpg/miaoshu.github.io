@@ -116,3 +116,15 @@ body[data-book-id]{background:var(--bg)}
  [data-book-id] .chapter-body p{line-height:2.05}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* A restrained trace of moonlight, shared with the Moonlit Stories name. */
+:root{--moonlight:#dce8f2}
+.brand::after{content:"";display:block;flex:none;width:10px;height:10px;margin:0 6px 4px 0;border-radius:50%;box-shadow:3px 2px 0 0 rgba(220,232,242,.72);transform:rotate(-22deg)}
+.topbar,.top{border-bottom-color:rgba(205,219,233,.21)}
+footer{border-top-color:rgba(205,219,233,.19)}
+
+.gallery-page{background:radial-gradient(ellipse 650px 460px at 92% 90px,rgba(180,207,232,.075),transparent 75%),var(--bg)}
+.journal-page,.video-page{background:radial-gradient(ellipse 600px 430px at 92% 110px,rgba(180,207,232,.065),transparent 75%),var(--bg)}
+[data-book-id] .hero{background:radial-gradient(ellipse at 86% 4%,rgba(181,207,232,.11),transparent 54%),linear-gradient(145deg,#25241f,#101111 80%)}
+.rule{background:linear-gradient(90deg,var(--moonlight),var(--gold),transparent)}
+.collection-heading{border-top-color:rgba(205,219,233,.22)}
