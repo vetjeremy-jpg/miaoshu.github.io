@@ -115,3 +115,6 @@ body{background:radial-gradient(ellipse at 50% 0%,rgba(45,74,101,.26),transparen
 .chapter h2{color:#f2ddbb;text-shadow:0 4px 14px #0008}
 .book-directory,.reader-tools{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -5px #1a2939,0 22px 45px #0008!important}
 @media(max-width:650px){.chapter:before{inset:6px}}
+
+/* Grand Atelier IV: quiet sculptural reading */
+.chapter{background-image:radial-gradient(ellipse at 80% 0%,#d8ba800c,transparent 55%),linear-gradient(145deg,#12253a,#091522)!important}.chapter:before{border-color:#d8ba802a}.chapter h2{letter-spacing:.04em}.chapter-body{position:relative;z-index:1}.chapter-nav a{box-shadow:inset 0 1px 0 #fff1,0 5px 10px #0004}.book-directory{border-color:#d8ba8044!important}
