@@ -26,6 +26,13 @@ img{max-width:100%}
 .gallery figure:hover{box-shadow:inset 0 0 0 5px #101e2a,0 16px 0 -8px #24170d,0 38px 60px #000b!important}
 .intro:before{content:"✦　THE MOONLIT GALLERY　✦";display:block;color:#d8b879;font-size:10px;letter-spacing:.22em;margin-bottom:18px}
 @media(max-width:650px){.gallery figure{border-width:6px!important}}
+
+/* Grand Atelier III: sculpted exhibition room */
+.gallery{perspective:1500px;gap:32px}
+.gallery figure{background:linear-gradient(150deg,#25364a,#081521)!important;border:10px ridge #98774c!important;box-shadow:inset 0 0 0 5px #0d1c2c,0 10px 0 -5px #382315,0 22px 0 -13px #a17b4c,0 40px 65px #000b!important}
+.gallery figure:before{content:"";position:absolute;inset:14px;border:1px solid #efd39b55;z-index:2;pointer-events:none}
+.gallery figure:hover{box-shadow:inset 0 0 0 5px #0d1c2c,0 15px 0 -7px #382315,0 28px 0 -15px #a17b4c,0 50px 75px #000c!important}
+.gallery figcaption{box-shadow:inset 0 1px 0 #f0d49b55,inset 0 7px 15px #0004}
 </style><style>
 body{background:radial-gradient(circle at 85% 5%,#193950 0,transparent 38%),#07111f;color:#f7f3e9}
 header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px max(20px,calc((100vw - 1100px)/2));background:#07111ff0;border-bottom:1px solid #a9997655;backdrop-filter:blur(10px)}
