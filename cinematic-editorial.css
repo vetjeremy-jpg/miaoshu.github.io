@@ -10,7 +10,7 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .navlinks .nav-follow{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
 .navlinks .nav-follow:hover{background:var(--gold2);color:#171613}
 .hero{min-height:min(790px,88svh);padding:76px max(24px,calc((100vw - 1350px)/2));background:linear-gradient(90deg,rgba(9,11,12,.94) 0%,rgba(9,11,12,.72) 38%,rgba(9,11,12,.1) 100%),url("gallery/taipei-101-night-skyline-20260927.jpeg") center 48%/cover no-repeat}
-.hero:before{inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
+.hero:before{display:block;inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
 .hero-inner{max-width:1350px;grid-template-columns:minmax(0,1fr) minmax(0,.55fr);gap:5vw}
 .hero-copy{max-width:730px;position:relative;z-index:2}
 .hero-brand-mark{max-width:155px;max-height:105px;object-fit:contain;object-position:left center;margin:0 0 18px}
@@ -42,16 +42,17 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 #book .bookshelf-scene{background:linear-gradient(90deg,#35291e,#1a1b19 5%,#20201c 50%,#1a1b19 95%,#35291e);border-color:#806644}
 #book .novel-card{background:radial-gradient(ellipse at 50% 70%,rgba(200,170,121,.08),transparent 65%)}
 #book .novel-card p{color:#d1c9bd}
-#photography .album-photos,#miaoshu-album .album-photos{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#miaoshu-album .album-photos{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .album-photos a{border:0;box-shadow:none;position:relative}
 .album-photos img{transition:transform .45s ease,filter .45s ease;filter:saturate(.86)}
-.album-photos a:hover img{transform:scale(1.035);filter:saturate(1)}
+.album-photos a:hover img,.album-photos a:focus-visible img{transform:scale(1.035);filter:saturate(1)}
+.album-photos a:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
 .follow-panel{background:linear-gradient(120deg,#27251f,#181b1b)}
 .chapter{background:#1a1b1a;border-radius:0}
 .chapter-body{max-width:760px}
 .chapter-body p{color:#e9e3d9;line-height:2.2}
 .reader-controls button,.directory-link,.follow-actions a,.follow-actions button{border-radius:0}
 footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
-@media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("gallery/taipei-101-night-skyline-20260927.jpeg") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero-image{max-width:560px;max-height:240px;aspect-ratio:16/9}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#photography .album-photos,#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.hero-image{max-height:190px}.panel{padding:24px 18px}.creator-grid{gap:10px}#photography .album-photos,#miaoshu-album .album-photos{gap:7px}}
-@media(prefers-reduced-motion:reduce){.album-photos img{transition:none}}
+@media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("gallery/taipei-101-night-skyline-20260927.jpeg") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero-image{max-width:560px;max-height:240px;aspect-ratio:16/9}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.hero-image{max-height:190px}.panel{padding:24px 18px}.creator-grid{gap:10px}#miaoshu-album .album-photos{gap:7px}}
+@media(prefers-reduced-motion:reduce){.album-photos img{transition:none}.album-photos a:hover img,.album-photos a:focus-visible img{transform:none}}
