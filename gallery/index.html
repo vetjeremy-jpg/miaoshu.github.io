@@ -18,6 +18,14 @@ img{max-width:100%}
 
 .gallery{perspective:1200px}.gallery figure{position:relative;transform:rotateY(-1deg);transform-origin:center}.gallery figure:nth-of-type(even){transform:rotateY(1deg)}.gallery figure:hover{transform:translateY(-6px) rotateY(0)}.gallery figure:after{content:"";position:absolute;inset:9px;border:1px solid #d8b87955;border-radius:12px;pointer-events:none}.gallery figure img{transition:transform .6s}.gallery figure:hover img{transform:scale(1.025)}.gallery figcaption{position:relative;background:linear-gradient(145deg,#1a344d,#0a1b2d);box-shadow:inset 0 1px 0 #e8ce9455}.collection-heading{filter:drop-shadow(0 7px 14px #0005)}
 @media(prefers-reduced-motion:reduce){.gallery figure,.gallery figure:nth-of-type(even),.gallery figure:hover,.gallery figure:hover img{transform:none}}
+
+/* Atelier II — gallery objects in shadow-box frames */
+.gallery figure{border:9px ridge #8e714b!important;outline:1px solid #e2c48a66;outline-offset:-5px;background:#091522!important;box-shadow:inset 0 0 0 5px #101e2a,0 10px 0 -5px #24170d,0 30px 50px #0009!important}
+.gallery figure img{border:5px solid #0b1b2c;box-shadow:inset 0 0 22px #0009}
+.gallery figcaption{border-top:1px solid #d9b87855}
+.gallery figure:hover{box-shadow:inset 0 0 0 5px #101e2a,0 16px 0 -8px #24170d,0 38px 60px #000b!important}
+.intro:before{content:"✦　THE MOONLIT GALLERY　✦";display:block;color:#d8b879;font-size:10px;letter-spacing:.22em;margin-bottom:18px}
+@media(max-width:650px){.gallery figure{border-width:6px!important}}
 </style><style>
 body{background:radial-gradient(circle at 85% 5%,#193950 0,transparent 38%),#07111f;color:#f7f3e9}
 header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px max(20px,calc((100vw - 1100px)/2));background:#07111ff0;border-bottom:1px solid #a9997655;backdrop-filter:blur(10px)}
