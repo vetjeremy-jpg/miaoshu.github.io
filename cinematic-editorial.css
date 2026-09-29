@@ -56,3 +56,13 @@ footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
 @media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("gallery/taipei-101-night-skyline-20260927.jpeg") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero-image{max-width:560px;max-height:240px;aspect-ratio:16/9}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.hero-image{max-height:190px}.panel{padding:24px 18px}.creator-grid{gap:10px}#miaoshu-album .album-photos{gap:7px}}
 @media(prefers-reduced-motion:reduce){.album-photos img{transition:none}.album-photos a:hover img,.album-photos a:focus-visible img{transform:none}}
+
+/* Photo captions: pair every image with its title and story. */
+#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.album-photo{margin:0;min-width:0;background:#1b1d1b;border:1px solid var(--line)}
+.album-photo>a{display:block;overflow:hidden}
+.album-photo figcaption{padding:22px 24px 26px;border-top:1px solid var(--line)}
+.album-photo h3{margin:0 0 10px;color:var(--gold2);font:600 clamp(21px,2.2vw,28px)/1.5 "Noto Serif TC","Songti TC",serif;letter-spacing:.04em}
+.album-photo .album-series{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.7}
+.album-photo .album-description{margin:0;color:#e2ddd3;font-size:16px;line-height:1.9}
+@media(max-width:650px){#miaoshu-album .album-photos{grid-template-columns:1fr;gap:24px}.album-photo figcaption{padding:20px}.album-photo h3{font-size:23px}}
