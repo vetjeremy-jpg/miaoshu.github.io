@@ -1,0 +1,118 @@
+/* Moonlit Stories — shared gallery, journal, cinema and reading edition. */
+:root{color-scheme:dark;--bg:#101111;--panel:#191b1a;--gold:#c8aa79;--gold2:#e6d5b7;--text:#f3eee5;--muted:#bcb9b1;--line:rgba(214,188,145,.23);--serif:"Noto Serif TC","Songti TC","PMingLiU",serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif}
+a{color:var(--gold2);text-underline-offset:5px}
+button,input,select{font:inherit}
+button,a,input,select{-webkit-tap-highlight-color:rgba(200,170,121,.18)}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:4px}
+.skip,.skip-link{position:fixed;left:16px;top:-100px;z-index:3000;padding:12px 18px;background:var(--gold2);color:var(--bg)}
+.skip:focus,.skip-link:focus{top:12px}
+.top,.topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px;padding:10px max(24px,calc((100vw - 1200px)/2));background:rgba(15,16,16,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap;text-decoration:none;color:var(--text);font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.04em}
+.brand img{display:block;width:54px;height:auto;aspect-ratio:1536/989;object-fit:contain;flex:none}
+.top nav,.navlinks{display:flex;gap:4px;align-items:center}
+.top nav a,.navlinks a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;color:var(--text);font-size:14px;text-decoration:none;white-space:nowrap;border-radius:0}
+.top nav a:hover,.navlinks a:hover{background:rgba(200,170,121,.1);color:var(--gold2)}
+.wrap{max-width:1200px;margin:auto;padding:64px 24px 90px}
+.eyebrow,.kicker,.chapter-kicker,.intro small,.collection-heading small{color:var(--gold);font-size:12px;line-height:1.7;letter-spacing:.2em;font-weight:500}
+.hero h1,.intro h1{font:400 clamp(38px,5.5vw,70px)/1.4 var(--serif);letter-spacing:.06em;margin:16px 0 22px;text-wrap:balance;overflow-wrap:anywhere}
+.hero p,.intro p{color:var(--muted);max-width:43em}
+.hero{max-width:850px;margin-bottom:56px}
+.rule{width:76px;height:1px;background:var(--gold);margin-top:32px}
+.section-title,.intro h2,.paths h2,.next h2,.collection-heading h2{font:400 clamp(26px,3.5vw,40px)/1.5 var(--serif);letter-spacing:.04em;color:var(--text)}
+.card h3,.journal-copy h3,.stage h2,.playlist h2,.reel h2{font:400 clamp(24px,3vw,32px)/1.5 var(--serif);color:var(--text);margin:10px 0 16px}
+.card,.journal-card,.stage,.playlist,.reel{background:var(--panel);border:1px solid var(--line);padding:32px;min-width:0}
+.card p,.paths p,.journal-copy p,.stage p,.playlist p,.reel p{color:var(--muted)}
+.card a,.paths a,.journal-actions a,.reel a,.next a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid var(--line);text-decoration:none}
+.card a:hover,.paths a:hover,.journal-actions a:hover,.reel a:hover,.next a:hover{background:var(--gold2);color:var(--bg)}
+footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+/* Photography: preserve the complete frame, including landscape photographs. */
+.gallery-page .intro{max-width:1200px;margin:auto;padding:64px 24px 30px}
+.collection-nav{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.collection-nav a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-decoration:none}
+.collection-nav a:hover{text-decoration:underline}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px;max-width:1200px;margin:auto;padding:0 24px 90px;align-items:start}
+.collection-heading{grid-column:1/-1;padding-top:34px;border-top:1px solid var(--line);scroll-margin-top:110px}
+.collection-heading h2{margin:8px 0 12px}.collection-heading p{margin:0;color:var(--muted)}
+.gallery figure{margin:0;min-width:0}.gallery figure.landscape{grid-column:1/-1}
+.gallery figure>a{display:block;background:#191b1a;overflow:hidden}
+.gallery figure img{display:block;width:100%;height:auto;object-fit:contain}
+.gallery figcaption{padding:16px 0 12px;border-bottom:1px solid var(--line)}
+.gallery figcaption strong{font:400 21px/1.5 var(--serif);color:var(--gold2)}
+.gallery figcaption p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+/* Journal: a book cover beside generous reading space. */
+.journal{margin-bottom:60px}.journal-card{display:grid;grid-template-columns:minmax(160px,230px) minmax(0,1fr);gap:40px;align-items:start}
+.journal-cover{display:block}.journal-cover img{display:block;width:100%;height:auto}
+.journal-copy time,.journal-meta{color:var(--muted);font-size:13px;letter-spacing:.04em}
+.journal-copy .journal-subtitle{color:var(--gold2)}
+.journal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.journal-page .intro,.paths{border-top:1px solid var(--line);padding-top:30px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:30px 0 56px}
+.card{display:flex;flex-direction:column}.card a{align-self:flex-start;margin-top:auto}.card p{margin-bottom:24px}
+.paths a,.next a,.reel a{margin:6px 8px 6px 0}.note{border-left:2px solid var(--gold);padding-left:22px;color:var(--muted)}
+
+/* Cinema: load the selected film on demand. */
+.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:start}
+.stage{scroll-margin-top:110px}.screen{aspect-ratio:9/16;max-width:390px;margin:24px auto;background:#080a0a;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.screen iframe{display:block;width:100%;height:100%;border:0}
+.play-primary{border:1px solid var(--gold2);background:var(--gold2);color:var(--bg);padding:13px 20px;min-height:48px;font-weight:700;cursor:pointer}
+.stage-link{display:inline-block;margin-top:12px}.playlist ol{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.playlist li{border-bottom:1px solid var(--line)}
+.video-pick{display:flex;gap:14px;align-items:center;width:100%;min-height:64px;padding:16px 4px;background:transparent;border:0;color:var(--text);text-align:left;cursor:pointer}
+.video-pick>span:last-child{margin-left:auto;white-space:nowrap;font-size:12px}.video-pick>span:nth-child(2){min-width:0}
+.video-pick small{display:block;color:var(--muted);font-size:12px}.video-number{color:var(--gold);font-size:13px}
+.video-pick:hover,.video-pick[aria-current="true"]{color:var(--gold2);background:rgba(200,170,121,.07)}
+.reel{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:32px}.reel a{flex-shrink:0}
+.next{margin-top:48px;padding-top:26px;border-top:1px solid var(--line)}
+
+/* All novels inherit the same quiet charcoal and warm-paper reading palette. */
+body[data-book-id]{background:var(--bg)}
+[data-book-id] .hero{max-width:none;margin-bottom:0;padding:56px 24px;background:linear-gradient(145deg,#25241f,#101111 80%);border-bottom:1px solid var(--line)}
+[data-book-id] .hero-logo{box-shadow:none;border-radius:0}
+[data-book-id] .wrap{padding-top:20px}
+[data-book-id] .panel,[data-book-id] .chapter,[data-book-id] .audiobook-player{background:var(--panel);border:1px solid var(--line);border-radius:0;box-shadow:none}
+[data-book-id] .chapter{padding:clamp(24px,5vw,54px);scroll-margin-top:115px}
+[data-book-id] .chapter h2{color:var(--text);text-wrap:balance}
+[data-book-id] .chapter-body{max-width:680px}
+[data-book-id] .chapter-body p{color:#e9e3d9;line-height:2.1}
+[data-book-id] .chapter-kicker,[data-book-id] .audiobook-options label{color:var(--gold)}
+[data-book-id] .continue-box,[data-book-id] .toc a{background:#20221f}
+[data-book-id] .toc a:hover{background:#2e302a}
+[data-book-id] .chapter-search input,[data-book-id] .audiobook-options select{background:#101311;border-color:var(--line);border-radius:0;color:var(--text)}
+[data-book-id] .audiobook-actions button{background:#252923;color:var(--text);border-radius:0}
+[data-book-id] .audiobook-actions .audio-primary,[data-book-id] .cta{background:var(--gold2);color:var(--bg);border-radius:0}
+[data-book-id] .audiobook-actions button:hover{background:#363d30}
+[data-book-id] .audiobook-actions .audio-primary:hover{background:#f1e4cd}
+[data-book-id] .audiobook-note{color:var(--muted)}
+[data-book-id] .directory-link,[data-book-id] .reader-controls button{border-radius:0;min-height:44px}
+[data-book-id] .chapter-nav{flex-wrap:wrap}
+[data-book-id] .chapter-nav a{min-height:44px;display:inline-flex;align-items:center}
+
+@media(max-width:850px){
+ .top,.topbar{display:block;padding:8px 16px 0;min-height:0}
+ .brand img{width:48px}
+ .top nav,.navlinks{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;max-width:calc(100% + 32px);margin:4px -16px 0;padding:0 12px 5px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+ .top nav a,.navlinks a{font-size:13px;flex-shrink:0}
+ html{scroll-padding-top:125px}
+ .collection-heading,.stage,[data-book-id] .chapter{scroll-margin-top:125px}
+ .layout{grid-template-columns:1fr}.reel{display:block}
+}
+@media(max-width:650px){
+ .wrap{padding:36px 18px 64px}.hero{margin-bottom:36px}
+ .hero h1,.intro h1{font-size:clamp(34px,9vw,48px);letter-spacing:.04em}
+ .gallery-page .intro{padding:36px 18px 24px}.gallery{grid-template-columns:1fr;padding:0 18px 64px;gap:28px}
+ .gallery figure.landscape{grid-column:auto}.collection-heading{padding-top:26px}
+ .card,.journal-card,.stage,.playlist,.reel{padding:22px 18px}
+ .journal-card,.grid{grid-template-columns:1fr;gap:24px}.journal-cover{width:min(100%,250px);margin:auto}
+ .journal-actions a{flex:1 1 140px}.collection-nav{gap:6px 18px}
+ .video-pick{gap:10px}.video-pick>span:last-child{font-size:11px}
+ [data-book-id] .hero{padding:32px 18px}
+ [data-book-id] .hero h1{font-size:clamp(32px,8.5vw,44px);line-height:1.5}
+ [data-book-id] .chapter{padding:26px 18px}
+ [data-book-id] .chapter-body p{line-height:2.05}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

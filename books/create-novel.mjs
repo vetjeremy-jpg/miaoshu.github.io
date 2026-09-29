@@ -32,6 +32,7 @@ const html = `<!doctype html>
 <meta name="theme-color" content="#070f1c">
 <title>${e(name)}｜喵叔小說全文閱讀</title>
 <link rel="stylesheet" href="../reader.css">
+<link rel="stylesheet" href="../../editorial-interiors.css?v=20260930">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="book">
@@ -79,3 +80,4 @@ await mkdir(dirname(destination), { recursive: true });
 await writeFile(destination, html);
 await writeFile(homepage, updatedHomepage);
 console.log(`已產生 ${destination}，並更新首頁小說書房。`);
+

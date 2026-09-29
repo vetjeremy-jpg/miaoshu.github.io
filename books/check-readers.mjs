@@ -18,8 +18,9 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
   if (library && (!library.includes(`data-book-id="${entry.name}"`) || !library.includes(`books/${entry.name}/index.html#toc`))) {
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
+  if (!/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']\.\.\/reader\.css(?:\?[^"']*)?["']/i.test(html)) { console.error(`${entry.name} 缺少共用樣式 reader.css`); errors++; }
   const requirements = [
-    ['共用樣式', 'href="../reader.css"'], ['共用功能', 'src="../reader.js'],
+    ['共用功能', 'src="../reader.js'],
     ['專屬書籍 ID', `data-book-id="${entry.name}"`], ['書籍標題', 'data-book-title='],
     ['章節目錄', 'id="toc"'], ['閱讀進度', 'id="progress"'],
     ['繼續閱讀', 'id="continue-reading"'], ['書籤', 'id="saved-chapters"'],
@@ -35,3 +36,4 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
 }
 console.log(`已檢查 ${checked} 本小說；${errors} 項問題。`);
 if (!checked || errors) process.exit(1);
+
