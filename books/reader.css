@@ -86,35 +86,22 @@ footer{text-align:center;color:#8ea3b9;padding:36px 20px;border-top:1px solid va
 .chapter-body .opening-verse-line{text-indent:0;text-align:center}
 .chapter-body .opening-verse-line:first-of-type{margin-top:1.5em}
 
-/* Moonlit atelier: three-dimensional reading room shared by all novels */
-body{background:radial-gradient(ellipse at 50% 0%,rgba(45,74,101,.26),transparent 52%),linear-gradient(160deg,#050e1a,#0a1b2c 60%,#06101c);background-attachment:fixed}
-.topbar{box-shadow:0 10px 25px #0005,inset 0 -1px 0 #d7b77744}
-.hero,.panel,.chapter,.book-directory,.reader-tools{border-color:rgba(216,184,121,.28)!important;box-shadow:inset 0 1px 0 rgba(255,240,209,.1),0 12px 0 -9px #030a14,0 28px 52px #0006!important}
-.hero{background-image:radial-gradient(ellipse at 50% 5%,rgba(84,113,139,.24),transparent 65%),linear-gradient(150deg,#142a3e,#081522)!important}
-.chapter{position:relative;background-image:linear-gradient(105deg,rgba(255,255,255,.04),transparent 20%),linear-gradient(145deg,#12253a,#091522)!important;border-left:3px solid rgba(207,167,100,.53)!important}
-.chapter:before{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(211,175,114,.09);border-radius:12px}
-.chapter-kicker{letter-spacing:.2em}.chapter h2{filter:drop-shadow(0 3px 7px #0007)}
-.chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:transform .2s,background .2s,box-shadow .2s}
-.chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:translateY(-2px);box-shadow:0 6px 13px #0004}
-@media(prefers-reduced-motion:reduce){.chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:none}.chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:none}}
 
-
-/* Atelier II — gilt-edged reading volumes */
-.chapter{box-shadow:inset 4px 0 7px #0005,inset 0 1px 0 #fff2,0 9px 0 -6px #d6c6a633,0 17px 0 -10px #0d1827,0 31px 48px #0008!important}
-.chapter:after{content:"";position:absolute;inset:18px;pointer-events:none;border:1px solid #d5b47717;border-radius:8px}
-.chapter h2{border-bottom:1px solid #d5b47733;padding-bottom:15px}
-.book-directory,.panel{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -6px #172435,0 24px 45px #0008!important}
-.chapter-nav{position:relative;z-index:1}
-:focus-visible{outline:3px solid #f2d59a;outline-offset:4px}
-
-
-/* Grand Atelier III: embossed reading-room surfaces */
-.hero{box-shadow:inset 0 -1px 0 #d5b47755,0 22px 44px #0008!important}
-.chapter{box-shadow:inset 5px 0 8px #0006,inset 0 1px 0 #fff2,0 9px 0 -5px #c3b28f35,0 17px 0 -10px #0d1827,0 32px 54px #0009!important}
-.chapter:before{inset:10px;border-color:#d5b47724}
-.chapter h2{color:#f2ddbb;text-shadow:0 4px 14px #0008}
-.book-directory,.reader-tools{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -5px #1a2939,0 22px 45px #0008!important}
-@media(max-width:650px){.chapter:before{inset:6px}}
-
-/* Grand Atelier IV: quiet sculptural reading */
-.chapter{background-image:radial-gradient(ellipse at 80% 0%,#d8ba800c,transparent 55%),linear-gradient(145deg,#12253a,#091522)!important}.chapter:before{border-color:#d8ba802a}.chapter h2{letter-spacing:.04em}.chapter-body{position:relative;z-index:1}.chapter-nav a{box-shadow:inset 0 1px 0 #fff1,0 5px 10px #0004}.book-directory{border-color:#d8ba8044!important}
+/* Moonlit editorial reading: calm typography, no faux 3D */
+:root{--bg:#09131e;--panel:#101f2e;--gold:#c8ac7b;--gold2:#e0cda8;--text:#f0eee9;--muted:#b5c0ca;--line:rgba(212,188,146,.19)}
+body{background:#09131e;color:var(--text)}
+.topbar{background:rgba(9,19,30,.96);box-shadow:none}
+.hero{background:linear-gradient(160deg,#12283b,#091521 70%);border-bottom:1px solid var(--line)}
+.hero-logo{box-shadow:none;border-color:var(--line)}
+.panel{background:#102031;border:1px solid var(--line);box-shadow:none}
+.chapter{background:#101e2c;border:1px solid rgba(212,188,146,.16);border-radius:5px;box-shadow:none;padding:clamp(26px,5vw,56px);margin:26px 0}
+.chapter h2{font-weight:500;letter-spacing:.035em;color:#f0e6d4;margin:10px 0 32px}
+.chapter-body{max-width:690px;font:var(--reader-size,18px)/2.1 "Noto Serif TC","Songti TC","PMingLiU",serif}
+.chapter-body p{line-height:2.1;color:#e6e6e2;margin:0 0 1.32em;text-indent:2em}
+.chapter-kicker{color:#c9b48e}
+.toc a{background:#132638}
+.toc a:hover{background:#1a3349}
+.chapter-tools a,.chapter-tools button,.chapter-bookmark{box-shadow:none}
+.chapter-nav{border-top:1px solid var(--line)}
+@media(max-width:650px){.chapter{padding:24px 20px}.chapter-body{line-height:2}.chapter-body p{line-height:2}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
