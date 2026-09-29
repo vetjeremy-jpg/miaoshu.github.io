@@ -104,7 +104,7 @@
  if('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window && chapters.length){
   const synth=window.speechSynthesis;
   const player=document.createElement('section');player.className='audiobook-player panel';player.id='audiobook-player';player.setAttribute('aria-labelledby','audiobook-title');
-  player.innerHTML='<div class="audiobook-heading"><div><span class="chapter-kicker">LISTEN · 有聲閱讀</span><h2 id="audiobook-title">聽喵叔說故事</h2><p class="audiobook-note">按下開始才會朗讀。使用裝置內建語音，音色依瀏覽器及系統而異。</p></div></div><div class="audiobook-options"><label>朗讀章節<select id="audio-chapter"></select></label><label>朗讀音色<select id="audio-voice"><option value="">系統預設中文語音</option></select></label><label>朗讀速度<select id="audio-rate"><option value="0.8">舒緩 · 0.8×</option><option value="0.9">從容 · 0.9×</option><option value="1" selected>標準 · 1×</option><option value="1.15">稍快 · 1.15×</option><option value="1.3">快速 · 1.3×</option></select></label></div><div class="audiobook-actions"><button type="button" id="audio-prev">← 上一段</button><button type="button" id="audio-play" class="audio-primary">▶ 開始朗讀</button><button type="button" id="audio-next">下一段 →</button><button type="button" id="audio-next-chapter">下一章 ⇥</button><button type="button" id="audio-stop">■ 停止</button></div><label class="audiobook-continuous"><input type="checkbox" id="audio-continuous" checked> 本章結束後自動接續下一章</label><p class="audiobook-status" id="audio-status" role="status" aria-live="polite">選擇章節，按「開始朗讀」。</p><p class="audiobook-note">朗讀在本機進行，不會將小說文字傳送到本站的語音服務；切換頁面或關閉分頁即停止。部分手機瀏覽器可能在鎖定螢幕後暫停。</p>';
+  player.innerHTML='<div class="audiobook-heading"><div><span class="chapter-kicker">LISTEN · 有聲閱讀</span><h2 id="audiobook-title">聽喵叔說故事</h2><p class="audiobook-note">按下開始才會朗讀。使用裝置內建語音，音色依瀏覽器及系統而異。</p></div></div><div class="audiobook-options"><label>朗讀章節<select id="audio-chapter"></select></label><label>朗讀音色<select id="audio-voice"><option value="">系統預設中文語音</option></select></label><label>朗讀速度<select id="audio-rate"><option value="0.8">舒緩 · 0.8×</option><option value="0.9">從容 · 0.9×</option><option value="1" selected>標準 · 1×</option><option value="1.15">稍快 · 1.15×</option><option value="1.3">快速 · 1.3×</option></select></label></div><div class="audiobook-actions"><button type="button" id="audio-prev-chapter">⇤ 上一章</button><button type="button" id="audio-prev">← 上一段</button><button type="button" id="audio-play" class="audio-primary">▶ 開始朗讀</button><button type="button" id="audio-next">下一段 →</button><button type="button" id="audio-next-chapter">下一章 ⇥</button><button type="button" id="audio-stop">■ 停止</button></div><label class="audiobook-continuous"><input type="checkbox" id="audio-continuous" checked> 本章結束後自動接續下一章</label><p class="audiobook-status" id="audio-status" role="status" aria-live="polite">選擇章節，按「開始朗讀」。</p><p class="audiobook-note">朗讀在本機進行，不會將小說文字傳送到本站的語音服務；切換頁面或關閉分頁即停止。部分手機瀏覽器可能在鎖定螢幕後暫停。</p>';
   const target=document.querySelector('.book-directory')||document.querySelector('#toc')||document.querySelector('main');
   target?.after(player);
   const chSel=player.querySelector('#audio-chapter'),voiceSel=player.querySelector('#audio-voice'),rateSel=player.querySelector('#audio-rate'),play=player.querySelector('#audio-play'),status=player.querySelector('#audio-status');
@@ -131,6 +131,13 @@
    const index=chapters.findIndex(ch=>ch.id===chSel.value);
    if(index<0||index+1>=chapters.length)return false;
    chSel.value=chapters[index+1].id;begin(0);return true
+  }
+  function previousChapter(fromEnd=false){
+   const index=chapters.findIndex(ch=>ch.id===chSel.value);
+   if(index<=0)return false;
+   chSel.value=chapters[index-1].id;
+   begin(fromEnd?Number.MAX_SAFE_INTEGER:0);
+   return true
   }
   function finishChunk(run){
    if(run!==token||!active)return;
@@ -191,9 +198,10 @@
    else{synth.pause();paused=true;play.textContent='▶ 繼續朗讀';status.textContent='已暫停朗讀。'}
   });
   player.querySelector('#audio-stop').addEventListener('click',()=>{position=0;set('audio-position','0');stop()});
-  player.querySelector('#audio-prev').addEventListener('click',()=>begin(Math.max(0,position-1)));
+  player.querySelector('#audio-prev-chapter').addEventListener('click',()=>{if(!previousChapter())status.textContent='已經是第一章。'});
+  player.querySelector('#audio-prev').addEventListener('click',()=>{if(position<=0){if(!previousChapter(true))begin(0)}else begin(position-1)});
   player.querySelector('#audio-next').addEventListener('click',()=>{if(position+1>=items.length){if(!advanceChapter())stop('已到最後一章。')}else begin(position+1)});
-  player.querySelector('#audio-next-chapter').addEventListener('click',()=>{if(!advanceChapter())stop('已到最後一章。')});
+  player.querySelector('#audio-next-chapter').addEventListener('click',()=>{if(!advanceChapter())status.textContent='已經是最後一章。'});
   chSel.addEventListener('change',()=>{position=0;stop('已選擇「'+chSel.selectedOptions[0].textContent+'」，按開始朗讀。');set('audio-chapter',chSel.value);set('audio-position','0')});
   voiceSel.addEventListener('change',()=>{if(active)begin(position)});
   rateSel.addEventListener('change',()=>{if(active)begin(position)});
