@@ -19,7 +19,7 @@
   count.textContent=(current+1)+' ／ '+links.length;
   source.href=link.href;image.alt=photo.alt;
   status.hidden=false;status.textContent='照片載入中…';
-  image.hidden=true;image.src=photo.currentSrc||photo.src;
+  image.hidden=true;image.src=photo.dataset.fullSrc||photo.currentSrc||photo.src;
  }
  image.addEventListener('load',()=>{image.hidden=false;status.hidden=true});
  image.addEventListener('error',()=>{image.hidden=true;status.hidden=false;status.textContent='照片暫時無法載入，請使用下方連結開啟。'});

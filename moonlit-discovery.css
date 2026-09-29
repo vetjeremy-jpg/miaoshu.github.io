@@ -1,0 +1,37 @@
+/* Shared editorial additions: no animation or external font dependency. */
+.tonight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:30px;border-top:1px solid var(--line, #49453c)}
+.tonight-grid article{padding:28px 26px;border-right:1px solid var(--line,#49453c);min-width:0}
+.tonight-grid article:first-child{padding-left:0}.tonight-grid article:last-child{border-right:0}
+.pick-number,.series-card small{display:block;font-size:11px;letter-spacing:.16em;color:var(--gold,#c9ad7d)}
+.tonight-grid h3{font-family:serif;font-size:26px;font-weight:500;line-height:1.5;margin:14px 0}
+.tonight-grid p,.about-layout p,.reading-intro>p,.next-reading>p{line-height:1.9;color:var(--muted,#bbb6ad)}
+.tonight-grid a,.about-links a,.text-link{display:inline-flex;align-items:center;min-height:44px;color:var(--gold2,#e2cfac);text-underline-offset:5px}
+.about-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:50px}.about-layout .about-lede{font-family:serif;font-size:24px;color:var(--text,#eee5d5)}
+.about-links{display:flex;gap:8px 24px;flex-wrap:wrap}
+.series-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:30px}
+.series-card{display:block;border:1px solid var(--line);color:var(--text);text-decoration:none;background:var(--panel);overflow:hidden}
+.series-card>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.series-card>span{display:block;padding:18px}.series-card strong{display:block;font-family:serif;font-size:22px;margin:8px 0}
+.series-card>span>span{display:block;color:var(--muted);font-size:14px;line-height:1.7}
+.series-card:hover{border-color:var(--gold)}
+.gallery .photo-story{margin-top:14px;font-size:15px;line-height:1.95;color:var(--text)}
+.reading-intro h2,.next-reading h2{font-family:serif;font-size:clamp(25px,3vw,34px);font-weight:500;line-height:1.5;color:var(--text)}
+.reading-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:22px 0;margin:20px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.reading-facts dt{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}.reading-facts dd{margin:0;color:var(--text);line-height:1.6}
+.reading-intro .reading-estimate{font-size:12px}.next-reading h3{font-size:24px;line-height:1.6}.next-reading h3 a{color:var(--gold2)}
+.tonight,.about-miaoshu,.collection-heading{scroll-margin-top:130px}
+.tonight-grid a:focus-visible,.series-card:focus-visible,.about-links a:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+@media(max-width:850px){.series-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout{grid-template-columns:1fr;gap:8px}}
+@media(max-width:650px){
+ .tonight-grid{grid-template-columns:1fr}.tonight-grid article,.tonight-grid article:first-child{padding:24px 0;border-right:0;border-bottom:1px solid var(--line,#49453c)}.tonight-grid article:last-child{border-bottom:0}
+ .series-grid{gap:12px}.series-card>span{padding:13px}.series-card strong{font-size:20px}.series-card>span>span{font-size:13px}.series-card small{font-size:9px;letter-spacing:.08em}
+ .reading-facts{grid-template-columns:1fr;gap:16px}.reading-facts>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px}.reading-facts dt{margin:0;padding-top:3px}
+ .about-layout .about-lede{font-size:22px}.reading-intro,.next-reading{padding:26px 18px}
+ .navlinks a,.collection-nav a,.top nav a{min-height:44px;display:inline-flex;align-items:center}.brand{max-width:100%;font-size:clamp(15px,4.5vw,21px)}
+ .hero,.panel,.gallery figure,.series-card,.tonight-grid article{min-width:0}h1,h2,h3,p,a{overflow-wrap:break-word}
+ .chapter-body{max-width:100%}.chapter-body p{margin-bottom:1.3em}
+}
+@media(max-width:360px){.series-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+@media(min-width:851px) and (max-width:1200px){body:not([data-book-id]) .topbar{display:block}.topbar .navlinks{justify-content:flex-start;overflow-x:auto;max-width:100%;padding:8px 0}.topbar .navlinks a{flex-shrink:0}}
