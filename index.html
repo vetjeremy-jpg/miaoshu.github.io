@@ -258,6 +258,35 @@ body{background:linear-gradient(180deg,#071521,#0b2033 55%,#081522);background-a
 @media(max-width:1050px){.novel-card:nth-child(n+4){border-top:12px solid #5d4329}}
 @media(max-width:650px){.bookshelf-scene{margin:20px -8px 0;padding:14px 12px 0}.novel-card:nth-child(n+3){border-top:12px solid #5d4329}.book-object{height:175px;width:min(100%,119px)}.cover-title{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.book-object{transition:none}.book-object:hover,.book-object:focus-visible{transform:none}}
+
+/* Moonlit stay-a-while refinement: gentle editorial rhythm */
+:root{--gold:#c9ad7d;--gold2:#e6d4b2;--muted:#bac6d0;--line:rgba(221,197,156,.22)}
+html{scroll-padding-top:90px}
+body{background:linear-gradient(180deg,#0a1826,#0d2132 48%,#091825);color:#f0eee9}
+.topbar{background:rgba(9,22,34,.94);border-bottom-color:var(--line)}
+.navlinks a{transition:color .2s,background .2s}
+.navlinks a:hover,.navlinks a:focus-visible{color:#f3dfb9;background:#ffffff0b}
+.hero{background:radial-gradient(ellipse at 80% 12%,#31506a33,transparent 55%),linear-gradient(150deg,#0d2335,#122c40 55%,#0b1c2c)}
+.hero h1{color:#f3e9d8}
+.hero .hero-lede{color:#d2d9dc}
+.hero-image{box-shadow:none;border-radius:7px}
+.panel{background:#102335;border-color:var(--line);border-radius:10px;margin:30px 0;padding:clamp(26px,4vw,48px)}
+.section-title{line-height:1.42;letter-spacing:.025em}
+.section-title:after{content:"";display:block;width:56px;height:1px;margin:16px 0 0;background:linear-gradient(90deg,#c9ad7d,transparent)}
+.notice,.shelf-note{color:#c3cbd2;line-height:1.85}
+.creator-card,.latest-update,.featured-grid,.follow-panel{border-radius:9px}
+.creator-copy p,.featured-copy p{line-height:1.85}
+.creator-card,.novel-card,.album-photos a{transition:border-color .2s,background .2s}
+.creator-card:hover{border-color:#c9ad7d66}
+#book .bookshelf-scene{border-color:#96754e;background:linear-gradient(90deg,#32271e,#13273a 5%,#112538 50%,#13273a 95%,#32271e);box-shadow:inset 0 0 0 3px #d0ad7040,0 9px 20px #0003}
+#book .book-object{transition:transform .2s,filter .2s}
+#book .book-object:hover,#book .book-object:focus-visible{transform:translateY(-4px)}
+#book .book-read{min-height:44px}
+#book .novel-card p{color:#c2cbd2}
+#book .library-colophon{color:#d3b98d}
+a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4px}
+@media(max-width:650px){.panel{margin:22px 0;padding:24px 19px}.hero{padding-top:42px}.section-title:after{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
