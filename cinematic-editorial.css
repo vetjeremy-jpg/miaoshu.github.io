@@ -1,0 +1,57 @@
+/* Moonlit Stories | cinematic literary edition. Non-destructive visual layer. */
+:root{--bg:#101111;--bg2:#181a19;--panel:#191b1a;--gold:#c8aa79;--gold2:#e6d5b7;--text:#f3eee5;--muted:#bcb9b1;--line:rgba(214,188,145,.23)}
+html{scroll-padding-top:90px}
+body{background:#101111;color:var(--text)}
+body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),transparent 45%)}
+.topbar{min-height:68px;background:rgba(15,16,16,.94);border-bottom:1px solid rgba(211,179,130,.28);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.brand{font-family:"Noto Serif TC","Songti TC",serif;letter-spacing:.08em}
+.navlinks a{color:#e6ded1;letter-spacing:.07em}
+.navlinks a:hover,.navlinks a:focus-visible{color:#f3d9a6;background:rgba(205,171,117,.1)}
+.navlinks .nav-follow{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
+.navlinks .nav-follow:hover{background:var(--gold2);color:#171613}
+.hero{min-height:min(790px,88svh);padding:76px max(24px,calc((100vw - 1350px)/2));background:linear-gradient(90deg,rgba(9,11,12,.94) 0%,rgba(9,11,12,.72) 38%,rgba(9,11,12,.1) 100%),url("gallery/taipei-101-night-skyline-20260927.jpeg") center 48%/cover no-repeat}
+.hero:before{inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
+.hero-inner{max-width:1350px;grid-template-columns:minmax(0,1fr) minmax(0,.55fr);gap:5vw}
+.hero-copy{max-width:730px;position:relative;z-index:2}
+.hero-brand-mark{max-width:155px;max-height:105px;object-fit:contain;object-position:left center;margin:0 0 18px}
+.hero .eyebrow{color:var(--gold2);letter-spacing:.28em}
+.hero h1{max-width:11em;color:#fff9ee;font-size:clamp(44px,5.5vw,82px);font-weight:500;line-height:1.45;letter-spacing:.11em;text-shadow:0 4px 28px #0009}
+.hero .hero-lede{max-width:31em;color:#e3ded5;font-size:clamp(16px,1.6vw,20px);text-shadow:0 2px 15px #000}
+.hero-image{align-self:end;min-height:0;aspect-ratio:4/3;max-height:280px;box-shadow:none;border:1px solid rgba(238,215,176,.36);background:#111}
+.hero-image img{filter:saturate(.78)}
+.hero-image figcaption{color:#f6ede0}
+.hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
+.cta{background:var(--gold2);color:#171612;border-radius:0;box-shadow:none;letter-spacing:.07em}
+.cta.secondary{border-color:var(--gold2);color:var(--gold2);background:rgba(10,10,10,.25)}
+.wrap{max-width:1350px;padding:28px 24px 100px}
+.panel{background:#181a19;border:1px solid var(--line);border-radius:0;box-shadow:none;margin:22px 0;padding:clamp(25px,4vw,52px)}
+.section-title{font-family:"Noto Serif TC","Songti TC",serif;color:#f3e6d1;font-weight:500;letter-spacing:.12em}
+.section-title:after{background:linear-gradient(90deg,var(--gold),transparent)}
+.chapter-kicker,.creator-tag{color:var(--gold);letter-spacing:.24em}
+.featured-grid{gap:clamp(24px,5vw,70px)}
+.featured-copy h2{font-family:"Noto Serif TC","Songti TC",serif;color:#f6ecdd}
+.featured-visual{border-radius:0}
+.latest-update,.creator-card,.follow-panel,.reader-shelf{border-radius:0}
+.creator-grid{gap:14px;background:transparent;border:0}
+.creator-card{border:1px solid var(--line);background:#20211f;overflow:hidden}
+.creator-card:hover{background:#282722;border-color:rgba(220,188,138,.5)}
+.creator-art{background:linear-gradient(130deg,#302b23,#171b1b);color:var(--gold2)}
+.creator-copy h3{color:#f2e9dc}
+.creator-copy p,.notice{color:#c8c2b8}
+#book{background:#171817}
+#book .bookshelf-scene{background:linear-gradient(90deg,#35291e,#1a1b19 5%,#20201c 50%,#1a1b19 95%,#35291e);border-color:#806644}
+#book .novel-card{background:radial-gradient(ellipse at 50% 70%,rgba(200,170,121,.08),transparent 65%)}
+#book .novel-card p{color:#d1c9bd}
+#photography .album-photos,#miaoshu-album .album-photos{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.album-photos a{border:0;box-shadow:none;position:relative}
+.album-photos img{transition:transform .45s ease,filter .45s ease;filter:saturate(.86)}
+.album-photos a:hover img{transform:scale(1.035);filter:saturate(1)}
+.follow-panel{background:linear-gradient(120deg,#27251f,#181b1b)}
+.chapter{background:#1a1b1a;border-radius:0}
+.chapter-body{max-width:760px}
+.chapter-body p{color:#e9e3d9;line-height:2.2}
+.reader-controls button,.directory-link,.follow-actions a,.follow-actions button{border-radius:0}
+footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
+@media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("gallery/taipei-101-night-skyline-20260927.jpeg") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero-image{max-width:560px;max-height:240px;aspect-ratio:16/9}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#photography .album-photos,#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.hero-image{max-height:190px}.panel{padding:24px 18px}.creator-grid{gap:10px}#photography .album-photos,#miaoshu-album .album-photos{gap:7px}}
+@media(prefers-reduced-motion:reduce){.album-photos img{transition:none}}
