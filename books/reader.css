@@ -106,3 +106,12 @@ body{background:radial-gradient(ellipse at 50% 0%,rgba(45,74,101,.26),transparen
 .book-directory,.panel{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -6px #172435,0 24px 45px #0008!important}
 .chapter-nav{position:relative;z-index:1}
 :focus-visible{outline:3px solid #f2d59a;outline-offset:4px}
+
+
+/* Grand Atelier III: embossed reading-room surfaces */
+.hero{box-shadow:inset 0 -1px 0 #d5b47755,0 22px 44px #0008!important}
+.chapter{box-shadow:inset 5px 0 8px #0006,inset 0 1px 0 #fff2,0 9px 0 -5px #c3b28f35,0 17px 0 -10px #0d1827,0 32px 54px #0009!important}
+.chapter:before{inset:10px;border-color:#d5b47724}
+.chapter h2{color:#f2ddbb;text-shadow:0 4px 14px #0008}
+.book-directory,.reader-tools{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -5px #1a2939,0 22px 45px #0008!important}
+@media(max-width:650px){.chapter:before{inset:6px}}
