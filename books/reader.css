@@ -80,3 +80,8 @@ footer{text-align:center;color:#8ea3b9;padding:36px 20px;border-top:1px solid va
 @media(max-width:520px){.chapter-nav a{min-height:44px;display:inline-flex;align-items:center}.chapter-tools{justify-content:flex-start}.chapter-tools a,.chapter-tools button{font-size:14px}}
 
 .chapter-body .chapter-subheading{font:600 16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;letter-spacing:.12em;color:var(--gold2);text-align:center;margin:2.2em 0 1.4em}
+
+/* Shared book-template details: preserve the Fu Sheng Sui Yue reader layout. */
+.hero h1 .book-subtitle{display:block;font-size:.48em;margin-top:12px}
+.chapter-body .opening-verse-line{text-indent:0;text-align:center}
+.chapter-body .opening-verse-line:first-of-type{margin-top:1.5em}
