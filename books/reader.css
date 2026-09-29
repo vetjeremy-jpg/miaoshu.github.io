@@ -97,3 +97,12 @@ body{background:radial-gradient(ellipse at 50% 0%,rgba(45,74,101,.26),transparen
 .chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:transform .2s,background .2s,box-shadow .2s}
 .chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:translateY(-2px);box-shadow:0 6px 13px #0004}
 @media(prefers-reduced-motion:reduce){.chapter-nav a,.toc a,.book-directory a,.navlinks a{transition:none}.chapter-nav a:hover,.toc a:hover,.book-directory a:hover{transform:none}}
+
+
+/* Atelier II — gilt-edged reading volumes */
+.chapter{box-shadow:inset 4px 0 7px #0005,inset 0 1px 0 #fff2,0 9px 0 -6px #d6c6a633,0 17px 0 -10px #0d1827,0 31px 48px #0008!important}
+.chapter:after{content:"";position:absolute;inset:18px;pointer-events:none;border:1px solid #d5b47717;border-radius:8px}
+.chapter h2{border-bottom:1px solid #d5b47733;padding-bottom:15px}
+.book-directory,.panel{box-shadow:inset 0 1px 0 #fff2,0 9px 0 -6px #172435,0 24px 45px #0008!important}
+.chapter-nav{position:relative;z-index:1}
+:focus-visible{outline:3px solid #f2d59a;outline-offset:4px}
