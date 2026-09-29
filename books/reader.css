@@ -119,3 +119,23 @@ body{background:#0a1825}
 .chapter-tools{gap:10px}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{min-height:44px}
 @media(max-width:650px){.chapter{padding:25px 20px}.chapter-body p{line-height:2.05}}
+
+
+/* Optional audiobook controls, designed to stay secondary to the prose */
+.audiobook-player{max-width:1180px;margin:24px 0;background:#112537;border:1px solid rgba(218,192,151,.25);box-shadow:none}
+.audiobook-heading{display:flex;align-items:start;justify-content:space-between;gap:20px}
+.audiobook-heading h2{font:500 clamp(23px,3vw,31px)/1.4 "Noto Serif TC","Songti TC",serif;margin:8px 0 4px;color:#f1e7d5}
+.audiobook-note{font-size:13px;color:#bfcad3;line-height:1.8;margin:8px 0 16px}
+.audiobook-options{display:grid;grid-template-columns:2fr 1.5fr 1fr;gap:14px;margin:20px 0}
+.audiobook-options label{display:grid;gap:7px;color:#dfd1b7;font-size:13px}
+.audiobook-options select{width:100%;min-width:0;padding:11px 12px;min-height:44px;border:1px solid #c9ad7d66;border-radius:5px;background:#0a1b2a;color:#f0eee9;font:inherit}
+.audiobook-actions{display:flex;gap:9px;flex-wrap:wrap}
+.audiobook-actions button{min-height:44px;padding:10px 15px;border:1px solid #c9ad7d77;border-radius:5px;background:#172e42;color:#f0eee9;cursor:pointer}
+.audiobook-actions button:hover{background:#24445b}
+.audiobook-actions .audio-primary{background:#e0cda8;color:#0a1b2a;font-weight:700}
+.audiobook-actions .audio-primary:hover{background:#f0dcba}
+.audiobook-status{min-height:1.7em;margin:16px 0 8px;color:#e1cfac;font-size:14px}
+.chapter-body .audio-reading{background:linear-gradient(90deg,rgba(201,173,125,.12),transparent 85%);border-left:2px solid #c9ad7d;padding-left:12px;margin-left:-14px;border-radius:2px}
+.audio-unsupported{color:#dfc99e}
+@media(max-width:720px){.audiobook-options{grid-template-columns:1fr}.audiobook-actions button{flex:1 1 44%}.audiobook-player{padding:22px 18px}}
+@media(prefers-reduced-motion:reduce){.audiobook-actions button{transition:none}}
