@@ -33,6 +33,13 @@ img{max-width:100%}
 .gallery figure:before{content:"";position:absolute;inset:14px;border:1px solid #efd39b55;z-index:2;pointer-events:none}
 .gallery figure:hover{box-shadow:inset 0 0 0 5px #0d1c2c,0 15px 0 -7px #382315,0 28px 0 -15px #a17b4c,0 50px 75px #000c!important}
 .gallery figcaption{box-shadow:inset 0 1px 0 #f0d49b55,inset 0 7px 15px #0004}
+
+/* Grand Atelier IV: framed exhibition details */
+.gallery figure{position:relative;isolation:isolate}
+.gallery figure:after{inset:17px;border-color:#f0d49b66}
+.gallery figure img{filter:contrast(1.025);transition:transform .45s ease}
+.gallery figcaption{border-top:2px solid #d8ba8066;background:linear-gradient(145deg,#1b3448,#091a2b)!important}
+.intro{background:radial-gradient(ellipse at 50% 0%,#bd97521c,transparent 70%)}
 </style><style>
 body{background:radial-gradient(circle at 85% 5%,#193950 0,transparent 38%),#07111f;color:#f7f3e9}
 header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px max(20px,calc((100vw - 1100px)/2));background:#07111ff0;border-bottom:1px solid #a9997655;backdrop-filter:blur(10px)}
