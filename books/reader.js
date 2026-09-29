@@ -121,27 +121,76 @@
   loadVoices();synth.addEventListener?.('voiceschanged',loadVoices);
   function paragraphs(){const ch=valid(chSel.value);if(!ch)return [];return [...ch.querySelectorAll('.chapter-body p,.chapter-body .chapter-subheading')].flatMap(el=>{const text=el.textContent.trim();if(!text)return [];const chunks=text.match(/.{1,65}(?:[。！？；，、]|$)|.{1,65}/gu)||[text];return chunks.map(part=>({el,text:part.trim()})).filter(x=>x.text)})}
   function clearMark(){player.ownerDocument.querySelectorAll('.audio-reading').forEach(el=>el.classList.remove('audio-reading'))}
-  function stop(message='已停止朗讀。'){token++;active=false;paused=false;synth.cancel();clearMark();play.textContent='▶ 開始朗讀';status.textContent=message}
+  let watchdog=0,recovery=0,lastStarted=0,utterance=null,retries=0;
+  function clearTimers(){clearInterval(watchdog);clearTimeout(recovery);watchdog=0;recovery=0}
+  function stop(message='已停止朗讀。'){
+   token++;active=false;paused=false;clearTimers();utterance=null;synth.cancel();clearMark();
+   play.textContent='▶ 開始朗讀';status.textContent=message
+  }
+  function advanceChapter(){
+   const index=chapters.findIndex(ch=>ch.id===chSel.value);
+   if(index<0||index+1>=chapters.length)return false;
+   chSel.value=chapters[index+1].id;begin(0);return true
+  }
+  function finishChunk(run){
+   if(run!==token||!active)return;
+   clearTimers();utterance=null;retries=0;position++;set('audio-position',String(position));
+   recovery=setTimeout(()=>{if(run===token&&active&&!paused)speak()},180)
+  }
   function speak(){
-   if(!active)return;
-   if(position>=items.length){if(continuous.checked&&advanceChapter())return;stop('全書或所選章節朗讀完畢。');return}
+   if(!active||paused)return;
+   clearTimers();
+   if(position>=items.length){if(continuous.checked&&advanceChapter())return;stop('本章朗讀完畢。已到最後一章，或未啟用自動接續。');return}
    const current=items[position],run=token;
    clearMark();current.el.classList.add('audio-reading');
    status.textContent=chSel.selectedOptions[0].textContent+' · 第 '+(position+1)+'／'+items.length+' 段';
-   const utterance=new SpeechSynthesisUtterance(current.text);utterance.lang='zh-TW';utterance.rate=Number(rateSel.value)||1;
-   const chosen=voices.find(v=>v.voiceURI===voiceSel.value);if(chosen)utterance.voice=chosen;
-   utterance.onend=()=>{if(run!==token||!active)return;position++;set('audio-position',String(position));setTimeout(()=>{if(run===token&&active)speak()},40)};
-   utterance.onerror=e=>{if(run!==token||!active)return;if(e.error==='canceled'||e.error==='interrupted')return;stop('朗讀中斷，請重新按「開始朗讀」，或更換語音。')};
-   synth.speak(utterance);
+   const u=new SpeechSynthesisUtterance(current.text);utterance=u;u.lang='zh-TW';u.rate=Number(rateSel.value)||1;
+   const chosen=voices.find(v=>v.voiceURI===voiceSel.value);if(chosen)u.voice=chosen;
+   lastStarted=Date.now();
+   u.onstart=()=>{if(run===token)lastStarted=Date.now()};
+   u.onend=()=>finishChunk(run);
+   u.onerror=e=>{
+    if(run!==token||!active)return;
+    if(e.error==='canceled'||e.error==='interrupted')return;
+    recover(run,'語音中斷')
+   };
+   // iOS Safari occasionally omits onend. Recover when the engine is silent,
+   // and retry a stuck utterance rather than leaving the entire novel frozen.
+   watchdog=setInterval(()=>{
+    if(run!==token||!active||paused||document.hidden)return;
+    const elapsed=Date.now()-lastStarted;
+    if(elapsed>4500&&!synth.speaking&&!synth.pending){finishChunk(run);return}
+    if(elapsed>90000)recover(run,'語音逾時')
+   },2500);
+   try{synth.speak(u)}catch(e){recover(run,'無法啟動語音')}
   }
-  function begin(at=0){stop('');items=paragraphs();position=Math.max(0,Math.min(at,items.length-1));if(!items.length){status.textContent='本章沒有可朗讀的段落。';return}active=true;paused=false;token++;play.textContent='Ⅱ 暫停朗讀';set('audio-chapter',chSel.value);set('audio-position',String(position));speak()}
-  function advanceChapter(){const index=chapters.findIndex(ch=>ch.id===chSel.value);if(index<0||index+1>=chapters.length)return false;chSel.value=chapters[index+1].id;begin(0);return true}
+  function recover(run,reason){
+   if(run!==token||!active||paused)return;
+   clearTimers();synth.cancel();utterance=null;
+   if(retries<2){
+    retries++;status.textContent=reason+'，正在恢復第 '+(position+1)+' 段（'+retries+'／2）…';
+    recovery=setTimeout(()=>{if(run===token&&active&&!paused)speak()},350)
+   }else{
+    retries=0;position++;set('audio-position',String(position));
+    status.textContent=reason+'，已略過無法播放的短段，繼續朗讀。';
+    recovery=setTimeout(()=>{if(run===token&&active&&!paused)speak()},350)
+   }
+  }
+  function begin(at=0){
+   stop('');items=paragraphs();position=Math.max(0,Math.min(at,Math.max(0,items.length-1)));retries=0;
+   if(!items.length){status.textContent='本章沒有可朗讀的段落。';return}
+   active=true;paused=false;const run=token;play.textContent='Ⅱ 暫停朗讀';
+   set('audio-chapter',chSel.value);set('audio-position',String(position));
+   // Safari may retain the canceled utterance for a moment. Start only after
+   // its queue has settled, and invalidate delayed callbacks on every stop.
+   recovery=setTimeout(()=>{if(run===token&&active&&!paused)speak()},200)
+  }
   play.addEventListener('click',()=>{
    if(!active){begin(position);return}
-   if(paused){synth.resume();paused=false;play.textContent='Ⅱ 暫停朗讀';status.textContent='繼續朗讀中。'}
+   if(paused){synth.resume();paused=false;lastStarted=Date.now();play.textContent='Ⅱ 暫停朗讀';status.textContent='繼續朗讀中。'}
    else{synth.pause();paused=true;play.textContent='▶ 繼續朗讀';status.textContent='已暫停朗讀。'}
   });
-  player.querySelector('#audio-stop').addEventListener('click',()=>{position=0;stop()});
+  player.querySelector('#audio-stop').addEventListener('click',()=>{position=0;set('audio-position','0');stop()});
   player.querySelector('#audio-prev').addEventListener('click',()=>begin(Math.max(0,position-1)));
   player.querySelector('#audio-next').addEventListener('click',()=>{if(position+1>=items.length){if(!advanceChapter())stop('已到最後一章。')}else begin(position+1)});
   player.querySelector('#audio-next-chapter').addEventListener('click',()=>{if(!advanceChapter())stop('已到最後一章。')});
@@ -150,7 +199,7 @@
   rateSel.addEventListener('change',()=>{if(active)begin(position)});
   const savedChapter=get('audio-chapter');if(!valid(initial)&&valid(savedChapter)){chSel.value=savedChapter;position=Math.max(0,Number(get('audio-position'))||0)}
   // Do not pause when the screen locks or the reader switches apps; the browser decides background audio support.
-  addEventListener('pagehide',()=>synth.cancel());
+  addEventListener('pagehide',()=>{clearTimers();synth.cancel()});
  } else {
   const target=document.querySelector('.book-directory')||document.querySelector('#toc');
   if(target){const note=document.createElement('p');note.className='audio-unsupported';note.textContent='此瀏覽器未提供語音朗讀功能，請改用支援語音合成的 Chrome、Edge 或 Safari。';target.append(note)}
