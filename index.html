@@ -323,6 +323,44 @@ main.wrap>section.panel:after{content:"✦";position:absolute;right:26px;top:17p
 @media(max-width:650px){main.wrap>section.panel{margin-bottom:25px;border-radius:16px!important}main.wrap>section.panel:before{inset:6px}main.wrap:before,main.wrap:after{display:none}#book .book-object{height:190px;width:min(100%,132px)}#book .novel-card{min-height:330px}#book .cover-title{font-size:12px}#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:10px}#book .book-details{padding:0 2px}}
 @media(max-width:360px){#book .book-object{height:170px;width:min(100%,112px)}#book .novel-card{min-height:315px}}
 @media(prefers-reduced-motion:reduce){.creator-card:hover,#book .book-object,#book .book-object:hover,#book .book-object:focus-visible{transform:none!important}}
+
+/* Moonlit Grand Atelier IV — cohesive material and spatial finishing */
+:root{--art-brass:#d8ba80;--art-ink:#071320;--art-ivory:#f6ead2}
+.topbar{border-bottom:1px solid #d8ba8066;box-shadow:inset 0 1px 0 #fff1,0 12px 30px #0009}
+.topbar .navlinks a{border:1px solid transparent;transition:background .25s,border-color .25s,transform .25s}
+.topbar .navlinks a:hover,.topbar .navlinks a:focus-visible{border-color:#d8ba8055;background:linear-gradient(#d8ba801b,#d8ba8008);transform:translateY(-1px)}
+.hero{background-image:radial-gradient(ellipse 70% 65% at 75% 22%,#bd975225,transparent 70%),radial-gradient(ellipse 50% 60% at 25% 20%,#44779d40,transparent 80%),linear-gradient(155deg,#061323,#0c2943 50%,#061321)!important}
+.hero-copy{position:relative}.hero-copy:after{content:"";display:block;width:130px;height:1px;margin-top:24px;background:linear-gradient(90deg,#d8ba80,transparent)}
+#featured .featured-visual,#creative .creator-art,#miaoshu-album .album-photos a,#featured-short .video-preview,#instagram-reel .video-preview{outline:1px solid #d8ba8066;outline-offset:-7px}
+#featured .featured-visual{transform:perspective(900px) rotateY(-2deg);box-shadow:inset 0 0 0 1px #d8ba8055,8px 11px 0 -6px #a58a5b66,0 28px 45px #000a}
+#creative .creator-card{border-bottom:4px solid #8d683a!important}
+#creative .creator-art{box-shadow:inset 0 0 0 2px #d8ba8066,inset 0 0 38px #0008,0 9px 0 -5px #b38e57,0 22px 30px #0009}
+#miaoshu-album .album-photos a{border:8px ridge #8d6a40!important;box-shadow:inset 0 0 0 4px #081523,0 11px 0 -6px #3b291a,0 26px 38px #000b}
+#featured-short .video-preview,#instagram-reel .video-preview{border:8px ridge #8b6b43!important;box-shadow:inset 0 0 0 3px #172b3b,0 12px 0 -7px #362718,0 28px 43px #000a}
+#support,#follow,#community{background-image:radial-gradient(ellipse at 85% 10%,#d6b67c18,transparent 45%),linear-gradient(145deg,#152e43,#071624)!important}
+#support .support-actions a,#follow .follow-actions a,#community .community-actions a{border:1px solid #d8ba8066;transition:transform .25s,box-shadow .25s}
+#support .support-actions a:hover,#follow .follow-actions a:hover,#community .community-actions a:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 #fff3,0 12px 20px #0009}
+#book .bookshelf-scene{position:relative;background-image:radial-gradient(ellipse at 50% 4%,#e6c4881a,transparent 36%),linear-gradient(90deg,#130c08,#6d4728 2%,#26170f 5%,#0b1725 15%,#101c2b 50%,#0b1725 85%,#26170f 95%,#6d4728 98%,#130c08)!important}
+#book .bookshelf-scene:after{right:8px;transform:scaleX(-1)}
+#book .bookshelf-top{position:relative;z-index:3}
+#book .bookshelf-top span{border:1px solid #d8ba8099;box-shadow:inset 0 1px 0 #fff3,inset 0 -2px 4px #0008,0 5px 12px #000a}
+#book .novels-grid{position:relative;z-index:1}
+#book .novel-card{background-image:radial-gradient(ellipse 65% 55% at 50% 10%,#e5c58b1c,transparent 90%),linear-gradient(90deg,#0004,transparent 15%,transparent 85%,#0005)!important}
+#book .novel-card:nth-child(n+6){box-shadow:inset 0 10px 18px #0009,inset 0 -13px 17px -14px #000}
+#book .book-object{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.75,.2,1),filter .45s}
+#book .book-object:before{content:"";position:absolute;left:15px;right:8px;bottom:-10px;height:15px;border-radius:50%;background:#000c;filter:blur(7px);transform:rotateX(60deg);pointer-events:none}
+#book .book-cover{backface-visibility:hidden}
+#book .book-cover:before{inset:9px 7px;border:1px solid #e9ce9666}
+#book .cover-imprint{font-size:7px;letter-spacing:.1em}
+#book .cover-title{position:relative;z-index:1;color:var(--cover-ink);text-shadow:0 1px 2px #000b,0 0 12px #e4c18826}
+#book .book-spine span{font-size:10px;text-shadow:0 1px 2px #000b}
+#book .book-pages{background:repeating-linear-gradient(180deg,#f0e6ce 0 1px,#b6a88b 1px 2px,#e0d3b9 2px 4px)}
+#book .book-details{z-index:3}
+#book .book-details h3{overflow-wrap:anywhere}
+#book .bookshelf-base{height:34px;background:linear-gradient(#c3985b,#6a421f 16%,#2f1c10 62%,#130b07);border-bottom:2px solid #a77c48;box-shadow:inset 0 2px 0 #f4d49b44,0 15px 20px #000b}
+#book .library-colophon{text-align:center;color:#d8ba80;font:500 10px/1.8 "Noto Serif TC",serif;letter-spacing:.25em;margin:21px auto 7px;text-shadow:0 2px 5px #000}
+@media(max-width:650px){#book .library-colophon{font-size:9px;letter-spacing:.12em}#book .book-object:before{bottom:-7px}#featured .featured-visual{transform:none}}
+@media(prefers-reduced-motion:reduce){#book .book-object{transition:none!important}#support .support-actions a:hover,#follow .follow-actions a:hover,#community .community-actions a:hover{transform:none}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -475,7 +513,7 @@ main.wrap>section.panel:after{content:"✦";position:absolute;right:26px;top:17p
     <article class="novel-card" data-book-id="chenshui-de-huhuan" style="--cover-top:#39415d;--cover-bottom:#191d35;--cover-ink:#d0c4ed"><span class="novel-number">09 / NOVEL</span><a class="book-object" href="books/chenshui-de-huhuan/index.html#toc" aria-label="閱讀《沉睡的呼喚》章節目錄"><span class="book-spine" aria-hidden="true"><span>《沉睡的呼喚》</span></span><span class="book-cover" aria-hidden="true"><span class="cover-ornament">✦</span><span class="cover-imprint">MOONLIT STORIES</span><span class="cover-rule"></span><span class="cover-title">《沉睡的呼喚》</span><span class="cover-rule cover-rule-bottom"></span><span class="cover-author">喵叔 · 著</span><span class="cover-emblem">☾</span></span><span class="book-pages" aria-hidden="true"></span></a><div class="book-details"><h3>《沉睡的呼喚》</h3><p>卷首詩、序言、十一章與尾聲。從臺北的泡麵與房租帳單，走入夢境深處的失蹤之謎。</p><a class="book-read" href="books/chenshui-de-huhuan/index.html#toc" aria-label="閱讀《沉睡的呼喚》章節目錄">閱讀《沉睡的呼喚》 →</a></div></article>
     <article class="novel-card" data-book-id="canzhao-xie-longqi" style="--cover-top:#483c36;--cover-bottom:#201a1c;--cover-ink:#e2b78a"><span class="novel-number">10 / NOVEL</span><a class="book-object" href="books/canzhao-xie-longqi/index.html#toc" aria-label="閱讀《殘照寫龍契》章節目錄"><span class="book-spine" aria-hidden="true"><span>《殘照寫龍契》</span></span><span class="book-cover" aria-hidden="true"><span class="cover-ornament">✦</span><span class="cover-imprint">MOONLIT STORIES</span><span class="cover-rule"></span><span class="cover-title">《殘照寫龍契》</span><span class="cover-rule cover-rule-bottom"></span><span class="cover-author">喵叔 · 著</span><span class="cover-emblem">☾</span></span><span class="book-pages" aria-hidden="true"></span></a><div class="book-details"><h3>《殘照寫龍契》</h3><p>全十六章。從殘照下的蟬鳴走入龍脈、古墓與人心深處的謎局。</p><a class="book-read" href="books/canzhao-xie-longqi/index.html#toc" aria-label="閱讀《殘照寫龍契》章節目錄">閱讀《殘照寫龍契》 →</a></div></article>
     <!-- BOOKS:END -->
-  </div><div class="bookshelf-base" aria-hidden="true"></div></div>
+  </div><div class="bookshelf-base" aria-hidden="true"></div><p class="library-colophon" aria-hidden="true">✦ &nbsp; MOONLIT STORIES · A PRIVATE COLLECTION &nbsp; ✦</p></div>
 </section>
 <section class="panel" id="creative"><p class="creator-tag">WELCOME TO MOONLIT STORIES</p><h2 class="section-title">喵叔的創作空間</h2><p class="notice">文字是故事，照片是片刻，影片則把來不及說完的心情留下。</p><div class="creator-grid"><article class="creator-card"><div class="creator-art" aria-hidden="true">✦</div><div class="creator-copy"><h3>小說書房</h3><p>《浮生歲月》、《兩種天空》第一部與第二部，以及《烏溪月》、《建康劫·聽泉引》、《緋色雪月抄》、《風門夜譚》完整閱讀。</p><a href="books/fushengsuiyue/index.html#toc">閱讀《浮生歲月》 →</a><a href="books/liangzhongtiankong/index.html">閱讀《兩種天空》第一部 →</a><a href="books/liangzhongtiankong-part2/index.html">閱讀第二部〈風中的回聲〉 →</a><a href="books/wuxiyue/index.html">閱讀《烏溪月》 →</a><a href="books/jiankangjie-tingquanyin/index.html">閱讀《建康劫·聽泉引》 →</a><a href="books/hiiro-setsugetsusho/index.html">閱讀《緋色雪月抄》 →</a><a href="books/fengmen-yetan/index.html">閱讀《風門夜譚》 →</a><a href="books/alien-origin-sands/index.html">閱讀《異形：起源之沙》 →</a><a href="books/chenshui-de-huhuan/index.html">閱讀《沉睡的呼喚》 →</a><a href="books/canzhao-xie-longqi/index.html">閱讀《殘照寫龍契》 →</a></div></article>
 <article class="creator-card"><div class="creator-art" aria-hidden="true">✎</div><div class="creator-copy"><h3>寫作札記</h3><p>最新札記：臺北大縱走第五段減肥遊記，附三頁 PDF 閱讀與下載。</p><a href="posts/index.html">閱讀最新札記 →</a></div></article>
