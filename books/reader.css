@@ -139,3 +139,6 @@ body{background:#0a1825}
 .audio-unsupported{color:#dfc99e}
 @media(max-width:720px){.audiobook-options{grid-template-columns:1fr}.audiobook-actions button{flex:1 1 44%}.audiobook-player{padding:22px 18px}}
 @media(prefers-reduced-motion:reduce){.audiobook-actions button{transition:none}}
+
+/* Continuous audiobook listening */
+.audiobook-continuous{display:flex;align-items:center;gap:10px;margin:12px 0;color:#e3d3b7;font-size:14px;line-height:1.6}.audiobook-continuous input{width:18px;height:18px;accent-color:#c9ad7d}.audiobook-actions button:focus-visible,.audiobook-options select:focus-visible{outline:2px solid #e7d1a8;outline-offset:3px}
