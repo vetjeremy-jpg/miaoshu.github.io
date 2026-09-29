@@ -119,7 +119,7 @@
    else if(voices.length){const traditional=voices.find(v=>/zh[-_](TW|HK)/i.test(v.lang));voiceSel.value=(traditional||voices[0]).voiceURI}
   }
   loadVoices();synth.addEventListener?.('voiceschanged',loadVoices);
-  function paragraphs(){const ch=valid(chSel.value);return ch?[...ch.querySelectorAll('.chapter-body p,.chapter-body .chapter-subheading')].map(el=>({el,text:el.textContent.trim()})).filter(x=>x.text):[]}
+  function paragraphs(){const ch=valid(chSel.value);if(!ch)return [];return [...ch.querySelectorAll('.chapter-body p,.chapter-body .chapter-subheading')].flatMap(el=>{const text=el.textContent.trim();if(!text)return [];const chunks=text.match(/.{1,100}(?:[。！？；，、]|$)|.{1,100}/gu)||[text];return chunks.map(part=>({el,text:part.trim()})).filter(x=>x.text)})}
   function clearMark(){player.ownerDocument.querySelectorAll('.audio-reading').forEach(el=>el.classList.remove('audio-reading'))}
   function stop(message='已停止朗讀。'){token++;active=false;paused=false;synth.cancel();clearMark();play.textContent='▶ 開始朗讀';status.textContent=message}
   function speak(){
