@@ -128,3 +128,27 @@ footer{border-top-color:rgba(205,219,233,.19)}
 [data-book-id] .hero{background:radial-gradient(ellipse at 86% 4%,rgba(181,207,232,.11),transparent 54%),linear-gradient(145deg,#25241f,#101111 80%)}
 .rule{background:linear-gradient(90deg,var(--moonlight),var(--gold),transparent)}
 .collection-heading{border-top-color:rgba(205,219,233,.22)}
+
+/* Two reading palettes; paper mode keeps all reader controls legible. */
+.reading-theme{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto}
+[data-book-id] .reading-theme button[aria-pressed="true"]{background:var(--gold2);color:var(--bg);border-color:var(--gold2)}
+html[data-reading-theme="paper"]{color-scheme:light;--bg:#f5f0e6;--panel:#fffcf5;--text:#302b25;--muted:#665e52;--gold:#806037;--gold2:#72532e;--line:rgba(111,83,48,.25);--moonlight:#806037}
+html[data-reading-theme="paper"] body{background:var(--bg);color:var(--text)}
+html[data-reading-theme="paper"] .topbar{background:rgba(245,240,230,.97);border-color:var(--line)}
+html[data-reading-theme="paper"] .brand,html[data-reading-theme="paper"] .navlinks a{color:var(--text)}
+html[data-reading-theme="paper"] .brand::after{box-shadow:3px 2px 0 0 #806037}
+html[data-reading-theme="paper"] .hero{background:linear-gradient(145deg,#eee4d2,#f5f0e6 80%)}
+html[data-reading-theme="paper"] .hero h1,html[data-reading-theme="paper"] .chapter h2,html[data-reading-theme="paper"] .section-title,html[data-reading-theme="paper"] .shelf-heading h2,html[data-reading-theme="paper"] .audiobook-heading h2{color:var(--text)}
+html[data-reading-theme="paper"] .panel,html[data-reading-theme="paper"] .chapter{background:var(--panel);border-color:var(--line)}
+html[data-reading-theme="paper"] .chapter-body p{color:#383229}
+html[data-reading-theme="paper"] .continue-box,html[data-reading-theme="paper"] .toc a,html[data-reading-theme="paper"] .saved-chapters li{background:#eee7d9;color:var(--text)}
+html[data-reading-theme="paper"] .toc a:hover{background:#e4d8c3}
+html[data-reading-theme="paper"] .chapter-search input,html[data-reading-theme="paper"] .audiobook-options select{background:#fffdf8;color:var(--text);border-color:var(--line)}
+html[data-reading-theme="paper"] .audiobook-actions button,html[data-reading-theme="paper"] .directory-link,html[data-reading-theme="paper"] .reader-controls button,html[data-reading-theme="paper"] .chapter-tools a,html[data-reading-theme="paper"] .chapter-tools button,html[data-reading-theme="paper"] .chapter-bookmark,html[data-reading-theme="paper"] .chapter-like{background:#f8f1e5;color:var(--gold2);border-color:var(--line)}
+html[data-reading-theme="paper"] .cta,html[data-reading-theme="paper"] .audiobook-actions .audio-primary,html[data-reading-theme="paper"] .reading-theme button[aria-pressed="true"]{background:#72532e;color:#fffaf0;border-color:#72532e}
+html[data-reading-theme="paper"] .chapter-tools button:hover,html[data-reading-theme="paper"] .chapter-tools a:hover,html[data-reading-theme="paper"] .chapter-bookmark[aria-pressed="true"],html[data-reading-theme="paper"] .chapter-like[aria-pressed="true"]{background:#e7dac3}
+html[data-reading-theme="paper"] .audiobook-note,html[data-reading-theme="paper"] .audiobook-status,html[data-reading-theme="paper"] .audiobook-continuous,html[data-reading-theme="paper"] .audio-unsupported,html[data-reading-theme="paper"] footer{color:var(--muted)}
+html[data-reading-theme="paper"] .chapter-body .audio-reading{background:#eee1c9;border-color:#806037}
+html[data-reading-theme="paper"] .skip-link{background:#72532e;color:#fffaf0}
+html[data-reading-theme="paper"] :focus-visible{outline-color:#72532e}
+@media(max-width:650px){.reading-theme{width:100%;margin:12px 0 0}}

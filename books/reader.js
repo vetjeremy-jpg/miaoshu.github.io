@@ -214,3 +214,22 @@
  }
 
 })();
+
+/* Reading atmosphere is shared across books and remembered on this device. */
+(()=>{
+ if(!document.body.dataset.bookId)return;
+ const key='miaoshu-reading-theme',root=document.documentElement;
+ const controls=document.querySelector('.reader-controls');if(!controls)return;
+ const group=document.createElement('div');group.className='reading-theme';group.setAttribute('role','group');group.setAttribute('aria-label','閱讀配色');
+ group.innerHTML='<span>閱讀配色</span><button type="button" data-reading-mode="moon" aria-pressed="true">☾ 月光</button><button type="button" data-reading-mode="paper" aria-pressed="false">☀ 紙頁</button>';
+ controls.append(group);
+ function apply(theme,persist){
+  const mode=theme==='paper'?'paper':'moon';root.dataset.readingTheme=mode;
+  group.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.readingMode===mode)));
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',mode==='paper'?'#f5f0e6':'#101111');
+  if(persist){try{localStorage.setItem(key,mode)}catch(e){}}
+ }
+ let saved;try{saved=localStorage.getItem(key)}catch(e){}apply(saved,false);
+ group.addEventListener('click',event=>{const button=event.target.closest('button[data-reading-mode]');if(button)apply(button.dataset.readingMode,true)});
+ addEventListener('storage',event=>{if(event.key===key)apply(event.newValue,false)});
+})();

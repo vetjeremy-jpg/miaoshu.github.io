@@ -1,0 +1,21 @@
+/* Full-frame photo exhibition; native dialog supplies focus containment. */
+.photo-viewer{width:min(1280px,96vw);max-width:none;max-height:96vh;max-height:96dvh;margin:auto;padding:0;border:1px solid #c8aa7955;background:#0b0e11;color:#f3eee5;box-shadow:0 24px 100px #0009}
+.photo-viewer::backdrop{background:rgba(3,6,10,.94)}
+.photo-viewer-shell{display:flex;flex-direction:column;height:94vh;height:94dvh;max-height:94vh;max-height:94dvh}
+.photo-viewer-bar{position:static;display:flex;justify-content:space-between;align-items:center;flex:none;gap:16px;padding:10px 20px;background:transparent;border:0;border-bottom:1px solid #dce8f226;font:14px/1.6 system-ui,sans-serif}
+.photo-viewer button{min-width:48px;min-height:48px;border:1px solid #dce8f24a;background:#151c24;color:#e6d5b7;font:600 16px/1 system-ui,sans-serif;cursor:pointer}
+.photo-viewer button:hover{background:#283442}
+.photo-viewer button:focus-visible,.photo-viewer a:focus-visible{outline:3px solid #e6d5b7;outline-offset:3px}
+.photo-viewer-close{padding:10px 16px}
+.photo-viewer-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;flex:1;overflow:hidden;padding:12px 64px;background:radial-gradient(ellipse at 50% 10%,#192331,#080b0e 70%);touch-action:pan-y pinch-zoom}
+.photo-viewer .photo-viewer-image{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;filter:none;transform:none}
+.photo-viewer .photo-viewer-image[hidden],.photo-viewer-loading[hidden]{display:none}
+.photo-viewer-prev,.photo-viewer-next{position:absolute;top:50%;transform:translateY(-50%);z-index:1;font-size:32px!important}
+.photo-viewer-prev{left:10px}.photo-viewer-next{right:10px}
+.photo-viewer-loading{color:#bdcbd8;font-size:15px;text-align:center}
+.photo-viewer-caption{flex:none;overflow-y:auto;max-height:25vh;max-height:25dvh;text-align:left;padding:15px 24px 20px;border-top:1px solid #dce8f226;background:#10151b}
+.photo-viewer-caption h2{font:500 clamp(20px,3vw,27px)/1.4 "Noto Serif TC","Songti TC",serif;color:#e6d5b7;margin:0 0 8px}
+.photo-viewer-caption p{margin:0 0 10px;color:#d1d4d7;line-height:1.8;font-size:15px}
+.photo-viewer-source{color:#e6d5b7;font-size:13px;display:inline-block;min-height:32px}
+.photo-viewer-hint{display:block;color:#9eadba;font-size:12px;margin-top:4px}
+@media(max-width:650px){.photo-viewer{width:100vw;max-height:100vh;max-height:100dvh;border-width:0}.photo-viewer-shell{height:100vh;height:100dvh;max-height:100vh;max-height:100dvh}.photo-viewer-stage{padding:8px 0}.photo-viewer-prev,.photo-viewer-next{background:#10151bbf;min-width:44px;min-height:48px}.photo-viewer-prev{left:5px}.photo-viewer-next{right:5px}.photo-viewer-caption{padding:16px 18px 22px}.photo-viewer-bar{padding:8px 12px}}

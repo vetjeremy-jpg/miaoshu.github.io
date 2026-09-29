@@ -382,6 +382,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 @media(max-width:760px){.reader-comment-frame{display:none}.comment-direct .cta{width:100%;text-align:center}.update-heading{align-items:flex-start;flex-direction:column;gap:0}.update-actions .cta{width:100%;text-align:center}}
 </style>
 <link rel="stylesheet" href="cinematic-editorial.css?v=20260930-moonlight">
+<link rel="stylesheet" href="photo-viewer.css?v=20260930">
 </head>
 <body id="top">
 
@@ -538,5 +539,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
  bell.addEventListener('click',()=>{const on=bell.getAttribute('aria-pressed')!=='true';if(!set('miaoshu-bell',on?'1':'0')||(on&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}bellText(on);feedback.textContent=on?'已開啟回訪提醒。下次造訪若有更新會在此提示。':'已關閉回訪提醒。'});
 })();
 </script>
+<script src="photo-viewer.js?v=20260930" defer></script>
 </body>
 </html>
