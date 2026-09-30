@@ -1,0 +1,47 @@
+/* Moonlit Stories — unified visual system / homepage */
+:root{
+ --ml-night-1000:#040b13;--ml-night-950:#06101a;--ml-night-900:#081522;--ml-night-850:#0b1a29;--ml-night-800:#102235;
+ --ml-ink:#f1ede6;--ml-ink-2:#c1cbd3;--ml-ink-3:#8fa1b0;--ml-gold:#ddcaa5;--ml-gold-2:#b7a37d;--ml-silver:#c9d9e6;
+ --ml-line:rgba(205,220,232,.13);--ml-line-strong:rgba(221,202,165,.30);--ml-glow:rgba(184,211,235,.09);
+ --ml-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--ml-sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+ --ml-s1:4px;--ml-s2:8px;--ml-s3:12px;--ml-s4:16px;--ml-s5:24px;--ml-s6:32px;--ml-s7:48px;--ml-s8:64px;--ml-s9:96px;
+ --ml-r1:2px;--ml-r2:6px;--ml-r3:10px;
+ --ml-shadow-1:0 10px 30px rgba(0,0,0,.18);--ml-shadow-2:0 24px 70px rgba(0,0,0,.26);
+ --ml-ease:cubic-bezier(.2,.7,.2,1)
+}
+body{font-family:var(--ml-sans);color:var(--ml-ink);background:var(--ml-night-950);font-feature-settings:"kern" 1,"palt" 1}
+h1,h2,h3,.section-title,.quote,.featured-copy h2,.about-lede,.moonlit-found-line blockquote{font-family:var(--ml-serif);font-weight:500}
+p{color:var(--ml-ink-2)}a{transition:color .18s var(--ml-ease),border-color .18s var(--ml-ease),background .18s var(--ml-ease),transform .18s var(--ml-ease)}
+.eyebrow,.chapter-kicker,.creator-tag,.novel-number,.hero-edition,.hero-index{font-family:var(--ml-sans);text-transform:none;letter-spacing:.18em;color:var(--ml-ink-3)}
+.panel{border-color:var(--ml-line)!important}.notice,.support-note,.community-note,.album-description{color:var(--ml-ink-3)!important}
+:is(.cta,.support-actions button,.support-actions a,.follow-actions button,.follow-actions a,.community-actions button,.community-actions a,.about-links a,.update-actions a,.moonlit-serendipity button,.moonlit-reroll,.moonlit-go,.moonlit-theme-grid button,.moonlit-picker-filters button,#save-site,#share-site){
+ min-height:46px;box-sizing:border-box;border-radius:var(--ml-r1)!important;font-family:var(--ml-sans);font-size:13px;font-weight:600;line-height:1.35;letter-spacing:.025em;text-decoration:none;transition:transform .18s var(--ml-ease),background .18s var(--ml-ease),border-color .18s var(--ml-ease),color .18s var(--ml-ease),box-shadow .18s var(--ml-ease)
+}
+.cta:not(.secondary),.hero-primary,.moonlit-go{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px!important;border:1px solid var(--ml-gold)!important;background:var(--ml-gold)!important;color:var(--ml-night-950)!important;box-shadow:none!important}
+.cta.secondary,.support-actions button,.support-actions a,.follow-actions button,.follow-actions a,.community-actions button,.community-actions a,.about-links a,.update-actions a,.moonlit-serendipity button,.moonlit-reroll,.moonlit-theme-grid button,.moonlit-picker-filters button{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px!important;border:1px solid var(--ml-line-strong)!important;background:rgba(8,21,34,.36)!important;color:var(--ml-gold)!important;box-shadow:none!important}
+:is(.cta,.support-actions button,.support-actions a,.follow-actions button,.follow-actions a,.community-actions button,.community-actions a,.about-links a,.update-actions a,.moonlit-serendipity button,.moonlit-reroll,.moonlit-go):hover{transform:translateY(-1px);border-color:rgba(232,215,181,.65)!important}
+.cta:not(.secondary):hover,.hero-primary:hover,.moonlit-go:hover{background:#eadbbc!important;color:var(--ml-night-950)!important}
+:is(a,button,input,textarea):focus-visible{outline:2px solid var(--ml-gold)!important;outline-offset:3px}
+:is(.tonight-grid article,.creator-card,.moonlit-entry,.moonlit-picker,.reader-shelf,.latest-update,.follow-panel,.reader-support,.moonlit-newsletter){border-radius:var(--ml-r2)!important}
+:is(.tonight-grid article,.creator-card,.moonlit-entry){box-shadow:none!important}
+:is(.moonlit-picker,.reader-comment-frame,.moonlit-newsletter){box-shadow:var(--ml-shadow-1)!important}
+.hero-image,.featured-visual,.album-photo img,.video-preview iframe,#instagram-reel iframe{border-radius:var(--ml-r1)!important}
+.tonight-grid article,.creator-card,.moonlit-entry,.moonlit-picker,.follow-panel{border-color:var(--ml-line)!important;background-color:rgba(8,21,34,.58)!important}
+.moonlit-discovery{border-color:var(--ml-line)!important;background:radial-gradient(circle at 88% 0,var(--ml-glow),transparent 35%),var(--ml-night-900)!important}
+.moonlit-found-line{border-color:var(--ml-line-strong)!important}.moonlit-found-line blockquote{color:var(--ml-ink)!important}
+.book-cover{border-radius:var(--ml-r1)!important}.book-object{filter:drop-shadow(0 16px 18px rgba(0,0,0,.24))!important}
+.creator-art{color:var(--ml-ink-3)!important}.creator-copy h3,.album-photo h3{color:var(--ml-ink)!important}
+input,textarea{box-sizing:border-box;border:1px solid var(--ml-line)!important;border-radius:var(--ml-r1)!important;background:rgba(4,11,19,.62)!important;color:var(--ml-ink)!important;font:400 14px/1.5 var(--ml-sans);padding:12px 14px!important}
+input::placeholder,textarea::placeholder{color:#718696}
+.topbar{box-shadow:0 1px 0 rgba(255,255,255,.025);border-color:var(--ml-line)!important}.navlinks a{border-radius:var(--ml-r1)!important}
+.hero-text-link,.book-read,.creator-copy a,.community-note a,.album-photo a{color:var(--ml-gold-2)}
+.hero-text-link:hover,.book-read:hover,.creator-copy a:hover,.community-note a:hover{color:var(--ml-gold)}
+.section-title{letter-spacing:.015em}.hero h1{color:var(--ml-ink)!important}
+@media(max-width:700px){
+ :root{--ml-shadow-1:0 8px 24px rgba(0,0,0,.16)}
+ .panel{padding-block:48px!important}
+ .section-title{margin-top:10px!important;margin-bottom:16px!important}
+ :is(.cta,.support-actions button,.support-actions a,.follow-actions button,.follow-actions a,.community-actions button,.community-actions a,.about-links a,.update-actions a,.moonlit-serendipity button,.moonlit-reroll,.moonlit-go){min-height:48px}
+ .tonight-grid article,.creator-card,.moonlit-entry{border-radius:var(--ml-r2)!important}
+}
+@media(prefers-reduced-motion:reduce){a,button{transition:none!important}}
