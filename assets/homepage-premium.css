@@ -97,7 +97,3 @@ body:not([data-book-id]) > header.hero .moonlight-emblem__cat{
 @media(max-width:700px){
  body:not([data-book-id]) > header.hero .moonlight-emblem__cat{left:23%;top:23%;width:45%;height:45%;opacity:.82}
 }
-
-/* Top-left brand logo — final override 2026-09-30 */
-@media (min-width:851px){.topbar{min-height:96px!important}.topbar .brand img{width:128px!important;height:auto!important;max-width:none!important}.topbar .brand{gap:14px!important}}
-@media (min-width:1200px){.topbar .brand img{width:148px!important}}
