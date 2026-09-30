@@ -156,3 +156,8 @@ main>section:not(.hero):not(.moonlit-tonight){scroll-margin-top:88px}
  html{scroll-behavior:auto!important}
  .moonlit-ambient-glow{animation:none!important;transform:none!important}
 }
+
+.moonlit-bookmarks-link{position:fixed;right:18px;bottom:68px;z-index:42;min-height:44px;display:flex;align-items:center;padding:8px 13px;border:1px solid rgba(228,210,175,.22);background:rgba(7,17,29,.88);backdrop-filter:blur(10px);color:var(--ml-moon);font:500 12px/1 var(--ml-sans);letter-spacing:.05em;text-decoration:none;border-radius:999px}
+.moonlit-bookmarks-link:hover,.moonlit-bookmarks-link:focus-visible{border-color:rgba(228,210,175,.55);color:#fff}
+@media(max-width:430px){.moonlit-bookmarks-link{left:12px;right:auto;bottom:12px;padding-inline:12px}.moonlit-reading-focus .moonlit-bookmarks-link{opacity:.34}}
+@media(prefers-reduced-motion:reduce){.moonlit-bookmarks-link{transition:none}}
