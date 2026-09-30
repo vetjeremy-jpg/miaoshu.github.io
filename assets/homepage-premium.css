@@ -92,3 +92,9 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
  body:not([data-book-id]) > .topbar .brand{gap:16px!important}
 }
 @media (min-width:1200px){body:not([data-book-id]) > .topbar .brand img{width:150px!important}}
+
+/* Smaller navigation top-left logo — 2026-09-30 */
+@media (min-width:851px){
+ body:not([data-book-id]) > .topbar .brand img{width:54px!important;height:auto!important;max-width:none!important}
+ body:not([data-book-id]) > .topbar{min-height:72px!important;padding-top:6px!important;padding-bottom:6px!important}
+}
