@@ -1,5 +1,5 @@
 /* Moonlit refinement layer — restrained moonlight, unified interaction system */
-:root{--ml-night:#08131f;--ml-panel:#102235;--ml-ink:#f2eee7;--ml-muted:#b7c2cc;--ml-moon:#e4d2af;--ml-line:rgba(228,210,175,.22);--ml-radius:6px;--ml-ease:cubic-bezier(.2,.7,.2,1)}
+:root{--ml-night:#08131f;--ml-panel:#102235;--ml-ink:#f2eee7;--ml-muted:#b7c2cc;--ml-moon:#e4d2af;--ml-line:rgba(228,210,175,.22);--ml-radius:6px;--ml-ease:cubic-bezier(.2,.7,.2,1);--ml-serif:"Noto Serif TC","Songti TC",serif;--ml-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--ml-step-1:clamp(1.05rem,1rem + .25vw,1.18rem);--ml-step-2:clamp(1.45rem,1.2rem + 1vw,2rem);--ml-step-3:clamp(2rem,1.45rem + 2.2vw,3.2rem);--ml-space-1:8px;--ml-space-2:16px;--ml-space-3:24px;--ml-space-4:40px;--ml-space-5:clamp(64px,8vw,112px);--ml-motion-fast:240ms;--ml-motion-mid:520ms;--ml-motion-ambient:8s}
 body{--ml-glow:0;}
 
 /* One visual language: small moon phases, never decorative moon clutter */
@@ -12,7 +12,7 @@ body{--ml-glow:0;}
 
 /* Homepage moonlight: atmospheric rather than another object */
 body.homepage .hero,body:not([class]) .hero{isolation:isolate}
-.hero .moonlit-ambient-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at calc(72% + var(--ml-x,0px)) calc(28% + var(--ml-y,0px)),rgba(226,215,190,.11),rgba(125,161,190,.045) 24%,transparent 53%);opacity:.82;animation:moonlit-breathe 8s ease-in-out infinite}
+.hero .moonlit-ambient-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at calc(72% + var(--ml-x,0px)) calc(28% + var(--ml-y,0px)),rgba(226,215,190,.11),rgba(125,161,190,.045) 24%,transparent 53%);opacity:.82;animation:moonlit-breathe var(--ml-motion-ambient) ease-in-out infinite}
 .hero>*:not(.moonlit-ambient-glow){position:relative;z-index:1}
 @keyframes moonlit-breathe{0%,100%{opacity:.64}50%{opacity:.92}}
 @media(prefers-reduced-motion:reduce){.hero .moonlit-ambient-glow{animation:none}}
@@ -20,14 +20,14 @@ body.homepage .hero,body:not([class]) .hero{isolation:isolate}
 /* Tonight curation */
 .moonlit-tonight{margin:28px 0;padding:clamp(26px,4vw,46px);border:1px solid var(--ml-line);border-radius:var(--ml-radius);background:linear-gradient(135deg,rgba(17,38,57,.94),rgba(8,21,34,.96))}
 .moonlit-tonight small{letter-spacing:.18em;color:var(--ml-moon)}
-.moonlit-tonight h2{margin:.35em 0 .25em;font:500 clamp(28px,3vw,40px)/1.35 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink)}
+.moonlit-tonight h2{margin:.35em 0 .25em;font:500 var(--ml-step-2)/1.35 var(--ml-serif);color:var(--ml-ink)}
 .moonlit-tonight>p{color:var(--ml-muted);margin:.4em 0 1.2em}
 .moonlit-moods{display:flex;gap:9px;flex-wrap:wrap}
 .moonlit-moods button,.moonlit-result a{min-height:44px;border:1px solid rgba(228,210,175,.42);border-radius:3px;background:transparent;color:var(--ml-moon);padding:9px 14px;cursor:pointer;text-decoration:none;font:600 14px/1.5 system-ui,sans-serif}
 .moonlit-moods button:hover,.moonlit-moods button[aria-pressed="true"]{background:var(--ml-moon);color:#081522}
 .moonlit-result{display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--ml-line)}
 .moonlit-result.is-visible{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:center}
-.moonlit-result strong{font:500 22px/1.5 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink)}
+.moonlit-result strong{font:500 var(--ml-step-2)/1.5 var(--ml-serif);color:var(--ml-ink)}
 .moonlit-result p{margin:0;color:var(--ml-muted)}
 .moonlit-result a{grid-column:2;grid-row:1/3;display:grid;place-items:center}
 @media(max-width:620px){.moonlit-result.is-visible{grid-template-columns:1fr}.moonlit-result a{grid-column:1;grid-row:auto;margin-top:8px}.moonlit-moods button{flex:1 1 44%}}
@@ -46,7 +46,7 @@ body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;backg
 /* Cross-work moonlight path */
 .moonlit-path{margin:34px 0;padding:24px;border-top:1px solid var(--ml-line);border-bottom:1px solid var(--ml-line)}
 .moonlit-path small{color:var(--ml-moon);letter-spacing:.16em}
-.moonlit-path h2{font:500 clamp(23px,3vw,31px)/1.45 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink);margin:8px 0}
+.moonlit-path h2{font:500 var(--ml-step-2)/1.45 var(--ml-serif);color:var(--ml-ink);margin:8px 0}
 .moonlit-path a{color:var(--ml-moon);text-underline-offset:4px}
 
 /* Photo viewer: gallery disappears; photograph owns the screen */
@@ -59,3 +59,40 @@ body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;backg
 /* Unified motion */
 a,button,.creator-card,.series-card{transition-duration:.25s;transition-timing-function:var(--ml-ease)}
 @media(prefers-reduced-motion:reduce){a,button,.creator-card,.series-card,.photo-viewer-image{transition:none!important}}
+
+
+/* 2026-09 polish pass: typography, contrast, spacing, controls and mobile safety */
+html{overflow-x:clip}
+body{overflow-wrap:anywhere}
+:where(main,section,article,header,footer,nav){min-width:0}
+:where(img,video,iframe,svg){max-width:100%;height:auto}
+:where(h1,.hero h1){text-wrap:balance}
+:where(h2,h3){text-wrap:pretty}
+:where(.hero h1,.intro h1,article>header h1){font-family:var(--ml-serif);font-weight:500;letter-spacing:-.018em}
+:where(.hero h1){font-size:var(--ml-step-3)}
+:where(main p,article p,.chapter-body){text-wrap:pretty}
+:where(button,.btn,[class*="button"],[class*="cta"]){font-family:var(--ml-sans)}
+:where(button,a):focus-visible{outline:2px solid var(--ml-moon);outline-offset:3px}
+:where(.hero,main>section){scroll-margin-top:84px}
+:where(main>section)+:where(main>section){margin-top:var(--ml-space-5)}
+:where(.creator-card,.series-card,.novel-card,.book-card){transform:translateY(0)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){:where(.creator-card,.series-card,.novel-card,.book-card):hover{transform:translateY(-2px)}}
+.moonlit-moods button,.moonlit-result a,.moonlit-focus-toggle{transition:background-color var(--ml-motion-fast) var(--ml-ease),color var(--ml-motion-fast) var(--ml-ease),border-color var(--ml-motion-fast) var(--ml-ease),transform var(--ml-motion-fast) var(--ml-ease)}
+.moonlit-result a{border-radius:var(--ml-radius)}
+.moonlit-moods button{border-radius:var(--ml-radius)}
+.moonlit-focus-toggle{border-radius:var(--ml-radius)}
+.chapter-body{font-size:var(--reader-size,18px);line-height:2.04}
+.chapter-body p{position:relative}
+@media(max-width:720px){
+ :root{--ml-space-5:clamp(56px,15vw,78px)}
+ body{max-width:100%;overflow-x:clip}
+ .moonlit-tonight{padding:24px 18px;margin-inline:0}
+ .moonlit-moods{gap:8px}
+ .moonlit-moods button{flex:1 1 calc(50% - 8px);min-width:0;padding-inline:10px}
+ .moonlit-result a{width:100%;min-height:46px}
+ .moonlit-line-save{min-width:44px;min-height:44px;display:inline-grid;place-items:center}
+ .moonlit-focus-toggle{min-width:44px;min-height:44px}
+ .chapter-body{font-size:var(--reader-size,18px);line-height:2.02}
+}
+@media(max-width:390px){.moonlit-moods button{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.moonlit-ambient-glow{animation:none!important}:where(*,::before,::after){scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
