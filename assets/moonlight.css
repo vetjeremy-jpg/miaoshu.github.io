@@ -75,3 +75,5 @@ footer{border-top-color:rgba(213,227,242,.15);background-image:linear-gradient(1
 /* Preserve the restrained moon policy in the novel bookshelf. */
 #book :is(.cover-emblem,.cover-moon,.moon,.moon-icon,.crescent,.moon-decoration,.moonlight-emblem,.bookshelf-moon,.novel-moon){display:none!important}
 @media(prefers-reduced-motion:reduce){:is(.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:none!important}}
+
+.moonlit-search-link{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;margin:5px;border:1px solid rgba(205,225,243,.22);border-radius:24px;color:#e4d1aa;text-decoration:none;font-size:14px;letter-spacing:.04em;background:rgba(182,208,232,.035)}.moonlit-search-link:hover,.moonlit-search-link:focus-visible{background:rgba(182,208,232,.11);border-color:rgba(205,225,243,.4)}
