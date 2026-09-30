@@ -43,7 +43,3 @@ body{overflow-x:hidden}
 }
 @media(max-width:380px){.hero h1{font-size:42px!important}.hero-index{font-size:7.5px!important}.tonight-grid article{flex-basis:86vw}.novel-card{flex-basis:150px!important}.book-object{width:140px!important}.creator-card{flex-basis:86vw}}
 @media(prefers-reduced-motion:reduce){@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scroll-behavior:auto!important}}}
-
-/* Top-left brand logo — final override 2026-09-30 */
-@media (max-width:850px){.topbar .brand img{width:92px!important;height:auto!important;max-width:none!important}.topbar .brand{min-height:58px!important}}
-@media (max-width:520px){.topbar .brand img{width:76px!important}}
