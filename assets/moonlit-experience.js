@@ -26,22 +26,26 @@ const modes={
 };
 const key=m=>"moonlit-theme-bag-"+m;
 function freshBag(mode){const a=modes[mode].pool().map(w=>w.id);for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const memoryBags=new Map();let memoryRecent=[];
 function choose(mode="all"){
- const eligible=modes[mode].pool(),valid=new Set(eligible.map(w=>w.id));let bag;
- try{bag=JSON.parse(localStorage.getItem(key(mode))||"[]")}catch{bag=[]}
- bag=bag.filter(id=>valid.has(id));if(!bag.length)bag=freshBag(mode);
- let recent=[];try{recent=JSON.parse(sessionStorage.getItem("moonlit-recent")||"[]")}catch{}
+ const eligible=modes[mode]?.pool?.()||works,valid=new Set(eligible.map(w=>w.id));let bag;
+ try{bag=JSON.parse(localStorage.getItem(key(mode))||"[]")}catch{bag=memoryBags.get(mode)||[]}
+ if(!Array.isArray(bag))bag=[];bag=bag.filter(id=>valid.has(id));if(!bag.length)bag=freshBag(mode);
+ let recent=[];try{recent=JSON.parse(sessionStorage.getItem("moonlit-recent")||"[]")}catch{recent=memoryRecent}
+ if(!Array.isArray(recent))recent=[];
  let idx=bag.findIndex(id=>!recent.includes(id));if(idx<0)idx=0;
- const id=bag.splice(idx,1)[0],pick=works.find(w=>w.id===id);
- localStorage.setItem(key(mode),JSON.stringify(bag));sessionStorage.setItem("moonlit-recent",JSON.stringify([id,...recent.filter(x=>x!==id)].slice(0,5)));
- return {...pick,recommendation:modes[mode].reason(pick)};
+ const id=bag.splice(idx,1)[0],pick=works.find(w=>w.id===id)||eligible[0]||works[0];
+ memoryBags.set(mode,[...bag]);memoryRecent=[id,...recent.filter(x=>x!==id)].slice(0,5);
+ try{localStorage.setItem(key(mode),JSON.stringify(bag))}catch{}
+ try{sessionStorage.setItem("moonlit-recent",JSON.stringify(memoryRecent))}catch{}
+ return {...pick,recommendation:modes[mode]?.reason?.(pick)||"今晚就從這裡開始。"};
 }
 function mount(button){
  if(button.dataset.moonlitMounted)return;button.dataset.moonlitMounted="1";
  const box=document.createElement("section");box.className="moonlit-picker";box.hidden=true;
  box.innerHTML='<div class="moonlit-picker-head"><small>MOONLIT SERENDIPITY / 月光漫遊</small><button type="button" class="moonlit-picker-close" aria-label="關閉">×</button></div><div class="moonlit-theme-grid" role="group" aria-label="今晚的月光主題"><button type="button" data-mode="read"><small>READ</small><strong>今夜適合閱讀</strong><span>小說與札記</span></button><button type="button" data-mode="image"><small>SEE</small><strong>今夜適合看影像</strong><span>攝影系列</span></button><button type="button" data-mode="hidden"><small>WANDER</small><strong>今夜適合探索冷門作品</strong><span>避開主要推薦</span></button><button type="button" data-mode="quick"><small>5 MIN</small><strong>只給我 5 分鐘</strong><span>短暫停留</span></button><button type="button" data-mode="dark"><small>DARK</small><strong>今晚想看暗一點的</strong><span>夜色與未知</span></button><button type="button" data-mode="all" aria-pressed="true"><small>MOON</small><strong>全部交給月光</strong><span>全站作品</span></button></div><p class="moonlit-mode-intro"></p><div class="moonlit-picker-result" aria-live="polite"><span class="moonlit-picker-type"></span><strong class="moonlit-picker-title"></strong><p class="moonlit-picker-note"></p><p class="moonlit-picker-reason"></p></div><div class="moonlit-picker-actions"><button type="button" class="moonlit-reroll">↻ 同主題再選一次</button><a class="moonlit-go" href="#">就去這裡 →</a></div><p class="moonlit-picker-meta"></p>';
  button.insertAdjacentElement("afterend",box);let mode="all",current;
- const render=()=>{current=choose(mode);box.querySelector(".moonlit-mode-intro").textContent=modes[mode].intro;box.querySelector(".moonlit-picker-type").textContent=current.type+" · "+modes[mode].label;box.querySelector(".moonlit-picker-title").textContent=current.title;box.querySelector(".moonlit-picker-note").textContent=current.note;box.querySelector(".moonlit-picker-reason").textContent=current.recommendation;box.querySelector(".moonlit-go").href=ROOT+current.url;let left=0;try{left=JSON.parse(localStorage.getItem(key(mode))||"[]").length}catch{}box.querySelector(".moonlit-picker-meta").textContent="此主題使用獨立抽選輪次；目前還有 "+left+" 件作品等待月光帶你遇見。"};
+ const render=()=>{try{current=choose(mode);box.querySelector(".moonlit-mode-intro").textContent=modes[mode].intro;box.querySelector(".moonlit-picker-type").textContent=current.type+" · "+modes[mode].label;box.querySelector(".moonlit-picker-title").textContent=current.title;box.querySelector(".moonlit-picker-note").textContent=current.note;box.querySelector(".moonlit-picker-reason").textContent=current.recommendation;box.querySelector(".moonlit-go").href=ROOT+current.url;let left=memoryBags.get(mode)?.length||0;try{const saved=JSON.parse(localStorage.getItem(key(mode))||"[]");if(Array.isArray(saved))left=saved.length}catch{}box.querySelector(".moonlit-picker-meta").textContent="此主題使用獨立抽選輪次；目前還有 "+left+" 件作品等待月光帶你遇見。";box.querySelector(".moonlit-picker-result").scrollIntoView({behavior:"smooth",block:"nearest"})}catch(e){console.warn("Moonlit picker recovered",e);box.querySelector(".moonlit-mode-intro").textContent="月光剛剛迷路了一下，請再點一次。"}};
  const setMode=m=>{mode=m;box.querySelectorAll("[data-mode]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.mode===m)));render()};
  button.addEventListener("click",e=>{e.preventDefault();box.hidden=false;setMode("all");box.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"})});
  box.querySelector(".moonlit-picker-close").addEventListener("click",()=>{box.hidden=true;button.focus()});
