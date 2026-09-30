@@ -86,8 +86,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",s
 .video-preview iframe{width:100%;aspect-ratio:9/16;border:0;border-radius:16px;background:#06162a}
 .video-preview .notice{text-align:left}
 .video-preview .creator-nav{justify-content:flex-start}
-.chapter-tools{display:flex;justify-content:flex-end;margin-top:18px}
-.chapter-tools button{border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:transparent;color:var(--gold2);cursor:pointer}
+
 @media(max-width:850px){.topbar{display:block;padding:8px 16px 6px}.brand img{width:40px}.navlinks{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;margin:6px -16px 0;padding:0 12px 5px;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks a{font-size:13px;padding:7px 10px}.hero{padding:55px 20px}.featured-grid{grid-template-columns:1fr}.featured-visual{min-height:260px;max-height:380px}.video-preview{grid-template-columns:1fr;max-width:320px}.video-preview .notice{text-align:center}.video-preview .creator-nav{justify-content:center}.continue-box{flex-wrap:wrap}}
 @media(max-width:520px){.hero .eyebrow{font-size:10px;letter-spacing:2px}.hero-actions .cta{width:100%;margin:0}.featured-copy{padding:0}.featured-visual{min-height:230px}.section-title{font-size:29px}.creator-copy{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.creator-card,.toc a{transition:none}}
@@ -275,47 +274,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 @media(max-width:650px){#book .cover-title{font-size:12px;line-height:1.4}#book .novel-card[data-book-id="fushengsuiyue"] .cover-title,#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:10.5px}#book .cover-imprint{font-size:6px;letter-spacing:0}}
 
 
-/* Separate large logo in homepage hero top-left — 2026-09-30 */
-body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:clamp(28px,5vw,78px);top:clamp(28px,5vw,68px);width:clamp(150px,17vw,250px);height:auto;object-fit:contain;z-index:5;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28));pointer-events:none}
-@media(max-width:850px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:22px;top:24px;width:132px}}
-@media(max-width:520px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:16px;top:18px;width:108px}}
-
-/* Hero corner logo force-visible — 2026-09-30 */
-.hero{position:relative!important}
-.hero > .hero-corner-logo{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:48px!important;top:44px!important;width:260px!important;height:auto!important;max-width:32vw!important;z-index:50!important;object-fit:contain!important;filter:drop-shadow(0 10px 28px rgba(0,0,0,.45))!important}
-@media(max-width:850px){.hero > .hero-corner-logo{left:24px!important;top:26px!important;width:170px!important;max-width:36vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:120px!important;max-width:38vw!important}}
-
-/* Hero corner logo extra-large — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{width:360px!important;max-width:38vw!important;left:42px!important;top:34px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{width:410px!important;max-width:36vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{width:210px!important;max-width:42vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{width:145px!important;max-width:42vw!important}}
-
-/* Hero corner logo larger and lower — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{width:440px!important;max-width:42vw!important;left:42px!important;top:72px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{width:500px!important;max-width:40vw!important;top:78px!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{width:245px!important;max-width:46vw!important;top:48px!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{width:170px!important;max-width:46vw!important;top:38px!important}}
-
-/* Hero corner logo lower position — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{top:112px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{top:120px!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{top:68px!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{top:54px!important}}
-
-/* Hero logo leftward, clear of headline — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{left:8px!important;top:112px!important;width:400px!important;max-width:32vw!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{left:12px!important;top:120px!important;width:450px!important;max-width:30vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{left:8px!important;width:220px!important;max-width:38vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:4px!important;width:150px!important;max-width:36vw!important}}
-
-/* Keep hero logo clear of left-side caption — screenshot fix 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{left:42px!important;top:34px!important;width:440px!important;max-width:42vw!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{left:42px!important;top:34px!important;width:500px!important;max-width:40vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{left:22px!important;top:24px!important;width:245px!important;max-width:46vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:170px!important;max-width:46vw!important}}
-
 /* Homepage moonlight caption — single source of truth — 2026-09-30 */
 body:not([data-book-id]) > header.hero .hero-aside-note,
 body:not([data-book-id]) > header.hero .hero-note,
@@ -350,8 +308,8 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
 .reader-support{text-align:center}
 .support-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px 0}
 .support-actions button,.support-actions a,
-.support-actions button:hover,.support-actions a:hover,.chapter-like:hover{background:rgba(216,168,76,.2);transform:translateY(-2px)}
-.support-actions button[aria-pressed="true"],.chapter-like[aria-pressed="true"]{background:#d8a84c;color:#071b33}
+.support-actions button:hover,.support-actions a:hover{background:rgba(216,168,76,.2);transform:translateY(-2px)}
+.support-actions button[aria-pressed="true"]{background:#d8a84c;color:#071b33}
 .support-note,.support-feedback{max-width:730px;margin:8px auto;color:#afbed0;font-size:14px;line-height:1.8}
 .support-feedback:not(:empty){color:#f0d48a}
 
