@@ -158,3 +158,8 @@ body{background:#0a1825}
 
 /* 375px production overflow guard */
 @media(max-width:430px){html,body{max-width:100%;overflow-x:clip}*,*::before,*::after{box-sizing:border-box}body[data-book-id] main,body[data-book-id] .reader-shell,body[data-book-id] .chapter,body[data-book-id] .chapter-body,body[data-book-id] .reader-controls{min-width:0;max-width:100%}body[data-book-id] img,body[data-book-id] video,body[data-book-id] iframe,body[data-book-id] svg,body[data-book-id] canvas{max-width:100%}body[data-book-id] p,body[data-book-id] h1,body[data-book-id] h2,body[data-book-id] h3,body[data-book-id] blockquote,body[data-book-id] a{overflow-wrap:anywhere}}
+
+/* Permanent audiobook entry: visible even if reader JavaScript fails. */
+.audiobook-launcher{max-width:1180px;margin:24px 0;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#112537;border:1px solid rgba(218,192,151,.25)}
+.audiobook-launcher h2{margin:6px 0 8px}.audiobook-launcher p{margin:0;color:var(--muted);line-height:1.75}.audiobook-launch-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:1px solid rgba(218,192,151,.5);color:var(--accent);text-decoration:none;white-space:nowrap}
+@media(max-width:720px){.audiobook-launcher{margin:22px 0;padding:22px 18px;display:block}.audiobook-launch-button{margin-top:18px;width:100%;white-space:normal}}
