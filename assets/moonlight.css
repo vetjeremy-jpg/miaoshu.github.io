@@ -13,3 +13,16 @@ main>*{position:relative}
 :is(.album-photos,.gallery-grid,.photo-grid,.featured-visual,.hero-image) img{filter:brightness(1.015)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Unified golden crescent identity: transparent cutout, consistent on every section. */
+:root{--moon-gold:#f5d46d;--moon-crescent:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 112'%3E%3Cpath fill='%23f5d46d' d='M58 8 C82 13 98 32 98 55 C98 81 77 101 52 101 C33 101 17 90 10 74 C23 85 39 89 54 84 C76 77 88 57 83 37 C80 24 71 14 58 8 Z'/%3E%3C/svg%3E")}
+/* Page title: a quiet brand signature, not an overlay on text. */
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:"";display:inline-block;vertical-align:middle;width:.52em;height:.52em;margin-inline-start:.4em;background:var(--moon-crescent) center/contain no-repeat;filter:drop-shadow(0 0 6px rgba(245,212,109,.25))}
+/* Repeating section motif uses real alpha transparency, never a fake background-colored disk. */
+main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero){position:relative}
+main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{content:"";position:absolute;right:12px;top:12px;width:19px;height:19px;pointer-events:none;background:var(--moon-crescent) center/contain no-repeat;opacity:.36;filter:drop-shadow(0 0 7px rgba(245,212,109,.16));z-index:0}
+main :is(section,article) > *{position:relative}
+/* Small moon beside card headings, without changing the card's layout. */
+:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:"";display:inline-block;width:.65em;height:.65em;margin-inline-end:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.7}
+footer::before{content:"";display:block;width:24px;height:24px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 9px rgba(245,212,109,.18))}
+@media(max-width:650px){main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:14px;height:14px;right:8px;top:8px;opacity:.28}}
