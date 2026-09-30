@@ -1,0 +1,20 @@
+(()=>{const d=document,body=d.body;d.documentElement.classList.add("moonlit-enter");requestAnimationFrame(()=>{d.documentElement.classList.add("moonlit-ready");d.documentElement.classList.remove("moonlit-enter")});
+const hour=new Date().getHours(),phase=hour>=18&&hour<23?"evening":hour>=23||hour<5?"late":hour>=5&&hour<7?"dawn":"day";body.dataset.moonPhase=phase;
+const labels={evening:"今晚，月光剛升起",late:"夜深了，故事還醒著",dawn:"天將亮，月光尚未退去",day:"把一點月光留到白天"};const hero=d.querySelector(".hero-copy,.hero-inner");if(hero&&!d.querySelector(".moonlit-night-label")){const x=d.createElement("span");x.className="moonlit-night-label";x.textContent=labels[phase];hero.prepend(x)}
+const covers=[
+["fushengsuiyue","浮生歲月","01","earth","歲月"],["liangzhongtiankong/","兩種天空","02","void","雙生"],["liangzhongtiankong-part2","兩種天空 · II","03","void","續章"],["wuxiyue","烏溪月","04","earth","月"],["jiankangjie-tingquanyin","建康劫·聽泉引","05","red","劍"],["hiiro-setsugetsusho","緋色雪月抄","06","snow","雪"],["fengmen-yetan","風門夜譚","07","void","夜"],["alien-origin-sands","異形：起源之沙","08","void","沙"],["chenshui-de-huhuan","沉睡的呼喚","09","void","夢"],["canzhao-xie-longqi","殘照寫龍契","10","red","龍"]];
+const book=d.querySelector("#book");if(book)covers.forEach(([slug,title,no,tone,mark])=>{const a=[...book.querySelectorAll("a[href]")].find(x=>x.getAttribute("href").includes(slug));if(!a)return;const card=a.closest(".novel-card,.book-card,.creator-card")||a;if(card.querySelector(".moonlit-cover"))return;const cover=d.createElement("div");cover.className="moonlit-cover";cover.dataset.tone=tone;cover.innerHTML='<span class="series">MOONLIT STORIES · '+no+'</span><strong>'+title+'</strong><span class="mark">'+mark+'</span>';card.prepend(cover)});
+const quotes=[
+["從一個高雄的暑假出發，青春的相遇牽起上一代的戰火記憶。","《浮生歲月》","books/fushengsuiyue/"],
+["愛與失落穿過歲月，也改變了人們尋找幸福的方式。","《浮生歲月》","books/fushengsuiyue/"],
+["霧峰舊宅裡，一本無名手札被重新翻開。","《烏溪月》","books/wuxiyue/"],
+["一段埋藏於家族記憶中的情感，逐漸浮出歷史與姓氏的陰影。","《烏溪月》","books/wuxiyue/"],
+["建康的繁華在侯景之亂中崩解。","《建康劫·聽泉引》","books/jiankangjie-tingquanyin/"],
+["手中的力量，究竟為了什麼？","《建康劫·聽泉引》","books/jiankangjie-tingquanyin/"],
+["鋒刃之外，還有關於守護與代價的叩問。","《緋色雪月抄》","books/hiiro-setsugetsusho/"],
+["至少在這一天，我沒有只是想著要改變。","〈把臺北走成一封給自己的信〉","posts/taipei-grand-trail-20260928/"],
+["不是準備好了才出發，而是出發之後，才慢慢變成那個準備好的人。","〈把臺北走成一封給自己的信〉","posts/taipei-grand-trail-20260928/"]
+];const q=d.querySelector(".moonlit-found-line");if(q){q.classList.add("moonlit-quote-v2");const pick=quotes[Math.floor(Math.random()*quotes.length)];q.innerHTML='<blockquote>「'+pick[0]+'」</blockquote><footer>出自 <a href="'+pick[2]+'">'+pick[1]+'</a> · 每次來訪，月光會留下不同一句</footer>'}
+const map={fushengsuiyue:["歲月之後，看一束城市的光","../../gallery/#taipei"],wuxiyue:["從舊宅的月色，走進攝影館","../../gallery/"],"jiankangjie-tingquanyin":["離開刀兵，去看雪庭裡的一柄劍","../../gallery/#degoo-album"],"hiiro-setsugetsusho":["從文字的雪，走向影像的雪","../../gallery/#degoo-album"],"fengmen-yetan":["夜譚之後，沿著夜色繼續走","../../gallery/#taipei"]};const id=body.dataset.bookId;if(id&&map[id]){const last=[...d.querySelectorAll(".chapter[id]")].pop();if(last){const x=d.createElement("aside");x.className="moonlit-crosscuration";x.innerHTML='<small>WORDS × PHOTOGRAPHY / 文字 × 攝影</small><strong>'+map[id][0]+'</strong><a href="'+map[id][1]+'">看相關攝影作品 →</a>';last.insertAdjacentElement("afterend",x)}}
+if(location.pathname.includes("/gallery/")){const figs=[...d.querySelectorAll("figure")];figs.forEach((f,i)=>{const cap=f.querySelector("figcaption");if(cap&&!cap.querySelector(".gallery-story-index")){const n=d.createElement("span");n.className="gallery-story-index";n.textContent=String(i+1).padStart(2,"0");cap.prepend(n)}});const first=figs[0];if(first){const note=d.createElement("p");note.className="gallery-story-note";note.textContent="從第一張開始慢慢看：光線、眼神與動作不是單張展示，而是一段依序展開的影像敘事。";first.insertAdjacentElement("beforebegin",note)}}
+})();
