@@ -1,6 +1,14 @@
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ /* Reader comfort: local-only spacing and distraction-free mode. */
+ const comfort=document.createElement('div');comfort.className='moonlit-reader-comfort';comfort.setAttribute('role','group');comfort.setAttribute('aria-label','閱讀舒適度設定');
+ const spacing=document.createElement('button');spacing.type='button';spacing.textContent='行距：舒適';
+ const focus=document.createElement('button');focus.type='button';focus.textContent='專注閱讀';
+ comfort.append(spacing,focus);(document.querySelector('#continue-reading')||document.querySelector('#toc')||document.querySelector('main'))?.before(comfort);
+ let wide=get('wide-spacing')==='1';function applySpacing(){document.body.classList.toggle('moonlit-wide-spacing',wide);spacing.textContent=wide?'行距：寬鬆':'行距：舒適';spacing.setAttribute('aria-pressed',String(wide))}applySpacing();spacing.addEventListener('click',()=>{wide=!wide;set('wide-spacing',wide?'1':'0');applySpacing()});
+ let focused=get('focus-mode')==='1';function applyFocus(){document.body.classList.toggle('moonlit-focus-mode',focused);focus.textContent=focused?'退出專注閱讀':'專注閱讀';focus.setAttribute('aria-pressed',String(focused))}applyFocus();focus.addEventListener('click',()=>{focused=!focused;set('focus-mode',focused?'1':'0');applyFocus()});
+
  const searchLink=document.createElement('a');searchLink.href='../../search/';searchLink.className='moonlit-search-link';searchLink.textContent='⌕ 搜尋全站創作';searchLink.setAttribute('aria-label','搜尋小說、章節、攝影及札記');const readerNav=document.querySelector('nav')||document.querySelector('header');readerNav?.append(searchLink);
  const bookId=document.body.dataset.bookId||'novel';
  const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
