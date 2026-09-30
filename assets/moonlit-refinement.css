@@ -113,3 +113,10 @@ body{overflow-wrap:anywhere}
 .gallery-series img,.series-card img{transition:transform var(--ml-motion-mid) var(--ml-ease),filter var(--ml-motion-mid) var(--ml-ease)}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.gallery-series:hover img,.series-card:hover img{transform:scale(1.012);filter:brightness(1.03)}}
 @media(max-width:720px){#book .moonlit-cover{min-height:200px}.moonlit-bookmark-note{margin-inline:0;padding:16px}}
+
+.moonlit-editorial-feature{max-width:1180px;margin:0 auto clamp(52px,8vw,96px);padding:clamp(24px,4vw,42px) clamp(20px,5vw,54px);display:grid;grid-template-columns:minmax(0,.72fr) minmax(260px,1.28fr);column-gap:clamp(28px,6vw,76px);align-items:end;border-block:1px solid var(--ml-line);background:linear-gradient(90deg,rgba(228,210,175,.045),transparent 64%)}
+.moonlit-editorial-feature small{grid-column:1;font:600 10px/1.5 var(--ml-sans);letter-spacing:.2em;color:var(--ml-moon)}
+.moonlit-editorial-feature strong{grid-column:1;font:500 clamp(1.8rem,1.4rem + 1.7vw,3rem)/1.35 var(--ml-serif);color:var(--ml-ink);margin-top:8px}
+.moonlit-editorial-feature p{grid-column:2;grid-row:1/3;margin:0;color:var(--ml-muted);font:400 var(--ml-step-1)/1.9 var(--ml-serif)}
+.moonlit-editorial-feature a{grid-column:2;margin-top:18px;width:max-content;min-height:44px;display:inline-flex;align-items:center;color:var(--ml-moon);text-decoration:none;border-bottom:1px solid var(--ml-line)}
+@media(max-width:720px){.moonlit-editorial-feature{grid-template-columns:1fr;margin-inline:18px}.moonlit-editorial-feature small,.moonlit-editorial-feature strong,.moonlit-editorial-feature p,.moonlit-editorial-feature a{grid-column:1;grid-row:auto}.moonlit-editorial-feature p{margin-top:16px}}
