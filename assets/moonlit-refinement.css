@@ -120,3 +120,39 @@ body{overflow-wrap:anywhere}
 .moonlit-editorial-feature p{grid-column:2;grid-row:1/3;margin:0;color:var(--ml-muted);font:400 var(--ml-step-1)/1.9 var(--ml-serif)}
 .moonlit-editorial-feature a{grid-column:2;margin-top:18px;width:max-content;min-height:44px;display:inline-flex;align-items:center;color:var(--ml-moon);text-decoration:none;border-bottom:1px solid var(--ml-line)}
 @media(max-width:720px){.moonlit-editorial-feature{grid-template-columns:1fr;margin-inline:18px}.moonlit-editorial-feature small,.moonlit-editorial-feature strong,.moonlit-editorial-feature p,.moonlit-editorial-feature a{grid-column:1;grid-row:auto}.moonlit-editorial-feature p{margin-top:16px}}
+
+/* FINAL EDITORIAL CLEANUP — 2026-09-30 */
+header nav a .moonlit-phase-mark,.navlinks a .moonlit-phase-mark{display:none!important}
+header nav a,.navlinks a{letter-spacing:.02em}
+main>section:not(.hero):not(.moonlit-tonight){scroll-margin-top:88px}
+#book .novel-card,#book .book-card,#book .creator-card{box-shadow:none!important;border-color:rgba(205,225,243,.11)!important}
+#book .moonlit-cover{aspect-ratio:4/5;min-height:0!important;padding:clamp(20px,2.4vw,30px);display:grid;grid-template-rows:auto 1fr auto;align-content:stretch}
+#book .moonlit-cover .series{align-self:start}
+#book .moonlit-cover strong{align-self:center;max-width:12ch;font-size:clamp(1.35rem,1rem + 1vw,2rem);line-height:1.5}
+#book .moonlit-cover .mark{align-self:end;justify-self:end;line-height:1}
+.moonlit-tonight,.moonlit-editorial-feature{box-shadow:none!important}
+.moonlit-tonight{border-color:rgba(205,225,243,.12)}
+@media(max-width:430px){
+ body{max-width:100%;overflow-x:clip}
+ .moonlit-editorial-feature{margin:0 14px 56px;padding:24px 18px}
+ .moonlit-editorial-feature strong{font-size:1.65rem}
+ .moonlit-editorial-feature p{font-size:1rem;line-height:1.8}
+ .moonlit-tonight{margin-inline:14px;padding:24px 18px}
+ .moonlit-moods{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+ .moonlit-moods button{width:100%;min-width:0}
+ .moonlit-moods button:last-child{grid-column:1/-1}
+ #book .moonlit-cover{aspect-ratio:16/10;padding:20px;min-height:0!important}
+ #book .moonlit-cover strong{font-size:1.35rem}
+ .moonlit-bookmark-note{margin-inline:14px}
+ .moonlit-focus-toggle{right:12px;bottom:12px;min-width:44px;min-height:44px}
+}
+@media(max-width:375px){
+ .moonlit-editorial-feature,.moonlit-tonight,.moonlit-bookmark-note{margin-left:12px;margin-right:12px}
+ .moonlit-moods{grid-template-columns:1fr}
+ .moonlit-moods button:last-child{grid-column:auto}
+ #book .moonlit-cover{aspect-ratio:3/2}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ .moonlit-ambient-glow{animation:none!important;transform:none!important}
+}
