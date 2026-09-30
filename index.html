@@ -373,6 +373,13 @@ body:not([data-book-id]) > header.hero .hero-side-caption{display:flex!important
 /* Keep exactly one moonlight caption — 2026-09-30 */
 .hero > .hero-side-caption{display:flex!important}
 .hero .hero-side-caption ~ .hero-side-caption{display:none!important}
+
+/* Screenshot fix: force one hero tagline only — 2026-09-30 */
+/* Hide any legacy/generated duplicate; keep only the explicit direct child caption. */
+.hero .hero-side-caption{display:none!important}
+.hero > .hero-side-caption{display:flex!important}
+.hero > .hero-side-caption ~ .hero-side-caption{display:none!important}
+.hero .hero-aside-note,.hero .hero-note,.hero [data-hero-note]{display:none!important}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
