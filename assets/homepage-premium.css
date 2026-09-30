@@ -88,15 +88,6 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
  }
 }
 
-/* Navigation logo slightly larger — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar .brand img{
-   width:52px!important;
-   height:auto!important;
-   max-width:none!important;
- }
-}
-
 /* Homepage polish pass — 2026-09-30 */
 /* Refine finish without changing the established desktop composition. */
 body:not([data-book-id]) > .topbar{
@@ -111,12 +102,6 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{
  transform:translateY(-1px);
 }
 @media (min-width:851px){
- body:not([data-book-id]) > header.hero{
-   background:
-    radial-gradient(circle at 45% 34%,rgba(132,164,192,.075),transparent 24%),
-    radial-gradient(circle at 78% 18%,rgba(77,112,145,.055),transparent 30%),
-    linear-gradient(135deg,#07111d 0%,#091827 58%,#07111d 100%)!important;
- }
  body:not([data-book-id]) > header.hero .moonlight-emblem{
    filter:drop-shadow(0 0 24px rgba(229,237,244,.12)) drop-shadow(0 0 72px rgba(184,207,228,.065))!important;
  }
