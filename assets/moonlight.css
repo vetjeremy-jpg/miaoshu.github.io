@@ -1,14 +1,14 @@
 /* Moonlit Stories — a quiet trace of moonlight throughout every page. */
 :root{--moon-glow:rgba(195,216,237,.11);--moon-line:rgba(213,227,242,.18)}
 body{position:relative}
-body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;background:radial-gradient(ellipse 42% 28% at 89% 4%,rgba(194,216,239,.075),transparent 76%),linear-gradient(118deg,transparent 28%,rgba(196,218,240,.018) 49%,transparent 70%);mix-blend-mode:screen}
+body::after{content:none}
 header,main,footer,section,article{position:relative}
-main::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 34% 220px at 92% 4%,rgba(181,211,238,.075),transparent 95%);background-size:100% 900px;background-repeat:repeat-y}
+main::before{content:none}
 main>*{position:relative}
 :is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.reader-comment-frame){border-color:var(--moon-line,rgba(213,227,242,.18));box-shadow:inset 0 1px 0 rgba(220,235,248,.045)}
 :is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){background-image:radial-gradient(ellipse at 96% 0%,rgba(185,214,239,.055),transparent 54%)}
 :is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero){isolation:isolate}
-:is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero)::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 86% 8%,rgba(191,216,237,.12),transparent 48%)}
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero)::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 86% 8%,rgba(191,216,237,.07),transparent 48%)}
 :is(h1,h2,h3,.section-title,.chapter-kicker,.creator-tag){text-shadow:0 0 25px rgba(199,218,237,.075)}
 :is(.album-photos,.gallery-grid,.photo-grid,.featured-visual,.hero-image) img{filter:brightness(1.015)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
@@ -26,3 +26,4 @@ main :is(section,article) > *{position:relative}
 :is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:"";display:inline-block;width:.65em;height:.65em;margin-inline-end:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.7}
 footer::before{content:"";display:block;width:24px;height:24px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 9px rgba(245,212,109,.18))}
 @media(max-width:650px){main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:14px;height:14px;right:8px;top:8px;opacity:.28}}
+\n/* Homepage: eliminate hard-edged, differently tinted rectangular moonlight layers. */\nbody:not([data-book-id]) > header.hero::after{content:none!important;background:none!important;box-shadow:none!important}\nbody:not([data-book-id]) > header.hero{background-image:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("../assets/optimized/photo-15.webp");background-position:center;background-size:cover;background-repeat:no-repeat}\n@media(min-width:851px){body:not([data-book-id]) > header.hero{background-image:linear-gradient(90deg,rgba(9,11,12,.94) 0%,rgba(9,11,12,.72) 38%,rgba(9,11,12,.1) 100%),url("../assets/optimized/photo-15.webp");background-position:center 48%;background-size:cover}}\n
