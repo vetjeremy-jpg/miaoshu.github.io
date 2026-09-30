@@ -10,3 +10,5 @@
 .gallery-curation-toggle{position:fixed;right:18px;bottom:18px;z-index:900;border:1px solid rgba(228,210,175,.55);background:rgba(7,18,31,.92);color:#e4d2af;padding:10px 14px;cursor:pointer;backdrop-filter:blur(10px)}body.curated-view .top,body.curated-view .intro,body.curated-view footer{opacity:.12;transition:.25s}body.curated-view figure{margin-block:12vh}body.curated-view figure figcaption{max-width:720px;margin:auto}
 @media(max-width:700px){.moonlit-entry-grid{grid-template-columns:1fr}.moonlit-entry{min-height:auto}.moonlit-serendipity{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.moonlit-entry{transition:none}}
+
+@media(max-width:700px){.moonlit-serendipity button{min-height:44px;width:100%;text-align:center}.moonlit-entry{min-height:64px}.moonlit-found-line a{display:inline-flex;align-items:center;min-height:44px}.gallery-curation-toggle{min-height:44px;right:12px;bottom:12px;max-width:calc(100% - 24px)}body.curated-view figure{margin-block:56px}}
