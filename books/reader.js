@@ -1,6 +1,11 @@
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const bookId=document.body.dataset.bookId||'novel';
+ const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
+ const prefix='miaoshu-'+bookId+'-';
+ const get=(key)=>{try{return localStorage.getItem(prefix+key)}catch(e){return null}};
+ const set=(key,value)=>{try{localStorage.setItem(prefix+key,value);return true}catch(e){return false}};
  /* Reader comfort: local-only spacing and distraction-free mode. */
  const comfort=document.createElement('div');comfort.className='moonlit-reader-comfort';comfort.setAttribute('role','group');comfort.setAttribute('aria-label','閱讀舒適度設定');
  const spacing=document.createElement('button');spacing.type='button';spacing.textContent='行距：舒適';
@@ -10,11 +15,7 @@
  let focused=get('focus-mode')==='1';function applyFocus(){document.body.classList.toggle('moonlit-focus-mode',focused);focus.textContent=focused?'退出專注閱讀':'專注閱讀';focus.setAttribute('aria-pressed',String(focused))}applyFocus();focus.addEventListener('click',()=>{focused=!focused;set('focus-mode',focused?'1':'0');applyFocus()});
 
  const searchLink=document.createElement('a');searchLink.href='../../search/';searchLink.className='moonlit-search-link';searchLink.textContent='⌕ 搜尋全站創作';searchLink.setAttribute('aria-label','搜尋小說、章節、攝影及札記');const readerNav=document.querySelector('nav')||document.querySelector('header');readerNav?.append(searchLink);
- const bookId=document.body.dataset.bookId||'novel';
- const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
- const prefix='miaoshu-'+bookId+'-';
- const get=(key)=>{try{return localStorage.getItem(prefix+key)}catch(e){return null}};
- const set=(key,value)=>{try{localStorage.setItem(prefix+key,value);return true}catch(e){return false}};
+
  if(bookId==='fushengsuiyue'){
   for(const [next,old] of [['chapter','miaoshu-reading-chapter'],['font-size','miaoshu-reader-font-size'],['bookmarks','miaoshu-saved-chapters']]){
    if(get(next)===null){try{const value=localStorage.getItem(old);if(value!==null)set(next,value)}catch(e){}}
