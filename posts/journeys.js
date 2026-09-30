@@ -8,7 +8,8 @@ window.MIAOSHU_JOURNEYS = [
     country: "台灣",
     category: "山行",
     summary: "以減肥為出發的理由，沿著山徑走向碧山巖的夜色。遠眺臺北 101，再用一頓晚餐犒賞自己，收下這天的風景與心情。",
-    articleUrl: "#taipei-grand-trail-20260928",
+    articleUrl: "./#taipei-grand-trail-20260928",
+    documentUrl: "files/taipei-grand-trail-20260928.pdf",
     cover: "files/taipei-grand-trail-20260928-cover.jpg",
     location: {
       name: "碧山巖",
