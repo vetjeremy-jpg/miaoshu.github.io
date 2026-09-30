@@ -274,47 +274,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 @media(max-width:650px){#book .cover-title{font-size:12px;line-height:1.4}#book .novel-card[data-book-id="fushengsuiyue"] .cover-title,#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:10.5px}#book .cover-imprint{font-size:6px;letter-spacing:0}}
 
 
-/* Separate large logo in homepage hero top-left — 2026-09-30 */
-body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:clamp(28px,5vw,78px);top:clamp(28px,5vw,68px);width:clamp(150px,17vw,250px);height:auto;object-fit:contain;z-index:5;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28));pointer-events:none}
-@media(max-width:850px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:22px;top:24px;width:132px}}
-@media(max-width:520px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:16px;top:18px;width:108px}}
-
-/* Hero corner logo force-visible — 2026-09-30 */
-.hero{position:relative!important}
-.hero > .hero-corner-logo{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:48px!important;top:44px!important;width:260px!important;height:auto!important;max-width:32vw!important;z-index:50!important;object-fit:contain!important;filter:drop-shadow(0 10px 28px rgba(0,0,0,.45))!important}
-@media(max-width:850px){.hero > .hero-corner-logo{left:24px!important;top:26px!important;width:170px!important;max-width:36vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:120px!important;max-width:38vw!important}}
-
-/* Hero corner logo extra-large — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{width:360px!important;max-width:38vw!important;left:42px!important;top:34px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{width:410px!important;max-width:36vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{width:210px!important;max-width:42vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{width:145px!important;max-width:42vw!important}}
-
-/* Hero corner logo larger and lower — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{width:440px!important;max-width:42vw!important;left:42px!important;top:72px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{width:500px!important;max-width:40vw!important;top:78px!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{width:245px!important;max-width:46vw!important;top:48px!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{width:170px!important;max-width:46vw!important;top:38px!important}}
-
-/* Hero corner logo lower position — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{top:112px!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{top:120px!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{top:68px!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{top:54px!important}}
-
-/* Hero logo leftward, clear of headline — 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{left:8px!important;top:112px!important;width:400px!important;max-width:32vw!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{left:12px!important;top:120px!important;width:450px!important;max-width:30vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{left:8px!important;width:220px!important;max-width:38vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:4px!important;width:150px!important;max-width:36vw!important}}
-
-/* Keep hero logo clear of left-side caption — screenshot fix 2026-09-30 */
-@media(min-width:851px){.hero > .hero-corner-logo{left:42px!important;top:34px!important;width:440px!important;max-width:42vw!important}}
-@media(min-width:1400px){.hero > .hero-corner-logo{left:42px!important;top:34px!important;width:500px!important;max-width:40vw!important}}
-@media(max-width:850px){.hero > .hero-corner-logo{left:22px!important;top:24px!important;width:245px!important;max-width:46vw!important}}
-@media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:170px!important;max-width:46vw!important}}
-
 /* Homepage moonlight caption — single source of truth — 2026-09-30 */
 body:not([data-book-id]) > header.hero .hero-aside-note,
 body:not([data-book-id]) > header.hero .hero-note,
