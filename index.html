@@ -354,6 +354,15 @@ body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:
 body:not([data-book-id]) > header.hero .hero-aside-note,
 body:not([data-book-id]) > header.hero .hero-note,
 body:not([data-book-id]) > header.hero [data-hero-note]{display:none!important}
+
+/* Definitively remove lower duplicate moonlight caption — 2026-09-30 */
+body:not([data-book-id]) > header.hero::before,
+body:not([data-book-id]) > header.hero::after{content:none!important}
+body:not([data-book-id]) > header.hero .hero-inner::before,
+body:not([data-book-id]) > header.hero .hero-inner::after{content:none!important}
+body:not([data-book-id]) > header.hero .hero-copy::before,
+body:not([data-book-id]) > header.hero .hero-copy::after{content:none!important}
+body:not([data-book-id]) > header.hero .hero-side-caption{display:flex!important}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
