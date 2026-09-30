@@ -1,0 +1,20 @@
+(()=>{'use strict';
+if(document.getElementById('audiobook-player'))return;
+const chapters=[...document.querySelectorAll('.chapter[id]')];if(!chapters.length)return;
+const target=document.querySelector('.book-directory')||document.querySelector('#toc')||document.querySelector('main');if(!target)return;
+const player=document.createElement('section');player.className='audiobook-player panel';player.id='audiobook-player';player.setAttribute('aria-labelledby','audiobook-title');
+player.innerHTML='<div class="audiobook-heading"><div><span class="chapter-kicker">LISTEN · 有聲閱讀</span><h2 id="audiobook-title">聽喵叔說故事</h2><p class="audiobook-note">使用 iPhone／瀏覽器內建中文語音朗讀。</p></div></div><div class="audiobook-options"><label>朗讀章節<select id="audio-chapter"></select></label><label>朗讀速度<select id="audio-rate"><option value="0.8">舒緩 · 0.8×</option><option value="1" selected>標準 · 1×</option><option value="1.15">稍快 · 1.15×</option><option value="1.3">快速 · 1.3×</option></select></label></div><div class="audiobook-actions"><button type="button" id="audio-prev">← 上一段</button><button type="button" id="audio-play" class="audio-primary">▶ 開始朗讀</button><button type="button" id="audio-next">下一段 →</button><button type="button" id="audio-stop">■ 停止</button></div><p class="audiobook-status" id="audio-status" role="status" aria-live="polite">選擇章節，按「開始朗讀」。</p>';
+target.after(player);
+const chSel=player.querySelector('#audio-chapter'),rate=player.querySelector('#audio-rate'),play=player.querySelector('#audio-play'),status=player.querySelector('#audio-status');
+chapters.forEach(ch=>{const o=document.createElement('option');o.value=ch.id;o.textContent=ch.querySelector('h2')?.textContent||ch.id;chSel.append(o)});
+const hash=location.hash.slice(1);if(chapters.some(c=>c.id===hash))chSel.value=hash;
+if(!('speechSynthesis'in window)||!('SpeechSynthesisUtterance'in window)){play.disabled=true;status.textContent='此瀏覽器目前沒有提供語音朗讀；請使用 Safari 的「聆聽頁面」或更新瀏覽器。';return}
+const synth=window.speechSynthesis;let items=[],pos=0,active=false,paused=false,run=0;
+function collect(){const ch=document.getElementById(chSel.value);return [...(ch?.querySelectorAll('.chapter-body p,.chapter-body .chapter-subheading')||[])].flatMap(el=>{const t=el.textContent.trim();return t?(t.match(/.{1,70}(?:[。！？；，、]|$)|.{1,70}/gu)||[t]).map(text=>({el,text:text.trim()})):[]}).filter(x=>x.text)}
+function clear(){document.querySelectorAll('.audio-reading').forEach(x=>x.classList.remove('audio-reading'))}
+function stop(msg='已停止朗讀。'){run++;active=false;paused=false;synth.cancel();clear();play.textContent='▶ 開始朗讀';status.textContent=msg}
+function speak(){if(!active||paused)return;if(pos>=items.length){stop('本章朗讀完畢。');return}const token=run,x=items[pos];clear();x.el.classList.add('audio-reading');status.textContent=chSel.selectedOptions[0].textContent+' · 第 '+(pos+1)+'／'+items.length+' 段';const u=new SpeechSynthesisUtterance(x.text);u.lang='zh-TW';u.rate=Number(rate.value)||1;u.onend=()=>{if(token!==run)return;pos++;setTimeout(speak,120)};u.onerror=e=>{if(token!==run||e.error==='canceled'||e.error==='interrupted')return;pos++;setTimeout(speak,180)};try{synth.speak(u)}catch(e){stop('語音無法啟動，請再按一次開始朗讀。')}}
+function begin(at=0){stop('');items=collect();pos=Math.max(0,Math.min(at,Math.max(0,items.length-1)));if(!items.length){status.textContent='本章沒有可朗讀內容。';return}active=true;paused=false;play.textContent='Ⅱ 暫停朗讀';setTimeout(speak,180)}
+play.addEventListener('click',()=>{if(!active){begin(pos);return}if(paused){synth.resume();paused=false;play.textContent='Ⅱ 暫停朗讀';status.textContent='繼續朗讀中。'}else{synth.pause();paused=true;play.textContent='▶ 繼續朗讀';status.textContent='已暫停朗讀。'}});
+player.querySelector('#audio-stop').addEventListener('click',()=>{pos=0;stop()});player.querySelector('#audio-prev').addEventListener('click',()=>begin(Math.max(0,pos-1)));player.querySelector('#audio-next').addEventListener('click',()=>begin(Math.min(items.length-1,pos+1)));chSel.addEventListener('change',()=>{pos=0;stop('已選擇章節，按「開始朗讀」。')});rate.addEventListener('change',()=>{if(active)begin(pos)});
+})();
