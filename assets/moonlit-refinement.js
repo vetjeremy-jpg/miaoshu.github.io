@@ -3,10 +3,7 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safeSet=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}},safeKeys=()=>{try{return Array.from({length:localStorage.length},(_,i)=>localStorage.key(i)).filter(Boolean)}catch(e){return []}};
 
-/* Phase vocabulary on navigation, never extra large moons. */
-const phaseFor=text=>/小說|書房/.test(text)?'full':/攝影|影像/.test(text)?'half':/札記|文章|旅行/.test(text)?'crescent':/關於|喵叔/.test(text)?'new':null;
-$$('header nav a,.navlinks a').forEach(a=>{const phase=phaseFor(a.textContent);if(!phase||a.querySelector('.moonlit-phase-mark'))return;a.classList.add('moonlit-phase-nav');a.dataset.phase=phase;const mark=document.createElement('span');mark.className='moonlit-phase-mark';mark.setAttribute('aria-hidden','true');a.prepend(mark)});
-
+/* Navigation stays typographic and quiet; phase marks removed in Final Editorial pass. */
 /* Cinematic homepage glow with restrained pointer parallax. */
 const hero=$('.hero');
 if(hero&&!document.body.dataset.bookId){
