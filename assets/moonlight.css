@@ -13,11 +13,13 @@ body:not([data-book-id]) > header.hero .moonlight-emblem{width:132px;height:132p
 body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
 @media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:96px;height:96px;top:16px;right:18px}}
 @media(max-width:650px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:84px;height:84px;top:12px;right:14px}}
-/* One moon by the title of each interior landing page, not on every card. */
-:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:"";display:inline-block;vertical-align:middle;width:.8em;height:.8em;margin-inline-start:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.75;filter:drop-shadow(0 0 6px rgba(245,212,109,.16))}
-/* Keep the footer signature; remove repetitive moons from every section, card and chapter. */
-footer::before{content:"";display:block;width:42px;height:42px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 7px rgba(245,212,109,.12))}
-@media(max-width:650px){footer::before{width:34px;height:34px}}
+/* Only homepage and About hero retain a decorative moon. */
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:none!important;background:none!important}
+footer::before{content:none!important;background:none!important}
+:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:none!important}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{content:none!important}
+main :is(section,article):not(.hero)::before{content:none!important}
+body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!important}
 /* Override legacy header's extra decorative moon: keep the actual page moon only. */
 :is(.topbar,.top) .brand::after{content:none!important}
 /* Homepage: one full-bleed image and a seamless gradient, no bounded overlay. */
