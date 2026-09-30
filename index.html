@@ -307,6 +307,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 .brand img{width:clamp(92px,8vw,126px);height:auto;flex:0 0 auto;background:transparent;object-fit:contain}
 @media(max-width:850px){.topbar{display:flex;align-items:center;padding:8px 14px}.brand img{width:88px}.navlinks{flex:1;margin:0;min-width:0}}
 @media(max-width:520px){.brand{font-size:0;gap:0}.brand img{width:76px}.topbar{gap:8px}.navlinks{padding-left:4px}}
+
+/* Header logo final sizing — 2026-09-30 */
+@media(min-width:851px){
+ .topbar{min-height:104px;padding-top:10px;padding-bottom:10px}
+ .topbar .brand{margin-right:auto;flex:0 0 auto}
+ .topbar .brand img{width:150px !important;max-width:none !important;height:auto !important}
+}
+@media(min-width:1200px){.topbar .brand img{width:170px !important}}
+@media(max-width:850px){.topbar .brand img{width:104px !important;max-width:none !important;height:auto !important}}
+@media(max-width:520px){.topbar .brand img{width:88px !important}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
