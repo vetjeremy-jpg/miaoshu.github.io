@@ -343,92 +343,34 @@ body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:
 @media(max-width:850px){.hero > .hero-corner-logo{left:22px!important;top:24px!important;width:245px!important;max-width:46vw!important}}
 @media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:170px!important;max-width:46vw!important}}
 
-/* Restore homepage side caption — 2026-09-30 */
-.hero > .hero-side-caption{display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:clamp(56px,8vw,130px)!important;top:52%!important;transform:translateY(-50%)!important;z-index:12!important;align-items:center!important;gap:14px!important;color:rgba(220,230,238,.72)!important;font-size:clamp(12px,.9vw,15px)!important;letter-spacing:.16em!important;white-space:nowrap!important}
-.hero > .hero-side-caption span{display:block!important;width:34px!important;height:1px!important;background:rgba(220,230,238,.55)!important}
-@media(max-width:850px){.hero > .hero-side-caption{left:24px!important;top:48%!important;font-size:11px!important}}
-@media(max-width:620px){.hero > .hero-side-caption{display:none!important}}
-
-
-/* Hide legacy duplicate moonlight caption; keep restored upper caption — 2026-09-30 */
+/* Homepage moonlight caption — single source of truth — 2026-09-30 */
 body:not([data-book-id]) > header.hero .hero-aside-note,
 body:not([data-book-id]) > header.hero .hero-note,
 body:not([data-book-id]) > header.hero [data-hero-note]{display:none!important}
-
-/* Definitively remove lower duplicate moonlight caption — 2026-09-30 */
 body:not([data-book-id]) > header.hero::before,
-body:not([data-book-id]) > header.hero::after{content:none!important}
+body:not([data-book-id]) > header.hero::after,
 body:not([data-book-id]) > header.hero .hero-inner::before,
-body:not([data-book-id]) > header.hero .hero-inner::after{content:none!important}
+body:not([data-book-id]) > header.hero .hero-inner::after,
 body:not([data-book-id]) > header.hero .hero-copy::before,
 body:not([data-book-id]) > header.hero .hero-copy::after{content:none!important}
-body:not([data-book-id]) > header.hero .hero-side-caption{display:flex!important}
+body:not([data-book-id]) > header.hero > .hero-side-caption{
+  display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;
+  left:clamp(70px,7vw,118px)!important;top:72%!important;transform:none!important;z-index:12!important;
+  align-items:center!important;gap:18px!important;color:rgba(235,239,239,.86)!important;
+  font-size:clamp(16px,1.15vw,20px)!important;line-height:1.5!important;letter-spacing:.18em!important;white-space:nowrap!important
+}
+body:not([data-book-id]) > header.hero > .hero-side-caption span{
+  display:block!important;width:42px!important;min-width:42px!important;height:1px!important;background:rgba(230,196,128,.68)!important
+}
+@media(max-width:850px) and (min-width:621px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:24px!important;top:70%!important;font-size:14px!important}}
+@media(max-width:620px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:18px!important;top:auto!important;bottom:26px!important;max-width:calc(100vw - 36px)!important;gap:10px!important;font-size:12px!important;letter-spacing:.12em!important}body:not([data-book-id]) > header.hero > .hero-side-caption span{width:24px!important;min-width:24px!important}}
+@media(max-width:380px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:16px!important;bottom:22px!important;font-size:11px!important;letter-spacing:.08em!important;gap:8px!important}body:not([data-book-id]) > header.hero > .hero-side-caption span{width:20px!important;min-width:20px!important}}
 
-/* Hero logo smaller and slightly left — 2026-09-30 final */
+/* Hero logo final sizing */
 @media(min-width:851px){.hero > .hero-corner-logo{left:18px!important;width:390px!important;max-width:36vw!important}}
 @media(min-width:1400px){.hero > .hero-corner-logo{left:18px!important;width:440px!important;max-width:34vw!important}}
 @media(max-width:850px){.hero > .hero-corner-logo{left:10px!important;width:220px!important;max-width:42vw!important}}
 @media(max-width:520px){.hero > .hero-corner-logo{left:6px!important;width:155px!important;max-width:40vw!important}}
-
-/* Keep exactly one moonlight caption — 2026-09-30 */
-.hero > .hero-side-caption{display:flex!important}
-.hero .hero-side-caption ~ .hero-side-caption{display:none!important}
-
-/* Refine homepage moonlight caption placement — 2026-09-30 */
-@media(min-width:851px){
-  body:not([data-book-id]) > header.hero > .hero-side-caption{
-    left:clamp(70px,7vw,118px)!important;
-    top:24%!important;
-    transform:none!important;
-    font-size:clamp(16px,1.15vw,20px)!important;
-    letter-spacing:.18em!important;
-    gap:18px!important;
-    color:rgba(235,239,239,.86)!important;
-  }
-  body:not([data-book-id]) > header.hero > .hero-side-caption span{
-    width:42px!important;
-    background:rgba(230,196,128,.68)!important;
-  }
-}
-@media(max-width:850px) and (min-width:621px){
-  body:not([data-book-id]) > header.hero > .hero-side-caption{
-    left:24px!important;top:22%!important;transform:none!important;font-size:14px!important;
-  }
-}
-
-/* Mobile moonlight caption — visible, compact and balanced — 2026-09-30 */
-@media(max-width:620px){
-  body:not([data-book-id]) > header.hero > .hero-side-caption{
-    display:flex!important;
-    visibility:visible!important;
-    opacity:1!important;
-    left:18px!important;
-    top:118px!important;
-    transform:none!important;
-    max-width:calc(100vw - 36px)!important;
-    align-items:center!important;
-    gap:10px!important;
-    font-size:12px!important;
-    line-height:1.5!important;
-    letter-spacing:.12em!important;
-    white-space:nowrap!important;
-    color:rgba(235,239,239,.82)!important;
-    z-index:12!important;
-  }
-  body:not([data-book-id]) > header.hero > .hero-side-caption span{
-    display:block!important;
-    width:24px!important;
-    min-width:24px!important;
-    height:1px!important;
-    background:rgba(230,196,128,.62)!important;
-  }
-}
-@media(max-width:380px){
-  body:not([data-book-id]) > header.hero > .hero-side-caption{
-    left:16px!important;top:108px!important;font-size:11px!important;letter-spacing:.08em!important;gap:8px!important;
-  }
-  body:not([data-book-id]) > header.hero > .hero-side-caption span{width:20px!important;min-width:20px!important}
-}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
