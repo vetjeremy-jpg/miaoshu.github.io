@@ -342,6 +342,12 @@ body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:
 @media(min-width:1400px){.hero > .hero-corner-logo{left:42px!important;top:34px!important;width:500px!important;max-width:40vw!important}}
 @media(max-width:850px){.hero > .hero-corner-logo{left:22px!important;top:24px!important;width:245px!important;max-width:46vw!important}}
 @media(max-width:520px){.hero > .hero-corner-logo{left:16px!important;top:18px!important;width:170px!important;max-width:46vw!important}}
+
+/* Restore homepage side caption — 2026-09-30 */
+.hero > .hero-side-caption{display:flex!important;visibility:visible!important;opacity:1!important;position:absolute!important;left:clamp(56px,8vw,130px)!important;top:52%!important;transform:translateY(-50%)!important;z-index:12!important;align-items:center!important;gap:14px!important;color:rgba(220,230,238,.72)!important;font-size:clamp(12px,.9vw,15px)!important;letter-spacing:.16em!important;white-space:nowrap!important}
+.hero > .hero-side-caption span{display:block!important;width:34px!important;height:1px!important;background:rgba(220,230,238,.55)!important}
+@media(max-width:850px){.hero > .hero-side-caption{left:24px!important;top:48%!important;font-size:11px!important}}
+@media(max-width:620px){.hero > .hero-side-caption{display:none!important}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -451,6 +457,7 @@ body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:
 <header class="hero">
   <img class="hero-corner-logo" src="assets/optimized/logo.webp" alt="喵叔 Moonlit Stories Logo" decoding="async">
   <span class="moonlight-emblem" aria-hidden="true"><svg viewBox="0 0 112 112" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="homepage-crescent-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff5bc"/><stop offset=".42" stop-color="#ffdf65"/><stop offset=".78" stop-color="#f8be35"/><stop offset="1" stop-color="#e6a526"/></linearGradient></defs><path d="M58 8 C82 13 98 32 98 55 C98 81 77 101 52 101 C33 101 17 90 10 74 C23 85 39 89 54 84 C76 77 88 57 83 37 C80 24 71 14 58 8 Z" fill="url(#homepage-crescent-gold)"/></svg></span>
+  <div class="hero-side-caption" aria-label="首頁題句"><span aria-hidden="true"></span>把一點月光留到白天</div>
   <div class="hero-inner">
     <div class="hero-copy">
       <div class="hero-edition"><span>MOONLIT STORIES</span><span>ISSUE 01 · 2026</span></div>
