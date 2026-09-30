@@ -208,3 +208,55 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{
    max-width:none!important;
  }
 }
+
+
+/* Homepage first-fold definitive layout — screenshot correction 2026-09-30 */
+@media (min-width:851px){
+ body:not([data-book-id]) > header.hero{
+   height:clamp(650px,calc(100svh - 64px),760px)!important;
+   min-height:650px!important;
+   padding:34px clamp(34px,5vw,76px) 42px!important;
+   background:
+     radial-gradient(circle at 34% 38%,rgba(187,215,239,.08),transparent 23%),
+     linear-gradient(112deg,#07111d 0%,#091a2a 55%,#07111d 100%)!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-inner{
+   display:block!important;
+   width:min(1280px,100%)!important;
+   max-width:1280px!important;
+   height:100%!important;
+   margin:0 auto!important;
+   padding:0!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-copy{
+   width:46%!important;
+   max-width:590px!important;
+   margin-left:54%!important;
+   padding:38px 0 0!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-edition{width:100%!important;margin-bottom:26px!important}
+ body:not([data-book-id]) > header.hero h1{
+   max-width:none!important;
+   font-size:clamp(54px,5.1vw,74px)!important;
+   line-height:1.22!important;
+   letter-spacing:.035em!important;
+   margin:20px 0 20px!important;
+   white-space:normal!important;
+ }
+ body:not([data-book-id]) > header.hero h1 br{display:block!important}
+ body:not([data-book-id]) > header.hero .hero-lede{font-size:17px!important;line-height:1.9!important;margin:0!important}
+ body:not([data-book-id]) > header.hero .hero-actions{margin-top:25px!important;gap:18px!important}
+ body:not([data-book-id]) > header.hero .hero-index{margin-top:28px!important}
+ body:not([data-book-id]) > header.hero .hero-image{display:none!important}
+ body:not([data-book-id]) > header.hero .moonlight-emblem{
+   left:25%!important;right:auto!important;top:94px!important;
+   width:300px!important;height:300px!important;opacity:.62!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-side-caption{
+   left:8%!important;top:61%!important;
+ }
+}
+@media (min-width:1200px){
+ body:not([data-book-id]) > header.hero .moonlight-emblem{left:27%!important;width:330px!important;height:330px!important;top:82px!important}
+ body:not([data-book-id]) > header.hero .hero-copy{width:44%!important;margin-left:56%!important;max-width:610px!important}
+}
