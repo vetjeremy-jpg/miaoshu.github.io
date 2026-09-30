@@ -205,3 +205,15 @@ body:not([data-book-id]) #tonight{position:relative!important;z-index:4!importan
  body:not([data-book-id]) > header.hero .hero-inner{gap:34px!important}
  body:not([data-book-id]) > header.hero .hero-side-caption{left:30px!important;top:62%!important}
 }
+
+/* Hero headline-moon spacing only — 2026-09-30 */
+/* Only move the moon away from the headline; preserve every other element. */
+@media (min-width:1100px){
+ body:not([data-book-id]) > header.hero .moonlight-emblem{right:-72px!important}
+}
+@media (min-width:851px) and (max-width:1099px){
+ body:not([data-book-id]) > header.hero .moonlight-emblem{right:-82px!important}
+}
+@media (min-width:621px) and (max-width:850px){
+ body:not([data-book-id]) > header.hero .moonlight-emblem{right:-68px!important}
+}
