@@ -1,0 +1,61 @@
+/* Moonlit refinement layer — restrained moonlight, unified interaction system */
+:root{--ml-night:#08131f;--ml-panel:#102235;--ml-ink:#f2eee7;--ml-muted:#b7c2cc;--ml-moon:#e4d2af;--ml-line:rgba(228,210,175,.22);--ml-radius:6px;--ml-ease:cubic-bezier(.2,.7,.2,1)}
+body{--ml-glow:0;}
+
+/* One visual language: small moon phases, never decorative moon clutter */
+.moonlit-phase-mark{display:inline-grid;place-items:center;width:1.45em;height:1.45em;margin-right:.35em;color:var(--ml-moon);font-family:Georgia,serif;font-size:.9em;opacity:.82}
+.moonlit-phase-nav{display:inline-flex;align-items:center}
+.moonlit-phase-nav[data-phase="full"] .moonlit-phase-mark::before{content:"●"}
+.moonlit-phase-nav[data-phase="half"] .moonlit-phase-mark::before{content:"◐"}
+.moonlit-phase-nav[data-phase="crescent"] .moonlit-phase-mark::before{content:"☾"}
+.moonlit-phase-nav[data-phase="new"] .moonlit-phase-mark::before{content:"○"}
+
+/* Homepage moonlight: atmospheric rather than another object */
+body.homepage .hero,body:not([class]) .hero{isolation:isolate}
+.hero .moonlit-ambient-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at calc(72% + var(--ml-x,0px)) calc(28% + var(--ml-y,0px)),rgba(226,215,190,.11),rgba(125,161,190,.045) 24%,transparent 53%);opacity:.82;animation:moonlit-breathe 8s ease-in-out infinite}
+.hero>*:not(.moonlit-ambient-glow){position:relative;z-index:1}
+@keyframes moonlit-breathe{0%,100%{opacity:.64}50%{opacity:.92}}
+@media(prefers-reduced-motion:reduce){.hero .moonlit-ambient-glow{animation:none}}
+
+/* Tonight curation */
+.moonlit-tonight{margin:28px 0;padding:clamp(26px,4vw,46px);border:1px solid var(--ml-line);border-radius:var(--ml-radius);background:linear-gradient(135deg,rgba(17,38,57,.94),rgba(8,21,34,.96))}
+.moonlit-tonight small{letter-spacing:.18em;color:var(--ml-moon)}
+.moonlit-tonight h2{margin:.35em 0 .25em;font:500 clamp(28px,3vw,40px)/1.35 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink)}
+.moonlit-tonight>p{color:var(--ml-muted);margin:.4em 0 1.2em}
+.moonlit-moods{display:flex;gap:9px;flex-wrap:wrap}
+.moonlit-moods button,.moonlit-result a{min-height:44px;border:1px solid rgba(228,210,175,.42);border-radius:3px;background:transparent;color:var(--ml-moon);padding:9px 14px;cursor:pointer;text-decoration:none;font:600 14px/1.5 system-ui,sans-serif}
+.moonlit-moods button:hover,.moonlit-moods button[aria-pressed="true"]{background:var(--ml-moon);color:#081522}
+.moonlit-result{display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--ml-line)}
+.moonlit-result.is-visible{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:center}
+.moonlit-result strong{font:500 22px/1.5 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink)}
+.moonlit-result p{margin:0;color:var(--ml-muted)}
+.moonlit-result a{grid-column:2;grid-row:1/3;display:grid;place-items:center}
+@media(max-width:620px){.moonlit-result.is-visible{grid-template-columns:1fr}.moonlit-result a{grid-column:1;grid-row:auto;margin-top:8px}.moonlit-moods button{flex:1 1 44%}}
+
+/* Reader: quiet chrome, controls recede until needed */
+body[data-book-id] .topbar{transition:transform .45s var(--ml-ease),opacity .35s}
+body[data-book-id].moonlit-reading-focus .topbar{transform:translateY(-105%);opacity:0}
+body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;background:color-mix(in srgb,var(--panel,#112231) 88%,transparent)}
+.moonlit-focus-toggle{position:fixed;right:16px;bottom:16px;z-index:1200;min-height:44px;padding:9px 14px;border:1px solid var(--ml-line);border-radius:999px;background:rgba(8,19,31,.9);backdrop-filter:blur(10px);color:var(--ml-moon);cursor:pointer}
+.moonlit-bookmark-note{display:inline-flex;align-items:center;gap:7px}
+.chapter-body p.moonlit-saved-line{background:linear-gradient(90deg,rgba(228,210,175,.1),transparent);box-shadow:inset 2px 0 var(--ml-moon);padding-left:12px;margin-left:-14px}
+.moonlit-line-save{position:absolute;transform:translate(-115%,-2px);opacity:0;border:0;background:transparent;color:var(--ml-moon);cursor:pointer;font-size:17px}
+.chapter-body p:hover>.moonlit-line-save,.moonlit-line-save:focus-visible,.moonlit-saved-line>.moonlit-line-save{opacity:1}
+@media(max-width:720px){.moonlit-line-save{position:static;transform:none;float:right;opacity:.58;margin-left:8px}.moonlit-focus-toggle{right:10px;bottom:10px}}
+
+/* Cross-work moonlight path */
+.moonlit-path{margin:34px 0;padding:24px;border-top:1px solid var(--ml-line);border-bottom:1px solid var(--ml-line)}
+.moonlit-path small{color:var(--ml-moon);letter-spacing:.16em}
+.moonlit-path h2{font:500 clamp(23px,3vw,31px)/1.45 "Noto Serif TC","Songti TC",serif;color:var(--ml-ink);margin:8px 0}
+.moonlit-path a{color:var(--ml-moon);text-underline-offset:4px}
+
+/* Photo viewer: gallery disappears; photograph owns the screen */
+.photo-viewer::backdrop{background:rgba(1,4,8,.975)!important}
+.photo-viewer-stage{background:#030609!important}
+.photo-viewer-image{transition:opacity .38s var(--ml-ease)}
+.photo-viewer-caption{background:#090d12!important}
+.photo-viewer-bar{background:#090d12!important}
+
+/* Unified motion */
+a,button,.creator-card,.series-card{transition-duration:.25s;transition-timing-function:var(--ml-ease)}
+@media(prefers-reduced-motion:reduce){a,button,.creator-card,.series-card,.photo-viewer-image{transition:none!important}}
