@@ -1,7 +1,7 @@
 /* Moonlit refinement — progressive enhancement only; no pseudo-element copy injection. */
 (()=>{'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safeSet=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
+const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safeSet=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}},safeKeys=()=>{try{return Array.from({length:localStorage.length},(_,i)=>localStorage.key(i)).filter(Boolean)}catch(e){return []}};
 
 /* Phase vocabulary on navigation, never extra large moons. */
 const phaseFor=text=>/小說|書房/.test(text)?'full':/攝影|影像/.test(text)?'half':/札記|文章|旅行/.test(text)?'crescent':/關於|喵叔/.test(text)?'new':null;
@@ -38,14 +38,14 @@ if(document.body.dataset.bookId){
  const id=document.body.dataset.bookId;
  const focus=document.createElement('button');focus.type='button';focus.className='moonlit-focus-toggle';focus.textContent='專注閱讀';focus.setAttribute('aria-pressed','false');document.body.append(focus);
  focus.addEventListener('click',()=>{const on=document.body.classList.toggle('moonlit-reading-focus');focus.setAttribute('aria-pressed',String(on));focus.textContent=on?'顯示導覽':'專注閱讀'});
- const key='moonlit-lines-'+id;let saved=[];try{saved=JSON.parse(safeGet(key)||'[]')}catch(e){}
+ const key='moonlit-lines-'+id;let saved=[];try{saved=JSON.parse(safeGet(key)||'[]');if(!Array.isArray(saved))saved=[]}catch(e){saved=[]}
  $$('.chapter-body p').forEach((p,i)=>{const chapter=p.closest('.chapter')?.id||'chapter';const pid=chapter+'-p'+(i+1);p.dataset.moonlitLine=pid;if(saved.includes(pid))p.classList.add('moonlit-saved-line');const b=document.createElement('button');b.type='button';b.className='moonlit-line-save';b.title='把月光留在這一句';b.setAttribute('aria-label','收藏這一段');b.textContent='☾';p.prepend(b);b.addEventListener('click',()=>{let arr=[];try{arr=JSON.parse(safeGet(key)||'[]')}catch(e){};arr=Array.isArray(arr)?arr:[];if(arr.includes(pid))arr=arr.filter(x=>x!==pid);else arr.push(pid);safeSet(key,JSON.stringify(arr));p.classList.toggle('moonlit-saved-line',arr.includes(pid));b.setAttribute('aria-label',arr.includes(pid)?'取消收藏這一段':'收藏這一段')})});
  const last=$$('.chapter[id]').at(-1);if(last&&!$('.moonlit-path')){const path=document.createElement('aside');path.className='moonlit-path';path.innerHTML='<small>FOLLOW THE MOONLIGHT</small><h2>如果你還不想離開今晚……</h2><p><a href="../../gallery/">去攝影館看一束光</a>　·　<a href="../../search/">沿著一個意象繼續探索</a>　·　<a href="../../index.html#book">回到小說書房</a></p>';last.insertAdjacentElement('afterend',path)}
 }
 
 /* Surface the latest saved line on homepage as a true “moonlight bookmark”. */
 if(homeMain){
- const keys=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k?.startsWith('moonlit-lines-'))keys.push(k)}
+ const keys=safeKeys().filter(k=>k.startsWith('moonlit-lines-'))
  if(keys.length){const count=keys.reduce((n,k)=>{try{return n+(JSON.parse(safeGet(k)||'[]').length||0)}catch(e){return n}},0);if(count){const target=$('#continue-reading');if(target){const note=document.createElement('p');note.className='moonlit-bookmark-note';note.textContent='☾ 你曾把月光留在 '+count+' 個段落；回到小說時，它們仍會在原處等你。';target.insertAdjacentElement('afterend',note)}}}
 }
 })();
