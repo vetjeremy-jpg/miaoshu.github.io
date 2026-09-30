@@ -243,3 +243,6 @@
  group.addEventListener('click',event=>{const button=event.target.closest('button[data-reading-mode]');if(button)apply(button.dataset.readingMode,true)});
  addEventListener('storage',event=>{if(event.key===key)apply(event.newValue,false)});
 })();
+
+/* Moon-phase reading progress and a quiet cross-work doorway. */
+(()=>{const chapters=[...document.querySelectorAll(".chapter[id]")];if(!chapters.length)return;const host=document.querySelector(".reader-controls")||document.querySelector(".book-directory");if(host){const phase=document.createElement("span");phase.className="moon-phase-progress";phase.setAttribute("aria-label","閱讀進度月相");phase.innerHTML="<span>○</span><span>◔</span><span>◑</span><span>◕</span><span>●</span>";host.append(phase);const update=()=>{const max=Math.max(1,document.documentElement.scrollHeight-innerHeight),ratio=Math.max(0,Math.min(1,scrollY/max)),lit=Math.ceil(ratio*5);phase.querySelectorAll("span").forEach((x,i)=>x.classList.toggle("is-lit",i<lit));phase.title="閱讀進度 "+Math.round(ratio*100)+"%"};addEventListener("scroll",update,{passive:true});update()}const last=chapters[chapters.length-1];const x=document.createElement("aside");x.className="reader-crosslink";x.innerHTML="如果你還不想離開這個夜晚，<a href=\"../../gallery/\">去攝影館看一束光</a>，或 <a href=\"../../search/\">沿著一個意象繼續探索</a>。";last.insertAdjacentElement("afterend",x)})();
