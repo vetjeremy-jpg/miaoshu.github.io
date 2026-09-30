@@ -349,6 +349,11 @@ body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:
 @media(max-width:850px){.hero > .hero-side-caption{left:24px!important;top:48%!important;font-size:11px!important}}
 @media(max-width:620px){.hero > .hero-side-caption{display:none!important}}
 
+
+/* Hide legacy duplicate moonlight caption; keep restored upper caption — 2026-09-30 */
+body:not([data-book-id]) > header.hero .hero-aside-note,
+body:not([data-book-id]) > header.hero .hero-note,
+body:not([data-book-id]) > header.hero [data-hero-note]{display:none!important}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
