@@ -104,3 +104,41 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
  body:not([data-book-id]) > .topbar .brand img{width:42px!important;height:auto!important;max-width:none!important}
  body:not([data-book-id]) > .topbar{min-height:64px!important;padding-top:5px!important;padding-bottom:5px!important}
 }
+
+/* Desktop hero composition matched to user reference — 2026-09-30 */
+@media (min-width:851px){
+ body:not([data-book-id]) > header.hero{
+   position:relative!important;
+ }
+ /* Reference composition: crescent sits between the brand line and headline. */
+ body:not([data-book-id]) > header.hero .moonlight-emblem{
+   left:37.5%!important;
+   right:auto!important;
+   top:72px!important;
+   width:330px!important;
+   height:330px!important;
+ }
+ /* The hero logo is the small dark seal nested visually inside the crescent. */
+ body:not([data-book-id]) > header.hero .hero-corner-logo{
+   left:43.2%!important;
+   top:154px!important;
+   width:116px!important;
+   max-width:12vw!important;
+   z-index:6!important;
+ }
+ /* Keep the reference brand line on the left. */
+ body:not([data-book-id]) > header.hero .hero-side-caption{
+   left:8.2%!important;
+   top:61%!important;
+ }
+ /* Keep headline/content column on the right of the crescent. */
+ body:not([data-book-id]) > header.hero .hero-inner{
+   width:min(1180px,100%)!important;
+   margin:0 auto!important;
+   padding-left:56%!important;
+   box-sizing:border-box!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-copy{
+   max-width:520px!important;
+ }
+}
