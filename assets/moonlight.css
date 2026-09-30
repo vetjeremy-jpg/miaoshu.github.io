@@ -64,3 +64,21 @@ body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::be
 body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::after{background:none!important;content:none!important}
 body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:"";display:inline-block;width:.65em;height:.65em;margin-right:.5em;background:var(--moon-crescent) center/contain no-repeat;opacity:.5}
 @media(max-width:650px){:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:12px;height:12px;opacity:.4}}
+
+/* Larger, readable crescent sizes across the entire site. */
+:is(.topbar,.top) .brand::after{width:23px;height:23px;margin-left:5px;opacity:.95;filter:drop-shadow(0 0 7px rgba(245,212,109,.24))}
+body:not([data-book-id]) > header.hero .moonlight-emblem{width:100px;height:100px;top:34px;right:6%;opacity:1;filter:drop-shadow(0 0 13px rgba(245,212,109,.24))}
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{width:.8em;height:.8em;margin-inline-start:.35em}
+main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:34px;height:34px;right:16px;top:16px;opacity:.55}
+:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{width:.9em;height:.9em;opacity:.8}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:29px;height:29px;top:13px;right:13px;opacity:.68}
+body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{width:.85em;height:.85em;opacity:.7}
+footer::before{width:42px;height:42px;opacity:.85}
+@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:74px;height:74px;top:20px;right:24px}}
+@media(max-width:650px){
+  :is(.topbar,.top) .brand::after{width:19px;height:19px}
+  body:not([data-book-id]) > header.hero .moonlight-emblem{width:64px;height:64px;top:18px;right:20px}
+  main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:25px;height:25px;right:10px;top:10px;opacity:.45}
+  :is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:23px;height:23px;opacity:.55}
+  footer::before{width:34px;height:34px}
+}
