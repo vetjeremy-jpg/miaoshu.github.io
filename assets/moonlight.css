@@ -51,3 +51,16 @@ body:not([data-book-id]) > header.hero::after{
     background-position:center,center,center 48%;
   }
 }
+
+/* Complete site-wide Moonlit identity: headings, media, reading, navigation and footer. */
+:root{--moon-crescent-glow:rgba(245,212,109,.18)}
+:is(.topbar,.top) .brand{display:inline-flex;align-items:center;gap:.35em}
+:is(.topbar,.top) .brand::after{content:"";display:inline-block;flex:none;width:13px;height:13px;margin:0;background:var(--moon-crescent) center/contain no-repeat;opacity:.8;border-radius:0;box-shadow:none;transform:none;filter:drop-shadow(0 0 5px var(--moon-crescent-glow))}
+:is(.topbar,.top) .brand img{flex:none}
+:is(.chapter-kicker,.creator-tag,.kicker,.eyebrow){text-shadow:0 0 14px rgba(245,212,109,.10)}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card){position:relative}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{content:"";position:absolute;top:10px;right:10px;width:16px;height:16px;pointer-events:none;background:var(--moon-crescent) center/contain no-repeat;opacity:.5;filter:drop-shadow(0 0 5px var(--moon-crescent-glow))}
+body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::before{background:none!important;content:none!important}
+body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::after{background:none!important;content:none!important}
+body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:"";display:inline-block;width:.65em;height:.65em;margin-right:.5em;background:var(--moon-crescent) center/contain no-repeat;opacity:.5}
+@media(max-width:650px){:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:12px;height:12px;opacity:.4}}
