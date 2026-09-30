@@ -47,3 +47,14 @@ body:not([data-book-id]) > header.hero::after{
   }
 }
 
+
+/* Minimal moon policy: only the two explicit hero SVGs survive. */
+#book .cover-emblem,#book .cover-moon,#book .moon,#book .moon-icon,
+#book .crescent,#book .moon-decoration,#book .moonlight-emblem,
+#book .bookshelf-moon,#book .novel-moon{display:none!important}
+#book .book-cover .cover-emblem{display:none!important}
+#book .novel-card::after,#book .bookshelf-top::before,#book .bookshelf-top::after,
+#book .bookshelf-scene > .moon,#book .novels-grid::before,#book .novels-grid::after,
+#book .book-object::before,#book .book-object::after{content:none!important;background-image:none!important}
+.topbar .brand::after,.top .brand::after{content:none!important;display:none!important}
+body:not([data-book-id]) > header.hero .moonlight-emblem{display:block}
