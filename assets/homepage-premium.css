@@ -5,7 +5,6 @@ body:before{background:radial-gradient(ellipse 55% 34% at 82% 4%,rgba(177,210,23
 .topbar{min-height:64px!important;background:rgba(6,14,24,.78)!important;border-bottom:1px solid rgba(220,230,240,.08)!important;backdrop-filter:blur(18px) saturate(120%)}
 .topbar .brand img{width:40px!important}.navlinks a{font-size:13px!important;color:#c2ccd5!important}.navlinks .nav-follow{background:transparent!important;color:var(--hp-gold)!important;border:1px solid rgba(220,201,164,.35)}
 .hero{min-height:calc(100vh - 64px)!important;padding:clamp(48px,7vw,90px) 28px!important;background:radial-gradient(ellipse 48% 48% at 78% 22%,rgba(110,151,187,.14),transparent 72%),linear-gradient(135deg,#07111d 0%,#091827 58%,#07111d 100%)!important;overflow:hidden}
-.hero .moonlight-emblem{opacity:.18!important;filter:blur(.1px)!important}
 .hero-inner{width:min(1240px,100%)!important;max-width:1240px!important;grid-template-columns:minmax(0,1.05fr) minmax(340px,.78fr)!important;gap:clamp(44px,8vw,120px)!important}
 .hero-copy{max-width:680px}.hero-brand-mark{width:112px!important;margin:0 0 30px!important;opacity:.88}
 .hero .eyebrow{color:#91a7ba!important;font-size:11px!important;letter-spacing:.28em!important}
