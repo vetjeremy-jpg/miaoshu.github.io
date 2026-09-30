@@ -49,6 +49,9 @@
  document.getElementById('font-smaller')?.addEventListener('click',()=>{size=Math.max(16,size-1);applySize()});
  document.getElementById('font-larger')?.addEventListener('click',()=>{size=Math.min(24,size+1);applySize()});
  document.getElementById('font-reset')?.addEventListener('click',()=>{size=18;applySize()});
+ /* Mobile quick access to the permanent audiobook player. */
+ const audioQuick=document.createElement('button');audioQuick.type='button';audioQuick.className='reader-audio-quick';audioQuick.textContent='🎧';audioQuick.setAttribute('aria-label','開啟有聲閱讀');audioQuick.addEventListener('click',()=>{const player=document.getElementById('audiobook-player')||document.getElementById('audiobook-launcher');player?.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('audio-play')?.focus(),350)});document.body.append(audioQuick);
+
  const input=document.getElementById('chapter-search'),status=document.getElementById('chapter-search-status');
  const links=[...document.querySelectorAll('#toc .toc a[href^="#chapter-"]')];
  input?.addEventListener('input',()=>{
