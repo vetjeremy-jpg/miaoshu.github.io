@@ -79,32 +79,6 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
 @media(max-width:700px){body:not([data-book-id]) > header.hero{padding-top:34px!important}body:not([data-book-id]) > header.hero .moonlight-emblem{width:clamp(220px,64vw,290px)!important;height:clamp(220px,64vw,290px)!important;top:18px!important;right:-92px!important;opacity:.56!important;filter:drop-shadow(0 0 16px rgba(229,237,244,.11)) drop-shadow(0 0 46px rgba(184,207,228,.07))!important}body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.76) saturate(.40) contrast(.96)!important}}
 @media(max-width:390px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:230px!important;height:230px!important;top:14px!important;right:-94px!important;opacity:.52!important}}
 
-/* Header brand logo: top-left, keep hero crescent clean — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar .brand img{width:72px!important;height:auto!important;max-width:none!important;object-fit:contain!important}
- body:not([data-book-id]) > .topbar .brand{margin-right:auto!important;flex:0 0 auto!important;gap:12px!important}
-}
-
-/* Large homepage top-left logo — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar{min-height:100px!important;padding-top:10px!important;padding-bottom:10px!important}
- body:not([data-book-id]) > .topbar .brand img{width:128px!important;height:auto!important;max-width:none!important}
- body:not([data-book-id]) > .topbar .brand{gap:16px!important}
-}
-@media (min-width:1200px){body:not([data-book-id]) > .topbar .brand img{width:150px!important}}
-
-/* Smaller navigation top-left logo — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar .brand img{width:54px!important;height:auto!important;max-width:none!important}
- body:not([data-book-id]) > .topbar{min-height:72px!important;padding-top:6px!important;padding-bottom:6px!important}
-}
-
-/* Navigation logo extra small — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar .brand img{width:42px!important;height:auto!important;max-width:none!important}
- body:not([data-book-id]) > .topbar{min-height:64px!important;padding-top:5px!important;padding-bottom:5px!important}
-}
-
 /* Desktop hero composition matched to user reference — 2026-09-30 */
 @media (min-width:851px){
  body:not([data-book-id]) > header.hero{
