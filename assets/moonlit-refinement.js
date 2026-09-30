@@ -17,7 +17,7 @@ if(hero&&!document.body.dataset.bookId){
 
 /* Curated "tonight" discovery. */
 const homeMain=$('main');
-if(homeMain&&$('#book')&&!$('.moonlit-tonight')){
+if(homeMain&&$('#book')&&!document.body.dataset.bookId&&!$('.moonlit-tonight')){
  const works=[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
   {m:'read',t:'《浮生歲月》',d:'如果今晚想讀記憶、時間與人的選擇，就從這裡開始。',u:'books/fushengsuiyue/index.html#toc'},
@@ -44,7 +44,7 @@ if(document.body.dataset.bookId){
 }
 
 /* Surface the latest saved line on homepage as a true “moonlight bookmark”. */
-if(homeMain){
+if(homeMain&&!document.body.dataset.bookId){
  const keys=safeKeys().filter(k=>k.startsWith('moonlit-lines-'))
  if(keys.length){const count=keys.reduce((n,k)=>{try{return n+(JSON.parse(safeGet(k)||'[]').length||0)}catch(e){return n}},0);if(count){const target=$('#continue-reading');if(target){const note=document.createElement('p');note.className='moonlit-bookmark-note';note.textContent='☾ 你曾把月光留在 '+count+' 個段落；回到小說時，它們仍會在原處等你。';target.insertAdjacentElement('afterend',note)}}}
 }
