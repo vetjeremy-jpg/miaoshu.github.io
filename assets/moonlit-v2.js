@@ -1,4 +1,5 @@
 (()=>{const d=document,body=d.body;d.documentElement.classList.add("moonlit-enter");requestAnimationFrame(()=>{d.documentElement.classList.add("moonlit-ready");d.documentElement.classList.remove("moonlit-enter")});
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;d.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a||reduce||e.metaKey||e.ctrlKey||e.shiftKey||a.target==="_blank"||a.hasAttribute("download"))return;const u=new URL(a.href,location.href);if(u.origin!==location.origin||u.pathname===location.pathname&&u.hash)return;e.preventDefault();body.style.opacity="0";setTimeout(()=>location.href=u.href,180)});
 const hour=new Date().getHours(),phase=hour>=18&&hour<23?"evening":hour>=23||hour<5?"late":hour>=5&&hour<7?"dawn":"day";body.dataset.moonPhase=phase;
 const labels={evening:"今晚，月光剛升起",late:"夜深了，故事還醒著",dawn:"天將亮，月光尚未退去",day:"把一點月光留到白天"};const hero=d.querySelector(".hero-copy,.hero-inner");if(hero&&!d.querySelector(".moonlit-night-label")){const x=d.createElement("span");x.className="moonlit-night-label";x.textContent=labels[phase];hero.prepend(x)}
 const covers=[
