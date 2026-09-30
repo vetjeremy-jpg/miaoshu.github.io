@@ -38,4 +38,4 @@ function show(id){const t=themes.find(x=>x.id===id);if(t){const names=works.filt
 function setFilter(id){filters.querySelectorAll("button").forEach(b=>b.classList.toggle("is-active",b.dataset.filter===id))}
 renderTrail();const mobile=document.getElementById("fallback-list");themes.forEach(t=>{const a=el("article","mobile-cluster");a.innerHTML="<small>"+t.meta+"</small><h2>"+t.name+"</h2><p>"+t.desc+"</p>";works.filter(w=>w.themes.includes(t.id)).forEach(w=>{const x=el("a");x.href=w.url;x.textContent=w.name;a.appendChild(x)});mobile.appendChild(a)});
 })();
-</script><script src="../assets/moonlit-v2.js?v=20260930"></script></body></html>
+</script><script src="../assets/moonlit-v2.js?v=20260930"></script><footer>© 2026 喵叔 Moonlit Stories</footer></body></html>
