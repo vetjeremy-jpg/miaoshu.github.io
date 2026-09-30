@@ -4,7 +4,7 @@ html{scroll-padding-top:78px}
 body{overflow-x:hidden}
 .topbar{position:sticky!important;top:0;min-height:58px!important;padding:8px 14px 6px!important}
 .topbar .brand{min-height:44px;font-size:13px!important}.topbar .brand img{width:34px!important}
-.navlinks{margin:3px -14px 0!important;padding:0 14px 5px!important;gap:2px!important;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.navlinks{max-width:calc(100% + 28px);overflow-x:auto;overflow-y:hidden;margin:3px -14px 0!important;padding:0 14px 5px!important;gap:2px!important;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}
 .navlinks a{min-height:42px;display:inline-flex!important;align-items:center;padding:8px 10px!important;font-size:12px!important;scroll-snap-align:start}
 .hero{padding:26px 18px 36px!important;background:radial-gradient(ellipse 90% 38% at 78% 3%,rgba(126,164,197,.10),transparent 70%),#07111d!important}
 .hero-inner{gap:28px!important}.hero-copy{width:100%;max-width:none!important}
