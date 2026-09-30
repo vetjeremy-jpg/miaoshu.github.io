@@ -89,7 +89,7 @@
   feedback.after(bookmark);
  });
  renderShelf();
- {
+ try {
   const endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
   let visitorId;
   try{visitorId=localStorage.getItem('miaoshu-anonymous-visitor')}catch(e){}
@@ -110,8 +110,7 @@
    });
   });
   fetch(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(response=>{if(!response.ok)throw Error();return response.json()}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
- }
- // Optional audiobook mode: uses the visitor's installed speech voices.
+  } catch(e) { console.warn('Moonlit chapter likes unavailable; reader continues.',e); } // Optional audiobook mode: uses the visitor's installed speech voices.
  if('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window && chapters.length){
   const synth=window.speechSynthesis;
   const player=document.createElement('section');player.className='audiobook-player panel';player.id='audiobook-player';player.setAttribute('aria-labelledby','audiobook-title');
