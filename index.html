@@ -76,14 +76,11 @@ button{font:inherit}
 .follow-panel h2{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(27px,3vw,38px);font-weight:500;margin:9px 0}
 .follow-panel p{color:var(--muted);margin:0}
 .follow-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;max-width:410px}
-.follow-actions a,.follow-actions button,.directory-link,.reader-controls button{color:var(--gold2);border:1px solid rgba(228,210,175,.48);border-radius:3px;background:transparent;text-decoration:none;padding:10px 14px;cursor:pointer;font-size:14px}
+.follow-actions a,.follow-actions button,.directory-link{color:var(--gold2);border:1px solid rgba(228,210,175,.48);border-radius:3px;background:transparent;text-decoration:none;padding:10px 14px;cursor:pointer;font-size:14px}
 .follow-actions button{background:var(--gold2);color:#071522;font-weight:700}
-.follow-actions a:hover,.directory-link:hover,.reader-controls button:hover{background:rgba(228,210,175,.12)}
+.follow-actions a:hover,.directory-link:hover{background:rgba(228,210,175,.12)}
 .follow-feedback{grid-column:1/-1;font-size:14px}
 .follow-feedback:empty{display:none}
-.directory-head .section-title{margin:9px 0}
-.reader-controls span{margin-right:6px}
-.reader-controls button{padding:5px 12px;min-width:48px}
 
 @media(max-width:850px){.topbar{display:block;padding:8px 16px 6px;min-height:auto}.hero{padding:24px 20px 48px}.hero-inner{grid-template-columns:1fr;gap:22px}.hero-copy{padding:8px 0}.hero h1{font-size:clamp(42px,8vw,65px);max-width:none}.hero-image{min-height:280px;aspect-ratio:16/9}.featured-grid{grid-template-columns:1fr;gap:25px}.follow-panel{grid-template-columns:1fr}.follow-actions{justify-content:flex-start;max-width:none}}
 @media(max-width:520px){.brand{font-size:14px}.hero{padding:24px 18px 34px}.hero h1{font-size:clamp(39px,11vw,52px);line-height:1.35}.hero .hero-lede{font-size:17px}.hero-actions .cta{width:auto;margin:0;flex:1 1 190px;text-align:center}.hero-index{margin-top:28px;gap:14px}.hero-image{aspect-ratio:4/3;min-height:0}.wrap{padding:10px 16px 70px}.panel{padding:24px 19px}.featured-visual{min-height:220px}.follow-panel{padding:27px 20px}.follow-actions{display:grid;grid-template-columns:1fr 1fr}.follow-actions button{grid-column:1/-1}.follow-actions a{text-align:center}}
