@@ -1,0 +1,45 @@
+/* Moonlit Stories — dedicated homepage mobile composition */
+@media(max-width:700px){
+html{scroll-padding-top:78px}
+body{overflow-x:hidden}
+.topbar{position:sticky!important;top:0;min-height:58px!important;padding:8px 14px 6px!important}
+.topbar .brand{min-height:44px;font-size:13px!important}.topbar .brand img{width:34px!important}
+.navlinks{margin:3px -14px 0!important;padding:0 14px 5px!important;gap:2px!important;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.navlinks a{min-height:42px;display:inline-flex!important;align-items:center;padding:8px 10px!important;font-size:12px!important;scroll-snap-align:start}
+.hero{padding:26px 18px 36px!important;background:radial-gradient(ellipse 90% 38% at 78% 3%,rgba(126,164,197,.10),transparent 70%),#07111d!important}
+.hero-inner{gap:28px!important}.hero-copy{width:100%;max-width:none!important}
+.hero-edition{margin:0 0 20px!important;padding-bottom:9px!important;font-size:8px!important;letter-spacing:.16em!important}
+.hero .eyebrow{font-size:10px!important;letter-spacing:.14em!important}
+.hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;letter-spacing:.025em!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
+.hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
+.hero .hero-lede br{display:none}
+.hero-actions{margin-top:22px!important;gap:4px!important}
+.hero-actions .hero-primary{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;padding:11px 16px!important;font-size:13px!important}
+.hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
+.hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
+.hero-index span{white-space:nowrap}.hero-index span:last-child{display:none}
+.hero-image{width:calc(100% + 36px)!important;margin-left:-18px!important;aspect-ratio:16/11!important;box-shadow:none!important}
+.hero-image img{object-position:center 47%!important;filter:saturate(.86) brightness(.78) contrast(1.04)}
+.hero-image-label{top:12px;left:18px;right:18px;font-size:8px!important}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}.hero-image figcaption span:first-child{font-size:19px!important}.hero-image figcaption span:last-child{font-size:10px!important;white-space:normal}
+.wrap{padding:0 18px 70px!important}
+.panel{padding:48px 0!important}.section-title{font-size:clamp(29px,9vw,38px)!important;line-height:1.35!important;word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
+#tonight{padding-top:46px!important}.tonight-grid{display:flex!important;overflow-x:auto;gap:12px!important;margin:25px -18px 0!important;padding:0 18px 12px!important;border:0!important;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.tonight-grid::-webkit-scrollbar{display:none}.tonight-grid article{flex:0 0:min(82vw,310px);min-height:235px;padding:25px 22px!important;border:1px solid rgba(220,201,164,.15)!important;background:#091827!important;scroll-snap-align:center}.tonight-grid h3{font-size:26px!important}.tonight-grid article a{display:inline-flex;align-items:center;min-height:44px}
+#reading-list{padding:34px 0!important}.shelf-heading{display:block!important}.shelf-heading h2{font-size:22px!important;line-height:1.55!important;word-break:keep-all}.shelf-heading>a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
+#featured{padding-top:50px!important}.featured-grid{gap:25px!important}.featured-copy h2{font-size:34px!important;line-height:1.4!important;word-break:keep-all}.featured-copy .feature-actions{display:grid!important;grid-template-columns:1fr!important;width:100%}.featured-copy .cta{min-height:48px;display:flex;align-items:center;justify-content:center;width:100%!important}.featured-visual{min-height:0!important;aspect-ratio:4/3}
+#updates{padding:38px 0!important}.update-heading{display:block!important}.update-heading time{display:block;margin-top:8px}.update-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.update-actions a{min-height:46px;display:flex!important;align-items:center;justify-content:center;text-align:center}
+.moonlit-discovery{margin:42px -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}.moonlit-discovery h2{font-size:32px!important;line-height:1.4;word-break:keep-all}.moonlit-entry-grid{display:flex!important;overflow-x:auto;gap:10px!important;margin:24px -18px 0!important;padding:0 18px 12px!important;background:transparent!important;scroll-snap-type:x mandatory;scrollbar-width:none}.moonlit-entry-grid::-webkit-scrollbar{display:none}.moonlit-entry{flex:0 0:76vw;min-height:150px!important;padding:24px 20px!important;border:1px solid rgba(220,230,240,.11)!important;scroll-snap-align:center}.moonlit-serendipity{margin-top:22px!important}.moonlit-serendipity button{min-height:50px!important;font-size:14px}
+.moonlit-found-line{margin:52px 0!important;padding:0 0 0 18px!important}.moonlit-found-line blockquote{font-size:27px!important;line-height:1.75!important;word-break:keep-all}.moonlit-found-line a{min-height:46px}
+#book{padding-top:58px!important}.novels-grid{display:flex!important;overflow-x:auto;gap:18px!important;margin:34px -18px 0!important;padding:0 18px 18px!important;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.novels-grid::-webkit-scrollbar{display:none}.novel-card{flex:0 0:158px!important;scroll-snap-align:start!important}.book-object{width:148px!important;margin:8px 0 16px!important}.novel-card h3{font-size:14px!important;line-height:1.55!important;word-break:keep-all}.book-read{display:inline-flex;align-items:center;min-height:42px}
+#creative{padding-top:54px!important}.creator-grid{display:flex!important;overflow-x:auto;gap:10px!important;margin:26px -18px 0!important;padding:0 18px 14px!important;background:transparent!important;scroll-snap-type:x mandatory;scrollbar-width:none}.creator-grid::-webkit-scrollbar{display:none}.creator-card{flex:0 0:82vw;max-width:320px;scroll-snap-align:center!important;border:1px solid rgba(220,230,240,.1)!important}.creator-copy a{display:flex;align-items:center;min-height:42px}
+#miaoshu-album{padding-top:58px!important}.album-photos{display:flex!important;overflow-x:auto;gap:12px!important;margin:28px -18px 0!important;padding:0 18px 14px!important;scroll-snap-type:x mandatory;scrollbar-width:none}.album-photos::-webkit-scrollbar{display:none}.album-photo{flex:0 0:84vw;scroll-snap-align:center}.album-photo img{aspect-ratio:3/4!important}.album-photo figcaption{padding:14px 2px!important}.album-photo h3{font-size:20px!important}.album-photo p{font-size:13px!important}
+#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
+.video-preview{max-width:100%!important}.video-preview iframe{width:min(76vw,290px)!important;margin:auto}
+#instagram-reel>div{max-width:100%!important}#instagram-reel iframe{border-radius:0!important}
+.support-actions,.follow-actions,.about-links,.community-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.support-actions>* ,.follow-actions>* ,.about-links>* ,.community-actions>*{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;text-align:center}
+.follow-panel{margin:0 -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}
+.about-layout{display:block!important}.about-lede{margin-bottom:24px!important}.about-links{margin-top:24px!important}
+.reader-comment-frame iframe{height:680px!important}
+.moonlit-newsletter-grid{display:block!important}.moonlit-newsletter form{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.moonlit-newsletter input,.moonlit-newsletter button{min-height:48px!important;width:100%!important}
+}
+@media(max-width:380px){.hero h1{font-size:42px!important}.hero-index{font-size:7.5px!important}.tonight-grid article{flex-basis:86vw}.novel-card{flex-basis:150px!important}.book-object{width:140px!important}.creator-card{flex-basis:86vw}}
+@media(prefers-reduced-motion:reduce){@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scroll-behavior:auto!important}}}
