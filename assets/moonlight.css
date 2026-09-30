@@ -26,4 +26,28 @@ main :is(section,article) > *{position:relative}
 :is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:"";display:inline-block;width:.65em;height:.65em;margin-inline-end:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.7}
 footer::before{content:"";display:block;width:24px;height:24px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 9px rgba(245,212,109,.18))}
 @media(max-width:650px){main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:14px;height:14px;right:8px;top:8px;opacity:.28}}
-\n/* Homepage: eliminate hard-edged, differently tinted rectangular moonlight layers. */\nbody:not([data-book-id]) > header.hero::after{content:none!important;background:none!important;box-shadow:none!important}\nbody:not([data-book-id]) > header.hero{background-image:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("../assets/optimized/photo-15.webp");background-position:center;background-size:cover;background-repeat:no-repeat}\n@media(min-width:851px){body:not([data-book-id]) > header.hero{background-image:linear-gradient(90deg,rgba(9,11,12,.94) 0%,rgba(9,11,12,.72) 38%,rgba(9,11,12,.1) 100%),url("../assets/optimized/photo-15.webp");background-position:center 48%;background-size:cover}}\n
+
+/* Homepage: one full-bleed image and a seamless gradient, no bounded overlay. */
+body:not([data-book-id]) > header.hero{
+  background-image:
+    radial-gradient(ellipse 85% 65% at 85% 4%,rgba(57,82,105,.30) 0%,rgba(29,48,67,.14) 48%,transparent 100%),
+    linear-gradient(180deg,rgba(9,13,21,.56) 0%,rgba(9,13,21,.70) 44%,rgba(9,13,21,.91) 100%),
+    url("../assets/optimized/photo-15.webp");
+  background-position:center,center,center;
+  background-size:100% 100%,100% 100%,cover;
+  background-repeat:no-repeat;
+}
+body:not([data-book-id]) > header.hero::after{
+  content:none!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+@media(min-width:851px){
+  body:not([data-book-id]) > header.hero{
+    background-image:
+      radial-gradient(ellipse 80% 80% at 86% 4%,rgba(57,82,105,.24),transparent 100%),
+      linear-gradient(90deg,rgba(9,11,12,.94),rgba(9,11,12,.72) 38%,rgba(9,11,12,.12)),
+      url("../assets/optimized/photo-15.webp");
+    background-position:center,center,center 48%;
+  }
+}
