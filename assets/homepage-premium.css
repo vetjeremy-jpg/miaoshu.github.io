@@ -217,3 +217,62 @@ body:not([data-book-id]) #tonight{position:relative!important;z-index:4!importan
 @media (min-width:621px) and (max-width:850px){
  body:not([data-book-id]) > header.hero .moonlight-emblem{right:-68px!important}
 }
+
+/* Mobile hero spacing and order only — 2026-09-30 */
+@media (max-width:620px){
+ body:not([data-book-id]) > header.hero{
+   min-height:auto!important;
+   padding:26px 18px 48px!important;
+   overflow:hidden!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-corner-logo{
+   position:relative!important;
+   inset:auto!important;
+   width:116px!important;
+   max-width:38vw!important;
+   margin:0 auto 12px 0!important;
+ }
+ body:not([data-book-id]) > header.hero .moonlight-emblem{
+   position:relative!important;
+   inset:auto!important;
+   width:164px!important;
+   height:164px!important;
+   margin:2px auto -10px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-inner{
+   display:block!important;
+   width:100%!important;
+   margin:0!important;
+   padding:0!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-copy{
+   width:100%!important;
+   max-width:none!important;
+   padding:0!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-edition{
+   margin:0 0 18px!important;
+ }
+ body:not([data-book-id]) > header.hero .eyebrow{
+   margin-bottom:10px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-copy h1{
+   margin:0 0 18px!important;
+   font-size:clamp(42px,12.4vw,58px)!important;
+   line-height:1.08!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-side-caption{
+   display:flex!important;
+   position:relative!important;
+   inset:auto!important;
+   transform:none!important;
+   margin:20px 0 0!important;
+   gap:12px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-lede{
+   margin-top:18px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-actions{
+   margin-top:22px!important;
+ }
+}
