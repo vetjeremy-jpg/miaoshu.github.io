@@ -173,3 +173,8 @@ body{background:#0a1825}
 #audio-resume{min-height:40px;margin-left:8px;padding:6px 10px;border:1px solid rgba(218,192,151,.45);background:transparent;color:#dfcda8}
 @media(min-width:721px){.reader-audio-quick{display:none}}
 @media(max-width:720px){.book-meta,.reading-meta{font-size:.92rem}.moonlit-reader-comfort{gap:8px;flex-wrap:wrap}.reader-audio-quick{display:grid}.audiobook-launcher+.book-directory{margin-top:22px}}
+
+/* Reader mobile refinement + audiobook shortcut */
+.reader-audio-shortcut{min-height:44px;padding:8px 12px;border:1px solid rgba(218,192,151,.35);background:transparent;color:var(--accent);cursor:pointer}
+#audio-resume{min-height:40px;margin-left:8px;padding:6px 10px;border:1px solid rgba(218,192,151,.4);background:transparent;color:var(--accent);cursor:pointer}
+@media(max-width:430px){.reader-controls{gap:8px}.reader-controls>span{width:100%;font-size:11px}.reader-controls button{min-width:44px;min-height:44px}.reader-audio-shortcut{order:-1;width:100%;font-size:14px}.book-directory .notice{margin-bottom:10px}.directory-head{gap:10px}.directory-head .section-title{font-size:clamp(1.65rem,8vw,2.1rem)}.chapter-search{margin-top:14px}.audiobook-launcher{margin-top:14px}}
