@@ -260,3 +260,38 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{
  body:not([data-book-id]) > header.hero .moonlight-emblem{left:27%!important;width:330px!important;height:330px!important;top:82px!important}
  body:not([data-book-id]) > header.hero .hero-copy{width:44%!important;margin-left:56%!important;max-width:610px!important}
 }
+
+
+/* Split-screen desktop/tablet correction — 2026-09-30 */
+body:not([data-book-id]) > header.hero h1 > span{display:block!important;white-space:nowrap!important}
+@media (min-width:851px) and (max-width:1099px){
+ body:not([data-book-id]) > header.hero{
+   height:auto!important;min-height:650px!important;
+   padding:42px 36px 54px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-inner{
+   display:grid!important;
+   grid-template-columns:minmax(250px,.78fr) minmax(430px,1.22fr)!important;
+   gap:34px!important;align-items:center!important;
+   padding:0!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-copy{
+   grid-column:2!important;width:auto!important;max-width:none!important;
+   margin:0!important;padding:16px 0!important;
+ }
+ body:not([data-book-id]) > header.hero h1{
+   font-size:clamp(48px,5.8vw,62px)!important;
+   line-height:1.2!important;letter-spacing:.025em!important;
+ }
+ body:not([data-book-id]) > header.hero .moonlight-emblem{
+   left:11%!important;top:120px!important;width:250px!important;height:250px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-side-caption{
+   left:5%!important;top:64%!important;font-size:11px!important;
+ }
+ body:not([data-book-id]) > header.hero .hero-index{gap:13px!important;font-size:9px!important}
+ body:not([data-book-id]) > header.hero .hero-actions{align-items:center!important;flex-wrap:wrap!important}
+}
+@media (max-width:700px){
+ body:not([data-book-id]) > header.hero h1 > span{white-space:normal!important}
+}
