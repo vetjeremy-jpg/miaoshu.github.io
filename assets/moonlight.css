@@ -82,3 +82,19 @@ footer::before{width:42px;height:42px;opacity:.85}
   :is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:23px;height:23px;opacity:.55}
   footer::before{width:34px;height:34px}
 }
+
+/* Moon size revision: stronger visual presence, responsive without covering copy. */
+:is(.topbar,.top) .brand::after{width:29px;height:29px}
+body:not([data-book-id]) > header.hero .moonlight-emblem{width:132px;height:132px;top:26px;right:5%}
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{width:1em;height:1em}
+main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:46px;height:46px;opacity:.58}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:38px;height:38px;opacity:.72}
+footer::before{width:54px;height:54px}
+@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:96px;height:96px;top:16px;right:18px}}
+@media(max-width:650px){
+:is(.topbar,.top) .brand::after{width:24px;height:24px}
+body:not([data-book-id]) > header.hero .moonlight-emblem{width:84px;height:84px;top:12px;right:14px}
+main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:34px;height:34px;opacity:.48}
+:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:30px;height:30px;opacity:.62}
+footer::before{width:44px;height:44px}
+}
