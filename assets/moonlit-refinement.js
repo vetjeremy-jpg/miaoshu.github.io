@@ -17,6 +17,8 @@ if(hero&&!document.body.dataset.bookId){
 
 /* Curated "tonight" discovery. */
 const homeMain=$('main');
+if(homeMain&&!document.body.dataset.bookId&&!$('.moonlit-editorial-feature')){const features=[{k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},{k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},{k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},{k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}];const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');box.className='moonlit-editorial-feature';box.innerHTML='<small>'+pick.k+'</small><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">閱讀本期選題 →</a>';const hero=document.querySelector('.hero');if(hero)hero.insertAdjacentElement('afterend',box)}
+
 if(homeMain&&$('#book')&&!document.body.dataset.bookId&&!$('.moonlit-tonight')){
  const works=[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
