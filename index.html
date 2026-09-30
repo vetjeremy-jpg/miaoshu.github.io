@@ -301,6 +301,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 #book .book-read{height:auto!important;white-space:normal;text-align:center}
 @media(max-width:650px){#book .cover-title{font-size:12px;line-height:1.4}#book .novel-card[data-book-id="fushengsuiyue"] .cover-title,#book .novel-card[data-book-id="liangzhongtiankong-part2"] .cover-title{font-size:10.5px}#book .cover-imprint{font-size:6px;letter-spacing:0}}
 
+
+/* Separate large logo in homepage hero top-left — 2026-09-30 */
+body:not([data-book-id]) > header.hero .hero-corner-logo{position:absolute;left:clamp(28px,5vw,78px);top:clamp(28px,5vw,68px);width:clamp(150px,17vw,250px);height:auto;object-fit:contain;z-index:5;filter:drop-shadow(0 10px 24px rgba(0,0,0,.28));pointer-events:none}
+@media(max-width:850px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:22px;top:24px;width:132px}}
+@media(max-width:520px){body:not([data-book-id]) > header.hero .hero-corner-logo{left:16px;top:18px;width:108px}}
 </style>
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -408,6 +413,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 </header>
 
 <header class="hero">
+  <img class="hero-corner-logo" src="assets/optimized/logo.webp" alt="喵叔 Moonlit Stories Logo" decoding="async">
   <span class="moonlight-emblem" aria-hidden="true"><svg viewBox="0 0 112 112" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="homepage-crescent-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff5bc"/><stop offset=".42" stop-color="#ffdf65"/><stop offset=".78" stop-color="#f8be35"/><stop offset="1" stop-color="#e6a526"/></linearGradient></defs><path d="M58 8 C82 13 98 32 98 55 C98 81 77 101 52 101 C33 101 17 90 10 74 C23 85 39 89 54 84 C76 77 88 57 83 37 C80 24 71 14 58 8 Z" fill="url(#homepage-crescent-gold)"/></svg></span>
   <div class="hero-inner">
     <div class="hero-copy">
