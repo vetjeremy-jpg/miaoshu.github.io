@@ -1,78 +1,12 @@
-(() => {
-  const journeys = Array.isArray(window.MIAOSHU_JOURNEYS) ? [...window.MIAOSHU_JOURNEYS] : [];
-  journeys.sort((a, b) => b.date.localeCompare(a.date));
-
-  const timeline = document.getElementById("journey-timeline");
-  const map = document.getElementById("journey-map");
-  if (!timeline || !map || !journeys.length) return;
-
-  const filters = document.getElementById("journey-filters");
-  const detail = document.getElementById("journey-detail");
-  const nodes = document.getElementById("journey-nodes");
-
-  const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[c]));
-
-  const bounds = {
-    minLat: 21.8, maxLat: 25.5,
-    minLng: 119.3, maxLng: 122.1
-  };
-
-  function position(location) {
-    const x = 8 + ((location.lng - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 84;
-    const y = 8 + ((bounds.maxLat - location.lat) / (bounds.maxLat - bounds.minLat)) * 84;
-    return { x: Math.max(8, Math.min(92, x)), y: Math.max(8, Math.min(92, y)) };
-  }
-
-  function showDetail(journey, button) {
-    nodes.querySelectorAll(".journey-node").forEach(node => node.classList.remove("is-active"));
-    if (button) button.classList.add("is-active");
-    detail.innerHTML =
-      "<span>" + escapeHtml(journey.date) + " · " + escapeHtml(journey.region) + "</span>" +
-      "<strong>" + escapeHtml(journey.title) + "</strong>" +
-      "<small>" + escapeHtml(journey.location.name) + " · " + escapeHtml(journey.journeyPoints.join(" → ")) + "</small>" +
-      '<a href="' + escapeHtml(journey.articleUrl) + '">閱讀這篇札記 →</a>';
-  }
-
-  function render(region = "全部") {
-    const list = region === "全部" ? journeys : journeys.filter(j => j.region === region);
-
-    timeline.innerHTML = list.map(j => {
-      const parts = j.date.split("-");
-      return '<li id="timeline-' + escapeHtml(j.id) + '">' +
-        '<time datetime="' + escapeHtml(j.date) + '"><span>' + parts[0] + "</span>" + parts[1] + "." + parts[2] + "</time>" +
-        '<div><span class="timeline-type">' + escapeHtml(j.region + "・" + j.category) + "</span>" +
-        "<h3>" + escapeHtml(j.title) + "</h3><p>" + escapeHtml(j.summary) + "</p>" +
-        '<a href="' + escapeHtml(j.articleUrl) + '">閱讀這篇札記 ↓</a></div></li>';
-    }).join("");
-
-    nodes.innerHTML = list.map((j, index) => {
-      const p = position(j.location);
-      return '<button type="button" class="journey-node" style="left:' + p.x + "%;top:" + p.y +
-        '%" data-index="' + journeys.indexOf(j) + '" aria-label="' +
-        escapeHtml(j.region + "：" + j.title) + '"><span>' + (index + 1) + "</span></button>";
-    }).join("");
-
-    nodes.querySelectorAll(".journey-node").forEach(button => {
-      button.addEventListener("click", () => showDetail(journeys[Number(button.dataset.index)], button));
-    });
-
-    if (list[0]) showDetail(list[0], nodes.querySelector(".journey-node"));
-  }
-
-  const regions = ["全部", ...new Set(journeys.map(j => j.region))];
-  filters.innerHTML = regions.map((region, index) =>
-    '<button type="button" data-region="' + escapeHtml(region) + '"' +
-    (index === 0 ? ' class="is-active"' : "") + ">" + escapeHtml(region) + "</button>"
-  ).join("");
-
-  filters.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", () => {
-      filters.querySelectorAll("button").forEach(b => b.classList.toggle("is-active", b === button));
-      render(button.dataset.region);
-    });
-  });
-
-  render();
+(()=>{const journeys=Array.isArray(window.MIAOSHU_JOURNEYS)?[...window.MIAOSHU_JOURNEYS].sort((a,b)=>b.date.localeCompare(a.date)):[];const timeline=document.getElementById("journey-timeline"),map=document.getElementById("journey-map"),filters=document.getElementById("journey-filters"),detail=document.getElementById("journey-detail"),nodes=document.getElementById("journey-nodes");if(!timeline||!map||!filters||!detail||!nodes||!journeys.length)return;
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const bounds={minLat:21.8,maxLat:25.5,minLng:119.3,maxLng:122.1};let activeRegion="全部",selected=null;
+const pos=l=>({x:Math.max(8,Math.min(92,8+((l.lng-bounds.minLng)/(bounds.maxLng-bounds.minLng))*84)),y:Math.max(8,Math.min(92,8+((bounds.maxLat-l.lat)/(bounds.maxLat-bounds.minLat))*84))});
+const visible=()=>activeRegion==="全部"?journeys:journeys.filter(j=>j.region===activeRegion);
+function select(id,source){const j=journeys.find(x=>x.id===id);if(!j)return;selected=id;document.querySelectorAll("[data-journey-id]").forEach(el=>el.classList.toggle("is-active",el.dataset.journeyId===id));detail.innerHTML='<span>'+esc(j.date)+' · '+esc(j.region)+'</span><strong>'+esc(j.title)+'</strong><small>'+esc(j.location.name)+' · '+esc(j.journeyPoints.join(" → "))+'</small><div class="journey-detail-actions"><a href="'+esc(j.articleUrl)+'">閱讀札記 →</a>'+(j.documentUrl?'<a href="'+esc(j.documentUrl)+'" target="_blank" rel="noopener">閱讀 PDF ↗</a>':"")+'<button type="button" data-show-timeline="'+esc(j.id)+'">在時間軸查看 ↓</button></div>';history.replaceState(null,"","?journey="+encodeURIComponent(id)+"#journey-map-title");if(source==="timeline")document.querySelector('.journey-node[data-journey-id="'+CSS.escape(id)+'"]')?.focus({preventScroll:true})}
+function render(){const list=visible();timeline.innerHTML=list.map(j=>{const p=j.date.split("-");return '<li tabindex="0" data-journey-id="'+esc(j.id)+'" id="timeline-'+esc(j.id)+'"><time datetime="'+esc(j.date)+'"><span>'+p[0]+'</span>'+p[1]+'.'+p[2]+'</time><div><span class="timeline-type">'+esc(j.region+"・"+j.category)+'</span><h3>'+esc(j.title)+'</h3><p>'+esc(j.summary)+'</p><a href="'+esc(j.articleUrl)+'">閱讀這篇札記 ↓</a></div></li>'}).join("");
+const groups=new Map();list.forEach(j=>{const key=j.region;const g=groups.get(key)||[];g.push(j);groups.set(key,g)});nodes.innerHTML=[...groups.entries()].map(([region,items])=>{const lat=items.reduce((a,j)=>a+j.location.lat,0)/items.length,lng=items.reduce((a,j)=>a+j.location.lng,0)/items.length,p=pos({lat,lng});if(items.length===1){const j=items[0];return '<button type="button" class="journey-node" data-journey-id="'+esc(j.id)+'" style="left:'+p.x+'%;top:'+p.y+'%" aria-label="'+esc(j.region+"・"+j.location.name+"："+j.title)+'"><span>1</span></button>'}return '<button type="button" class="journey-node journey-cluster" data-region-cluster="'+esc(region)+'" style="left:'+p.x+'%;top:'+p.y+'%" aria-label="'+esc(region+"，"+items.length+"篇札記")+'"><span>'+items.length+'</span></button>'}).join("");
+timeline.querySelectorAll("[data-journey-id]").forEach(el=>{el.addEventListener("click",e=>{if(!e.target.closest("a"))select(el.dataset.journeyId,"timeline")});el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(el.dataset.journeyId,"timeline")}})});nodes.querySelectorAll("[data-journey-id]").forEach(b=>b.addEventListener("click",()=>select(b.dataset.journeyId,"map")));nodes.querySelectorAll("[data-region-cluster]").forEach(b=>b.addEventListener("click",()=>{activeRegion=b.dataset.regionCluster;syncFilters();render()}));if(list.length)select(list.some(x=>x.id===selected)?selected:list[0].id)}
+function syncFilters(){filters.querySelectorAll("button").forEach(b=>b.classList.toggle("is-active",b.dataset.region===activeRegion))}
+const regions=["全部",...new Set(journeys.map(j=>j.region))];filters.innerHTML=regions.map((r,i)=>'<button type="button" data-region="'+esc(r)+'" class="'+(i?"":"is-active")+'">'+esc(r)+'</button>').join("");filters.addEventListener("click",e=>{const b=e.target.closest("button[data-region]");if(!b)return;activeRegion=b.dataset.region;syncFilters();render()});detail.addEventListener("click",e=>{const b=e.target.closest("[data-show-timeline]");if(!b)return;document.getElementById("timeline-"+b.dataset.showTimeline)?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"})});
+const deep=new URLSearchParams(location.search).get("journey");if(deep&&journeys.some(j=>j.id===deep)){activeRegion=journeys.find(j=>j.id===deep).region;selected=deep;syncFilters()}render();
 })();
