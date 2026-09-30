@@ -142,3 +142,12 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
    max-width:520px!important;
  }
 }
+
+/* Navigation logo slightly larger — 2026-09-30 */
+@media (min-width:851px){
+ body:not([data-book-id]) > .topbar .brand img{
+   width:52px!important;
+   height:auto!important;
+   max-width:none!important;
+ }
+}
