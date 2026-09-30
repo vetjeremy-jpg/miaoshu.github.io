@@ -98,3 +98,7 @@ main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.boo
 :is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:30px;height:30px;opacity:.62}
 footer::before{width:44px;height:44px}
 }
+
+/* Homepage crescent: softer warm gold, reduced glare; keep its size and silhouette. */
+body:not([data-book-id]) > header.hero .moonlight-emblem{opacity:.72;filter:drop-shadow(0 0 5px rgba(245,212,109,.12))}
+body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
