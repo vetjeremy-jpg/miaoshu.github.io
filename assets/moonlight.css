@@ -1,32 +1,25 @@
-/* Moonlit Stories — a quiet trace of moonlight throughout every page. */
-:root{--moon-glow:rgba(195,216,237,.11);--moon-line:rgba(213,227,242,.18)}
+/* Moonlit Stories — restrained, consistent moonlight identity. */
+:root{--moon-line:rgba(213,227,242,.18);--moon-crescent:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 112'%3E%3Cpath fill='%23f5d46d' d='M58 8 C82 13 98 32 98 55 C98 81 77 101 52 101 C33 101 17 90 10 74 C23 85 39 89 54 84 C76 77 88 57 83 37 C80 24 71 14 58 8 Z'/%3E%3C/svg%3E")}
 body{position:relative}
-body::after{content:none}
-header,main,footer,section,article{position:relative}
-main::before{content:none}
-main>*{position:relative}
-:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.reader-comment-frame){border-color:var(--moon-line,rgba(213,227,242,.18));box-shadow:inset 0 1px 0 rgba(220,235,248,.045)}
-:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){background-image:radial-gradient(ellipse at 96% 0%,rgba(185,214,239,.055),transparent 54%)}
+body::after,main::before{content:none}
+:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.reader-comment-frame){border-color:var(--moon-line);box-shadow:inset 0 1px 0 rgba(220,235,248,.045)}
+:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){background-image:radial-gradient(ellipse at 96% 0%,rgba(185,214,239,.045),transparent 54%)}
 :is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero){isolation:isolate}
-:is(.page-hero,.gallery-hero,.book-hero,.post-hero)::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 86% 8%,rgba(191,216,237,.07),transparent 48%)}
-:is(h1,h2,h3,.section-title,.chapter-kicker,.creator-tag){text-shadow:0 0 25px rgba(199,218,237,.075)}
-:is(.album-photos,.gallery-grid,.photo-grid,.featured-visual,.hero-image) img{filter:brightness(1.015)}
+:is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* Unified golden crescent identity: transparent cutout, consistent on every section. */
-:root{--moon-gold:#f5d46d;--moon-crescent:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 112'%3E%3Cpath fill='%23f5d46d' d='M58 8 C82 13 98 32 98 55 C98 81 77 101 52 101 C33 101 17 90 10 74 C23 85 39 89 54 84 C76 77 88 57 83 37 C80 24 71 14 58 8 Z'/%3E%3C/svg%3E")}
-/* Page title: a quiet brand signature, not an overlay on text. */
-:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:"";display:inline-block;vertical-align:middle;width:.52em;height:.52em;margin-inline-start:.4em;background:var(--moon-crescent) center/contain no-repeat;filter:drop-shadow(0 0 6px rgba(245,212,109,.25))}
-/* Repeating section motif uses real alpha transparency, never a fake background-colored disk. */
-main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero){position:relative}
-main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{content:"";position:absolute;right:12px;top:12px;width:19px;height:19px;pointer-events:none;background:var(--moon-crescent) center/contain no-repeat;opacity:.36;filter:drop-shadow(0 0 7px rgba(245,212,109,.16));z-index:0}
-main :is(section,article) > *{position:relative}
-/* Small moon beside card headings, without changing the card's layout. */
-:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:"";display:inline-block;width:.65em;height:.65em;margin-inline-end:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.7}
-footer::before{content:"";display:block;width:24px;height:24px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 9px rgba(245,212,109,.18))}
-@media(max-width:650px){main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:14px;height:14px;right:8px;top:8px;opacity:.28}}
-
+/* A single signature moon on the homepage, subdued as requested. */
+body:not([data-book-id]) > header.hero .moonlight-emblem{width:132px;height:132px;top:26px;right:5%;opacity:.72;filter:drop-shadow(0 0 5px rgba(245,212,109,.12))}
+body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
+@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:96px;height:96px;top:16px;right:18px}}
+@media(max-width:650px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:84px;height:84px;top:12px;right:14px}}
+/* One moon by the title of each interior landing page, not on every card. */
+:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:"";display:inline-block;vertical-align:middle;width:.8em;height:.8em;margin-inline-start:.35em;background:var(--moon-crescent) center/contain no-repeat;opacity:.75;filter:drop-shadow(0 0 6px rgba(245,212,109,.16))}
+/* Keep the footer signature; remove repetitive moons from every section, card and chapter. */
+footer::before{content:"";display:block;width:42px;height:42px;margin:0 auto 12px;background:var(--moon-crescent) center/contain no-repeat;opacity:.7;filter:drop-shadow(0 0 7px rgba(245,212,109,.12))}
+@media(max-width:650px){footer::before{width:34px;height:34px}}
+/* Override legacy header's extra decorative moon: keep the actual page moon only. */
+:is(.topbar,.top) .brand::after{content:none!important}
 /* Homepage: one full-bleed image and a seamless gradient, no bounded overlay. */
 body:not([data-book-id]) > header.hero{
   background-image:
@@ -52,53 +45,3 @@ body:not([data-book-id]) > header.hero::after{
   }
 }
 
-/* Complete site-wide Moonlit identity: headings, media, reading, navigation and footer. */
-:root{--moon-crescent-glow:rgba(245,212,109,.18)}
-:is(.topbar,.top) .brand{display:inline-flex;align-items:center;gap:.35em}
-:is(.topbar,.top) .brand::after{content:"";display:inline-block;flex:none;width:13px;height:13px;margin:0;background:var(--moon-crescent) center/contain no-repeat;opacity:.8;border-radius:0;box-shadow:none;transform:none;filter:drop-shadow(0 0 5px var(--moon-crescent-glow))}
-:is(.topbar,.top) .brand img{flex:none}
-:is(.chapter-kicker,.creator-tag,.kicker,.eyebrow){text-shadow:0 0 14px rgba(245,212,109,.10)}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card){position:relative}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{content:"";position:absolute;top:10px;right:10px;width:16px;height:16px;pointer-events:none;background:var(--moon-crescent) center/contain no-repeat;opacity:.5;filter:drop-shadow(0 0 5px var(--moon-crescent-glow))}
-body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::before{background:none!important;content:none!important}
-body[data-book-id] :is(.chapter,.chapter-body,.reader-body,.reading-content)::after{background:none!important;content:none!important}
-body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:"";display:inline-block;width:.65em;height:.65em;margin-right:.5em;background:var(--moon-crescent) center/contain no-repeat;opacity:.5}
-@media(max-width:650px){:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:12px;height:12px;opacity:.4}}
-
-/* Larger, readable crescent sizes across the entire site. */
-:is(.topbar,.top) .brand::after{width:23px;height:23px;margin-left:5px;opacity:.95;filter:drop-shadow(0 0 7px rgba(245,212,109,.24))}
-body:not([data-book-id]) > header.hero .moonlight-emblem{width:100px;height:100px;top:34px;right:6%;opacity:1;filter:drop-shadow(0 0 13px rgba(245,212,109,.24))}
-:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{width:.8em;height:.8em;margin-inline-start:.35em}
-main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:34px;height:34px;right:16px;top:16px;opacity:.55}
-:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{width:.9em;height:.9em;opacity:.8}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:29px;height:29px;top:13px;right:13px;opacity:.68}
-body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{width:.85em;height:.85em;opacity:.7}
-footer::before{width:42px;height:42px;opacity:.85}
-@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:74px;height:74px;top:20px;right:24px}}
-@media(max-width:650px){
-  :is(.topbar,.top) .brand::after{width:19px;height:19px}
-  body:not([data-book-id]) > header.hero .moonlight-emblem{width:64px;height:64px;top:18px;right:20px}
-  main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:25px;height:25px;right:10px;top:10px;opacity:.45}
-  :is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:23px;height:23px;opacity:.55}
-  footer::before{width:34px;height:34px}
-}
-
-/* Moon size revision: stronger visual presence, responsive without covering copy. */
-:is(.topbar,.top) .brand::after{width:29px;height:29px}
-body:not([data-book-id]) > header.hero .moonlight-emblem{width:132px;height:132px;top:26px;right:5%}
-:is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{width:1em;height:1em}
-main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:46px;height:46px;opacity:.58}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:38px;height:38px;opacity:.72}
-footer::before{width:54px;height:54px}
-@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:96px;height:96px;top:16px;right:18px}}
-@media(max-width:650px){
-:is(.topbar,.top) .brand::after{width:24px;height:24px}
-body:not([data-book-id]) > header.hero .moonlight-emblem{width:84px;height:84px;top:12px;right:14px}
-main :is(section,article):not(.hero):not(.page-hero):not(.gallery-hero):not(.book-hero):not(.post-hero):not(.journal-hero):not(.video-hero)::before{width:34px;height:34px;opacity:.48}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{width:30px;height:30px;opacity:.62}
-footer::before{width:44px;height:44px}
-}
-
-/* Homepage crescent: softer warm gold, reduced glare; keep its size and silhouette. */
-body:not([data-book-id]) > header.hero .moonlight-emblem{opacity:.72;filter:drop-shadow(0 0 5px rgba(245,212,109,.12))}
-body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
