@@ -142,3 +142,16 @@ body{background:#0a1825}
 
 /* Continuous audiobook listening */
 .audiobook-continuous{display:flex;align-items:center;gap:10px;margin:12px 0;color:#e3d3b7;font-size:14px;line-height:1.6}.audiobook-continuous input{width:18px;height:18px;accent-color:#c9ad7d}.audiobook-actions button:focus-visible,.audiobook-options select:focus-visible{outline:2px solid #e7d1a8;outline-offset:3px}
+
+/* Mobile reader QA hardening — 2026-09-30 */
+@media(max-width:720px){
+ .chapter-search input{font-size:16px;min-height:44px}
+ .reader-controls button{min-width:44px;min-height:44px;padding:8px 12px}
+ .audiobook-options select{font-size:16px}
+ .audiobook-actions{display:grid;grid-template-columns:1fr 1fr}
+ .audiobook-actions button{width:100%;min-height:48px}
+ .audiobook-actions .audio-primary{grid-column:1/-1;order:-1}
+ .audiobook-continuous{min-height:44px}
+ .audiobook-continuous input{width:22px;height:22px}
+}
+@media(max-width:380px){.chapter-tools a,.chapter-tools button,.chapter-bookmark{flex:1 1 100%;justify-content:center;text-align:center}.audiobook-actions{grid-template-columns:1fr}}
