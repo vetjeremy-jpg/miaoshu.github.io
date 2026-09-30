@@ -11,6 +11,8 @@
 .timeline-intro,.journey-map-copy p{color:#aebbc6;max-width:720px}.moonlit-timeline{list-style:none;margin:30px 0 0;padding:0}.moonlit-timeline li{display:grid;grid-template-columns:130px 1fr;gap:28px;position:relative;padding:0 0 12px}.moonlit-timeline time{color:#e4d2af;font-size:18px;letter-spacing:.08em}.moonlit-timeline time span{display:block;color:#8296a8;font-size:12px;letter-spacing:.2em}.moonlit-timeline li>div{position:relative;padding:0 0 26px 30px;border-left:1px solid rgba(205,225,243,.22)}.moonlit-timeline li>div:before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:#e4d2af;box-shadow:0 0 18px rgba(205,225,243,.28)}.moonlit-timeline h3{margin:.25em 0;font:500 25px/1.45 "Noto Serif TC","Songti TC",serif}.moonlit-timeline p{color:#b7c1cb}.moonlit-timeline a{color:#e4d2af}.timeline-type{font-size:12px;letter-spacing:.16em;color:#9eb1c2}
 .journey-map{display:grid;grid-template-columns:minmax(0,.82fr) minmax(380px,1.18fr);gap:42px;align-items:center}.map-note{font-size:13px}.moonlit-route{min-height:330px;position:relative;overflow:hidden;border:1px solid rgba(205,225,243,.14);background:radial-gradient(circle at 75% 25%,rgba(180,211,238,.12),transparent 28%),linear-gradient(145deg,#0c1a28,#10283b);border-radius:4px}.moonlit-route:before{content:"TAIPEI · 2026";position:absolute;right:18px;top:14px;font-size:11px;letter-spacing:.22em;color:#758da1}.route-line{position:absolute;left:17%;right:16%;top:52%;height:1px;background:linear-gradient(90deg,rgba(228,210,175,.25),#e4d2af,rgba(205,225,243,.35));transform:rotate(-9deg);transform-origin:center}.route-stop{position:absolute;width:125px;text-align:center;color:#f5f1ea}.route-stop b{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 8px;border:1px solid #e4d2af;border-radius:50%;background:#102237;color:#e4d2af;font-size:11px}.route-stop span,.route-stop small{display:block}.route-stop span{font-weight:700}.route-stop small{margin-top:4px;color:#94a8b8;font-size:11px;line-height:1.45}.route-start{left:7%;top:61%}.route-mid{left:43%;top:42%}.route-end{right:6%;top:24%}
 @media(max-width:760px){.journey-map{grid-template-columns:1fr}.moonlit-timeline li{grid-template-columns:88px 1fr;gap:12px}.moonlit-timeline li>div{padding-left:20px}.moonlit-route{min-height:300px}.route-stop{width:96px}.route-start{left:3%}.route-mid{left:36%}.route-end{right:2%}}
+
+.journey-filter{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.journey-filter button{min-height:40px;padding:7px 14px;border:1px solid rgba(205,225,243,.2);border-radius:999px;background:transparent;color:#b7c1cb;cursor:pointer}.journey-filter button.is-active{background:#e4d2af;color:#10202d;border-color:#e4d2af}.moonlit-route{min-height:390px}.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(205,225,243,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(205,225,243,.035) 1px,transparent 1px);background-size:42px 42px}.journey-node{position:absolute;transform:translate(-50%,-50%);width:46px;height:46px;border:1px solid rgba(228,210,175,.85);border-radius:50%;background:#102237;color:#e4d2af;cursor:pointer;box-shadow:0 0 0 7px rgba(205,225,243,.035),0 0 24px rgba(205,225,243,.22);animation:journeyPulse 3.6s ease-in-out infinite}.journey-node span{position:relative;z-index:2}.journey-node:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#e4d2af;opacity:.22}.journey-node.is-active{box-shadow:0 0 0 9px rgba(228,210,175,.08),0 0 36px rgba(228,210,175,.46)}.journey-detail{position:absolute;left:18px;right:18px;bottom:16px;padding:13px 15px;background:rgba(5,15,25,.86);border:1px solid rgba(205,225,243,.14);backdrop-filter:blur(7px)}.journey-detail span,.journey-detail strong,.journey-detail small{display:block}.journey-detail span{font-size:11px;letter-spacing:.15em;color:#8fa5b7}.journey-detail strong{margin-top:3px;color:#f5f1ea}.journey-detail small{color:#aebbc6}.journey-detail a{display:inline-block;margin-top:5px;color:#e4d2af}@keyframes journeyPulse{50%{box-shadow:0 0 0 10px rgba(205,225,243,.02),0 0 32px rgba(205,225,243,.32)}}@media(prefers-reduced-motion:reduce){.journey-node{animation:none}}
 </style></head>
 <body class="journal-page"><a class="skip" href="#main">跳至內容</a><header class="top"><a class="brand" href="../index.html"><img src="../assets/optimized/logo.webp" alt="">喵叔 Moonlit Stories</a><nav aria-label="網站導覽"><a href="../index.html#book">小說</a><a href="../gallery/">攝影</a><a href="../videos/">影片</a><a href="../index.html#community">交流</a><a class="moonlit-search-link" href="../search/" aria-label="搜尋小說、章節與創作">⌕ 搜尋創作</a></nav></header>
 <main class="wrap" id="main"><header class="hero"><span class="eyebrow">MOONLIT STORIES / READING NOTES</span><h1>寫作札記</h1><p>把走過的路、看見的風景與生活裡的片刻收在這裡。也為你留好小說的入口，隨時翻開下一段故事。</p><div class="rule"></div></header>
@@ -18,17 +20,15 @@
 <span class="eyebrow">JOURNAL TIMELINE / 札記時間軸</span>
 <h2 class="section-title" id="timeline-title">沿著日子，把走過的路留下來</h2>
 <p class="timeline-intro">時間軸只收錄已正式發表的札記；每多走一段路，就在月光下多留一個座標。</p>
-<ol class="moonlit-timeline">
-<li><time datetime="2026-09-28"><span>2026</span>09.28</time><div><span class="timeline-type">臺北・山行</span><h3>把臺北走成一封給自己的信</h3><p>臺北大縱走第五段・減肥遊記。沿山徑走向碧山巖，在夜色裡遠眺臺北 101，再以一頓晚餐替這一天收尾。</p><a href="#taipei-grand-trail-20260928">閱讀這篇札記 ↓</a></div></li>
-</ol>
+<div class="journey-filter" id="journey-filters" aria-label="依地區篩選札記"></div>
+<ol class="moonlit-timeline" id="journey-timeline" aria-live="polite"></ol>
 </section>
 <section class="journey-map" aria-labelledby="journey-map-title">
 <div class="journey-map-copy"><span class="eyebrow">JOURNEY MAP / 旅程地圖</span><h2 class="section-title" id="journey-map-title">一張會隨札記長大的地圖</h2><p>第一枚旅程印記落在臺北。這裡不是虛構 GPS 軌跡，而是依已發表札記整理的故事地圖；未來每篇旅行札記都會在這裡留下新的節點。</p><p class="map-note">目前收錄：臺北大縱走第五段 → 碧山巖 → 臺北 101 夜景意象</p></div>
-<div class="moonlit-route" role="img" aria-label="臺北大縱走第五段札記旅程示意：山徑、碧山巖、遠眺臺北101">
-<div class="route-line" aria-hidden="true"></div>
-<div class="route-stop route-start"><b>01</b><span>山徑</span><small>臺北大縱走第五段</small></div>
-<div class="route-stop route-mid"><b>02</b><span>碧山巖</span><small>走入夜色</small></div>
-<div class="route-stop route-end"><b>03</b><span>臺北 101</span><small>遠眺城市燈火</small></div>
+<div class="moonlit-route" id="journey-map" role="region" aria-label="互動旅程地圖">
+<div class="map-grid" aria-hidden="true"></div>
+<div id="journey-nodes"></div>
+<div class="journey-detail" id="journey-detail" aria-live="polite"></div>
 </div>
 </section>
 <section class="journal" aria-labelledby="journal-title">
@@ -41,5 +41,7 @@
 <section class="intro"><span class="eyebrow">01 / 兩部小說</span><h2>選一個今晚的閱讀方向</h2><p>想從新作開始，可以讀《兩種天空》；想沿著章節慢慢走，就翻開《浮生歲月》。兩部作品都能依章節閱讀、搜尋與調整字級。</p></section>
 <div class="grid"><article class="card"><span class="eyebrow">FEATURED NOVEL / 精選小說</span><h3>《兩種天空》</h3><p>從作品首頁進入完整原稿，依章節選讀，或接著上次停下的地方繼續。</p><a href="../books/liangzhongtiankong/">開始閱讀 ↗</a></article><article class="card"><span class="eyebrow">COMPLETE NOVEL / 全文閱讀</span><h3>《浮生歲月》</h3><p>楔子與十四個章節，從故事開端讀起，也可以搜尋喜歡的章節與片段。</p><a href="../books/fushengsuiyue/index.html#toc">瀏覽章節 ↗</a></article></div>
 <section class="paths"><span class="eyebrow">02 / 故事之外</span><h2 class="section-title">換一種方式，靠近喵叔的世界</h2><p>讀到一半想停一會兒，可以看看攝影日記中的城市暮光，或選一支短片。回到故事時，書籤會替你記得進度。</p><a href="../gallery/">看攝影日記 ↗</a><a href="../videos/">看影音精選 ↗</a><a href="../index.html#community">與讀者交流 ↗</a></section>
-</main><footer>© 2026 喵叔 Moonlit Stories · <a href="../index.html">回到首頁</a></footer></body></html>
+</main><footer>© 2026 喵叔 Moonlit Stories · <a href="../index.html">回到首頁</a></footer><script src="journeys.js"></script>
+<script src="journey-map.js"></script>
+</body></html>
 
