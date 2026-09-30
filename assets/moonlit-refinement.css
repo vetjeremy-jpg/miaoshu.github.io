@@ -96,3 +96,20 @@ body{overflow-wrap:anywhere}
 }
 @media(max-width:390px){.moonlit-moods button{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.moonlit-ambient-glow{animation:none!important}:where(*,::before,::after){scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Moonlit 2026 editorial upgrade */
+.moonlit-bookmark-note{display:grid;gap:7px;max-width:760px;margin:18px auto 36px;padding:18px 20px;border-left:2px solid rgba(228,210,175,.58);background:linear-gradient(90deg,rgba(228,210,175,.07),transparent);color:var(--ml-ink);text-decoration:none}
+.moonlit-bookmark-note small{font:600 10px/1.4 var(--ml-sans);letter-spacing:.18em;color:var(--ml-moon)}
+.moonlit-bookmark-note strong{font:500 clamp(1.05rem,1rem + .4vw,1.3rem)/1.8 var(--ml-serif)}
+.moonlit-bookmark-note span{font-size:.82rem;color:var(--ml-muted)}
+.moonlit-bookmark-note:hover strong{color:#fff}
+#book .moonlit-cover{min-height:248px}
+#book .moonlit-cover .mark{font-family:var(--ml-serif);font-size:clamp(32px,4vw,52px);letter-spacing:.04em;opacity:.82}
+#book .moonlit-cover[data-tone="earth"]{background:linear-gradient(155deg,#25251f,#101923 72%)}
+#book .moonlit-cover[data-tone="red"]{background:linear-gradient(155deg,#2b181d,#101923 72%)}
+#book .moonlit-cover[data-tone="snow"]{background:linear-gradient(155deg,#21303b,#0c1721 70%)}
+#book .moonlit-cover[data-tone="void"]{background:linear-gradient(155deg,#111a2b,#080f1b 72%)}
+.gallery-series,.series-card{box-shadow:none!important}
+.gallery-series img,.series-card img{transition:transform var(--ml-motion-mid) var(--ml-ease),filter var(--ml-motion-mid) var(--ml-ease)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.gallery-series:hover img,.series-card:hover img{transform:scale(1.012);filter:brightness(1.03)}}
+@media(max-width:720px){#book .moonlit-cover{min-height:200px}.moonlit-bookmark-note{margin-inline:0;padding:16px}}
