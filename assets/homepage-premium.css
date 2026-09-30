@@ -68,11 +68,7 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
  }
  /* Reference composition: crescent sits between the brand line and headline. */
  body:not([data-book-id]) > header.hero .moonlight-emblem{
-   left:37.5%!important;
    right:auto!important;
-   top:72px!important;
-   width:330px!important;
-   height:330px!important;
  }
  /* The hero logo is the small dark seal nested visually inside the crescent. */
  body:not([data-book-id]) > header.hero .hero-corner-logo{
@@ -84,18 +80,11 @@ body:not([data-book-id]) > header.hero .hero-inner{position:relative;z-index:4}
  }
  /* Keep the reference brand line on the left. */
  body:not([data-book-id]) > header.hero .hero-side-caption{
-   left:8.2%!important;
    top:61%!important;
  }
  /* Keep headline/content column on the right of the crescent. */
  body:not([data-book-id]) > header.hero .hero-inner{
-   width:min(1180px,100%)!important;
-   margin:0 auto!important;
-   padding-left:56%!important;
    box-sizing:border-box!important;
- }
- body:not([data-book-id]) > header.hero .hero-copy{
-   max-width:520px!important;
  }
 }
 
