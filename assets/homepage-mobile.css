@@ -17,7 +17,7 @@ body{overflow-x:hidden}
 .hero-actions .hero-primary{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;padding:11px 16px!important;font-size:13px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
-.hero-index span{white-space:nowrap}.hero-index span:last-child{display:none}
+.hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}
 .hero-image{width:calc(100% + 36px)!important;margin-left:-18px!important;aspect-ratio:16/11!important;box-shadow:none!important}
 .hero-image img{object-position:center 47%!important;filter:saturate(.86) brightness(.78) contrast(1.04)}
 .hero-image-label{top:12px;left:18px;right:18px;font-size:8px!important}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}.hero-image figcaption span:first-child{font-size:19px!important}.hero-image figcaption span:last-child{font-size:10px!important;white-space:normal}
