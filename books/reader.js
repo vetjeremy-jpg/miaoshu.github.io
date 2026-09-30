@@ -1,6 +1,7 @@
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const searchLink=document.createElement('a');searchLink.href='../../search/';searchLink.className='moonlit-search-link';searchLink.textContent='⌕ 搜尋全站創作';searchLink.setAttribute('aria-label','搜尋小說、章節、攝影及札記');const readerNav=document.querySelector('nav')||document.querySelector('header');readerNav?.append(searchLink);
  const bookId=document.body.dataset.bookId||'novel';
  const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
  const prefix='miaoshu-'+bookId+'-';
