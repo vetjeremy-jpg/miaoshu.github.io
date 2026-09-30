@@ -1,4 +1,6 @@
-(()=>{const $=(s,r=document)=>r.querySelector(s);\nconst script=document.currentScript;const siteRoot=script?new URL("../",script.src):new URL("/",location.href);
+(()=>{const $=(s,r=document)=>r.querySelector(s);
+const script=document.currentScript;
+const siteRoot=script?new URL("../",script.src):new URL("/",location.href);
 const picks=[
  {label:"小說",title:"今晚讀一段故事",url:"books/fushengsuiyue/index.html#toc"},
  {label:"攝影",title:"在月光裡看一組照片",url:"gallery/"},
@@ -7,5 +9,10 @@ const picks=[
  {label:"攝影",title:"看《雪庭舞劍》",url:"gallery/#degoo-album"},
  {label:"探索",title:"讓一個關鍵字帶路",url:"search/"}
 ];
-document.addEventListener("click",e=>{const b=e.target.closest("[data-moonlit-random]");if(!b)return;const p=picks[Math.floor(Math.random()*picks.length)];location.href=new URL(p.url,siteRoot).href});
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-moonlit-random]");
+ if(!b)return;
+ const p=picks[Math.floor(Math.random()*picks.length)];
+ location.href=new URL(p.url,siteRoot).href;
+});
 })();
