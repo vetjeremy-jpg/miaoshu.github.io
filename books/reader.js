@@ -115,6 +115,14 @@
   fetch(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(response=>{if(!response.ok)throw Error();return response.json()}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
   } catch(e) { console.warn('Moonlit chapter likes unavailable; reader continues.',e); }
  // Audiobook is initialized by reader-audio-fallback.js as the single audio core.
+ // Mobile/reader quick access to the single audiobook core.
+ const readerControls=document.querySelector('.reader-controls');
+ if(readerControls&&!readerControls.querySelector('.reader-audio-shortcut')){
+  const audioShortcut=document.createElement('button');audioShortcut.type='button';audioShortcut.className='reader-audio-shortcut';audioShortcut.setAttribute('aria-label','開啟有聲閱讀');audioShortcut.textContent='🎧 朗讀';
+  audioShortcut.addEventListener('click',()=>{const player=document.getElementById('audiobook-player')||document.getElementById('audiobook-launcher');if(player){player.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>player.querySelector('#audio-play,.audiobook-launch-button')?.focus(),350)}});
+  readerControls.append(audioShortcut);
+ }
+
 
 })();
 
