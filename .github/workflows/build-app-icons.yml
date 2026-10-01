@@ -1,0 +1,30 @@
+name: Build Moonlit app icons
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/optimized/logo.webp'
+      - '.github/workflows/build-app-icons.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build square PNG icons from official cat logo
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y imagemagick
+          convert assets/optimized/logo.webp -resize 180x180 -gravity center -background '#071521' -extent 180x180 -strip PNG24:apple-touch-icon.png
+          cp apple-touch-icon.png apple-touch-icon-precomposed.png
+          convert assets/optimized/logo.webp -resize 192x192 -gravity center -background '#071521' -extent 192x192 -strip PNG24:assets/icons/icon-192.png
+          convert assets/optimized/logo.webp -resize 512x512 -gravity center -background '#071521' -extent 512x512 -strip PNG24:assets/icons/icon-512.png
+      - name: Commit generated icons
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apple-touch-icon.png apple-touch-icon-precomposed.png assets/icons/icon-192.png assets/icons/icon-512.png
+          git diff --cached --quiet || git commit -m "Generate iOS and PWA icons from official Moonlit logo"
+          git push
