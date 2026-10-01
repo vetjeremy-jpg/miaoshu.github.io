@@ -1,0 +1,17 @@
+{
+  "name": "喵叔 Moonlit Stories",
+  "short_name": "喵叔 Moonlit",
+  "start_url": "/miaoshu.github.io/",
+  "scope": "/miaoshu.github.io/",
+  "display": "standalone",
+  "background_color": "#071521",
+  "theme_color": "#071521",
+  "icons": [
+    {
+      "src": "/miaoshu.github.io/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
