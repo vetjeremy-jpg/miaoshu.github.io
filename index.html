@@ -224,27 +224,40 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
 <style id="mobile-overflow-guard">@media(max-width:430px){html,body{max-width:100%;overflow-x:clip}*,*::before,*::after{box-sizing:border-box}img,video,iframe,svg,canvas{max-width:100%}.wrap,main,section,article,.panel{min-width:0}p,h1,h2,h3,h4,blockquote,a{overflow-wrap:anywhere}}</style>
 <meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image">
 <style id="mobile-bookshelf-edge-frame">
-/* Mobile bookshelf frame: edge-aligned rails with optically equal inner gutters. */
+/* Mobile bookshelf: true edge rails + mathematically symmetric book gutters. */
 @media (max-width:650px){
   #book .bookshelf-scene{
-    --shelf-mobile-gutter:34px;
+    --shelf-rail-width:5px;
+    --shelf-book-gutter:29px;
+    width:calc(100% + 38px)!important;
     margin-left:-19px!important;
     margin-right:-19px!important;
-    padding-left:var(--shelf-mobile-gutter)!important;
-    padding-right:var(--shelf-mobile-gutter)!important;
-    border-radius:0!important;
-  }
-  #book .bookshelf-scene::before{left:0!important;}
-  #book .bookshelf-scene::after{right:0!important;}
-  #book .novels-grid{
-    margin-left:0!important;
-    margin-right:0!important;
     padding-left:0!important;
     padding-right:0!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+  }
+  #book .bookshelf-scene::before{
+    left:0!important;
+    width:var(--shelf-rail-width)!important;
+  }
+  #book .bookshelf-scene::after{
+    right:0!important;
+    width:var(--shelf-rail-width)!important;
+  }
+  #book .novels-grid{
+    box-sizing:border-box!important;
+    width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    padding-left:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
+    padding-right:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
+    scroll-padding-left:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
+    scroll-padding-right:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
   }
 }
 @media (max-width:390px){
-  #book .bookshelf-scene{--shelf-mobile-gutter:30px;}
+  #book .bookshelf-scene{--shelf-book-gutter:25px;}
 }
 </style>
 </head>
