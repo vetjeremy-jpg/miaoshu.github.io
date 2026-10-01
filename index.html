@@ -231,9 +231,11 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
     --shelf-book-gutter:28px;
     --shelf-book-gap:14px;
     position:relative!important;
-    width:calc(100% + 36px)!important;
-    margin-left:-18px!important;
-    margin-right:-18px!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
     padding:14px 0 0!important;
     border-radius:0!important;
     overflow:visible!important;
@@ -260,8 +262,8 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
     mix-blend-mode:normal!important;
     transform:translateZ(0)!important;
   }
-  #book .bookshelf-scene::before{left:0!important;}
-  #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1) translateZ(0)!important;}
+  #book .bookshelf-scene::before{left:1px!important;}
+  #book .bookshelf-scene::after{right:1px!important;transform:scaleX(-1) translateZ(0)!important;}
   #book .bookshelf-top,
   #book .novels-grid{position:relative!important;z-index:2!important;}
   #book .novel-card,
