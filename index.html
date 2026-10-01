@@ -224,7 +224,7 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
 <style id="mobile-overflow-guard">@media(max-width:430px){html,body{max-width:100%;overflow-x:clip}*,*::before,*::after{box-sizing:border-box}img,video,iframe,svg,canvas{max-width:100%}.wrap,main,section,article,.panel{min-width:0}p,h1,h2,h3,h4,blockquote,a{overflow-wrap:anywhere}}</style>
 <meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image">
 <style id="mobile-bookshelf-edge-frame">
-/* Mobile bookshelf: true edge rails + mathematically symmetric book gutters. */
+/* Mobile bookshelf: exact symmetric rail-to-book gutters at 320/375/390/430px. */
 @media (max-width:650px){
   #book .bookshelf-scene{
     --shelf-rail-width:5px;
@@ -232,8 +232,7 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
     width:calc(100% + 38px)!important;
     margin-left:-19px!important;
     margin-right:-19px!important;
-    padding-left:0!important;
-    padding-right:0!important;
+    padding:14px 0 0!important;
     border-radius:0!important;
     overflow:hidden!important;
   }
@@ -248,16 +247,21 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
   #book .novels-grid{
     box-sizing:border-box!important;
     width:100%!important;
-    margin-left:0!important;
-    margin-right:0!important;
+    margin:34px 0 0!important;
     padding-left:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
     padding-right:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
+    padding-bottom:18px!important;
     scroll-padding-left:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
     scroll-padding-right:calc(var(--shelf-rail-width) + var(--shelf-book-gutter))!important;
   }
+  #book .novel-card:first-child{margin-left:0!important;}
+  #book .novel-card:last-child{margin-right:0!important;}
 }
 @media (max-width:390px){
   #book .bookshelf-scene{--shelf-book-gutter:25px;}
+}
+@media (max-width:340px){
+  #book .bookshelf-scene{--shelf-book-gutter:21px;}
 }
 </style>
 </head>
