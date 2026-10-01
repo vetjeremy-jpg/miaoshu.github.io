@@ -224,21 +224,35 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
 <style id="mobile-overflow-guard">@media(max-width:430px){html,body{max-width:100%;overflow-x:clip}*,*::before,*::after{box-sizing:border-box}img,video,iframe,svg,canvas{max-width:100%}.wrap,main,section,article,.panel{min-width:0}p,h1,h2,h3,h4,blockquote,a{overflow-wrap:anywhere}}</style>
 <meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image">
 <style id="mobile-bookshelf-edge-frame">
-/* Mobile bookshelf: balanced rhythm between rails, books, and inter-book gaps. */
-@media (max-width:650px){
+/* Mobile bookshelf frame: persistent outer rails, independent from the horizontal book scroller. */
+@media (max-width:700px){
   #book .bookshelf-scene{
     --shelf-rail-width:5px;
     --shelf-book-gutter:28px;
     --shelf-book-gap:14px;
-    width:calc(100% + 38px)!important;
-    margin-left:-19px!important;
-    margin-right:-19px!important;
+    position:relative!important;
+    width:calc(100% + 36px)!important;
+    margin-left:-18px!important;
+    margin-right:-18px!important;
     padding:14px 0 0!important;
     border-radius:0!important;
-    overflow:hidden!important;
+    overflow:visible!important;
   }
-  #book .bookshelf-scene::before{left:0!important;width:var(--shelf-rail-width)!important;}
-  #book .bookshelf-scene::after{right:0!important;width:var(--shelf-rail-width)!important;}
+  #book .bookshelf-scene::before,
+  #book .bookshelf-scene::after{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    top:10px!important;
+    bottom:15px!important;
+    width:var(--shelf-rail-width)!important;
+    z-index:8!important;
+    pointer-events:none!important;
+    background:linear-gradient(90deg,#5a4027,#9a7548 48%,#6b4d2e)!important;
+    box-shadow:0 0 0 1px rgba(224,185,115,.12),0 3px 8px rgba(0,0,0,.28)!important;
+  }
+  #book .bookshelf-scene::before{left:0!important;}
+  #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1)!important;}
   #book .novels-grid{
     box-sizing:border-box!important;
     width:100%!important;
@@ -254,16 +268,10 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
   #book .novel-card:last-child{margin-right:0!important;}
 }
 @media (max-width:390px){
-  #book .bookshelf-scene{
-    --shelf-book-gutter:24px;
-    --shelf-book-gap:12px;
-  }
+  #book .bookshelf-scene{--shelf-book-gutter:24px;--shelf-book-gap:12px;}
 }
 @media (max-width:340px){
-  #book .bookshelf-scene{
-    --shelf-book-gutter:20px;
-    --shelf-book-gap:10px;
-  }
+  #book .bookshelf-scene{--shelf-book-gutter:20px;--shelf-book-gap:10px;}
 }
 </style>
 </head>
