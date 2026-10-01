@@ -8,10 +8,16 @@
   "theme_color": "#071521",
   "icons": [
     {
-      "src": "/miaoshu.github.io/apple-touch-icon.png",
-      "sizes": "180x180",
+      "src": "/miaoshu.github.io/assets/icons/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/miaoshu.github.io/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
