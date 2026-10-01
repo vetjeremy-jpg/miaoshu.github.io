@@ -44,4 +44,4 @@ function show(id){const t=themes.find(x=>x.id===id);if(t){const names=works.filt
 function setFilter(id){filters.querySelectorAll("button").forEach(b=>b.classList.toggle("is-active",b.dataset.filter===id))}
 renderTrail();const mobile=document.getElementById("fallback-list");const intro=el("p","mobile-path-kicker");intro.textContent="選一條路徑，從今晚想靠近的氣質開始。";mobile.appendChild(intro);themes.forEach((t,i)=>{const a=el("details","mobile-cluster");if(i===0)a.open=true;const s=el("summary");s.innerHTML="<small>"+t.meta+"</small><h2>"+t.name+"</h2>";a.appendChild(s);const body=el("div","mobile-path-body");const p=el("p");p.textContent=t.desc;body.appendChild(p);works.filter(w=>w.themes.includes(t.id)).forEach(w=>{const x=el("a");x.href=w.url;const label=el("span");label.textContent=w.name;x.appendChild(label);body.appendChild(x)});a.appendChild(body);mobile.appendChild(a)});
 })();
-</script><script src="../assets/moonlit-v2.js?v=20260930"></script><footer>© 2026 喵叔 Moonlit Stories</footer></body></html>
+</script><script src="../assets/moonlit-v2.js?v=20261001-perf1"></script><footer>© 2026 喵叔 Moonlit Stories</footer></body></html>
