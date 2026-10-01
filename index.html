@@ -237,6 +237,7 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
     padding:14px 0 0!important;
     border-radius:0!important;
     overflow:visible!important;
+    isolation:isolate!important;
   }
   #book .bookshelf-scene::before,
   #book .bookshelf-scene::after{
@@ -247,13 +248,18 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
     top:48px!important;
     bottom:18px!important;
     width:var(--shelf-rail-width)!important;
-    z-index:8!important;
+    z-index:30!important;
     pointer-events:none!important;
     background:linear-gradient(90deg,#5a4027,#9a7548 48%,#6b4d2e)!important;
-    box-shadow:0 0 0 1px rgba(224,185,115,.12),0 3px 8px rgba(0,0,0,.28)!important;
+    box-shadow:0 0 0 1px rgba(224,185,115,.18),0 3px 8px rgba(0,0,0,.28)!important;
+    transform:translateZ(0)!important;
   }
   #book .bookshelf-scene::before{left:0!important;}
-  #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1)!important;}
+  #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1) translateZ(0)!important;}
+  #book .bookshelf-top,
+  #book .novels-grid{position:relative!important;z-index:2!important;}
+  #book{overflow:visible!important;}
+  #book.panel{overflow:visible!important;}
   #book .novels-grid{
     box-sizing:border-box!important;
     width:100%!important;
