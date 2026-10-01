@@ -224,17 +224,27 @@ body:not([data-book-id]) > header.hero > .hero-side-caption span{
 <style id="mobile-overflow-guard">@media(max-width:430px){html,body{max-width:100%;overflow-x:clip}*,*::before,*::after{box-sizing:border-box}img,video,iframe,svg,canvas{max-width:100%}.wrap,main,section,article,.panel{min-width:0}p,h1,h2,h3,h4,blockquote,a{overflow-wrap:anywhere}}</style>
 <meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image">
 <style id="mobile-bookshelf-edge-frame">
-/* Mobile bookshelf frame: move the two vertical rails to the outer edges of the bookshelf section. */
+/* Mobile bookshelf frame: edge-aligned rails with optically equal inner gutters. */
 @media (max-width:650px){
   #book .bookshelf-scene{
+    --shelf-mobile-gutter:34px;
     margin-left:-19px!important;
     margin-right:-19px!important;
-    padding-left:31px!important;
-    padding-right:31px!important;
+    padding-left:var(--shelf-mobile-gutter)!important;
+    padding-right:var(--shelf-mobile-gutter)!important;
     border-radius:0!important;
   }
   #book .bookshelf-scene::before{left:0!important;}
   #book .bookshelf-scene::after{right:0!important;}
+  #book .novels-grid{
+    margin-left:0!important;
+    margin-right:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+}
+@media (max-width:390px){
+  #book .bookshelf-scene{--shelf-mobile-gutter:30px;}
 }
 </style>
 </head>
