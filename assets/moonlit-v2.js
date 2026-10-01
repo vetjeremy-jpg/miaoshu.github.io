@@ -29,7 +29,7 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  const root=new URL("../",own);
  document.querySelectorAll('link[rel~="icon"]:not([rel="apple-touch-icon"])').forEach(n=>n.remove());
  const add=(rel,href,type,sizes)=>{const l=document.createElement("link");l.rel=rel;l.href=href;if(type)l.type=type;if(sizes)l.sizes=sizes;document.head.append(l)};
- add("icon",new URL("assets/icons/favicon.webp?v=20261001-cat2",root).href,"image/webp","any");
+ add("icon",new URL("assets/icons/icon-192.png?v=20261001-unified",root).href,"image/png","192x192");
  const meta=(name,content)=>{let m=document.querySelector('meta[name="'+name+'"]');if(!m){m=document.createElement("meta");m.name=name;document.head.append(m)}m.content=content};
  meta("application-name","喵叔 Moonlit Stories");
  meta("apple-mobile-web-app-title","喵叔 Moonlit");
