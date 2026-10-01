@@ -44,4 +44,4 @@ input::placeholder,textarea::placeholder{color:#718696}
  :is(.cta,.support-actions button,.support-actions a,.follow-actions button,.follow-actions a,.community-actions button,.community-actions a,.about-links a,.update-actions a,.moonlit-serendipity button,.moonlit-reroll,.moonlit-go){min-height:48px}
  .tonight-grid article,.creator-card,.moonlit-entry{border-radius:var(--ml-r2)!important}
 }
-@media(prefers-reduced-motion:reduce){a,button{transition:none!important}}
+@media(prefers-reduced-motion:reduce){a,button{transition:none!important}.book-object:hover,.book-object:focus-visible{transform:none!important}}
