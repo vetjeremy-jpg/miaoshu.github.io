@@ -8,11 +8,9 @@ body::after,main::before{content:none}
 :is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-/* A single signature moon on the homepage, subdued as requested. */
-body:not([data-book-id]) > header.hero .moonlight-emblem{width:132px;height:132px;top:26px;right:5%;opacity:.72;filter:drop-shadow(0 0 5px rgba(245,212,109,.12))}
 body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
-@media(max-width:850px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:96px;height:96px;top:16px;right:18px}}
-@media(max-width:650px){body:not([data-book-id]) > header.hero .moonlight-emblem{width:84px;height:84px;top:12px;right:14px}}
+@media(max-width:850px){}
+@media(max-width:650px){}
 /* Only homepage and About hero retain a decorative moon. */
 :is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:none!important;background:none!important}
 footer::before{content:none!important;background:none!important}
@@ -22,32 +20,6 @@ main :is(section,article):not(.hero)::before{content:none!important}
 body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!important}
 /* Override legacy header's extra decorative moon: keep the actual page moon only. */
 :is(.topbar,.top) .brand::after{content:none!important}
-/* Homepage: one full-bleed image and a seamless gradient, no bounded overlay. */
-body:not([data-book-id]) > header.hero{
-  background-image:
-    radial-gradient(ellipse 85% 65% at 85% 4%,rgba(57,82,105,.30) 0%,rgba(29,48,67,.14) 48%,transparent 100%),
-    linear-gradient(180deg,rgba(9,13,21,.56) 0%,rgba(9,13,21,.70) 44%,rgba(9,13,21,.91) 100%),
-    url("../assets/optimized/photo-15.webp");
-  background-position:center,center,center;
-  background-size:100% 100%,100% 100%,cover;
-  background-repeat:no-repeat;
-}
-body:not([data-book-id]) > header.hero::after{
-  content:none!important;
-  background:none!important;
-  box-shadow:none!important;
-}
-@media(min-width:851px){
-  body:not([data-book-id]) > header.hero{
-    background-image:
-      radial-gradient(ellipse 80% 80% at 86% 4%,rgba(57,82,105,.24),transparent 100%),
-      linear-gradient(90deg,rgba(9,11,12,.94),rgba(9,11,12,.72) 38%,rgba(9,11,12,.12)),
-      url("../assets/optimized/photo-15.webp");
-    background-position:center,center,center 48%;
-  }
-}
-
-
 /* Minimal moon policy: only the two explicit hero SVGs survive. */
 #book .cover-emblem,#book .cover-moon,#book .moon,#book .moon-icon,
 #book .crescent,#book .moon-decoration,#book .moonlight-emblem,
