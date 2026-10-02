@@ -28,4 +28,4 @@ function render(){list.innerHTML='';let shown=details.filter(x=>!filter.value||x
 filter.addEventListener('change',render);view.addEventListener('change',render);render();
 let legacyCount=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!k||!k.startsWith('moonlit-lines-'))continue;const a=JSON.parse(localStorage.getItem(k)||'[]');if(Array.isArray(a))legacyCount+=a.filter(pid=>!details.some(d=>d.bookId===k.slice(14)&&d.pid===pid)).length}}catch(e){}if(legacyCount){legacy.className='legacy';legacy.innerHTML='另有 '+legacyCount+' 個較早版本的書籤只有段落位置，尚未保存原句。它們仍會在原小說中保持標記；重新收藏該段後，就會完整出現在「我的月光」。 <a href="../#book">回小說書房 →</a>'}
 })();
-</script><script src="../assets/moonlit-v2.js?v=20261003-runtime23"></script></body></html>
+</script><script src="../assets/moonlit-v2.js?v=20261003-runtime24"></script></body></html>
