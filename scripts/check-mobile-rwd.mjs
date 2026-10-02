@@ -52,6 +52,7 @@ for (const [page, html] of novelPages) {
  const currentTags = nav.match(/<a[^>]*aria-current=["']page["'][^>]*>[^<]*<\/a>/gi) || [];
  const currentIsNovel = currentTags.length === 1 && currentTags[0].includes('>小說</a>');
  must(page+' highlights only novel in primary nav', currentIsNovel);
+ must(page+' has static iOS standalone metadata', html.includes('name="apple-mobile-web-app-capable" content="yes"') && html.includes('name="apple-mobile-web-app-status-bar-style" content="black-translucent"'));
  for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) must(page+' primary nav has '+label, nav.includes(label));
 }
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
