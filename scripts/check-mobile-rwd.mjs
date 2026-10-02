@@ -4,6 +4,7 @@ const fail = [];
 const read = p => fs.readFileSync(p,'utf8');
 const home = read('index.html');
 const mobile = read('assets/mobile-rwd-final.css');
+const homepageMobile = read('assets/homepage-mobile.css');
 const reader = read('books/reader.css');
 
 function must(name, ok){ if(!ok) fail.push(name); }
@@ -15,6 +16,10 @@ must('320px-class safety breakpoint exists', /max-width:\s*340px/.test(mobile));
 must('mobile navigation has 44px touch target', /navlinks a[^}]*min-height:\s*44px/s.test(mobile));
 must('mobile header respects safe areas', /safe-area-inset-left/.test(mobile) && /safe-area-inset-right/.test(mobile));
 must('mobile navigation scrolls horizontally', /navlinks[^}]*overflow-x:auto/s.test(mobile));
+must('homepage creator links keep 44px touch target', /\.creator-copy a\{[^}]*min-height:\s*44px/.test(homepageMobile));
+must('homepage mobile does not redefine bookshelf gap', !/\.novels-grid\{[^}]*gap:/s.test(homepageMobile));
+must('homepage mobile does not redefine bookshelf margin', !/\.novels-grid\{[^}]*margin:/s.test(homepageMobile));
+must('homepage mobile does not redefine bookshelf padding', !/\.novels-grid\{[^}]*padding:/s.test(homepageMobile));
 must('bookshelf rails are forced visible on mobile', /bookshelf-scene::before[\s\S]*visibility:visible!important/.test(mobile));
 must('books row scrolls horizontally', /#book \.novels-grid[\s\S]*overflow-x:auto!important/.test(mobile));
 must('mobile media never exceeds viewport', /img,video,iframe,svg,canvas\{max-width:100%;height:auto\}/.test(mobile));
