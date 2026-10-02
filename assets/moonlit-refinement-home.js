@@ -1,6 +1,6 @@
 /* Moonlit refinement — progressive enhancement only; no pseudo-element copy injection. */
 (()=>{'use strict';
-const $=(s,r=document)=>r.querySelector(s), $=(s,r=document)=>[...r.querySelectorAll(s)];
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safeSet=(k,v)=>{try{localStorage.setItem(k,v);return true}catch(e){return false}};
 
 /* Navigation stays typographic and quiet; phase marks removed in Final Editorial pass. */
