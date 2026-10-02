@@ -229,3 +229,17 @@ body{background:#0a1825}
  .chapter-nav{gap:5px}
  .chapter-nav a{font-size:14px;padding-left:4px;padding-right:4px}
 }
+
+/* Mobile reading rhythm: more words per line, calmer chapter hierarchy. */
+@media(max-width:430px){
+ .wrap{padding-left:10px;padding-right:10px}
+ .chapter{padding:24px 14px 30px;margin:18px 0}
+ .chapter h2{font-size:clamp(28px,7.8vw,36px);line-height:1.42;letter-spacing:.02em;margin:8px 0 24px;text-wrap:balance}
+ .chapter-kicker{font-size:13px;letter-spacing:.14em}
+ .chapter-body{max-width:100%;font-size:var(--reader-size,17px);line-height:2}
+ .chapter-body p{line-height:2;margin-bottom:1.2em}
+}
+@media(max-width:340px){
+ .chapter{padding-left:12px;padding-right:12px}
+ .chapter h2{font-size:clamp(26px,8.4vw,32px)}
+}
