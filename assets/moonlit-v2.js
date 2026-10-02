@@ -24,8 +24,9 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  if(document.readyState==="loading")addEventListener("DOMContentLoaded",schedule,{once:true});else schedule();
 })();
 
-/* Moonlit app metadata fallback: static pages own icons; runtime only fills missing metadata. */
+/* Moonlit app metadata fallback: homepage is complete; other pages fill only missing metadata. */
 (()=>{try{
+ const path=location.pathname;if(path==="/miaoshu.github.io/"||path==="/miaoshu.github.io/index.html")return;
  const meta=(name,content)=>{let m=document.querySelector('meta[name="'+name+'"]');if(!m){m=document.createElement("meta");m.name=name;m.content=content;document.head.append(m)}};
  meta("application-name","喵叔 Moonlit Stories");
  meta("apple-mobile-web-app-title","喵叔 Moonlit");
