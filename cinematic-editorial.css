@@ -9,14 +9,14 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .navlinks a:hover,.navlinks a:focus-visible{color:#f3d9a6;background:rgba(205,171,117,.1)}
 .navlinks .nav-follow{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
 .navlinks .nav-follow:hover{background:var(--gold2);color:#171613}
-.hero{min-height:min(790px,88svh);padding:76px max(24px,calc((100vw - 1350px)/2));background:linear-gradient(90deg,rgba(9,11,12,.94) 0%,rgba(9,11,12,.72) 38%,rgba(9,11,12,.1) 100%)}
+
 .hero:before{display:block;inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
-.hero-inner{max-width:1350px;grid-template-columns:minmax(0,1fr) minmax(0,.55fr);gap:5vw}
-.hero-copy{max-width:730px;position:relative;z-index:2}
-.hero-brand-mark{max-width:155px;max-height:105px;object-fit:contain;object-position:left center;margin:0 0 18px}
+
+
+
 .hero .eyebrow{color:var(--gold2);letter-spacing:.28em}
-.hero h1{max-width:11em;color:#fff9ee;font-size:clamp(44px,5.5vw,82px);font-weight:500;line-height:1.45;letter-spacing:.11em;text-shadow:0 4px 28px #0009}
-.hero .hero-lede{max-width:31em;color:#e3ded5;font-size:clamp(16px,1.6vw,20px);text-shadow:0 2px 15px #000}
+
+
 .hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
 .cta{background:var(--gold2);color:#171612;border-radius:0;box-shadow:none;letter-spacing:.07em}
 .cta.secondary{border-color:var(--gold2);color:var(--gold2);background:rgba(10,10,10,.25)}
