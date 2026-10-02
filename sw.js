@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v33';
+const CACHE='moonlit-shell-v34';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -9,7 +9,9 @@ const SHELL=[
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261003-layout1',
  SCOPE+'assets/moonlit-v2.js?v=20261003-runtime24',
- SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2',
+ SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2'
+];
+const LAZY_ASSETS=[
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png',
  SCOPE+'assets/moonlit-home-content.js?v=20261002-split2',
@@ -23,18 +25,11 @@ const SHELL=[
 
 self.addEventListener('install',event=>{
  event.waitUntil(
-  caches.open(CACHE).then(async cache=>{
-   const critical=SHELL.slice(0,5),optional=SHELL.slice(5);
-   await Promise.all(critical.map(async url=>{
-    const res=await fetch(url,{cache:'reload'});
-    if(!res.ok)throw new Error('Critical shell fetch failed: '+url);
-    await cache.put(url,res);
-   }));
-   await Promise.allSettled(optional.map(async url=>{
-    const res=await fetch(url,{cache:'reload'});
-    if(res.ok)await cache.put(url,res);
-   }));
-  }).then(()=>self.skipWaiting())
+  caches.open(CACHE).then(cache=>Promise.all(SHELL.map(async url=>{
+   const res=await fetch(url,{cache:'reload'});
+   if(!res.ok)throw new Error('Critical shell fetch failed: '+url);
+   await cache.put(url,res);
+  }))).then(()=>self.skipWaiting())
  );
 });
 
@@ -74,18 +69,14 @@ self.addEventListener('fetch',event=>{
   return;
  }
 
- const shellKey=url.pathname+url.search;
- if(SHELL.some(item=>new URL(item,self.location.origin).pathname+new URL(item,self.location.origin).search===shellKey)){
+ const assetKey=url.pathname+url.search;
+ const versioned=[...SHELL,...LAZY_ASSETS].some(item=>{const u=new URL(item,self.location.origin);return u.pathname+u.search===assetKey});
+ if(versioned){
   event.respondWith(
-   fetch(req)
-    .then(res=>{
-     if(res&&res.ok){
-      const copy=res.clone();
-      caches.open(CACHE).then(cache=>cache.put(req,copy));
-     }
-     return res;
-    })
-    .catch(()=>caches.match(req))
+   caches.match(req).then(hit=>hit||fetch(req).then(res=>{
+    if(res&&res.ok){const copy=res.clone();caches.open(CACHE).then(cache=>cache.put(req,copy))}
+    return res;
+   }))
   );
  }
 });
