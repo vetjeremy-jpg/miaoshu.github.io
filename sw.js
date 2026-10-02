@@ -1,8 +1,9 @@
 const CACHE='moonlit-shell-v8';
-const PAGES='moonlit-pages-v2';
+const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
 const trimPages=async cache=>{const keys=await cache.keys();if(keys.length>MAX_PAGES)await Promise.all(keys.slice(0,keys.length-MAX_PAGES).map(key=>cache.delete(key)));};
+const pageKey=req=>{const u=new URL(req.url);for(const key of [...u.searchParams.keys()])if(key==='v'||key==='fbclid'||key==='gclid'||key.startsWith('utm_'))u.searchParams.delete(key);return new Request(u.href,{method:'GET',headers:{accept:'text/html'}})};
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
@@ -51,13 +52,13 @@ self.addEventListener('fetch',event=>{
    fetch(req)
     .then(res=>{
      if(res&&res.ok){
-      const copy=res.clone();
-      caches.open(PAGES).then(async cache=>{await cache.delete(req);await cache.put(req,copy);await trimPages(cache)});
+      const copy=res.clone(),key=pageKey(req);
+      caches.open(PAGES).then(async cache=>{await cache.delete(key);await cache.put(key,copy);await trimPages(cache)});
      }
      return res;
     })
     .catch(async()=>{
-     const hit=await caches.match(req);
+     const hit=await caches.match(pageKey(req));
      if(hit)return hit;
      if(url.pathname===SCOPE||url.pathname===SCOPE+'index.html')return caches.match(SCOPE);
      return Response.error();
