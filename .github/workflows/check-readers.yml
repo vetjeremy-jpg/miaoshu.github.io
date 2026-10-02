@@ -11,6 +11,7 @@ on:
       - 'assets/homepage-premium.css'
       - 'assets/moonlit-system.css'
       - 'assets/moonlit-v2.js'
+      - 'assets/moonlit-*.js'
       - 'index.html'
       - 'gallery/**'
       - 'posts/**'
@@ -29,6 +30,7 @@ on:
       - 'scripts/check-mobile-rwd.mjs'
       - 'scripts/check-internal-links.mjs'
       - 'scripts/check-seo.mjs'
+      - 'scripts/check-moonlit-runtime.mjs'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
@@ -42,3 +44,5 @@ jobs:
       - run: node scripts/check-mobile-rwd.mjs
       - run: node scripts/check-internal-links.mjs
       - run: node scripts/check-seo.mjs
+      - run: node scripts/check-moonlit-runtime.mjs
+      - run: find assets -maxdepth 1 -type f -name 'moonlit-*.js' -print0 | xargs -0 -n1 node --check
