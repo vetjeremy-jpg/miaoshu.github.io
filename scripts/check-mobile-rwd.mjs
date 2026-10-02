@@ -55,10 +55,10 @@ for (const [page, html] of novelPages) {
  must(page+' has static iOS standalone metadata', html.includes('name="apple-mobile-web-app-capable" content="yes"') && html.includes('name="apple-mobile-web-app-status-bar-style" content="black-translucent"'));
  for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) must(page+' primary nav has '+label, nav.includes(label));
 }
-const homeBookAnchors = [...home.matchAll(/<a\\b[^>]*href=["']([^"']*books\\/[^"']*)["'][^>]*>/gi)];
-must('homepage novel links stay same-window', homeBookAnchors.length > 0 && homeBookAnchors.every(m => !/target=["']_blank["']/i.test(m[0])));
-must('homepage novel links stay inside PWA scope', homeBookAnchors.every(m => !/^https?:\\/\\//i.test(m[1]) && !m[1].startsWith('/')));
-must('shared Moonlit JS does not open new windows', !/window\\.open\\s*\\(/.test(moonlitV2));
+const homeBookAnchors = (home.match(/<a[^>]*href=["'][^"']*books\/[^"']*["'][^>]*>/gi) || []);
+must('homepage novel links stay same-window', homeBookAnchors.length > 0 && homeBookAnchors.every(tag => !tag.includes('target="_blank"') && !tag.includes("target='_blank'")));
+must('homepage novel links stay inside PWA scope', homeBookAnchors.every(tag => !tag.includes('href="http://') && !tag.includes('href="https://') && !tag.includes("href='http://") && !tag.includes("href='https://") && !tag.includes('href="/')));
+must('shared Moonlit JS does not open new windows', !moonlitV2.includes('window.open('));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
