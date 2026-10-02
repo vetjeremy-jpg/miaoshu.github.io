@@ -66,7 +66,7 @@ must('browser transition uses same-window navigation', moonlitV2.includes('locat
 must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorker.register('/miaoshu.github.io/sw.js'") && moonlitV2.includes("scope:'/miaoshu.github.io/'"));
 
 must('service worker scope stays inside Moonlit', serviceWorker.includes("const SCOPE='/miaoshu.github.io/'"));
-must('service worker cache is versioned', /const CACHE=['"]moonlit-shell-v\\d+['"]/.test(serviceWorker));
+must('service worker cache is versioned', /^const CACHE=['"]moonlit-shell-v[0-9]+['"];/m.test(serviceWorker));
 must('service worker removes obsolete shell caches', serviceWorker.includes("k.startsWith('moonlit-shell-')") && serviceWorker.includes('caches.delete(k)'));
 must('service worker navigation stays network first', serviceWorker.includes("req.mode==='navigate'") && serviceWorker.includes('fetch(req).catch(()=>caches.match(SCOPE))'));
 const shellBlock = serviceWorker.slice(serviceWorker.indexOf('const SHELL=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const SHELL=[')) + 2);
