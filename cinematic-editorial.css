@@ -17,9 +17,7 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .hero .eyebrow{color:var(--gold2);letter-spacing:.28em}
 .hero h1{max-width:11em;color:#fff9ee;font-size:clamp(44px,5.5vw,82px);font-weight:500;line-height:1.45;letter-spacing:.11em;text-shadow:0 4px 28px #0009}
 .hero .hero-lede{max-width:31em;color:#e3ded5;font-size:clamp(16px,1.6vw,20px);text-shadow:0 2px 15px #000}
-.hero-image{align-self:end;min-height:0;aspect-ratio:4/3;max-height:280px;box-shadow:none;border:1px solid rgba(238,215,176,.36);background:#111}
 .hero-image img{filter:saturate(.78)}
-.hero-image figcaption{color:#f6ede0}
 .hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
 .cta{background:var(--gold2);color:#171612;border-radius:0;box-shadow:none;letter-spacing:.07em}
 .cta.secondary{border-color:var(--gold2);color:var(--gold2);background:rgba(10,10,10,.25)}
@@ -53,8 +51,8 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .chapter-body p{color:#e9e3d9;line-height:2.2}
 .reader-controls button,.directory-link,.follow-actions a,.follow-actions button{border-radius:0}
 footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
-@media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("assets/optimized/photo-15.webp") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero-image{max-width:560px;max-height:240px;aspect-ratio:16/9}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.hero-image{max-height:190px}.panel{padding:24px 18px}.creator-grid{gap:10px}#miaoshu-album .album-photos{gap:7px}}
+@media(max-width:850px){.hero{min-height:0;padding:52px 22px 40px;background:linear-gradient(180deg,rgba(9,11,12,.65),rgba(9,11,12,.93)),url("assets/optimized/photo-15.webp") center/cover no-repeat}.hero-inner{grid-template-columns:1fr}.hero h1{font-size:clamp(38px,8vw,62px)}.hero-brand-mark{max-width:115px}.wrap{padding:15px 16px 70px}#miaoshu-album .album-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.hero{padding:35px 18px}.hero:before{inset:8px}.hero h1{font-size:clamp(37px,10vw,49px)}.panel{padding:24px 18px}.creator-grid{gap:10px}#miaoshu-album .album-photos{gap:7px}}
 @media(prefers-reduced-motion:reduce){.album-photos img{transition:none}.album-photos a:hover img,.album-photos a:focus-visible img{transform:none}}
 
 /* Photo captions: pair every image with its title and story. */
