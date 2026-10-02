@@ -243,3 +243,12 @@ body{background:#0a1825}
  .chapter{padding-left:12px;padding-right:12px}
  .chapter h2{font-size:clamp(26px,8.4vw,32px)}
 }
+
+/* Mobile reader chrome: compact the sticky brand without shrinking touch targets. */
+@media(max-width:430px){
+ .topbar{padding-top:5px;padding-bottom:4px}
+ .brand{min-height:44px;gap:10px;font-size:14px}
+ .brand img{width:40px;max-height:40px}
+ .navlinks{margin-top:2px;padding-bottom:3px}
+ .navlinks a{min-height:44px}
+}
