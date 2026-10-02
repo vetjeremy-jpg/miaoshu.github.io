@@ -19,6 +19,19 @@ const novels=readdirSync(booksDir,{withFileTypes:true})
  .map(e=>base+'books/'+e.name+'/');
 for(const url of novels) must(urls.includes(url),'formal novel missing from sitemap: '+url);
 
+for(const url of novels){
+ const rel=url.slice(base.length);
+ const html=readFileSync(join(root,rel,'index.html'),'utf8');
+ const expected=url;
+ must(/<title>[^<]+<\/title>/i.test(html),'formal novel missing title: '+rel);
+ must(/<meta[^>]+name=["']description["'][^>]+content=["'][^"']+["']/i.test(html),'formal novel missing description: '+rel);
+ must(html.includes('rel="canonical"') && html.includes('href="'+expected+'"'),'formal novel missing canonical: '+rel);
+ must(/property=["']og:title["']/i.test(html),'formal novel missing og:title: '+rel);
+ must(/property=["']og:description["']/i.test(html),'formal novel missing og:description: '+rel);
+ must(html.includes('property="og:url"') && html.includes('content="'+expected+'"'),'formal novel missing og:url: '+rel);
+}
+
+
 for(const url of urls){
  must(url.startsWith(base),'non-canonical sitemap URL: '+url);
  if(!url.startsWith(base)) continue;
