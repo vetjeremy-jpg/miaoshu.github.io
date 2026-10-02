@@ -63,4 +63,4 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
 }catch(e){}})();
 
 /* PWA shell: keep iOS Home Screen navigation inside the Moonlit scope. */
-if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/miaoshu.github.io/sw.js',{scope:'/miaoshu.github.io/'}).catch(()=>{}),{once:true});}
+if('serviceWorker' in navigator){let swReg,lastSWCheck=0;const checkSW=()=>{const now=Date.now();if(swReg&&now-lastSWCheck>300000){lastSWCheck=now;swReg.update().catch(()=>{})}};addEventListener('load',()=>navigator.serviceWorker.register('/miaoshu.github.io/sw.js',{scope:'/miaoshu.github.io/'}).then(reg=>{swReg=reg;lastSWCheck=Date.now()}).catch(()=>{}),{once:true});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkSW()});addEventListener('pageshow',checkSW);}
