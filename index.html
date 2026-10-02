@@ -194,7 +194,9 @@
  bell.addEventListener('click',()=>{const on=bell.getAttribute('aria-pressed')!=='true';if(!set('miaoshu-bell',on?'1':'0')||(on&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}bellText(on);feedback.textContent=on?'已開啟回訪提醒。下次造訪若有更新會在此提示。':'已關閉回訪提醒。'});
 })();
 </script>
-<script src="photo-viewer.js?v=20260930-discovery" defer></script>
-<script src="assets/moonlit-experience.js?v=20260930-privatefix" defer></script><script src="assets/moonlit-v2.js?v=20261002-pwa-nav2" defer></script></body>
+<script>
+(()=>{const load=src=>{const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)};const later=()=>{load('photo-viewer.js?v=20260930-discovery');load('assets/moonlit-experience.js?v=20260930-privatefix')};if('requestIdleCallback'in window)requestIdleCallback(later,{timeout:1800});else setTimeout(later,900)})();
+</script>
+<script src="assets/moonlit-v2.js?v=20261002-pwa-nav2" defer></script></body>
 </html>
 
