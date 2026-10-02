@@ -48,3 +48,16 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",reset,{once:true});else reset();
  addEventListener("pageshow",reset);
 }catch(e){}})();
+
+
+/* Primary navigation: expose the current homepage section without changing layout. */
+(()=>{try{
+ const sync=()=>{
+  const nav=document.querySelector(".navlinks,.top nav");if(!nav)return;
+  const home=nav.querySelector('a[href="./"],a[href="../"],a[href="/miaoshu.github.io/"]');
+  const book=[...nav.querySelectorAll("a")].find(a=>a.textContent.trim()==="小說");
+  if(location.hash==="#book"&&book){home?.removeAttribute("aria-current");book.setAttribute("aria-current","page")}
+  else if(location.pathname.endsWith("/miaoshu.github.io/")||location.pathname.endsWith("/miaoshu.github.io/index.html")){book?.removeAttribute("aria-current");home?.setAttribute("aria-current","page")}
+ };
+ addEventListener("hashchange",sync);if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",sync,{once:true});else sync();
+}catch(e){}})();
