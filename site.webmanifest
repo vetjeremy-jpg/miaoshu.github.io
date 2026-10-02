@@ -1,11 +1,17 @@
 {
+  "id": "/miaoshu.github.io/",
   "name": "喵叔 Moonlit Stories",
   "short_name": "喵叔 Moonlit",
+  "description": "喵叔的原創小說、攝影、旅行札記與影像創作。",
+  "lang": "zh-Hant-TW",
+  "dir": "ltr",
   "start_url": "/miaoshu.github.io/",
   "scope": "/miaoshu.github.io/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#071521",
   "theme_color": "#071521",
+  "categories": ["books", "photography", "entertainment"],
   "icons": [
     {
       "src": "/miaoshu.github.io/assets/icons/icon-192.png",
@@ -18,6 +24,23 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "小說書房",
+      "short_name": "小說",
+      "url": "/miaoshu.github.io/#book"
+    },
+    {
+      "name": "喵叔攝影館",
+      "short_name": "攝影館",
+      "url": "/miaoshu.github.io/gallery/"
+    },
+    {
+      "name": "搜尋創作",
+      "short_name": "搜尋",
+      "url": "/miaoshu.github.io/search/"
     }
   ]
 }
