@@ -37,7 +37,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 @media(max-width:700px){
  body:not([data-book-id]) #book{overflow:visible!important}
  body:not([data-book-id]) #book .bookshelf-scene{
-   --moonlit-rail:5px;--moonlit-gutter:clamp(20px,6.4vw,28px);
+   --moonlit-rail:5px;--moonlit-gutter:28px;--moonlit-book-gap:14px;
    position:relative!important;width:100%!important;max-width:100%!important;
    margin-inline:0!important;padding:14px 0 0!important;overflow:visible!important
  }
@@ -52,11 +52,12 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  body:not([data-book-id]) #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1)!important}
  body:not([data-book-id]) #book .novels-grid{
    position:relative!important;z-index:2!important;width:100%!important;max-width:100%!important;
-   margin:34px 0 0!important;padding-left:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
+   margin:34px 0 0!important;gap:var(--moonlit-book-gap)!important;padding-left:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
    padding-right:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
-   overflow-x:auto!important;overflow-y:visible!important;scroll-padding-inline:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important
+   padding-bottom:18px!important;align-items:stretch!important;overflow-x:auto!important;overflow-y:visible!important;scroll-padding-inline:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important
  }
 }
+@media(max-width:390px){body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:24px;--moonlit-book-gap:12px}}
 /* Interior pages: prevent fixed-width grids and media from escaping narrow screens. */
 @media(max-width:700px){
  .gallery-page .series-grid,.video-page .layout{grid-template-columns:1fr!important}
@@ -70,6 +71,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  .wrap{padding-left:14px!important;padding-right:14px!important}
  .panel{padding-left:15px!important;padding-right:15px!important}
  .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
- body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:18px}
+ body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:20px;--moonlit-book-gap:10px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
