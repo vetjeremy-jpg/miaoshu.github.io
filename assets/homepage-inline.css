@@ -231,3 +231,7 @@ h1,h2,h3,.section-title{font-family:var(--ml-serif);font-weight:500}
 .cta.secondary{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px!important;border:1px solid var(--ml-line-strong)!important;background:rgba(8,21,34,.36)!important;color:var(--ml-gold)!important;box-shadow:none!important}
 .topbar{box-shadow:0 1px 0 rgba(255,255,255,.025);border-color:var(--ml-line)!important}.navlinks a{border-radius:var(--ml-r1)!important}.hero-text-link{color:var(--ml-gold-2)}.hero h1{color:var(--ml-ink)!important}
 @media(max-width:700px){.cta{min-height:48px}}
+
+/* Critical cinematic primitives — extracted 2026-10-02 */
+html{scroll-padding-top:90px}.brand{font-family:"Noto Serif TC","Songti TC",serif;letter-spacing:.08em}.navlinks a{letter-spacing:.07em}.hero .eyebrow{letter-spacing:.28em}.hero-index{border-color:rgba(230,210,177,.4)}.hero:before{display:block;inset:20px;border:1px solid rgba(211,226,239,.22);border-radius:0;box-shadow:none}.hero h1{text-shadow:0 3px 26px rgba(0,0,0,.7),0 0 32px rgba(213,230,246,.07)}
+@media(max-width:520px){.hero:before{inset:8px}}
