@@ -1,5 +1,5 @@
-/* Homepage styles extracted from index.html for cacheability and a leaner document. */
-:root{--bg:#071b33;--bg2:#0b2747;--panel:#0d2f52;--gold:#d8a84c;--gold2:#f0d48a;--text:#f7f2e8;--muted:#afbed0;--line:rgba(216,168,76,.18);}
+:root{--gold:#c9ad7d;--gold2:#e6d4b2;--text:#f5f1ea;--muted:#bac6d0;--line:rgba(221,197,156,.22)}/* Homepage styles extracted from index.html for cacheability and a leaner document. */
+
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;line-height:1.8;background:linear-gradient(180deg,#0a1826,#0d2132 48%,#091825);color:#f0eee9}
 a{color:inherit}.topbar{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:10px max(22px,calc((100vw - 1280px)/2));}.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;white-space:nowrap;line-height:1.25;color:var(--text);font-size:15px;letter-spacing:.025em}.brand img{aspect-ratio:1536/989;object-fit:contain;border-radius:0;box-shadow:none;mix-blend-mode:normal;filter:none;background:#0d1723}.navlinks{display:flex;justify-content:flex-end;flex-wrap:nowrap;gap:3px}.navlinks a{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;text-decoration:none;display:inline-block;white-space:nowrap;padding:8px 13px;transition:color .2s,background .2s}.hero{display:flex;align-items:center;justify-content:center;text-align:left;position:relative;overflow:hidden}.hero-inner{position:relative;z-index:1}
 .eyebrow{letter-spacing:5px;color:var(--gold);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;font-size:13px}
@@ -40,7 +40,7 @@ footer{text-align:center;color:#8ea3b9;padding:36px 20px;border-top:1px solid va
 
 
 /* Moonlit editorial redesign */
-:root{--bg:#070f1c;--bg2:#0b1b2b;--panel:#102237;--gold:#c9aa75;--gold2:#e4d2af;--text:#f5f1ea;--muted:#b7c1cb;--line:rgba(217,193,151,.2)}
+
 body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse at 85% 8%,rgba(45,80,111,.12),transparent 40%);z-index:-1}
 button{font:inherit}
 .skip-link{position:fixed;z-index:3000;top:-80px;left:16px;padding:10px 16px;background:var(--gold2);color:#07111d;border-radius:8px}
@@ -93,7 +93,7 @@ body{background:linear-gradient(180deg,#071521,#0b2033 55%,#081522);background-a
 .creator-art,.album-photos a{box-shadow:0 5px 13px #0003}
 
 /* Moonlit stay-a-while refinement: gentle editorial rhythm */
-:root{--gold:#c9ad7d;--gold2:#e6d4b2;--muted:#bac6d0;--line:rgba(221,197,156,.22)}
+
 .section-title:after{content:"";display:block;width:56px;height:1px;margin:16px 0 0;background:linear-gradient(90deg,#c9ad7d,transparent)}
 .notice,.shelf-note{color:#c3cbd2;line-height:1.85}
 .creator-card,.latest-update,.featured-grid,.follow-panel{border-radius:9px}
