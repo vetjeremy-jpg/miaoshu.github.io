@@ -10,7 +10,7 @@ const near=(el,fn)=>{if(!el)return;if(!('IntersectionObserver'in window)){fn();r
 if(hero&&canHover){
  hero.style.position=hero.style.position||'relative';
  if(!$('.moonlit-ambient-glow',hero)){const glow=document.createElement('i');glow.className='moonlit-ambient-glow';glow.setAttribute('aria-hidden','true');hero.prepend(glow)}
- hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((e.clientX-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((e.clientY-r.top)/r.height-.5)*7+'px')},{passive:true});
+ let px=0,py=0,raf=0;hero.addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((px-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((py-r.top)/r.height-.5)*7+'px')})},{passive:true});
 }
 
 /* Curated "tonight" discovery. */
