@@ -23,3 +23,4 @@ jobs:
         with:
           node-version: '22'
       - run: node books/check-readers.mjs
+      - run: node scripts/check-mobile-rwd.mjs
