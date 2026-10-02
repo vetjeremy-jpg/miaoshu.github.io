@@ -16,10 +16,14 @@ must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
 must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
 must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
+function linkTags(html){ return html.match(/<link\\b[^>]*>/gi) || []; }
+function linkCount(html, rel, file){
+ return linkTags(html).filter(tag => new RegExp('rel=["\\\\\']'+rel+'["\\\\\']','i').test(tag) && tag.includes(file)).length;
+}
 for (const [page, html] of mainPages) {
- must(page+' has one favicon', (html.match(/rel="icon"[^>]*favicon\.webp/g) || []).length === 1);
- must(page+' has one Apple touch icon', (html.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
- must(page+' loads manifest', /rel="manifest"[^>]*site\.webmanifest/.test(html));
+ must(page+' has one favicon', linkCount(html, 'icon', 'favicon.webp') === 1);
+ must(page+' has one Apple touch icon', linkCount(html, 'apple-touch-icon', 'apple-touch-icon.png') === 1);
+ must(page+' loads manifest', linkCount(html, 'manifest', 'site.webmanifest') === 1);
 }
 must('430px breakpoint exists', /max-width:\s*430px/.test(mobile));
 must('320px-class safety breakpoint exists', /max-width:\s*340px/.test(mobile));
