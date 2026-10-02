@@ -12,6 +12,7 @@ on:
       - 'posts/**'
       - 'videos/**'
       - 'about/**'
+      - 'scripts/check-mobile-rwd.mjs'
       - '.github/workflows/check-readers.yml'
   pull_request:
     paths:
@@ -25,6 +26,7 @@ on:
       - 'posts/**'
       - 'videos/**'
       - 'about/**'
+      - 'scripts/check-mobile-rwd.mjs'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
