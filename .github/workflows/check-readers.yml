@@ -1,27 +1,8 @@
 name: Check novel readers
 on:
   push:
-    paths:
-      - 'books/**'
-      - 'assets/mobile-rwd-final.css'
-      - 'assets/homepage-mobile.css'
-      - 'assets/homepage-premium.css'
-      - 'assets/moonlit-system.css'
-      - 'assets/moonlit-v2.js'
-      - 'index.html'
-      - 'gallery/**'
-      - 'posts/**'
-      - 'videos/**'
-      - 'about/**'
-      - 'site.webmanifest'
-      - 'book.html'
-      - 'bookmarks/**'
-      - 'newsletter/**'
-      - 'search/**'
-      - 'start/**'
-      - 'works/**'
-      - 'scripts/check-mobile-rwd.mjs'
-      - '.github/workflows/check-readers.yml'
+    branches:
+      - main
   pull_request:
     paths:
       - 'books/**'
