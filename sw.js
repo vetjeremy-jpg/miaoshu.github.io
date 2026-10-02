@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v8';
+const CACHE='moonlit-shell-v9';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -8,7 +8,7 @@ const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261002-perf16',
- SCOPE+'assets/moonlit-v2.js?v=20261002-pwa-refresh1',
+ SCOPE+'assets/moonlit-v2.js?v=20261002-runtime1',
  SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2',
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png'
@@ -34,7 +34,7 @@ self.addEventListener('install',event=>{
 self.addEventListener('activate',event=>{
  event.waitUntil(
   caches.keys()
-   .then(keys=>Promise.all(keys.filter(key=>key.startsWith('moonlit-shell-')&&key!==CACHE).map(key=>caches.delete(key))))
+   .then(keys=>Promise.all(keys.filter(key=>(key.startsWith('moonlit-shell-')&&key!==CACHE)||(key.startsWith('moonlit-pages-')&&key!==PAGES)).map(key=>caches.delete(key))))
    .then(()=>self.clients.claim())
  );
 });
