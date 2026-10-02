@@ -89,3 +89,38 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:20px;--moonlit-book-gap:10px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* H2 iPhone/Safari performance + viewport polish — 2026-10-02 */
+@media(max-width:700px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
+  .topbar{padding-top:max(8px,env(safe-area-inset-top))!important}
+  .wrap{padding-bottom:max(70px,calc(44px + env(safe-area-inset-bottom)))!important}
+  footer{padding-bottom:max(36px,calc(22px + env(safe-area-inset-bottom)))!important}
+  a,button,[role="button"]{touch-action:manipulation}
+  .navlinks,.top nav,.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch
+  }
+  .tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scrollbar-width:none}
+  .tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}
+  img{content-visibility:auto}
+  #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 720px
+  }
+}
+@media(max-width:430px){
+  .hero{min-height:auto!important}
+  .hero-inner,.hero-copy{min-width:0!important}
+  .hero h1,.hero-lede{max-width:100%!important}
+  .hero-index{width:100%;min-width:0}
+  .hero-index span{min-width:0}
+}
+@media(max-width:340px){
+  .hero h1{font-size:clamp(38px,12vw,42px)!important}
+  .hero-actions>a,.feature-actions>a,.support-actions>*,.follow-actions>*,.about-links>*,.community-actions>*{width:100%;max-width:100%}
+}
+@supports not (height:100dvh){
+  @media(max-width:700px){body{min-height:100vh}}
+}
