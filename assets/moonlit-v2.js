@@ -19,7 +19,7 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  const own=document.currentScript?.src||[...document.scripts].map(s=>s.src).find(src=>/\/assets\/moonlit-v2\.js/.test(src));
  if(!own)return;
  const base=new URL("./",own);
- const load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL(isReader?"moonlit-refinement-reader.css?v=20261002-split1":"moonlit-refinement.css?v=20261002-home3",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL(isReader?"moonlit-refinement-reader.js?v=20261002-split2":"moonlit-refinement-home.js?v=20261002-split5",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};
+ const load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL(isReader?"moonlit-refinement-reader.css?v=20261002-split1":"moonlit-refinement.css?v=20261002-home3",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL(isReader?"moonlit-refinement-reader.js?v=20261002-split2":"moonlit-refinement-home.js?v=20261002-split6",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};
  const schedule=()=>{"requestIdleCallback"in window?requestIdleCallback(load,{timeout:1200}):setTimeout(load,0)};
  if(document.readyState==="loading")addEventListener("DOMContentLoaded",schedule,{once:true});else schedule();
 })();
