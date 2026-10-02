@@ -7,7 +7,7 @@ const mobile = read('assets/mobile-rwd-final.css');
 const homepageMobile = read('assets/homepage-mobile.css');
 const reader = read('books/reader.css');
 const manifest = JSON.parse(read('site.webmanifest'));
-const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/index.html','about/index.html'].map(p => [p, read(p)]);
+const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/index.html','about/index.html','book.html','bookmarks/index.html','books/alien-origin-sands/index.html','books/canzhao-xie-longqi/index.html','books/chenshui-de-huhuan/index.html','books/fengmen-yetan/index.html','books/fushengsuiyue/index.html','books/hiiro-setsugetsusho/index.html','books/jiankangjie-tingquanyin/index.html','books/liangzhongtiankong-part2/index.html','books/liangzhongtiankong/index.html','books/wuxiyue/index.html','newsletter/index.html','posts/taipei-grand-trail-20260928/index.html','search/index.html','start/index.html','works/index.html'].map(p => [p, read(p)]);
 
 function must(name, ok){ if(!ok) fail.push(name); }
 
