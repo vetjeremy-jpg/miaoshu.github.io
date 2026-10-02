@@ -23,14 +23,9 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
 /* Moonlit 2026 refinement loader: one shared layer for homepage, books, gallery and notes. */
 (()=>{if(window.__moonlitRefinementLoaded)return;window.__moonlitRefinementLoaded=true;const own=document.currentScript?.src||[...document.scripts].map(s=>s.src).find(src=>/\/assets\/moonlit-v2\.js/.test(src));if(!own)return;const base=new URL("./",own),load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL("moonlit-refinement.css?v=20261001-perf1",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL("moonlit-refinement.js?v=20261001-perf1",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};const schedule=()=>{"requestIdleCallback"in window?requestIdleCallback(load,{timeout:1200}):setTimeout(load,0);document.readyState==="loading"?addEventListener("DOMContentLoaded",schedule,{once:true}):schedule()})();
 
-/* Moonlit site icons: browser favicon + iPhone/iPad home-screen icon. */
+/* Moonlit app metadata fallback: static pages own icons; runtime only fills missing metadata. */
 (()=>{try{
- const own=document.currentScript?.src||location.href;
- const root=new URL("../",own);
- document.querySelectorAll('link[rel~="icon"]:not([rel="apple-touch-icon"])').forEach(n=>n.remove());
- const add=(rel,href,type,sizes)=>{const l=document.createElement("link");l.rel=rel;l.href=href;if(type)l.type=type;if(sizes)l.sizes=sizes;document.head.append(l)};
- add("icon",new URL("assets/icons/icon-192.png?v=20261001-unified",root).href,"image/png","192x192");
- const meta=(name,content)=>{let m=document.querySelector('meta[name="'+name+'"]');if(!m){m=document.createElement("meta");m.name=name;document.head.append(m)}m.content=content};
+ const meta=(name,content)=>{let m=document.querySelector('meta[name="'+name+'"]');if(!m){m=document.createElement("meta");m.name=name;m.content=content;document.head.append(m)}};
  meta("application-name","喵叔 Moonlit Stories");
  meta("apple-mobile-web-app-title","喵叔 Moonlit");
  meta("apple-mobile-web-app-capable","yes");
