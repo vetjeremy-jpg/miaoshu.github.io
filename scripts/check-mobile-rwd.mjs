@@ -14,6 +14,10 @@ function must(name, ok){ if(!ok) fail.push(name); }
 must('homepage loads mobile-rwd-final.css', /mobile-rwd-final\.css/.test(home));
 must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s*<\/head>/s.test(home));
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
+must('manifest start_url stays on Pages subpath', manifest.start_url === '/miaoshu.github.io/');
+must('manifest scope stays on Pages subpath', manifest.scope === '/miaoshu.github.io/');
+must('manifest uses standalone display', manifest.display === 'standalone');
+must('manifest keeps Moonlit theme color', manifest.theme_color === '#071521' && manifest.background_color === '#071521');
 must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
 must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
 must('192px icon file exists', fs.existsSync('assets/icons/icon-192.png'));
