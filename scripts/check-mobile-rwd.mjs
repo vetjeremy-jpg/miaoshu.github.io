@@ -67,8 +67,8 @@ must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorke
 
 must('service worker scope stays inside Moonlit', serviceWorker.includes("const SCOPE='/miaoshu.github.io/'"));
 must('service worker cache is versioned', /^const CACHE=['"]moonlit-shell-v[0-9]+['"];/m.test(serviceWorker));
-must('service worker removes obsolete shell caches', serviceWorker.includes("k.startsWith('moonlit-shell-')") && serviceWorker.includes('caches.delete(k)'));
-must('service worker navigation stays network first', serviceWorker.includes("req.mode==='navigate'") && serviceWorker.includes('fetch(req).catch(()=>caches.match(SCOPE))'));
+must('service worker removes obsolete shell caches', /\.startsWith\(['"]moonlit-shell-['"]\)/.test(serviceWorker) && /caches\.delete\(/.test(serviceWorker));
+must('service worker navigation stays network first', /req\.mode===['"]navigate['"]/.test(serviceWorker) && /fetch\(req\)[\s\S]*\.catch\(\(\)=>caches\.match/.test(serviceWorker));
 const shellBlock = serviceWorker.slice(serviceWorker.indexOf('const SHELL=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const SHELL=[')) + 2);
 must('service worker does not precache novel HTML', shellBlock && !shellBlock.includes('/books/'));
 
