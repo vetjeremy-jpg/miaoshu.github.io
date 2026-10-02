@@ -252,3 +252,13 @@ body{background:#0a1825}
  .navlinks{margin-top:2px;padding-bottom:3px}
  .navlinks a{min-height:44px}
 }
+
+
+/* Long-form rendering optimization — keep full text/anchors available while
+   letting the browser skip paint/layout work for chapters below the viewport. */
+@supports (content-visibility:auto){
+ .chapter{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 1200px;
+ }
+}
