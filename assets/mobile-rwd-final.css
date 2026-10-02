@@ -61,7 +61,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 @media(max-width:700px){
  .gallery-page .series-grid,.video-page .layout{grid-template-columns:1fr!important}
  .gallery-page figure{margin-left:0;margin-right:0}
- .video-page .screen,.video-page .screen iframe{width:100%;max-width:100%;aspect-ratio:9/16}
+ .video-page .screen,.video-page .screen iframe{width:100%;max-width:100%}
  .journal-timeline,.journey-map{max-width:100%}
  .moonlit-route{max-width:100%;overflow:hidden}
 }
