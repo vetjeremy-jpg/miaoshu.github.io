@@ -1,0 +1,3 @@
+/* Moonlit footer enhancement — loaded only near the page end. */
+(()=>{'use strict';const f=document.querySelector("body > footer");if(!f||f.classList.contains("moonlit-site-footer"))return;f.classList.add("moonlit-site-footer");f.innerHTML='<strong>喵叔 · Moonlit Stories</strong><p>故事、影像與札記，在這裡慢慢相遇。讀完一頁，不必急著離開。</p><nav aria-label="頁尾導覽"><a href="/miaoshu.github.io/">首頁</a><a href="/miaoshu.github.io/#book">小說</a><a href="/miaoshu.github.io/gallery/">攝影</a><a href="/miaoshu.github.io/posts/">札記</a><a href="/miaoshu.github.io/about/?v=20261002-pwa2">關於喵叔</a></nav><span class="moonlit-colophon">© 2026 喵叔 · MOONLIT STORIES</span>';
+})();
