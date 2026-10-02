@@ -31,6 +31,19 @@ for (const [page, html] of primaryNavPages) {
   must(page+' primary nav has '+label, html.includes(label));
  }
 }
+const expectedCurrentNav = new Map([
+ ['index.html','首頁'],['gallery/index.html','攝影館'],['posts/index.html','札記'],
+ ['videos/index.html','影片'],['about/index.html','關於喵叔']
+]);
+for (const [page, label] of expectedCurrentNav) {
+ const html = read(page);
+ const current = [...html.matchAll(/<a\\b[^>]*aria-current=["']page["'][^>]*>([\\s\\S]*?)<\\/a>/gi)]
+   .map(m => m[1].replace(/<[^>]+>/g,'').trim());
+ must(page+' has exactly one current nav item: '+label, current.length === 1 && current[0] === label);
+}
+must('homepage #book switches current nav to novel', /location\\.hash==="#book"[\\s\\S]*home\\?\\.removeAttribute\\("aria-current"\\)[\\s\\S]*book\\.setAttribute\\("aria-current","page"\\)/.test(moonlitV2));
+must('homepage without #book restores current nav to home', /book\\?\\.removeAttribute\\("aria-current"\\)[\\s\\S]*home\\?\\.setAttribute\\("aria-current","page"\\)/.test(moonlitV2));
+must('current mobile nav item has highlight styling', /a\\[aria-current="page"\\][\\s\\S]*color:#f1d79a/.test(mobile));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
