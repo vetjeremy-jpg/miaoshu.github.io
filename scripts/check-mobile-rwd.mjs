@@ -6,12 +6,15 @@ const home = read('index.html');
 const mobile = read('assets/mobile-rwd-final.css');
 const homepageMobile = read('assets/homepage-mobile.css');
 const reader = read('books/reader.css');
+const manifest = JSON.parse(read('site.webmanifest'));
 
 function must(name, ok){ if(!ok) fail.push(name); }
 
 must('homepage loads mobile-rwd-final.css', /mobile-rwd-final\.css/.test(home));
 must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s*<\/head>/s.test(home));
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
+must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
+must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
 must('430px breakpoint exists', /max-width:\s*430px/.test(mobile));
 must('320px-class safety breakpoint exists', /max-width:\s*340px/.test(mobile));
 must('mobile navigation has 44px touch target', /navlinks a[^}]*min-height:\s*44px/s.test(mobile));
