@@ -244,3 +244,9 @@ body{background:linear-gradient(180deg,#07111d 0%,#081522 46%,#060e18 100%)!impo
 body:not([data-book-id]) > header.hero h1 > span{display:block!important;white-space:nowrap!important}
 @media(min-width:851px){body:not([data-book-id]) > .topbar .brand img{width:62px!important;height:auto!important;max-width:none!important}body:not([data-book-id]) > header.hero .moonlight-emblem{right:auto!important;filter:drop-shadow(0 0 24px rgba(229,237,244,.12)) drop-shadow(0 0 72px rgba(184,207,228,.065))!important}body:not([data-book-id]) > header.hero .hero-side-caption{top:61%!important}body:not([data-book-id]) > header.hero .hero-copy h1{text-shadow:0 10px 38px rgba(0,0,0,.20)}}
 @media(max-width:700px){.hero-edition{margin-bottom:25px}.hero-text-link{border:0}body:not([data-book-id]) > header.hero h1 > span{white-space:normal!important}}
+
+/* Critical moonlight identity — extracted 2026-10-02 */
+:root{--moon-line:rgba(213,227,242,.18);--moon-soft:rgba(192,215,238,.075);--moon-edge:rgba(205,225,243,.15);--moon-focus:#e6d4b2}
+body{position:relative}body::after,main::before{content:none}:is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero){isolation:isolate}:is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}:is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
+body:not([data-book-id]) > header.hero .moonlight-emblem{display:block}body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}:is(.topbar,.top) .brand::after,.topbar .brand::after,.top .brand::after{content:none!important;display:none!important}:is(.topbar,.top,header nav,.navlinks){box-shadow:inset 0 -1px 0 rgba(205,225,243,.045)}:is(.topbar,.top) a:hover,:is(.topbar,.top) a:focus-visible{background-color:rgba(196,217,238,.075)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
