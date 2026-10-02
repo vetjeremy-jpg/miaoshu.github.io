@@ -60,6 +60,7 @@ must('homepage novel links stay same-window', homeBookAnchors.length > 0 && home
 must('homepage novel links stay inside PWA scope', homeBookAnchors.every(tag => !tag.includes('href="http://') && !tag.includes('href="https://') && !tag.includes("href='http://") && !tag.includes("href='https://") && !tag.includes('href="/')));
 must('shared Moonlit JS does not open new windows', !moonlitV2.includes('window.open('));
 must('standalone PWA keeps internal navigation native', moonlitV2.includes('display-mode: standalone') && moonlitV2.includes('navigator.standalone===true') && moonlitV2.includes('if(standalone)return;'));
+must('PWA display mode is resynced on page restore', moonlitV2.includes('dataset.displayMode=standalone?"standalone":"browser"') && moonlitV2.includes('addEventListener("pageshow",syncDisplayMode)'));
 must('browser transition uses same-window navigation', moonlitV2.includes('location.assign(u.href)'));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
