@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v2';
+const CACHE='moonlit-shell-v3';
 const SCOPE='/miaoshu.github.io/';
 const SHELL=[
  SCOPE,
@@ -8,11 +8,57 @@ const SHELL=[
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png'
 ];
-self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('moonlit-shell-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+
+self.addEventListener('install',event=>{
+ event.waitUntil(
+  caches.open(CACHE)
+   .then(cache=>cache.addAll(SHELL))
+   .then(()=>self.skipWaiting())
+ );
+});
+
+self.addEventListener('activate',event=>{
+ event.waitUntil(
+  caches.keys()
+   .then(keys=>Promise.all(keys.filter(key=>key.startsWith('moonlit-shell-')&&key!==CACHE).map(key=>caches.delete(key))))
+   .then(()=>self.clients.claim())
+ );
+});
+
 self.addEventListener('fetch',event=>{
- const req=event.request;if(req.method!=='GET')return;
- const u=new URL(req.url);if(u.origin!==location.origin||!u.pathname.startsWith(SCOPE))return;
- if(req.mode==='navigate'){event.respondWith(fetch(req).catch(()=>caches.match(SCOPE)));return}
- if(SHELL.includes(u.pathname)){event.respondWith(caches.match(req).then(hit=>hit||fetch(req).then(res=>{const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy));return res})));}}
+ const req=event.request;
+ if(req.method!=='GET')return;
+ const url=new URL(req.url);
+ if(url.origin!==location.origin||!url.pathname.startsWith(SCOPE))return;
+
+ // Network-first prevents an installed iPhone Home Screen app from being
+ // stranded on an older HTML/CSS/JS shell after a GitHub Pages deployment.
+ if(req.mode==='navigate'){
+  event.respondWith(
+   fetch(req)
+    .then(res=>{
+     if(res&&res.ok){
+      const copy=res.clone();
+      caches.open(CACHE).then(cache=>cache.put(req,copy));
+     }
+     return res;
+    })
+    .catch(()=>caches.match(req).then(hit=>hit||caches.match(SCOPE)))
+  );
+  return;
+ }
+
+ if(SHELL.includes(url.pathname)){
+  event.respondWith(
+   fetch(req)
+    .then(res=>{
+     if(res&&res.ok){
+      const copy=res.clone();
+      caches.open(CACHE).then(cache=>cache.put(req,copy));
+     }
+     return res;
+    })
+    .catch(()=>caches.match(req,{ignoreSearch:true}))
+  );
+ }
 });
