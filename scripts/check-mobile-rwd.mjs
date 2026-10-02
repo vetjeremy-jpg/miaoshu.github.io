@@ -25,6 +25,12 @@ must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaos
 must('192px icon file exists', fs.existsSync('assets/icons/icon-192.png'));
 must('512px icon file exists', fs.existsSync('assets/icons/icon-512.png'));
 must('Apple touch icon file exists', fs.existsSync('apple-touch-icon.png'));
+const primaryNavPages = ['index.html','gallery/index.html','posts/index.html','videos/index.html','about/index.html'].map(p => [p, read(p)]);
+for (const [page, html] of primaryNavPages) {
+ for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) {
+  must(page+' primary nav has '+label, html.includes(label));
+ }
+}
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
