@@ -1,9 +1,9 @@
-const CACHE='moonlit-shell-v4';
+const CACHE='moonlit-shell-v5';
 const SCOPE='/miaoshu.github.io/';
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
- SCOPE+'assets/moonlit-v2.js?v=20261002-pwa-nav2',
+ SCOPE+'assets/moonlit-v2.js?v=20261002-pwa-refresh1',
  SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2',
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png'
