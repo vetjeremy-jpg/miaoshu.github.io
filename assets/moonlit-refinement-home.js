@@ -6,7 +6,7 @@ const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safe
 /* Navigation stays typographic and quiet; phase marks removed in Final Editorial pass. */
 /* Cinematic homepage glow with restrained pointer parallax. */
 const hero=$('.hero'),canHover=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches;
-if(hero&&!document.body.dataset.bookId&&canHover){
+if(hero&&canHover){
  hero.style.position=hero.style.position||'relative';
  if(!$('.moonlit-ambient-glow',hero)){const glow=document.createElement('i');glow.className='moonlit-ambient-glow';glow.setAttribute('aria-hidden','true');hero.prepend(glow)}
  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((e.clientX-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((e.clientY-r.top)/r.height-.5)*7+'px')},{passive:true});
@@ -14,9 +14,9 @@ if(hero&&!document.body.dataset.bookId&&canHover){
 
 /* Curated "tonight" discovery. */
 const homeMain=$('main');
-if(homeMain&&!document.body.dataset.bookId&&!$('.moonlit-editorial-feature')){const features=[{k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},{k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},{k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},{k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}];const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');box.className='moonlit-editorial-feature';box.innerHTML='<small>'+pick.k+'</small><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">閱讀本期選題 →</a>';const hero=document.querySelector('.hero');if(hero)hero.insertAdjacentElement('afterend',box)}
+if(homeMain&&!$('.moonlit-editorial-feature')){const features=[{k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},{k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},{k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},{k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}];const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');box.className='moonlit-editorial-feature';box.innerHTML='<small>'+pick.k+'</small><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">閱讀本期選題 →</a>';const hero=document.querySelector('.hero');if(hero)hero.insertAdjacentElement('afterend',box)}
 
-if(homeMain&&$('#book')&&!document.body.dataset.bookId&&!$('.moonlit-tonight')){
+if(homeMain&&$('#book')&&!$('.moonlit-tonight')){
  const works=[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
   {m:'read',t:'《浮生歲月》',d:'如果今晚想讀記憶、時間與人的選擇，就從這裡開始。',u:'books/fushengsuiyue/index.html#toc'},
@@ -33,7 +33,7 @@ if(homeMain&&$('#book')&&!document.body.dataset.bookId&&!$('.moonlit-tonight')){
 }
 
 /* Surface the latest saved line on homepage as a true “moonlight bookmark”. */
-if(homeMain&&!document.body.dataset.bookId){
+if(homeMain){
  const keys=safeKeys().filter(k=>k.startsWith('moonlit-lines-'))
  if(keys.length){const count=keys.reduce((n,k)=>{try{return n+(JSON.parse(safeGet(k)||'[]').length||0)}catch(e){return n}},0);if(count){const target=$('#continue-reading');if(target){let details=[];try{details=JSON.parse(safeGet('moonlit-bookmark-details')||'[]')}catch(e){};details=Array.isArray(details)?details:[];const last=details.at(-1);const note=document.createElement(last?'a':'p');note.className='moonlit-bookmark-note';if(last){note.href=last.url;note.innerHTML='<small>YOUR MOONLIGHT BOOKMARK / 你留下的月光</small><strong>「'+last.text.replace(/[<>&]/g,s=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[s]))+'」</strong><span>'+last.title+' · 回到這一句 →</span>'}else note.textContent='☾ 你曾把月光留在 '+count+' 個段落；回到小說時，它們仍會在原處等你。';target.insertAdjacentElement('afterend',note)}}}
 }
