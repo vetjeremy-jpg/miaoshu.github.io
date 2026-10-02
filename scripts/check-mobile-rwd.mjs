@@ -16,9 +16,13 @@ must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
 must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
 must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
-function linkTags(html){ return html.match(/<link\\b[^>]*>/gi) || []; }
+function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
- return linkTags(html).filter(tag => new RegExp('rel=["\\\\\']'+rel+'["\\\\\']','i').test(tag) && tag.includes(file)).length;
+ return linkTags(html).filter(tag => {
+  const normalized = tag.toLowerCase();
+  return (normalized.includes('rel="'+rel.toLowerCase()+'"') || normalized.includes("rel='"+rel.toLowerCase()+"'")) &&
+   normalized.includes(file.toLowerCase());
+ }).length;
 }
 for (const [page, html] of mainPages) {
  must(page+' has one favicon', linkCount(html, 'icon', 'favicon.webp') === 1);
