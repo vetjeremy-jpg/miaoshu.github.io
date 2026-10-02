@@ -61,3 +61,6 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  };
  addEventListener("hashchange",sync);if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",sync,{once:true});else sync();
 }catch(e){}})();
+
+/* PWA shell: keep iOS Home Screen navigation inside the Moonlit scope. */
+if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('/miaoshu.github.io/sw.js',{scope:'/miaoshu.github.io/'}).catch(()=>{}),{once:true});}
