@@ -5,11 +5,11 @@ const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safe
 
 /* Navigation stays typographic and quiet; phase marks removed in Final Editorial pass. */
 /* Cinematic homepage glow with restrained pointer parallax. */
-const hero=$('.hero');
-if(hero&&!document.body.dataset.bookId){
+const hero=$('.hero'),canHover=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches;
+if(hero&&!document.body.dataset.bookId&&canHover){
  hero.style.position=hero.style.position||'relative';
  if(!$('.moonlit-ambient-glow',hero)){const glow=document.createElement('i');glow.className='moonlit-ambient-glow';glow.setAttribute('aria-hidden','true');hero.prepend(glow)}
- if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches)hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((e.clientX-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((e.clientY-r.top)/r.height-.5)*7+'px')},{passive:true});
+ hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((e.clientX-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((e.clientY-r.top)/r.height-.5)*7+'px')},{passive:true});
 }
 
 /* Curated "tonight" discovery. */
