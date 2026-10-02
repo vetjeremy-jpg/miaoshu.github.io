@@ -24,6 +24,10 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  .navlinks::-webkit-scrollbar,.top nav::-webkit-scrollbar{display:none}
  .navlinks a,.top nav a{min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;flex:0 0 auto}
  .navlinks a:last-child,.top nav a:last-child{margin-right:4px}
+ .navlinks a[aria-current="page"],.top nav a[aria-current="page"]{
+   color:#f1d79a!important;text-decoration:none;
+   box-shadow:inset 0 -2px 0 rgba(241,215,154,.72)
+ }
  .wrap{width:100%;max-width:100%;padding-left:18px!important;padding-right:18px!important}
  .panel{max-width:100%}
  button,input,select,textarea{max-width:100%}
