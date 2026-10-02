@@ -17,6 +17,8 @@ on:
       - 'videos/**'
       - 'about/**'
       - 'site.webmanifest'
+      - 'sitemap.xml'
+      - 'robots.txt'
       - 'sw.js'
       - 'book.html'
       - 'bookmarks/**'
@@ -26,6 +28,7 @@ on:
       - 'works/**'
       - 'scripts/check-mobile-rwd.mjs'
       - 'scripts/check-internal-links.mjs'
+      - 'scripts/check-seo.mjs'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
@@ -38,3 +41,4 @@ jobs:
       - run: node books/check-readers.mjs
       - run: node scripts/check-mobile-rwd.mjs
       - run: node scripts/check-internal-links.mjs
+      - run: node scripts/check-seo.mjs
