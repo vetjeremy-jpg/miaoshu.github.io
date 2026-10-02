@@ -16,6 +16,9 @@ must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
 must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
 must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
+must('192px icon file exists', fs.existsSync('assets/icons/icon-192.png'));
+must('512px icon file exists', fs.existsSync('assets/icons/icon-512.png'));
+must('Apple touch icon file exists', fs.existsSync('apple-touch-icon.png'));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
