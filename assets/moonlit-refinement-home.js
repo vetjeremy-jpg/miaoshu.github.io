@@ -5,7 +5,8 @@ const safeGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},safe
 
 /* Navigation stays typographic and quiet; phase marks removed in Final Editorial pass. */
 /* Cinematic homepage glow with restrained pointer parallax. */
-const hero=$('.hero'),homeMain=$('main'),book=$('#book'),canHover=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches;
+const hero=$('.hero'),homeMain=$('main'),book=$('#book'),continueBox=$('#continue-reading'),canHover=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches;
+const near=(el,fn)=>{if(!el)return;if(!('IntersectionObserver'in window)){fn();return}const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();fn()}},{rootMargin:'800px 0px'});io.observe(el)};
 if(hero&&canHover){
  hero.style.position=hero.style.position||'relative';
  if(!$('.moonlit-ambient-glow',hero)){const glow=document.createElement('i');glow.className='moonlit-ambient-glow';glow.setAttribute('aria-hidden','true');hero.prepend(glow)}
@@ -15,7 +16,7 @@ if(hero&&canHover){
 /* Curated "tonight" discovery. */
 if(homeMain&&!$('.moonlit-editorial-feature')){const features=[{k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},{k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},{k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},{k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}];const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');box.className='moonlit-editorial-feature';box.innerHTML='<small>'+pick.k+'</small><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">閱讀本期選題 →</a>';if(hero)hero.insertAdjacentElement('afterend',box)}
 
-if(homeMain&&book&&!$('.moonlit-tonight')){
+if(homeMain&&book&&!$('.moonlit-tonight'))near(book,()=>{
  const works=[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
   {m:'read',t:'《浮生歲月》',d:'如果今晚想讀記憶、時間與人的選擇，就從這裡開始。',u:'books/fushengsuiyue/index.html#toc'},
@@ -30,15 +31,15 @@ if(homeMain&&book&&!$('.moonlit-tonight')){
  book.parentNode.insertBefore(box,book);
  const buttons=$('button',box),result=$('.moonlit-result',box),resultTitle=$('strong',result),resultText=$('p',result),resultLink=$('a',result);
  box.addEventListener('click',e=>{const b=e.target.closest('button[data-mood]');if(!b)return;buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));let pool=b.dataset.mood==='any'?works:works.filter(w=>w.m===b.dataset.mood);const last=safeGet('moonlit-last-pick');let candidates=pool.filter(w=>w.u!==last);if(!candidates.length)candidates=pool;const pick=candidates[Math.floor(Math.random()*candidates.length)];safeSet('moonlit-last-pick',pick.u);resultTitle.textContent=pick.t;resultText.textContent=pick.d;resultLink.href=pick.u;result.classList.add('is-visible')});
-}
+});
 
 /* Surface the latest saved line on homepage as a true “moonlight bookmark”.
    Fast path uses the bookmark index; only legacy data falls back to a full storage scan. */
-if(homeMain){
+if(homeMain&&continueBox)near(continueBox,()=>{
  let details=[];try{details=JSON.parse(safeGet('moonlit-bookmark-details')||'[]')}catch(e){};details=Array.isArray(details)?details:[];
- const last=details.at(-1),target=$('#continue-reading');
+ const last=details.at(-1),target=continueBox;
  if(last&&target){const note=document.createElement('a');note.className='moonlit-bookmark-note';note.href=last.url;note.innerHTML='<small>YOUR MOONLIGHT BOOKMARK / 你留下的月光</small><strong>「'+last.text.replace(/[<>&]/g,s=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[s]))+'」</strong><span>'+last.title+' · 回到這一句 →</span>';target.insertAdjacentElement('afterend',note)}
  else if(target){let count=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k?.startsWith('moonlit-lines-'))count+=JSON.parse(localStorage.getItem(k)||'[]').length||0}}catch(e){}if(count){const note=document.createElement('p');note.className='moonlit-bookmark-note';note.textContent='☾ 你曾把月光留在 '+count+' 個段落；回到小說時，它們仍會在原處等你。';target.insertAdjacentElement('afterend',note)}}
-}
+});
 
 })();
