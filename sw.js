@@ -1,10 +1,10 @@
-const CACHE='moonlit-shell-v3';
+const CACHE='moonlit-shell-v4';
 const SCOPE='/miaoshu.github.io/';
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
- SCOPE+'assets/moonlit-v2.js',
- SCOPE+'assets/mobile-rwd-final.css',
+ SCOPE+'assets/moonlit-v2.js?v=20261002-pwa-nav2',
+ SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2',
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png'
 ];
@@ -48,7 +48,8 @@ self.addEventListener('fetch',event=>{
   return;
  }
 
- if(SHELL.includes(url.pathname)){
+ const shellKey=url.pathname+url.search;
+ if(SHELL.some(item=>new URL(item,self.location.origin).pathname+new URL(item,self.location.origin).search===shellKey)){
   event.respondWith(
    fetch(req)
     .then(res=>{
@@ -58,7 +59,7 @@ self.addEventListener('fetch',event=>{
      }
      return res;
     })
-    .catch(()=>caches.match(req,{ignoreSearch:true}))
+    .catch(()=>caches.match(req))
   );
  }
 });
