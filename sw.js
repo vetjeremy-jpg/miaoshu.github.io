@@ -1,4 +1,5 @@
-const CACHE='moonlit-shell-v7';
+const CACHE='moonlit-shell-v8';
+const PAGES='moonlit-pages-v1';
 const SCOPE='/miaoshu.github.io/';
 const SHELL=[
  SCOPE,
@@ -49,11 +50,16 @@ self.addEventListener('fetch',event=>{
     .then(res=>{
      if(res&&res.ok){
       const copy=res.clone();
-      caches.open(CACHE).then(cache=>cache.put(req,copy));
+      caches.open(PAGES).then(cache=>cache.put(req,copy));
      }
      return res;
     })
-    .catch(()=>caches.match(req).then(hit=>hit||caches.match(SCOPE)))
+    .catch(async()=>{
+     const hit=await caches.match(req);
+     if(hit)return hit;
+     if(url.pathname===SCOPE||url.pathname===SCOPE+'index.html')return caches.match(SCOPE);
+     return Response.error();
+    })
   );
   return;
  }
