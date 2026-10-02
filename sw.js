@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v6';
+const CACHE='moonlit-shell-v7';
 const SCOPE='/miaoshu.github.io/';
 const SHELL=[
  SCOPE,
@@ -12,9 +12,18 @@ const SHELL=[
 
 self.addEventListener('install',event=>{
  event.waitUntil(
-  caches.open(CACHE)
-   .then(cache=>cache.addAll(SHELL))
-   .then(()=>self.skipWaiting())
+  caches.open(CACHE).then(async cache=>{
+   const critical=SHELL.slice(0,5),optional=SHELL.slice(5);
+   await Promise.all(critical.map(async url=>{
+    const res=await fetch(url,{cache:'reload'});
+    if(!res.ok)throw new Error('Critical shell fetch failed: '+url);
+    await cache.put(url,res);
+   }));
+   await Promise.allSettled(optional.map(async url=>{
+    const res=await fetch(url,{cache:'reload'});
+    if(res.ok)await cache.put(url,res);
+   }));
+  }).then(()=>self.skipWaiting())
  );
 });
 
