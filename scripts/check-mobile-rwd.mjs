@@ -59,6 +59,8 @@ const homeBookAnchors = (home.match(/<a[^>]*href=["'][^"']*books\/[^"']*["'][^>]
 must('homepage novel links stay same-window', homeBookAnchors.length > 0 && homeBookAnchors.every(tag => !tag.includes('target="_blank"') && !tag.includes("target='_blank'")));
 must('homepage novel links stay inside PWA scope', homeBookAnchors.every(tag => !tag.includes('href="http://') && !tag.includes('href="https://') && !tag.includes("href='http://") && !tag.includes("href='https://") && !tag.includes('href="/')));
 must('shared Moonlit JS does not open new windows', !moonlitV2.includes('window.open('));
+must('standalone PWA keeps internal navigation native', moonlitV2.includes('display-mode: standalone') && moonlitV2.includes('navigator.standalone===true') && moonlitV2.includes('if(standalone)return;'));
+must('browser transition uses same-window navigation', moonlitV2.includes('location.assign(u.href)'));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
