@@ -2,14 +2,6 @@
 :root{--ml-night:#08131f;--ml-panel:#102235;--ml-ink:#f2eee7;--ml-muted:#b7c2cc;--ml-moon:#e4d2af;--ml-line:rgba(228,210,175,.22);--ml-radius:6px;--ml-ease:cubic-bezier(.2,.7,.2,1);--ml-serif:"Noto Serif TC","Songti TC",serif;--ml-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--ml-step-1:clamp(1.05rem,1rem + .25vw,1.18rem);--ml-step-2:clamp(1.45rem,1.2rem + 1vw,2rem);--ml-step-3:clamp(2rem,1.45rem + 2.2vw,3.2rem);--ml-space-1:8px;--ml-space-2:16px;--ml-space-3:24px;--ml-space-4:40px;--ml-space-5:clamp(64px,8vw,112px);--ml-motion-fast:240ms;--ml-motion-mid:520ms;--ml-motion-ambient:8s}
 body{--ml-glow:0;}
 
-/* One visual language: small moon phases, never decorative moon clutter */
-.moonlit-phase-mark{display:inline-grid;place-items:center;width:1.45em;height:1.45em;margin-right:.35em;color:var(--ml-moon);font-family:Georgia,serif;font-size:.9em;opacity:.82}
-.moonlit-phase-nav{display:inline-flex;align-items:center}
-.moonlit-phase-nav[data-phase="full"] .moonlit-phase-mark::before{content:"●"}
-.moonlit-phase-nav[data-phase="half"] .moonlit-phase-mark::before{content:"◐"}
-.moonlit-phase-nav[data-phase="crescent"] .moonlit-phase-mark::before{content:"☾"}
-.moonlit-phase-nav[data-phase="new"] .moonlit-phase-mark::before{content:"○"}
-
 /* Homepage moonlight: atmospheric rather than another object */
 body.homepage .hero,body:not([class]) .hero{isolation:isolate}
 .hero .moonlit-ambient-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at calc(72% + var(--ml-x,0px)) calc(28% + var(--ml-y,0px)),rgba(226,215,190,.11),rgba(125,161,190,.045) 24%,transparent 53%);opacity:.82;animation:moonlit-breathe var(--ml-motion-ambient) ease-in-out infinite}
@@ -48,13 +40,6 @@ body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;backg
 .moonlit-path small{color:var(--ml-moon);letter-spacing:.16em}
 .moonlit-path h2{font:500 var(--ml-step-2)/1.45 var(--ml-serif);color:var(--ml-ink);margin:8px 0}
 .moonlit-path a{color:var(--ml-moon);text-underline-offset:4px}
-
-/* Photo viewer: gallery disappears; photograph owns the screen */
-.photo-viewer::backdrop{background:rgba(1,4,8,.975)!important}
-.photo-viewer-stage{background:#030609!important}
-.photo-viewer-image{transition:opacity .38s var(--ml-ease)}
-.photo-viewer-caption{background:#090d12!important}
-.photo-viewer-bar{background:#090d12!important}
 
 /* Unified motion */
 a,button,.creator-card,.series-card{transition-duration:.25s;transition-timing-function:var(--ml-ease)}
@@ -122,7 +107,6 @@ body{overflow-wrap:anywhere}
 @media(max-width:720px){.moonlit-editorial-feature{grid-template-columns:1fr;margin-inline:18px}.moonlit-editorial-feature small,.moonlit-editorial-feature strong,.moonlit-editorial-feature p,.moonlit-editorial-feature a{grid-column:1;grid-row:auto}.moonlit-editorial-feature p{margin-top:16px}}
 
 /* FINAL EDITORIAL CLEANUP — 2026-09-30 */
-header nav a .moonlit-phase-mark,.navlinks a .moonlit-phase-mark{display:none!important}
 header nav a,.navlinks a{letter-spacing:.02em}
 main>section:not(.hero):not(.moonlit-tonight){scroll-margin-top:88px}
 #book .novel-card,#book .book-card,#book .creator-card{box-shadow:none!important;border-color:rgba(205,225,243,.11)!important}
