@@ -28,6 +28,13 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
    color:#f1d79a!important;text-decoration:none;
    box-shadow:inset 0 -2px 0 rgba(241,215,154,.72)
  }
+ .navlinks,.top nav{
+   -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%);
+   mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%)
+ }
+ .navlinks:focus-within,.top nav:focus-within{
+   -webkit-mask-image:none;mask-image:none
+ }
  .wrap{width:100%;max-width:100%;padding-left:18px!important;padding-right:18px!important}
  .panel{max-width:100%}
  button,input,select,textarea{max-width:100%}
