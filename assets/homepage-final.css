@@ -1,0 +1,40 @@
+/* Moonlit Stories homepage final cascade layer — 2026-10-02
+   Keep final homepage-only decisions here so legacy layers can be retired safely. */
+body:not([data-book-id]) > .topbar .brand img{width:62px!important;height:auto!important;max-width:none!important}
+body:not([data-book-id]) > header.hero{
+ position:relative!important;height:clamp(650px,calc(100svh - 64px),760px)!important;min-height:650px!important;
+ padding:34px clamp(34px,5vw,76px) 42px!important;
+ background:radial-gradient(circle at 34% 38%,rgba(187,215,239,.08),transparent 23%),linear-gradient(112deg,#07111d 0%,#091a2a 55%,#07111d 100%)!important
+}
+body:not([data-book-id]) > header.hero .hero-inner{display:block!important;width:min(1280px,100%)!important;max-width:1280px!important;height:100%!important;margin:0 auto!important;padding:0!important}
+body:not([data-book-id]) > header.hero .hero-copy{width:44%!important;max-width:610px!important;margin-left:56%!important;padding:38px 0 0!important}
+body:not([data-book-id]) > header.hero h1{max-width:none!important;font-size:clamp(54px,5.1vw,74px)!important;line-height:1.22!important;letter-spacing:.035em!important;margin:20px 0!important;white-space:normal!important}
+body:not([data-book-id]) > header.hero h1 br{display:block!important}
+body:not([data-book-id]) > header.hero .hero-lede{font-size:17px!important;line-height:1.9!important;margin:0!important;color:rgba(205,216,225,.76)!important}
+body:not([data-book-id]) > header.hero .hero-actions{margin-top:25px!important;gap:18px!important}
+body:not([data-book-id]) > header.hero .hero-index{margin-top:28px!important}
+body:not([data-book-id]) > header.hero .moonlight-emblem{left:27%!important;right:auto!important;top:82px!important;width:330px!important;height:330px!important;opacity:.62!important}
+body:not([data-book-id]) > header.hero .hero-side-caption{left:8%!important;top:61%!important}
+@media(max-width:980px){
+ body:not([data-book-id]) > header.hero{height:auto!important;min-height:650px!important;padding:42px 36px 54px!important}
+ body:not([data-book-id]) > header.hero .hero-inner{display:grid!important;grid-template-columns:minmax(250px,.78fr) minmax(430px,1.22fr)!important;gap:34px!important;align-items:center!important}
+ body:not([data-book-id]) > header.hero .hero-copy{grid-column:2!important;width:auto!important;max-width:none!important;margin:0!important;padding:16px 0!important}
+ body:not([data-book-id]) > header.hero h1{font-size:clamp(48px,5.8vw,62px)!important;line-height:1.2!important;letter-spacing:.025em!important}
+ body:not([data-book-id]) > header.hero .moonlight-emblem{left:11%!important;top:120px!important;width:250px!important;height:250px!important}
+ body:not([data-book-id]) > header.hero .hero-side-caption{left:5%!important;top:64%!important;font-size:11px!important}
+ body:not([data-book-id]) > header.hero .hero-index{gap:13px!important;font-size:9px!important}
+ body:not([data-book-id]) > header.hero h1>span{white-space:normal!important}
+}
+@media(max-width:700px){
+ body:not([data-book-id]) > .topbar .brand img{width:34px!important}
+ body:not([data-book-id]) > header.hero{height:auto!important;min-height:0!important;padding:26px 18px 36px!important;background:radial-gradient(ellipse 90% 38% at 78% 3%,rgba(126,164,197,.10),transparent 70%),#07111d!important}
+ body:not([data-book-id]) > header.hero .hero-inner{display:grid!important;grid-template-columns:1fr!important;gap:28px!important;height:auto!important}
+ body:not([data-book-id]) > header.hero .hero-copy{grid-column:auto!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+ body:not([data-book-id]) > header.hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;letter-spacing:.025em!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
+ body:not([data-book-id]) > header.hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important}
+ body:not([data-book-id]) > header.hero .hero-actions{margin-top:22px!important;gap:4px!important}
+ body:not([data-book-id]) > header.hero .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important}
+ body:not([data-book-id]) > header.hero .moonlight-emblem{width:230px!important;height:230px!important;top:14px!important;right:-94px!important;left:auto!important;opacity:.52!important}
+ body:not([data-book-id]) > header.hero .hero-side-caption{display:none!important}
+}
+@media(max-width:380px){body:not([data-book-id]) > header.hero h1{font-size:42px!important}}
