@@ -11,7 +11,7 @@ h1{font-size:clamp(38px,6vw,68px);line-height:1.15;color:var(--gold);margin:16px
 footer{text-align:center;color:#8ea3b9;padding:36px 20px;border-top:1px solid var(--line);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;font-size:13px}.progress{position:fixed;left:0;top:0;height:3px;z-index:2000;width:0;background:var(--gold2)}
 @media(max-width:700px){
  .topbar{gap:10px}
- .hero{padding-top:80px}
+
  .chapter{padding:22px 18px}
 }.creator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}.creator-card{overflow:hidden;transition:transform .2s,border-color .2s;border:0;border-radius:0;background:#0a1929}.creator-art{display:grid;min-height:82px;place-items:end start;padding:14px 22px 0;background:none;font-family:Georgia,serif;font-size:40px;color:var(--gold2)}.creator-copy{padding:10px 22px 24px}.creator-copy h3{font-size:24px;line-height:1.4;margin:0 0 8px;font-family:"Noto Serif TC","Songti TC",serif;color:var(--text)}.creator-copy p{font-size:16px;color:var(--muted);line-height:1.8}.creator-copy a{display:inline-block;margin:5px 12px 5px 0;font-weight:700;text-underline-offset:4px;color:var(--gold2)}.creator-nav,.community-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px 0}.creator-nav a,.community-actions a,.community-actions button{padding:10px 17px;border:1px solid var(--gold);border-radius:3px;text-decoration:none;color:var(--gold2);background:transparent;font:600 16px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;cursor:pointer;border-color:rgba(228,210,175,.5)}.community-actions a:first-child{background:var(--gold);color:#071b33}.community-note{font-size:15px;color:var(--muted);text-align:center;line-height:1.8}.creator-tag{font-size:13px;color:var(--gold);letter-spacing:3px;text-align:center}@media(max-width:700px){.creator-art{min-height:120px}.creator-nav a{font-size:14px}}
 /* Refined reading and discovery experience */
@@ -228,7 +228,7 @@ h1,h2,h3,.section-title{font-family:var(--ml-serif);font-weight:500}
 @media(max-width:700px){.cta{min-height:48px}}
 
 /* Critical cinematic primitives — extracted 2026-10-02 */
-html{scroll-padding-top:90px}.brand{font-family:"Noto Serif TC","Songti TC",serif;letter-spacing:.08em}.navlinks a{letter-spacing:.07em}.hero .eyebrow{letter-spacing:.28em}.hero-index{border-color:rgba(230,210,177,.4)}.hero:before{display:block;inset:20px;border:1px solid rgba(211,226,239,.22);border-radius:0;box-shadow:none}.hero h1{text-shadow:0 3px 26px rgba(0,0,0,.7),0 0 32px rgba(213,230,246,.07)}
+.brand{font-family:"Noto Serif TC","Songti TC",serif;letter-spacing:.08em}.navlinks a{letter-spacing:.07em}.hero .eyebrow{letter-spacing:.28em}.hero-index{border-color:rgba(230,210,177,.4)}.hero:before{display:block;inset:20px;border:1px solid rgba(211,226,239,.22);border-radius:0;box-shadow:none}.hero h1{text-shadow:0 3px 26px rgba(0,0,0,.7),0 0 32px rgba(213,230,246,.07)}
 @media(max-width:520px){.hero:before{inset:8px}}
 
 /* Critical homepage premium primitives — extracted 2026-10-02 */
@@ -244,7 +244,7 @@ body:not([data-book-id]) > header.hero h1 > span{display:block!important;white-s
 :root{--moon-line:rgba(213,227,242,.18);--moon-soft:rgba(192,215,238,.075);--moon-edge:rgba(205,225,243,.15);--moon-focus:#e6d4b2}
 body{position:relative}body::after,main::before{content:none}:is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero){isolation:isolate}:is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}:is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 body:not([data-book-id]) > header.hero .moonlight-emblem{display:block}body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}:is(.topbar,.top) .brand::after,.topbar .brand::after,.top .brand::after{content:none!important;display:none!important}:is(.topbar,.top,header nav,.navlinks){box-shadow:inset 0 -1px 0 rgba(205,225,243,.045)}:is(.topbar,.top) a:hover,:is(.topbar,.top) a:focus-visible{background-color:rgba(196,217,238,.075)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 
 /* Homepage mobile composition — critical CSS 2026-10-02 */
 @media(max-width:700px){
