@@ -17,7 +17,6 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .hero .eyebrow{color:var(--gold2);letter-spacing:.28em}
 .hero h1{max-width:11em;color:#fff9ee;font-size:clamp(44px,5.5vw,82px);font-weight:500;line-height:1.45;letter-spacing:.11em;text-shadow:0 4px 28px #0009}
 .hero .hero-lede{max-width:31em;color:#e3ded5;font-size:clamp(16px,1.6vw,20px);text-shadow:0 2px 15px #000}
-.hero-image img{filter:saturate(.78)}
 .hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
 .cta{background:var(--gold2);color:#171612;border-radius:0;box-shadow:none;letter-spacing:.07em}
 .cta.secondary{border-color:var(--gold2);color:var(--gold2);background:rgba(10,10,10,.25)}
