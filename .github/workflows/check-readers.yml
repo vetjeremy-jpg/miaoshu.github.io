@@ -3,6 +3,12 @@ on:
   push:
     paths:
       - 'books/**'
+      - 'assets/mobile-rwd-final.css'
+      - 'index.html'
+      - 'gallery/**'
+      - 'posts/**'
+      - 'videos/**'
+      - 'about/**'
       - '.github/workflows/check-readers.yml'
   pull_request:
     paths:
