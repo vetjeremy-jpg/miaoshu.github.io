@@ -1,0 +1,75 @@
+/* Moonlit Stories — H1 mobile RWD final QA layer — 2026-10-02
+   Structural rules only. Loaded last so mobile fixes have one predictable source of truth. */
+*{box-sizing:border-box}
+html,body{max-width:100%}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
+@media(max-width:700px){
+ html{overflow-x:hidden;scroll-padding-top:82px}
+ body{overflow-x:hidden}
+ h1,h2,h3,h4,p,blockquote,figcaption,a{overflow-wrap:anywhere}
+ .topbar,.top{
+   width:100%;max-width:100%;padding-left:max(14px,env(safe-area-inset-left))!important;
+   padding-right:max(14px,env(safe-area-inset-right))!important
+ }
+ .topbar .brand,.top .brand{max-width:100%;min-height:44px}
+ .topbar .brand img,.top .brand img{flex:0 0 auto}
+ .navlinks,.top nav{
+   max-width:100vw;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;
+   -webkit-overflow-scrolling:touch;scrollbar-width:none
+ }
+ .navlinks::-webkit-scrollbar,.top nav::-webkit-scrollbar{display:none}
+ .navlinks a,.top nav a{min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+ .wrap{width:100%;max-width:100%;padding-left:18px!important;padding-right:18px!important}
+ .panel{max-width:100%}
+ button,input,select,textarea{max-width:100%}
+ input,select,textarea{font-size:16px}
+ iframe{width:100%;border:0}
+}
+@media(max-width:430px){
+ .hero h1{max-width:100%}
+ .hero-actions,.feature-actions,.actions{max-width:100%}
+ .cta{max-width:100%;white-space:normal;text-align:center}
+ .creator-grid,.featured-grid,.series-grid,.layout,.grid{min-width:0}
+ .gallery figure,.gallery img,.series-card,.tile{min-width:0;max-width:100%}
+}
+/* Homepage bookshelf: rails remain visible while only the books row scrolls. */
+@media(max-width:700px){
+ body:not([data-book-id]) #book{overflow:visible!important}
+ body:not([data-book-id]) #book .bookshelf-scene{
+   --moonlit-rail:5px;--moonlit-gutter:clamp(20px,6.4vw,28px);
+   position:relative!important;width:100%!important;max-width:100%!important;
+   margin-inline:0!important;padding:14px 0 0!important;overflow:visible!important
+ }
+ body:not([data-book-id]) #book .bookshelf-scene::before,
+ body:not([data-book-id]) #book .bookshelf-scene::after{
+   display:block!important;content:""!important;position:absolute!important;top:48px!important;bottom:18px!important;
+   width:var(--moonlit-rail)!important;z-index:20!important;opacity:1!important;visibility:visible!important;
+   background:linear-gradient(90deg,#5a4027,#9a7548 48%,#6b4d2e)!important;
+   box-shadow:0 0 0 1px rgba(238,205,143,.28),0 3px 8px rgba(0,0,0,.24)!important;pointer-events:none
+ }
+ body:not([data-book-id]) #book .bookshelf-scene::before{left:0!important}
+ body:not([data-book-id]) #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1)!important}
+ body:not([data-book-id]) #book .novels-grid{
+   position:relative!important;z-index:2!important;width:100%!important;max-width:100%!important;
+   margin:34px 0 0!important;padding-left:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
+   padding-right:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
+   overflow-x:auto!important;overflow-y:visible!important;scroll-padding-inline:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important
+ }
+}
+/* Interior pages: prevent fixed-width grids and media from escaping narrow screens. */
+@media(max-width:700px){
+ .gallery-page .series-grid,.video-page .layout{grid-template-columns:1fr!important}
+ .gallery-page figure{margin-left:0;margin-right:0}
+ .video-page .screen,.video-page .screen iframe{width:100%;max-width:100%;aspect-ratio:9/16}
+ .journal-timeline,.journey-map{max-width:100%}
+ .moonlit-route{max-width:100%;overflow:hidden}
+}
+/* 320px safety: keep controls usable without compressing text into slivers. */
+@media(max-width:340px){
+ .wrap{padding-left:14px!important;padding-right:14px!important}
+ .panel{padding-left:15px!important;padding-right:15px!important}
+ .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
+ body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:18px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
