@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v29';
+const CACHE='moonlit-shell-v30';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -11,7 +11,14 @@ const SHELL=[
  SCOPE+'assets/moonlit-v2.js?v=20261002-runtime21',
  SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2',
  SCOPE+'assets/icons/icon-192.png',
- SCOPE+'assets/icons/icon-512.png'
+ SCOPE+'assets/icons/icon-512.png',
+ SCOPE+'assets/moonlit-home-content.js?v=20261002-split2',
+ SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
+ SCOPE+'assets/moonlit-footer.js?v=20261002-split1',
+ SCOPE+'assets/moonlit-refinement-home.js?v=20261002-split6',
+ SCOPE+'assets/moonlit-refinement-reader.js?v=20261002-split2',
+ SCOPE+'assets/moonlit-refinement.css?v=20261002-home3',
+ SCOPE+'assets/moonlit-refinement-reader.css?v=20261002-split1'
 ];
 
 self.addEventListener('install',event=>{
