@@ -44,6 +44,14 @@ for (const [page, label] of expectedCurrentNav) {
 must('homepage #book switches current nav to novel', /location\.hash==="#book"[\s\S]*home\?\.removeAttribute\("aria-current"\)[\s\S]*book\.setAttribute\("aria-current","page"\)/.test(moonlitV2));
 must('homepage without #book restores current nav to home', /book\?\.removeAttribute\("aria-current"\)[\s\S]*home\?\.setAttribute\("aria-current","page"\)/.test(moonlitV2));
 must('current mobile nav item has highlight styling', /a\[aria-current="page"\][\s\S]*color:#f1d79a/.test(mobile));
+const novelPages = mainPages.filter(([p]) => /^books\\/[^/]+\\/index\\.html$/.test(p) && p !== 'books/_template/index.html');
+for (const [page, html] of novelPages) {
+ const nav = html.match(/<nav class=["'][^"']*navlinks[^"']*["'][^>]*>[\\s\\S]*?<\\/nav>/i)?.[0] || '';
+ const current = [...nav.matchAll(/<a\\b[^>]*aria-current=["']page["'][^>]*>([\\s\\S]*?)<\\/a>/gi)]
+   .map(m => m[1].replace(/<[^>]+>/g,'').trim());
+ must(page+' highlights only novel in primary nav', current.length === 1 && current[0] === '小說');
+ for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) must(page+' primary nav has '+label, nav.includes(label));
+}
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
