@@ -196,7 +196,7 @@
 })();
 </script>
 <script>
-(()=>{const load=src=>{const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)};const later=()=>{load('photo-viewer.js?v=20260930-discovery');load('assets/moonlit-experience.js?v=20260930-privatefix')};if('requestIdleCallback'in window)requestIdleCallback(later,{timeout:1800});else setTimeout(later,900)})();
+(()=>{let loaded=false;const later=()=>{if(loaded)return;loaded=true;for(const src of ['photo-viewer.js?v=20260930-discovery','assets/moonlit-experience.js?v=20260930-privatefix']){const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)}};const target=document.querySelector('#featured,#creative,#miaoshu-album,.gallery');if(target&&'IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();later()}},{rootMargin:'700px 0px'});io.observe(target)}for(const type of ['pointerover','touchstart','focusin'])document.addEventListener(type,e=>{if(e.target.closest?.('#featured,#creative,#miaoshu-album,.gallery'))later()},{once:true,passive:type!=='focusin'});if('requestIdleCallback'in window)requestIdleCallback(later,{timeout:2200});else setTimeout(later,1200)})();
 </script>
 <script src="assets/moonlit-v2.js?v=20261002-pwa-nav2" defer></script></body>
 </html>
