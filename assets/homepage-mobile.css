@@ -14,8 +14,7 @@
 .hero-actions .hero-primary{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;padding:11px 16px!important;font-size:13px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
-.hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}
-.hero-image img{object-position:center 47%!important;filter:saturate(.86) brightness(.78) contrast(1.04)}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}.hero-image figcaption span:last-child{font-size:10px!important;white-space:normal}
+.hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}
 .wrap{padding:0 18px 70px!important}
 .panel{padding:48px 0!important}.section-title{font-size:clamp(29px,9vw,38px)!important;line-height:1.35!important;word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
 #tonight{padding-top:46px!important}.tonight-grid{display:flex!important;overflow-x:auto;gap:12px!important;margin:25px -18px 0!important;padding:0 18px 12px!important;border:0!important;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.tonight-grid::-webkit-scrollbar{display:none}.tonight-grid article{flex:0 0:min(82vw,310px);min-height:235px;padding:25px 22px!important;border:1px solid rgba(220,201,164,.15)!important;background:#091827!important;scroll-snap-align:center}.tonight-grid h3{font-size:26px!important}.tonight-grid article a{display:inline-flex;align-items:center;min-height:44px}
