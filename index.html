@@ -175,8 +175,9 @@
   return Array.isArray(ids)?[...new Set(ids)].filter(validChapter).map(id=>({book,id})):[];
  });
  if(saved.length){shelf.replaceChildren();saved.forEach(({book,id})=>{const li=document.createElement('li'),a=document.createElement('a');a.href=book.url+'#'+id;a.textContent=book.title+' · '+chapterTitle(book,id);li.append(a);shelf.append(li)})}
- const initLater=()=>{ const progress=document.getElementById('progress');
- addEventListener('scroll',()=>{const d=document.documentElement,h=d.scrollHeight-d.clientHeight;progress.style.width=(h?scrollY/h*100:0)+'%'},{passive:true});
+ const initLater=()=>{ const progress=document.getElementById('progress');let progressFrame=0;
+ const updateProgress=()=>{progressFrame=0;const d=document.documentElement,h=d.scrollHeight-d.clientHeight;progress.style.width=(h?scrollY/h*100:0)+'%'};
+ addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(updateProgress)},{passive:true});updateProgress();
  document.getElementById('share-site')?.addEventListener('click',async()=>{const url=location.origin+location.pathname;try{if(navigator.share)await navigator.share({title:'喵叔 Moonlit Stories',url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);document.getElementById('share-feedback').textContent='網站連結已複製。'}else document.getElementById('share-feedback').textContent='請從網址列複製連結。'}catch(e){if(e.name!=='AbortError')document.getElementById('share-feedback').textContent='請從網址列複製連結。'}});
  document.getElementById('save-site')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.origin+location.pathname);document.getElementById('save-feedback').textContent='網站連結已複製。'}catch(e){document.getElementById('save-feedback').textContent='請從網址列複製連結。'}});
  const like=document.getElementById('like-site'),feedback=document.getElementById('support-feedback'),endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
