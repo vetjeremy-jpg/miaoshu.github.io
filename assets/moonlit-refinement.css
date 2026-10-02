@@ -5,7 +5,8 @@ body{--ml-glow:0;}
 /* Homepage moonlight: atmospheric rather than another object */
 body.homepage .hero,body:not([class]) .hero{isolation:isolate}
 .hero .moonlit-ambient-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at calc(72% + var(--ml-x,0px)) calc(28% + var(--ml-y,0px)),rgba(226,215,190,.11),rgba(125,161,190,.045) 24%,transparent 53%);opacity:.82;animation:moonlit-breathe var(--ml-motion-ambient) ease-in-out infinite}
-.hero>*:not(.moonlit-ambient-glow){position:relative;z-index:1}
+/* Only the content needs foreground stacking; decorations stay absolute. */
+.hero>.hero-inner{position:relative;z-index:1}
 @keyframes moonlit-breathe{0%,100%{opacity:.64}50%{opacity:.92}}
 @media(prefers-reduced-motion:reduce){.hero .moonlit-ambient-glow{animation:none}}
 
