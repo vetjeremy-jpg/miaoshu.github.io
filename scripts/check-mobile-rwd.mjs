@@ -8,6 +8,7 @@ const homepageMobile = read('assets/homepage-mobile.css');
 const moonlitV2 = read('assets/moonlit-v2.js');
 const reader = read('books/reader.css');
 const manifest = JSON.parse(read('site.webmanifest'));
+const serviceWorker = read('sw.js');
 const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/index.html','about/index.html','book.html','bookmarks/index.html','books/alien-origin-sands/index.html','books/canzhao-xie-longqi/index.html','books/chenshui-de-huhuan/index.html','books/fengmen-yetan/index.html','books/fushengsuiyue/index.html','books/hiiro-setsugetsusho/index.html','books/jiankangjie-tingquanyin/index.html','books/liangzhongtiankong-part2/index.html','books/liangzhongtiankong/index.html','books/wuxiyue/index.html','newsletter/index.html','posts/taipei-grand-trail-20260928/index.html','search/index.html','start/index.html','works/index.html','books/_template/index.html'].map(p => [p, read(p)]);
 
 function must(name, ok){ if(!ok) fail.push(name); }
@@ -63,6 +64,14 @@ must('standalone PWA keeps internal navigation native', moonlitV2.includes('disp
 must('PWA display mode is resynced on page restore', moonlitV2.includes('dataset.displayMode=standalone?"standalone":"browser"') && moonlitV2.includes('addEventListener("pageshow",syncDisplayMode)'));
 must('browser transition uses same-window navigation', moonlitV2.includes('location.assign(u.href)'));
 must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorker.register('/miaoshu.github.io/sw.js'") && moonlitV2.includes("scope:'/miaoshu.github.io/'"));
+
+must('service worker scope stays inside Moonlit', serviceWorker.includes("const SCOPE='/miaoshu.github.io/'"));
+must('service worker cache is versioned', /const CACHE=['"]moonlit-shell-v\\d+['"]/.test(serviceWorker));
+must('service worker removes obsolete shell caches', serviceWorker.includes("k.startsWith('moonlit-shell-')") && serviceWorker.includes('caches.delete(k)'));
+must('service worker navigation stays network first', serviceWorker.includes("req.mode==='navigate'") && serviceWorker.includes('fetch(req).catch(()=>caches.match(SCOPE))'));
+const shellBlock = serviceWorker.slice(serviceWorker.indexOf('const SHELL=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const SHELL=[')) + 2);
+must('service worker does not precache novel HTML', shellBlock && !shellBlock.includes('/books/'));
+
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
