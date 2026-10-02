@@ -6,10 +6,8 @@ const isHome=location.pathname==="/miaoshu.github.io/"||location.pathname==="/mi
 if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySelector("script[data-moonlit-gallery-content]"))return;const s=d.createElement("script");s.src="/miaoshu.github.io/assets/moonlit-gallery-content.js?v=20261002-split1";s.dataset.moonlitGalleryContent="";d.head.append(s)};"requestIdleCallback"in window?requestIdleCallback(loadGallery,{timeout:1200}):setTimeout(loadGallery,0)}
 })();
 
-/* Moonlit 3.0 — curation, functional phases, reader dock, unified footer */
-(()=>{const d=document,b=d.body;if(b.dataset.moonlit3)return;b.dataset.moonlit3="1";
-const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classList.contains("moonlit-site-footer")){const enhanceFooter=()=>{if(oldFooter.classList.contains("moonlit-site-footer"))return;oldFooter.classList.add("moonlit-site-footer");oldFooter.innerHTML='<strong>喵叔 · Moonlit Stories</strong><p>故事、影像與札記，在這裡慢慢相遇。讀完一頁，不必急著離開。</p><nav aria-label="頁尾導覽"><a href="/miaoshu.github.io/">首頁</a><a href="/miaoshu.github.io/#book">小說</a><a href="/miaoshu.github.io/gallery/">攝影</a><a href="/miaoshu.github.io/posts/">札記</a><a href="/miaoshu.github.io/about/?v=20261002-pwa2">關於喵叔</a></nav><span class="moonlit-colophon">© 2026 喵叔 · MOONLIT STORIES</span>'};if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();enhanceFooter()}},{rootMargin:"600px 0px"});io.observe(oldFooter)}else enhanceFooter()}
-})();
+/* Moonlit footer: load the full enhancement only near the page end. */
+(()=>{const d=document,f=d.querySelector("body > footer");if(!f||f.classList.contains("moonlit-site-footer"))return;const load=()=>{if(d.querySelector("script[data-moonlit-footer]"))return;const s=d.createElement("script");s.src="/miaoshu.github.io/assets/moonlit-footer.js?v=20261002-split1";s.dataset.moonlitFooter="";d.head.append(s)};if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();load()}},{rootMargin:"600px 0px"});io.observe(f)}else load()})();
 
 /* Moonlit 2026 refinement loader: load only the page-specific enhancement bundle. */
 (()=>{if(window.__moonlitRefinementLoaded)return;
