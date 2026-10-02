@@ -37,3 +37,14 @@ const oldFooter=d.querySelector("body > footer");if(oldFooter&&!oldFooter.classL
  meta("apple-mobile-web-app-status-bar-style","black-translucent");
  meta("theme-color","#071521");
 }catch(e){}})();
+
+
+/* Mobile nav: always enter a page from the first navigation item.
+   iOS standalone mode can restore a previous horizontal scroll offset. */
+(()=>{try{
+ const reset=()=>{if(!matchMedia("(max-width:700px)").matches)return;
+  document.querySelectorAll(".navlinks,.top nav").forEach(n=>{n.scrollLeft=0});
+ };
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",reset,{once:true});else reset();
+ addEventListener("pageshow",reset);
+}catch(e){}})();
