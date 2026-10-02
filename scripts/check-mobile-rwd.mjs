@@ -62,6 +62,7 @@ must('shared Moonlit JS does not open new windows', !moonlitV2.includes('window.
 must('standalone PWA keeps internal navigation native', moonlitV2.includes('display-mode: standalone') && moonlitV2.includes('navigator.standalone===true') && moonlitV2.includes('if(standalone)return;'));
 must('PWA display mode is resynced on page restore', moonlitV2.includes('dataset.displayMode=standalone?"standalone":"browser"') && moonlitV2.includes('addEventListener("pageshow",syncDisplayMode)'));
 must('browser transition uses same-window navigation', moonlitV2.includes('location.assign(u.href)'));
+must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorker.register('/miaoshu.github.io/sw.js'") && moonlitV2.includes("scope:'/miaoshu.github.io/'"));
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
  return linkTags(html).filter(tag => {
