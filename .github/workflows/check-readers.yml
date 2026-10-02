@@ -4,6 +4,9 @@ on:
     paths:
       - 'books/**'
       - 'assets/mobile-rwd-final.css'
+      - 'assets/homepage-mobile.css'
+      - 'assets/homepage-premium.css'
+      - 'assets/moonlit-system.css'
       - 'index.html'
       - 'gallery/**'
       - 'posts/**'
@@ -13,6 +16,15 @@ on:
   pull_request:
     paths:
       - 'books/**'
+      - 'assets/mobile-rwd-final.css'
+      - 'assets/homepage-mobile.css'
+      - 'assets/homepage-premium.css'
+      - 'assets/moonlit-system.css'
+      - 'index.html'
+      - 'gallery/**'
+      - 'posts/**'
+      - 'videos/**'
+      - 'about/**'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
