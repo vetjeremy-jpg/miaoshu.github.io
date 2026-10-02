@@ -1,6 +1,8 @@
 const CACHE='moonlit-shell-v8';
-const PAGES='moonlit-pages-v1';
+const PAGES='moonlit-pages-v2';
+const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
+const trimPages=async cache=>{const keys=await cache.keys();if(keys.length>MAX_PAGES)await Promise.all(keys.slice(0,keys.length-MAX_PAGES).map(key=>cache.delete(key)));};
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
@@ -50,7 +52,7 @@ self.addEventListener('fetch',event=>{
     .then(res=>{
      if(res&&res.ok){
       const copy=res.clone();
-      caches.open(PAGES).then(cache=>cache.put(req,copy));
+      caches.open(PAGES).then(async cache=>{await cache.delete(req);await cache.put(req,copy);await trimPages(cache)});
      }
      return res;
     })
