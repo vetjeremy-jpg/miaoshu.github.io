@@ -17,6 +17,7 @@ on:
       - 'videos/**'
       - 'about/**'
       - 'site.webmanifest'
+      - 'sw.js'
       - 'book.html'
       - 'bookmarks/**'
       - 'newsletter/**'
@@ -24,6 +25,7 @@ on:
       - 'start/**'
       - 'works/**'
       - 'scripts/check-mobile-rwd.mjs'
+      - 'scripts/check-internal-links.mjs'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
@@ -35,3 +37,4 @@ jobs:
           node-version: '22'
       - run: node books/check-readers.mjs
       - run: node scripts/check-mobile-rwd.mjs
+      - run: node scripts/check-internal-links.mjs
