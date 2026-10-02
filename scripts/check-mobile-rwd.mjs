@@ -14,6 +14,7 @@ function must(name, ok){ if(!ok) fail.push(name); }
 must('homepage loads mobile-rwd-final.css', /mobile-rwd-final\.css/.test(home));
 must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s*<\/head>/s.test(home));
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
+must('homepage has one Moonlit theme-color', (home.match(/<meta\\s+name=["']theme-color["'][^>]*>/gi) || []).length === 1 && /<meta\\s+name=["']theme-color["']\\s+content=["']#071521["']\\s*>/i.test(home));
 must('manifest start_url stays on Pages subpath', manifest.start_url === '/miaoshu.github.io/');
 must('manifest scope stays on Pages subpath', manifest.scope === '/miaoshu.github.io/');
 must('manifest uses standalone display', manifest.display === 'standalone');
