@@ -40,5 +40,20 @@ for(const url of urls){
  const ok=existsSync(target)&&(statSync(target).isDirectory()?existsSync(join(target,'index.html')):true);
  must(ok,'sitemap URL has no matching page: '+url);
 }
+
+for(const url of urls){
+ if(!url.startsWith(base)) continue;
+ const rel=url.slice(base.length).replace(/\/$/,'');
+ const file=rel?join(root,rel,'index.html'):join(root,'index.html');
+ if(!existsSync(file)) continue;
+ const html=readFileSync(file,'utf8');
+ const count=re=>(html.match(re)||[]).length;
+ must(count(/<title>[^<]+<\/title>/gi)===1,'public page needs one title: '+url);
+ must(count(/<meta[^>]+name=["']description["'][^>]+content=["'][^"']+["'][^>]*>/gi)===1,'public page needs one meta description: '+url);
+ must(count(/<link[^>]+rel=["']canonical["'][^>]+href=["'][^"']+["'][^>]*>/gi)===1,'public page needs one canonical: '+url);
+ must(count(/<meta[^>]+property=["']og:title["'][^>]+content=["'][^"']+["'][^>]*>/gi)===1,'public page needs og:title: '+url);
+ must(count(/<meta[^>]+property=["']og:description["'][^>]+content=["'][^"']+["'][^>]*>/gi)===1,'public page needs og:description: '+url);
+}
+
 if(fail.length){console.error('SEO contract failed:\n'+fail.map(x=>' - '+x).join('\n'));process.exit(1)}
 console.log(`SEO sitemap contract OK: ${urls.length} URLs, ${novels.length} formal novels.`);
