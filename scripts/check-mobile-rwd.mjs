@@ -68,9 +68,24 @@ must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorke
 must('service worker scope stays inside Moonlit', serviceWorker.includes("const SCOPE='/miaoshu.github.io/'"));
 must('service worker cache is versioned', /^const CACHE=['"]moonlit-shell-v[0-9]+['"];/m.test(serviceWorker));
 must('service worker removes obsolete shell caches', /\.startsWith\(['"]moonlit-shell-['"]\)/.test(serviceWorker) && /caches\.delete\(/.test(serviceWorker));
-must('service worker navigation stays network first', /req\.mode===['"]navigate['"]/.test(serviceWorker) && /fetch\(req\)[\s\S]*\.catch\(\(\)=>caches\.match/.test(serviceWorker));
+must('service worker navigation stays network first',
+ /req\.mode===['"]navigate['"]/.test(serviceWorker) &&
+ /fetch\(req\)/.test(serviceWorker) &&
+ /\.catch\(async\(\)=>\{/.test(serviceWorker) &&
+ /caches\.match\(pageKey\(req\)\)/.test(serviceWorker)
+);
 const shellBlock = serviceWorker.slice(serviceWorker.indexOf('const SHELL=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const SHELL=[')) + 2);
+const lazyBlock = serviceWorker.slice(serviceWorker.indexOf('const LAZY_ASSETS=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const LAZY_ASSETS=[')) + 2);
 must('service worker does not precache novel HTML', shellBlock && !shellBlock.includes('/books/'));
+must('service worker keeps page-specific enhancements out of install shell',
+ shellBlock &&
+ !shellBlock.includes('moonlit-home-content.js') &&
+ !shellBlock.includes('moonlit-gallery-content.js') &&
+ !shellBlock.includes('moonlit-refinement-home.js') &&
+ !shellBlock.includes('moonlit-refinement-reader.js') &&
+ lazyBlock.includes('moonlit-home-content.js') &&
+ lazyBlock.includes('moonlit-refinement-reader.js')
+);
 
 function linkTags(html){ return html.match(/<link\b[^>]*>/gi) || []; }
 function linkCount(html, rel, file){
