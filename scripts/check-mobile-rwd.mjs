@@ -17,6 +17,8 @@ must('mobile navigation has 44px touch target', /navlinks a[^}]*min-height:\s*44
 must('mobile header respects safe areas', /safe-area-inset-left/.test(mobile) && /safe-area-inset-right/.test(mobile));
 must('mobile navigation scrolls horizontally', /navlinks[^}]*overflow-x:auto/s.test(mobile));
 must('homepage creator links keep 44px touch target', /\.creator-copy a\{[^}]*min-height:\s*44px/.test(homepageMobile));
+must('homepage tonight links keep 44px touch target', /\.tonight-grid article a\{[^}]*min-height:\s*44px/.test(homepageMobile));
+must('homepage reading-list link keeps 44px touch target', /\.shelf-heading>a\{[^}]*min-height:\s*44px/.test(homepageMobile));
 must('homepage mobile does not redefine bookshelf gap', !/\.novels-grid\{[^}]*gap:/s.test(homepageMobile));
 must('homepage mobile does not redefine bookshelf margin', !/\.novels-grid\{[^}]*margin:/s.test(homepageMobile));
 must('homepage mobile does not redefine bookshelf padding', !/\.novels-grid\{[^}]*padding:/s.test(homepageMobile));
