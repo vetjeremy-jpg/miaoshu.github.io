@@ -10,13 +10,9 @@ body::after,main::before{content:none}
 :is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-footer::before{content:none!important;background:none!important}
 :is(.album-photo,.gallery figure,.series-card,.book-card)::after{content:none!important}
-body[data-book-id] .chapter-kicker::before{content:none!important}
 /* Minimal moon policy: only explicit hero SVGs survive. */
-#book .novel-card::after,#book .bookshelf-top::before,#book .bookshelf-top::after,
-#book .bookshelf-scene > .moon,#book .novels-grid::before,#book .novels-grid::after,
-#book .book-object::before,#book .book-object::after{content:none!important;background-image:none!important}
+#book .novel-card::after{content:none!important;background-image:none!important}
 :is(.topbar,.top) .brand::after{content:none!important;display:none!important}
 
 /* Quiet moonlight across every part: light, not repeated moon icons. */
