@@ -1,3 +1,5 @@
+/* Moonlit ownership: legacy v2 compatibility layer.
+   Migration candidate: avoid adding new rules; consolidate proven shared rules into moonlit-system.css or page owners. */
 /* Moonlit V2 — editorial systems, not decoration */
 :root{--moon-v2:#d9e7f3;--moon-v2-gold:#e4d2af}
 html.moonlit-enter body{opacity:0}body{transition:opacity .38s ease}html.moonlit-ready body{opacity:1}
