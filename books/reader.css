@@ -169,7 +169,7 @@ body{background:#0a1825}
 /* Reader mobile refinement: quick listen + compact utility hierarchy. */
 .reader-audio-quick{position:fixed;right:18px;bottom:92px;z-index:38;width:48px;height:48px;border-radius:50%;border:1px solid rgba(218,192,151,.45);background:#081725;color:#dfcda8;font-size:20px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.28)}
 @media(min-width:721px){.reader-audio-quick{display:none}}
-@media(max-width:720px){.book-meta,.reading-meta{font-size:.92rem}.moonlit-reader-comfort{gap:8px;flex-wrap:wrap}.reader-audio-quick{display:grid}.audiobook-launcher+.book-directory{margin-top:22px}}
+@media(max-width:720px){.book-meta,.reading-meta{font-size:.92rem}.moonlit-reader-comfort{gap:8px;flex-wrap:wrap}.reader-audio-quick{display:grid}}
 
 /* Reader mobile refinement + audiobook shortcut */
 .reader-audio-shortcut{min-height:44px;padding:8px 12px;border:1px solid rgba(218,192,151,.35);background:transparent;color:var(--accent);cursor:pointer}
