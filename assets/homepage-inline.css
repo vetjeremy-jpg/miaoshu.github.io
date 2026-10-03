@@ -95,9 +95,9 @@ body:not([data-book-id]) > header.hero .hero-side-caption{left:8%!important;top:
  body:not([data-book-id]) > header.hero h1>span{white-space:normal!important}
 }
 @media(max-width:700px){
- body:not([data-book-id]) > header.hero{height:auto!important;min-height:0!important}
- body:not([data-book-id]) > header.hero .hero-inner{display:grid!important;grid-template-columns:1fr!important;height:auto!important}
- body:not([data-book-id]) > header.hero .hero-copy{grid-column:auto!important;margin:0!important;padding:0!important}
+ body:not([data-book-id]) > header.hero{min-height:0!important}
+ body:not([data-book-id]) > header.hero .hero-inner{grid-template-columns:1fr!important;height:auto!important}
+ body:not([data-book-id]) > header.hero .hero-copy{grid-column:auto!important;padding:0!important}
  body:not([data-book-id]) > header.hero .moonlight-emblem{width:230px!important;height:230px!important;top:14px!important;right:-94px!important;left:auto!important;opacity:.52!important}
  body:not([data-book-id]) > header.hero .hero-side-caption{display:none!important}
 }
