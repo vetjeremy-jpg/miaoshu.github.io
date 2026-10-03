@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:40,topbar:2,navlinks:2,panel:3,important:205},
+  'assets/homepage-premium.css':{hero:40,topbar:2,navlinks:2,panel:3,important:201},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
   'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
 };
@@ -14,6 +14,10 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
+for(const token of ['--hp-bg','--hp-ink','--hp-muted','--hp-gold','--hp-line']){
+  if(premium.includes(token+':'))errors.push('premium must not redeclare canonical hp tokens: '+token);
+}
 for(const [file,budget] of Object.entries(budgets)){
   const css=fs.readFileSync(file,'utf8');
   for(const [key,max] of Object.entries(budget)){
