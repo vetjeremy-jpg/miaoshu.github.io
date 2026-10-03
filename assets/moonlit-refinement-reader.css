@@ -19,7 +19,6 @@ body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;backg
 .moonlit-path h2{font:500 var(--ml-step-2)/1.45 var(--ml-serif);color:var(--ml-ink);margin:8px 0}
 .moonlit-path a{color:var(--ml-moon);text-underline-offset:4px}
 
-.chapter-body{font-size:var(--reader-size,18px);line-height:2.04}
 .chapter-body{font-size:var(--reader-size,18px);line-height:2.02}
 .chapter-body p{position:relative}
 .chapter-body p.moonlit-saved-line{background:linear-gradient(90deg,rgba(228,210,175,.1),transparent);box-shadow:inset 2px 0 var(--ml-moon);padding-left:12px;margin-left:-14px}
