@@ -154,3 +154,6 @@ html[data-reading-theme="paper"] .chapter-body .audio-reading{background:#eee1c9
 html[data-reading-theme="paper"] .skip-link{background:#72532e;color:#fffaf0}
 html[data-reading-theme="paper"] :focus-visible{outline-color:#72532e}
 @media(max-width:650px){.reading-theme{width:100%;margin:12px 0 0}}
+
+/* Interior action safeguards migrated from legacy moonlight responsive QA */
+@media(max-width:650px){.actions{max-width:100%}.actions :is(a,button){min-height:44px}}
