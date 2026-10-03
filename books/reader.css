@@ -135,7 +135,7 @@ body{background:#0a1825}
 .audiobook-status{min-height:1.7em;margin:16px 0 8px;color:#e1cfac;font-size:14px}
 .chapter-body .audio-reading{background:linear-gradient(90deg,rgba(201,173,125,.12),transparent 85%);border-left:2px solid #c9ad7d;padding-left:12px;margin-left:-14px;border-radius:2px}
 .audio-unsupported{color:#dfc99e}
-@media(max-width:720px){.audiobook-options{grid-template-columns:1fr}.audiobook-actions button{flex:1 1 44%}.audiobook-player{padding:22px 18px}}
+@media(max-width:720px){.audiobook-options{grid-template-columns:1fr}.audiobook-player{padding:22px 18px}}
 @media(prefers-reduced-motion:reduce){.audiobook-actions button{transition:none}}
 
 /* Continuous audiobook listening */
@@ -168,7 +168,6 @@ body{background:#0a1825}
 
 /* Reader mobile refinement: quick listen + compact utility hierarchy. */
 .reader-audio-quick{position:fixed;right:18px;bottom:92px;z-index:38;width:48px;height:48px;border-radius:50%;border:1px solid rgba(218,192,151,.45);background:#081725;color:#dfcda8;font-size:20px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.28)}
-#audio-resume{min-height:40px;margin-left:8px;padding:6px 10px;border:1px solid rgba(218,192,151,.45);background:transparent;color:#dfcda8}
 @media(min-width:721px){.reader-audio-quick{display:none}}
 @media(max-width:720px){.book-meta,.reading-meta{font-size:.92rem}.moonlit-reader-comfort{gap:8px;flex-wrap:wrap}.reader-audio-quick{display:grid}.audiobook-launcher+.book-directory{margin-top:22px}}
 
