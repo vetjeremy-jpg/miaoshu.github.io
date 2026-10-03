@@ -29,7 +29,7 @@ button{font:inherit}
 
 
 .hero .eyebrow span{padding:0 8px;color:#71869b}.hero .hero-lede{max-width:28em}
-.hero-actions{justify-content:flex-start;gap:12px}.cta:hover{background:#f2e1c2;transform:none;box-shadow:0 14px 28px rgba(0,0,0,.33)}
+.hero-actions{justify-content:flex-start}.cta:hover{background:#f2e1c2;transform:none;box-shadow:0 14px 28px rgba(0,0,0,.33)}
 .cta.secondary:hover{background:rgba(228,210,175,.09)}
 .hero-index{display:flex;gap:20px;flex-wrap:wrap;margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px}
 .chapter-kicker{text-align:left;font-size:12px}
@@ -146,7 +146,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
 .hero .hero-lede br{display:none}
 .hero-actions{margin-top:22px!important;gap:4px!important}
-.hero-actions .hero-primary{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;padding:11px 16px!important;font-size:13px!important}
+.hero-actions .hero-primary{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;padding:11px 16px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
 .hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}
