@@ -11,9 +11,7 @@ body::after,main::before{content:none}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 footer::before{content:none!important;background:none!important}
-:is(.tile,.novel-card,.book-card) :is(h2,h3,b):first-child::before{content:none!important}
 :is(.album-photo,.gallery figure,.series-card,.book-card)::after{content:none!important}
-main :is(section,article):not(.hero)::before{content:none!important}
 body[data-book-id] .chapter-kicker::before{content:none!important}
 /* Minimal moon policy: only explicit hero SVGs survive. */
 #book .novel-card::after,#book .bookshelf-top::before,#book .bookshelf-top::after,
