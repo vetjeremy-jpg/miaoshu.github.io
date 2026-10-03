@@ -46,7 +46,6 @@ footer{border-top-color:rgba(213,227,242,.15);background-image:linear-gradient(1
 
 /* Mobile touch + layout hardening — 2026-09-30 */
 @media(max-width:850px){
-  :is(.topbar,.top) nav a,:is(.topbar,.top) .navlinks a{display:inline-flex;align-items:center;min-height:44px;padding-top:9px;padding-bottom:9px}
   :is(.cta,.directory-link,.book-read,.creator-nav a,.community-actions a,.follow-actions a,.follow-actions button,.chapter-nav a,.chapter-tools button,.reader-controls button,.about-links a,.actions a,.moonlit-search-link){min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 }
 @media(max-width:520px){
