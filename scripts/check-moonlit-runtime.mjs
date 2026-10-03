@@ -10,9 +10,11 @@ const match=index.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/);
 if(!match){console.error('首頁缺少版本化 moonlit-v2.js');process.exit(1)}
 const expected=match[1],errors=[];
 const readerRefinement=await readFile(join(root,'assets','moonlit-refinement-reader.js'),'utf8');
+if(/addEventListener\(["']scroll["']/.test(readerRefinement))errors.push('reader refinement must consume canonical Reader progress instead of adding its own scroll listener');
 if(readerRefinement.includes('new MutationObserver(syncFocus)'))errors.push('reader refinement must not shadow canonical focus state with a MutationObserver');
 if(readerRefinement.includes("focus.hidden=true")||readerRefinement.includes("inlineFocus.hidden=true"))errors.push('reader refinement must reuse the canonical focus control instead of hiding it');
 const readerRuntime=await readFile(join(root,'books','reader.js'),'utf8');
+if(!readerRuntime.includes('__moonlitReaderProgress'))errors.push('books/reader.js must expose the canonical Reader progress stream');
 if(readerRuntime.includes('moonlit-v2.css'))errors.push('books/reader.js must not dynamically reload retired moonlit-v2.css');
 try{await access(join(root,'assets','moonlit-refinement.js'));errors.push('retired assets/moonlit-refinement.js 不應回到 runtime；首頁與 Reader 已有各自 owner')}catch{}
 async function walk(dir){

@@ -27,13 +27,16 @@
  function show(id){const chapter=valid(id);if(!chapter||!box)return;label.textContent='上次讀到'+bookTitle+'：'+chapter.querySelector('h2').textContent;resume.href='#'+id;box.classList.add('is-visible')}
  show(get('chapter'));
  const progress=document.getElementById('progress');
+ const progressConsumers=new Set();window.__moonlitReaderProgress={subscribe(fn){if(typeof fn==='function'){progressConsumers.add(fn);fn(getRatio())}return()=>progressConsumers.delete(fn)}};
+ const getRatio=()=>{const doc=document.documentElement,h=doc.scrollHeight-doc.clientHeight;return h?Math.max(0,Math.min(1,scrollY/h)):0};
  let queued=false,last='';
  function onScroll(){
   if(queued)return;queued=true;
   requestAnimationFrame(()=>{
    queued=false;
-   const doc=document.documentElement,h=doc.scrollHeight-doc.clientHeight;
-   if(progress)progress.style.width=(h?scrollY/h*100:0)+'%';
+   const ratio=getRatio();
+   if(progress)progress.style.width=(ratio*100)+'%';
+   progressConsumers.forEach(fn=>fn(ratio));
    let current;
    for(const chapter of chapters){if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
    if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
