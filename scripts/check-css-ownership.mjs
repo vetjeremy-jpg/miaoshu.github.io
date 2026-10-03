@@ -15,6 +15,8 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
+if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
 if(/\.cta\{[^}]*margin-top:18px/.test(inline))errors.push('legacy inline CTA declarations returned: margin-top');
