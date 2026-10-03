@@ -61,7 +61,7 @@ if(readerReducedScrollRules>1)errors.push(`books reader has ${readerReducedScrol
 const reader720Blocks=(readerBase.match(/@media\(max-width:720px\)/g)||[]).length;
 if(reader720Blocks>5)errors.push(`books reader has ${reader720Blocks} max-width:720px blocks; keep mobile Reader ownership converged`);
 const reader430Blocks=(readerBase.match(/@media\(max-width:430px\)/g)||[]).length;
-if(reader430Blocks>7)errors.push(`books reader has ${reader430Blocks} max-width:430px blocks; do not grow compact Reader override chains`);
+if(reader430Blocks>6)errors.push(`books reader has ${reader430Blocks} max-width:430px blocks; keep compact Reader ownership converged`);
 const reader340Blocks=(readerBase.match(/@media\(max-width:340px\)/g)||[]).length;
 if(reader340Blocks>2)errors.push(`books reader has ${reader340Blocks} max-width:340px blocks; keep narrow-screen overrides consolidated`);
 if(/@media\(max-width:720px\)\{\.audiobook-options\{grid-template-columns:1fr\}\.audiobook-actions button\{flex:1 1 44%\}/.test(readerBase))errors.push('superseded flex sizing returned to the 720px audiobook grid');
