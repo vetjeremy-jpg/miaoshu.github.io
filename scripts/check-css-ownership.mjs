@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:0,important:32},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
-  'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
+  'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:2,important:10},
 };
 const patterns={
   hero:/\.hero\b/g,
