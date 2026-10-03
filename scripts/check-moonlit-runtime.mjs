@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFile, readdir } from 'node:fs/promises';
+import { readFile, readdir, access } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
@@ -9,6 +9,7 @@ const index=await readFile(join(root,'index.html'),'utf8');
 const match=index.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/);
 if(!match){console.error('首頁缺少版本化 moonlit-v2.js');process.exit(1)}
 const expected=match[1],errors=[];
+try{await access(join(root,'assets','moonlit-refinement.js'));errors.push('retired assets/moonlit-refinement.js 不應回到 runtime；首頁與 Reader 已有各自 owner')}catch{}
 async function walk(dir){
  for(const entry of await readdir(dir,{withFileTypes:true})){
   if(entry.name.startsWith('.git'))continue;
