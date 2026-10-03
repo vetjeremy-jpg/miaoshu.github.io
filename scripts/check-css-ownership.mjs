@@ -101,6 +101,8 @@ const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
 if(/\.(?:post-card|album-card|gallery-card|photo-card|video-card)|\.chapter-number/.test(moonlightCss+mobileSafety))errors.push('retired zero-reference card selectors must stay out of shared CSS');
 if(/\.(?:page-hero|gallery-hero|book-hero|post-hero|journal-hero|video-hero)/.test(moonlightCss))errors.push('retired legacy hero aliases must stay out of moonlight.css');
 if(!/\.hero\{isolation:isolate\}/.test(moonlightCss))errors.push('moonlight.css must preserve canonical hero isolation');
+if(/:is\([^)]*\.novel-card[^)]*\)::after\{content:none!important\}/.test(moonlightCss))errors.push('generic suppression must not duplicate #book novel-card after ownership');
+if(!/#book \.novel-card::after,#book \.bookshelf-top::before/.test(moonlightCss))errors.push('moonlight.css must preserve canonical #book novel-card suppression');
 if(!/html,body\{max-width:100%;overflow-x:clip\}/.test(mobileSafety))errors.push('mobile safety must own global horizontal overflow protection');
 if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.book-card\)\{max-width:100%;min-width:0\}/.test(mobileSafety))errors.push('mobile safety must preserve narrow-screen card width guard');
 if(!/footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobileSafety))errors.push('mobile safety must preserve compact Moonlit footer padding');
