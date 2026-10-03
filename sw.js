@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v39';
+const CACHE='moonlit-shell-v40';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -24,6 +24,7 @@ const LAZY_ASSETS=[
  SCOPE+'assets/moonlit-refinement.css?v=20261003-layout1',
  SCOPE+'assets/moonlit-refinement-reader.css?v=20261002-split1'
 ];
+const VERSIONED_ASSETS=new Set([...SHELL,...LAZY_ASSETS].map(item=>{const u=new URL(item,self.location.origin);return u.pathname+u.search}));
 
 self.addEventListener('install',event=>{
  event.waitUntil(
@@ -72,8 +73,7 @@ self.addEventListener('fetch',event=>{
  }
 
  const assetKey=url.pathname+url.search;
- const versioned=[...SHELL,...LAZY_ASSETS].some(item=>{const u=new URL(item,self.location.origin);return u.pathname+u.search===assetKey});
- if(versioned){
+ if(VERSIONED_ASSETS.has(assetKey)){
   event.respondWith(
    caches.match(req).then(hit=>hit||fetch(req).then(res=>{
     if(res&&res.ok){const copy=res.clone();caches.open(CACHE).then(cache=>cache.put(req,copy))}
