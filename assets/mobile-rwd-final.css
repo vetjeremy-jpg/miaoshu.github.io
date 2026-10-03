@@ -75,9 +75,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 @media(max-width:390px){body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:24px;--moonlit-book-gap:12px}}
 /* Interior pages: prevent fixed-width grids and media from escaping narrow screens. */
 @media(max-width:700px){
- .gallery-page .series-grid,.video-page .layout{grid-template-columns:1fr!important}
- .gallery-page figure{margin-left:0;margin-right:0}
- .video-page .screen,.video-page .screen iframe{width:100%;max-width:100%}
+ .gallery-page .series-grid{grid-template-columns:1fr!important}
  .journal-timeline,.journey-map{max-width:100%}
  .moonlit-route{max-width:100%;overflow:hidden}
 }
