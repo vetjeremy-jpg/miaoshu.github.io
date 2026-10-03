@@ -10,6 +10,9 @@ const match=index.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/);
 if(!match){console.error('首頁缺少版本化 moonlit-v2.js');process.exit(1)}
 const expected=match[1],errors=[];
 const readerAudio=await readFile(join(root,'books','reader-audio-fallback.js'),'utf8');
+if(!readerAudio.includes('currentUtterance=null'))errors.push('Reader audiobook must own the active SpeechSynthesisUtterance');
+if(!readerAudio.includes('const releaseUtterance='))errors.push('Reader audiobook must release utterance handlers during cancellation');
+if(!readerAudio.includes('currentUtterance.onend=null')||!readerAudio.includes('currentUtterance.onerror=null'))errors.push('Reader audiobook must detach stale utterance callbacks');
 if(!readerAudio.includes('const cancelSpeakTimer='))errors.push('Reader audiobook must own pending speech timers');
 if(!readerAudio.includes('clearTimeout(speakTimer)'))errors.push('Reader audiobook must cancel pending speech timers');
 if((readerAudio.match(/setTimeout\(speak/g)||[]).length)errors.push('Reader audiobook must route speech delays through queueSpeak instead of raw setTimeout');
