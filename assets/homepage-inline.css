@@ -1,3 +1,5 @@
+/* Moonlit ownership: critical homepage above-fold CSS.
+   Keep only first-paint layout and CLS-prevention rules here; migrate non-critical sections to below-fold owners. */
 :root{--gold:#c9ad7d;--gold2:#e6d4b2;--text:#f5f1ea;--muted:#bac6d0;--line:rgba(221,197,156,.22)}/* Homepage styles extracted from index.html for cacheability and a leaner document. */
 
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;line-height:1.8;}
