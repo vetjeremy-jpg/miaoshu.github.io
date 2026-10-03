@@ -70,6 +70,7 @@ if(audioResumeRules>1)errors.push(`books reader has ${audioResumeRules} #audio-r
 if(/\.wrap\{padding-left:14px;padding-right:14px\}/.test(readerBase))errors.push('superseded 430px wrap gutter returned');
 if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))errors.push('430px panel and chapter padding must not be coupled');
 if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerBase))errors.push('superseded 720px audiobook launcher margin returned');
+if(/\.audiobook-launcher\+\.book-directory\{margin-top:22px\}/.test(readerBase))errors.push('redundant adjacent audiobook directory margin override returned');
 if(/\.audiobook-launch-button\{margin-top:18px;width:100%/.test(readerBase))errors.push('superseded mobile audiobook launch margin returned');
 if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-controls button\{min-width:44px;min-height:44px\}/.test(readerBase))errors.push('duplicated 430px reader control touch target returned');
 const homepageHtml=fs.readFileSync('index.html','utf8');
