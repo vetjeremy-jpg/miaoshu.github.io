@@ -18,14 +18,12 @@
 .panel{margin:0!important;padding:clamp(60px,7vw,96px) 0!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(220,230,240,.08)!important}
 .chapter-kicker,.creator-tag{font-size:10px!important;letter-spacing:.28em!important;}.section-title{max-width:850px;font-size:clamp(34px,4vw,54px)!important;line-height:1.35!important;margin-inline:0!important}.notice{max-width:760px;line-height:1.9!important}
 #reading-list{padding:32px 0!important}.reader-shelf{border-bottom:1px solid rgba(220,230,240,.08)!important}.shelf-heading h2{font-size:24px!important}
-#featured{padding-top:90px!important}.featured-grid{grid-template-columns:.9fr 1.1fr!important;gap:clamp(40px,7vw,90px)!important}.featured-visual{min-height:440px!important;border:0!important}.featured-copy h2{font-size:clamp(38px,4.6vw,58px)!important}
 #updates{padding:38px 0!important}.latest-update .section-title{font-size:clamp(24px,3vw,34px)!important}.update-heading time{color:#71879a!important}
-.moonlit-found-line{max-width:900px;margin:80px auto!important;padding:0 0 0 32px!important;background:none!important}.moonlit-found-line blockquote{font-size:clamp(27px,3.4vw,44px)!important;line-height:1.75!important}
-#miaoshu-album{padding-top:96px!important}.album-photos{display:grid!important;grid-template-columns:1.15fr .85fr!important;gap:18px!important}.album-photo{margin:0!important;background:transparent!important}.album-photo img{width:100%!important;aspect-ratio:4/5!important;object-fit:cover!important}.album-photo figcaption{padding:18px 0!important}#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:76px!important;padding-bottom:76px!important}
+#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:76px!important;padding-bottom:76px!important}
 .about-layout{gap:clamp(40px,8vw,100px)!important}.moonlit-newsletter{margin-top:0!important}
 footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!important}
 
-@media(max-width:700px){.hero-brand-mark{width:84px!important}.hero-actions .cta,.wrap{padding:34px 18px 80px!important}.panel{padding:54px 0!important}.featured-grid{grid-template-columns:1fr!important}.featured-visual{min-height:300px!important}.album-photos{grid-template-columns:1fr!important}.moonlit-found-line{margin:54px 0!important;padding-left:20px!important}}
+@media(max-width:700px){.hero-brand-mark{width:84px!important}.hero-actions .cta,.wrap{padding:34px 18px 80px!important}.panel{padding:54px 0!important}}
 @media(prefers-reduced-motion:reduce){.book-object{transition:none!important}}
 
 /* Hero visual details retained after geometry consolidation */
