@@ -30,7 +30,7 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 @media(max-width:700px){.hero-brand-mark{width:84px!important}.hero-actions .cta,.wrap{padding:34px 18px 80px!important}.panel{padding:54px 0!important}.tonight-grid{grid-template-columns:1fr!important}.tonight-grid article{border-right:0!important;border-bottom:1px solid var(--hp-line)!important;padding:24px 4px!important}.tonight-grid article:last-child{border-bottom:0!important}.featured-grid{grid-template-columns:1fr!important}.featured-visual{min-height:300px!important}.novels-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:38px 18px!important}.book-object{width:min(100%,154px)!important}.novel-card p{display:none!important}.album-photos{grid-template-columns:1fr!important}.moonlit-found-line{margin:54px 0!important;padding-left:20px!important}.moonlit-entry{border-right:0!important;border-bottom:1px solid rgba(220,230,240,.1)!important}}
 @media(max-width:370px){.novels-grid{grid-template-columns:1fr!important}.novel-card{align-items:center!important;text-align:center!important}.book-object{width:164px!important}}
-@media(prefers-reduced-motion:reduce){.book-object,.creator-card{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.book-object{transition:none!important}}
 
 /* Hero visual details retained after geometry consolidation */
 .hero-brand-mark{display:none!important}
