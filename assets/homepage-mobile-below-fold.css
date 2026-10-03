@@ -19,6 +19,6 @@
 .moonlit-newsletter-grid{display:block!important}.moonlit-newsletter form{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.moonlit-newsletter input,.moonlit-newsletter button{min-height:48px!important;width:100%!important}
 }}
 @media(max-width:380px){.hero h1{font-size:42px!important}.hero-index{font-size:7.5px!important}.tonight-grid article{flex-basis:86vw}.novel-card{flex-basis:150px!important}.book-object{width:140px!important}.creator-card{flex-basis:86vw}}
-@media(prefers-reduced-motion:reduce){@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scroll-behavior:auto!important}}}
+@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}}\n@media(prefers-reduced-motion:reduce){@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scroll-behavior:auto!important}}}
 
 

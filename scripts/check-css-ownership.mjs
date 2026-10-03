@@ -79,6 +79,10 @@ if(!/\.navlinks a:last-child,\.top nav a:last-child\{margin-right:4px\}/.test(mo
 if(!/\.navlinks a,\.top nav a\{min-height:44px;/.test(mobileSafety))errors.push('mobile nav safety must preserve 44px navigation touch targets');
 if(/\.topbar \.brand img,\.top \.brand img\{flex:0 0 auto\}/.test(mobileSafety))errors.push('mobile safety layer must not style brand image flex behavior');
 if(/\.navlinks a,\.top nav a\{min-height:44px;display:inline-flex;align-items:center;/.test(mobileSafety))errors.push('mobile safety layer must not restyle navigation link display/alignment');
+const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
+if(/\.navlinks,\.top nav,\.tonight-grid/.test(mobileSafety))errors.push('mobile safety layer must not own homepage horizontal scrollers');
+if(!/\.tonight-grid,\.moonlit-entry-grid,\.novels-grid,\.creator-grid,\.album-photos\{overscroll-behavior-inline:contain;/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve horizontal scroller containment');
+if(!/\.tonight-grid::-webkit-scrollbar,\.moonlit-entry-grid::-webkit-scrollbar,\.novels-grid::-webkit-scrollbar,\.creator-grid::-webkit-scrollbar,\.album-photos::-webkit-scrollbar\{display:none\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve hidden horizontal scroller bars');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
