@@ -66,7 +66,6 @@ footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
 
 /* A restrained trace of moonlight, shared with the Moonlit Stories name. */
 :root{--moonlight:#dce8f2}
-.brand::after{content:"";display:block;flex:none;width:10px;height:10px;margin:0 6px 4px 0;border-radius:50%;box-shadow:3px 2px 0 0 rgba(220,232,242,.72);transform:rotate(-22deg)}
 .topbar,.top{border-bottom-color:rgba(205,219,233,.21)}
 footer{border-top-color:rgba(205,219,233,.19)}
 
