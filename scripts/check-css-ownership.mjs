@@ -77,6 +77,7 @@ const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:absolute/.test(moonlightCss))errors.push('moonlight owner must preserve migrated decorative primitives');
 if(/@media\(max-width:(?:850|650|520)px\)\{\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
+if(/:is\(\.topbar,\.top\) nav a,:is\(\.topbar,\.top\) \.navlinks a\{display:inline-flex;align-items:center;min-height:44px/.test(moonlightCss))errors.push('moonlight.css must not regain shared nav touch ownership');
 if((moonlightCss.match(/\.brand::after/g)||[]).length>1)errors.push('moonlight.css must keep one canonical brand pseudo-element suppression rule');
 if(/#book \.cover-emblem,#book \.cover-moon/.test(moonlightCss))errors.push('moonlight.css must not duplicate bookshelf moon suppression outside the canonical :is() rule');
 
