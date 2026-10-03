@@ -1,3 +1,9 @@
+/* Moonlit shared runtime ownership:
+   - cross-page navigation / Safari lifecycle
+   - page-specific enhancement loading
+   - app metadata fallback
+   - scoped service-worker registration
+   Keep homepage-only UI and reader feature logic in their dedicated modules. */
 (()=>{const d=document,body=d.body;d.documentElement.classList.add("moonlit-enter");requestAnimationFrame(()=>{d.documentElement.classList.add("moonlit-ready");d.documentElement.classList.remove("moonlit-enter")});
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,canFadeNav=!reduce&&matchMedia("(hover:hover) and (pointer:fine)").matches;const isStandalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;let standalone=isStandalone();const syncDisplayMode=()=>{standalone=isStandalone();d.documentElement.dataset.displayMode=standalone?"standalone":"browser"};syncDisplayMode();addEventListener("pageshow",e=>{syncDisplayMode();if(e.persisted){body.style.opacity="";d.documentElement.classList.add("moonlit-ready");d.documentElement.classList.remove("moonlit-enter")}});d.addEventListener("click",e=>{if(!canFadeNav)return;const a=e.target.closest("a[href]");if(!a||e.metaKey||e.ctrlKey||e.shiftKey||a.target==="_blank"||a.hasAttribute("download"))return;const u=new URL(a.href,location.href);if(u.origin!==location.origin||u.pathname===location.pathname&&u.hash)return;if(standalone)return;e.preventDefault();body.style.opacity="0";setTimeout(()=>location.assign(u.href),180)});
 const hour=new Date().getHours(),phase=hour>=18&&hour<23?"evening":hour>=23||hour<5?"late":hour>=5&&hour<7?"dawn":"day";body.dataset.moonPhase=phase;
