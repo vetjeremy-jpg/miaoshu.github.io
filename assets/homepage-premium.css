@@ -13,7 +13,7 @@
 .hero h1{max-width:7.5em!important;margin:20px 0 24px!important;font-size:clamp(52px,6.6vw,88px)!important;line-height:1.16!important;letter-spacing:.045em!important;color:var(--hp-ink)!important;text-wrap:balance}
 .hero .hero-lede{max-width:30em!important;color:#b7c4cf!important;font-size:clamp(17px,1.5vw,20px)!important;line-height:2!important}
 .hero-actions{margin-top:32px!important}.moonlit-new-reader{width:100%;margin-top:8px;color:#aebdca!important;text-decoration:none!important;font-size:13px}
-.hero-index{margin-top:52px!important;color:#73889b!important;border-color:rgba(220,230,240,.09)!important}
+.hero-index{color:#73889b!important;border-color:rgba(220,230,240,.09)!important}
 .wrap{max-width:1240px!important;padding:64px 28px 120px!important}.panel,.moonlit-discovery,.moonlit-found-line{border-radius:0!important}
 .panel{margin:0!important;padding:clamp(60px,7vw,96px) 0!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(220,230,240,.08)!important}
 .chapter-kicker,.creator-tag{font-size:10px!important;letter-spacing:.28em!important;color:#8298aa!important}.section-title{max-width:850px;font-size:clamp(34px,4vw,54px)!important;line-height:1.35!important;margin-inline:0!important}.notice{max-width:760px;line-height:1.9!important}
