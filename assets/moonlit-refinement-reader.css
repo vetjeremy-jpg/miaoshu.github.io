@@ -84,3 +84,6 @@ html[data-reading-theme="paper"] .chapter-body p.moonlit-saved-line{background:l
 .moonlit-reader-dock .reading-percent{display:flex;align-items:center;padding:0 10px;color:#9eb0bf;font-size:12px}
 .moonlit-ui-dim :is(.topbar,.top){opacity:.18;transition:opacity .35s}.moonlit-ui-dim :is(.topbar,.top):hover{opacity:1}
 @media(max-width:650px){.moonlit-reader-dock{right:10px;bottom:10px}.moonlit-reader-dock .reading-percent{display:none}}
+
+/* Reader width safeguards migrated from legacy moonlight responsive QA */
+@media(max-width:650px){:is(.chapter-tools,.reader-controls){max-width:100%}}

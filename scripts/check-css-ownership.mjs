@@ -72,10 +72,11 @@ if(fs.existsSync('cinematic-editorial.css'))errors.push('retired cinematic-edito
 const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
 const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
+if(/Final site-wide responsive QA/.test(moonlightCss)||/html,body\{max-width:100%;overflow-x:clip\}/.test(moonlightCss))errors.push('moonlight.css must not regain retired responsive QA ownership');
 const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:absolute/.test(moonlightCss))errors.push('moonlight owner must preserve migrated decorative primitives');
-if(/@media\(max-width:(?:850|650)px\)\{\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
+if(/@media\(max-width:(?:850|650|520)px\)\{\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
 if((moonlightCss.match(/\.brand::after/g)||[]).length>1)errors.push('moonlight.css must keep one canonical brand pseudo-element suppression rule');
 if(/#book \.cover-emblem,#book \.cover-moon/.test(moonlightCss))errors.push('moonlight.css must not duplicate bookshelf moon suppression outside the canonical :is() rule');
 
@@ -86,6 +87,9 @@ if(!systemCss.includes('html.moonlit-enter body{opacity:0}')||!systemCss.include
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
+if(!/html,body\{max-width:100%;overflow-x:clip\}/.test(mobileSafety))errors.push('mobile safety must own global horizontal overflow protection');
+if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.post-card,\.album-card,\.gallery-card,\.photo-card,\.video-card,\.book-card\)\{max-width:100%;min-width:0\}/.test(mobileSafety))errors.push('mobile safety must preserve narrow-screen card width guard');
+if(!/footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobileSafety))errors.push('mobile safety must preserve compact Moonlit footer padding');
 const serviceWorker=fs.readFileSync('sw.js','utf8');
 if(serviceWorker.includes("assets/mobile-rwd-final.css"))errors.push('service worker shell must not cache legacy mobile-rwd-final.css');
 if(!serviceWorker.includes("assets/mobile-safety.css?v=20261002-h2"))errors.push('service worker shell must cache canonical mobile-safety.css');
