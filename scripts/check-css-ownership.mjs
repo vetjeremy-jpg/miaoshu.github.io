@@ -109,6 +109,8 @@ if(!/#featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featu
 if(/\.moonlit-newsletter\{|\.moonlit-subscribe-shell\{|\.moonlit-curation\{|\.moonlit-phase-legend\{/.test(moonlightCss))errors.push('moonlight.css must not regain homepage-only Newsletter or Curation ownership');
 if(!/\.moonlit-newsletter\{overflow:hidden\}/.test(homepageDesktopBelow)||!/\.moonlit-curation\{max-width:1180px/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Newsletter and Curation base styles');
 if(!/\.moonlit-subscribe-row input\{font-size:16px\}/.test(homepageMobileBelow)||!/\.moonlit-curation\{margin:12px 16px;padding:25px 18px\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve Newsletter and Curation mobile refinements');
+if(/\.moonlit-reader-comfort\{|\.moonlit-wide-spacing|\.moonlit-focus-mode|\.moonlit-reader-dock\{|\.moonlit-ui-dim/.test(moonlightCss))errors.push('moonlight.css must not regain reader-only comfort or dock ownership');
+if(!/\.moonlit-reader-comfort\{display:flex;justify-content:center/.test(readerRefinement)||!/\.moonlit-focus-mode/.test(readerRefinement)||!/\.moonlit-reader-dock\{/.test(readerRefinement))errors.push('reader refinement must preserve comfort, focus mode and reader dock');
 const editorialInteriors=fs.readFileSync('editorial-interiors.css','utf8');
 if(/\.video-page \.layout/.test(mobileSafety)||/\.video-page \.screen/.test(mobileSafety))errors.push('mobile safety layer must defer video layout and screen sizing to editorial interiors');
 if(/\.gallery-page figure\{margin-left:0;margin-right:0\}/.test(mobileSafety))errors.push('mobile safety layer must defer gallery figure margins to editorial interiors');
