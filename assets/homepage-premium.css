@@ -96,16 +96,6 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
  body:not([data-book-id]) > header.hero .hero-text-link{transition:none!important}
 }
 
-/* Navigation logo larger — 2026-09-30 */
-@media (min-width:851px){
- body:not([data-book-id]) > .topbar .brand img{
-   width:62px!important;
-   height:auto!important;
-   max-width:none!important;
- }
-}
-
-
 /* Hero headline line behavior retained after geometry consolidation */
 body:not([data-book-id]) > header.hero h1 > span{display:block!important;white-space:nowrap!important}
 
