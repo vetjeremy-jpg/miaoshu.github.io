@@ -77,8 +77,10 @@ const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:absolute/.test(moonlightCss))errors.push('moonlight owner must preserve migrated decorative primitives');
 
-const moonlitV2=fs.readFileSync('assets/moonlit-v2.css','utf8');
-if(/\.moonlit-cover|\.moonlit-quote-v2/.test(moonlitV2))errors.push('legacy moonlit-v2.css must not own dynamic homepage cover/quote components');
+if(fs.existsSync('assets/moonlit-v2.css'))errors.push('retired assets/moonlit-v2.css must not be recreated');
+for(const path of ['index.html','about/index.html','gallery/index.html','posts/index.html','videos/index.html']){if(fs.readFileSync(path,'utf8').includes('moonlit-v2.css'))errors.push(path+' must not load retired moonlit-v2.css');}
+const systemCss=fs.readFileSync('assets/moonlit-system.css','utf8');
+if(!systemCss.includes('html.moonlit-enter body{opacity:0}')||!systemCss.includes('@media(prefers-reduced-motion:reduce){body{transition:none}html.moonlit-enter body{opacity:1}}'))errors.push('moonlit-system.css must preserve shared page transition and reduced-motion behavior');
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
