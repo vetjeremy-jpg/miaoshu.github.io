@@ -94,6 +94,9 @@ if(!/\.gallery figure\{margin:0;min-width:0\}/.test(editorialInteriors))errors.p
 if(/\.gallery-page \.series-grid/.test(mobileSafety)||/\.journal-timeline,\.journey-map/.test(mobileSafety)||/\.moonlit-route\{max-width:100%;overflow:hidden\}/.test(mobileSafety))errors.push('mobile safety layer must defer Gallery and Journal/Journey page-specific safety to editorial interiors');
 if(!/\.gallery-page \.series-grid\{grid-template-columns:1fr!important\}/.test(editorialInteriors))errors.push('editorial interiors must preserve single-column mobile gallery series');
 if(!/\.journal-timeline,\.journey-map,\.moonlit-route\{max-width:100%\}\.moonlit-route\{overflow:hidden\}/.test(editorialInteriors))errors.push('editorial interiors must preserve Journal/Journey width and route overflow safety');
+if(/\.hero-actions,\.feature-actions,\.actions/.test(mobileSafety)||/\.creator-grid,\.featured-grid,\.series-grid,\.layout,\.grid/.test(mobileSafety))errors.push('mobile safety layer must not own component action/grid styling');
+if(/\.hero-inner,\.hero-copy/.test(mobileSafety)||/\.hero-lede/.test(mobileSafety)||/\.hero-index/.test(mobileSafety)||/\.hero h1\{font-size/.test(mobileSafety))errors.push('mobile safety layer must not own homepage hero mobile styling');
+if(/\.support-actions|\.follow-actions|\.about-links|\.community-actions/.test(mobileSafety))errors.push('mobile safety layer must not own homepage action groups');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
