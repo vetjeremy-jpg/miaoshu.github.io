@@ -206,3 +206,7 @@ if(/data-moon-phase/.test(v2Css))errors.push('unused data-moon-phase hero owner 
 if(/--moon-v2/.test(v2Css))errors.push('legacy v2 must not retain unused moon-v2 tokens');
 if(/\.gallery-story-(?:index|note)/.test(v2Css))errors.push('legacy v2 must not own gallery story metadata');
 if(!/\.gallery-story-index\{/.test(photoViewerCss)||!/\.gallery-story-note\{/.test(photoViewerCss))errors.push('photo viewer must own gallery story metadata');
+
+if(/\.moonlit-crosscuration\{max-width:760px/.test(moonlitV2))errors.push('legacy V2 must not own cross-curation');
+if(!/\.moonlit-crosscuration\{max-width:760px/.test(photoViewerCss))errors.push('photo-viewer.css must own gallery cross-curation base');
+if(!/\.moonlit-crosscuration\{max-width:760px/.test(readerRefinement))errors.push('reader refinement must own reader cross-curation base');
