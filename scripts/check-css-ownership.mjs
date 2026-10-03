@@ -176,3 +176,5 @@ if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*gap:7px!important/.test(
 if(/\.hero-index\{[^}]*margin-top:52px!important/.test(premium))errors.push('dead premium hero-index margin returned');
 
 if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*font-size:8px!important/.test(inline))errors.push('dead mobile hero-index font-size returned');
+
+if(/\.hero-index\{[^}]*grid-template-columns:repeat\(3,1fr\)!important/.test(inline))errors.push('hero-index flex container must not carry grid-template-columns');

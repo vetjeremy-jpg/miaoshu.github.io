@@ -148,7 +148,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 
 .hero-actions .hero-primary{min-height:48px!important;padding:11px 16px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
-.hero-index{grid-template-columns:repeat(3,1fr)!important;padding-top:11px!important;letter-spacing:.08em!important}
+.hero-index{padding-top:11px!important;letter-spacing:.08em!important}
 .hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}
 .wrap{padding:0 18px 70px!important}
 .panel{padding:48px 0!important}.section-title{word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
