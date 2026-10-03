@@ -72,6 +72,8 @@ const mobileSafety=fs.readFileSync('assets/mobile-rwd-final.css','utf8');
 if(/@media\(max-width:430px\)\{\s*\.hero h1\{max-width:100%\}/.test(mobileSafety))errors.push('mobile safety layer must not own homepage hero h1 max-width');
 if(/\.hero h1,\.hero-lede\{max-width:100%!important\}/.test(mobileSafety))errors.push('mobile safety layer must defer homepage hero h1 width to homepage CSS');
 if(!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::before/.test(mobileSafety)||!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::after/.test(mobileSafety))errors.push('mobile safety layer must preserve both homepage bookshelf rails');
+if(/\.wrap\{width:100%;max-width:100%;padding-left:18px!important/.test(mobileSafety))errors.push('mobile safety layer must not own page-specific wrap gutters');
+if(/@media\(max-width:340px\)\{[\s\S]*?\.panel\{padding-left:15px!important/.test(mobileSafety))errors.push('mobile safety layer must not own narrow-screen panel padding');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');

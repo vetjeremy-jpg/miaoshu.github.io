@@ -37,7 +37,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  .navlinks:focus-within,.top nav:focus-within{
    -webkit-mask-image:none;mask-image:none
  }
- .wrap{width:100%;max-width:100%;padding-left:18px!important;padding-right:18px!important}
+ .wrap{width:100%;max-width:100%}
  .panel{max-width:100%}
  button,input,select,textarea{max-width:100%}
  input,select,textarea{font-size:16px}
@@ -84,8 +84,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 }
 /* 320px safety: keep controls usable without compressing text into slivers. */
 @media(max-width:340px){
- .wrap{padding-left:14px!important;padding-right:14px!important}
- .panel{padding-left:15px!important;padding-right:15px!important}
  .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
  body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:20px;--moonlit-book-gap:10px}
 }
