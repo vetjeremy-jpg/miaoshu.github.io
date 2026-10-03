@@ -23,6 +23,7 @@ if(/addEventListener\(["']scroll["']/.test(readerRefinement))errors.push('reader
 if(readerRefinement.includes('new MutationObserver(syncFocus)'))errors.push('reader refinement must not shadow canonical focus state with a MutationObserver');
 if(readerRefinement.includes("focus.hidden=true")||readerRefinement.includes("inlineFocus.hidden=true"))errors.push('reader refinement must reuse the canonical focus control instead of hiding it');
 const readerRuntime=await readFile(join(root,'books','reader.js'),'utf8');
+if(!readerRuntime.includes('if(window.__moonlitReaderLoaded)return;')||!readerRuntime.includes('window.__moonlitReaderLoaded=true;'))errors.push('books/reader.js must keep a global idempotent initialization guard');
 if(!readerRuntime.includes('__moonlitReaderProgress'))errors.push('books/reader.js must expose the canonical Reader progress stream');
 const readerScrollOwners=(readerRuntime.match(/addEventListener\(["']scroll["']/g)||[]).length;
 if(readerScrollOwners!==1)errors.push(`books/reader.js must keep one canonical scroll listener; found ${readerScrollOwners}`);
