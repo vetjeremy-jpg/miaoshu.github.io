@@ -209,4 +209,4 @@ if(!/\.gallery-story-index\{/.test(photoViewerCss)||!/\.gallery-story-note\{/.te
 
 if(/\.moonlit-crosscuration\{max-width:760px/.test(moonlitV2))errors.push('legacy V2 must not own cross-curation');
 if(!/\.moonlit-crosscuration\{max-width:760px/.test(photoViewerCss))errors.push('photo-viewer.css must own gallery cross-curation base');
-if(!/\.moonlit-crosscuration\{max-width:760px/.test(readerRefinementCss))errors.push('reader refinement must own reader cross-curation base');
+if(!/\.moonlit-crosscuration\{max-width:760px/.test(readerRefinement))errors.push('reader refinement must own reader cross-curation base');
