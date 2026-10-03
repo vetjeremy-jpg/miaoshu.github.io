@@ -53,10 +53,10 @@ button,input{font:inherit}
 .toc a:hover{background:#19354f}
 .toc a[hidden]{display:none}
 .toc span{color:var(--gold2);font-size:13px;font-weight:800}
-.chapter{scroll-margin-top:105px;background:#0b1a2a;border:1px solid var(--line);border-radius:4px;padding:clamp(24px,5vw,60px);margin:25px 0}
+.chapter{scroll-margin-top:105px}
 .chapter h2{font:500 clamp(28px,4vw,34px)/1.4 "Noto Serif TC","Songti TC",serif;color:var(--text);margin:10px 0 28px}
-.chapter-body{max-width:720px;margin:auto;font:var(--reader-size,18px)/2.15 "Noto Serif TC","Songti TC","PMingLiU",serif}
-.chapter-body p{font-size:1em;line-height:2.15;color:#e8e5df;margin:0 0 1.25em;text-indent:2em;overflow-wrap:break-word}
+.chapter-body{margin:auto}
+.chapter-body p{font-size:1em;text-indent:2em;overflow-wrap:break-word}
 .chapter-tools{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:9px;align-items:center;margin-top:18px}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{font:600 15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:var(--gold2);text-decoration:none;border:1px solid rgba(228,210,175,.35);border-radius:999px;padding:10px 16px;min-height:44px;background:transparent;cursor:pointer}
 .chapter-tools a:hover,.chapter-tools button:hover,.chapter-bookmark:hover{background:rgba(228,210,175,.15)}
@@ -94,10 +94,10 @@ body{background:#09131e;color:var(--text)}
 .hero{background:linear-gradient(160deg,#12283b,#091521 70%);border-bottom:1px solid var(--line)}
 .hero-logo{box-shadow:none;border-color:var(--line)}
 .panel{background:#102031;border:1px solid var(--line);box-shadow:none}
-.chapter{background:#101e2c;border:1px solid rgba(212,188,146,.16);border-radius:5px;box-shadow:none;padding:clamp(26px,5vw,56px);margin:26px 0}
+.chapter{border-radius:5px;box-shadow:none}
 .chapter h2{font-weight:500;letter-spacing:.035em;color:#f0e6d4;margin:10px 0 32px}
-.chapter-body{max-width:690px;font:var(--reader-size,18px)/2.1 "Noto Serif TC","Songti TC","PMingLiU",serif}
-.chapter-body p{line-height:2.1;color:#e6e6e2;margin:0 0 1.32em;text-indent:2em}
+.chapter-body{font:var(--reader-size,18px)/2.1 "Noto Serif TC","Songti TC","PMingLiU",serif}
+.chapter-body p{margin:0 0 1.32em}
 .chapter-kicker{color:#c9b48e}
 .toc a{background:#132638}
 .toc a:hover{background:#1a3349}
