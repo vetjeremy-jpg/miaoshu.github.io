@@ -109,7 +109,7 @@ h1,h2,h3,.section-title{font-family:var(--ml-serif);font-weight:500}
 .cta{min-height:46px;box-sizing:border-box;border-radius:var(--ml-r1)!important;font-family:var(--ml-sans);font-size:13px;font-weight:600;line-height:1.35;text-decoration:none}
 .cta:not(.secondary),.hero-primary{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px!important;border:1px solid var(--ml-gold)!important;background:var(--ml-gold)!important;color:var(--ml-night-950)!important;box-shadow:none!important}
 .cta.secondary{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px!important;border:1px solid var(--ml-line-strong)!important;background:rgba(8,21,34,.36)!important;color:var(--ml-gold)!important;box-shadow:none!important}
-.topbar{box-shadow:0 1px 0 rgba(255,255,255,.025);border-color:var(--ml-line)!important}.navlinks a{border-radius:var(--ml-r1)!important}.hero-text-link{color:var(--ml-gold-2)}.hero h1{color:var(--ml-ink)!important}
+.topbar{box-shadow:0 1px 0 rgba(255,255,255,.025);border-color:var(--ml-line)!important}.navlinks a{border-radius:var(--ml-r1)!important}.hero h1{color:var(--ml-ink)!important}
 @media(max-width:700px){.cta{min-height:48px}}
 
 /* Critical cinematic primitives — extracted 2026-10-02 */
