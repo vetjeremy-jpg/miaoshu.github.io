@@ -138,6 +138,9 @@ must('homepage mobile does not redefine bookshelf padding', !/\.novels-grid\{[^}
 must('bookshelf rails are forced visible on mobile', /bookshelf-scene::before[\s\S]*visibility:visible!important/.test(mobile));
 must('books row scrolls horizontally', /#book \.novels-grid[\s\S]*overflow-x:auto!important/.test(mobile));
 must('mobile media never exceeds viewport', /img,video,iframe,svg,canvas\{max-width:100%;height:auto\}/.test(mobile));
+must('canonical mobile safety owns global overflow guard', /html,body\{max-width:100%;overflow-x:clip\}/.test(mobile));
+must('canonical mobile safety owns residual card width guards', /\.creator-card,.novel-card,.tile,.post-card/.test(mobile));
+must('canonical mobile safety owns Moonlit footer mobile gutter', /footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobile));
 must('reader has 430px pass', /H1 mobile RWD final reader pass[\s\S]*max-width:430px/.test(reader));
 must('reader chapter navigation wraps', /\.chapter-nav\{flex-wrap:wrap\}/.test(reader));
 must('reader search input fits viewport', /\.chapter-search input\{width:100%\}/.test(reader));
