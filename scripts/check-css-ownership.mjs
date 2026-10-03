@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:31,topbar:1,navlinks:2,panel:3,important:192},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:191},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
   'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
@@ -36,6 +36,8 @@ if(/@media\s*\(min-width:851px\)[\s\S]*?moonlight-emblem\{\s*right:auto!importan
 if(/@media\s*\(min-width:851px\)[\s\S]*?hero-side-caption\{\s*top:61%!important;/.test(premium))errors.push('duplicate desktop hero geometry returned: caption top');
 if(/@media\s*\(min-width:851px\)[\s\S]*?moonlight-emblem\{[^}]*drop-shadow\(0 0 24px/.test(premium))errors.push('duplicate desktop hero geometry returned: moon filter');
 if(/@media\s*\(min-width:851px\)[\s\S]*?hero-copy h1\{\s*text-shadow:0 10px 38px/.test(premium))errors.push('duplicate desktop hero geometry returned: h1 shadow');
+if(premium.includes('@media(max-width:700px){.hero-text-link{border:0}}'))errors.push('duplicate mobile hero text-link border returned');
+if(/hero-inner\{\s*box-sizing:border-box!important;\s*\}/.test(premium))errors.push('redundant hero-inner box-sizing override returned');
 for(const token of ['--hp-bg','--hp-ink','--hp-muted','--hp-gold','--hp-line']){
   if(premium.includes(token+':'))errors.push('premium must not redeclare canonical hp tokens: '+token);
 }

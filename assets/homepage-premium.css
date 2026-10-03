@@ -46,7 +46,6 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 .hero-text-link:hover{color:#e1d3b6!important;border-color:#e1d3b6}
 
 
-@media(max-width:700px){.hero-text-link{border:0}}
 
 /* Desktop hero composition matched to user reference — 2026-09-30 */
 @media (min-width:851px){
@@ -64,9 +63,6 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
  /* Keep the reference brand line on the left. */
  
  /* Keep headline/content column on the right of the crescent. */
- body:not([data-book-id]) > header.hero .hero-inner{
-   box-sizing:border-box!important;
- }
 }
 
 /* Homepage polish pass — 2026-09-30 */
