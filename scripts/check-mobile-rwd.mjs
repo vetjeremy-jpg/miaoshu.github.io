@@ -14,6 +14,15 @@ const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/
 function must(name, ok){ if(!ok) fail.push(name); }
 
 must('homepage loads mobile-rwd-final.css', /mobile-rwd-final\.css/.test(home));
+must('homepage loads critical homepage-inline.css', /homepage-inline\.css/.test(home));
+must('homepage loads desktop below-fold CSS', /homepage-desktop-below-fold\.css/.test(home));
+must('homepage loads mobile below-fold CSS', /homepage-mobile-below-fold\.css/.test(home));
+const stylesheetHrefs=[...home.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>m[1].split('?')[0]);
+const duplicateStyles=stylesheetHrefs.filter((href,i,a)=>a.indexOf(href)!==i);
+must('homepage has no duplicate stylesheet hrefs', duplicateStyles.length===0);
+const finalRwdPos=home.lastIndexOf('assets/mobile-rwd-final.css');
+const headEndPos=home.indexOf('</head>');
+must('mobile-rwd-final.css remains the final stylesheet before </head>', finalRwdPos>=0 && headEndPos>finalRwdPos && !/<link\b[^>]*rel=["']stylesheet["']/i.test(home.slice(finalRwdPos,headEndPos)));
 must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s*<\/head>/s.test(home));
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
 must('homepage has one Moonlit theme-color', (home.match(/<meta\s+name=["']theme-color["'][^>]*>/gi) || []).length === 1 && /<meta\s+name=["']theme-color["']\s+content=["']#071521["']\s*>/i.test(home));
