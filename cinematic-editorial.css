@@ -5,33 +5,18 @@ body{background:#101111;color:var(--text)}
 body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),transparent 45%)}
 .navlinks .nav-follow:hover{background:var(--gold2);color:#171613}
 
-.hero:before{display:block;inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
 
 
 
-.hero .eyebrow{color:var(--gold2);letter-spacing:.28em}
 
 
-.hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
-.wrap{max-width:1350px;padding:28px 24px 100px}
 .chapter-kicker,.creator-tag{color:var(--gold);letter-spacing:.24em}
-.featured-grid{gap:clamp(24px,5vw,70px)}
-.featured-copy h2{font-family:"Noto Serif TC","Songti TC",serif;color:#f6ecdd}
-.featured-visual{border-radius:0}
 .latest-update,.creator-card,.follow-panel,.reader-shelf{border-radius:0}
-.creator-grid{gap:14px;background:transparent;border:0}
-.creator-card{border:1px solid var(--line);background:#20211f;overflow:hidden}
-.creator-card:hover{background:#282722;border-color:rgba(220,188,138,.5)}
-.creator-art{background:linear-gradient(130deg,#302b23,#171b1b);color:var(--gold2)}
-.creator-copy h3{color:#f2e9dc}
-.creator-copy p,.notice{color:#c8c2b8}
-#book{background:#171817}
 #miaoshu-album .album-photos{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .album-photos a{border:0;box-shadow:none;position:relative}
 .album-photos img{transition:transform .45s ease,filter .45s ease;filter:saturate(.86)}
 .album-photos a:hover img,.album-photos a:focus-visible img{transform:scale(1.035);filter:saturate(1)}
 .album-photos a:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
-.follow-panel{background:linear-gradient(120deg,#27251f,#181b1b)}
 .chapter{background:#1a1b1a;border-radius:0}
 .chapter-body{max-width:760px}
 .chapter-body p{color:#e9e3d9;line-height:2.2}
@@ -59,8 +44,6 @@ footer{border-top-color:rgba(205,219,233,.19)}
 .moonlight-emblem{position:absolute;top:42px;right:8%;z-index:1;width:58px;height:58px;color:var(--moonlight);opacity:.8;pointer-events:none;filter:drop-shadow(0 0 14px rgba(199,222,242,.32))}
 .moonlight-emblem svg{display:block;width:100%;height:100%}
 .hero h1{color:#f4f3ed;text-shadow:0 3px 26px rgba(0,0,0,.7),0 0 32px rgba(213,230,246,.07)}
-.section-title:after{background:linear-gradient(90deg,rgba(220,232,242,.8),var(--gold),transparent)}
-.hero:before{border-color:rgba(211,226,239,.22)}
 @media(max-width:850px){.moonlight-emblem{top:24px;right:28px;width:40px;height:40px}.hero::after{width:80vw;height:300px}}
 @media(max-width:520px){.moonlight-emblem{top:18px;right:22px;width:32px;height:32px}}
 
