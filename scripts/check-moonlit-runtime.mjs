@@ -22,8 +22,12 @@ async function walk(dir){
  }
 }
 await walk(root);
+const homeLoader=await readFile(join(root,'assets','moonlit-home-loader.js'),'utf8');
 const homeContent=await readFile(join(root,'assets','moonlit-home-content.js'),'utf8');
 const experience=await readFile(join(root,'assets','moonlit-experience.js'),'utf8');
+if(!homeLoader.includes('__moonlitHomeLoaderLoaded'))errors.push('moonlit-home-loader.js 缺少全域初始化 guard');
+if(!homeContent.includes('__moonlitHomeContentLoaded'))errors.push('moonlit-home-content.js 缺少全域初始化 guard');
+if(!experience.includes('__moonlitExperienceLoaded'))errors.push('moonlit-experience.js 缺少全域初始化 guard');
 if(!homeContent.includes('!d.querySelector(".moonlit-curation")'))errors.push('moonlit-home-content.js 缺少 moonlit-curation 重複掛載 guard');
 if(!experience.includes('button.dataset.moonlitMounted'))errors.push('moonlit-experience.js 缺少 picker 重複掛載 guard');
 const sw=await readFile(join(root,'sw.js'),'utf8');
