@@ -60,9 +60,6 @@ body:not([data-book-id]) > header.hero > .hero-side-caption{
 body:not([data-book-id]) > header.hero > .hero-side-caption span{
   display:block!important;width:42px!important;min-width:42px!important;height:1px!important;background:rgba(230,196,128,.68)!important
 }
-@media(max-width:850px) and (min-width:621px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:24px!important;top:70%!important;font-size:14px!important}}
-@media(max-width:620px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:18px!important;top:auto!important;bottom:26px!important;max-width:calc(100vw - 36px)!important;gap:10px!important;font-size:12px!important;letter-spacing:.12em!important}body:not([data-book-id]) > header.hero > .hero-side-caption span{width:24px!important;min-width:24px!important}}
-@media(max-width:380px){body:not([data-book-id]) > header.hero > .hero-side-caption{left:16px!important;bottom:22px!important;font-size:11px!important;letter-spacing:.08em!important;gap:8px!important}body:not([data-book-id]) > header.hero > .hero-side-caption span{width:20px!important;min-width:20px!important}}
 
 /* Moonlit Stories homepage final cascade layer — 2026-10-02
    Keep final homepage-only decisions here so legacy layers can be retired safely. */
