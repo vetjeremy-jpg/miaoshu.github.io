@@ -17,6 +17,8 @@ must('homepage loads mobile-safety.css', /mobile-safety\.css/.test(home));
 must('homepage loads critical homepage-inline.css', /homepage-inline\.css/.test(home));
 must('homepage loads desktop below-fold CSS', /homepage-desktop-below-fold\.css/.test(home));
 must('homepage loads mobile below-fold CSS', /homepage-mobile-below-fold\.css/.test(home));
+must('homepage exposes Moonlit Letters in primary nav', /<a href=["']#newsletter["']>月光來信<\/a>/.test(home));
+must('homepage exposes a second newsletter shortcut', (home.match(/href=["']#newsletter["']/g)||[]).length >= 2);
 const activeHome=head => head.replace(/<noscript>[\s\S]*?<\/noscript>/gi,'');
 const activeStylesheetHrefs=[...activeHome(home).matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>m[1].split('?')[0]);
 const duplicateStyles=activeStylesheetHrefs.filter((href,i,a)=>a.indexOf(href)!==i);
