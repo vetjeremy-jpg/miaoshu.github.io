@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:152},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:132},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
@@ -135,6 +135,8 @@ if(/\.creator-art\{[^}]*color:#6f879b!important/.test(premium)||/\.album-descrip
 if(/#creative\{|\.creator-grid\{|\.creator-card\{|\.creator-art\{|\.creator-copy\{|\.creator-copy h3\{|\.creator-copy p\{|\.creator-copy a\{/.test(premium))errors.push('premium must not regain Creator component ownership');
 if(!/#creative\{padding-top:90px\}/.test(homepageDesktopBelow)||!/\.creator-grid\{display:grid;grid-template-columns:repeat\(4,1fr\)/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Creator desktop composition');
 if(/\.tonight-grid article\{[^}]*background:transparent!important/.test(premium))errors.push('premium Tonight card background must defer to system owner');
+if(/#tonight\{|\.tonight-grid\{|\.tonight-grid article\{|\.tonight-grid article:last-child\{|\.tonight-grid h3\{|\.tonight-grid p\{|\.tonight-grid a\{/.test(premium))errors.push('premium must not regain Tonight component ownership');
+if(!/@media\(min-width:701px\)\{#tonight\{padding-top:32px\}\.tonight-grid\{margin-top:34px;display:grid;grid-template-columns:1\.15fr \.9fr \.9fr/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Tonight desktop composition');
 if(/\.moonlit-entry\{[^}]*background:transparent!important/.test(premium))errors.push('premium Discovery entry background must defer to system owner');
 if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{|\.moonlit-entry:last-child\{|\.moonlit-entry:hover\{/.test(premium))errors.push('premium must not regain Discovery component ownership');
 if(!/@media\(min-width:701px\)\{\.moonlit-discovery\{margin:70px 0;padding:clamp\(40px,6vw,70px\)/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Discovery desktop geometry');

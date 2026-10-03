@@ -142,3 +142,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 
 /* Discovery desktop geometry; visual surface tokens remain owned by moonlit-system.css. */
 @media(min-width:701px){.moonlit-discovery{margin:70px 0;padding:clamp(40px,6vw,70px)}.moonlit-entry-grid{gap:0;background:transparent;border-top:1px solid rgba(220,230,240,.12)}.moonlit-entry{padding:28px 18px;border-right:1px solid rgba(220,230,240,.1)}.moonlit-entry:last-child{border-right:0}.moonlit-entry:hover{background:rgba(185,213,238,.035)}}
+
+/* Tonight desktop composition; mobile carousel remains owned by homepage-mobile-below-fold.css. */
+@media(min-width:701px){#tonight{padding-top:32px}.tonight-grid{margin-top:34px;display:grid;grid-template-columns:1.15fr .9fr .9fr;gap:0;border-top:1px solid var(--hp-line);border-bottom:1px solid var(--hp-line)}.tonight-grid article{padding:32px 30px 34px;border:0;border-right:1px solid var(--hp-line)}.tonight-grid article:last-child{border-right:0}.tonight-grid h3{font-size:clamp(24px,2.3vw,32px);color:var(--hp-ink)}.tonight-grid p{color:var(--hp-muted)}.tonight-grid a{color:var(--hp-gold)}}
