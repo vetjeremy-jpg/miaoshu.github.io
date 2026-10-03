@@ -15,7 +15,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
    padding-right:max(14px,env(safe-area-inset-right))!important
  }
  .topbar .brand,.top .brand{max-width:100%;min-height:44px}
- .topbar .brand img,.top .brand img{flex:0 0 auto}
  .navlinks,.top nav{
    max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;
    -webkit-overflow-scrolling:touch;scrollbar-width:none;
@@ -24,7 +23,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
    padding-right:max(18px,env(safe-area-inset-right))!important
  }
  .navlinks::-webkit-scrollbar,.top nav::-webkit-scrollbar{display:none}
- .navlinks a,.top nav a{min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;flex:0 0 auto}
+ .navlinks a,.top nav a{min-height:44px;white-space:nowrap;flex:0 0 auto}
  .navlinks a:last-child,.top nav a:last-child{margin-right:4px}
  .navlinks a[aria-current="page"],.top nav a[aria-current="page"]{
    color:#f1d79a!important;text-decoration:none;
