@@ -44,6 +44,7 @@ if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cine
 if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematicBase))errors.push('cinematic editorial must not own base CTA/panel component styling');
 if(/\.section-title\{/.test(cinematicBase))errors.push('cinematic editorial must not own base section-title typography');
 if(/\.section-title:after\{background:linear-gradient\(90deg,var\(--gold\),transparent\)\}/.test(cinematic))errors.push('superseded cinematic section-title base underline returned');
+if(/#book \.bookshelf-scene\{|#book \.novel-card\{|#book \.novel-card p\{/.test(cinematic))errors.push('cinematic editorial must not own homepage bookshelf theme styling');
 if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
