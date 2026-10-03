@@ -32,8 +32,3 @@
 @media(max-width:520px){.moonlit-subscribe-row input{font-size:16px}}
 @media(max-width:650px){.moonlit-curation{margin:12px 16px;padding:25px 18px}}
 
-/* Homepage action safeguards migrated from legacy moonlight responsive QA */
-@media(max-width:650px){
- :is(.community-actions,.follow-actions){max-width:100%}
- :is(.community-actions,.follow-actions) :is(a,button){min-height:44px}
-}
