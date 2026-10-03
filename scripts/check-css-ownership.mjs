@@ -57,6 +57,9 @@ if(/html\[data-reading-theme="paper"\] \.continue-box\{[^}]*background:/.test(re
 if(/html\[data-reading-theme="paper"\] \.audio-reading\{/.test(readerBase))errors.push('books reader must defer paper audio-reading highlight to editorial interiors');
 if(/@media\(max-width:650px\)\{\.chapter\{padding:24px 20px\}/.test(readerBase))errors.push('books reader must defer first mobile chapter padding to editorial interiors');
 if(/@media\(max-width:650px\)\{\.chapter\{padding:25px 20px\}\.chapter-body p\{line-height:2\.05\}\}/.test(readerBase))errors.push('books reader must defer final 650px chapter rhythm to editorial interiors');
+if(/@media\(max-width:430px\)\{\.reading-intro\{padding:20px 16px\}/.test(readerBase))errors.push('superseded first 430px compact entry layout returned');
+if(/\.wrap\{padding-left:14px;padding-right:14px\}/.test(readerBase))errors.push('superseded 430px wrap gutter returned');
+if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))errors.push('430px panel and chapter padding must not be coupled');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');

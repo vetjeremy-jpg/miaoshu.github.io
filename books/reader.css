@@ -178,7 +178,7 @@ body{background:#0a1825}
 @media(max-width:430px){.reader-controls{gap:8px}.reader-controls>span{width:100%;font-size:11px}.reader-controls button{min-width:44px;min-height:44px}.reader-audio-shortcut{order:-1;width:100%;font-size:14px}.book-directory .notice{margin-bottom:10px}.directory-head{gap:10px}.directory-head .section-title{font-size:clamp(1.65rem,8vw,2.1rem)}.chapter-search{margin-top:14px}.audiobook-launcher{margin-top:14px}}
 
 /* Compact mobile path into the story */
-@media(max-width:430px){.reading-intro{padding:20px 16px}.reading-intro>p{margin-bottom:10px}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:16px}.reader-shelf .shelf-note{margin-bottom:8px}.audiobook-launcher{padding:18px 16px}.audiobook-launcher h2{margin-block:4px}.audiobook-launcher p{font-size:.9rem;line-height:1.55}.book-directory{padding:18px 16px}.directory-head .notice{font-size:.9rem;line-height:1.55}.toc a{min-height:48px}}
+@media(max-width:430px){.reading-intro>p{margin-bottom:10px}}
 
 /* Compact mobile novel entry flow */
 @media(max-width:430px){
@@ -202,10 +202,8 @@ body{background:#0a1825}
 }
 @media(max-width:430px){
  .hero h1{font-size:clamp(32px,10vw,42px);line-height:1.35}
- .wrap{padding-left:14px;padding-right:14px}
- .panel,.chapter{padding-left:18px;padding-right:18px}
- .chapter-body{font-size:var(--reader-size,17px);line-height:2}
- .chapter-body p{line-height:2;text-indent:2em}
+ .panel{padding-left:18px;padding-right:18px}
+ .chapter-body p{text-indent:2em}
  .reader-controls{width:100%}.reader-controls button{flex:1 1 64px}
  .chapter-search{display:grid;grid-template-columns:1fr}.chapter-search input{width:100%}
  .toc{width:100%}
@@ -213,8 +211,7 @@ body{background:#0a1825}
  .audiobook-actions .audio-primary{grid-column:auto}
 }
 @media(max-width:340px){
- .wrap{padding-left:12px;padding-right:12px}
- .panel,.chapter{padding-left:15px;padding-right:15px}
+ .panel{padding-left:15px;padding-right:15px}
  .chapter-body{font-size:var(--reader-size,16.5px)}
 }
 
