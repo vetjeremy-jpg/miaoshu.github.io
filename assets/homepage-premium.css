@@ -50,13 +50,9 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 /* Desktop hero composition matched to user reference — 2026-09-30 */
 @media (min-width:851px){
- body:not([data-book-id]) > header.hero{
-   position:relative!important;
- }
+ 
  /* Reference composition: crescent sits between the brand line and headline. */
- body:not([data-book-id]) > header.hero .moonlight-emblem{
-   right:auto!important;
- }
+ 
  /* The hero logo is the small dark seal nested visually inside the crescent. */
  body:not([data-book-id]) > header.hero .hero-corner-logo{
    left:43.2%!important;
@@ -66,9 +62,7 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
    z-index:6!important;
  }
  /* Keep the reference brand line on the left. */
- body:not([data-book-id]) > header.hero .hero-side-caption{
-   top:61%!important;
- }
+ 
  /* Keep headline/content column on the right of the crescent. */
  body:not([data-book-id]) > header.hero .hero-inner{
    box-sizing:border-box!important;
@@ -78,12 +72,8 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 /* Homepage polish pass — 2026-09-30 */
 /* Refine finish without changing the established desktop composition. */
 @media (min-width:851px){
- body:not([data-book-id]) > header.hero .moonlight-emblem{
-   filter:drop-shadow(0 0 24px rgba(229,237,244,.12)) drop-shadow(0 0 72px rgba(184,207,228,.065))!important;
- }
- body:not([data-book-id]) > header.hero .hero-copy h1{
-   text-shadow:0 10px 38px rgba(0,0,0,.20);
- }
+ 
+ 
  body:not([data-book-id]) > header.hero .hero-lede{
    color:rgba(205,216,225,.76)!important;
    line-height:1.95!important;
