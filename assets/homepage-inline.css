@@ -157,7 +157,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .panel{padding:48px 0!important}.section-title{font-size:clamp(29px,9vw,38px)!important;line-height:1.35!important;word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
 }
 
-/* Homepage-only quiet starlight: static, irregular points behind existing content. */
+/* Homepage-only quiet starlight: static, irregular points and fine constellation links behind existing content. */
 body#top:not([data-book-id]) > header.hero::after{
  content:""!important;
  position:absolute;
@@ -166,7 +166,9 @@ body#top:not([data-book-id]) > header.hero::after{
  height:auto;
  pointer-events:none;
  z-index:-1;
+ background-size:100% 100%;
  background-image:
+ url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23d5e3f2%22%20stroke-opacity%3D%22.14%22%20stroke-width%3D%22.6%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M4%2013L10%2019%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M10%2019L14%2024%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M14%2024L12%2029%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M12%2029L23%2043%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M19%209L31%2018%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M31%2018L36%206%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M31%2018L42%2031%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M7%2056L16%2071%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M16%2071L27%2061%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M27%2061L34%2079%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M34%2079L22%2092%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M72%205L79%2017%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M79%2017L81%2022%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M81%2022L88%2018%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M88%2018L94%2011%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M81%2022L86%2034%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M77%2049L89%2067%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M89%2067L96%2048%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M60%2083L73%2094%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M73%2094L84%2085%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20d%3D%22M84%2085L93%2093%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
  radial-gradient(circle at 4% 13%,rgba(213,227,242,0.22) 0 0.6px,transparent 1.2999999999999998px),
  radial-gradient(circle at 12% 29%,rgba(213,227,242,0.28) 0 0.8px,transparent 1.5px),
  radial-gradient(circle at 19% 9%,rgba(213,227,242,0.18) 0 0.6px,transparent 1.2999999999999998px),
