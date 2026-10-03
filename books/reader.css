@@ -53,7 +53,6 @@ button,input{font:inherit}
 .toc a:hover{background:#19354f}
 .toc a[hidden]{display:none}
 .toc span{color:var(--gold2);font-size:13px;font-weight:800}
-.chapter{scroll-margin-top:105px}
 .chapter h2{font:500 clamp(28px,4vw,34px)/1.4 "Noto Serif TC","Songti TC",serif;color:var(--text);margin:10px 0 28px}
 .chapter-body{margin:auto}
 .chapter-body p{font-size:1em;text-indent:2em;overflow-wrap:break-word}
@@ -114,8 +113,7 @@ body{background:#0a1825}
 .panel{background:#112537;border-radius:8px}
 .chapter{background:#112231;border-color:rgba(218,192,151,.17);padding:clamp(26px,5vw,54px);margin:28px 0}
 .chapter h2{color:#f1e7d5;line-height:1.48}
-.chapter-body{max-width:680px}
-.chapter-body p{color:#e8e7e3;line-height:2.12;margin-bottom:1.38em}
+.chapter-body p{margin-bottom:1.38em}
 .chapter-tools{gap:10px}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{min-height:44px}
 @media(max-width:650px){.chapter{padding:25px 20px}.chapter-body p{line-height:2.05}}
