@@ -61,3 +61,26 @@ html[data-reading-theme="paper"] .chapter-body p.moonlit-saved-line{background:l
 
 /* Reader cross-curation */
 .moonlit-crosscuration{max-width:760px;margin:38px auto;padding:24px 0;border-block:1px solid rgba(202,220,236,.15)}.moonlit-crosscuration small{letter-spacing:.18em;color:#91a8bb}.moonlit-crosscuration strong{display:block;margin:7px 0;font:500 21px "Noto Serif TC","Songti TC",serif}.moonlit-crosscuration a{display:inline-flex;align-items:center;min-height:44px;color:#e1cfaa}
+
+/* Reader-only comfort/focus ownership migrated from moonlight.css */
+/* Reader comfort shared across every novel. */
+.moonlit-reader-comfort{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;max-width:720px;margin:22px auto;padding:10px}.moonlit-reader-comfort button{font:inherit;font-size:14px;color:#e6d3ad;background:rgba(184,212,236,.055);border:1px solid rgba(205,225,243,.22);border-radius:24px;min-height:44px;padding:8px 18px;cursor:pointer}.moonlit-reader-comfort button[aria-pressed=true]{background:rgba(184,212,236,.15);border-color:rgba(205,225,243,.4)}.moonlit-wide-spacing .chapter-body,.moonlit-wide-spacing .chapter-body p{line-height:2.55!important}.moonlit-focus-mode :is(.topbar,.top,header.hero,.site-header,.reading-intro,.next-reading,footer,.toc,.reader-shelf,.continue-box,.chapter-tools,.chapter-share-feedback){display:none!important}.moonlit-focus-mode .chapter-body{max-width:680px}.moonlit-focus-mode .moonlit-reader-comfort{position:sticky;top:0;z-index:100;background:#101923;border-radius:0 0 14px 14px}.moonlit-focus-mode main{padding-top:8px}
+@media(max-width:850px){
+  .reader-controls{gap:10px}
+  .reader-controls button{min-width:44px;min-height:44px;padding:8px 12px}
+  .chapter-tools{display:flex;flex-wrap:wrap;gap:10px}
+  .chapter-tools button{min-height:44px}
+  .chapter-nav a{padding:8px 4px}
+}
+@media(max-width:520px){
+  .moonlit-reader-comfort{justify-content:stretch;padding-inline:0}
+  .moonlit-reader-comfort button{flex:1 1 140px}
+  .chapter-nav{align-items:stretch}.chapter-nav a{flex:1;line-height:1.5}
+}
+
+/* Reader-only floating dock and reading-focus UI migrated from moonlight.css */
+.moonlit-reader-dock{position:fixed;right:18px;bottom:18px;z-index:1500;display:flex;gap:7px;padding:7px;border:1px solid rgba(205,225,243,.16);border-radius:999px;background:rgba(7,17,28,.88);backdrop-filter:blur(14px);box-shadow:0 12px 35px rgba(0,0,0,.25)}
+.moonlit-reader-dock button{border:0;background:transparent;color:#dcc9a6;min-width:42px;height:42px;border-radius:50%;cursor:pointer}.moonlit-reader-dock button:hover{background:rgba(205,225,243,.1)}
+.moonlit-reader-dock .reading-percent{display:flex;align-items:center;padding:0 10px;color:#9eb0bf;font-size:12px}
+.moonlit-ui-dim :is(.topbar,.top){opacity:.18;transition:opacity .35s}.moonlit-ui-dim :is(.topbar,.top):hover{opacity:1}
+@media(max-width:650px){.moonlit-reader-dock{right:10px;bottom:10px}.moonlit-reader-dock .reading-percent{display:none}}

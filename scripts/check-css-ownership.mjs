@@ -121,6 +121,8 @@ if(/\.hero-actions,\.feature-actions,\.actions/.test(mobileSafety)||/\.creator-g
 if(/\.hero-inner,\.hero-copy/.test(mobileSafety)||/\.hero-lede/.test(mobileSafety)||/\.hero-index/.test(mobileSafety)||/\.hero h1\{font-size/.test(mobileSafety))errors.push('mobile safety layer must not own homepage hero mobile styling');
 if(/\.support-actions|\.follow-actions|\.about-links|\.community-actions/.test(mobileSafety))errors.push('mobile safety layer must not own homepage action groups');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
+if(/\.moonlit-reader-comfort\{|\.moonlit-wide-spacing|\.moonlit-focus-mode|\.moonlit-reader-dock\{|\.moonlit-ui-dim/.test(moonlightCss))errors.push('moonlight.css must not regain reader-only comfort or dock ownership');
+if(!/\.moonlit-reader-comfort\{display:flex;justify-content:center/.test(readerRefinement)||!/\.moonlit-focus-mode/.test(readerRefinement)||!/\.moonlit-reader-dock\{/.test(readerRefinement))errors.push('reader refinement must preserve comfort, focus mode and reader dock');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
 if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(discovery))errors.push('legacy discovery Tonight desktop layout returned');
