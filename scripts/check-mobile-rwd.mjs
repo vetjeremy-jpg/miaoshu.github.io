@@ -99,6 +99,10 @@ must('service worker navigation stays network first',
 const shellBlock = serviceWorker.slice(serviceWorker.indexOf('const SHELL=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const SHELL=[')) + 2);
 const lazyBlock = serviceWorker.slice(serviceWorker.indexOf('const LAZY_ASSETS=['), serviceWorker.indexOf('];', serviceWorker.indexOf('const LAZY_ASSETS=[')) + 2);
 must('service worker does not precache novel HTML', shellBlock && !shellBlock.includes('/books/'));
+must('service worker keeps install shell intentionally small', (shellBlock.match(/SCOPE\+/g)||[]).length <= 5);
+must('service worker bounds offline page cache', /const MAX_PAGES=\d+;/.test(serviceWorker) && /trimPages/.test(serviceWorker));
+must('service worker normalizes tracking/version params for page cache', /fbclid/.test(serviceWorker) && /gclid/.test(serviceWorker) && /startsWith\(['"]utm_['"]\)/.test(serviceWorker));
+must('service worker only cache-firsts explicitly versioned assets', /VERSIONED_ASSETS\.has\(assetKey\)/.test(serviceWorker));
 must('service worker keeps page-specific enhancements out of install shell',
  shellBlock &&
  !shellBlock.includes('moonlit-home-content.js') &&
