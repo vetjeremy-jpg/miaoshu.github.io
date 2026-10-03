@@ -137,6 +137,7 @@ if(/\.section-title:after\{background:linear-gradient\(90deg,var\(--gold\),trans
 if(/#book \.bookshelf-scene\{|#book \.novel-card\{|#book \.novel-card p\{/.test(cinematic))errors.push('cinematic editorial must not own homepage bookshelf theme styling');
 if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
+const photoViewerCss=fs.readFileSync('photo-viewer.css','utf8');
 const v2Css=fs.readFileSync('assets/moonlit-v2.css','utf8');
 if(/\.book-object\{[^}]*filter:drop-shadow/.test(premium))errors.push('homepage premium must not override canonical book-object shadow');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
@@ -211,3 +212,7 @@ if(fs.existsSync('assets/homepage-mobile.css'))errors.push('retired homepage-mob
 
 if(/moonlit-new-reader/.test(premium)||/moonlit-new-reader/.test(v2Css))errors.push('unused moonlit-new-reader owner returned');
 if(/data-moon-phase/.test(v2Css))errors.push('unused data-moon-phase hero owner returned');
+
+if(/--moon-v2/.test(v2Css))errors.push('legacy v2 must not retain unused moon-v2 tokens');
+if(/\.gallery-story-(?:index|note)/.test(v2Css))errors.push('legacy v2 must not own gallery story metadata');
+if(!/\.gallery-story-index\{/.test(photoViewerCss)||!/\.gallery-story-note\{/.test(photoViewerCss))errors.push('photo viewer must own gallery story metadata');
