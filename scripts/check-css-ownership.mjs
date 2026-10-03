@@ -60,6 +60,9 @@ if(/@media\(max-width:650px\)\{\.chapter\{padding:25px 20px\}\.chapter-body p\{l
 if(/@media\(max-width:430px\)\{\.reading-intro\{padding:20px 16px\}/.test(readerBase))errors.push('superseded first 430px compact entry layout returned');
 const reader340Blocks=(readerBase.match(/@media\(max-width:340px\)/g)||[]).length;
 if(reader340Blocks>2)errors.push(`books reader has ${reader340Blocks} max-width:340px blocks; keep narrow-screen overrides consolidated`);
+if(/@media\(max-width:720px\)\{\.audiobook-options\{grid-template-columns:1fr\}\.audiobook-actions button\{flex:1 1 44%\}/.test(readerBase))errors.push('superseded flex sizing returned to the 720px audiobook grid');
+const audioResumeRules=(readerBase.match(/#audio-resume\{/g)||[]).length;
+if(audioResumeRules>1)errors.push(`books reader has ${audioResumeRules} #audio-resume base rules; keep the final utility owner singular`);
 if(/\.wrap\{padding-left:14px;padding-right:14px\}/.test(readerBase))errors.push('superseded 430px wrap gutter returned');
 if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))errors.push('430px panel and chapter padding must not be coupled');
 if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerBase))errors.push('superseded 720px audiobook launcher margin returned');
