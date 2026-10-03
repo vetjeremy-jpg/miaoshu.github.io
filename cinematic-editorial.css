@@ -3,11 +3,6 @@
 html{scroll-padding-top:90px}
 body{background:#101111;color:var(--text)}
 body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),transparent 45%)}
-.topbar{min-height:68px;background:rgba(15,16,16,.94);border-bottom:1px solid rgba(211,179,130,.28);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.brand{font-family:"Noto Serif TC","Songti TC",serif;letter-spacing:.08em}
-.navlinks a{color:#e6ded1;letter-spacing:.07em}
-.navlinks a:hover,.navlinks a:focus-visible{color:#f3d9a6;background:rgba(205,171,117,.1)}
-.navlinks .nav-follow{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
 .navlinks .nav-follow:hover{background:var(--gold2);color:#171613}
 
 .hero:before{display:block;inset:20px;border:1px solid rgba(214,188,145,.2);border-radius:0;box-shadow:none}
@@ -66,7 +61,6 @@ footer{background:#101111;border-top:1px solid var(--line);color:#b8ab97}
 
 /* A restrained trace of moonlight, shared with the Moonlit Stories name. */
 :root{--moonlight:#dce8f2}
-.topbar,.top{border-bottom-color:rgba(205,219,233,.21)}
 footer{border-top-color:rgba(205,219,233,.19)}
 
 .hero::after{content:"";position:absolute;top:0;right:0;width:min(640px,60vw);height:460px;background:radial-gradient(ellipse at 72% 12%,rgba(194,218,241,.14),rgba(177,204,230,.04) 36%,transparent 68%);pointer-events:none;z-index:0}
