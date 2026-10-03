@@ -33,6 +33,9 @@ function stripMediaBlocks(css){
   }
   return out;
 }
+
+const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
+if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
 const cinematicBase=stripMediaBlocks(cinematic);
