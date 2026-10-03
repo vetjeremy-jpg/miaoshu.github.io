@@ -7,6 +7,9 @@ on:
     paths:
       - 'books/**'
       - 'assets/mobile-rwd-final.css'
+      - 'assets/homepage-inline.css'
+      - 'assets/homepage-desktop-below-fold.css'
+      - 'assets/homepage-mobile-below-fold.css'
       - 'assets/homepage-mobile.css'
       - 'assets/homepage-premium.css'
       - 'assets/moonlit-system.css'
