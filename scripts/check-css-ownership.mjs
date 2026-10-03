@@ -72,6 +72,7 @@ if(fs.existsSync('cinematic-editorial.css'))errors.push('retired cinematic-edito
 const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
 const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
+const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:absolute/.test(moonlightCss))errors.push('moonlight owner must preserve migrated decorative primitives');
 
@@ -236,3 +237,5 @@ console.log('Moonlit CSS ownership budgets passed.');
 if(fs.existsSync('assets/homepage-final.css'))errors.push('retired homepage-final.css file must stay deleted');
 
 if(/hero-brand-mark/.test(inline)||/hero-brand-mark/.test(premium))errors.push('dead hero-brand-mark owner returned');
+
+if(/(?:\.gallery-series|\.series-card|\.intro h1|\.btn(?:[),.{:#\[]|$))/.test(refinementCss))errors.push('homepage refinement must not own unused gallery or series selectors');

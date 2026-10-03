@@ -26,8 +26,8 @@ body.homepage .hero,body:not([class]) .hero{isolation:isolate}
 @media(max-width:620px){.moonlit-result.is-visible{grid-template-columns:1fr}.moonlit-result a{grid-column:1;grid-row:auto;margin-top:8px}.moonlit-moods button{flex:1 1 44%}}
 
 /* Unified motion */
-a,button,.creator-card,.series-card{transition-duration:.25s;transition-timing-function:var(--ml-ease)}
-@media(prefers-reduced-motion:reduce){a,button,.creator-card,.series-card{transition:none!important}}
+a,button,.creator-card{transition-duration:.25s;transition-timing-function:var(--ml-ease)}
+@media(prefers-reduced-motion:reduce){a,button,.creator-card{transition:none!important}}
 
 
 /* 2026-09 polish pass: typography, contrast, spacing, controls and mobile safety */
@@ -35,15 +35,15 @@ html{overflow-x:clip}
 body{overflow-wrap:anywhere}
 :where(h1,.hero h1){text-wrap:balance}
 :where(h2,h3){text-wrap:pretty}
-:where(.hero h1,.intro h1,article>header h1){font-family:var(--ml-serif);font-weight:500;letter-spacing:-.018em}
+:where(.hero h1,article>header h1){font-family:var(--ml-serif);font-weight:500;letter-spacing:-.018em}
 :where(.hero h1){font-size:var(--ml-step-3)}
 :where(main p,article p){text-wrap:pretty}
-:where(button,.btn,[class*="button"],[class*="cta"]){font-family:var(--ml-sans)}
+:where(button,[class*="button"],[class*="cta"]){font-family:var(--ml-sans)}
 :where(button,a):focus-visible{outline:2px solid var(--ml-moon);outline-offset:3px}
 :where(.hero,main>section){scroll-margin-top:84px}
 :where(main>section)+:where(main>section){margin-top:var(--ml-space-5)}
-:where(.creator-card,.series-card,.novel-card,.book-card){transform:translateY(0)}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){:where(.creator-card,.series-card,.novel-card,.book-card):hover{transform:translateY(-2px)}}
+:where(.creator-card,.novel-card,.book-card){transform:translateY(0)}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){:where(.creator-card,.novel-card,.book-card):hover{transform:translateY(-2px)}}
 .moonlit-moods button,.moonlit-result a{transition:background-color var(--ml-motion-fast) var(--ml-ease),color var(--ml-motion-fast) var(--ml-ease),border-color var(--ml-motion-fast) var(--ml-ease),transform var(--ml-motion-fast) var(--ml-ease)}
 .moonlit-result a{border-radius:var(--ml-radius)}
 .moonlit-moods button{border-radius:var(--ml-radius)}
@@ -68,9 +68,6 @@ body{overflow-wrap:anywhere}
 #book .moonlit-cover[data-tone="red"]{background:linear-gradient(155deg,#2b181d,#101923 72%)}
 #book .moonlit-cover[data-tone="snow"]{background:linear-gradient(155deg,#21303b,#0c1721 70%)}
 #book .moonlit-cover[data-tone="void"]{background:linear-gradient(155deg,#111a2b,#080f1b 72%)}
-.gallery-series,.series-card{box-shadow:none!important}
-.gallery-series img,.series-card img{transition:transform var(--ml-motion-mid) var(--ml-ease),filter var(--ml-motion-mid) var(--ml-ease)}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){.gallery-series:hover img,.series-card:hover img{transform:scale(1.012);filter:brightness(1.03)}}
 @media(max-width:720px){.moonlit-bookmark-note{margin-inline:0;padding:16px}}
 
 .moonlit-editorial-feature{max-width:1180px;margin:0 auto clamp(52px,8vw,96px);padding:clamp(24px,4vw,42px) clamp(20px,5vw,54px);display:grid;grid-template-columns:minmax(0,.72fr) minmax(260px,1.28fr);column-gap:clamp(28px,6vw,76px);align-items:end;border-block:1px solid var(--ml-line);background:linear-gradient(90deg,rgba(228,210,175,.045),transparent 64%)}
