@@ -63,18 +63,6 @@ body::before{content:"";position:fixed;inset:-18%;pointer-events:none;z-index:-1
 .moonlit-site-footer nav a{color:#d9c7a4;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}.moonlit-site-footer .moonlit-colophon{font-size:12px;letter-spacing:.12em;color:#70869a}
 @media(prefers-reduced-motion:reduce){body::before{animation:none}}
 
-/* Final site-wide responsive QA */
-html,body{max-width:100%;overflow-x:clip}
-img,video,iframe,svg{max-width:100%}
-:is(h1,h2,h3,p,a,button){overflow-wrap:break-word}
-@media(max-width:650px){
- :is(.topbar,.top){max-width:100vw}
- :is(.panel,.chapter,.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){max-width:100%;min-width:0}
- :is(.actions,.community-actions,.follow-actions,.chapter-tools,.reader-controls){max-width:100%}
- :is(.actions,.community-actions,.follow-actions) :is(a,button){min-height:44px}
- footer.moonlit-site-footer{padding-inline:18px!important}
-}
-
 /* Legacy cinematic moonlight primitives; decoration ownership lives here. */
 :root{--moonlight:#dce8f2}
 footer{border-top-color:rgba(205,219,233,.19)}
