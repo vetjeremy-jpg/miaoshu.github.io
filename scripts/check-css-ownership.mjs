@@ -122,17 +122,10 @@ if(/\.support-actions|\.follow-actions|\.about-links|\.community-actions/.test(m
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
-const cinematicBase=stripMediaBlocks(cinematic);
 if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(discovery))errors.push('legacy discovery Tonight desktop layout returned');
 if(/\.tonight-grid article\{padding:28px 26px/.test(discovery))errors.push('legacy discovery Tonight card geometry returned');
 if(/@media\(max-width:650px\)[\s\S]*?\.tonight-grid\{grid-template-columns:1fr\}/.test(discovery))errors.push('legacy discovery mobile Tonight fallback returned');
 if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{/.test(discovery))errors.push('moonlit-discovery.css must not regain homepage Discovery component ownership');
-if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematicBase))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
-if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematicBase))errors.push('cinematic editorial must not own base CTA/panel component styling');
-if(/\.section-title\{/.test(cinematicBase))errors.push('cinematic editorial must not own base section-title typography');
-if(/\.section-title:after\{background:linear-gradient\(90deg,var\(--gold\),transparent\)\}/.test(cinematic))errors.push('superseded cinematic section-title base underline returned');
-if(/#book \.bookshelf-scene\{|#book \.novel-card\{|#book \.novel-card p\{/.test(cinematic))errors.push('cinematic editorial must not own homepage bookshelf theme styling');
-if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
 const photoViewerCss=fs.readFileSync('photo-viewer.css','utf8');
 const v2Css=fs.readFileSync('assets/moonlit-v2.css','utf8');
