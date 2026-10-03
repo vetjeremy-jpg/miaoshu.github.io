@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:0,important:32},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:0,important:11},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:2,important:10},
 };
@@ -140,6 +140,7 @@ if(/#book\{|\.bookshelf-scene\{|\.bookshelf-top|\.bookshelf-base|\.library-colop
 if(/#featured\{|\.featured-grid\{|\.featured-visual\{|\.featured-copy h2\{|#miaoshu-album\{|\.album-photos\{|\.album-photo\{|\.album-photo img\{|\.album-photo figcaption\{|\.moonlit-found-line blockquote\{/.test(premium))errors.push('premium must not regain Featured Album or Found Line component ownership');
 if(/#reading-list\{|\.reader-shelf\{|\.shelf-heading h2\{|#updates\{|\.latest-update \.section-title\{|\.update-heading time\{|#featured-short|#instagram-reel|#support|#follow|#about|#community|#newsletter|\.about-layout\{|\.moonlit-newsletter\{|footer\{/.test(premium))errors.push('premium must not regain secondary section ownership');
 if(/\.wrap\{|\.panel\{|\.chapter-kicker|\.creator-tag|\.section-title\{|\.notice\{/.test(premium))errors.push('premium must not regain homepage layout or section typography ownership');
+if(/\.hero-actions\{margin-top:32px!important|\.hero-index\{color:#73889b!important|\.hero-actions \.hero-primary:hover\{background:#efe2c9!important/.test(premium))errors.push('premium must not regain superseded Hero rules');
 if(!/@media\(min-width:701px\)\{\.wrap\{max-width:1240px;padding:64px 28px 120px\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve wrap composition');
 if(!/@media\(max-width:700px\)\{\.wrap\{padding:34px 18px 80px!important\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve wrap spacing');
 if(!/#reading-list\{padding:32px 0\}/.test(homepageDesktopBelow)||!/#updates\{padding:38px 0\}/.test(homepageDesktopBelow))errors.push('homepage owner must preserve Reading List and Updates composition');
