@@ -12,7 +12,7 @@ body:before{background:radial-gradient(ellipse 55% 34% at 82% 4%,rgba(177,210,23
 .hero .eyebrow{color:#91a7ba!important;font-size:11px!important;letter-spacing:.28em!important}
 .hero h1{max-width:7.5em!important;margin:20px 0 24px!important;font-size:clamp(52px,6.6vw,88px)!important;line-height:1.16!important;letter-spacing:.045em!important;color:var(--hp-ink)!important;text-wrap:balance}
 .hero .hero-lede{max-width:30em!important;color:#b7c4cf!important;font-size:clamp(17px,1.5vw,20px)!important;line-height:2!important}
-.hero-actions{margin-top:32px!important}.hero-actions .cta{border-radius:0!important;padding:13px 19px!important}.hero-actions .cta.secondary{border-color:rgba(220,201,164,.25)!important}.moonlit-new-reader{width:100%;margin-top:8px;color:#aebdca!important;text-decoration:none!important;font-size:13px}
+.hero-actions{margin-top:32px!important}.moonlit-new-reader{width:100%;margin-top:8px;color:#aebdca!important;text-decoration:none!important;font-size:13px}
 .hero-index{margin-top:52px!important;color:#73889b!important;border-color:rgba(220,230,240,.09)!important}
 .wrap{max-width:1240px!important;padding:64px 28px 120px!important}.panel,.moonlit-discovery,.moonlit-found-line{border-radius:0!important}
 .panel{margin:0!important;padding:clamp(60px,7vw,96px) 0!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(220,230,240,.08)!important}
@@ -36,16 +36,16 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 /* Hero visual details retained after geometry consolidation */
 .hero-brand-mark{display:none!important}
-.hero-edition{display:flex;justify-content:space-between;gap:22px;width:min(520px,100%);padding-bottom:12px;margin-bottom:30px;border-bottom:1px solid rgba(220,230,240,.15);color:#8399ab;font-size:10px;letter-spacing:.22em}
-.hero .eyebrow{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:#b6a98e!important;font-size:11px!important;letter-spacing:.2em!important}
 
-.hero .hero-lede{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;letter-spacing:.025em}
-.hero-actions .hero-primary{padding:12px 18px!important;background:#dfcfb0!important;color:#09131e!important;border:1px solid #dfcfb0!important;font-size:13px!important;letter-spacing:.06em!important}
+
+
+
+
 .hero-actions .hero-primary:hover{background:#efe2c9!important}
-.hero-text-link{color:#9babb9!important;font-size:13px;text-decoration:none;border-bottom:1px solid rgba(155,171,185,.35);padding:8px 0}
+
 .hero-text-link:hover{color:#e1d3b6!important;border-color:#e1d3b6}
-.hero-index{width:min(560px,100%);padding-top:13px!important;color:#708698!important}
-.hero-index b{font-weight:500;color:#c6b896;margin-right:4px}
+
+
 @media(max-width:700px){.hero-edition{margin-bottom:25px}.hero-text-link{border:0}}
 
 /* Desktop hero composition matched to user reference — 2026-09-30 */
