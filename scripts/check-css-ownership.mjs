@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:86},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:60},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
@@ -137,6 +137,8 @@ if(!/#creative\{padding-top:90px\}/.test(homepageDesktopBelow)||!/\.creator-grid
 if(/\.tonight-grid article\{[^}]*background:transparent!important/.test(premium))errors.push('premium Tonight card background must defer to system owner');
 if(/#tonight\{|\.tonight-grid\{|\.tonight-grid article\{|\.tonight-grid article:last-child\{|\.tonight-grid h3\{|\.tonight-grid p\{|\.tonight-grid a\{/.test(premium))errors.push('premium must not regain Tonight component ownership');
 if(/#book\{|\.bookshelf-scene\{|\.bookshelf-top|\.bookshelf-base|\.library-colophon|\.novels-grid\{|\.novel-card\{|\.novel-number\{|\.book-object\{|\.book-cover\{|\.book-spine|\.book-pages|\.novel-card h3\{|\.novel-card p\{|\.book-read\{/.test(premium))errors.push('premium must not regain Bookshelf component ownership');
+if(/#featured\{|\.featured-grid\{|\.featured-visual\{|\.featured-copy h2\{|#miaoshu-album\{|\.album-photos\{|\.album-photo\{|\.album-photo img\{|\.album-photo figcaption\{|\.moonlit-found-line blockquote\{/.test(premium))errors.push('premium must not regain Featured Album or Found Line component ownership');
+if(!/@media\(min-width:701px\)\{#featured\{padding-top:90px\}/.test(homepageDesktopBelow)||!/#miaoshu-album\{padding-top:96px\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Featured and Album desktop composition');
 if(!/@media\(min-width:701px\)\{#book\{padding-top:80px\}\.bookshelf-scene\{margin-top:42px/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Bookshelf desktop composition');
 if(!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::before/.test(mobileSafety)||!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::after/.test(mobileSafety))errors.push('Bookshelf migration must preserve both mobile rails');
 if(!/@media\(min-width:701px\)\{#tonight\{padding-top:32px\}\.tonight-grid\{margin-top:34px;display:grid;grid-template-columns:1\.15fr \.9fr \.9fr/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Tonight desktop composition');
