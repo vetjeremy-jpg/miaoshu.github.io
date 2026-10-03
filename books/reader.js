@@ -1,4 +1,3 @@
-(()=>{const l=document.createElement("link");l.rel="stylesheet";l.href="../../assets/moonlit-v2.css?v=20260930";document.head.append(l)})();
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  const chapters=[...document.querySelectorAll('.chapter[id]')];
