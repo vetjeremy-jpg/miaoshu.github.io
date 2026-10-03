@@ -1,3 +1,4 @@
+/* Moonlit ownership: desktop homepage below-fold only. Avoid topbar/critical hero/mobile overrides here. */
 /* Moonlit homepage desktop/tablet below-fold — deferred 2026-10-02 */
 .reader-support{text-align:center}
 .support-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px 0}
