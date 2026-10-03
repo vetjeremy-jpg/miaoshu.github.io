@@ -14,8 +14,6 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 
 .hero-index{border-color:rgba(230,210,177,.4);color:#e0d3bd}
 .wrap{max-width:1350px;padding:28px 24px 100px}
-.section-title{font-family:"Noto Serif TC","Songti TC",serif;color:#f3e6d1;font-weight:500;letter-spacing:.12em}
-.section-title:after{background:linear-gradient(90deg,var(--gold),transparent)}
 .chapter-kicker,.creator-tag{color:var(--gold);letter-spacing:.24em}
 .featured-grid{gap:clamp(24px,5vw,70px)}
 .featured-copy h2{font-family:"Noto Serif TC","Songti TC",serif;color:#f6ecdd}
