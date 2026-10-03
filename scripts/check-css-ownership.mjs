@@ -2,7 +2,6 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:0,important:11},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:2,important:10},
 };
@@ -125,7 +124,8 @@ if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)
 if(/\.tonight-grid article\{padding:28px 26px/.test(discovery))errors.push('legacy discovery Tonight card geometry returned');
 if(/@media\(max-width:650px\)[\s\S]*?\.tonight-grid\{grid-template-columns:1fr\}/.test(discovery))errors.push('legacy discovery mobile Tonight fallback returned');
 if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{/.test(discovery))errors.push('moonlit-discovery.css must not regain homepage Discovery component ownership');
-const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
+const premium='';
+if(fs.existsSync('assets/homepage-premium.css'))errors.push('retired homepage-premium.css must stay deleted');
 if(/\.hero h1\{[^}]*color:var\(--hp-ink\)!important/.test(premium))errors.push('premium hero h1 color must defer to system owner');
 if(/\.moonlit-discovery\{[^}]*border:1px solid rgba\(185,213,238,.13\)!important/.test(premium)||/\.moonlit-discovery\{[^}]*background:radial-gradient/.test(premium))errors.push('premium discovery surface must defer to system owner');
 if(/\.creator-card\{[^}]*border-radius:0!important/.test(premium)||/\.creator-card\{[^}]*background:#081725!important/.test(premium))errors.push('premium creator card radius/background must defer to system owner');
@@ -211,6 +211,7 @@ if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*font-size:8px!important/
 
 if(/\.hero-index\{[^}]*grid-template-columns:repeat\(3,1fr\)!important/.test(inline))errors.push('hero-index flex container must not carry grid-template-columns');
 
+if(/assets\/homepage-premium\.css/.test(homepage))errors.push('retired homepage-premium.css must remain unloaded');
 if(/assets\/homepage-mobile\.css/.test(homepage))errors.push('retired homepage-mobile.css must remain unloaded');
 
 if(fs.existsSync('assets/homepage-mobile.css'))errors.push('retired homepage-mobile.css file must stay deleted');
