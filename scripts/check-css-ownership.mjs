@@ -168,3 +168,5 @@ if(/\.hero-index\{[^}]*padding-top:18px/.test(inline))errors.push('dead hero-ind
 if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*margin-top:22px!important/.test(inline))errors.push('dead mobile hero-index margin returned');
 if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*gap:7px!important/.test(inline))errors.push('dead mobile hero-index gap returned');
 if(/\.hero-index\{[^}]*margin-top:52px!important/.test(premium))errors.push('dead premium hero-index margin returned');
+
+if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*font-size:8px!important/.test(inline))errors.push('dead mobile hero-index font-size returned');
