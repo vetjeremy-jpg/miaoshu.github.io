@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:51,topbar:5,navlinks:4,panel:3,important:221},
+  'assets/homepage-premium.css':{hero:51,topbar:2,navlinks:2,panel:3,important:220},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
   'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
 };
