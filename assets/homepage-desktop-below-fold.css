@@ -119,5 +119,5 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 
 /* Skip layout/paint work for deep homepage sections until they approach the viewport. */
 @supports (content-visibility:auto){
- #book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
+ #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
 }
