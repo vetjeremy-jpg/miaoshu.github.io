@@ -86,6 +86,11 @@ if(!/\.tonight-grid::-webkit-scrollbar,\.moonlit-entry-grid::-webkit-scrollbar,\
 const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
 if(/#featured,#updates,#moonlit-discovery,#book,#creative/.test(mobileSafety))errors.push('mobile safety layer must not own homepage section content visibility');
 if(!/#featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter\{content-visibility:auto;contain-intrinsic-size:auto 720px\}/.test(homepageDesktopBelow))errors.push('homepage below-fold owner must preserve section rendering optimization');
+const editorialInteriors=fs.readFileSync('editorial-interiors.css','utf8');
+if(/\.video-page \.layout/.test(mobileSafety)||/\.video-page \.screen/.test(mobileSafety))errors.push('mobile safety layer must defer video layout and screen sizing to editorial interiors');
+if(/\.gallery-page figure\{margin-left:0;margin-right:0\}/.test(mobileSafety))errors.push('mobile safety layer must defer gallery figure margins to editorial interiors');
+if(!/@media\(max-width:850px\)\{[\s\S]*?\.layout\{grid-template-columns:1fr\}/.test(editorialInteriors))errors.push('editorial interiors must preserve mobile video single-column layout');
+if(!/\.gallery figure\{margin:0;min-width:0\}/.test(editorialInteriors))errors.push('editorial interiors must preserve gallery figure margin safety');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
