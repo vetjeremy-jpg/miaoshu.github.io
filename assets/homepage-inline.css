@@ -105,7 +105,7 @@ body:not([data-book-id]) > header.hero .hero-side-caption{left:8%!important;top:
 :root{--ml-night-950:#06101a;--ml-ink:#f1ede6;--ml-ink-2:#c1cbd3;--ml-ink-3:#8fa1b0;--ml-gold:#ddcaa5;--ml-gold-2:#b7a37d;--ml-line:rgba(205,220,232,.13);--ml-line-strong:rgba(221,202,165,.30);--ml-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;--ml-sans:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;--ml-r1:2px;--ml-ease:cubic-bezier(.2,.7,.2,1)}
 body{font-family:var(--ml-sans);color:var(--ml-ink);background:var(--ml-night-950);font-feature-settings:"kern" 1,"palt" 1}
 h1,h2,h3,.section-title{font-family:var(--ml-serif);font-weight:500}
-.eyebrow,.hero-edition,.hero-index{font-family:var(--ml-sans);text-transform:none;color:var(--ml-ink-3)}
+.eyebrow,.hero-edition,.hero-index{font-family:var(--ml-sans);color:var(--ml-ink-3)}
 .cta{min-height:46px;box-sizing:border-box;border-radius:var(--ml-r1)!important;font-family:var(--ml-sans);font-size:13px;font-weight:600;line-height:1.35;text-decoration:none}
 .cta:not(.secondary),.hero-primary{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px!important;border:1px solid var(--ml-gold)!important;background:var(--ml-gold)!important;color:var(--ml-night-950)!important;box-shadow:none!important}
 .cta.secondary{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px!important;border:1px solid var(--ml-line-strong)!important;background:rgba(8,21,34,.36)!important;color:var(--ml-gold)!important;box-shadow:none!important}
