@@ -272,12 +272,7 @@ body{background:#0a1825}
 /* Paper reading mode. The saved data-reading-theme value changes the whole
    reader, instead of only changing the selected button. */
 html[data-reading-theme="paper"]{color-scheme:light;--bg:#eee8dc;--panel:#f8f3e9;--gold:#806538;--gold2:#6c522c;--text:#29251f;--muted:#665f54;--line:rgba(77,61,38,.22)}
-html[data-reading-theme="paper"] body{background:#eee8dc;color:var(--text)}
-html[data-reading-theme="paper"] .topbar{background:rgba(246,241,231,.96);border-color:var(--line)}
-html[data-reading-theme="paper"] .brand{color:#28231d}
-html[data-reading-theme="paper"] .navlinks a{color:#4f483e}
 html[data-reading-theme="paper"] .navlinks a:hover{background:rgba(107,82,44,.1)}
-html[data-reading-theme="paper"] .hero{background:linear-gradient(150deg,#f7f1e5,#e8dfcf 75%);border-color:var(--line)}
 html[data-reading-theme="paper"] .hero-logo{background:#e7dece;border-color:var(--line)}
 html[data-reading-theme="paper"] .hero h1,
 html[data-reading-theme="paper"] .shelf-heading h2,
@@ -295,7 +290,6 @@ html[data-reading-theme="paper"] .chapter,
 html[data-reading-theme="paper"] .audiobook-player,
 html[data-reading-theme="paper"] .audiobook-launcher{background:#f8f3e9;border-color:var(--line)}
 html[data-reading-theme="paper"] .continue-box{background:#f2eadc;border-color:var(--line)}
-html[data-reading-theme="paper"] .chapter-body p{color:#302b24}
 html[data-reading-theme="paper"] .chapter-kicker,
 html[data-reading-theme="paper"] .kicker,
 html[data-reading-theme="paper"] .chapter-search label{color:#735a31}
@@ -319,4 +313,3 @@ html[data-reading-theme="paper"] .chapter-like[aria-pressed="true"]{background:#
 html[data-reading-theme="paper"] .audiobook-actions .audio-primary{background:#735a31;color:#fffaf1}
 html[data-reading-theme="paper"] .audio-reading{background:linear-gradient(90deg,rgba(128,101,56,.13),transparent 85%);border-color:#806538}
 html[data-reading-theme="paper"] footer{color:#70685e;border-color:var(--line)}
-html[data-reading-theme="paper"] :focus-visible{outline-color:#735a31}
