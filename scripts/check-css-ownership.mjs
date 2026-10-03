@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:178},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:176},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
@@ -132,6 +132,8 @@ if(/\.hero h1\{[^}]*color:var\(--hp-ink\)!important/.test(premium))errors.push('
 if(/\.moonlit-discovery\{[^}]*border:1px solid rgba\(185,213,238,.13\)!important/.test(premium)||/\.moonlit-discovery\{[^}]*background:radial-gradient/.test(premium))errors.push('premium discovery surface must defer to system owner');
 if(/\.creator-card\{[^}]*border-radius:0!important/.test(premium)||/\.creator-card\{[^}]*background:#081725!important/.test(premium))errors.push('premium creator card radius/background must defer to system owner');
 if(/\.creator-art\{[^}]*color:#6f879b!important/.test(premium)||/\.album-description\{color:#91a3b2!important/.test(premium))errors.push('premium creator/album colors must defer to system owner');
+if(/\.tonight-grid article\{[^}]*background:transparent!important/.test(premium))errors.push('premium Tonight card background must defer to system owner');
+if(/\.moonlit-entry\{[^}]*background:transparent!important/.test(premium))errors.push('premium Discovery entry background must defer to system owner');
 const photoViewerCss=fs.readFileSync('photo-viewer.css','utf8');
 if(/\.book-object\{[^}]*filter:drop-shadow/.test(premium))errors.push('homepage premium must not override canonical book-object shadow');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
