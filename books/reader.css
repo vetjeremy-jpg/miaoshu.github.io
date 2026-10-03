@@ -102,7 +102,7 @@ body{background:#09131e;color:var(--text)}
 .toc a:hover{background:#1a3349}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{box-shadow:none}
 .chapter-nav{border-top:1px solid var(--line)}
-@media(max-width:650px){.chapter{padding:24px 20px}.chapter-body{line-height:2}.chapter-body p{line-height:2}}
+@media(max-width:650px){.chapter-body{line-height:2}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 
@@ -116,7 +116,7 @@ body{background:#0a1825}
 .chapter-body p{margin-bottom:1.38em}
 .chapter-tools{gap:10px}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{min-height:44px}
-@media(max-width:650px){.chapter{padding:25px 20px}.chapter-body p{line-height:2.05}}
+
 
 
 /* Optional audiobook controls, designed to stay secondary to the prose */
