@@ -45,3 +45,17 @@ body[data-book-id].moonlit-reading-focus .chapter{border-color:transparent;backg
 .reader-audio-quick{right:12px;bottom:calc(80px + env(safe-area-inset-bottom))}
 .moonlit-bookmarks-link{left:12px;right:auto;bottom:calc(80px + env(safe-area-inset-bottom));opacity:1}
 .moonlit-reader-dock button{min-width:44px;min-height:44px}
+
+html[data-reading-theme="paper"] .moonlit-reader-comfort button,
+html[data-reading-theme="paper"] .moonlit-reader-dock,
+html[data-reading-theme="paper"] .reader-audio-quick,
+html[data-reading-theme="paper"] .moonlit-bookmarks-link{background:rgba(250,246,238,.96);color:#604824;border-color:rgba(91,70,39,.35);box-shadow:0 10px 28px rgba(77,61,38,.12)}
+html[data-reading-theme="paper"] .moonlit-reader-dock button{color:#604824}
+html[data-reading-theme="paper"] .moonlit-path,
+html[data-reading-theme="paper"] .moonlit-crosscuration{border-color:rgba(77,61,38,.22)}
+html[data-reading-theme="paper"] .moonlit-path h2,
+html[data-reading-theme="paper"] .moonlit-crosscuration strong{color:#29231c}
+html[data-reading-theme="paper"] .moonlit-path a,
+html[data-reading-theme="paper"] .moonlit-crosscuration a,
+html[data-reading-theme="paper"] .moonlit-line-save{color:#6c522c}
+html[data-reading-theme="paper"] .chapter-body p.moonlit-saved-line{background:linear-gradient(90deg,rgba(128,101,56,.12),transparent);box-shadow:inset 2px 0 #806538}

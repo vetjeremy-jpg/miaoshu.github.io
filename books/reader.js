@@ -137,7 +137,9 @@
  function apply(theme,persist){
   const mode=theme==='paper'?'paper':'moon';root.dataset.readingTheme=mode;
   group.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.readingMode===mode)));
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content',mode==='paper'?'#f5f0e6':'#101111');
+  let themeMeta=document.querySelector('meta[name="theme-color"]');
+  if(!themeMeta){themeMeta=document.createElement('meta');themeMeta.name='theme-color';document.head.append(themeMeta)}
+  themeMeta.content=mode==='paper'?'#eee8dc':'#071521';
   if(persist){try{localStorage.setItem(key,mode)}catch(e){}}
  }
  let saved;try{saved=localStorage.getItem(key)}catch(e){}apply(saved,false);
