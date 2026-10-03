@@ -9,7 +9,7 @@
 
 
 .hero-brand-mark{width:112px!important;margin:0 0 30px!important;opacity:.88}
-.hero .eyebrow{color:#91a7ba!important}@media(min-width:701px){.hero .eyebrow{font-size:11px!important;letter-spacing:.28em!important}}
+.hero .eyebrow{color:#91a7ba!important}@media(min-width:701px){body:not([data-book-id]) > header .eyebrow{font-size:11px!important;letter-spacing:.28em!important}}
 .hero h1{max-width:7.5em!important;margin:20px 0 24px!important;font-size:clamp(52px,6.6vw,88px)!important;line-height:1.16!important;letter-spacing:.045em!important;color:var(--hp-ink)!important;text-wrap:balance}
 .hero .hero-lede{max-width:30em!important;color:#b7c4cf!important;font-size:clamp(17px,1.5vw,20px)!important;line-height:2!important}
 .hero-actions{margin-top:32px!important}.moonlit-new-reader{width:100%;margin-top:8px;color:#aebdca!important;text-decoration:none!important;font-size:13px}
