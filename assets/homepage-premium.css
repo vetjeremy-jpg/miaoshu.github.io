@@ -4,8 +4,8 @@
 :root{--hp-bg:#07111d;--hp-surface:#0a1726;--hp-ink:#f2eee7;--hp-muted:#9eafbe;--hp-gold:#dcc9a4;--hp-line:rgba(220,201,164,.16);--hp-moon:rgba(187,215,239,.12)}
 body{background:linear-gradient(180deg,#07111d 0%,#081522 46%,#060e18 100%)!important}
 body:before{background:radial-gradient(ellipse 55% 34% at 82% 4%,rgba(177,210,238,.10),transparent 70%)!important}
-.topbar{min-height:64px!important;background:rgba(6,14,24,.78)!important;border-bottom:1px solid rgba(220,230,240,.08)!important;backdrop-filter:blur(18px) saturate(120%)}
-.topbar .brand img{width:40px!important}.navlinks a{font-size:13px!important;color:#c2ccd5!important}.navlinks .nav-follow{background:transparent!important;color:var(--hp-gold)!important;border:1px solid rgba(220,201,164,.35)}
+
+.navlinks .nav-follow{background:transparent!important;color:var(--hp-gold)!important;border:1px solid rgba(220,201,164,.35)}
 
 
 .hero-brand-mark{width:112px!important;margin:0 0 30px!important;opacity:.88}
@@ -38,7 +38,7 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 .hero-brand-mark{display:none!important}
 .hero-edition{display:flex;justify-content:space-between;gap:22px;width:min(520px,100%);padding-bottom:12px;margin-bottom:30px;border-bottom:1px solid rgba(220,230,240,.15);color:#8399ab;font-size:10px;letter-spacing:.22em}
 .hero .eyebrow{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;color:#b6a98e!important;font-size:11px!important;letter-spacing:.2em!important}
-.hero h1{font-weight:500!important;text-wrap:balance}
+
 .hero .hero-lede{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;letter-spacing:.025em}
 .hero-actions .hero-primary{padding:12px 18px!important;background:#dfcfb0!important;color:#09131e!important;border:1px solid #dfcfb0!important;font-size:13px!important;letter-spacing:.06em!important}
 .hero-actions .hero-primary:hover{background:#efe2c9!important}
@@ -77,17 +77,6 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 /* Homepage polish pass — 2026-09-30 */
 /* Refine finish without changing the established desktop composition. */
-body:not([data-book-id]) > .topbar{
- backdrop-filter:blur(18px) saturate(115%);
- -webkit-backdrop-filter:blur(18px) saturate(115%);
- border-bottom-color:rgba(215,228,239,.075)!important;
-}
-body:not([data-book-id]) > .topbar .navlinks a{
- transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease;
-}
-body:not([data-book-id]) > .topbar .navlinks a:hover{
- transform:translateY(-1px);
-}
 @media (min-width:851px){
  body:not([data-book-id]) > header.hero .moonlight-emblem{
    filter:drop-shadow(0 0 24px rgba(229,237,244,.12)) drop-shadow(0 0 72px rgba(184,207,228,.065))!important;

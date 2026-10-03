@@ -34,6 +34,7 @@ on:
       - 'scripts/check-internal-links.mjs'
       - 'scripts/check-seo.mjs'
       - 'scripts/check-moonlit-runtime.mjs'
+      - 'scripts/check-css-ownership.mjs'
       - '.github/workflows/check-readers.yml'
 jobs:
   check:
@@ -48,4 +49,5 @@ jobs:
       - run: node scripts/check-internal-links.mjs
       - run: node scripts/check-seo.mjs
       - run: node scripts/check-moonlit-runtime.mjs
+      - run: node scripts/check-css-ownership.mjs
       - run: find assets -maxdepth 1 -type f -name 'moonlit-*.js' -print0 | xargs -0 -n1 node --check
