@@ -178,3 +178,5 @@ if(/\.hero-index\{[^}]*margin-top:52px!important/.test(premium))errors.push('dea
 if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*font-size:8px!important/.test(inline))errors.push('dead mobile hero-index font-size returned');
 
 if(/\.hero-index\{[^}]*grid-template-columns:repeat\(3,1fr\)!important/.test(inline))errors.push('hero-index flex container must not carry grid-template-columns');
+
+if(/assets\/homepage-mobile\.css/.test(home))errors.push('retired homepage-mobile.css must remain unloaded');
