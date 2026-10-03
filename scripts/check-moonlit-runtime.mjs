@@ -30,6 +30,9 @@ if(!homeContent.includes('__moonlitHomeContentLoaded'))errors.push('moonlit-home
 if(!experience.includes('__moonlitExperienceLoaded'))errors.push('moonlit-experience.js 缺少全域初始化 guard');
 if(!homeContent.includes('!d.querySelector(".moonlit-curation")'))errors.push('moonlit-home-content.js 缺少 moonlit-curation 重複掛載 guard');
 if(!experience.includes('button.dataset.moonlitMounted'))errors.push('moonlit-experience.js 缺少 picker 重複掛載 guard');
+const sharedRuntime=await readFile(join(root,'assets','moonlit-v2.js'),'utf8');
+if(/s\.src=[^;]*moonlit-home-content\.js|createElement\(["']script["']\)[\s\S]{0,240}moonlit-home-content\.js/.test(sharedRuntime))errors.push('moonlit-v2.js 不應再載入 homepage-only moonlit-home-content.js；首頁 orchestration 應由 moonlit-home-loader.js 單獨負責');
+if(!homeLoader.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('moonlit-home-loader.js 必須保留首頁 idle 與 reading-state orchestration');
 const sw=await readFile(join(root,'sw.js'),'utf8');
 if(!sw.includes(`assets/moonlit-v2.js?v=${expected}`))errors.push(`sw.js 未同步 moonlit-v2.js?v=${expected}`);
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
