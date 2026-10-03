@@ -50,6 +50,8 @@ if(/html\[data-reading-theme="paper"\] \.audiobook-actions \.audio-primary\{back
 if(/html\[data-reading-theme="paper"\] \.panel,[\s\S]*?\.audiobook-launcher\{background:#f8f3e9/.test(readerBase))errors.push('books reader must defer paper panel and chapter surfaces to editorial interiors');
 if(/html\[data-reading-theme="paper"\] \.reader-controls button,[\s\S]*?\.audiobook-actions button,[\s\S]*?background:#fbf6ed/.test(readerBase))errors.push('books reader must defer shared paper controls to editorial interiors');
 if(/\.chapter-bookmark\[aria-pressed="true"\],[\s\S]*?\.chapter-like\[aria-pressed="true"\]\{background:#dfd2bc/.test(readerBase))errors.push('books reader must defer paper bookmark and like active states to editorial interiors');
+if(/html\[data-reading-theme="paper"\] \.hero h1,[\s\S]*?\.audiobook-heading h2\{color:#29231c\}/.test(readerBase))errors.push('books reader must defer paper heading color to editorial interiors');
+if(/html\[data-reading-theme="paper"\] \.audiobook-note\{color:#665f54\}/.test(readerBase))errors.push('books reader must defer paper audiobook note color to editorial interiors');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
