@@ -162,3 +162,9 @@ if(/\.eyebrow,\.hero-edition,\.hero-index\{[^}]*text-transform:none/.test(inline
 
 if(/\.hero-index\{[^}]*color:#708698!important/.test(inline))errors.push('hero-index inline color must defer to premium owner');
 if(/\.hero-index\{border-color:rgba\(230,210,177,\.4\)\}/.test(inline))errors.push('hero-index inline border color must defer to premium owner');
+
+if(/\.hero-index\{[^}]*margin-top:46px/.test(inline))errors.push('dead hero-index base margin returned');
+if(/\.hero-index\{[^}]*padding-top:18px/.test(inline))errors.push('dead hero-index base padding returned');
+if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*margin-top:22px!important/.test(inline))errors.push('dead mobile hero-index margin returned');
+if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*gap:7px!important/.test(inline))errors.push('dead mobile hero-index gap returned');
+if(/\.hero-index\{[^}]*margin-top:52px!important/.test(premium))errors.push('dead premium hero-index margin returned');
