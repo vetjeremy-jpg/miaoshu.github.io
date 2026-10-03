@@ -46,7 +46,7 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 .hero-text-link:hover{color:#e1d3b6!important;border-color:#e1d3b6}
 
 
-@media(max-width:700px){.hero-edition{margin-bottom:25px}.hero-text-link{border:0}}
+@media(max-width:700px){.hero-text-link{border:0}}
 
 /* Desktop hero composition matched to user reference — 2026-09-30 */
 @media (min-width:851px){
@@ -118,4 +118,4 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 /* Hero headline line behavior retained after geometry consolidation */
 body:not([data-book-id]) > header.hero h1 > span{display:block!important;white-space:nowrap!important}
-@media(max-width:700px){body:not([data-book-id]) > header.hero h1 > span{white-space:normal!important}}
+
