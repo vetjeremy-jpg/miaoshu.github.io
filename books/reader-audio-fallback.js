@@ -26,5 +26,7 @@ play.addEventListener('click',()=>{if(!active){begin(pos);return}if(paused){if(s
 player.querySelector('#audio-stop').addEventListener('click',()=>{pos=0;stop()});
 player.querySelector('#audio-prev').addEventListener('click',()=>{if(pos>0){begin(pos-1);return}if(!moveChapter(-1,'end')){begin(0);status.textContent='已經是全書第一段。'}});
 player.querySelector('#audio-next').addEventListener('click',()=>{if(pos<items.length-1){begin(pos+1);return}if(!moveChapter(1,'start')){begin(Math.max(0,items.length-1));status.textContent='已經是全書最後一段。'}});
-chSel.addEventListener('change',()=>{pos=0;stop('已選擇章節，按「開始朗讀」。')});rate.addEventListener('change',()=>{saveProgress();if(active)begin(pos)});loadProgress();
+chSel.addEventListener('change',()=>{pos=0;stop('已選擇章節，按「開始朗讀」。')});rate.addEventListener('change',()=>{saveProgress();if(active)begin(pos)});
+addEventListener('pagehide',()=>{if(active||paused||synth.speaking||synth.pending){run++;active=false;paused=false;saveProgress();synth.cancel();clear()}},{capture:true});
+loadProgress();
 })();

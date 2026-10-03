@@ -9,6 +9,9 @@ const index=await readFile(join(root,'index.html'),'utf8');
 const match=index.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/);
 if(!match){console.error('首頁缺少版本化 moonlit-v2.js');process.exit(1)}
 const expected=match[1],errors=[];
+const readerAudio=await readFile(join(root,'books','reader-audio-fallback.js'),'utf8');
+if(!readerAudio.includes("addEventListener('pagehide'"))errors.push('Reader audiobook must cancel speech on pagehide to avoid PWA/Safari speech leakage');
+if(!readerAudio.includes('synth.cancel();clear()'))errors.push('Reader audiobook page lifecycle cleanup must cancel synthesis and clear reading highlights');
 const readerRefinement=await readFile(join(root,'assets','moonlit-refinement-reader.js'),'utf8');
 if(/addEventListener\(["']scroll["']/.test(readerRefinement))errors.push('reader refinement must consume canonical Reader progress instead of adding its own scroll listener');
 if(readerRefinement.includes('new MutationObserver(syncFocus)'))errors.push('reader refinement must not shadow canonical focus state with a MutationObserver');
