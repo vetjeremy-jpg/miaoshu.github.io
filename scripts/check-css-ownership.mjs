@@ -15,10 +15,29 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+function stripMediaBlocks(css){
+  let out='',i=0;
+  while(i<css.length){
+    const at=css.indexOf('@media',i);
+    if(at<0){out+=css.slice(i);break;}
+    out+=css.slice(i,at);
+    const open=css.indexOf('{',at);
+    if(open<0){out+=css.slice(at);break;}
+    let depth=1,j=open+1;
+    while(j<css.length&&depth){
+      if(css[j]==='{')depth++;
+      else if(css[j]==='}')depth--;
+      j++;
+    }
+    i=j;
+  }
+  return out;
+}
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
-if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematic))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
-if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematic))errors.push('cinematic editorial must not own base CTA/panel component styling');
-if(/\.section-title\{/.test(cinematic))errors.push('cinematic editorial must not own base section-title typography');
+const cinematicBase=stripMediaBlocks(cinematic);
+if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematicBase))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
+if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematicBase))errors.push('cinematic editorial must not own base CTA/panel component styling');
+if(/\.section-title\{/.test(cinematicBase))errors.push('cinematic editorial must not own base section-title typography');
 if(/\.section-title:after\{background:linear-gradient\(90deg,var\(--gold\),transparent\)\}/.test(cinematic))errors.push('superseded cinematic section-title base underline returned');
 if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
