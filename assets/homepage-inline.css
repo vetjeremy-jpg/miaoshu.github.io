@@ -78,8 +78,8 @@ body:not([data-book-id]) > header.hero .hero-actions{margin-top:25px!important;g
 body:not([data-book-id]) > header.hero .hero-index{margin-top:28px!important}
 /* The moon is decoration, never a flex item. Keep its positioning critical so
    delayed or cached enhancement styles cannot squeeze the text column. */
-body:not([data-book-id]) > header.hero .moonlight-emblem{position:absolute;z-index:0;pointer-events:none;left:27%!important;right:auto!important;top:82px!important;width:330px!important;height:330px!important;opacity:.62!important}
-body:not([data-book-id]) > header.hero .moonlight-emblem svg{display:block;width:100%;height:100%}
+body:not([data-book-id]) > header.hero .moonlight-emblem{display:block;position:absolute;z-index:0;pointer-events:none;left:27%!important;right:auto!important;top:82px!important;width:330px!important;height:330px!important;opacity:.62!important;filter:drop-shadow(0 0 14px rgba(199,222,242,.32))}
+body:not([data-book-id]) > header.hero .moonlight-emblem svg{display:block;width:100%;height:100%;filter:brightness(.78) saturate(.78)}
 body:not([data-book-id]) > header.hero .hero-side-caption{left:8%!important;top:61%!important}
 @media(max-width:980px){
  body:not([data-book-id]) > header.hero{height:auto!important;min-height:650px!important;padding:42px 36px 54px!important}
