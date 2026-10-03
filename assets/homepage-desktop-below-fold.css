@@ -139,3 +139,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 .album-photo .album-series{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.7}
 .album-photo .album-description{margin:0;color:#e2ddd3;font-size:16px;line-height:1.9}
 @media(prefers-reduced-motion:reduce){.album-photos img{transition:none}.album-photos a:hover img,.album-photos a:focus-visible img{transform:none}}
+
+/* Discovery desktop geometry; visual surface tokens remain owned by moonlit-system.css. */
+@media(min-width:701px){.moonlit-discovery{margin:70px 0;padding:clamp(40px,6vw,70px)}.moonlit-entry-grid{gap:0;background:transparent;border-top:1px solid rgba(220,230,240,.12)}.moonlit-entry{padding:28px 18px;border-right:1px solid rgba(220,230,240,.1)}.moonlit-entry:last-child{border-right:0}.moonlit-entry:hover{background:rgba(185,213,238,.035)}}
