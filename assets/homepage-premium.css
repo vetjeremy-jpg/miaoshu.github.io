@@ -77,17 +77,6 @@ footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!i
 
 /* Homepage polish pass — 2026-09-30 */
 /* Refine finish without changing the established desktop composition. */
-body:not([data-book-id]) > .topbar{
- backdrop-filter:blur(18px) saturate(115%);
- -webkit-backdrop-filter:blur(18px) saturate(115%);
- border-bottom-color:rgba(215,228,239,.075)!important;
-}
-body:not([data-book-id]) > .topbar .navlinks a{
- transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease;
-}
-body:not([data-book-id]) > .topbar .navlinks a:hover{
- transform:translateY(-1px);
-}
 @media (min-width:851px){
  body:not([data-book-id]) > header.hero .moonlight-emblem{
    filter:drop-shadow(0 0 24px rgba(229,237,244,.12)) drop-shadow(0 0 72px rgba(184,207,228,.065))!important;
