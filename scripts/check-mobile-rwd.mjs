@@ -127,6 +127,9 @@ for (const [page, html] of mainPages) {
  must(page+' loads manifest', linkCount(html, 'manifest', 'site.webmanifest') === 1);
 }
 must('390px compact safety breakpoint exists', /max-width:\s*390px/.test(mobile));
+must('homepage has a 380px narrow-device pass', /max-width:\s*380px/.test(homepageMobile));
+must('homepage narrow pass keeps hero title readable', /max-width:\s*380px[\s\S]*\.hero h1\{font-size:42px!important\}/.test(homepageMobile));
+must('homepage narrow pass reduces book width before 375px', /max-width:\s*380px[\s\S]*\.book-object\{width:140px!important\}/.test(homepageMobile));
 must('320px-class safety breakpoint exists', /max-width:\s*340px/.test(mobile));
 must('mobile navigation has 44px touch target', /navlinks a[^}]*min-height:\s*44px/s.test(mobile));
 must('mobile header respects safe areas', /safe-area-inset-left/.test(mobile) && /safe-area-inset-right/.test(mobile));
