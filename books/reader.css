@@ -160,11 +160,11 @@ body{background:#0a1825}
 /* Permanent audiobook entry: visible even if reader JavaScript fails. */
 .audiobook-launcher{max-width:1180px;margin:24px 0;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#112537;border:1px solid rgba(218,192,151,.25)}
 .audiobook-launcher h2{margin:6px 0 8px}.audiobook-launcher p{margin:0;color:var(--muted);line-height:1.75}.audiobook-launch-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:1px solid rgba(218,192,151,.5);color:var(--accent);text-decoration:none;white-space:nowrap}
-@media(max-width:720px){.audiobook-launcher{padding:22px 18px;display:block}.audiobook-launch-button{width:100%;white-space:normal}}
+@media(max-width:720px){.audiobook-launcher{padding:22px 18px;display:block}.audiobook-launch-button{width:100%;white-space:normal}.reader-dock{max-width:min(360px,calc(100vw - 24px))}.audio-dock-button{display:inline-flex;align-items:center;justify-content:center}.book-intro .book-stats,.book-intro .book-meta,.book-intro .novel-meta{font-size:.92rem}.book-intro{padding-bottom:22px}.book-directory{margin-top:22px}}
 
 /* Unified mobile audio shortcut + compact novel intro */
 .audio-dock-button{border:0;background:transparent;color:var(--accent);font-size:19px;min-width:44px;min-height:44px;cursor:pointer}.audiobook-status button{margin-left:8px;min-height:40px;padding:7px 12px;border:1px solid rgba(218,192,151,.45);background:transparent;color:var(--accent)}
-@media(max-width:720px){.reader-dock{max-width:min(360px,calc(100vw - 24px))}.audio-dock-button{display:inline-flex;align-items:center;justify-content:center}.book-intro .book-stats,.book-intro .book-meta,.book-intro .novel-meta{font-size:.92rem}.book-intro{padding-bottom:22px}.book-directory{margin-top:22px}}
+
 
 /* Reader mobile refinement: quick listen + compact utility hierarchy. */
 .reader-audio-quick{position:fixed;right:18px;bottom:92px;z-index:38;width:48px;height:48px;border-radius:50%;border:1px solid rgba(218,192,151,.45);background:#081725;color:#dfcda8;font-size:20px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.28)}
