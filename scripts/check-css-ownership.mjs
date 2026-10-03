@@ -69,6 +69,8 @@ if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerB
 if(/\.audiobook-launch-button\{margin-top:18px;width:100%/.test(readerBase))errors.push('superseded mobile audiobook launch margin returned');
 if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-controls button\{min-width:44px;min-height:44px\}/.test(readerBase))errors.push('duplicated 430px reader control touch target returned');
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
+const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
+const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 if(/\.album-photos img\{transition:transform \.45s|\.album-photo \.album-series\{|--moonlight:#dce8f2|\.moonlight-emblem\{position:absolute/.test(cinematic))errors.push('cinematic legacy layer must not own migrated album or moonlight primitives');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
@@ -77,8 +79,6 @@ if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:abs
 if(/\.hero \.eyebrow\{|\.hero-index\{|\.featured-grid\{|\.featured-copy h2\{|\.featured-visual\{|\.creator-grid\{|\.creator-card\{|\.creator-art\{|\.creator-copy h3\{|#book\{background|\.follow-panel\{background|\.section-title:after\{/.test(cinematic))errors.push('cinematic legacy layer must not re-own migrated homepage components');
 if(/\.wrap\{max-width:1350px|\.hero:before\{display:block/.test(cinematic))errors.push('cinematic legacy layer must not re-own homepage wrap or hero frame geometry');
 const moonlitV2=fs.readFileSync('assets/moonlit-v2.css','utf8');
-const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
-const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 if(/\.moonlit-cover|\.moonlit-quote-v2/.test(moonlitV2))errors.push('legacy moonlit-v2.css must not own dynamic homepage cover/quote components');
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
