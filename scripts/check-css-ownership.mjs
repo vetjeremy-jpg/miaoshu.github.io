@@ -129,7 +129,6 @@ if(/@media\(max-width:650px\)[\s\S]*?\.tonight-grid\{grid-template-columns:1fr\}
 if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{/.test(discovery))errors.push('moonlit-discovery.css must not regain homepage Discovery component ownership');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
 const photoViewerCss=fs.readFileSync('photo-viewer.css','utf8');
-const v2Css=fs.readFileSync('assets/moonlit-v2.css','utf8');
 if(/\.book-object\{[^}]*filter:drop-shadow/.test(premium))errors.push('homepage premium must not override canonical book-object shadow');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
 const homepage=fs.readFileSync('index.html','utf8');
@@ -172,12 +171,6 @@ for(const [file,budget] of Object.entries(budgets)){
     if(count>max)errors.push(`${file}: ${key} grew from budget ${max} to ${count}`);
   }
 }
-if(errors.length){
-  console.error('Moonlit CSS ownership budget failed:\n - '+errors.join('\n - '));
-  process.exit(1);
-}
-console.log('Moonlit CSS ownership budgets passed.');
-
 if(/\.hero \.eyebrow\{[^}]*font-size:11px!important;[^}]*letter-spacing:\.28em!important/.test(premium)&&!/@media\(min-width:701px\)\{body:not\(\[data-book-id\]\) > header \.eyebrow\{font-size:11px!important;letter-spacing:\.28em!important\}\}/.test(premium))errors.push('premium hero eyebrow typography must be desktop/tablet only');
 
 if(/\.hero \.eyebrow\{[^}]*color:#b6a98e!important/.test(inline))errors.push('hero eyebrow inline color must defer to premium owner');
@@ -201,13 +194,14 @@ if(/assets\/homepage-mobile\.css/.test(homepage))errors.push('retired homepage-m
 
 if(fs.existsSync('assets/homepage-mobile.css'))errors.push('retired homepage-mobile.css file must stay deleted');
 
-if(/moonlit-new-reader/.test(premium)||/moonlit-new-reader/.test(v2Css))errors.push('unused moonlit-new-reader owner returned');
-if(/data-moon-phase/.test(v2Css))errors.push('unused data-moon-phase hero owner returned');
-
-if(/--moon-v2/.test(v2Css))errors.push('legacy v2 must not retain unused moon-v2 tokens');
-if(/\.gallery-story-(?:index|note)/.test(v2Css))errors.push('legacy v2 must not own gallery story metadata');
+if(/moonlit-new-reader/.test(premium))errors.push('unused moonlit-new-reader owner returned');
 if(!/\.gallery-story-index\{/.test(photoViewerCss)||!/\.gallery-story-note\{/.test(photoViewerCss))errors.push('photo viewer must own gallery story metadata');
 
-if(/\.moonlit-crosscuration\{max-width:760px/.test(moonlitV2))errors.push('legacy V2 must not own cross-curation');
 if(!/\.moonlit-crosscuration\{max-width:760px/.test(photoViewerCss))errors.push('photo-viewer.css must own gallery cross-curation base');
 if(!/\.moonlit-crosscuration\{max-width:760px/.test(readerRefinement))errors.push('reader refinement must own reader cross-curation base');
+
+if(errors.length){
+  console.error('Moonlit CSS ownership budget failed:\n - '+errors.join('\n - '));
+  process.exit(1);
+}
+console.log('Moonlit CSS ownership budgets passed.');
