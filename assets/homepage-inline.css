@@ -142,10 +142,10 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .topbar .brand{font-size:13px!important}.topbar .brand img{width:34px!important}
 .navlinks{max-width:calc(100% + 28px);margin:3px -14px 0!important;padding:0 14px 5px!important;gap:2px!important;scroll-snap-type:x proximity;scrollbar-width:none}.navlinks a{padding:8px 10px!important;font-size:12px!important;scroll-snap-align:start}
 .hero{padding:26px 18px 36px!important;background:radial-gradient(ellipse 90% 38% at 78% 3%,rgba(126,164,197,.10),transparent 70%),#07111d!important}
-.hero-inner{gap:28px!important}.hero-copy{width:100%;max-width:none!important}
+.hero-inner{gap:28px!important}.hero-copy{width:100%}
 .hero-edition{margin:0 0 20px!important;padding-bottom:9px!important;font-size:8px!important;letter-spacing:.16em!important}
 .hero .eyebrow{font-size:10px!important;letter-spacing:.14em!important}
-.hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;letter-spacing:.025em!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
+.hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
 .hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
 .hero .hero-lede br{display:none}
 .hero-actions{margin-top:22px!important;gap:4px!important}
