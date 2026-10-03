@@ -68,6 +68,8 @@ if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))
 if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerBase))errors.push('superseded 720px audiobook launcher margin returned');
 if(/\.audiobook-launch-button\{margin-top:18px;width:100%/.test(readerBase))errors.push('superseded mobile audiobook launch margin returned');
 if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-controls button\{min-width:44px;min-height:44px\}/.test(readerBase))errors.push('duplicated 430px reader control touch target returned');
+const homepageHtml=fs.readFileSync('index.html','utf8');
+if(homepageHtml.includes('cinematic-editorial.css'))errors.push('homepage must not reload retired cinematic-editorial.css');
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 if(/\.album-photos img\{transition:transform \.45s|\.album-photo \.album-series\{|--moonlight:#dce8f2|\.moonlight-emblem\{position:absolute/.test(cinematic))errors.push('cinematic legacy layer must not own migrated album or moonlight primitives');
