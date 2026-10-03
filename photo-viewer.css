@@ -19,3 +19,7 @@
 .photo-viewer-source{color:#e6d5b7;font-size:13px;display:inline-block;min-height:32px}
 .photo-viewer-hint{display:block;color:#9eadba;font-size:12px;margin-top:4px}
 @media(max-width:650px){.photo-viewer{width:100vw;max-height:100vh;max-height:100dvh;border-width:0}.photo-viewer-shell{height:100vh;height:100dvh;max-height:100vh;max-height:100dvh}.photo-viewer-stage{padding:8px 0}.photo-viewer-prev,.photo-viewer-next{background:#10151bbf;min-width:44px;min-height:48px}.photo-viewer-prev{left:5px}.photo-viewer-next{right:5px}.photo-viewer-caption{padding:16px 18px 22px}.photo-viewer-bar{padding:8px 12px}}
+
+/* Gallery story metadata — canonical gallery owner */
+.gallery-story-index{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:26px;margin-right:9px;border-bottom:1px solid rgba(228,210,175,.5);color:#d9c7a4;font-size:11px;letter-spacing:.12em}
+.gallery-story-note{max-width:720px;margin:10px auto 0;color:#9eb0bf;font:italic 14px/1.8 "Noto Serif TC","Songti TC",serif}
