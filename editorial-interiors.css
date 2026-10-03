@@ -38,6 +38,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 .collection-heading{grid-column:1/-1;padding-top:34px;border-top:1px solid var(--line);scroll-margin-top:110px}
 .collection-heading h2{margin:8px 0 12px}.collection-heading p{margin:0;color:var(--muted)}
 .gallery figure{margin:0;min-width:0}.gallery figure.landscape{grid-column:1/-1}
+.journal-timeline,.journey-map,.moonlit-route{max-width:100%}.moonlit-route{overflow:hidden}
 .gallery figure>a{display:block;background:#191b1a;overflow:hidden}
 .gallery figure img{display:block;width:100%;height:auto;object-fit:contain}
 .gallery figcaption{padding:16px 0 12px;border-bottom:1px solid var(--line)}
@@ -102,6 +103,7 @@ body[data-book-id]{background:var(--bg)}
  .layout{grid-template-columns:1fr}.reel{display:block}
 }
 @media(max-width:650px){
+ .gallery-page .series-grid{grid-template-columns:1fr!important}
  .wrap{padding:36px 18px 64px}.hero{margin-bottom:36px}
  .hero h1,.intro h1{font-size:clamp(34px,9vw,48px);letter-spacing:.04em}
  .gallery-page .intro{padding:36px 18px 24px}.gallery{grid-template-columns:1fr;padding:0 18px 64px;gap:28px}
