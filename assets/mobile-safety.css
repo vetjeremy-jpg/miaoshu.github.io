@@ -3,9 +3,10 @@
 /* Moonlit Stories — cross-site mobile safety layer.
    Structural safeguards only; page and component styling belongs to its owning stylesheet. */
 *{box-sizing:border-box}
-html,body{max-width:100%}
+html,body{max-width:100%;overflow-x:clip}
 img,video,iframe,svg,canvas{max-width:100%;height:auto}
 main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
+:is(h1,h2,h3,p,a,button){overflow-wrap:break-word}
 @media(max-width:700px){
  html{overflow-x:hidden;scroll-padding-top:82px}
  body{overflow-x:hidden}
@@ -91,4 +92,12 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 }
 @supports not (height:100dvh){
   @media(max-width:700px){body{min-height:100vh}}
+}
+
+/* Canonical cross-page narrow-screen safeguards migrated from moonlight.css */
+@media(max-width:650px){
+ :is(.panel,.chapter,.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){max-width:100%;min-width:0}
+ :is(.actions,.community-actions,.follow-actions,.chapter-tools,.reader-controls){max-width:100%}
+ :is(.actions,.community-actions,.follow-actions) :is(a,button){min-height:44px}
+ footer.moonlit-site-footer{padding-inline:18px!important}
 }
