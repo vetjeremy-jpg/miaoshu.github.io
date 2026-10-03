@@ -15,6 +15,8 @@ if(readerRefinement.includes('new MutationObserver(syncFocus)'))errors.push('rea
 if(readerRefinement.includes("focus.hidden=true")||readerRefinement.includes("inlineFocus.hidden=true"))errors.push('reader refinement must reuse the canonical focus control instead of hiding it');
 const readerRuntime=await readFile(join(root,'books','reader.js'),'utf8');
 if(!readerRuntime.includes('__moonlitReaderProgress'))errors.push('books/reader.js must expose the canonical Reader progress stream');
+const readerScrollOwners=(readerRuntime.match(/addEventListener\(["']scroll["']/g)||[]).length;
+if(readerScrollOwners!==1)errors.push(`books/reader.js must keep one canonical scroll listener; found ${readerScrollOwners}`);
 if(readerRuntime.includes('moonlit-v2.css'))errors.push('books/reader.js must not dynamically reload retired moonlit-v2.css');
 try{await access(join(root,'assets','moonlit-refinement.js'));errors.push('retired assets/moonlit-refinement.js 不應回到 runtime；首頁與 Reader 已有各自 owner')}catch{}
 async function walk(dir){
