@@ -68,6 +68,9 @@ if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))
 if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerBase))errors.push('superseded 720px audiobook launcher margin returned');
 if(/\.audiobook-launch-button\{margin-top:18px;width:100%/.test(readerBase))errors.push('superseded mobile audiobook launch margin returned');
 if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-controls button\{min-width:44px;min-height:44px\}/.test(readerBase))errors.push('duplicated 430px reader control touch target returned');
+const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
+if(/\.hero \.eyebrow\{|\.hero-index\{|\.featured-grid\{|\.featured-copy h2\{|\.featured-visual\{|\.creator-grid\{|\.creator-card\{|\.creator-art\{|\.creator-copy h3\{|#book\{background|\.follow-panel\{background|\.section-title:after\{/.test(cinematic))errors.push('cinematic legacy layer must not re-own migrated homepage components');
+if(/\.wrap\{max-width:1350px|\.hero:before\{display:block/.test(cinematic))errors.push('cinematic legacy layer must not re-own homepage wrap or hero frame geometry');
 const moonlitV2=fs.readFileSync('assets/moonlit-v2.css','utf8');
 const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
 const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
