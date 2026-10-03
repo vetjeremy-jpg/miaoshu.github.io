@@ -68,7 +68,9 @@ if(/\.panel,\.chapter\{padding-left:18px;padding-right:18px\}/.test(readerBase))
 if(/@media\(max-width:720px\)\{\.audiobook-launcher\{margin:22px 0/.test(readerBase))errors.push('superseded 720px audiobook launcher margin returned');
 if(/\.audiobook-launch-button\{margin-top:18px;width:100%/.test(readerBase))errors.push('superseded mobile audiobook launch margin returned');
 if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-controls button\{min-width:44px;min-height:44px\}/.test(readerBase))errors.push('duplicated 430px reader control touch target returned');
-const mobileSafety=fs.readFileSync('assets/mobile-rwd-final.css','utf8');
+const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
+const legacyMobileSafety=fs.readFileSync('assets/mobile-rwd-final.css','utf8');
+if(mobileSafety!==legacyMobileSafety.replace('/* Moonlit Stories — H1 mobile RWD final QA layer — 2026-10-02\n   Structural rules only. Loaded last so mobile fixes have one predictable source of truth. */','/* Moonlit Stories — cross-site mobile safety layer.\n   Structural safeguards only; page and component styling belongs to its owning stylesheet. */'))errors.push('legacy mobile-rwd-final.css compatibility copy must stay behaviorally identical to mobile-safety.css during migration');
 if(/@media\(max-width:430px\)\{\s*\.hero h1\{max-width:100%\}/.test(mobileSafety))errors.push('mobile safety layer must not own homepage hero h1 max-width');
 if(/\.hero h1,\.hero-lede\{max-width:100%!important\}/.test(mobileSafety))errors.push('mobile safety layer must defer homepage hero h1 width to homepage CSS');
 if(!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::before/.test(mobileSafety)||!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::after/.test(mobileSafety))errors.push('mobile safety layer must preserve both homepage bookshelf rails');
