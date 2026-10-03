@@ -180,11 +180,11 @@ body{background:#0a1825}
 @media(max-width:430px){.reader-controls{gap:8px}.reader-controls>span{width:100%;font-size:11px}.reader-controls button{min-width:44px;min-height:44px}.reader-audio-shortcut{order:-1;width:100%;font-size:14px}.book-directory .notice{margin-bottom:10px}.directory-head{gap:10px}.directory-head .section-title{font-size:clamp(1.65rem,8vw,2.1rem)}.chapter-search{margin-top:14px}.audiobook-launcher{margin-top:14px}}
 
 /* Compact mobile path into the story */
-@media(max-width:430px){.reading-intro{padding:20px 16px}.reading-intro>p{margin-bottom:10px}.reading-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.reading-facts>div{padding:9px 10px}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:16px}.reader-shelf .shelf-note{margin-bottom:8px}.audiobook-launcher{padding:18px 16px}.audiobook-launcher h2{margin-block:4px}.audiobook-launcher p{font-size:.9rem;line-height:1.55}.book-directory{padding:18px 16px}.directory-head .notice{font-size:.9rem;line-height:1.55}.toc a{min-height:48px}}
+@media(max-width:430px){.reading-intro{padding:20px 16px}.reading-intro>p{margin-bottom:10px}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:16px}.reader-shelf .shelf-note{margin-bottom:8px}.audiobook-launcher{padding:18px 16px}.audiobook-launcher h2{margin-block:4px}.audiobook-launcher p{font-size:.9rem;line-height:1.55}.book-directory{padding:18px 16px}.directory-head .notice{font-size:.9rem;line-height:1.55}.toc a{min-height:48px}}
 
 /* Compact mobile novel entry flow */
 @media(max-width:430px){
-.reading-intro{padding:20px 18px;margin-bottom:14px}.reading-intro h2{margin-bottom:8px}.reading-intro>p{line-height:1.7}.reading-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:14px 0}.reading-facts>div{min-width:0;padding:9px 6px}.reading-facts dt{font-size:10px}.reading-facts dd{font-size:12px;overflow-wrap:anywhere}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:18px;margin-block:14px}.reader-shelf .shelf-note{margin:6px 0 10px}.audiobook-launcher{padding:18px;margin-block:14px}.audiobook-launcher h2{margin:4px 0}.audiobook-launcher p{font-size:13px;line-height:1.65}.audiobook-launch-button{margin-top:12px}.book-directory{padding:20px 18px}.directory-head{margin-bottom:12px}.directory-head .notice{font-size:13px;line-height:1.65}.chapter-search input{width:100%;min-width:0}.toc a{min-height:48px}}
+.reading-intro{padding:20px 18px;margin-bottom:14px}.reading-intro h2{margin-bottom:8px}.reading-intro>p{line-height:1.7}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:18px;margin-block:14px}.reader-shelf .shelf-note{margin:6px 0 10px}.audiobook-launcher{padding:18px;margin-block:14px}.audiobook-launcher h2{margin:4px 0}.audiobook-launcher p{font-size:13px;line-height:1.65}.audiobook-launch-button{margin-top:12px}.book-directory{padding:20px 18px}.directory-head{margin-bottom:12px}.directory-head .notice{font-size:13px;line-height:1.65}.chapter-search input{width:100%;min-width:0}.toc a{min-height:48px}}
 
 
 /* H1 mobile RWD final reader pass — 2026-10-02 */
@@ -261,4 +261,12 @@ body{background:#0a1825}
   content-visibility:auto;
   contain-intrinsic-size:auto 1200px;
  }
+}
+
+/* Mobile facts stay in horizontal label/value rows, including larger text. */
+@media(max-width:720px){
+ .reading-facts{grid-template-columns:minmax(0,1fr);gap:12px;margin:14px 0;padding:16px 0}
+ .reading-facts>div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:12px;min-width:0;padding:0;align-items:baseline}
+ .reading-facts dt{margin:0;padding:0;font-size:12px}
+ .reading-facts dd{margin:0;font-size:14px;overflow-wrap:break-word;word-break:normal}
 }

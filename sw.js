@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v40';
+const CACHE='moonlit-shell-v41';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -8,7 +8,7 @@ const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261003-layout1',
- SCOPE+'assets/moonlit-v2.js?v=20261003-runtime26',
+ SCOPE+'assets/moonlit-v2.js?v=20261003-runtime27',
  SCOPE+'assets/mobile-rwd-final.css?v=20261002-h2'
 ];
 const LAZY_ASSETS=[
@@ -20,9 +20,9 @@ const LAZY_ASSETS=[
  SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
  SCOPE+'assets/moonlit-footer.js?v=20261002-split1',
  SCOPE+'assets/moonlit-refinement-home.js?v=20261002-split6',
- SCOPE+'assets/moonlit-refinement-reader.js?v=20261002-split2',
+ SCOPE+'assets/moonlit-refinement-reader.js?v=20261003-reader-layout1',
  SCOPE+'assets/moonlit-refinement.css?v=20261003-layout1',
- SCOPE+'assets/moonlit-refinement-reader.css?v=20261002-split1'
+ SCOPE+'assets/moonlit-refinement-reader.css?v=20261003-reader-layout1'
 ];
 const VERSIONED_ASSETS=new Set([...SHELL,...LAZY_ASSETS].map(item=>{const u=new URL(item,self.location.origin);return u.pathname+u.search}));
 
