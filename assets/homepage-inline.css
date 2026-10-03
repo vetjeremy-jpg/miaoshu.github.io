@@ -145,7 +145,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
 .hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
 .hero .hero-lede br{display:none}
-.hero-actions{}
+
 .hero-actions .hero-primary{min-height:48px!important;padding:11px 16px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
