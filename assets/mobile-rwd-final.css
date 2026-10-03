@@ -42,12 +42,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  input,select,textarea{font-size:16px}
  iframe{width:100%;border:0}
 }
-@media(max-width:430px){
- .hero-actions,.feature-actions,.actions{max-width:100%}
- .cta{max-width:100%;white-space:normal;text-align:center}
- .creator-grid,.featured-grid,.series-grid,.layout,.grid{min-width:0}
- .gallery figure,.gallery img,.series-card,.tile{min-width:0;max-width:100%}
-}
 /* Homepage bookshelf: rails remain visible while only the books row scrolls. */
 @media(max-width:700px){
  body:not([data-book-id]) #book{overflow:visible!important}
@@ -73,10 +67,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  }
 }
 @media(max-width:390px){body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:24px;--moonlit-book-gap:12px}}
-/* Interior pages: prevent fixed-width grids and media from escaping narrow screens. */
-@media(max-width:700px){
-
-}
 /* 320px safety: keep controls usable without compressing text into slivers. */
 @media(max-width:340px){
  .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
@@ -98,17 +88,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
   }
   img{content-visibility:auto}
 
-}
-@media(max-width:430px){
-  .hero{min-height:auto!important}
-  .hero-inner,.hero-copy{min-width:0!important}
-  .hero-lede{max-width:100%!important}
-  .hero-index{width:100%;min-width:0}
-  .hero-index span{min-width:0}
-}
-@media(max-width:340px){
-  .hero h1{font-size:clamp(38px,12vw,42px)!important}
-  .hero-actions>a,.feature-actions>a,.support-actions>*,.follow-actions>*,.about-links>*,.community-actions>*{width:100%;max-width:100%}
 }
 @supports not (height:100dvh){
   @media(max-width:700px){body{min-height:100vh}}
