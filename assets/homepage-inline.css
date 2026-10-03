@@ -31,7 +31,7 @@ button{font:inherit}
 .hero .eyebrow span{padding:0 8px;color:#71869b}.hero .hero-lede{font-size:clamp(17px,1.55vw,21px);line-height:1.9;margin:0 0 32px;max-width:28em;color:#d2d9dc}
 .hero-actions{justify-content:flex-start;gap:12px}.cta:hover{background:#f2e1c2;transform:none;box-shadow:0 14px 28px rgba(0,0,0,.33)}
 .cta.secondary:hover{background:rgba(228,210,175,.09)}
-.hero-index{display:flex;gap:20px;flex-wrap:wrap;margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;letter-spacing:.12em;color:#aab8c7}
+.hero-index{display:flex;gap:20px;flex-wrap:wrap;margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px}
 .chapter-kicker{text-align:left;color:var(--gold2);letter-spacing:.2em;font-size:12px}
 @media(max-width:850px){.hero-inner{grid-template-columns:1fr;gap:22px}.hero-copy{padding:8px 0}}
 @media(prefers-reduced-motion:reduce){.cta:hover{transform:none}}
