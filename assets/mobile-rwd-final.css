@@ -1,3 +1,5 @@
+/* Moonlit ownership: mobile compatibility safety layer.
+   Keep cross-page regression fixes here only; new component styling belongs in its owning stylesheet. */
 /* Moonlit Stories — H1 mobile RWD final QA layer — 2026-10-02
    Structural rules only. Loaded last so mobile fixes have one predictable source of truth. */
 *{box-sizing:border-box}
