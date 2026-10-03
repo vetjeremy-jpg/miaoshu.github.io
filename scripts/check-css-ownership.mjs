@@ -97,8 +97,9 @@ if(!systemCss.includes('html.moonlit-enter body{opacity:0}')||!systemCss.include
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
+if(/\.(?:post-card|album-card|gallery-card|photo-card|video-card)|\.chapter-number/.test(moonlightCss+mobileSafety))errors.push('retired zero-reference card selectors must stay out of shared CSS');
 if(!/html,body\{max-width:100%;overflow-x:clip\}/.test(mobileSafety))errors.push('mobile safety must own global horizontal overflow protection');
-if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.post-card,\.album-card,\.gallery-card,\.photo-card,\.video-card,\.book-card\)\{max-width:100%;min-width:0\}/.test(mobileSafety))errors.push('mobile safety must preserve narrow-screen card width guard');
+if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.book-card\)\{max-width:100%;min-width:0\}/.test(mobileSafety))errors.push('mobile safety must preserve narrow-screen card width guard');
 if(!/footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobileSafety))errors.push('mobile safety must preserve compact Moonlit footer padding');
 const serviceWorker=fs.readFileSync('sw.js','utf8');
 if(serviceWorker.includes("assets/mobile-rwd-final.css"))errors.push('service worker shell must not cache legacy mobile-rwd-final.css');

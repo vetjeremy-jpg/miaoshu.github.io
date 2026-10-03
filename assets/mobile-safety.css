@@ -97,6 +97,6 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
 
 /* Canonical cross-page narrow-screen safeguards migrated from moonlight.css */
 @media(max-width:650px){
- :is(.panel,.chapter,.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){max-width:100%;min-width:0}
+ :is(.panel,.chapter,.creator-card,.novel-card,.tile,.book-card){max-width:100%;min-width:0}
  footer.moonlit-site-footer{padding-inline:18px!important}
 }

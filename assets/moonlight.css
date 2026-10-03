@@ -4,8 +4,8 @@
 :root{--moon-line:rgba(213,227,242,.18)}
 body{position:relative}
 body::after,main::before{content:none}
-:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.reader-comment-frame){border-color:var(--moon-line);box-shadow:inset 0 1px 0 rgba(220,235,248,.045)}
-:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card){background-image:radial-gradient(ellipse at 96% 0%,rgba(185,214,239,.045),transparent 54%)}
+:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.book-card,.reader-comment-frame){border-color:var(--moon-line);box-shadow:inset 0 1px 0 rgba(220,235,248,.045)}
+:is(.panel,.chapter,.creator-card,.novel-card,.tile,.card,.book-card){background-image:radial-gradient(ellipse at 96% 0%,rgba(185,214,239,.045),transparent 54%)}
 :is(.hero,.page-hero,.gallery-hero,.book-hero,.post-hero){isolation:isolate}
 :is(h1,h2,h3,.section-title){text-shadow:0 0 25px rgba(199,218,237,.075)}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
@@ -13,10 +13,10 @@ body::after,main::before{content:none}
 /* Only homepage and About hero retain a decorative moon. */
 :is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:none!important;background:none!important}
 footer::before{content:none!important;background:none!important}
-:is(.tile,.novel-card,.album-card,.post-card,.video-card,.book-card) :is(h2,h3,b):first-child::before{content:none!important}
-:is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{content:none!important}
+:is(.tile,.novel-card,.book-card) :is(h2,h3,b):first-child::before{content:none!important}
+:is(.album-photo,.gallery figure,.series-card,.novel-card,.book-card)::after{content:none!important}
 main :is(section,article):not(.hero)::before{content:none!important}
-body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!important}
+body[data-book-id] .chapter-kicker::before{content:none!important}
 /* Minimal moon policy: only explicit hero SVGs survive. */
 #book .novel-card::after,#book .bookshelf-top::before,#book .bookshelf-top::after,
 #book .bookshelf-scene > .moon,#book .novels-grid::before,#book .novels-grid::after,
@@ -28,8 +28,8 @@ body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!imp
 :is(.topbar,.top,header nav,.navlinks){box-shadow:inset 0 -1px 0 rgba(205,225,243,.045)}
 :is(.topbar,.top) a:hover,:is(.topbar,.top) a:focus-visible{background-color:rgba(196,217,238,.075)}
 :is(.panel,.chapter,.follow-panel,.reader-shelf,.latest-update,.about-miaoshu,.reader-support,.tonight,.novels,.bookshelf-scene,.reader-comment-frame){background-image:radial-gradient(ellipse 65% 40% at 98% 0%,rgba(184,212,236,.055),transparent 75%);border-color:var(--moon-edge)}
-:is(.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease}
-:is(.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.series-card,.toc a,.album-photos a):hover{border-color:rgba(213,227,242,.26);box-shadow:inset 0 1px 0 rgba(225,237,249,.08),0 5px 24px rgba(149,188,219,.035)}
+:is(.creator-card,.novel-card,.tile,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease}
+:is(.creator-card,.novel-card,.tile,.book-card,.series-card,.toc a,.album-photos a):hover{border-color:rgba(213,227,242,.26);box-shadow:inset 0 1px 0 rgba(225,237,249,.08),0 5px 24px rgba(149,188,219,.035)}
 :is(.cta,.directory-link,.book-read,.creator-nav a,.community-actions a,.follow-actions a,.follow-actions button,.chapter-nav a,.chapter-tools button,.reader-controls button,.about-links a,.actions a){transition:background-color .2s,border-color .2s,box-shadow .2s}
 :is(.cta,.directory-link,.book-read,.creator-nav a,.community-actions a,.follow-actions a,.follow-actions button,.chapter-nav a,.chapter-tools button,.reader-controls button,.about-links a,.actions a):hover{border-color:rgba(220,234,247,.38);box-shadow:0 0 18px rgba(183,211,236,.065)}
 :is(.section-title,.chapter-kicker,.creator-tag,.eyebrow,.kicker){text-shadow:0 0 20px rgba(207,226,244,.075)}
@@ -38,7 +38,7 @@ body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!imp
 footer{background-image:linear-gradient(180deg,rgba(174,206,232,.025),transparent)}
 /* Preserve the restrained moon policy in the novel bookshelf. */
 #book :is(.cover-emblem,.cover-moon,.moon,.moon-icon,.crescent,.moon-decoration,.moonlight-emblem,.bookshelf-moon,.novel-moon){display:none!important}
-@media(prefers-reduced-motion:reduce){:is(.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:none!important}}
+@media(prefers-reduced-motion:reduce){:is(.creator-card,.novel-card,.tile,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:none!important}}
 
 .moonlit-search-link{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;margin:5px;border:1px solid rgba(205,225,243,.22);border-radius:24px;color:#e4d1aa;text-decoration:none;font-size:14px;letter-spacing:.04em;background:rgba(182,208,232,.035)}.moonlit-search-link:hover,.moonlit-search-link:focus-visible{background:rgba(182,208,232,.11);border-color:rgba(205,225,243,.4)}
 
