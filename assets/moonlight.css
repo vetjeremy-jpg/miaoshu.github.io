@@ -35,7 +35,7 @@ body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!imp
 :is(.section-title,.chapter-kicker,.creator-tag,.eyebrow,.kicker){text-shadow:0 0 20px rgba(207,226,244,.075)}
 :is(.album-photos,.gallery-grid,.photo-grid,.featured-visual,.hero-image) img{filter:none}
 :is(.chapter-body,.reader-content,.story-content,.article-body,.post-body){text-shadow:none}
-footer{border-top-color:rgba(213,227,242,.15);background-image:linear-gradient(180deg,rgba(174,206,232,.025),transparent)}
+footer{background-image:linear-gradient(180deg,rgba(174,206,232,.025),transparent)}
 /* Preserve the restrained moon policy in the novel bookshelf. */
 #book :is(.cover-emblem,.cover-moon,.moon,.moon-icon,.crescent,.moon-decoration,.moonlight-emblem,.bookshelf-moon,.novel-moon){display:none!important}
 @media(prefers-reduced-motion:reduce){:is(.creator-card,.novel-card,.tile,.post-card,.album-card,.gallery-card,.photo-card,.video-card,.book-card,.series-card,.toc a,.book-object,.album-photos a){transition:none!important}}
@@ -46,10 +46,6 @@ footer{border-top-color:rgba(213,227,242,.15);background-image:linear-gradient(1
 @media(max-width:850px){
   :is(.cta,.directory-link,.book-read,.creator-nav a,.community-actions a,.follow-actions a,.follow-actions button,.chapter-nav a,.chapter-tools button,.reader-controls button,.about-links a,.actions a,.moonlit-search-link){min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 }
-@media(max-width:520px){
-}
-
-
 /* Moonlit 3.0 — functional moon phases, cinematic light, editorial footer */
 :root{--moon-drift:rgba(196,219,240,.055)}
 @keyframes moonlitDrift{0%,100%{transform:translate3d(-2%,0,0);opacity:.42}50%{transform:translate3d(3%,1%,0);opacity:.72}}
