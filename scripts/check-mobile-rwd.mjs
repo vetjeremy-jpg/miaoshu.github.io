@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const fail = [];
 const read = p => fs.readFileSync(p,'utf8');
 const home = read('index.html');
-const mobile = read('assets/mobile-rwd-final.css');
+const mobile = read('assets/mobile-safety.css');
 const homepageMobile = read('assets/homepage-mobile.css');
 const moonlitV2 = read('assets/moonlit-v2.js');
 const reader = read('books/reader.css');
@@ -13,7 +13,7 @@ const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/
 
 function must(name, ok){ if(!ok) fail.push(name); }
 
-must('homepage loads mobile-rwd-final.css', /mobile-rwd-final\.css/.test(home));
+must('homepage loads mobile-safety.css', /mobile-safety\.css/.test(home));
 must('homepage loads critical homepage-inline.css', /homepage-inline\.css/.test(home));
 must('homepage loads desktop below-fold CSS', /homepage-desktop-below-fold\.css/.test(home));
 must('homepage loads mobile below-fold CSS', /homepage-mobile-below-fold\.css/.test(home));
@@ -21,10 +21,10 @@ const activeHome=head => head.replace(/<noscript>[\s\S]*?<\/noscript>/gi,'');
 const activeStylesheetHrefs=[...activeHome(home).matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].map(m=>m[1].split('?')[0]);
 const duplicateStyles=activeStylesheetHrefs.filter((href,i,a)=>a.indexOf(href)!==i);
 must('homepage has no duplicate active stylesheet hrefs', duplicateStyles.length===0);
-const finalRwdPos=home.lastIndexOf('assets/mobile-rwd-final.css');
+const finalRwdPos=home.lastIndexOf('assets/mobile-safety.css');
 const headEndPos=home.indexOf('</head>');
-must('mobile-rwd-final.css remains the final stylesheet before </head>', finalRwdPos>=0 && headEndPos>finalRwdPos && !/<link\b[^>]*rel=["']stylesheet["']/i.test(home.slice(finalRwdPos,headEndPos)));
-must('final mobile CSS is loaded before </head>', /mobile-rwd-final\.css[^>]*>\s*<\/head>/s.test(home));
+must('mobile-safety.css remains the final stylesheet before </head>', finalRwdPos>=0 && headEndPos>finalRwdPos && !/<link\b[^>]*rel=["']stylesheet["']/i.test(home.slice(finalRwdPos,headEndPos)));
+must('final mobile CSS is loaded before </head>', /mobile-safety\.css[^>]*>\s*<\/head>/s.test(home));
 must('homepage has one Apple touch icon declaration', (home.match(/rel="apple-touch-icon"[^>]*apple-touch-icon\.png/g) || []).length === 1);
 must('homepage has one Moonlit theme-color', (home.match(/<meta\s+name=["']theme-color["'][^>]*>/gi) || []).length === 1 && /<meta\s+name=["']theme-color["']\s+content=["']#071521["']\s*>/i.test(home));
 must('manifest start_url stays on Pages subpath', manifest.start_url === '/miaoshu.github.io/');
