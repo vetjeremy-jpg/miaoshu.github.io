@@ -46,3 +46,7 @@ input::placeholder,textarea::placeholder{color:#718696}
  .tonight-grid article,.creator-card,.moonlit-entry{border-radius:var(--ml-r2)!important}
 }
 @media(prefers-reduced-motion:reduce){a,button{transition:none!important}.book-object:hover,.book-object:focus-visible{transform:none!important}}
+
+/* Shared page transition driven by moonlit-v2.js; CSS ownership is system-level. */
+html.moonlit-enter body{opacity:0}body{transition:opacity .38s ease}html.moonlit-ready body{opacity:1}
+@media(prefers-reduced-motion:reduce){body{transition:none}html.moonlit-enter body{opacity:1}}
