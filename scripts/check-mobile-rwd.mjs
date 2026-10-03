@@ -13,6 +13,10 @@ const mainPages = ['index.html','gallery/index.html','videos/index.html','posts/
 
 function must(name, ok){ if(!ok) fail.push(name); }
 
+for(const [path,source] of mainPages){
+  if(source.includes('moonlight.css')) must(path+' loads canonical mobile-safety.css', source.includes('mobile-safety.css'));
+}
+
 must('homepage loads mobile-safety.css', /mobile-safety\.css/.test(home));
 must('homepage loads critical homepage-inline.css', /homepage-inline\.css/.test(home));
 must('homepage loads desktop below-fold CSS', /homepage-desktop-below-fold\.css/.test(home));
