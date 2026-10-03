@@ -104,6 +104,9 @@ if(/@media\s*\(min-width:851px\)[\s\S]*?moonlight-emblem\{[^}]*drop-shadow\(0 0 
 if(/@media\s*\(min-width:851px\)[\s\S]*?hero-copy h1\{\s*text-shadow:0 10px 38px/.test(premium))errors.push('duplicate desktop hero geometry returned: h1 shadow');
 if(premium.includes('@media(max-width:700px){.hero-text-link{border:0}}'))errors.push('duplicate mobile hero text-link border returned');
 if(/@media\(max-width:700px\)[\s\S]*?\.hero-text-link\{border:0\}/.test(inline))errors.push('mobile hero-text-link must not use broad border reset');
+if(/\.hero-actions\{[^}]*gap:12px[^}]*justify-content:center/.test(inline))errors.push('legacy hero-actions base alignment returned');
+if(/@media\(max-width:700px\)[\s\S]*?\.hero-actions\{[^}]*margin-top:22px!important/.test(inline))errors.push('dead mobile hero-actions margin returned');
+if(/@media\(max-width:700px\)[\s\S]*?\.hero-actions\{[^}]*gap:4px!important/.test(inline))errors.push('dead mobile hero-actions gap returned');
 if(/hero-inner\{\s*box-sizing:border-box!important;\s*\}/.test(premium))errors.push('redundant hero-inner box-sizing override returned');
 if(inline.includes('body:not([data-book-id]) > header.hero{height:auto!important;min-height:0!important}'))errors.push('mobile hero must inherit tablet height');
 if(inline.includes('body:not([data-book-id]) > header.hero .hero-inner{display:grid!important;grid-template-columns:1fr!important;height:auto!important}'))errors.push('mobile hero-inner must inherit tablet display');
