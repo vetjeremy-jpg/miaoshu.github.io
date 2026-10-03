@@ -24,7 +24,7 @@
 footer{border-top:1px solid rgba(220,230,240,.08)!important;background:#050c14!important}
 
 @media(max-width:700px){.hero-brand-mark{width:84px!important}.hero-actions .cta,.wrap{padding:34px 18px 80px!important}.panel{padding:54px 0!important}}
-@media(prefers-reduced-motion:reduce){.book-object{transition:none!important}}
+@media(prefers-reduced-motion:reduce){}
 
 /* Hero visual details retained after geometry consolidation */
 .hero-brand-mark{display:none!important}
