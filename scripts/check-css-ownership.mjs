@@ -13,6 +13,7 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+// Novel card pseudo-element suppression has one canonical #book owner.
 // Legacy hero aliases are retired; `.hero` is the canonical shared hook.
 function stripMediaBlocks(css){
   let out='',i=0;
