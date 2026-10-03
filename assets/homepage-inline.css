@@ -154,7 +154,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
 .hero-index span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center}.hero-index span:last-child{display:none}.hero-image figcaption{left:18px!important;right:18px!important;bottom:12px!important}
 .wrap{padding:0 18px 70px!important}
-.panel{padding:48px 0!important}.section-title{font-size:clamp(29px,9vw,38px)!important;line-height:1.35!important;word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
+.panel{padding:48px 0!important}.section-title{word-break:keep-all}.notice{font-size:14px!important;line-height:1.85!important}
 }
 
 /* Homepage-only quiet starlight: static, irregular points behind existing content. */
