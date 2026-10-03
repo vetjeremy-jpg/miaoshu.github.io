@@ -15,7 +15,10 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
+if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(discovery))errors.push('legacy discovery Tonight desktop layout returned');
+if(/\.tonight-grid article\{padding:28px 26px/.test(discovery))errors.push('legacy discovery Tonight card geometry returned');
 if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematic))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
 if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematic))errors.push('cinematic editorial must not own base CTA/panel component styling');
 if(/\.section-title\{/.test(cinematic))errors.push('cinematic editorial must not own base section-title typography');
