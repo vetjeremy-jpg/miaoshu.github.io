@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:191},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
-  'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
+  'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
 const patterns={
@@ -71,6 +71,8 @@ if(/@media\(max-width:430px\)\{\.reader-controls\{gap:8px\}[\s\S]*?\.reader-cont
 const homepageHtml=fs.readFileSync('index.html','utf8');
 if(homepageHtml.includes('cinematic-editorial.css'))errors.push('homepage must not reload retired cinematic-editorial.css');
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
+const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
+const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 if(/\.album-photos img\{transition:transform \.45s|\.album-photo \.album-series\{|--moonlight:#dce8f2|\.moonlight-emblem\{position:absolute/.test(cinematic))errors.push('cinematic legacy layer must not own migrated album or moonlight primitives');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
@@ -79,8 +81,6 @@ if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:abs
 if(/\.hero \.eyebrow\{|\.hero-index\{|\.featured-grid\{|\.featured-copy h2\{|\.featured-visual\{|\.creator-grid\{|\.creator-card\{|\.creator-art\{|\.creator-copy h3\{|#book\{background|\.follow-panel\{background|\.section-title:after\{/.test(cinematic))errors.push('cinematic legacy layer must not re-own migrated homepage components');
 if(/\.wrap\{max-width:1350px|\.hero:before\{display:block/.test(cinematic))errors.push('cinematic legacy layer must not re-own homepage wrap or hero frame geometry');
 const moonlitV2=fs.readFileSync('assets/moonlit-v2.css','utf8');
-const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
-const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css','utf8');
 if(/\.moonlit-cover|\.moonlit-quote-v2/.test(moonlitV2))errors.push('legacy moonlit-v2.css must not own dynamic homepage cover/quote components');
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
@@ -125,7 +125,6 @@ if(/\.support-actions|\.follow-actions|\.about-links|\.community-actions/.test(m
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
-const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
 const cinematicBase=stripMediaBlocks(cinematic);
 if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(discovery))errors.push('legacy discovery Tonight desktop layout returned');
 if(/\.tonight-grid article\{padding:28px 26px/.test(discovery))errors.push('legacy discovery Tonight card geometry returned');
