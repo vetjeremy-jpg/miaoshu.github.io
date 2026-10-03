@@ -74,6 +74,12 @@ if(mobileSafety!==legacyMobileSafety.replace('/* Moonlit Stories — H1 mobile R
 const serviceWorker=fs.readFileSync('sw.js','utf8');
 if(serviceWorker.includes("assets/mobile-rwd-final.css"))errors.push('service worker shell must not cache legacy mobile-rwd-final.css');
 if(!serviceWorker.includes("assets/mobile-safety.css?v=20261002-h2"))errors.push('service worker shell must cache canonical mobile-safety.css');
+const runtimeEntryFiles=['index.html','about/index.html','gallery/index.html','posts/index.html','videos/index.html','sw.js'];
+for(const path of runtimeEntryFiles){
+  const source=fs.readFileSync(path,'utf8');
+  if(source.includes('mobile-rwd-final.css'))errors.push(path+' must not reference retired mobile-rwd-final.css');
+}
+
 if(/@media\(max-width:430px\)\{\s*\.hero h1\{max-width:100%\}/.test(mobileSafety))errors.push('mobile safety layer must not own homepage hero h1 max-width');
 if(/\.hero h1,\.hero-lede\{max-width:100%!important\}/.test(mobileSafety))errors.push('mobile safety layer must defer homepage hero h1 width to homepage CSS');
 if(!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::before/.test(mobileSafety)||!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::after/.test(mobileSafety))errors.push('mobile safety layer must preserve both homepage bookshelf rails');
