@@ -285,8 +285,6 @@ html[data-reading-theme="paper"] .notice,
 html[data-reading-theme="paper"] .continue-box p,
 html[data-reading-theme="paper"] #chapter-search-status,
 html[data-reading-theme="paper"] .audiobook-note{color:#665f54}
-html[data-reading-theme="paper"] .panel,
-html[data-reading-theme="paper"] .chapter,
 html[data-reading-theme="paper"] .audiobook-player,
 html[data-reading-theme="paper"] .audiobook-launcher{background:#f8f3e9;border-color:var(--line)}
 html[data-reading-theme="paper"] .continue-box{background:#f2eadc;border-color:var(--line)}
@@ -295,16 +293,8 @@ html[data-reading-theme="paper"] .kicker,
 html[data-reading-theme="paper"] .chapter-search label{color:#735a31}
 html[data-reading-theme="paper"] .toc{background:var(--line);border-color:var(--line)}
 html[data-reading-theme="paper"] .chapter-search input::placeholder{color:#80776b}
-html[data-reading-theme="paper"] .reader-controls button,
 html[data-reading-theme="paper"] .reader-audio-shortcut,
-html[data-reading-theme="paper"] .chapter-tools a,
-html[data-reading-theme="paper"] .chapter-tools button,
-html[data-reading-theme="paper"] .chapter-bookmark,
-html[data-reading-theme="paper"] .chapter-like,
-html[data-reading-theme="paper"] .audiobook-actions button,
 html[data-reading-theme="paper"] .audiobook-launch-button{background:#fbf6ed;color:#604824;border-color:rgba(91,70,39,.42)}
-html[data-reading-theme="paper"] .reader-controls button[aria-pressed="true"],
-html[data-reading-theme="paper"] .chapter-bookmark[aria-pressed="true"],
-html[data-reading-theme="paper"] .chapter-like[aria-pressed="true"]{background:#dfd2bc;color:#3e2f1b;border-color:#806538}
+html[data-reading-theme="paper"] .reader-controls button[aria-pressed="true"]{background:#dfd2bc;color:#3e2f1b;border-color:#806538}
 html[data-reading-theme="paper"] .audio-reading{background:linear-gradient(90deg,rgba(128,101,56,.13),transparent 85%);border-color:#806538}
 html[data-reading-theme="paper"] footer{border-color:var(--line)}
