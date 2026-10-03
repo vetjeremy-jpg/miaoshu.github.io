@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:40,topbar:2,navlinks:2,panel:3,important:200},
+  'assets/homepage-premium.css':{hero:38,topbar:2,navlinks:2,panel:3,important:199},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
   'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
@@ -27,6 +27,9 @@ if(/\.section-title\{[^}]*margin:\s*12px 0 20px!important/.test(premium))errors.
 if(/\.hero \.eyebrow\{font-size:13px;letter-spacing:\.22em;color:var\(--gold2\)\}/.test(inline))errors.push('legacy hero eyebrow typography returned');
 if(/\.hero \.eyebrow\{letter-spacing:\.28em\}/.test(inline))errors.push('dead hero eyebrow letter-spacing override returned');
 if(/\.chapter-kicker\{[^}]*color:var\(--gold\)[^}]*letter-spacing:3px/.test(inline))errors.push('dead chapter-kicker base typography returned');
+if(premium.includes('@media(max-width:700px){.hero-edition{margin-bottom:25px}'))errors.push('duplicate mobile hero-edition breakpoint returned');
+if(premium.includes('@media(max-width:700px){body:not([data-book-id]) > header.hero h1 > span{white-space:normal!important}}'))errors.push('duplicate mobile hero headline breakpoint returned');
+if(inline.includes('@media(min-width:851px){body:not([data-book-id]) > .topbar .brand img{width:62px!important;height:auto!important;max-width:none!important}'))errors.push('dead desktop logo breakpoint override returned');
 for(const token of ['--hp-bg','--hp-ink','--hp-muted','--hp-gold','--hp-line']){
   if(premium.includes(token+':'))errors.push('premium must not redeclare canonical hp tokens: '+token);
 }
