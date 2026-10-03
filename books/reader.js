@@ -1,5 +1,7 @@
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
+ if(window.__moonlitReaderLoaded)return;
+ window.__moonlitReaderLoaded=true;
  const chapters=[...document.querySelectorAll('.chapter[id]')];
  const bookId=document.body.dataset.bookId||'novel';
  const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
