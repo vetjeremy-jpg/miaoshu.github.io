@@ -101,10 +101,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
     -webkit-overflow-scrolling:touch
   }
   img{content-visibility:auto}
-  #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{
-    content-visibility:auto;
-    contain-intrinsic-size:auto 720px
-  }
+
 }
 @media(max-width:430px){
   .hero{min-height:auto!important}
