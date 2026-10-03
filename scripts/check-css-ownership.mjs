@@ -75,6 +75,9 @@ const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(!/--moonlight:#dce8f2/.test(moonlightCss)||!/\.moonlight-emblem\{position:absolute/.test(moonlightCss))errors.push('moonlight owner must preserve migrated decorative primitives');
+if(/@media\(max-width:(?:850|650)px\)\{\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
+if((moonlightCss.match(/\.brand::after/g)||[]).length>1)errors.push('moonlight.css must keep one canonical brand pseudo-element suppression rule');
+if(/#book \.cover-emblem,#book \.cover-moon/.test(moonlightCss))errors.push('moonlight.css must not duplicate bookshelf moon suppression outside the canonical :is() rule');
 
 if(fs.existsSync('assets/moonlit-v2.css'))errors.push('retired assets/moonlit-v2.css must not be recreated');
 for(const path of fs.readdirSync('.', {recursive:true}).filter(path=>path.endsWith('.html')&&!path.startsWith('.git/'))){if(fs.readFileSync(path,'utf8').includes('moonlit-v2.css'))errors.push(path+' must not load retired moonlit-v2.css');}

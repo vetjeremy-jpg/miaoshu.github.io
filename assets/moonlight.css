@@ -11,8 +11,6 @@ body::after,main::before{content:none}
 :is(a,button):focus-visible{outline:2px solid #e6d4b2;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body:not([data-book-id]) > header.hero .moonlight-emblem svg{filter:brightness(.78) saturate(.78)}
-@media(max-width:850px){}
-@media(max-width:650px){}
 /* Only homepage and About hero retain a decorative moon. */
 :is(.page-hero,.gallery-hero,.book-hero,.post-hero,.journal-hero,.video-hero) h1::after{content:none!important;background:none!important}
 footer::before{content:none!important;background:none!important}
@@ -20,17 +18,11 @@ footer::before{content:none!important;background:none!important}
 :is(.album-photo,.gallery figure,.photo-card,.video-card,.post-card,.series-card,.novel-card,.book-card)::after{content:none!important}
 main :is(section,article):not(.hero)::before{content:none!important}
 body[data-book-id] :is(.chapter-kicker,.chapter-number)::before{content:none!important}
-/* Override legacy header's extra decorative moon: keep the actual page moon only. */
-:is(.topbar,.top) .brand::after{content:none!important}
-/* Minimal moon policy: only the two explicit hero SVGs survive. */
-#book .cover-emblem,#book .cover-moon,#book .moon,#book .moon-icon,
-#book .crescent,#book .moon-decoration,#book .moonlight-emblem,
-#book .bookshelf-moon,#book .novel-moon{display:none!important}
-#book .book-cover .cover-emblem{display:none!important}
+/* Minimal moon policy: only explicit hero SVGs survive. */
 #book .novel-card::after,#book .bookshelf-top::before,#book .bookshelf-top::after,
 #book .bookshelf-scene > .moon,#book .novels-grid::before,#book .novels-grid::after,
 #book .book-object::before,#book .book-object::after{content:none!important;background-image:none!important}
-.topbar .brand::after,.top .brand::after{content:none!important;display:none!important}
+:is(.topbar,.top) .brand::after{content:none!important;display:none!important}
 body:not([data-book-id]) > header.hero .moonlight-emblem{display:block}
 
 /* Quiet moonlight across every part: light, not repeated moon icons. */
