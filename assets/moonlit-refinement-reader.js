@@ -4,14 +4,8 @@ const $=(s,r=document)=>r.querySelector(s), safeGet=k=>{try{return localStorage.
 /* Reader focus + exact-line moonlight bookmarks. */
 if(document.body.dataset.bookId){
  const id=document.body.dataset.bookId;
- const focus=document.createElement('button');focus.type='button';focus.className='moonlit-focus-toggle';focus.textContent='專注閱讀';focus.setAttribute('aria-pressed','false');(document.querySelector('.moonlit-reader-comfort')||document.querySelector('main')||document.body).append(focus);
- const inlineFocus=[...document.querySelectorAll('.moonlit-reader-comfort button')].find(button=>button!==focus&&/專注閱讀|退出專注閱讀/.test(button.textContent));
- if(inlineFocus)inlineFocus.hidden=true;
- const toggleFocus=()=>{if(inlineFocus)inlineFocus.click();else document.body.classList.toggle('moonlit-focus-mode')};
- const syncFocus=()=>{const on=document.body.classList.contains('moonlit-focus-mode');focus.setAttribute('aria-pressed',String(on));focus.textContent=on?'顯示導覽':'專注閱讀'};
- syncFocus();
- focus.addEventListener('click',()=>{toggleFocus();syncFocus()});
- new MutationObserver(syncFocus).observe(document.body,{attributes:true,attributeFilter:['class']});
+ const focus=[...document.querySelectorAll('.moonlit-reader-comfort button')].find(button=>/專注閱讀|退出專注閱讀/.test(button.textContent));
+ if(focus)focus.classList.add('moonlit-focus-toggle');
  const key='moonlit-lines-'+id,detailKey='moonlit-bookmark-details';let saved=[];try{saved=JSON.parse(safeGet(key)||'[]');if(!Array.isArray(saved))saved=[]}catch(e){saved=[]}
  const bookTitle=(document.querySelector('h1')?.textContent||document.title.split('｜')[0]||'Moonlit Stories').trim();
  document.querySelectorAll('.chapter-body p').forEach((p,i)=>{const chapter=p.closest('.chapter')?.id||'chapter';const pid=chapter+'-p'+(i+1);p.dataset.moonlitLine=pid;p.id=p.id||pid;if(saved.includes(pid))p.classList.add('moonlit-saved-line');const b=document.createElement('button');b.type='button';b.className='moonlit-line-save';b.title='把月光留在這一句';b.setAttribute('aria-label',saved.includes(pid)?'取消收藏這一段':'收藏這一段');b.textContent='☾';p.prepend(b);b.addEventListener('click',()=>{let arr=[],details=[];try{arr=JSON.parse(safeGet(key)||'[]')}catch(e){};try{details=JSON.parse(safeGet(detailKey)||'[]')}catch(e){};arr=Array.isArray(arr)?arr:[];details=Array.isArray(details)?details:[];const exists=arr.includes(pid);if(exists){arr=arr.filter(x=>x!==pid);details=details.filter(x=>!(x.bookId===id&&x.pid===pid))}else{arr.push(pid);const quote=p.cloneNode(true);quote.querySelector('.moonlit-line-save')?.remove();details=details.filter(x=>!(x.bookId===id&&x.pid===pid));details.push({bookId:id,pid,title:bookTitle,text:(quote.textContent||'').trim().slice(0,180),url:location.pathname+'#'+p.id,savedAt:Date.now()})}safeSet(key,JSON.stringify(arr));safeSet(detailKey,JSON.stringify(details.slice(-30)));p.classList.toggle('moonlit-saved-line',!exists);b.setAttribute('aria-label',!exists?'取消收藏這一段':'收藏這一段')})});
