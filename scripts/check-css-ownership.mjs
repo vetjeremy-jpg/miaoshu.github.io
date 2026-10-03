@@ -17,6 +17,7 @@ const patterns={
 const errors=[];
 const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
 if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematic))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
+if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematic))errors.push('cinematic editorial must not own base CTA/panel component styling');
 if(/\.brand::after\{[^}]*content:""[^}]*box-shadow:3px 2px 0 0/.test(cinematic))errors.push('disabled cinematic brand moon pseudo-element returned');
 const premium=fs.readFileSync('assets/homepage-premium.css','utf8');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
