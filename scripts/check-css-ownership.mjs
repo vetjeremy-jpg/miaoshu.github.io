@@ -99,7 +99,6 @@ if(/\.navlinks a,\.top nav a\{min-height:44px;display:inline-flex;align-items:ce
 if(/\.navlinks,\.top nav,\.tonight-grid/.test(mobileSafety))errors.push('mobile safety layer must not own homepage horizontal scrollers');
 if(!/\.tonight-grid,\.moonlit-entry-grid,\.novels-grid,\.creator-grid,\.album-photos\{overscroll-behavior-inline:contain;/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve horizontal scroller containment');
 if(!/\.tonight-grid::-webkit-scrollbar,\.moonlit-entry-grid::-webkit-scrollbar,\.novels-grid::-webkit-scrollbar,\.creator-grid::-webkit-scrollbar,\.album-photos::-webkit-scrollbar\{display:none\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve hidden horizontal scroller bars');
-const homepageDesktopBelow=fs.readFileSync('assets/homepage-desktop-below-fold.css','utf8');
 if(/#featured,#updates,#moonlit-discovery,#book,#creative/.test(mobileSafety))errors.push('mobile safety layer must not own homepage section content visibility');
 if(!/#featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter\{content-visibility:auto;contain-intrinsic-size:auto 720px\}/.test(homepageDesktopBelow))errors.push('homepage below-fold owner must preserve section rendering optimization');
 const editorialInteriors=fs.readFileSync('editorial-interiors.css','utf8');
