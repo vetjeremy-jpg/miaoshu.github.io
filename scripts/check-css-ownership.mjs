@@ -74,6 +74,11 @@ if(/\.hero h1,\.hero-lede\{max-width:100%!important\}/.test(mobileSafety))errors
 if(!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::before/.test(mobileSafety)||!/body:not\(\[data-book-id\]\) #book \.bookshelf-scene::after/.test(mobileSafety))errors.push('mobile safety layer must preserve both homepage bookshelf rails');
 if(/\.wrap\{width:100%;max-width:100%;padding-left:18px!important/.test(mobileSafety))errors.push('mobile safety layer must not own page-specific wrap gutters');
 if(/@media\(max-width:340px\)\{[\s\S]*?\.panel\{padding-left:15px!important/.test(mobileSafety))errors.push('mobile safety layer must not own narrow-screen panel padding');
+if(!/scroll-padding-right:max\(18px,env\(safe-area-inset-right\)\)/.test(mobileSafety))errors.push('mobile nav safety must preserve right safe-area scroll padding');
+if(!/\.navlinks a:last-child,\.top nav a:last-child\{margin-right:4px\}/.test(mobileSafety))errors.push('mobile nav safety must preserve trailing space for the final navigation item');
+if(!/\.navlinks a,\.top nav a\{min-height:44px;/.test(mobileSafety))errors.push('mobile nav safety must preserve 44px navigation touch targets');
+if(/\.topbar \.brand img,\.top \.brand img\{flex:0 0 auto\}/.test(mobileSafety))errors.push('mobile safety layer must not style brand image flex behavior');
+if(/\.navlinks a,\.top nav a\{min-height:44px;display:inline-flex;align-items:center;/.test(mobileSafety))errors.push('mobile safety layer must not restyle navigation link display/alignment');
 const readerRefinement=fs.readFileSync('assets/moonlit-refinement-reader.css','utf8');
 if(/\.chapter-body\{font-size:var\(--reader-size,18px\);line-height:2\.04\}/.test(readerRefinement))errors.push('superseded Reader chapter-body 2.04 line-height returned');
 const discovery=fs.readFileSync('moonlit-discovery.css','utf8');
