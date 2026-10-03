@@ -177,7 +177,6 @@ body{background:#0a1825}
 #audio-resume{min-height:40px;margin-left:8px;padding:6px 10px;border:1px solid rgba(218,192,151,.4);background:transparent;color:var(--accent);cursor:pointer}
 @media(max-width:430px){.reader-controls{gap:8px}.reader-controls>span{width:100%;font-size:11px}.reader-audio-shortcut{order:-1;width:100%;font-size:14px}.book-directory .notice{margin-bottom:10px}.directory-head{gap:10px}.directory-head .section-title{font-size:clamp(1.65rem,8vw,2.1rem)}.chapter-search{margin-top:14px}}
 
-/* Compact mobile path into the story */
 /* Compact mobile novel entry flow */
 @media(max-width:430px){
 .reading-intro{padding:20px 18px;margin-bottom:14px}.reading-intro h2{margin-bottom:8px}.reading-intro>p{margin-bottom:10px;line-height:1.7}.reading-estimate{display:none}.continue-box{margin-block:12px;padding:14px 16px}.reader-shelf{padding:18px;margin-block:14px}.reader-shelf .shelf-note{margin:6px 0 10px}.audiobook-launcher{padding:18px;margin-block:14px}.audiobook-launcher h2{margin:4px 0}.audiobook-launcher p{font-size:13px;line-height:1.65}.audiobook-launch-button{margin-top:12px}.book-directory{padding:20px 18px}.directory-head{margin-bottom:12px}.directory-head .notice{font-size:13px;line-height:1.65}.chapter-search input{width:100%;min-width:0}.toc a{min-height:48px}}
@@ -208,11 +207,6 @@ body{background:#0a1825}
  .audiobook-actions{grid-template-columns:1fr}
  .audiobook-actions .audio-primary{grid-column:auto}
 }
-@media(max-width:340px){
- .panel{padding-left:15px;padding-right:15px}
- .chapter-body{font-size:var(--reader-size,16.5px)}
-}
-
 /* Mobile chapter navigation: keep the reading path on one calm row. */
 @media(max-width:430px){
  .chapter-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
@@ -233,8 +227,10 @@ body{background:#0a1825}
  .chapter-body p{line-height:2;margin-bottom:1.2em}
 }
 @media(max-width:340px){
+ .panel{padding-left:15px;padding-right:15px}
  .chapter{padding-left:12px;padding-right:12px}
  .chapter h2{font-size:clamp(26px,8.4vw,32px)}
+ .chapter-body{font-size:var(--reader-size,16.5px)}
 }
 
 /* Mobile reader chrome: compact the sticky brand without shrinking touch targets. */
