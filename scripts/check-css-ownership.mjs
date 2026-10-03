@@ -13,6 +13,7 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+// Legacy hero aliases are retired; `.hero` is the canonical shared hook.
 function stripMediaBlocks(css){
   let out='',i=0;
   while(i<css.length){
@@ -98,6 +99,8 @@ if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBe
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
 if(/\.(?:post-card|album-card|gallery-card|photo-card|video-card)|\.chapter-number/.test(moonlightCss+mobileSafety))errors.push('retired zero-reference card selectors must stay out of shared CSS');
+if(/\.(?:page-hero|gallery-hero|book-hero|post-hero|journal-hero|video-hero)/.test(moonlightCss))errors.push('retired legacy hero aliases must stay out of moonlight.css');
+if(!/\.hero\{isolation:isolate\}/.test(moonlightCss))errors.push('moonlight.css must preserve canonical hero isolation');
 if(!/html,body\{max-width:100%;overflow-x:clip\}/.test(mobileSafety))errors.push('mobile safety must own global horizontal overflow protection');
 if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.book-card\)\{max-width:100%;min-width:0\}/.test(mobileSafety))errors.push('mobile safety must preserve narrow-screen card width guard');
 if(!/footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobileSafety))errors.push('mobile safety must preserve compact Moonlit footer padding');
