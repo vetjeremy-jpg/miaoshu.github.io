@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
       - 'books/**'
-      - 'assets/mobile-rwd-final.css'
+      - 'assets/mobile-safety.css'
       - 'assets/homepage-inline.css'
       - 'assets/homepage-desktop-below-fold.css'
       - 'assets/homepage-mobile-below-fold.css'

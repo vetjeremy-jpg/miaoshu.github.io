@@ -83,8 +83,6 @@ if(!systemCss.includes('html.moonlit-enter body{opacity:0}')||!systemCss.include
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
 if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
-const legacyMobileSafety=fs.readFileSync('assets/mobile-rwd-final.css','utf8');
-if(mobileSafety!==legacyMobileSafety.replace('/* Moonlit Stories — H1 mobile RWD final QA layer — 2026-10-02\n   Structural rules only. Loaded last so mobile fixes have one predictable source of truth. */','/* Moonlit Stories — cross-site mobile safety layer.\n   Structural safeguards only; page and component styling belongs to its owning stylesheet. */'))errors.push('legacy mobile-rwd-final.css compatibility copy must stay behaviorally identical to mobile-safety.css during migration');
 const serviceWorker=fs.readFileSync('sw.js','utf8');
 if(serviceWorker.includes("assets/mobile-rwd-final.css"))errors.push('service worker shell must not cache legacy mobile-rwd-final.css');
 if(!serviceWorker.includes("assets/mobile-safety.css?v=20261002-h2"))errors.push('service worker shell must cache canonical mobile-safety.css');
