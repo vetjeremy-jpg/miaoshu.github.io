@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 
 const budgets={
-  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:163},
+  'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:152},
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
@@ -136,6 +136,8 @@ if(/#creative\{|\.creator-grid\{|\.creator-card\{|\.creator-art\{|\.creator-copy
 if(!/#creative\{padding-top:90px\}/.test(homepageDesktopBelow)||!/\.creator-grid\{display:grid;grid-template-columns:repeat\(4,1fr\)/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Creator desktop composition');
 if(/\.tonight-grid article\{[^}]*background:transparent!important/.test(premium))errors.push('premium Tonight card background must defer to system owner');
 if(/\.moonlit-entry\{[^}]*background:transparent!important/.test(premium))errors.push('premium Discovery entry background must defer to system owner');
+if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{|\.moonlit-entry:last-child\{|\.moonlit-entry:hover\{/.test(premium))errors.push('premium must not regain Discovery component ownership');
+if(!/@media\(min-width:701px\)\{\.moonlit-discovery\{margin:70px 0;padding:clamp\(40px,6vw,70px\)/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Discovery desktop geometry');
 const photoViewerCss=fs.readFileSync('photo-viewer.css','utf8');
 if(/\.book-object\{[^}]*filter:drop-shadow/.test(premium))errors.push('homepage premium must not override canonical book-object shadow');
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
