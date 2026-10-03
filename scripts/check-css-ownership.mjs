@@ -154,3 +154,6 @@ if(/\.hero \.eyebrow\{[^}]*font-size:11px!important;[^}]*letter-spacing:\.28em!i
 if(/\.hero \.eyebrow\{[^}]*color:#b6a98e!important/.test(inline))errors.push('hero eyebrow inline color must defer to premium owner');
 
 if(/\.eyebrow,\.hero-edition,\.hero-index\{[^}]*text-transform:none/.test(inline))errors.push('inline hero typography must defer text-transform to system owner');
+
+if(/\.hero-index\{[^}]*color:#708698!important/.test(inline))errors.push('hero-index inline color must defer to premium owner');
+if(/\.hero-index\{border-color:rgba\(230,210,177,\.4\)\}/.test(inline))errors.push('hero-index inline border color must defer to premium owner');
