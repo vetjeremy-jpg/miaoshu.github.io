@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
 const fail = [];
+// Cross-page mobile safety is canonicalized in assets/mobile-safety.css.
 const read = p => fs.readFileSync(p,'utf8');
 const home = read('index.html');
 const mobile = read('assets/mobile-safety.css');
