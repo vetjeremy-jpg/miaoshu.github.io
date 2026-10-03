@@ -16,6 +16,11 @@
 <meta name="color-scheme" content="dark">
 <meta name="format-detection" content="telephone=no">
 <title>喵叔 Moonlit Stories｜原創小說・攝影・旅行札記</title>
+<!-- Moonlit CSS ownership:
+     critical first paint = homepage-inline.css
+     shared design tokens = moonlit-system.css
+     page/component layers = deferred styles below
+     final cross-page mobile safety = mobile-rwd-final.css -->
 <link rel="stylesheet" href="assets/homepage-inline.css?v=20261003-layout1">
 
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/">
@@ -30,6 +35,7 @@
 
 <script>if(/^#(?:toc|chapter-(?:[1-9]|1[0-5]))$/.test(location.hash)){location.replace('books/fushengsuiyue/index.html'+location.hash)}</script>
 
+<!-- Deferred component / legacy migration layers -->
 <link rel="stylesheet" href="cinematic-editorial.css?v=20261002-async1" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="cinematic-editorial.css?v=20261002-async1"></noscript>
 <link rel="stylesheet" href="photo-viewer.css?v=20260930" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="photo-viewer.css?v=20260930"></noscript>
 <link rel="stylesheet" href="moonlit-discovery.css?v=20260930-1" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="moonlit-discovery.css?v=20260930-1"></noscript>
@@ -37,10 +43,13 @@
 <link rel="stylesheet" href="assets/moonlit-experience.css?v=20260930" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/moonlit-experience.css?v=20260930"></noscript>
 <link rel="stylesheet" href="assets/moonlit-v2.css?v=20260930-final-qa-2" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/moonlit-v2.css?v=20260930-final-qa-2"></noscript>
 <link rel="stylesheet" href="assets/homepage-premium.css?v=20261002-async1" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/homepage-premium.css?v=20261002-async1"></noscript>
+<!-- Canonical shared Moonlit visual system / tokens -->
 <link rel="stylesheet" href="assets/moonlit-system.css?v=20261002-async1" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/moonlit-system.css?v=20261002-async1"></noscript>
 <meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image">
+<!-- Homepage below-fold owners -->
 <link rel="stylesheet" href="assets/homepage-desktop-below-fold.css?v=20261002-3" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/homepage-desktop-below-fold.css?v=20261002-3"></noscript>
 <link rel="stylesheet" href="assets/homepage-mobile-below-fold.css?v=20261002-1" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/homepage-mobile-below-fold.css?v=20261002-1"></noscript>
+<!-- Final cross-page mobile compatibility layer: keep last -->
 <link rel="stylesheet" href="assets/mobile-rwd-final.css?v=20261002-h2"></head>
 <body id="top">
 
