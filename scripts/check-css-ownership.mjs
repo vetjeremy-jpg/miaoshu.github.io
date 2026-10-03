@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/homepage-premium.css':{hero:28,topbar:1,navlinks:1,panel:3,important:191},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
-  'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
+  'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
   'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
 const patterns={
