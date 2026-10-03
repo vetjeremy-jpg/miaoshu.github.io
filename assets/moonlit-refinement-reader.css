@@ -58,3 +58,6 @@ html[data-reading-theme="paper"] .moonlit-path a,
 html[data-reading-theme="paper"] .moonlit-crosscuration a,
 html[data-reading-theme="paper"] .moonlit-line-save{color:#6c522c}
 html[data-reading-theme="paper"] .chapter-body p.moonlit-saved-line{background:linear-gradient(90deg,rgba(128,101,56,.12),transparent);box-shadow:inset 2px 0 #806538}
+
+/* Shared reader cross-curation card */
+.moonlit-crosscuration{max-width:760px;margin:38px auto;padding:24px 0;border-block:1px solid rgba(202,220,236,.15)}.moonlit-crosscuration small{letter-spacing:.18em;color:#91a8bb}.moonlit-crosscuration strong{display:block;margin:7px 0;font:500 21px "Noto Serif TC","Songti TC",serif}.moonlit-crosscuration a{display:inline-flex;align-items:center;min-height:44px;color:#e1cfaa}
