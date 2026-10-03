@@ -229,3 +229,5 @@ if(errors.length){
 console.log('Moonlit CSS ownership budgets passed.');
 
 if(fs.existsSync('assets/homepage-final.css'))errors.push('retired homepage-final.css file must stay deleted');
+
+if(/hero-brand-mark/.test(inline)||/hero-brand-mark/.test(premium))errors.push('dead hero-brand-mark owner returned');
