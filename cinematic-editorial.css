@@ -26,9 +26,6 @@ body:before{background:radial-gradient(ellipse at 50% 5%,rgba(185,142,88,.055),t
 .creator-copy h3{color:#f2e9dc}
 .creator-copy p,.notice{color:#c8c2b8}
 #book{background:#171817}
-#book .bookshelf-scene{background:linear-gradient(90deg,#35291e,#1a1b19 5%,#20201c 50%,#1a1b19 95%,#35291e);border-color:#806644}
-#book .novel-card{background:radial-gradient(ellipse at 50% 70%,rgba(200,170,121,.08),transparent 65%)}
-#book .novel-card p{color:#d1c9bd}
 #miaoshu-album .album-photos{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .album-photos a{border:0;box-shadow:none;position:relative}
 .album-photos img{transition:transform .45s ease,filter .45s ease;filter:saturate(.86)}
