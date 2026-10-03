@@ -13,6 +13,7 @@ const patterns={
   important:/!important/g,
 };
 const errors=[];
+// Generic section/title before suppressions are retired as dead CSS.
 // Novel card pseudo-element suppression has one canonical #book owner.
 // Legacy hero aliases are retired; `.hero` is the canonical shared hook.
 function stripMediaBlocks(css){
