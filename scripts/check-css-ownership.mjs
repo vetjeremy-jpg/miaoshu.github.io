@@ -5,6 +5,7 @@ const budgets={
   'assets/homepage-premium.css':{hero:40,topbar:2,navlinks:2,panel:3,important:201},
   'assets/moonlit-v2.css':{hero:3,topbar:0,navlinks:0,panel:0,important:0},
   'assets/moonlight.css':{hero:6,topbar:12,navlinks:2,panel:4,important:22},
+  'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:0,important:10},
 };
 const patterns={
   hero:/\.hero\b/g,

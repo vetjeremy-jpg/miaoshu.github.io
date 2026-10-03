@@ -53,8 +53,7 @@
 .continue-box p{margin:0;color:var(--muted);line-height:1.5}
 .continue-box a{white-space:nowrap;color:var(--gold2);font-weight:700}
 .video-preview{display:grid;grid-template-columns:minmax(180px,275px) 1fr;gap:28px;align-items:center;max-width:750px;margin:auto}.video-preview iframe{width:100%;aspect-ratio:9/16;border:0;background:#06162a;border-radius:3px}
-.video-preview .notice{text-align:left}
-.video-preview .creator-nav{justify-content:flex-start}
+.video-preview .video-preview .creator-nav{justify-content:flex-start}
 
 
 #creative>.notice{margin-bottom:26px}
@@ -102,7 +101,7 @@
 #book .book-object:hover,#book .book-object:focus-visible{transform:translateY(-4px)}#book .book-read{min-height:44px;height:auto!important;white-space:normal;text-align:center}
 #book 
 a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4px}
-@media(max-width:650px){.panel{margin:22px 0;padding:24px 19px}.section-title:after{margin-top:12px}}
+@media(max-width:650px){.section-title:after{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* Complete book titles: prioritize legibility over decorative cover elements */
