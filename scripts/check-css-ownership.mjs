@@ -186,3 +186,5 @@ if(/@media\(max-width:700px\)[\s\S]*?\.hero-index\{[^}]*font-size:8px!important/
 if(/\.hero-index\{[^}]*grid-template-columns:repeat\(3,1fr\)!important/.test(inline))errors.push('hero-index flex container must not carry grid-template-columns');
 
 if(/assets\/homepage-mobile\.css/.test(homepage))errors.push('retired homepage-mobile.css must remain unloaded');
+
+if(fs.existsSync('assets/homepage-mobile.css'))errors.push('retired homepage-mobile.css file must stay deleted');

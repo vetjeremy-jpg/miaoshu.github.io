@@ -4,7 +4,7 @@ const fail = [];
 const read = p => fs.readFileSync(p,'utf8');
 const home = read('index.html');
 const mobile = read('assets/mobile-safety.css');
-const homepageMobile = read('assets/homepage-mobile.css');
+const homepageMobile = read('assets/homepage-mobile-below-fold.css');
 const moonlitV2 = read('assets/moonlit-v2.js');
 const reader = read('books/reader.css');
 const manifest = JSON.parse(read('site.webmanifest'));
