@@ -103,7 +103,7 @@ body{background:#09131e;color:var(--text)}
 .chapter-tools a,.chapter-tools button,.chapter-bookmark{box-shadow:none}
 .chapter-nav{border-top:1px solid var(--line)}
 @media(max-width:650px){.chapter-body{line-height:2}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 
 
 /* Reading comfort refinement */
