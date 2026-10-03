@@ -14,7 +14,7 @@ a{color:inherit}.topbar{position:sticky;top:0;z-index:1000;display:flex;justify-
 
 }/* Refined reading and discovery experience */
 :focus-visible{outline:3px solid var(--gold2);outline-offset:4px}.navlinks a:hover,.navlinks a:focus-visible{background:#ffffff0b;color:#f3dfb9}.hero h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-size:clamp(44px,5.3vw,78px);font-weight:500;letter-spacing:.05em;line-height:1.38;margin:26px 0 22px;max-width:8.4em;text-wrap:balance;color:#f3e9d8}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center}
 .cta.secondary{border:1px solid rgba(228,210,175,.5);color:var(--gold2);background:transparent}
 .cta:hover{filter:brightness(1.13)}
 .panel{scroll-margin-top:100px}@media(max-width:850px){.topbar{display:block;padding:8px 16px 6px}.navlinks{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;margin:6px -16px 0;padding:0 12px 5px;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks a{font-size:13px;padding:7px 10px}}
@@ -145,7 +145,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
 .hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
 .hero .hero-lede br{display:none}
-.hero-actions{margin-top:22px!important;gap:4px!important}
+
 .hero-actions .hero-primary{min-height:48px!important;padding:11px 16px!important}
 .hero-text-link{min-height:46px;display:flex;align-items:center;justify-content:center;font-size:12px!important}
 .hero-index{grid-template-columns:repeat(3,1fr)!important;margin-top:22px!important;padding-top:11px!important;gap:7px!important;font-size:8px!important;letter-spacing:.08em!important}
