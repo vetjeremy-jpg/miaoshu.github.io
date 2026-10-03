@@ -56,6 +56,8 @@ if(/html\[data-reading-theme="paper"\] \.audio-reading\{/.test(readerBase))error
 if(/@media\(max-width:650px\)\{\.chapter\{padding:24px 20px\}/.test(readerBase))errors.push('books reader must defer first mobile chapter padding to editorial interiors');
 if(/@media\(max-width:650px\)\{\.chapter\{padding:25px 20px\}\.chapter-body p\{line-height:2\.05\}\}/.test(readerBase))errors.push('books reader must defer final 650px chapter rhythm to editorial interiors');
 if(/@media\(max-width:430px\)\{\.reading-intro\{padding:20px 16px\}/.test(readerBase))errors.push('superseded first 430px compact entry layout returned');
+const readerReducedScrollRules=(readerBase.match(/@media\(prefers-reduced-motion:reduce\)\{html\{scroll-behavior:auto\}\}/g)||[]).length;
+if(readerReducedScrollRules>1)errors.push(`books reader has ${readerReducedScrollRules} duplicate reduced-motion scroll rules; keep one canonical owner`);
 const reader340Blocks=(readerBase.match(/@media\(max-width:340px\)/g)||[]).length;
 if(reader340Blocks>2)errors.push(`books reader has ${reader340Blocks} max-width:340px blocks; keep narrow-screen overrides consolidated`);
 if(/@media\(max-width:720px\)\{\.audiobook-options\{grid-template-columns:1fr\}\.audiobook-actions button\{flex:1 1 44%\}/.test(readerBase))errors.push('superseded flex sizing returned to the 720px audiobook grid');
