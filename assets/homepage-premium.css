@@ -1,11 +1,11 @@
 /* Moonlit ownership: legacy homepage component layer.
    Migration candidate: do not add new global homepage rules here; move stable rules to the canonical homepage/system layers. */
 /* Moonlit Stories — Homepage Premium Editorial Layer */
-:root{--hp-bg:#07111d;--hp-surface:#0a1726;--hp-ink:#f2eee7;--hp-muted:#9eafbe;--hp-gold:#dcc9a4;--hp-line:rgba(220,201,164,.16);--hp-moon:rgba(187,215,239,.12)}
-body{background:linear-gradient(180deg,#07111d 0%,#081522 46%,#060e18 100%)!important}
-body:before{background:radial-gradient(ellipse 55% 34% at 82% 4%,rgba(177,210,238,.10),transparent 70%)!important}
+:root{--hp-surface:#0a1726;--hp-moon:rgba(187,215,239,.12)}
 
-.navlinks .nav-follow{background:transparent!important;color:var(--hp-gold)!important;border:1px solid rgba(220,201,164,.35)}
+
+
+
 
 
 .hero-brand-mark{width:112px!important;margin:0 0 30px!important;opacity:.88}
