@@ -87,6 +87,7 @@ if(/:is\(\.topbar,\.top\) nav a,:is\(\.topbar,\.top\) \.navlinks a\{display:inli
 if((moonlightCss.match(/\.brand::after/g)||[]).length>1)errors.push('moonlight.css must keep one canonical brand pseudo-element suppression rule');
 if(/#book \.cover-emblem,#book \.cover-moon/.test(moonlightCss))errors.push('moonlight.css must not duplicate bookshelf moon suppression outside the canonical :is() rule');
 if((moonlightCss.match(/footer\{border-top-color:/g)||[]).length>1)errors.push('moonlight.css must keep a single footer border owner');
+if(/--moon-crescent:|--moon-soft:|--moon-focus:/.test(moonlightCss))errors.push('moonlight.css must not restore retired moon token data');
 
 if(fs.existsSync('assets/moonlit-v2.css'))errors.push('retired assets/moonlit-v2.css must not be recreated');
 for(const path of fs.readdirSync('.', {recursive:true}).filter(path=>path.endsWith('.html')&&!path.startsWith('.git/'))){if(fs.readFileSync(path,'utf8').includes('moonlit-v2.css'))errors.push(path+' must not load retired moonlit-v2.css');}
