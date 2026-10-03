@@ -1,0 +1,94 @@
+/* Moonlit ownership: mobile compatibility safety layer.
+   Keep cross-page regression fixes here only; new component styling belongs in its owning stylesheet. */
+/* Moonlit Stories — cross-site mobile safety layer.
+   Structural safeguards only; page and component styling belongs to its owning stylesheet. */
+*{box-sizing:border-box}
+html,body{max-width:100%}
+img,video,iframe,svg,canvas{max-width:100%;height:auto}
+main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
+@media(max-width:700px){
+ html{overflow-x:hidden;scroll-padding-top:82px}
+ body{overflow-x:hidden}
+ h1,h2,h3,h4,p,blockquote,figcaption,a{overflow-wrap:anywhere}
+ .topbar,.top{
+   width:100%;max-width:100%;padding-left:max(14px,env(safe-area-inset-left))!important;
+   padding-right:max(14px,env(safe-area-inset-right))!important
+ }
+ .topbar .brand,.top .brand{max-width:100%;min-height:44px}
+ .navlinks,.top nav{
+   max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;
+   -webkit-overflow-scrolling:touch;scrollbar-width:none;
+   scroll-padding-left:max(14px,env(safe-area-inset-left));
+   scroll-padding-right:max(18px,env(safe-area-inset-right));
+   padding-right:max(18px,env(safe-area-inset-right))!important
+ }
+ .navlinks::-webkit-scrollbar,.top nav::-webkit-scrollbar{display:none}
+ .navlinks a,.top nav a{min-height:44px;white-space:nowrap;flex:0 0 auto}
+ .navlinks a:last-child,.top nav a:last-child{margin-right:4px}
+ .navlinks a[aria-current="page"],.top nav a[aria-current="page"]{
+   color:#f1d79a!important;text-decoration:none;
+   box-shadow:inset 0 -2px 0 rgba(241,215,154,.72)
+ }
+ .navlinks,.top nav{
+   -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%);
+   mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%)
+ }
+ .navlinks:focus-within,.top nav:focus-within{
+   -webkit-mask-image:none;mask-image:none
+ }
+ .wrap{width:100%;max-width:100%}
+ .panel{max-width:100%}
+ button,input,select,textarea{max-width:100%}
+ input,select,textarea{font-size:16px}
+ iframe{width:100%;border:0}
+}
+/* Homepage bookshelf: rails remain visible while only the books row scrolls. */
+@media(max-width:700px){
+ body:not([data-book-id]) #book{overflow:visible!important}
+ body:not([data-book-id]) #book .bookshelf-scene{
+   --moonlit-rail:5px;--moonlit-gutter:28px;--moonlit-book-gap:14px;
+   position:relative!important;width:100%!important;max-width:100%!important;
+   margin-inline:0!important;padding:14px 0 0!important;overflow:visible!important
+ }
+ body:not([data-book-id]) #book .bookshelf-scene::before,
+ body:not([data-book-id]) #book .bookshelf-scene::after{
+   display:block!important;content:""!important;position:absolute!important;top:48px!important;bottom:18px!important;
+   width:var(--moonlit-rail)!important;z-index:20!important;opacity:1!important;visibility:visible!important;
+   background:linear-gradient(90deg,#5a4027,#9a7548 48%,#6b4d2e)!important;
+   box-shadow:0 0 0 1px rgba(238,205,143,.28),0 3px 8px rgba(0,0,0,.24)!important;pointer-events:none
+ }
+ body:not([data-book-id]) #book .bookshelf-scene::before{left:0!important}
+ body:not([data-book-id]) #book .bookshelf-scene::after{right:0!important;transform:scaleX(-1)!important}
+ body:not([data-book-id]) #book .novels-grid{
+   position:relative!important;z-index:2!important;width:100%!important;max-width:100%!important;
+   margin:34px 0 0!important;gap:var(--moonlit-book-gap)!important;padding-left:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
+   padding-right:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important;
+   padding-bottom:18px!important;align-items:stretch!important;overflow-x:auto!important;overflow-y:visible!important;scroll-padding-inline:calc(var(--moonlit-rail) + var(--moonlit-gutter))!important
+ }
+}
+@media(max-width:390px){body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:24px;--moonlit-book-gap:12px}}
+/* 320px safety: keep controls usable without compressing text into slivers. */
+@media(max-width:340px){
+ .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
+ body:not([data-book-id]) #book .bookshelf-scene{--moonlit-gutter:20px;--moonlit-book-gap:10px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* H2 iPhone/Safari performance + viewport polish — 2026-10-02 */
+@media(max-width:700px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
+  .topbar{padding-top:max(8px,env(safe-area-inset-top))!important}
+  .wrap{padding-bottom:max(70px,calc(44px + env(safe-area-inset-bottom)))!important}
+  footer{padding-bottom:max(36px,calc(22px + env(safe-area-inset-bottom)))!important}
+  a,button,[role="button"]{touch-action:manipulation}
+  .navlinks,.top nav{
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch
+  }
+  img{content-visibility:auto}
+
+}
+@supports not (height:100dvh){
+  @media(max-width:700px){body{min-height:100vh}}
+}
