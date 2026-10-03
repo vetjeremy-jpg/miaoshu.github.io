@@ -38,6 +38,8 @@ const cinematic=fs.readFileSync('cinematic-editorial.css','utf8');
 const cinematicBase=stripMediaBlocks(cinematic);
 if(/\.tonight-grid\{display:grid;grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(discovery))errors.push('legacy discovery Tonight desktop layout returned');
 if(/\.tonight-grid article\{padding:28px 26px/.test(discovery))errors.push('legacy discovery Tonight card geometry returned');
+if(/@media\(max-width:650px\)[\s\S]*?\.tonight-grid\{grid-template-columns:1fr\}/.test(discovery))errors.push('legacy discovery mobile Tonight fallback returned');
+if(/\.moonlit-discovery\{|\.moonlit-entry-grid\{|\.moonlit-entry\{/.test(discovery))errors.push('moonlit-discovery.css must not regain homepage Discovery component ownership');
 if(/\.topbar\{|\.navlinks\s+a\{|\.navlinks\s+\.nav-follow\{|\.brand\{/.test(cinematicBase))errors.push('cinematic editorial must not own homepage topbar/nav component styling');
 if(/\.cta\{|\.cta\.secondary\{|\.panel\{/.test(cinematicBase))errors.push('cinematic editorial must not own base CTA/panel component styling');
 if(/\.section-title\{/.test(cinematicBase))errors.push('cinematic editorial must not own base section-title typography');
