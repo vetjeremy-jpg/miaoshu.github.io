@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v38';
+const CACHE='moonlit-shell-v39';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -15,7 +15,7 @@ const LAZY_ASSETS=[
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png',
  SCOPE+'assets/moonlit-home-content.js?v=20261002-split2',
- SCOPE+'assets/moonlit-home-idle.js?v=20261003-split1',
+ SCOPE+'assets/moonlit-home-idle.js?v=20261003-split2',
  SCOPE+'assets/moonlit-home-reading-state.js?v=20261003-split1',
  SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
  SCOPE+'assets/moonlit-footer.js?v=20261002-split1',

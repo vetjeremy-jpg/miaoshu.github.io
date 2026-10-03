@@ -7,7 +7,7 @@ const initLater=()=>{ const progress=document.getElementById('progress');let pro
  addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(updateProgress)},{passive:true});updateProgress();
  document.getElementById('share-site')?.addEventListener('click',async()=>{const url=location.origin+location.pathname;try{if(navigator.share)await navigator.share({title:'喵叔 Moonlit Stories',url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);document.getElementById('share-feedback').textContent='網站連結已複製。'}else document.getElementById('share-feedback').textContent='請從網址列複製連結。'}catch(e){if(e.name!=='AbortError')document.getElementById('share-feedback').textContent='請從網址列複製連結。'}});
  document.getElementById('save-site')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.origin+location.pathname);document.getElementById('save-feedback').textContent='網站連結已複製。'}catch(e){document.getElementById('save-feedback').textContent='請從網址列複製連結。'}});
- const like=document.getElementById('like-site'),feedback=document.getElementById('support-feedback'),endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
+ const initSupport=()=>{ const like=document.getElementById('like-site'),feedback=document.getElementById('support-feedback'),endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
  let visitor=get('miaoshu-anonymous-visitor');
  if(!visitor||!/^[0-9a-f-]{36}$/i.test(visitor)){visitor=crypto.randomUUID();set('miaoshu-anonymous-visitor',visitor)}
  let active=false;like.disabled=true;like.textContent='♡ 喜歡作品 · 載入中';
@@ -19,5 +19,7 @@ const initLater=()=>{ const progress=document.getElementById('progress');let pro
  bellText(get('miaoshu-bell')==='1');
  if(bell.getAttribute('aria-pressed')==='true'){const previous=get('miaoshu-content-signature');if(previous&&previous!==signature)feedback.textContent='有新內容了！看看最近更新。';set('miaoshu-content-signature',signature)}
  bell.addEventListener('click',()=>{const on=bell.getAttribute('aria-pressed')!=='true';if(!set('miaoshu-bell',on?'1':'0')||(on&&!set('miaoshu-content-signature',signature))){feedback.textContent='瀏覽器未允許儲存提醒設定。';return}bellText(on);feedback.textContent=on?'已開啟回訪提醒。下次造訪若有更新會在此提示。':'已關閉回訪提醒。'});
- };if('requestIdleCallback'in window)requestIdleCallback(initLater,{timeout:1500});else setTimeout(initLater,700);
+
+ };
+ const support=document.getElementById('support');if(support&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();initSupport()}},{rootMargin:'700px 0px'});io.observe(support)}else initSupport(); };if('requestIdleCallback'in window)requestIdleCallback(initLater,{timeout:1500});else setTimeout(initLater,700);
 })();
