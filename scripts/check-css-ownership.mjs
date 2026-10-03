@@ -217,3 +217,5 @@ if(errors.length){
   process.exit(1);
 }
 console.log('Moonlit CSS ownership budgets passed.');
+
+if(fs.existsSync('assets/homepage-final.css'))errors.push('retired homepage-final.css file must stay deleted');
