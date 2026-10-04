@@ -913,3 +913,13 @@
   #featured .featured-explore{padding-inline:14px!important}
   #featured .featured-explore h3{font-size:23px!important}
 }
+
+
+/* Moonlit immersion pass 8 — explicit editorial arc on compact screens — 2026-10-04 */
+@media(max-width:700px){
+  .hero+.wrap>#tonight{padding-top:54px!important}
+  #tonight .chapter-kicker,#featured .chapter-kicker{letter-spacing:.14em!important}
+  #tonight .pick-number{opacity:.76}
+  #featured .featured-sublabel{opacity:.72}
+  #featured .featured-visual figcaption{font-size:11px!important;opacity:.72}
+}
