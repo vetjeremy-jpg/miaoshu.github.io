@@ -1,0 +1,117 @@
+/* Moonlit homepage editorial refinement — 2026-10-04
+   Purpose: reduce UI chrome, create asymmetric reading rhythm, and separate the
+   three recommendation chapters without changing navigation or functionality. */
+
+body#top:not([data-book-id]){
+  --editorial-rule:rgba(220,230,240,.09);
+  --editorial-muted:#91a2b0;
+}
+
+/* 01 — Cover story: one focal hierarchy. */
+body#top:not([data-book-id]) .hero-edition{opacity:.58;border-bottom-color:rgba(220,230,240,.08)}
+body#top:not([data-book-id]) .hero .eyebrow{display:none}
+body#top:not([data-book-id]) .hero-index{display:none}
+body#top:not([data-book-id]) .hero-actions{gap:24px!important}
+body#top:not([data-book-id]) .hero-text-link{border-bottom:0!important;color:#9aaab7!important}
+body#top:not([data-book-id]) .hero-primary{box-shadow:none!important}
+body#top:not([data-book-id]) .hero::after{opacity:.44}
+
+/* Editorial transitions are prose, not interface chrome. */
+.editorial-transition{
+  width:min(1180px,calc(100% - 48px));margin:0 auto;
+  padding:clamp(58px,7vw,92px) 0 clamp(18px,2vw,28px);
+  color:#a9b5bf;font:400 clamp(18px,1.8vw,24px)/1.8 "Noto Serif TC","Songti TC",serif;
+  letter-spacing:.035em
+}
+.editorial-transition span{display:inline-block;padding-left:22px;border-left:1px solid rgba(220,201,164,.32)}
+
+/* 02 — Tonight: light, quick, serendipitous. */
+#tonight.panel{border:0!important;background:transparent!important;padding-inline:0!important}
+#tonight .notice{max-width:38em;color:var(--editorial-muted)}
+#tonight .tonight-grid{border-top:1px solid var(--editorial-rule);gap:0!important}
+#tonight .tonight-grid article{
+  border:0!important;border-radius:0!important;box-shadow:none!important;
+  background:transparent!important;padding:30px clamp(18px,2.6vw,34px)!important
+}
+#tonight .tonight-grid article+article{border-left:1px solid var(--editorial-rule)!important}
+#tonight .tonight-grid h3{margin-top:8px}
+#tonight .tonight-grid a{
+  display:inline-flex;min-height:44px;align-items:center;padding:6px 0;
+  color:#d6c49f;text-decoration:none;border-bottom:1px solid transparent
+}
+#tonight .tonight-grid a:hover,#tonight .tonight-grid a:focus-visible{border-bottom-color:rgba(214,196,159,.42)}
+
+/* 03 — Deep dive: quieter, denser, editorial feature rather than another card row. */
+#featured.panel{border:0!important;border-top:1px solid var(--editorial-rule)!important;border-radius:0!important;background:transparent!important}
+#featured .featured-grid{align-items:center}
+#featured .featured-copy p{max-width:38em;color:#9babb8}
+#featured .feature-actions .cta{
+  background:transparent!important;color:#dcc9a4!important;border:0!important;
+  border-bottom:1px solid rgba(220,201,164,.28)!important;padding-inline:0!important
+}
+#featured .feature-actions .deep-dive-next{color:#9aabb8}
+#featured .featured-visual{border-radius:2px!important;box-shadow:none!important}
+#featured .featured-explore{border:1px solid var(--editorial-rule)!important;border-radius:2px!important;box-shadow:none!important;background:rgba(8,20,32,.34)!important}
+
+/* Reduce generic dashboard-card language below the opening arc. */
+#creative .creator-card,#about.about-miaoshu,#support.stay-with-moonlight{
+  box-shadow:none!important;border-radius:2px!important
+}
+#creative .creator-card{background:transparent!important}
+#creative .creator-art{opacity:.62}
+#creative a,#about a,.album-external-link,.moonlit-video-text-link{
+  text-decoration:none;border-bottom:1px solid rgba(205,187,152,.18)
+}
+
+/* Four-level type hierarchy: brand / section / work / metadata. */
+body#top:not([data-book-id]) .section-title,
+body#top:not([data-book-id]) #featured h2{letter-spacing:.02em}
+body#top:not([data-book-id]) :is(.chapter-kicker,.creator-tag,.eyebrow,.featured-sublabel,.pick-number,.moonlit-video-label){
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;
+  font-size:11px!important;line-height:1.5;letter-spacing:.15em!important;color:#7f92a1
+}
+body#top:not([data-book-id]) :is(.tonight-grid h3,.creator-card h3,.album-photo h3,.moonlit-video-grid h3){
+  font-family:"Noto Serif TC","Songti TC",serif;font-weight:500
+}
+
+/* Closing chapter before newsletter/footer. */
+.moonlit-closing{
+  margin:clamp(76px,10vw,132px) 0 22px;padding:clamp(46px,6vw,74px) 0;
+  border-top:1px solid var(--editorial-rule);border-bottom:1px solid var(--editorial-rule);
+  text-align:center
+}
+.moonlit-closing .chapter-kicker{text-align:center}
+.moonlit-closing h2{margin:10px auto 12px;font-size:clamp(30px,3.4vw,44px);font-weight:500}
+.moonlit-closing>p{max-width:34em;margin:0 auto;color:#91a2b0}
+.moonlit-closing nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 26px;margin-top:26px}
+.moonlit-closing nav a{min-height:44px;display:inline-flex;align-items:center;color:#d5c39e;text-decoration:none;border-bottom:1px solid rgba(213,195,158,.2)}
+
+/* Deliberately asymmetric mobile cadence: dense → pause → dense → pause. */
+@media(max-width:700px){
+  body#top:not([data-book-id]) .hero-edition{display:none}
+  body#top:not([data-book-id]) .hero{padding-top:42px!important;padding-bottom:52px!important}
+  body#top:not([data-book-id]) .hero::after{opacity:.32}
+  body#top:not([data-book-id]) .hero-actions{margin-top:22px!important;gap:8px!important}
+  body#top:not([data-book-id]) .hero-primary{width:auto!important}
+  body#top:not([data-book-id]) .hero-text-link{justify-content:flex-start;padding-left:2px!important}
+  .editorial-transition{width:100%;padding:58px 0 18px;font-size:18px}
+  .editorial-transition span{padding-left:16px}
+  #tonight{padding-top:30px!important;padding-bottom:48px!important}
+  #tonight .tonight-grid{border-top:0}
+  #tonight .tonight-grid article{padding:22px 2px!important}
+  #tonight .tonight-grid article+article{border-left:0!important;border-top:1px solid var(--editorial-rule)!important}
+  #featured{margin-top:12px!important;padding-top:58px!important;padding-inline:0!important}
+  #featured .featured-explore{margin-inline:0!important;border-left:0!important;border-right:0!important;padding-inline:0!important;background:transparent!important}
+  .moonlit-closing{margin-top:72px;padding:42px 0}
+  .moonlit-closing nav{gap:4px 18px}
+}
+@media(max-width:390px){
+  .editorial-transition{padding-top:52px}
+  #tonight{padding-top:26px!important;padding-bottom:44px!important}
+  #featured{padding-top:54px!important;padding-bottom:62px!important}
+  .moonlit-closing{margin-top:64px;padding:38px 0}
+}
+@media(max-width:330px){
+  .editorial-transition{padding-top:46px;font-size:17px}
+  #tonight .tonight-grid article{padding-block:19px!important}
+}
