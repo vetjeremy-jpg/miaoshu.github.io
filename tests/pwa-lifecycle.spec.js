@@ -56,7 +56,7 @@ test.describe('Moonlit PWA lifecycle', () => {
     await page.goto('./#book', { waitUntil: 'domcontentloaded' });
     await assertControlled('homepage book shelf');
 
-    await page.locator('a[href="books/fushengsuiyue/index.html#toc"]').first().click();
+    await page.locator('#book a[href="books/fushengsuiyue/index.html#toc"]').first().click();
     await expect(page).toHaveURL(/\/books\/fushengsuiyue\/index\.html#toc$/);
     await assertControlled('novel reader');
 
