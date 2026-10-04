@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 
 const BASE='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
@@ -27,6 +28,8 @@ const headerSnapshot=(label,res)=>({
   lastModified:res.headers.get('last-modified')||'missing'
 });
 const diagnostics=[];
+const normalizeText=s=>s.replace(/\r\n/g,'\n');
+const sha256=s=>createHash('sha256').update(normalizeText(s),'utf8').digest('hex');
 
 
 const localHome=await readFile(new URL('../index.html',import.meta.url),'utf8');
@@ -37,6 +40,7 @@ const expectedShell=swValue(localSw,'CACHE');
 const expectedPages=swValue(localSw,'PAGES');
 const expectedScope=swValue(localSw,'SCOPE');
 must('repository service worker must expose shell, page and scope fingerprints',Boolean(expectedShell&&expectedPages&&expectedScope));
+const expectedHomeHash=sha256(localHome);
 const expectedRuntime=localHome.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
 must('repository homepage must expose a versioned Moonlit runtime',Boolean(expectedRuntime));
 
@@ -56,6 +60,8 @@ async function waitForRuntime(attempts=6){
   throw new Error(`production runtime must match repository fingerprint (expected ${expectedRuntime}, found ${liveRuntime||'missing'})`);
 }
 const {home,liveRuntime}=await waitForRuntime();
+const liveHomeHash=sha256(home);
+must(`production homepage content fingerprint must match repository (expected ${expectedHomeHash.slice(0,12)}, found ${liveHomeHash.slice(0,12)})`,liveHomeHash===expectedHomeHash);
 const nav=home.match(/<nav class="navlinks"[^>]*>([\s\S]*?)<\/nav>/)?.[1]||'';
 const labels=[...nav.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)].map(m=>m[1].replace(/<[^>]+>/g,'').trim());
 const expected=['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','⌕ 搜尋'];
@@ -103,6 +109,7 @@ const report={
   base:BASE,
   expectedRuntime,
   liveRuntime,
+  homepageFingerprint:{expected:expectedHomeHash,live:liveHomeHash,match:liveHomeHash===expectedHomeHash},
   serviceWorker:{shell:expectedShell,pages:expectedPages,scope:expectedScope},
   resources:diagnostics.slice(-4)
 };
