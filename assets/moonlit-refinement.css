@@ -163,3 +163,56 @@ main>section:not(.hero):not(.moonlit-tonight){scroll-margin-top:88px}
     padding:20px 0 0
   }
 }
+
+
+/* Three-tier mobile hierarchy polish: editorial pick + mood controls. */
+@media(max-width:430px){
+  .moonlit-editorial-feature{
+    margin:0 14px 30px;
+    padding:22px 18px 24px
+  }
+  .moonlit-editorial-feature small{
+    font-size:9px;
+    letter-spacing:.16em
+  }
+  .moonlit-editorial-feature .moonlit-editorial-kind{
+    margin-top:7px;
+    font-size:9px;
+    letter-spacing:.1em
+  }
+  .moonlit-editorial-feature strong{
+    margin-top:5px;
+    font-size:clamp(25px,6.5vw,28px);
+    line-height:1.42
+  }
+  .moonlit-editorial-feature p{
+    margin-top:12px;
+    font-size:15px;
+    line-height:1.82
+  }
+  .moonlit-editorial-feature a{
+    margin-top:14px;
+    min-height:44px
+  }
+  .featured-explore .moonlit-mood-selector h4{
+    font-size:22px
+  }
+  .featured-explore .moonlit-moods{
+    gap:9px
+  }
+}
+@media(max-width:375px){
+  .moonlit-editorial-feature{
+    margin-left:12px;
+    margin-right:12px;
+    margin-bottom:24px;
+    padding:20px 16px 22px
+  }
+  .moonlit-editorial-feature strong{
+    font-size:25px
+  }
+  .featured-explore .moonlit-moods{
+    grid-template-columns:minmax(0,1fr);
+    gap:8px
+  }
+}
