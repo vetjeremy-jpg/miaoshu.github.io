@@ -298,15 +298,16 @@
     max-width:100%!important
   }
 
-  #instagram-reel{
-    overflow:hidden!important
-  }
+  /* Generic reel geometry lives here; Video Hub keeps only its composition-specific sizing below. */
+  #instagram-reel,
   #instagram-reel>div,
   #instagram-reel iframe{
-    width:100%!important;
     max-width:100%!important;
     box-sizing:border-box!important
   }
+  #instagram-reel{overflow:hidden!important}
+  #instagram-reel>div,
+  #instagram-reel iframe{width:100%!important}
 
   #updates .update-actions a,
   .feature-actions .cta{
@@ -388,20 +389,15 @@
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
     gap:18px!important;
-    width:100%!important;
-    max-width:100%!important;
     margin:24px 0 0!important
   }
   #featured-short .moonlit-video-primary{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
     gap:18px!important;
-    width:100%!important;
-    max-width:100%!important;
     min-width:0!important;
     padding:0 0 20px!important;
-    overflow:hidden!important;
-    box-sizing:border-box!important
+    overflow:hidden!important
   }
   #featured-short .moonlit-video-primary-media{
     width:min(100%,320px)!important;
@@ -453,12 +449,8 @@
   }
   #featured-short #instagram-reel.moonlit-video-secondary{
     display:block!important;
-    width:100%!important;
-    max-width:100%!important;
     min-width:0!important;
-    padding:20px!important;
-    box-sizing:border-box!important;
-    overflow:hidden!important
+    padding:20px!important
   }
   #featured-short .moonlit-video-secondary-copy{
     width:100%!important;
