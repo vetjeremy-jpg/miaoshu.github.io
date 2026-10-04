@@ -159,7 +159,7 @@ body:not([data-book-id]) > .topbar .navlinks a:hover{transform:translateY(-1px)}
 .hero-inner{gap:28px!important}.hero-copy{width:100%}
 .hero-edition{margin:0 0 20px!important;padding-bottom:9px!important;font-size:8px!important;letter-spacing:.16em!important}
 .hero .eyebrow{font-size:10px!important;letter-spacing:.14em!important}
-.hero h1{max-width:7em!important;margin:14px 0 16px!important;font-size:clamp(43px,12.4vw,57px)!important;line-height:1.18!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
+.hero h1{max-width:7em!important;margin:14px 0!important;font-size:clamp(43px,12vw,52px)!important;line-height:1.18!important;word-break:keep-all;overflow-wrap:normal;text-wrap:balance}
 .hero .hero-lede{max-width:19em!important;font-size:15px!important;line-height:1.9!important;word-break:keep-all;overflow-wrap:break-word}
 .hero .hero-lede br{display:none}
 
