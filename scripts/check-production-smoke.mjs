@@ -16,6 +16,9 @@ async function get(path, attempts=4){
   throw last;
 }
 const must=(label,ok)=>{if(!ok)throw new Error(label);};
+const contentType=res=>(res.headers.get('content-type')||'').toLowerCase();
+const mustType=(path,res,pattern)=>must(`${path} must return expected Content-Type, found ${contentType(res)||'missing'}`,pattern.test(contentType(res)));
+
 
 const localHome=await readFile(new URL('../index.html',import.meta.url),'utf8');
 const localSw=await readFile(new URL('../sw.js',import.meta.url),'utf8');
@@ -48,17 +51,32 @@ const expected=['首頁','小說','攝影','作品星圖','札記','影片','關
 must('production homepage must expose the exact nine-entry navigation',JSON.stringify(labels)===JSON.stringify(expected));
 must('production homepage must link its manifest',home.includes('href="/miaoshu.github.io/site.webmanifest"'));
 
-for(const path of ['videos/','works/','search/','site.webmanifest','sw.js','apple-touch-icon.png','assets/icons/icon-192.png','assets/icons/icon-512.png']){
-  await get(path);
+for(const path of ['videos/','works/','search/']){
+  const res=await get(path);
+  mustType(path,res,/text\/html/);
 }
-const liveSw=await (await get('sw.js')).text();
+const manifestRes=await get('site.webmanifest');
+mustType('site.webmanifest',manifestRes,/(application\/manifest\+json|application\/json)/);
+const swRes=await get('sw.js');
+mustType('sw.js',swRes,/(javascript|text\/plain)/);
+for(const path of ['apple-touch-icon.png','assets/icons/icon-192.png','assets/icons/icon-512.png']){
+  const res=await get(path);
+  mustType(path,res,/image\/png/);
+}
+const runtimeRes=await get(`assets/moonlit-v2.js?v=${expectedRuntime}`);
+mustType('canonical Moonlit runtime',runtimeRes,/(javascript|text\/plain)/);
+const runtimeBody=await runtimeRes.text();
+must('canonical Moonlit runtime must be JavaScript, not an HTML fallback',!/<(?:!doctype|html|head|body)\b/i.test(runtimeBody));
+must('canonical Moonlit runtime must retain service worker registration',runtimeBody.includes('serviceWorker.register'));
+const liveSw=await swRes.text();
+must('production service worker must be JavaScript, not an HTML fallback',!/<(?:!doctype|html|head|body)\b/i.test(liveSw));
 must('production service worker must precache the canonical runtime fingerprint',liveSw.includes(`moonlit-v2.js?v=${expectedRuntime}`));
 must(`production shell cache must match repository fingerprint (expected ${expectedShell})`,swValue(liveSw,'CACHE')===expectedShell);
 must(`production page cache must match repository fingerprint (expected ${expectedPages})`,swValue(liveSw,'PAGES')===expectedPages);
 must(`production service-worker scope must match repository fingerprint (expected ${expectedScope})`,swValue(liveSw,'SCOPE')===expectedScope);
 for(const asset of ['site.webmanifest','assets/icons/icon-192.png','assets/icons/icon-512.png']) must(`production service worker must retain ${asset} in its managed asset contract`,liveSw.includes(asset));
 
-const manifest=await (await get('site.webmanifest')).json();
+const manifest=await manifestRes.json();
 must('production manifest id must match repository',manifest.id===localManifest.id);
 must('production manifest start_url must match repository',manifest.start_url===localManifest.start_url);
 must('production manifest scope must match repository',manifest.scope===localManifest.scope);
