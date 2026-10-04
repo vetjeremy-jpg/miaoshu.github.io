@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:456},
+  'assets/homepage-mobile-below-fold.css':{important:453},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -193,6 +193,9 @@ if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
+const sectionRhythmContractCount=(homepageMobileBelow.match(/Mobile Section Rhythm Contract/g)||[]).length;
+if(sectionRhythmContractCount!==1)errors.push(`mobile section rhythm must have exactly one canonical contract (found ${sectionRhythmContractCount})`);
+if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:44px!important/.test(homepageMobileBelow)||/#book,#miaoshu-album,#featured-short\{padding-top:58px!important/.test(homepageMobileBelow))errors.push('canonical mobile section rhythm must use shared block tokens, not duplicated top/bottom padding');
 const gridContractCount=(homepageMobileBelow.match(/Mobile Grid Contract/g)||[]).length;
 if(gridContractCount!==1)errors.push(`mobile grids must have exactly one shared safety contract (found ${gridContractCount})`);
 if(/#book \.novels-grid\{[^}]*box-sizing:border-box/.test(homepageMobileBelow)||/\.album-photos\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('section grids must not duplicate shared container safety');
