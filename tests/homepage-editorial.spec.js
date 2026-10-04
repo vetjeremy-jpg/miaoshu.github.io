@@ -135,3 +135,24 @@ test('homepage image priority and intrinsic geometry stay stable', async ({ page
   expect(contract.album).toHaveLength(2);
   expect(contract.album.every(x=>x.width==='1086'&&x.height==='1448'&&x.loading==='lazy'&&x.priority==='low')).toBeTruthy();
 });
+
+
+test('heavy homepage enhancements are proximity driven, not early-idle forced', async ({ page }) => {
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  await page.waitForTimeout(2600);
+  await expect(page.locator('script[src*="photo-viewer.js"]')).toHaveCount(0);
+  await expect(page.locator('script[src*="moonlit-experience.js"]')).toHaveCount(0);
+  await page.locator('#featured').scrollIntoViewIfNeeded();
+  await expect.poll(async()=>page.locator('script[src*="photo-viewer.js"]').count()).toBe(1);
+  await expect.poll(async()=>page.locator('script[src*="moonlit-experience.js"]').count()).toBe(1);
+});
+
+test('support likes stay outside the initial network path', async ({ page }) => {
+  const likeRequests=[];
+  page.on('request',req=>{if(req.url().includes('/api/likes'))likeRequests.push(req.url())});
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  await page.waitForTimeout(1800);
+  expect(likeRequests).toHaveLength(0);
+});
