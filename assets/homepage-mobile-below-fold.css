@@ -118,7 +118,6 @@
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
     gap:24px!important;
-    max-width:100%!important;
     overflow:visible!important;
     margin:28px 0 0!important;
     padding:0!important
@@ -218,8 +217,9 @@
 @media(max-width:700px){
   .moonlit-cover{min-height:190px}
   .moonlit-quote-v2{padding-inline:20px}
-  .tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}
+  /* Mobile Grid Contract — shared container safety only; each section keeps its own layout rhythm. */
+  :is(.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos){min-width:0;box-sizing:border-box;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  :is(.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos)::-webkit-scrollbar{display:none}
 }
 
 
@@ -289,7 +289,6 @@
     overflow:hidden!important
   }
   #book .novels-grid{
-    box-sizing:border-box;
     max-width:100%!important
   }
 
