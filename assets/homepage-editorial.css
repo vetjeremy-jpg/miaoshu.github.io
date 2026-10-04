@@ -394,3 +394,105 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 #support .moonlit-inline-actions .support-primary:focus-visible span:last-child{
   border-bottom-color:#f3d99e!important
 }
+
+
+/* Moonlit editorial refinement V — immersion over inventory — 2026-10-04
+   P0 goal: fewer simultaneous decisions, a shorter visual middle, one calm ending.
+   Functional content remains in the DOM; this layer changes homepage presentation only. */
+
+/* Deep-dive discovery: three clear doors, then one optional moonlight drawer. */
+#featured .featured-explore-directory{display:none!important}
+#featured .moonlit-serendipity{
+  margin-top:18px!important;padding:18px 2px!important;
+  border-top:1px solid var(--editorial-rule)!important;
+  border-bottom:0!important
+}
+#featured .moonlit-mood-selector{
+  margin-top:0!important;border-top:1px solid var(--editorial-rule)!important;
+  opacity:.72
+}
+#featured .moonlit-mood-selector summary{
+  min-height:48px;display:flex;align-items:center;
+  color:#a99570;font-size:12px;letter-spacing:.08em
+}
+
+/* A real breathing page: the found line is not another card or CTA. */
+.moonlit-found-line{
+  min-height:clamp(260px,34vw,430px)!important;
+  display:grid!important;place-items:center!important;
+  margin:clamp(54px,8vw,104px) 0!important;padding:60px 18px!important;
+  border:0!important;background:transparent!important
+}
+.moonlit-found-line blockquote{
+  max-width:18em!important;margin:0 auto!important;text-align:center!important;
+  font:400 clamp(25px,3.2vw,42px)/1.75 "Noto Serif TC","Songti TC",serif!important;
+  color:#d9d5cb!important;letter-spacing:.045em!important
+}
+
+/* Library on the homepage is a curated preview; the full collection still exists
+   in markup and remains reachable through the library link. */
+#book .novels-grid .novel-card:nth-child(n+5){display:none!important}
+#book .novels-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#book .notice{max-width:44em}
+#book::after{
+  content:"完整十本小說皆收錄於 Moonlit Library · 往下閱讀，或從導覽列「小說」回到書房";
+  display:block;max-width:48em;margin:28px auto 0;padding-top:20px;
+  border-top:1px solid var(--editorial-rule);text-align:center;
+  color:#7f92a1;font-size:12px;line-height:1.8;letter-spacing:.04em
+}
+
+/* Visual work is an invitation, not a second archive. */
+#miaoshu-album .album-photos figure:nth-child(n+2){display:none!important}
+#miaoshu-album .album-photos{max-width:760px!important;margin-inline:auto!important}
+#miaoshu-album .album-actions{justify-content:center!important}
+#featured-short .moonlit-video-secondary{display:none!important}
+#featured-short .moonlit-video-grid{grid-template-columns:1fr!important;max-width:900px;margin-inline:auto}
+#featured-short .moonlit-video-primary{min-height:0!important}
+
+/* Secondary chapters become quieter so the work stays dominant. */
+#creative.explore-more,#about.about-miaoshu,#community{
+  margin-top:clamp(54px,7vw,86px)!important
+}
+#creative.explore-more .notice,#about .about-lede,#community>.notice{max-width:42em}
+#community .reader-comment-frame{max-height:560px;overflow:hidden;position:relative}
+#community .reader-comment-frame::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:90px;pointer-events:none;
+  background:linear-gradient(transparent,#07111d)
+}
+
+/* The old standalone breathing quote duplicated the ending. Closing now owns it. */
+.moonlit-breathing-quote{display:none!important}
+.moonlit-closing{
+  margin-top:clamp(84px,11vw,140px)!important;
+  padding:clamp(64px,8vw,92px) 0!important;
+  border-top:1px solid var(--editorial-rule)!important;
+  border-bottom:0!important
+}
+.moonlit-closing h2{font-size:clamp(34px,4vw,52px)!important}
+.moonlit-closing>p{font-family:"Noto Serif TC","Songti TC",serif;line-height:2}
+#newsletter{
+  max-width:900px!important;margin:0 auto!important;
+  padding-top:clamp(54px,7vw,82px)!important
+}
+
+/* Tablet/mobile: preserve breathing room while avoiding horizontal density. */
+@media(max-width:900px){
+  #book .novels-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:700px){
+  .moonlit-found-line{
+    min-height:300px!important;margin:42px 0 54px!important;padding:54px 8px!important
+  }
+  .moonlit-found-line blockquote{font-size:clamp(24px,7.2vw,32px)!important;line-height:1.8!important}
+  #book .novels-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  #book::after{margin-top:22px;padding-inline:10px}
+  #miaoshu-album .album-photos{display:block!important}
+  #featured-short .moonlit-video-primary{grid-template-columns:1fr!important}
+  #community .reader-comment-frame{max-height:460px}
+  .moonlit-closing{margin-top:72px!important;padding:56px 0!important}
+}
+@media(max-width:430px){
+  #book .novels-grid{grid-template-columns:1fr!important}
+  #book .novels-grid .novel-card:nth-child(n+4){display:none!important}
+  #book::after{content:"精選 3 本 · 完整十本小說可由「小說」進入書房"}
+}
