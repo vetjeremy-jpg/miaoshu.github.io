@@ -108,7 +108,7 @@
     border:1px solid rgba(220,230,240,.1)!important
   }
   .creator-copy{padding:22px 20px!important}
-  .creator-copy h3{font-size:22px!important;line-height:1.45!important;word-break:keep-all}
+  .creator-copy h3{font-size:22px!important;word-break:keep-all}
   .creator-copy a{display:flex;align-items:center;min-height:44px}
 
   #miaoshu-album{padding-top:58px!important}
