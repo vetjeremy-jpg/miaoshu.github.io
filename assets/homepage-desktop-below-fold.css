@@ -119,7 +119,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 
 /* Skip layout/paint work for deep homepage sections until they approach the viewport. */
 @supports (content-visibility:auto){
- #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
+ #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
 }
 
 /* Dynamic homepage components injected by moonlit-home-content.js. */
@@ -153,7 +153,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 @media(min-width:701px){#featured{padding-top:90px}.featured-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,90px)}.featured-visual{min-height:440px;border:0}.featured-copy h2{font-size:clamp(38px,4.6vw,58px)}.moonlit-found-line{max-width:900px;margin:80px auto;padding:0 0 0 32px;background:none}.moonlit-found-line blockquote{font-size:clamp(27px,3.4vw,44px);line-height:1.75}#miaoshu-album{padding-top:96px}.album-photos{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.album-photo{margin:0;background:transparent}.album-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}.album-photo figcaption{padding:18px 0}}
 
 /* Secondary homepage sections migrated from legacy Premium. */
-@media(min-width:701px){#reading-list{padding:32px 0}.reader-shelf{border-bottom:1px solid rgba(220,230,240,.08)}.shelf-heading h2{font-size:24px}#updates{padding:38px 0}.latest-update .section-title{font-size:clamp(24px,3vw,34px)}.update-heading time{color:#71879a}#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:76px;padding-bottom:76px}.about-layout{gap:clamp(40px,8vw,100px)}.moonlit-newsletter{margin-top:0}}
+@media(min-width:701px){#reading-list{padding:32px 0}.reader-shelf{border-bottom:1px solid rgba(220,230,240,.08)}.shelf-heading h2{font-size:24px}#updates{padding:38px 0}.latest-update .section-title{font-size:clamp(24px,3vw,34px)}.update-heading time{color:#71879a}#featured-short,#support,#follow,#about,#community,#newsletter{padding-top:76px;padding-bottom:76px}.about-layout{gap:clamp(40px,8vw,100px)}.moonlit-newsletter{margin-top:0}}
 footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Homepage layout/section typography migrated from legacy Premium; System retains panel surface tokens. */
@@ -237,5 +237,164 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   }
   #featured .featured-visual{
     min-height:360px
+  }
+}
+
+
+/* Moonlit Video hub: one editorial video section with a clear primary/secondary hierarchy. */
+#featured-short.moonlit-video-hub{
+  overflow:hidden
+}
+.moonlit-video-lede{
+  max-width:700px;
+  margin:0;
+  color:#9eafbe;
+  font-size:16px;
+  line-height:1.9
+}
+.moonlit-video-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(250px,.65fr);
+  gap:clamp(24px,4vw,52px);
+  align-items:start;
+  margin-top:30px
+}
+.moonlit-video-primary{
+  display:grid;
+  grid-template-columns:minmax(220px,300px) minmax(0,1fr);
+  gap:clamp(24px,3vw,36px);
+  align-items:center;
+  min-width:0;
+  padding:28px;
+  border:1px solid rgba(205,225,243,.13);
+  background:linear-gradient(145deg,rgba(17,38,57,.7),rgba(8,21,34,.42))
+}
+.moonlit-video-primary-media{
+  width:100%;
+  max-width:300px;
+  margin:0 auto
+}
+.moonlit-video-primary-media iframe{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:9/16;
+  border:0;
+  background:#06162a;
+  border-radius:10px
+}
+.moonlit-video-primary-copy{
+  min-width:0
+}
+.moonlit-video-label{
+  display:block;
+  margin-bottom:10px;
+  color:#aebdca;
+  font:600 10px/1.5 system-ui,sans-serif;
+  letter-spacing:.18em
+}
+.moonlit-video-primary h3,
+.moonlit-video-secondary h3{
+  margin:0 0 12px;
+  font-family:"Noto Serif TC","Songti TC",serif;
+  font-weight:500;
+  color:#eee9df
+}
+.moonlit-video-primary h3{
+  font-size:clamp(26px,2.6vw,34px);
+  line-height:1.4
+}
+.moonlit-video-primary-copy p{
+  margin:0 0 12px;
+  color:#9eafbe;
+  line-height:1.85
+}
+.moonlit-video-primary-copy .notice{
+  font-size:14px
+}
+.moonlit-video-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  margin-top:20px
+}
+.moonlit-video-actions .cta{
+  margin:0
+}
+.moonlit-video-text-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  color:#d9c7a4;
+  text-decoration:none;
+  border-bottom:1px solid rgba(217,199,164,.28)
+}
+#featured-short #instagram-reel.moonlit-video-secondary{
+  min-width:0;
+  padding:24px;
+  border:1px solid rgba(205,225,243,.1);
+  background:rgba(8,21,34,.34)
+}
+.moonlit-video-secondary h3{
+  font-size:22px;
+  line-height:1.45
+}
+.moonlit-video-secondary-copy{
+  margin-bottom:18px
+}
+.moonlit-video-secondary-copy p{
+  margin:0;
+  color:#8799a8;
+  font-size:13px;
+  line-height:1.75
+}
+.moonlit-reel-frame{
+  width:min(100%,260px);
+  margin:0 auto 16px;
+  aspect-ratio:9/16
+}
+#featured-short #instagram-reel .moonlit-reel-frame iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:10px!important;
+  background:#fff
+}
+.moonlit-video-secondary>a{
+  display:flex;
+  justify-content:center;
+  min-height:44px;
+  align-items:center;
+  color:#d9c7a4;
+  text-decoration:none
+}
+@media(min-width:701px) and (max-width:900px){
+  .moonlit-video-grid{
+    grid-template-columns:1fr;
+    gap:20px
+  }
+  #featured-short #instagram-reel.moonlit-video-secondary{
+    display:grid;
+    grid-template-columns:minmax(220px,280px) minmax(0,1fr);
+    gap:24px;
+    align-items:center
+  }
+  .moonlit-video-secondary-copy{
+    grid-column:2;
+    grid-row:1;
+    margin:0
+  }
+  .moonlit-reel-frame{
+    grid-column:1;
+    grid-row:1/3;
+    width:min(100%,250px);
+    margin:0 auto
+  }
+  .moonlit-video-secondary>a{
+    grid-column:2;
+    grid-row:2;
+    justify-content:flex-start
   }
 }
