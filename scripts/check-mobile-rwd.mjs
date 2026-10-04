@@ -46,7 +46,7 @@ must('512px icon file exists', fs.existsSync('assets/icons/icon-512.png'));
 must('Apple touch icon file exists', fs.existsSync('apple-touch-icon.png'));
 const primaryNavPages = ['index.html','gallery/index.html','posts/index.html','videos/index.html','about/index.html'].map(p => [p, read(p)]);
 for (const [page, html] of primaryNavPages) {
- for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) {
+ for (const label of ['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','搜尋']) {
   must(page+' primary nav has '+label, html.includes(label));
  }
 }
@@ -137,10 +137,10 @@ must('compact tablet featured image uses 360px minimum', /@media\(min-width:701p
 must('desktop featured base remains 0.9/1.1 after tablet split', /@media\(min-width:701px\)\{#featured\{padding-top:90px\}\.featured-grid\{grid-template-columns:\.9fr 1\.1fr;gap:clamp\(40px,7vw,90px\)\}\.featured-visual\{min-height:440px/.test(homepageDesktop));
 must('desktop bookshelf remains five-column from 701px up', /@media\(min-width:701px\)\{#book\{padding-top:80px\}[\s\S]*?\.novels-grid\{display:grid;grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/.test(homepageDesktop));
 must('mobile bookshelf styling cannot leak above 700px', /@media\(max-width:700px\)[\s\S]*?body:not\(\[data-book-id\]\) #book \.bookshelf-scene/.test(mobile));
-must('three-tier mobile comfort pass exists through 430px', /Three-tier mobile comfort pass:[\s\S]*?@media\(max-width:430px\)/.test(homepageMobile));
-must('Tier 2 mobile spacing is compact and readable', /@media\(max-width:430px\)[\s\S]*?#tonight\{[\s\S]*?padding-top:40px!important;[\s\S]*?padding-bottom:44px!important/.test(homepageMobile));
+must('canonical mobile editorial layer exists through 430px', /Moonlit mobile canonical layer[^\n]*320\/375\/390\/430[\s\S]*?@media\(max-width:430px\)/.test(homepageMobile));
+must('Tier 2 mobile spacing is canonical and readable', /Moonlit mobile canonical layer[\s\S]*?@media\(max-width:430px\)[\s\S]*?#tonight\{padding-top:54px!important;padding-bottom:58px!important\}/.test(homepageMobile));
 must('Tier 2 cards use 24px titles on 390–430 class phones', /@media\(max-width:430px\)[\s\S]*?#tonight \.tonight-grid h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
-must('Tier 2 heading sits between Tier 1 and Tier 3 on mobile', /@media\(max-width:430px\)[\s\S]*?#tonight \.section-title\{[\s\S]*?font-size:clamp\(27px,6\.8vw,29px\)!important/.test(homepageMobile));
+must('Tier 2 heading uses canonical mobile scale', /Moonlit mobile canonical layer[\s\S]*?#tonight \.section-title\{font-size:clamp\(29px,8vw,34px\)!important/.test(homepageMobile));
 must('Tier 1 title is capped at 27px through 430px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature strong\{[\s\S]*?font-size:clamp\(25px,6\.3vw,27px\)/.test(refinement));
 must('Tier 1 to Tier 2 handoff removes duplicate main top gap', /\.moonlit-editorial-feature \+ main\.wrap\{[\s\S]*?padding-top:0!important[\s\S]*?\.moonlit-editorial-feature \+ main\.wrap > #tonight\{[\s\S]*?margin-top:0!important/.test(refinement));
 
