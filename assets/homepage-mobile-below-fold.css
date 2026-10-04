@@ -713,8 +713,10 @@
   #featured .featured-explore .moonlit-entry-grid{gap:9px!important}
   #featured .featured-explore .moonlit-entry{padding:20px 17px!important}
 
-  #updates,#creative,#support,#about,#community,#newsletter{padding-top:44px!important;padding-bottom:44px!important}
-  #book,#miaoshu-album,#featured-short{padding-top:58px!important;padding-bottom:58px!important}
+  /* Mobile Section Rhythm Contract — two deliberate editorial tempos. */
+  :is(#updates,#creative,#support,#about,#community,#newsletter){--moonlit-section-block:44px}
+  :is(#book,#miaoshu-album,#featured-short){--moonlit-section-block:58px}
+  :is(#updates,#creative,#support,#about,#community,#newsletter,#book,#miaoshu-album,#featured-short){padding-block:var(--moonlit-section-block)!important}
   #book .section-title,#miaoshu-album .section-title,#featured-short .section-title{line-height:1.45!important}
   .moonlit-found-line{margin:40px 0!important;padding:30px 4px!important}
 }
