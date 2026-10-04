@@ -193,6 +193,9 @@ if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
+const editorialHierarchyContractCount=(homepageMobileBelow.match(/Mobile Editorial Hierarchy Contract/g)||[]).length;
+if(editorialHierarchyContractCount!==1)errors.push(`mobile editorial metadata must have exactly one hierarchy contract (found ${editorialHierarchyContractCount})`);
+if(/#featured \.featured-sublabel\{[^}]*letter-spacing:\.14em/.test(homepageMobileBelow))errors.push('featured sublabel must defer shared tracking/leading to the editorial hierarchy contract');
 const cardSurfaceContractCount=(homepageMobileBelow.match(/Mobile Card Surface Contract/g)||[]).length;
 if(cardSurfaceContractCount!==1)errors.push(`mobile cards must have exactly one shared containment contract (found ${cardSurfaceContractCount})`);
 if(/#creative \.creator-card\{overflow:hidden!important\}/.test(homepageMobileBelow)||/#miaoshu-album \.album-photo\{overflow:hidden!important\}/.test(homepageMobileBelow)||/#featured-short \.moonlit-video-primary\{[^}]*min-width:0!important/.test(homepageMobileBelow))errors.push('mobile card surfaces must defer shared containment to the card contract');
