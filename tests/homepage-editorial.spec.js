@@ -110,3 +110,28 @@ test('third-party embeds stay inert until they approach the viewport', async ({ 
   await expect(page.locator('.moonlit-video-primary iframe')).toHaveAttribute('src',/youtube-nocookie\.com/);
   await expect(page.locator('#community iframe')).toHaveAttribute('data-lazy-src',/chatgpt\.site/);
 });
+
+
+test('homepage image priority and intrinsic geometry stay stable', async ({ page }) => {
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  const contract=await page.evaluate(() => {
+    const logo=document.querySelector('.topbar .brand img');
+    const featured=document.querySelector('#featured .featured-visual img');
+    const album=[...document.querySelectorAll('#miaoshu-album img')];
+    return {
+      logo:{width:logo?.getAttribute('width'),height:logo?.getAttribute('height'),priority:logo?.getAttribute('fetchpriority'),ratio:getComputedStyle(logo).aspectRatio},
+      featured:{width:featured?.getAttribute('width'),height:featured?.getAttribute('height'),loading:featured?.getAttribute('loading'),priority:featured?.getAttribute('fetchpriority')},
+      album:album.map(img=>({width:img.getAttribute('width'),height:img.getAttribute('height'),loading:img.getAttribute('loading'),priority:img.getAttribute('fetchpriority')})),
+      high:[...document.querySelectorAll('img[fetchpriority="high"]')].length
+    };
+  });
+  expect(contract.logo.width).toBe('512');
+  expect(contract.logo.height).toBe('512');
+  expect(contract.logo.priority).toBe('auto');
+  expect(contract.logo.ratio).toBe('1 / 1');
+  expect(contract.high).toBe(0);
+  expect(contract.featured).toEqual({width:'1086',height:'1448',loading:'lazy',priority:'low'});
+  expect(contract.album).toHaveLength(2);
+  expect(contract.album.every(x=>x.width==='1086'&&x.height==='1448'&&x.loading==='lazy'&&x.priority==='low')).toBeTruthy();
+});
