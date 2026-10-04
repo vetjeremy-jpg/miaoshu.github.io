@@ -142,7 +142,7 @@ must('homepage reading-list link keeps 44px touch target', /\.shelf-heading>a\{[
 must('homepage mobile does not redefine bookshelf gap', !/\.novels-grid\{[^}]*gap:/s.test(homepageMobile));
 must('homepage mobile does not redefine bookshelf margin', !/\.novels-grid\{[^}]*margin:/s.test(homepageMobile));
 must('homepage mobile does not redefine bookshelf padding', !/\.novels-grid\{[^}]*padding:/s.test(homepageMobile));
-must('bookshelf rails are forced visible on mobile', /bookshelf-scene::before[\s\S]*visibility:visible!important/.test(mobile));
+must('homepage bookshelf uses clean rail-free mobile presentation', /bookshelf-scene::before[\s\S]*display:none!important[\s\S]*content:none!important/.test(mobile));
 must('books row scrolls horizontally', /#book \.novels-grid[\s\S]*overflow-x:auto!important/.test(mobile));
 must('mobile media never exceeds viewport', /img,video,iframe,svg,canvas\{max-width:100%;height:auto\}/.test(mobile));
 must('canonical mobile safety owns global overflow guard', /html,body\{max-width:100%;overflow-x:clip\}/.test(mobile));
