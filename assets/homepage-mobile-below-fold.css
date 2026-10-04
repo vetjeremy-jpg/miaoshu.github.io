@@ -628,7 +628,7 @@
   #newsletter .moonlit-newsletter-lede{font-size:clamp(21px,6.4vw,27px)!important;line-height:1.65!important}
 
 
-  #featured .moonlit-mood-selector{margin-top:18px!important;padding-top:12px!important}
+  #featured .moonlit-mood-selector{margin-top:var(--moonlit-space-copy)!important;padding-top:12px!important}
   #featured .moonlit-mood-selector>summary{
     width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;
     box-sizing:border-box;font-size:13px
@@ -696,7 +696,7 @@
 @media(max-width:700px){
   .hero+.wrap>#tonight{padding-top:54px!important}
   /* Mobile Editorial Spacing Contract — a small cadence vocabulary for label/title/copy/action flow. */
-  :root{--moonlit-space-label:8px;--moonlit-space-title:14px;--moonlit-space-copy:18px;--moonlit-space-content:22px;--moonlit-space-section:24px}
+  :root{--moonlit-space-title:14px;--moonlit-space-copy:18px;--moonlit-space-content:22px;--moonlit-space-section:24px}
 
   /* Mobile Editorial Hierarchy Contract — quiet metadata, clear chapter cadence. */
   :is(#tonight .chapter-kicker,#featured .chapter-kicker,#featured .featured-sublabel){letter-spacing:.14em!important;text-transform:uppercase;line-height:1.5}
@@ -708,7 +708,7 @@
 
 /* Moonlit immersion pass 9 — compact navigation and calmer ending — 2026-10-04 */
 @media(max-width:700px){
-  #creative.explore-more>.notice{margin-bottom:18px!important}
+  #creative.explore-more>.notice{margin-bottom:var(--moonlit-space-copy)!important}
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
   #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
