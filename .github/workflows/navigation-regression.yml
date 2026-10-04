@@ -82,9 +82,21 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:rc
 
+      - name: Start GitHub Pages prefix mirror for PWA
+        run: |
+          mkdir -p /tmp/moonlit-pwa
+          ln -sfn "$GITHUB_WORKSPACE" /tmp/moonlit-pwa/miaoshu.github.io
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/moonlit-pwa > /tmp/moonlit-pwa-http.log 2>&1 &
+          for i in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4174/miaoshu.github.io/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/moonlit-pwa-http.log
+          exit 1
+
       - name: Run PWA lifecycle gate
         env:
-          BASE_URL: http://127.0.0.1:4173/
+          BASE_URL: http://127.0.0.1:4174/miaoshu.github.io/
         run: npm run test:pwa
 
       - name: Run homepage editorial and responsive gate
