@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 const BASE='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
@@ -98,6 +98,15 @@ must('production manifest must remain standalone',manifest.display==='standalone
 must('manifest start_url must stay inside Moonlit scope',manifest.start_url==='/miaoshu.github.io/');
 must('manifest must keep 192 and 512 icons',Array.isArray(manifest.icons)&&['192x192','512x512'].every(size=>manifest.icons.some(icon=>icon.sizes===size)));
 
+const report={
+  checkedAt:new Date().toISOString(),
+  base:BASE,
+  expectedRuntime,
+  liveRuntime,
+  serviceWorker:{shell:expectedShell,pages:expectedPages,scope:expectedScope},
+  resources:diagnostics.slice(-4)
+};
+await writeFile('production-smoke-report.json',JSON.stringify(report,null,2)+'\n','utf8');
 console.log('Moonlit production cache diagnostics:');
-for(const item of diagnostics.slice(-4)) console.log(JSON.stringify(item));
+for(const item of report.resources) console.log(JSON.stringify(item));
 console.log('Moonlit production smoke: PASS');
