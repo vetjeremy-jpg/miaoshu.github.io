@@ -84,6 +84,7 @@ const homepageMobileBelow=fs.readFileSync('assets/homepage-mobile-below-fold.css
 const moonlightCss=fs.readFileSync('assets/moonlight.css','utf8');
 if(/Final site-wide responsive QA/.test(moonlightCss)||/html,body\{max-width:100%;overflow-x:clip\}/.test(moonlightCss))errors.push('moonlight.css must not regain retired responsive QA ownership');
 const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
+const refinementHome=fs.readFileSync('assets/moonlit-refinement-home.js','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(/\.moonlight-emblem\{position:absolute|--moonlight:#dce8f2|\.moonlight-emblem svg\{display:block/.test(moonlightCss))errors.push('moonlight.css must not own homepage crescent primitives');
 if(/@media\(max-width:(?:850|650|520)px\)\{\s*\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
