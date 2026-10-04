@@ -65,10 +65,16 @@ jobs:
           cat /tmp/moonlit-http.log
           exit 1
 
-      - name: Run nine-entry navigation gate
+      - name: Run blocking P0 navigation gate
         env:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:nav:p0
+
+      - name: Run P1 interaction suite on manual verification
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: npm run test:nav:p1
 
       - name: Upload Playwright report
         if: always()
