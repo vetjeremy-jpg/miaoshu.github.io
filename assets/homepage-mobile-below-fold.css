@@ -239,9 +239,7 @@
   #creative .creator-grid,
   #miaoshu-album .album-photos,
   #featured-short .video-preview{
-    box-sizing:border-box;
-    width:100%!important;
-    max-width:100%!important
+    box-sizing:border-box
   }
 
   #featured .featured-copy,
