@@ -849,3 +849,13 @@
 #support.moonlit-note .support-status{grid-area:status}#support.moonlit-note .support-feedback:not(:empty){margin:0 0 6px!important;padding:0!important;background:transparent!important;border:0!important;color:#b9a47a!important;font-size:12px!important;font-weight:500!important}
 @media(max-width:700px){#support.moonlit-note{grid-template-columns:1fr!important;grid-template-areas:"copy" "action" "tools" "status"!important;gap:20px!important;padding:38px 0 24px!important}#support.moonlit-note .support-primary{min-width:min(280px,100%)!important}#support.moonlit-note .support-actions{display:flex!important;grid-template-columns:none!important;padding-top:14px!important}}
 @media(max-width:430px){#support.moonlit-note .section-title{font-size:26px!important}#support.moonlit-note .support-actions{gap:12px!important}}
+
+/* Closing actions — no standalone support module; actions belong to the existing ending. */
+.moonlit-closing .closing-actions{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:6px 18px!important;margin:26px auto 0!important;padding-top:18px!important;border-top:1px solid rgba(220,201,164,.12)!important}
+.moonlit-closing .closing-actions>a,.moonlit-closing .closing-actions>button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:7px 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-decoration:none!important;font-size:13px!important;line-height:1.4!important}
+.moonlit-closing .closing-subscribe{gap:18px!important;color:#d8bd84!important;font-weight:700!important;border-bottom:1px solid rgba(216,189,132,.46)!important}
+.moonlit-closing .closing-actions>button{color:#8799a8!important;font-weight:550!important}
+.moonlit-closing .closing-actions>button:hover,.moonlit-closing .closing-actions>button:focus-visible{color:#d8c59d!important}
+.moonlit-closing .closing-actions>button[aria-pressed="true"]{color:#e0c37f!important;font-weight:650!important}
+.moonlit-closing .closing-status{flex-basis:100%;text-align:center!important}.moonlit-closing .closing-status p{margin:4px 0 0!important;color:#9e8d6d!important;font-size:12px!important}
+@media(max-width:430px){.moonlit-closing .closing-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4px 16px!important;text-align:left!important}.moonlit-closing .closing-subscribe{grid-column:1/-1!important;justify-self:start!important}.moonlit-closing .closing-actions>button{justify-content:flex-start!important}.moonlit-closing .closing-status{grid-column:1/-1!important;text-align:left!important}}
