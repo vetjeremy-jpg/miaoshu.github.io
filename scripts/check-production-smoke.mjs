@@ -73,9 +73,9 @@ const criticalRoutes=[
   {path:'videos/',file:'../videos/index.html'},
   {path:'works/',file:'../works/index.html'},
   {path:'search/',file:'../search/index.html'},
-  {path:'gallery/',file:'../gallery/index.html'},
-  {path:'posts/',file:'../posts/index.html'},
-  {path:'about/',file:'../about/index.html'}
+  {path:'gallery/',file:'../gallery/index.html',sentinels:['<h1>喵叔攝影館</h1>','id="degoo-album"','aria-label="攝影作品"']},
+  {path:'posts/',file:'../posts/index.html',sentinels:['<h1>寫作札記</h1>','id="journey-timeline"','id="journey-map"']},
+  {path:'about/',file:'../about/index.html',sentinels:['<h1>關於喵叔</h1>','about-crescent-gold','aria-label="主選單"']}
 ];
 for(const route of criticalRoutes){
   const local=await readFile(new URL(route.file,import.meta.url),'utf8');
@@ -85,7 +85,11 @@ for(const route of criticalRoutes){
   const live=await res.text();
   const liveHash=sha256(live);
   must(`production ${route.path} content fingerprint must match repository (expected ${expectedHash.slice(0,12)}, found ${liveHash.slice(0,12)})`,liveHash===expectedHash);
-  routeFingerprints.push({path:route.path,expected:expectedHash,live:liveHash,match:liveHash===expectedHash});
+  for(const sentinel of route.sentinels||[]){
+    must(`repository ${route.path} must retain semantic sentinel: ${sentinel}`,local.includes(sentinel));
+    must(`production ${route.path} must retain semantic sentinel: ${sentinel}`,live.includes(sentinel));
+  }
+  routeFingerprints.push({path:route.path,expected:expectedHash,live:liveHash,match:liveHash===expectedHash,semanticSentinels:(route.sentinels||[]).length});
 }
 const manifestRes=await get('site.webmanifest');
 diagnostics.push(headerSnapshot('manifest',manifestRes));
