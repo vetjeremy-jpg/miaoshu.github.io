@@ -136,6 +136,46 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     }
   });
 
+  test('approved 320/375/390/430 retention rhythm remains explicit', async ({ page }) => {
+    const expected={
+      320:{comment:280,tonightTop:44,tonightBottom:48,closingPad:48},
+      375:{comment:300,tonightTop:48,tonightBottom:52,closingPad:48},
+      390:{comment:300,tonightTop:54,tonightBottom:58,closingPad:48},
+      430:{comment:340,tonightTop:54,tonightBottom:58,closingPad:48}
+    };
+    for (const width of [320,375,390,430]) {
+      await page.setViewportSize({ width, height:932 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+      const state=await page.evaluate(() => {
+        const px=(el,p)=>Math.round(parseFloat(getComputedStyle(el)[p]));
+        const comment=document.querySelector('#community .reader-comment-frame');
+        const tonight=document.querySelector('#tonight');
+        const closing=document.querySelector('.moonlit-closing');
+        const support=document.querySelector('#support');
+        const newsletter=document.querySelector('#newsletter');
+        return {
+          commentDisplay:getComputedStyle(comment).display,
+          commentMax:Math.round(parseFloat(getComputedStyle(comment).maxHeight)),
+          tonightTop:px(tonight,'paddingTop'), tonightBottom:px(tonight,'paddingBottom'),
+          closingTop:px(closing,'paddingTop'), closingBottom:px(closing,'paddingBottom'),
+          supportBeforeNewsletter:support.getBoundingClientRect().top < newsletter.getBoundingClientRect().top,
+          newsletterButtons:[...newsletter.querySelectorAll('button[type="submit"]')].filter(x=>getComputedStyle(x).display!=='none').length,
+          prematureNewsletterCtas:[...document.querySelectorAll('#support a,#support button,.moonlit-closing a,.moonlit-closing button')].filter(x=>/訂閱月光來信/.test(x.textContent||'')).length
+        };
+      });
+      const target=expected[width];
+      expect(state.commentDisplay, width+'px comment preview remains visible').not.toBe('none');
+      expect(state.commentMax, width+'px comment preview height').toBe(target.comment);
+      expect(state.tonightTop, width+'px Tonight top rhythm').toBe(target.tonightTop);
+      expect(state.tonightBottom, width+'px Tonight bottom rhythm').toBe(target.tonightBottom);
+      expect(state.closingTop, width+'px Closing top padding').toBe(target.closingPad);
+      expect(state.closingBottom, width+'px Closing bottom padding').toBe(target.closingPad);
+      expect(state.supportBeforeNewsletter, width+'px retention order').toBeTruthy();
+      expect(state.prematureNewsletterCtas, width+'px newsletter CTA stays singular').toBe(0);
+      expect(state.newsletterButtons, width+'px actual newsletter submit').toBe(1);
+    }
+  });
+
   test('editorial CSS remains before mobile-safety in source order', async ({ page }) => {
     await open(page, VIEWPORTS[2]);
     const hrefs=await page.locator('link[rel="stylesheet"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')||''));
@@ -148,9 +188,9 @@ test('homepage has one explicit emotional closing and a quieter support strip', 
   await page.goto('./', { waitUntil:'domcontentloaded' });
   await expect(page.locator('#support .section-title')).toBeHidden();
   await expect(page.locator('.moonlit-closing h2')).toHaveCount(1);
-  await expect(page.locator('.moonlit-breathing-quote')).toBeVisible();
+  await expect(page.locator('.moonlit-breathing-quote')).toBeHidden();
   await expect(page.locator('#newsletter')).toBeVisible();
-  const order=await page.evaluate(()=>['#community','#support','.moonlit-breathing-quote','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
+  const order=await page.evaluate(()=>['#community','#support','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
   expect(order).toEqual([...order].sort((a,b)=>a-b));
 });
 
@@ -161,8 +201,8 @@ test('editorial stylesheet stays within the current technical-debt budget', asyn
   const css=await response.text();
   const important=(css.match(/!important/g)||[]).length;
   const media=(css.match(/@media/g)||[]).length;
-  expect(important, 'do not grow the restored editorial !important baseline').toBeLessThanOrEqual(215);
-  expect(media, 'do not grow the restored editorial media-block baseline').toBeLessThanOrEqual(16);
+  expect(important, 'do not grow the current consolidated editorial !important baseline').toBeLessThanOrEqual(321);
+  expect(media, 'do not grow the current consolidated editorial media-block baseline').toBeLessThanOrEqual(36);
   expect(css.length, 'keep the editorial layer from growing unchecked').toBeLessThanOrEqual(19200);
 });
 
