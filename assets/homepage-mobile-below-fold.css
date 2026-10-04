@@ -611,18 +611,14 @@
 /* Moonlit immersion pass 6 — progressive disclosure on phones — 2026-10-04 */
 @media(max-width:700px){
   /* Opening arc: clear chapter pauses instead of equal-height stacked panels. */
-  #tonight{padding-bottom:68px!important}
-  #tonight .section-title{font-size:clamp(31px,9vw,38px)!important;margin-bottom:14px!important}
-  #tonight>.notice{max-width:29em;margin-bottom:28px!important}
-  #tonight .tonight-grid{gap:14px!important;margin-top:0!important}
-  #tonight .tonight-grid article{padding:25px 21px!important;background:rgba(9,24,39,.72)!important}
+  #tonight>.notice{max-width:29em}
+  #tonight .tonight-grid{margin-top:0!important}
+  #tonight .tonight-grid article{background:rgba(9,24,39,.72)!important}
   #tonight .tonight-grid article:nth-child(2),
   #tonight .tonight-grid article:nth-child(3){background:rgba(9,24,39,.46)!important}
 
-  #featured{padding-top:68px!important;padding-bottom:72px!important}
-  #featured .featured-grid{gap:28px!important}
   #featured .featured-visual{aspect-ratio:4/3!important}
-  #featured .featured-copy h2{font-size:clamp(32px,9vw,39px)!important;margin:8px 0 14px!important}
+  #featured .featured-copy h2{margin:8px 0 14px!important}
   #featured .featured-copy p{font-size:15px!important;line-height:1.9!important}
   #featured .featured-copy .feature-actions{margin-top:8px}
   #featured .featured-copy .feature-actions .cta.secondary{background:transparent!important;border-color:transparent!important;color:#d9c7a4!important}
