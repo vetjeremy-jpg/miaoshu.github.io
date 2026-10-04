@@ -17,7 +17,7 @@
     border:1px solid rgba(220,201,164,.15)!important;
     background:#091827!important
   }
-  .tonight-grid h3{font-size:26px!important;line-height:1.45!important;word-break:keep-all}
+  .tonight-grid h3{font-size:26px!important;word-break:keep-all}
   .tonight-grid article a{display:inline-flex;align-items:center;min-height:44px}
 
   #reading-list{padding:34px 0!important}
@@ -385,8 +385,7 @@
     max-width:34em;
     margin:0;
     font-size:15px;
-    line-height:1.85
-  }
+    }
   #featured-short .moonlit-video-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
@@ -427,8 +426,7 @@
   }
   #featured-short .moonlit-video-primary-copy p{
     font-size:15px;
-    line-height:1.85
-  }
+    }
   #featured-short .moonlit-video-primary-copy .notice{
     font-size:13px!important
   }
@@ -451,8 +449,7 @@
   }
   #featured-short .moonlit-video-secondary h3{
     font-size:21px!important;
-    line-height:1.45!important
-  }
+    }
   #featured-short .moonlit-reel-frame{
     width:min(100%,280px)!important;
     max-width:100%!important;
@@ -504,14 +501,12 @@
   }
   #featured .featured-explore h3{
     margin:8px 0 12px!important;
-    line-height:1.45!important;
     word-break:keep-all
   }
   #featured .featured-explore>p{
     margin:0!important;
     font-size:14px!important;
-    line-height:1.85!important
-  }
+    }
   #featured .featured-explore .moonlit-entry-grid{
     margin-top:22px!important
   }
@@ -712,6 +707,11 @@
   #featured .featured-explore h3{font-size:clamp(24px,6.8vw,28px)!important}
   #featured .featured-explore .moonlit-entry-grid{gap:9px!important}
   #featured .featured-explore .moonlit-entry{padding:20px 17px!important}
+
+  /* Mobile Typography Rhythm Contract — shared reading cadence, with feature sizes still owned locally. */
+  :is(.creator-copy h3,#featured-short .moonlit-video-secondary h3,#featured .featured-explore h3){--moonlit-work-title-leading:1.45}
+  :is(.creator-copy h3,#featured-short .moonlit-video-secondary h3,#featured .featured-explore h3){line-height:var(--moonlit-work-title-leading)!important}
+  :is(#featured-short .moonlit-video-lede,#featured-short .moonlit-video-primary-copy p,#featured .featured-explore>p){--moonlit-reading-leading:1.85;line-height:var(--moonlit-reading-leading)!important}
 
   /* Mobile Section Rhythm Contract — two deliberate editorial tempos. */
   :is(#updates,#creative,#support,#about,#community,#newsletter){--moonlit-section-block:44px}
