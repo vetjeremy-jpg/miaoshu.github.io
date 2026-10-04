@@ -434,7 +434,7 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Homepage immersion pass: quieter middle/end rhythm and fewer repeated actions. */
 #reading-list[hidden]{
-  display:none!important
+  display:none
 }
 
 #creative.explore-more{
