@@ -530,7 +530,7 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 
 /* 320px density refinement — preserve covers and primary headings */
 @media(max-width:330px){
-  #tonight{padding-top:42px!important;padding-bottom:44px!important}
+  .hero+.wrap>#tonight{padding-top:42px!important;padding-bottom:44px!important}
   #tonight .tonight-grid{gap:8px!important}
   #tonight .tonight-grid article{padding-top:16px!important;padding-bottom:16px!important}
   #tonight .pick-commitment{margin-top:8px!important}
