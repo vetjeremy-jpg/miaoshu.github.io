@@ -161,8 +161,8 @@
   .support-actions>*,.about-links>*,.community-actions>*{min-height:48px!important}
 
   .about-layout{display:block!important}
-  .about-lede{margin-bottom:24px!important}
-  .about-links{margin-top:24px!important}
+  .about-lede{margin-bottom:var(--moonlit-space-section)!important}
+  .about-links{margin-top:var(--moonlit-space-section)!important}
 
   .reader-comment-frame iframe{height:680px!important}
   .moonlit-newsletter-grid{display:block!important}
@@ -235,9 +235,9 @@
     min-height:0!important;
     padding:22px 20px!important
   }
-  #tonight .pick-number{display:block;margin:0 0 18px!important}
-  #tonight .tonight-grid h3{margin:0 0 14px!important}
-  #tonight .tonight-grid p{margin:0 0 18px!important}
+  #tonight .pick-number{display:block;margin:0 0 var(--moonlit-space-copy)!important}
+  #tonight .tonight-grid h3{margin:0 0 var(--moonlit-space-title)!important}
+  #tonight .tonight-grid p{margin:0 0 var(--moonlit-space-copy)!important}
   #tonight .tonight-grid article a{margin:0!important}
 
   #featured .featured-grid,
@@ -427,7 +427,7 @@
     grid-template-columns:minmax(0,1fr)!important;
     gap:8px!important;
     width:100%!important;
-    margin-top:18px!important
+    margin-top:var(--moonlit-space-copy)!important
   }
   #featured-short .moonlit-video-actions>*{min-height:46px!important}
   #featured-short #instagram-reel.moonlit-video-secondary{
@@ -495,7 +495,7 @@
     font-size:14px!important;
     }
   #featured .featured-explore .moonlit-entry-grid{
-    margin-top:22px!important
+    margin-top:var(--moonlit-space-content)!important
   }
   #featured .featured-explore-directory{
     margin:14px 0 0!important;
@@ -521,7 +521,7 @@
   }
   #creative.explore-more .creator-grid{
     gap:10px!important;
-    margin-top:22px!important
+    margin-top:var(--moonlit-space-content)!important
   }
   #creative.explore-more .creator-art{
     min-height:58px!important;
@@ -542,7 +542,7 @@
     grid-template-columns:minmax(0,1fr)!important;
     gap:8px!important;
     width:100%!important;
-    margin-top:18px!important
+    margin-top:var(--moonlit-space-copy)!important
   }
   #miaoshu-album .album-actions>*{min-height:48px!important}
 
@@ -730,6 +730,9 @@
 /* Moonlit immersion pass 8 — explicit editorial arc on compact screens — 2026-10-04 */
 @media(max-width:700px){
   .hero+.wrap>#tonight{padding-top:54px!important}
+  /* Mobile Editorial Spacing Contract — a small cadence vocabulary for label/title/copy/action flow. */
+  :root{--moonlit-space-label:8px;--moonlit-space-title:14px;--moonlit-space-copy:18px;--moonlit-space-content:22px;--moonlit-space-section:24px}
+
   /* Mobile Editorial Hierarchy Contract — quiet metadata, clear chapter cadence. */
   :is(#tonight .chapter-kicker,#featured .chapter-kicker,#featured .featured-sublabel){letter-spacing:.14em!important;text-transform:uppercase;line-height:1.5}
   :is(#featured .featured-sublabel,#featured .featured-visual figcaption){opacity:.72}
