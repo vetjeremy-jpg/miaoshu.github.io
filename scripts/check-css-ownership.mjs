@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:493},
+  'assets/homepage-mobile-below-fold.css':{important:485},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -187,6 +187,9 @@ if(/#tonight\{padding-top:46px!important\}|#featured\{padding-top:50px!important
 if(/\.topbar \.navlinks\{gap:2px!important\}/.test(homepageMobileBelow)||/\.topbar \.navlinks a\{padding-left:(?:9|10)px!important;padding-right:(?:9|10)px!important/.test(homepageMobileBelow))errors.push('superseded mobile nav spacing must defer to navigation pass 13');
 if(/\.tonight-grid\{[\s\S]{0,160}gap:12px!important;[\s\S]{0,160}margin:25px 0 0!important/.test(homepageMobileBelow))errors.push('superseded first-pass Tonight gap must stay retired');
 if(/\.featured-copy h2\{font-size:clamp\(30px,8vw,34px\)!important/.test(homepageMobileBelow)||/\.featured-copy p\{font-size:16px!important/.test(homepageMobileBelow))errors.push('superseded first-pass Featured typography must stay retired');
+if(/#featured \.featured-explore\{[^}]*margin:34px 0 0!important/.test(homepageMobileBelow)||/#featured \.featured-explore\{margin-top:52px!important\}/.test(homepageMobileBelow))errors.push('superseded Featured Explore spacing must stay retired');
+if(/#featured \.featured-explore h3\{[^}]*font-size:(?:27|25)px!important/.test(homepageMobileBelow))errors.push('superseded Featured Explore heading sizes must stay retired');
+if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!important;padding-bottom:46px!important\}/.test(homepageMobileBelow))errors.push('superseded secondary-section 46px rhythm must stay retired');
 const mobileWrapOwnerCount=(homepageMobileBelow.match(/\.wrap\{padding:34px 18px 80px!important\}/g)||[]).length;
 if(mobileWrapOwnerCount!==1)errors.push(`homepage mobile wrap spacing must have exactly one canonical owner (found ${mobileWrapOwnerCount})`);
 if(!/#reading-list\{padding:32px 0\}/.test(homepageDesktopBelow)||!/#updates\{padding:38px 0\}/.test(homepageDesktopBelow))errors.push('homepage owner must preserve Reading List and Updates composition');
