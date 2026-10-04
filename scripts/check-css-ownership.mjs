@@ -7,6 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
+  'assets/homepage-mobile-below-fold.css':{important:507},
 };
 const patterns={
   hero:/\.hero\b/g,
