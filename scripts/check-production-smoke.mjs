@@ -18,6 +18,13 @@ async function get(path, attempts=4){
 const must=(label,ok)=>{if(!ok)throw new Error(label);};
 
 const localHome=await readFile(new URL('../index.html',import.meta.url),'utf8');
+const localSw=await readFile(new URL('../sw.js',import.meta.url),'utf8');
+const localManifest=JSON.parse(await readFile(new URL('../site.webmanifest',import.meta.url),'utf8'));
+const swValue=(source,name)=>source.match(new RegExp(`const ${name}='([^']+)'`))?.[1];
+const expectedShell=swValue(localSw,'CACHE');
+const expectedPages=swValue(localSw,'PAGES');
+const expectedScope=swValue(localSw,'SCOPE');
+must('repository service worker must expose shell, page and scope fingerprints',Boolean(expectedShell&&expectedPages&&expectedScope));
 const expectedRuntime=localHome.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
 must('repository homepage must expose a versioned Moonlit runtime',Boolean(expectedRuntime));
 
@@ -35,8 +42,16 @@ for(const path of ['videos/','works/','search/','site.webmanifest','sw.js','appl
 }
 const liveSw=await (await get('sw.js')).text();
 must('production service worker must precache the canonical runtime fingerprint',liveSw.includes(`moonlit-v2.js?v=${expectedRuntime}`));
+must(`production shell cache must match repository fingerprint (expected ${expectedShell})`,swValue(liveSw,'CACHE')===expectedShell);
+must(`production page cache must match repository fingerprint (expected ${expectedPages})`,swValue(liveSw,'PAGES')===expectedPages);
+must(`production service-worker scope must match repository fingerprint (expected ${expectedScope})`,swValue(liveSw,'SCOPE')===expectedScope);
+for(const asset of ['site.webmanifest','assets/icons/icon-192.png','assets/icons/icon-512.png']) must(`production service worker must retain ${asset} in its managed asset contract`,liveSw.includes(asset));
 
 const manifest=await (await get('site.webmanifest')).json();
+must('production manifest id must match repository',manifest.id===localManifest.id);
+must('production manifest start_url must match repository',manifest.start_url===localManifest.start_url);
+must('production manifest scope must match repository',manifest.scope===localManifest.scope);
+must('production manifest must remain standalone',manifest.display==='standalone');
 must('manifest start_url must stay inside Moonlit scope',manifest.start_url==='/miaoshu.github.io/');
 must('manifest must keep 192 and 512 icons',Array.isArray(manifest.icons)&&['192x192','512x512'].every(size=>manifest.icons.some(icon=>icon.sizes===size)));
 
