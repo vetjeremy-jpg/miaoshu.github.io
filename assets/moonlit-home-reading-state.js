@@ -19,9 +19,10 @@
   box.classList.add('is-visible');
  }
  const shelf=document.getElementById('saved-chapters');
+ const shelfSection=document.getElementById('reading-list');
  const saved=books.flatMap(book=>{
   let ids;try{ids=JSON.parse(get('miaoshu-'+book.id+'-bookmarks')||(book.id==='fushengsuiyue'?get('miaoshu-saved-chapters'):null)||'[]')}catch(e){ids=[]}
   return Array.isArray(ids)?[...new Set(ids)].filter(validChapter).map(id=>({book,id})):[];
  });
- if(saved.length){shelf.replaceChildren();saved.forEach(({book,id})=>{const li=document.createElement('li'),a=document.createElement('a');a.href=book.url+'#'+id;a.textContent=book.title+' · '+chapterTitle(book,id);li.append(a);shelf.append(li)})}
+ if(saved.length){if(shelfSection)shelfSection.hidden=false;shelf.replaceChildren();saved.forEach(({book,id})=>{const li=document.createElement('li'),a=document.createElement('a');a.href=book.url+'#'+id;a.textContent=book.title+' · '+chapterTitle(book,id);li.append(a);shelf.append(li)})}
 })();
