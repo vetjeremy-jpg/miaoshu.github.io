@@ -597,7 +597,6 @@
 
   #featured .featured-copy h2{margin:8px 0 14px!important}
   #featured .featured-copy p{font-size:15px!important}
-  #featured .featured-copy .feature-actions{margin-top:8px}
   #featured .featured-copy .feature-actions .cta.secondary{background:transparent!important;border-color:transparent!important;color:#d9c7a4!important}
 
   /* Reduce UI density once the reader has passed the main recommendations. */
