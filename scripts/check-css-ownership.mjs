@@ -112,7 +112,7 @@ if(!/:is\(\.panel,\.chapter,\.creator-card,\.novel-card,\.tile,\.book-card\)\{ma
 if(!/footer\.moonlit-site-footer\{padding-inline:18px!important\}/.test(mobileSafety))errors.push('mobile safety must preserve compact Moonlit footer padding');
 const serviceWorker=fs.readFileSync('sw.js','utf8');
 if(serviceWorker.includes("assets/mobile-rwd-final.css"))errors.push('service worker shell must not cache legacy mobile-rwd-final.css');
-if(!serviceWorker.includes("assets/mobile-safety.css?v=20261002-h2"))errors.push('service worker shell must cache canonical mobile-safety.css');
+if(!serviceWorker.includes("assets/mobile-safety.css?v=20261004-books1"))errors.push('service worker shell must cache canonical mobile-safety.css');
 const runtimeEntryFiles=['index.html','about/index.html','gallery/index.html','posts/index.html','videos/index.html','sw.js'];
 for(const path of runtimeEntryFiles){
   const source=fs.readFileSync(path,'utf8');
