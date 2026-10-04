@@ -9,6 +9,14 @@ const index=await readFile(join(root,'index.html'),'utf8');
 const match=index.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/);
 if(!match){console.error('首頁缺少版本化 moonlit-v2.js');process.exit(1)}
 const expected=match[1],errors=[];
+const serviceWorker=await readFile(join(root,'sw.js'),'utf8');
+if(!serviceWorker.includes("self.addEventListener('install'"))errors.push('Service Worker 必須保留 install lifecycle');
+if(!serviceWorker.includes('self.skipWaiting()'))errors.push('Service Worker install 必須立即啟用新版本');
+if(!serviceWorker.includes("self.addEventListener('activate'"))errors.push('Service Worker 必須保留 activate lifecycle');
+if(!serviceWorker.includes('self.clients.claim()'))errors.push('Service Worker activate 必須立即接管既有 PWA clients');
+if(!serviceWorker.includes("key.startsWith('moonlit-shell-')")||!serviceWorker.includes("key.startsWith('moonlit-pages-')"))errors.push('Service Worker 必須只在 Moonlit cache namespace 內淘汰舊 shell/page cache');
+if(!/key\.startsWith\('moonlit-shell-'\)[\s\S]*key!==CACHE/.test(serviceWorker)||!/key\.startsWith\('moonlit-pages-'\)[\s\S]*key!==PAGES/.test(serviceWorker))errors.push('Service Worker 必須保留目前 shell/page cache 並只刪除舊版本');
+
 const readerAudio=await readFile(join(root,'books','reader-audio-fallback.js'),'utf8');
 if(!readerAudio.includes('currentUtterance=null'))errors.push('Reader audiobook must own the active SpeechSynthesisUtterance');
 if(!readerAudio.includes('const releaseUtterance='))errors.push('Reader audiobook must release utterance handlers during cancellation');
