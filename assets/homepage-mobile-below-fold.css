@@ -639,6 +639,19 @@
 }
 
 
+/* Moonlit 431–700 continuity bridge — prevent a hard rhythm cliff immediately above the phone canonical layer. */
+@media(min-width:431px) and (max-width:700px){
+  #tonight{padding-bottom:62px!important}
+  #tonight .section-title{font-size:clamp(32px,5vw,36px)!important;line-height:1.42!important;margin:8px 0 14px!important}
+  #tonight>.notice{margin:0 0 26px!important;font-size:15px!important;line-height:1.82!important}
+  #tonight .tonight-grid{gap:14px!important}
+  #tonight .tonight-grid article{padding:24px 22px!important}
+  #featured{padding-top:62px!important;padding-bottom:66px!important}
+  #featured .featured-grid{gap:28px!important}
+  #featured .featured-copy h2{font-size:clamp(32px,5vw,36px)!important;line-height:1.43!important}
+  #featured .featured-explore{margin-top:46px!important}
+}
+
 /* Moonlit mobile canonical layer — authoritative 320/375/390/430 rhythm — 2026-10-04 */
 @media(max-width:430px){
   #tonight{padding-top:54px!important;padding-bottom:58px!important}
