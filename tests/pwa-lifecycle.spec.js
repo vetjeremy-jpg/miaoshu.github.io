@@ -100,6 +100,39 @@ test.describe('Moonlit PWA lifecycle', () => {
     }
   });
 
+  test('P0 restores last-read chapter after reopening a cached novel offline @p0', async ({ page, context }) => {
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    const novel='./books/fushengsuiyue/index.html';
+    await page.goto(novel+'#chapter-2', { waitUntil: 'domcontentloaded' });
+    await page.locator('#chapter-2').scrollIntoViewIfNeeded();
+
+    await expect.poll(async () => page.evaluate(() => localStorage.getItem('miaoshu-fushengsuiyue-chapter')), { timeout: 10000 }).toBe('chapter-2');
+    await expect.poll(async () => page.evaluate(async () => {
+      const cache=await caches.open('moonlit-pages-v3');
+      return (await cache.keys()).some(req=>new URL(req.url).pathname.endsWith('/books/fushengsuiyue/index.html'));
+    }), { timeout: 10000 }).toBe(true);
+
+    await page.close();
+    await context.setOffline(true);
+    const reopened=await context.newPage();
+    try {
+      await reopened.goto(novel, { waitUntil: 'domcontentloaded' });
+      await expect(reopened.locator('#continue-reading')).toHaveClass(/is-visible/);
+      await expect(reopened.locator('#continue-label')).toContainText('上次讀到');
+      await expect(reopened.locator('#continue-link')).toHaveAttribute('href','#chapter-2');
+      await reopened.locator('#continue-link').click();
+      await expect(reopened).toHaveURL(/#chapter-2$/);
+      await expect(reopened.locator('#chapter-2')).toBeVisible();
+      await expect(reopened.evaluate(() => Boolean(navigator.serviceWorker.controller))).resolves.toBe(true);
+    } finally {
+      await context.setOffline(false);
+      await reopened.close();
+    }
+  });
+
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
     await resetMoonlitPwa(page);
 
