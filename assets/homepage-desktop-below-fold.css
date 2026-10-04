@@ -145,7 +145,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 @media(min-width:701px){#featured{padding-top:90px}.featured-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,90px)}.featured-visual{min-height:440px;border:0}.featured-copy h2{font-size:clamp(38px,4.6vw,58px)}.moonlit-found-line{max-width:900px;margin:80px auto;padding:0 0 0 32px;background:none}.moonlit-found-line blockquote{font-size:clamp(27px,3.4vw,44px);line-height:1.75}#miaoshu-album{padding-top:96px}.album-photos{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.album-photo{margin:0;background:transparent}.album-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}.album-photo figcaption{padding:18px 0}}
 
 /* Secondary homepage sections migrated from legacy Premium. */
-@media(min-width:701px){#reading-list{padding:32px 0}.reader-shelf{border-bottom:1px solid rgba(220,230,240,.08)}.shelf-heading h2{font-size:24px}#updates{padding:38px 0}.latest-update .section-title{font-size:clamp(24px,3vw,34px)}.update-heading time{color:#71879a}#featured-short,#support,#follow,#about,#community,#newsletter{padding-top:76px;padding-bottom:76px}.about-layout{gap:clamp(40px,8vw,100px)}.moonlit-newsletter{margin-top:0}}
+@media(min-width:701px){#reading-list{padding:32px 0}.reader-shelf{border-bottom:1px solid rgba(220,230,240,.08)}.shelf-heading h2{font-size:24px}#updates{padding:38px 0}.latest-update .section-title{font-size:clamp(24px,3vw,34px)}.update-heading time{color:#71879a}#featured-short,#support,#about,#community,#newsletter{padding-top:76px;padding-bottom:76px}.about-layout{gap:clamp(40px,8vw,100px)}.moonlit-newsletter{margin-top:0}}
 footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Homepage layout/section typography migrated from legacy Premium; System retains panel surface tokens. */
@@ -546,4 +546,44 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   color:#8194a4;
   font-size:13px;
   letter-spacing:.12em
+}
+
+
+/* Immersion pass 3: narrower prose and quieter secondary actions. */
+#updates .update-actions{
+  margin-top:22px
+}
+#updates .update-actions .cta{
+  margin:0
+}
+
+#miaoshu-album>.notice,
+#creative.explore-more>.notice,
+#community>.notice,
+#about .about-layout>div>p,
+#support.stay-with-moonlight .support-note{
+  max-width:42em
+}
+
+#about .about-layout>div>p{
+  line-height:1.9
+}
+#about .about-layout>div>p+p{
+  margin-top:1.05em
+}
+
+#community .community-actions{
+  width:max-content;
+  max-width:100%
+}
+#community .community-actions button{
+  min-width:180px
+}
+
+#miaoshu-album .album-photos a{
+  transition:transform .2s ease,opacity .2s ease
+}
+#miaoshu-album .album-photos a:hover{
+  transform:translateY(-2px);
+  opacity:.96
 }
