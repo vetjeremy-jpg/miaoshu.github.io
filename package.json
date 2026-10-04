@@ -9,7 +9,8 @@
     "test:editorial": "playwright test tests/homepage-editorial.spec.js",
     "test:homepage": "playwright test tests/navigation.spec.js tests/homepage-editorial.spec.js",
     "test:rc": "playwright test tests/release-candidate.spec.js",
-    "test:pwa": "playwright test tests/pwa-lifecycle.spec.js"
+    "test:pwa": "playwright test tests/pwa-lifecycle.spec.js",
+    "test:reader": "playwright test tests/reader-journey.spec.js"
   },
   "devDependencies": {
     "@playwright/test": "1.55.0"
