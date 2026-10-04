@@ -388,3 +388,11 @@
     }
   }
 }
+
+
+/* 401–430px: let the latest-video portrait use more of the wider mobile card without changing 320/375/390 behavior. */
+@media(min-width:401px) and (max-width:430px){
+  #featured-short .video-preview iframe{
+    width:min(100%,348px)!important
+  }
+}
