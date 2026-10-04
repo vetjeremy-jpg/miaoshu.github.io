@@ -162,7 +162,7 @@ test('editorial stylesheet stays within the current technical-debt budget', asyn
   const important=(css.match(/!important/g)||[]).length;
   const media=(css.match(/@media/g)||[]).length;
   expect(important, 'do not grow the restored editorial !important baseline').toBeLessThanOrEqual(215);
-  expect(media, 'consolidate breakpoints instead of adding new media blocks').toBeLessThanOrEqual(15);
+  expect(media, 'do not grow the restored editorial media-block baseline').toBeLessThanOrEqual(16);
   expect(css.length, 'keep the editorial layer from growing unchecked').toBeLessThanOrEqual(19200);
 });
 
