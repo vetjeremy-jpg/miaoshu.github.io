@@ -46,7 +46,7 @@ must('512px icon file exists', fs.existsSync('assets/icons/icon-512.png'));
 must('Apple touch icon file exists', fs.existsSync('apple-touch-icon.png'));
 const primaryNavPages = ['index.html','gallery/index.html','posts/index.html','videos/index.html','about/index.html'].map(p => [p, read(p)]);
 for (const [page, html] of primaryNavPages) {
- for (const label of ['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','搜尋']) {
+ for (const label of ['首頁','小說','攝影館','札記','影片','關於喵叔','搜尋創作']) {
   must(page+' primary nav has '+label, html.includes(label));
  }
 }
@@ -144,9 +144,9 @@ must('Tier 2 heading uses canonical mobile scale', /Moonlit mobile canonical lay
 must('Tier 1 title is capped at 27px through 430px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature strong\{[\s\S]*?font-size:clamp\(25px,6\.3vw,27px\)/.test(refinement));
 must('Tier 1 to Tier 2 handoff removes duplicate main top gap', /\.moonlit-editorial-feature \+ main\.wrap\{[\s\S]*?padding-top:0!important[\s\S]*?\.moonlit-editorial-feature \+ main\.wrap > #tonight\{[\s\S]*?margin-top:0!important/.test(refinement));
 
-must('Tier 3 primary actions become two columns at 390–430px', /@media\(min-width:390px\) and \(max-width:430px\)[\s\S]*?#featured \.featured-copy \.feature-actions\{[\s\S]*?grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important/.test(homepageMobile));
-must('Tier 3 primary actions stay single-column at 320/375px', /@media\(max-width:375px\)[\s\S]*?#featured \.featured-copy \.feature-actions\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)!important/.test(homepageMobile));
-must('Tier 3 title is capped at 32px on 430px phones', /@media\(max-width:430px\)[\s\S]*?#featured \.featured-copy h2\{[\s\S]*?font-size:clamp\(29px,7\.5vw,32px\)!important/.test(homepageMobile));
+must('Tier 3 primary actions remain single-column through 430px', /@media\(max-width:700px\)[\s\S]*?\.featured-copy \.feature-actions\{display:grid!important;grid-template-columns:1fr!important/.test(homepageMobile));
+must('Tier 3 primary actions keep full-width touch geometry on mobile', /@media\(max-width:700px\)[\s\S]*?\.featured-copy \.cta\{min-height:48px;[\s\S]*?width:100%!important\}/.test(homepageMobile));
+must('Tier 3 title uses canonical 430px scale', /Moonlit mobile canonical layer[\s\S]*?@media\(max-width:430px\)[\s\S]*?#featured \.featured-copy h2\{font-size:clamp\(29px,8vw,34px\)!important/.test(homepageMobile));
 must('Tier 3 exploration tightens to 24px title at 320/375px', /@media\(max-width:375px\)[\s\S]*?#featured \.featured-explore h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
 must('Tier 1 editorial pick uses compact 430px rhythm', /Three-tier mobile hierarchy polish:[\s\S]*?@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin:0 14px 12px;[\s\S]*?padding:22px 18px 24px/.test(refinement));
 must('Tier 1 editorial pick tightens again at 375px', /@media\(max-width:375px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin-bottom:10px;[\s\S]*?padding:20px 16px 22px/.test(refinement));
