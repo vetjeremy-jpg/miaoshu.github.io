@@ -90,6 +90,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
       await page.waitForTimeout(100);
 
       const after = await navMetrics(page);
+      // At 430px the full nine-entry rail may fit; require scrolling only when overflow actually exists.
       if (before.scrollWidth > before.clientWidth + 1) {
         expect(after.scrollLeft).toBeGreaterThan(before.scrollLeft);
       } else {
