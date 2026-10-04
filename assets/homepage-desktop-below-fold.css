@@ -619,3 +619,23 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #newsletter{border-bottom:0}
   footer{padding-top:34px;padding-bottom:42px;color:#718392}
 }
+
+
+/* Moonlit immersion pass 5 — continuity, scan rhythm, CTA discipline — 2026-10-04 */
+.deep-dive-next,.update-more-link{
+  display:inline-flex;align-items:center;min-height:44px;color:#cdbb98;text-decoration:none;
+  border-bottom:1px solid rgba(205,187,152,.28);font-size:13px
+}
+.deep-dive-next:hover,.update-more-link:hover{color:#eee8dc;border-bottom-color:rgba(238,232,220,.5)}
+@media(min-width:701px){
+  #featured .feature-actions{gap:18px}
+  #featured .deep-dive-next{margin-top:4px}
+  #updates .update-actions{gap:20px}
+  #updates .update-more-link{padding-inline:2px}
+  #book>.notice{max-width:620px}
+  #miaoshu-album>.notice,.moonlit-video-lede{max-width:620px}
+  #support.stay-with-moonlight{border-top:1px solid rgba(220,230,240,.08);border-bottom:0}
+  #community{padding-bottom:54px}
+  #support{padding-top:72px}
+  #newsletter .moonlit-newsletter-lede{max-width:18em}
+}
