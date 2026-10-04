@@ -703,20 +703,17 @@
   :is(#featured .featured-sublabel,#featured .featured-visual figcaption){opacity:.72}
   #tonight .pick-number{opacity:.76}
   #featured .featured-visual figcaption{font-size:11px!important;line-height:1.5}
-}
 
 
-/* Moonlit immersion pass 9 — compact navigation and calmer ending — 2026-10-04 */
-@media(max-width:700px){
+  /* Moonlit immersion pass 9 — compact navigation and calmer ending — 2026-10-04 */
   #creative.explore-more>.notice{margin-bottom:var(--moonlit-space-copy)!important}
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
   #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
   #support .support-actions button{min-height:var(--moonlit-touch)!important;font-size:12px!important}
-}
 
-/* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
-@media(max-width:700px){
+
+  /* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
   .topbar .navlinks{
     display:flex!important;
     flex-wrap:nowrap!important;
