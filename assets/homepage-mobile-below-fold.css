@@ -220,7 +220,6 @@
 /* Canonical ownership contract blocks retained for regression checks. */
 @media(max-width:700px){.moonlit-cover{min-height:190px}.moonlit-quote-v2{padding-inline:20px}}
 @media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}}
-@media(max-width:700px){.wrap{padding:34px 18px 80px!important}}
 
 
 /* Mobile blue-panel interior polish — keep the original inset cards, fix only content composition. */
