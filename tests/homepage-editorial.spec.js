@@ -54,6 +54,40 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     });
   }
 
+  test('430/431 phone-to-continuity handoff stays stable', async ({ page }) => {
+    const states=[];
+    for (const width of [430,431]) {
+      await page.setViewportSize({ width, height:932 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+      states.push(await page.evaluate(() => {
+        const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {left:r.left,right:r.right,width:r.width}};
+        const nav=document.querySelector('.topbar .navlinks');
+        return {
+          width:innerWidth,
+          overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+          tonight:rect('#tonight'),
+          featured:rect('#featured'),
+          book:rect('#book'),
+          navScrollable:nav.scrollWidth>nav.clientWidth,
+          firstVisible:(()=>{const a=nav.querySelector('a'),r=a.getBoundingClientRect(),n=nav.getBoundingClientRect();return r.right>n.left&&r.left<n.right})()
+        };
+      }));
+    }
+    for (const state of states) {
+      expect(state.overflow, state.width+'px page overflow').toBeLessThanOrEqual(1);
+      expect(state.firstVisible, state.width+'px first navigation entry').toBeTruthy();
+      expect(state.tonight.width).toBeGreaterThan(0);
+      expect(state.featured.width).toBeGreaterThan(0);
+      expect(state.book.width).toBeGreaterThan(0);
+    }
+    expect(states[0].navScrollable, '430px keeps compact navigation rail').toBeTruthy();
+    expect(states[1].navScrollable, '431px remains safely scrollable until the 700px rail handoff').toBeTruthy();
+    for (const section of ['tonight','featured','book']) {
+      expect(Math.abs(states[0][section].left-states[1][section].left), section+' left edge at 430/431').toBeLessThanOrEqual(12);
+      expect(Math.abs(states[0][section].right-states[1][section].right), section+' right edge at 430/431').toBeLessThanOrEqual(12);
+    }
+  });
+
   test('700/701 breakpoint handoff stays geometrically continuous', async ({ page }) => {
     const states=[];
     for (const width of [700,701]) {
