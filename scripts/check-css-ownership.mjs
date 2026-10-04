@@ -193,6 +193,9 @@ if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
+const editorialSpacingContractCount=(homepageMobileBelow.match(/Mobile Editorial Spacing Contract/g)||[]).length;
+if(editorialSpacingContractCount!==1)errors.push(`mobile editorial spacing must have exactly one cadence contract (found ${editorialSpacingContractCount})`);
+if(/#tonight \.tonight-grid h3\{margin:0 0 14px!important/.test(homepageMobileBelow)||/#creative\.explore-more \.creator-grid\{[^}]*margin-top:22px!important/.test(homepageMobileBelow))errors.push('mobile editorial flow must use shared spacing tokens for canonical cadence');
 const editorialHierarchyContractCount=(homepageMobileBelow.match(/Mobile Editorial Hierarchy Contract/g)||[]).length;
 if(editorialHierarchyContractCount!==1)errors.push(`mobile editorial metadata must have exactly one hierarchy contract (found ${editorialHierarchyContractCount})`);
 if(/#featured \.featured-sublabel\{[^}]*letter-spacing:\.14em/.test(homepageMobileBelow))errors.push('featured sublabel must defer shared tracking/leading to the editorial hierarchy contract');
