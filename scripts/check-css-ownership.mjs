@@ -137,10 +137,6 @@ if(!/#featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featu
 if(/\.moonlit-newsletter\{|\.moonlit-subscribe-shell\{|\.moonlit-curation\{|\.moonlit-phase-legend\{/.test(moonlightCss))errors.push('moonlight.css must not regain homepage-only Newsletter or Curation ownership');
 if(!/\.moonlit-newsletter\{overflow:hidden\}/.test(homepageDesktopBelow)||!/\.moonlit-curation\{max-width:1180px/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Newsletter and Curation base styles');
 if(!/\.moonlit-subscribe-row input\{font-size:16px\}/.test(homepageMobileBelow)||!/\.moonlit-curation\{margin:12px 16px;padding:25px 18px\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve Newsletter and Curation mobile refinements');
-if(!/id="featured-short"[^>]*[\s\S]*?MOONLIT VIDEO · 月光影像[\s\S]*?id="instagram-reel"/.test(homepage))errors.push('homepage must keep unified Moonlit Video hierarchy');
-if((homepage.match(/<section\b[^>]*id="instagram-reel"/g)||[]).length)errors.push('Instagram reel must remain nested inside Moonlit Video, not a standalone section');
-if(!/\.moonlit-video-grid\{[\s\S]*?grid-template-columns:minmax\(0,1\.45fr\) minmax\(250px,\.65fr\)/.test(homepageDesktopBelow))errors.push('Moonlit Video desktop hierarchy must keep primary and secondary columns');
-if(!/#featured-short \.moonlit-video-grid\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)!important/.test(homepageMobileBelow))errors.push('Moonlit Video mobile layout must collapse to one comfortable column');
 const editorialInteriors=fs.readFileSync('editorial-interiors.css','utf8');
 if(/\.video-page \.layout/.test(mobileSafety)||/\.video-page \.screen/.test(mobileSafety))errors.push('mobile safety layer must defer video layout and screen sizing to editorial interiors');
 if(/\.gallery-page figure\{margin-left:0;margin-right:0\}/.test(mobileSafety))errors.push('mobile safety layer must defer gallery figure margins to editorial interiors');
@@ -191,6 +187,11 @@ if(/\.book-object\{[^}]*filter:drop-shadow/.test(premium))errors.push('homepage 
 const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
 if(!/body:not\(\[data-book-id\]\) > header\.hero \.moonlight-emblem\{display:block;position:absolute/.test(inline)||!/\.moonlight-emblem svg\{display:block;width:100%;height:100%;filter:brightness\(\.78\) saturate\(\.78\)\}/.test(inline))errors.push('homepage inline owner must preserve crescent geometry and rendering');
 const homepage=fs.readFileSync('index.html','utf8');
+if(!/id="featured-short"[^>]*[\s\S]*?MOONLIT VIDEO · 月光影像[\s\S]*?id="instagram-reel"/.test(homepage))errors.push('homepage must keep unified Moonlit Video hierarchy');
+if((homepage.match(/<section\b[^>]*id="instagram-reel"/g)||[]).length)errors.push('Instagram reel must remain nested inside Moonlit Video, not a standalone section');
+if(!/\.moonlit-video-grid\{[\s\S]*?grid-template-columns:minmax\(0,1\.45fr\) minmax\(250px,\.65fr\)/.test(homepageDesktopBelow))errors.push('Moonlit Video desktop hierarchy must keep primary and secondary columns');
+if(!/#featured-short \.moonlit-video-grid\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)!important/.test(homepageMobileBelow))errors.push('Moonlit Video mobile layout must collapse to one comfortable column');
+
 if(/\.cta\{[^}]*margin-top:18px/.test(inline))errors.push('legacy inline CTA declarations returned: margin-top');
 if(/\.cta\{[^}]*font-weight:700/.test(inline))errors.push('legacy inline CTA declarations returned: font-weight');
 if(/\.notice\{[^}]*color:var\(--muted\)/.test(inline))errors.push('inline notice must not own canonical notice color');
