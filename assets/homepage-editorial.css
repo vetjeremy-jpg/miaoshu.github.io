@@ -89,30 +89,24 @@ body#top:not([data-book-id]) :is(.tonight-grid h3,.creator-card h3,.album-photo 
 /* Deliberately asymmetric mobile cadence: dense → pause → dense → pause. */
 @media(max-width:700px){
   body#top:not([data-book-id]) .hero-edition{display:none}
-  body#top:not([data-book-id]) .hero{padding-top:42px!important;padding-bottom:52px!important}
   body#top:not([data-book-id]) .hero::after{opacity:.32}
   body#top:not([data-book-id]) .hero-actions{margin-top:22px!important;gap:8px!important}
   body#top:not([data-book-id]) .hero-primary{width:auto!important}
   body#top:not([data-book-id]) .hero-text-link{justify-content:flex-start;padding-left:2px!important}
-  .editorial-transition{width:100%;padding:58px 0 18px;font-size:18px}
   .editorial-transition span{padding-left:16px}
   #tonight{padding-top:30px!important;padding-bottom:48px!important}
   #tonight .tonight-grid{border-top:0}
   #tonight .tonight-grid article{padding:22px 2px!important}
   #tonight .tonight-grid article+article{border-left:0!important;border-top:1px solid var(--editorial-rule)!important}
-  #featured{margin-top:12px!important;padding-top:58px!important;padding-inline:0!important}
   #featured .featured-explore{margin-inline:0!important;border-left:0!important;border-right:0!important;padding-inline:0!important;background:transparent!important}
   .moonlit-closing{margin-top:72px;padding:42px 0}
   .moonlit-closing nav{gap:4px 18px}
 }
 @media(max-width:390px){
-  .editorial-transition{padding-top:52px}
   #tonight{padding-top:26px!important;padding-bottom:44px!important}
-  #featured{padding-top:54px!important;padding-bottom:62px!important}
   .moonlit-closing{margin-top:64px;padding:38px 0}
 }
 @media(max-width:330px){
-  .editorial-transition{padding-top:46px;font-size:17px}
   #tonight .tonight-grid article{padding-block:19px!important}
 }
 
@@ -195,8 +189,6 @@ main.wrap>.editorial-transition:first-child{padding-top:clamp(70px,8vw,104px)}
 
 @media(max-width:700px){
   body#top:not([data-book-id]) .hero .hero-lede{max-width:22em!important}
-  main.wrap>.editorial-transition:first-child{padding-top:62px}
-  #tonight+.editorial-transition{padding-top:72px;padding-bottom:4px}
   #featured .featured-explore .moonlit-entry{
     grid-template-columns:54px 1fr auto!important;gap:12px!important;min-height:68px!important;
     padding:13px 2px!important
