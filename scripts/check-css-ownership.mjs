@@ -7,6 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
+  'assets/homepage-mobile-below-fold.css':{important:507},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -181,7 +182,8 @@ if(/#reading-list\{|\.reader-shelf\{|\.shelf-heading h2\{|#updates\{|\.latest-up
 if(/\.wrap\{|\.panel\{|\.chapter-kicker|\.creator-tag|\.section-title\{|\.notice\{/.test(premium))errors.push('premium must not regain homepage layout or section typography ownership');
 if(/\.hero-actions\{margin-top:32px!important|\.hero-index\{color:#73889b!important|\.hero-actions \.hero-primary:hover\{background:#efe2c9!important/.test(premium))errors.push('premium must not regain superseded Hero rules');
 if(!/@media\(min-width:701px\)\{\.wrap\{max-width:1240px;padding:64px 28px 120px\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve wrap composition');
-if(!/@media\(max-width:700px\)\{\.wrap\{padding:34px 18px 80px!important\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve wrap spacing');
+const mobileWrapOwnerCount=(homepageMobileBelow.match(/\.wrap\{padding:34px 18px 80px!important\}/g)||[]).length;
+if(mobileWrapOwnerCount!==1)errors.push(`homepage mobile wrap spacing must have exactly one canonical owner (found ${mobileWrapOwnerCount})`);
 if(!/#reading-list\{padding:32px 0\}/.test(homepageDesktopBelow)||!/#updates\{padding:38px 0\}/.test(homepageDesktopBelow))errors.push('homepage owner must preserve Reading List and Updates composition');
 if(!/@media\(min-width:701px\)\{#featured\{padding-top:90px\}/.test(homepageDesktopBelow)||!/#miaoshu-album\{padding-top:96px\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Featured and Album desktop composition');
 if(!/@media\(min-width:701px\)\{#book\{padding-top:80px\}\.bookshelf-scene\{margin-top:42px/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Bookshelf desktop composition');
