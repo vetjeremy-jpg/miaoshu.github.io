@@ -171,3 +171,60 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 .moonlit-phase-legend{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:18px 0 0}
 .moonlit-phase-legend span{padding:6px 10px;border:1px solid rgba(205,225,243,.13);border-radius:999px;color:#aebdca;font-size:12px}
 .moonlit-phase-legend span.is-current{border-color:rgba(228,210,175,.5);color:#ead9b7;background:rgba(228,210,175,.07)}
+
+
+/* Tablet editorial pass: 701–850px keeps Featured dual-column without desktop squeeze. */
+@media(min-width:701px) and (max-width:850px){
+  .wrap{
+    padding-left:24px;
+    padding-right:24px
+  }
+  #featured{
+    padding-top:72px
+  }
+  #featured .featured-grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(28px,4vw,36px);
+    align-items:stretch
+  }
+  #featured .featured-copy{
+    min-width:0;
+    padding:6px 0
+  }
+  #featured .featured-copy h2{
+    font-size:clamp(32px,4.7vw,40px);
+    line-height:1.35;
+    margin:8px 0 12px;
+    text-wrap:balance
+  }
+  #featured .featured-copy p{
+    font-size:16px;
+    line-height:1.8
+  }
+  #featured .featured-visual{
+    min-width:0;
+    min-height:370px
+  }
+  #featured .featured-visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+  }
+  #featured .featured-visual figcaption{
+    padding:24px 16px 15px;
+    font-size:13px
+  }
+  #featured .featured-copy .feature-actions{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:flex-start;
+    gap:10px
+  }
+  #featured .featured-copy .cta{
+    width:auto;
+    max-width:100%;
+    margin-top:4px;
+    white-space:normal
+  }
+}
