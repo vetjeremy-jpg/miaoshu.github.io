@@ -223,10 +223,6 @@
   .moonlit-subscribe-row input{font-size:16px}
 }
 
-@media(max-width:650px){
-  .moonlit-curation{margin:12px 16px;padding:25px 18px}
-}
-
 @media(prefers-reduced-motion:reduce){
   @media(max-width:700px){
     .moonlit-entry-grid,#book .novels-grid{scroll-behavior:auto!important}
@@ -563,6 +559,18 @@
   }
   #featured .featured-explore .moonlit-entry-grid{
     margin-top:22px!important
+  }
+  #featured .featured-explore-directory{
+    margin:14px 0 0!important;
+    text-align:left!important
+  }
+  #featured .featured-explore-directory .directory-link{
+    width:100%!important;
+    min-height:46px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    box-sizing:border-box!important
   }
 }
 @media(max-width:380px){
