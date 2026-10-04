@@ -571,3 +571,19 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 @media(max-width:390px){#community .reader-comment-frame{max-height:300px!important}}
 @media(max-width:375px){#community .reader-comment-frame{max-height:300px!important}}
 @media(max-width:330px){#community .reader-comment-frame{max-height:280px!important}}
+
+
+/* 320px density refinement — preserve covers and primary headings */
+@media(max-width:330px){
+  #tonight{padding-top:42px!important;padding-bottom:44px!important}
+  #tonight .tonight-grid{gap:8px!important}
+  #tonight .tonight-grid article{padding-top:16px!important;padding-bottom:16px!important}
+  #tonight .pick-commitment{margin-top:8px!important}
+  #tonight .tonight-grid article>a{margin-top:8px!important}
+  #book .book-details p{
+    display:-webkit-box!important;
+    -webkit-box-orient:vertical!important;
+    -webkit-line-clamp:2!important;
+    overflow:hidden!important
+  }
+}
