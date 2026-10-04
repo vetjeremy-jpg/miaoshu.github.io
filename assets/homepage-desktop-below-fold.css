@@ -57,16 +57,8 @@
 
 
 #creative>.notice{margin-bottom:26px}
-.follow-panel{scroll-margin-top:110px;display:grid;grid-template-columns:1fr auto;gap:16px 34px;align-items:center;margin:26px 0;padding:clamp(28px,4vw,48px);background:linear-gradient(120deg,#152c42,#0d1e30);border:1px solid rgba(228,210,175,.35)}
-.follow-panel h2{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(27px,3vw,38px);font-weight:500;margin:9px 0}
-.follow-panel p{color:var(--muted);margin:0}
-.follow-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;max-width:410px}
-.follow-actions a,.follow-actions button,.directory-link{color:var(--gold2);border:1px solid rgba(228,210,175,.48);border-radius:3px;background:transparent;text-decoration:none;padding:10px 14px;cursor:pointer;font-size:14px}
-.follow-actions button{background:var(--gold2);color:#071522;font-weight:700}
-.follow-actions a:hover,.directory-link:hover{background:rgba(228,210,175,.12)}
-.follow-feedback{grid-column:1/-1;font-size:14px}
-.follow-feedback:empty{display:none}
-
+.directory-link{color:var(--gold2);border:1px solid rgba(228,210,175,.48);border-radius:3px;background:transparent;text-decoration:none;padding:10px 14px;cursor:pointer;font-size:14px}
+.directory-link:hover{background:rgba(228,210,175,.12)}
 
 #community .community-actions{justify-content:flex-start;margin:28px 0 18px}#community .community-actions a:first-child{background:var(--gold2);color:#071522;border-color:var(--gold2)}#community .community-note{text-align:left}#community .community-note a{text-underline-offset:3px;color:var(--gold2)}
 
