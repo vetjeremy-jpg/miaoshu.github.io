@@ -350,6 +350,43 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   padding:8px 10px!important;border-left:2px solid rgba(226,199,143,.55)!important;color:#ead6ad!important
 }
 
+/* Moonlit support action card — intentional high-salience conversion moment. */
+#support.stay-with-moonlight{
+  padding:30px!important;border:1px solid rgba(226,199,143,.22)!important;border-radius:12px!important;
+  background:linear-gradient(145deg,rgba(16,34,50,.88),rgba(7,20,33,.94))!important;
+  box-shadow:0 18px 54px rgba(0,0,0,.24)!important
+}
+#support .support-note{font-size:15px!important;color:#c2ced7!important;font-weight:550!important}
+#support .support-actions{display:grid!important;grid-template-columns:minmax(190px,1fr) minmax(150px,.72fr) minmax(150px,.72fr)!important;gap:12px!important;min-width:min(100%,620px)!important}
+#support .support-actions>*{min-height:52px!important;border-radius:8px!important;font-size:15px!important}
+#support .support-primary{
+  padding:13px 24px!important;font-size:16px!important;font-weight:800!important;
+  box-shadow:0 10px 30px rgba(202,168,108,.2),inset 0 1px 0 rgba(255,255,255,.28)!important
+}
+#support .support-actions button{
+  background:rgba(21,45,65,.96)!important;border:1px solid rgba(226,199,143,.46)!important;
+  color:#f0dfbd!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important
+}
+#support .support-actions button:hover,#support .support-actions button:focus-visible{
+  background:rgba(48,65,76,.98)!important;border-color:#e2c78f!important;color:#fff1d2!important;transform:translateY(-1px)
+}
+#support .support-actions button[aria-pressed="true"]{
+  background:#d8a84c!important;border-color:#f0d48a!important;color:#071b33!important;font-weight:800!important
+}
+#support :is(#support-feedback,#save-feedback):not(:empty){
+  margin-top:10px!important;padding:10px 14px!important;border:1px solid rgba(226,199,143,.32)!important;
+  border-left:4px solid #e2c78f!important;border-radius:6px!important;background:rgba(226,199,143,.08)!important;
+  color:#f2dfb8!important;font-size:14px!important;font-weight:650!important
+}
+@media(max-width:700px){
+  #support.stay-with-moonlight{padding:24px 20px!important}
+  #support .support-note{font-size:14px!important;margin-bottom:16px!important}
+  #support .support-actions{grid-template-columns:1fr 1fr!important;min-width:0!important;gap:10px!important}
+  #support .support-actions .support-primary{grid-column:1/-1!important;min-height:56px!important;font-size:16px!important}
+  #support .support-actions button{min-height:50px!important}
+}
+@media(max-width:375px){#support .support-actions{grid-template-columns:1fr!important}#support .support-actions .support-primary{grid-column:auto!important}}
+
 /* One emotional ending only. */
 .moonlit-breathing-quote{
   margin-bottom:0!important;padding-bottom:22px!important
