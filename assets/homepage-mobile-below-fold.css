@@ -479,9 +479,7 @@
     display:block;
     margin:8px 0 0;
     color:#8ea1b1;
-    font-size:10px;
-    line-height:1.5;
-    letter-spacing:.14em
+    font-size:10px
   }
   #featured .featured-explore{
     width:100%!important;
@@ -732,10 +730,11 @@
 /* Moonlit immersion pass 8 — explicit editorial arc on compact screens — 2026-10-04 */
 @media(max-width:700px){
   .hero+.wrap>#tonight{padding-top:54px!important}
-  #tonight .chapter-kicker,#featured .chapter-kicker{letter-spacing:.14em!important}
+  /* Mobile Editorial Hierarchy Contract — quiet metadata, clear chapter cadence. */
+  :is(#tonight .chapter-kicker,#featured .chapter-kicker,#featured .featured-sublabel){letter-spacing:.14em!important;text-transform:uppercase;line-height:1.5}
+  :is(#featured .featured-sublabel,#featured .featured-visual figcaption){opacity:.72}
   #tonight .pick-number{opacity:.76}
-  #featured .featured-sublabel{opacity:.72}
-  #featured .featured-visual figcaption{font-size:11px!important;opacity:.72}
+  #featured .featured-visual figcaption{font-size:11px!important;line-height:1.5}
 }
 
 
