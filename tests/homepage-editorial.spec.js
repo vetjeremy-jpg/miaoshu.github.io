@@ -96,3 +96,17 @@ test('editorial stylesheet stays within the current technical-debt budget', asyn
   expect(media, 'consolidate breakpoints instead of adding new media blocks').toBeLessThanOrEqual(15);
   expect(css.length, 'keep the editorial layer from growing unchecked').toBeLessThanOrEqual(19200);
 });
+
+
+test('third-party embeds stay inert until they approach the viewport', async ({ page }) => {
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  const frames=page.locator('iframe[data-lazy-src]');
+  await expect(frames).toHaveCount(3);
+  const initial=await frames.evaluateAll(xs=>xs.map(x=>({src:x.getAttribute('src'),lazy:x.dataset.lazySrc})));
+  expect(initial.every(x=>x.src==='about:blank' && /^https:/.test(x.lazy))).toBeTruthy();
+  await page.locator('#featured-short').scrollIntoViewIfNeeded();
+  await expect.poll(async()=>page.locator('.moonlit-video-primary iframe').getAttribute('data-lazy-src')).toBeNull();
+  await expect(page.locator('.moonlit-video-primary iframe')).toHaveAttribute('src',/youtube-nocookie\.com/);
+  await expect(page.locator('#community iframe')).toHaveAttribute('data-lazy-src',/chatgpt\.site/);
+});
