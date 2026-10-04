@@ -186,6 +186,7 @@ if(!/@media\(min-width:701px\)\{\.wrap\{max-width:1240px;padding:64px 28px 120px
 if(/#tonight\{padding-top:46px!important\}|#featured\{padding-top:50px!important\}/.test(homepageMobileBelow))errors.push('superseded first-pass mobile section spacing must stay retired');
 if(/\.topbar \.navlinks\{gap:2px!important\}/.test(homepageMobileBelow)||/\.topbar \.navlinks a\{padding-left:(?:9|10)px!important;padding-right:(?:9|10)px!important/.test(homepageMobileBelow))errors.push('superseded mobile nav spacing must defer to navigation pass 13');
 if(/\.tonight-grid\{[\s\S]{0,160}gap:12px!important;[\s\S]{0,160}margin:25px 0 0!important/.test(homepageMobileBelow))errors.push('superseded first-pass Tonight gap must stay retired');
+if((homepageMobileBelow.match(/@media\(max-width:700px\)/g)||[]).length>7)errors.push('mobile <=700 breakpoint architecture regressed: keep adjacent ownership passes consolidated');
 if(/--moonlit-space-label:/.test(homepageMobileBelow))errors.push('unused mobile spacing label token must not return');
 if(/#creative\.explore-more>\.notice\{margin-bottom:18px!important\}/.test(homepageMobileBelow)||/#featured \.moonlit-mood-selector\{margin-top:18px!important/.test(homepageMobileBelow))errors.push('editorial copy/action spacing must use the canonical spacing token');
 if(/\.featured-copy h2\{font-size:clamp\(30px,8vw,34px\)!important/.test(homepageMobileBelow)||/\.featured-copy p\{font-size:16px!important/.test(homepageMobileBelow))errors.push('superseded first-pass Featured typography must stay retired');
