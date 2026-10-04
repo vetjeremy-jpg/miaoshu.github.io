@@ -71,6 +71,11 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:nav:p0
 
+      - name: Run cross-page release candidate gate
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: npm run test:rc
+
       - name: Run homepage editorial and responsive gate
         env:
           BASE_URL: http://127.0.0.1:4173/
