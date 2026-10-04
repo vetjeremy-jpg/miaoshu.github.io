@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:507},
+  'assets/homepage-mobile-below-fold.css':{important:500},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -182,6 +182,9 @@ if(/#reading-list\{|\.reader-shelf\{|\.shelf-heading h2\{|#updates\{|\.latest-up
 if(/\.wrap\{|\.panel\{|\.chapter-kicker|\.creator-tag|\.section-title\{|\.notice\{/.test(premium))errors.push('premium must not regain homepage layout or section typography ownership');
 if(/\.hero-actions\{margin-top:32px!important|\.hero-index\{color:#73889b!important|\.hero-actions \.hero-primary:hover\{background:#efe2c9!important/.test(premium))errors.push('premium must not regain superseded Hero rules');
 if(!/@media\(min-width:701px\)\{\.wrap\{max-width:1240px;padding:64px 28px 120px\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve wrap composition');
+
+if(/#tonight\{padding-top:46px!important\}|#featured\{padding-top:50px!important\}/.test(homepageMobileBelow))errors.push('superseded first-pass mobile section spacing must stay retired');
+if(/\.topbar \.navlinks\{gap:2px!important\}/.test(homepageMobileBelow)||/\.topbar \.navlinks a\{padding-left:(?:9|10)px!important;padding-right:(?:9|10)px!important/.test(homepageMobileBelow))errors.push('superseded mobile nav spacing must defer to navigation pass 13');
 const mobileWrapOwnerCount=(homepageMobileBelow.match(/\.wrap\{padding:34px 18px 80px!important\}/g)||[]).length;
 if(mobileWrapOwnerCount!==1)errors.push(`homepage mobile wrap spacing must have exactly one canonical owner (found ${mobileWrapOwnerCount})`);
 if(!/#reading-list\{padding:32px 0\}/.test(homepageDesktopBelow)||!/#updates\{padding:38px 0\}/.test(homepageDesktopBelow))errors.push('homepage owner must preserve Reading List and Updates composition');

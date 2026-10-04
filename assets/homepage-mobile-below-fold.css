@@ -2,7 +2,6 @@
    Keep mobile composition explicit so desktop grids cannot leak into narrow screens. */
 
 @media(max-width:700px){
-  #tonight{padding-top:46px!important}
   .tonight-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
@@ -29,7 +28,6 @@
   .shelf-heading h2{font-size:22px!important;line-height:1.55!important;word-break:keep-all}
   .shelf-heading>a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
 
-  #featured{padding-top:50px!important}
   .featured-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
@@ -807,18 +805,12 @@
 
 /* Moonlit immersion pass 9 — compact navigation and calmer ending — 2026-10-04 */
 @media(max-width:700px){
-  .topbar .navlinks{gap:2px!important}
-  .topbar .navlinks a{padding-left:10px!important;padding-right:10px!important;white-space:nowrap}
   #creative.explore-more>.notice{margin-bottom:18px!important}
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
   #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
   #support .support-actions button{min-height:var(--moonlit-touch)!important;font-size:12px!important}
 }
-@media(max-width:375px){
-  .topbar .navlinks a{padding-left:9px!important;padding-right:9px!important}
-}
-
 
 /* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
 @media(max-width:700px){
