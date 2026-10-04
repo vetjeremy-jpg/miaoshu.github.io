@@ -52,7 +52,7 @@ for (const book of books) {
     const back = page.locator('a[href="../../index.html#book"]').last();
     await expect(back).toBeVisible();
     await back.click();
-    await expect(page).toHaveURL(/\/#book$/);
+    await expect(page).toHaveURL(/\/(?:index\.html)?#book$/);
     await expect(page.locator('#book')).toBeVisible();
   });
 }
