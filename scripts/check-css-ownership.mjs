@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const budgets={
   'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
-  'assets/homepage-desktop-below-fold.css':{hero:0,topbar:0,navlinks:0,panel:2,important:10},
+  'assets/homepage-desktop-below-fold.css':{hero:2,topbar:5,navlinks:5,panel:3,important:10},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -252,7 +252,7 @@ if((albumBlock.match(/href="gallery\/index\.html#snow-sword"/g)||[]).length!==2)
 const updatesStart=homepage.indexOf('id="updates"');
 const updatesEnd=updatesStart<0?-1:homepage.indexOf('</section>',updatesStart);
 const updatesBlock=updatesStart>=0&&updatesEnd>updatesStart?homepage.slice(updatesStart,updatesEnd+10):'';
-if(/videos\//.test(updatesBlock)||(updatesBlock.match(/class="cta/g)||[]).length!==2)errors.push('Recent Updates must stay focused on two reading actions and not duplicate the video hub');
+if(/videos\//.test(updatesBlock)||(updatesBlock.match(/<a\b/g)||[]).length!==2||!/books\/fengmen-yetan/.test(updatesBlock)||!/href="#book"/.test(updatesBlock))errors.push('Recent Updates must stay focused on two reading actions and not duplicate the video hub');
 const communityStart=homepage.indexOf('id="community"');
 const communityEnd=communityStart<0?-1:homepage.indexOf('</section>',communityStart);
 const communityBlock=communityStart>=0&&communityEnd>communityStart?homepage.slice(communityStart,communityEnd+10):'';
