@@ -336,6 +336,19 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 #support .support-actions button[aria-pressed="true"]{
   background:rgba(216,168,76,.18)!important;border-color:rgba(226,199,143,.62)!important;color:#efd9aa!important
 }
+#support .support-actions :is(a,button):focus-visible{
+  outline:3px solid #f2d49a!important;outline-offset:3px!important;box-shadow:0 0 0 5px rgba(242,212,154,.14)!important
+}
+#support .support-actions button:disabled{opacity:.68!important;cursor:wait!important;transform:none!important}
+#support .support-actions button[data-state="success"]{
+  background:rgba(112,166,126,.18)!important;border-color:rgba(159,211,170,.56)!important;color:#d9f0de!important
+}
+#support .support-actions button[data-state="error"]{
+  background:rgba(174,92,82,.15)!important;border-color:rgba(225,143,130,.5)!important;color:#f2c8c1!important
+}
+#support :is(#support-feedback,#save-feedback):not(:empty){
+  padding:8px 10px!important;border-left:2px solid rgba(226,199,143,.55)!important;color:#ead6ad!important
+}
 
 /* One emotional ending only. */
 .moonlit-breathing-quote{
