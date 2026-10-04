@@ -633,3 +633,9 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   body#top:not([data-book-id]) .hero-actions .hero-text-link:hover,
   body#top:not([data-book-id]) .hero-actions .hero-text-link:focus-visible{opacity:.88!important}
 }
+
+
+/* 320px Hero-to-Tonight transition — keep the prose pause, trim only excess air */
+@media(max-width:330px){
+  main.wrap>.editorial-transition:first-child{padding-top:40px!important}
+}
