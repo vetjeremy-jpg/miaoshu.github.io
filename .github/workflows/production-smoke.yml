@@ -1,6 +1,19 @@
 name: Production Smoke
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'sw.js'
+      - 'site.webmanifest'
+      - 'apple-touch-icon.png'
+      - 'assets/**'
+      - 'videos/**'
+      - 'works/**'
+      - 'search/**'
+      - 'scripts/check-production-smoke.mjs'
+      - '.github/workflows/production-smoke.yml'
   workflow_dispatch:
   schedule:
     - cron: '17 1 * * 1,4'
