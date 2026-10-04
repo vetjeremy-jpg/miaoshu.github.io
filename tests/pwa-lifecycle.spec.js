@@ -1,5 +1,15 @@
 const { test, expect } = require('@playwright/test');
 
+async function resetMoonlitPwa(page) {
+  await page.goto('./', { waitUntil: 'domcontentloaded' });
+  await page.evaluate(async () => {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(registrations.map(registration => registration.unregister()));
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('moonlit-')).map(key => caches.delete(key)));
+  });
+}
+
 async function waitForControl(page) {
   return page.evaluate(async () => {
     const registration = await navigator.serviceWorker.ready;
@@ -15,7 +25,8 @@ async function waitForControl(page) {
 
 test.describe('Moonlit PWA lifecycle', () => {
   test('P0 registers, controls and creates canonical caches @p0', async ({ page }) => {
-    await page.goto('./', { waitUntil: 'load' });
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
     const state = await waitForControl(page);
     expect(state.scope).toBe(new URL('./', page.url()).href);
     expect(state.controlled).toBe(true);
@@ -28,12 +39,9 @@ test.describe('Moonlit PWA lifecycle', () => {
   });
 
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
-    await page.goto('./', { waitUntil: 'load' });
-    await waitForControl(page);
+    await resetMoonlitPwa(page);
 
     await page.evaluate(async () => {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(registrations.map(registration => registration.unregister()));
       await caches.open('moonlit-shell-stale-regression');
       await caches.open('moonlit-pages-stale-regression');
     });
