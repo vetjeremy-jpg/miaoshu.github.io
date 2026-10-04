@@ -230,6 +230,10 @@ if(tailPos.some(p=>p<0)||tailPos.some((p,i)=>i&&p<=tailPos[i-1]))errors.push('ho
 const breathingQuotePos=homepage.indexOf('class="moonlit-breathing-quote"');
 if(!(breathingQuotePos>tailPos[6]&&breathingQuotePos<tailPos[7]))errors.push('final Moonlit breathing quote must remain between Stay With Moonlight and Newsletter');
 if(/id="follow"/.test(homepage)||/id="bell-site"/.test(homepage))errors.push('retired Follow section and bell CTA must stay removed');
+if(/\.follow-panel|\.follow-actions|\.follow-feedback/.test(homepageDesktopBelow+homepageMobileBelow))errors.push('retired Follow CSS must stay removed');
+if((homepage.match(/「每個人心中，都有一道尚未醒來的月光。」/g)||[]).length!==1)errors.push('月下拾句 must not be duplicated again in the closing pause');
+if(!/「願你離開這裡時，還帶著一點月光。」/.test(homepage))errors.push('closing breathing pause must keep its distinct Moonlit line');
+
 if(!/id="support"[\s\S]*?href="#newsletter"[\s\S]*?id="like-site"[\s\S]*?id="save-site"/.test(homepage))errors.push('merged Stay With Moonlight section must keep newsletter, like and save actions');
 if((homepage.match(/id="like-site"/g)||[]).length!==1||(homepage.match(/id="save-site"/g)||[]).length!==1)errors.push('merged Stay With Moonlight actions must remain unique');
 if(!/id="reading-list"[^>]*hidden/.test(homepage))errors.push('empty homepage bookmark shelf must be hidden by default');
@@ -238,8 +242,8 @@ if(!/id="updates-title">最近，又有新的故事亮起。<\/h2>/.test(homepag
 const creativeStart=homepage.indexOf('<section class="panel explore-more" id="creative"');
 const creativeEnd=creativeStart<0?-1:homepage.indexOf('</section>',creativeStart);
 const creativeBlock=creativeStart>=0&&creativeEnd>creativeStart?homepage.slice(creativeStart,creativeEnd+10):'';
-if((creativeBlock.match(/class="creator-card"/g)||[]).length!==3||!/href="posts\/index\.html"/.test(creativeBlock)||!/href="works\/"/.test(creativeBlock)||!/href="about\//.test(creativeBlock))errors.push('Explore More must remain a compact three-path section');
-if(/books\/|gallery\/|videos\//.test(creativeBlock))errors.push('Explore More must not duplicate Books, Photography or Video destinations');
+if((creativeBlock.match(/class="creator-card"/g)||[]).length!==3||!/href="posts\/index\.html"/.test(creativeBlock)||!/href="works\/"/.test(creativeBlock)||!/href="search\/"/.test(creativeBlock))errors.push('Explore More must remain a compact three-path section');
+if(/books\/|gallery\/|videos\/|about\//.test(creativeBlock))errors.push('Explore More must not duplicate Books, Photography, Video or About destinations');
 const albumStart=homepage.indexOf('id="miaoshu-album"');
 const albumEnd=albumStart<0?-1:homepage.indexOf('</section>',albumStart);
 const albumBlock=albumStart>=0&&albumEnd>albumStart?homepage.slice(albumStart,albumEnd+10):'';
