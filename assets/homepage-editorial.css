@@ -115,3 +115,101 @@ body#top:not([data-book-id]) :is(.tonight-grid h3,.creator-card h3,.album-photo 
   .editorial-transition{padding-top:46px;font-size:17px}
   #tonight .tonight-grid article{padding-block:19px!important}
 }
+
+
+/* Moonlit editorial refinement II — hierarchy before features — 2026-10-04 */
+
+/* Hero comprehension: poetry leads, utility explains itself once. */
+body#top:not([data-book-id]) .hero .hero-lede{
+  max-width:30em!important;color:rgba(205,216,225,.78)!important
+}
+body#top:not([data-book-id]) .hero-actions .hero-primary{
+  letter-spacing:.08em!important
+}
+body#top:not([data-book-id]) .hero-actions .hero-text-link{
+  opacity:.72;transition:opacity .2s ease
+}
+body#top:not([data-book-id]) .hero-actions .hero-text-link:hover,
+body#top:not([data-book-id]) .hero-actions .hero-text-link:focus-visible{opacity:1}
+
+/* The transition is a pause between chapters, not another section. */
+main.wrap>.editorial-transition:first-child{padding-top:clamp(70px,8vw,104px)}
+#tonight+.editorial-transition{padding-top:clamp(88px,10vw,128px);padding-bottom:8px}
+#tonight+.editorial-transition span{color:#8fa0ad}
+
+/* Tonight behaves like three magazine briefs rather than product cards. */
+#tonight .tonight-grid article{min-width:0}
+#tonight .pick-number{font-variant-numeric:tabular-nums}
+#tonight .tonight-grid p{max-width:28em;color:#8fa1af}
+#tonight .tonight-grid h3{font-size:clamp(24px,2.4vw,31px);text-wrap:balance}
+
+/* Free explore becomes an editorial directory: no second card wall. */
+#featured .featured-explore{padding-left:0!important;padding-right:0!important;border-left:0!important;border-right:0!important}
+#featured .featured-explore .moonlit-entry-grid{
+  display:grid!important;grid-template-columns:1fr!important;gap:0!important;
+  margin-top:28px!important;border-top:1px solid var(--editorial-rule)
+}
+#featured .featured-explore .moonlit-entry{
+  display:grid!important;grid-template-columns:70px minmax(160px,.7fr) minmax(220px,1fr) auto;
+  align-items:center;gap:18px;min-height:72px;padding:14px 2px!important;
+  border:0!important;border-bottom:1px solid var(--editorial-rule)!important;
+  border-radius:0!important;background:transparent!important;box-shadow:none!important;
+  text-decoration:none!important;transform:none!important
+}
+#featured .featured-explore .moonlit-entry small{color:#738897;letter-spacing:.14em}
+#featured .featured-explore .moonlit-entry strong{font:500 19px/1.5 "Noto Serif TC","Songti TC",serif;color:#e9e4da}
+#featured .featured-explore .moonlit-entry span{color:#8497a6;font-size:13px}
+#featured .featured-explore .moonlit-entry::after{content:"→";color:#bca984}
+#featured .featured-explore .moonlit-entry:hover,
+#featured .featured-explore .moonlit-entry:focus-visible{background:rgba(205,225,243,.025)!important}
+
+/* Random discovery remains available but visually secondary. */
+#featured .moonlit-serendipity{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:18px 2px!important;border-bottom:1px solid var(--editorial-rule)
+}
+#featured .moonlit-serendipity span{color:#8194a4;font-size:13px}
+#featured .moonlit-serendipity button{
+  min-height:44px;padding:5px 0!important;border:0!important;border-radius:0!important;
+  background:transparent!important;color:#cdbb98!important;box-shadow:none!important
+}
+#featured .featured-explore-directory{text-align:left!important;margin-top:18px!important}
+#featured .moonlit-mood-selector{opacity:.82}
+
+/* Secondary sections: less panel repetition, more chapter-like separators. */
+#updates.latest-update,#creative.explore-more,#about.about-miaoshu,#community,#support.stay-with-moonlight,#newsletter{
+  border-left:0!important;border-right:0!important;background:transparent!important;box-shadow:none!important
+}
+#updates .cta,#creative .cta,#about .cta,#support .support-actions button:not(.support-primary){
+  box-shadow:none!important
+}
+
+/* The ending owns more silence than the utility sections before it. */
+.moonlit-closing{position:relative}
+.moonlit-closing::before{
+  content:"";position:absolute;left:50%;top:-1px;width:min(160px,34vw);height:1px;
+  transform:translateX(-50%);background:rgba(220,201,164,.34)
+}
+.moonlit-closing nav a{opacity:.82}
+.moonlit-closing nav a:hover,.moonlit-closing nav a:focus-visible{opacity:1}
+
+@media(max-width:700px){
+  body#top:not([data-book-id]) .hero .hero-lede{max-width:22em!important}
+  main.wrap>.editorial-transition:first-child{padding-top:62px}
+  #tonight+.editorial-transition{padding-top:72px;padding-bottom:4px}
+  #featured .featured-explore .moonlit-entry{
+    grid-template-columns:54px 1fr auto!important;gap:12px!important;min-height:68px!important;
+    padding:13px 2px!important
+  }
+  #featured .featured-explore .moonlit-entry span{grid-column:2/4;margin-top:-6px}
+  #featured .moonlit-serendipity{align-items:flex-start;flex-direction:column;gap:4px;padding-block:16px!important}
+  #featured .moonlit-serendipity button{width:auto!important;text-align:left}
+  #featured .moonlit-mood-selector{margin-top:12px!important}
+  .moonlit-closing>p{max-width:24em;padding-inline:10px}
+}
+@media(max-width:390px){
+  main.wrap>.editorial-transition:first-child{padding-top:56px}
+  #tonight+.editorial-transition{padding-top:64px}
+  #featured .featured-explore .moonlit-entry{grid-template-columns:46px 1fr auto!important;gap:10px!important}
+  #featured .featured-explore .moonlit-entry strong{font-size:18px}
+}
