@@ -1,34 +1,233 @@
-/* Moonlit ownership: mobile homepage below-fold only. Avoid reader/about/gallery global overrides here. */
-/* Moonlit homepage mobile below-fold — deferred 2026-10-02 */
-@media(max-width:700px){#tonight{padding-top:46px!important}.tonight-grid{display:flex!important;overflow-x:auto;gap:12px!important;margin:25px -18px 0!important;padding:0 18px 12px!important;border:0!important;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.tonight-grid article{flex:0 0:min(82vw,310px);min-height:235px;padding:25px 22px!important;border:1px solid rgba(220,201,164,.15)!important;background:#091827!important;scroll-snap-align:center}.tonight-grid h3{font-size:26px!important}.tonight-grid article a{display:inline-flex;align-items:center;min-height:44px}
-#reading-list{padding:34px 0!important}.shelf-heading{display:block!important}.shelf-heading h2{font-size:22px!important;line-height:1.55!important;word-break:keep-all}.shelf-heading>a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
-#featured{padding-top:50px!important}.featured-grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}.featured-copy{min-width:0!important;padding:0!important}.featured-copy h2{font-size:clamp(30px,8vw,34px)!important;line-height:1.4!important;word-break:keep-all}.featured-copy p{font-size:16px!important;line-height:1.9!important}.featured-copy .feature-actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;width:100%}.featured-copy .cta{min-height:48px;display:flex;align-items:center;justify-content:center;width:100%!important}.featured-visual{order:-1;width:100%;min-height:0!important;aspect-ratio:4/3}.featured-visual img{width:100%!important;height:100%!important;object-fit:cover!important}.featured-visual figcaption{font-size:13px!important;padding:34px 16px 14px!important}
-#updates{padding:38px 0!important}.update-heading{display:block!important}.update-heading time{display:block;margin-top:8px}.update-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.update-actions a{min-height:46px;display:flex!important;align-items:center;justify-content:center;text-align:center}
-.moonlit-discovery{margin:42px -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}.moonlit-discovery h2{font-size:32px!important;line-height:1.4;word-break:keep-all}.moonlit-entry-grid{display:flex!important;overflow-x:auto;gap:10px!important;margin:24px -18px 0!important;padding:0 18px 12px!important;background:transparent!important;scroll-snap-type:x mandatory;scrollbar-width:none}.moonlit-entry{flex:0 0:76vw;min-height:150px!important;padding:24px 20px!important;border:1px solid rgba(220,230,240,.11)!important;scroll-snap-align:center}.moonlit-serendipity{margin-top:22px!important}.moonlit-serendipity button{min-height:50px!important;font-size:14px}
-.moonlit-found-line{margin:52px 0!important;padding:0 0 0 18px!important}.moonlit-found-line blockquote{font-size:27px!important;line-height:1.75!important;word-break:keep-all}.moonlit-found-line a{min-height:46px}
-#book{padding-top:58px!important}.novels-grid{display:flex!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.novel-card{flex:0 0:158px!important;scroll-snap-align:start!important}.book-object{width:148px!important;margin:8px 0 16px!important}.novel-card h3{font-size:14px!important;line-height:1.55!important;word-break:keep-all}
-#creative{padding-top:54px!important}.creator-grid{display:flex!important;overflow-x:auto;gap:10px!important;margin:26px -18px 0!important;padding:0 18px 14px!important;background:transparent!important;scroll-snap-type:x mandatory;scrollbar-width:none}.creator-card{flex:0 0:82vw;max-width:320px;scroll-snap-align:center!important;border:1px solid rgba(220,230,240,.1)!important}.creator-copy a{display:flex;align-items:center;min-height:44px}
-#miaoshu-album{padding-top:58px!important}.album-photos{display:flex!important;overflow-x:auto;gap:12px!important;margin:28px -18px 0!important;padding:0 18px 14px!important;scroll-snap-type:x mandatory;scrollbar-width:none}.album-photo{flex:0 0:84vw;scroll-snap-align:center}.album-photo img{aspect-ratio:3/4!important}.album-photo figcaption{padding:14px 2px!important}.album-photo h3{font-size:20px!important}.album-photo p{font-size:13px!important}
-#featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
-.video-preview{max-width:100%!important}.video-preview iframe{display:block;width:min(76vw,290px)!important;max-width:100%;height:auto;aspect-ratio:9/16;margin:auto}
-#instagram-reel>div{max-width:100%!important}#instagram-reel iframe{border-radius:0!important}
-.support-actions,.follow-actions,.about-links,.community-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.support-actions>* ,.follow-actions>* ,.about-links>* ,.community-actions>*{min-height:48px!important;display:flex!important;align-items:center;justify-content:center;text-align:center}
-.follow-panel{margin:0 -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}
-.about-layout{display:block!important}.about-lede{margin-bottom:24px!important}.about-links{margin-top:24px!important}
-.reader-comment-frame iframe{height:680px!important}
-.moonlit-newsletter-grid{display:block!important}.moonlit-newsletter form{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}.moonlit-newsletter input,.moonlit-newsletter button{min-height:48px!important;width:100%!important}
-}}
-@media(max-width:380px){.hero h1{font-size:42px!important}.hero-index{font-size:7.5px!important}.tonight-grid article{flex-basis:86vw}.novel-card{flex-basis:150px!important}.book-object{width:140px!important}.creator-card{flex-basis:86vw}}
-@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}}\n@media(prefers-reduced-motion:reduce){@media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{scroll-behavior:auto!important}}}
+/* Moonlit ownership: mobile homepage below-fold only.
+   Keep mobile composition explicit so desktop grids cannot leak into narrow screens. */
 
+@media(max-width:700px){
+  #tonight{padding-top:46px!important}
+  .tonight-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:12px!important;
+    margin:25px 0 0!important;
+    padding:0!important;
+    border:0!important;
+    overflow:visible!important
+  }
+  .tonight-grid article{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    min-height:0!important;
+    padding:24px 20px!important;
+    border:1px solid rgba(220,201,164,.15)!important;
+    background:#091827!important
+  }
+  .tonight-grid h3{font-size:26px!important;line-height:1.45!important;word-break:keep-all}
+  .tonight-grid article a{display:inline-flex;align-items:center;min-height:44px}
 
+  #reading-list{padding:34px 0!important}
+  .shelf-heading{display:block!important}
+  .shelf-heading h2{font-size:22px!important;line-height:1.55!important;word-break:keep-all}
+  .shelf-heading>a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
 
-@media(max-width:700px){.moonlit-cover{min-height:190px}.moonlit-quote-v2{padding-inline:20px}}
+  #featured{padding-top:50px!important}
+  .featured-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:22px!important
+  }
+  .featured-copy{min-width:0!important;padding:0!important}
+  .featured-copy h2{font-size:clamp(30px,8vw,34px)!important;line-height:1.4!important;word-break:keep-all}
+  .featured-copy p{font-size:16px!important;line-height:1.9!important}
+  .featured-copy .feature-actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;width:100%}
+  .featured-copy .cta{min-height:48px;display:flex;align-items:center;justify-content:center;width:100%!important}
+  .featured-visual{
+    order:-1;
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    aspect-ratio:4/3;
+    overflow:hidden!important
+  }
+  .featured-visual img{width:100%!important;height:100%!important;object-fit:cover!important}
+  .featured-visual figcaption{font-size:13px!important;padding:34px 16px 14px!important}
 
-@media(max-width:700px){.wrap{padding:34px 18px 80px!important}}
+  #updates{padding:38px 0!important}
+  .update-heading{display:block!important}
+  .update-heading time{display:block;margin-top:8px}
+  .update-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+  .update-actions a{min-height:46px;display:flex!important;align-items:center;justify-content:center;text-align:center;width:100%!important}
 
-/* Homepage-only Moonlit Letters / curation mobile refinements */
-@media(max-width:850px){.moon-phase-progress{flex-basis:100%;margin:6px 0 0;min-height:32px}.reader-crosslink a{display:inline-block;padding:7px 2px;min-height:44px}}
-@media(max-width:520px){.moonlit-subscribe-row input{font-size:16px}}
-@media(max-width:650px){.moonlit-curation{margin:12px 16px;padding:25px 18px}}
+  .moonlit-discovery{margin:42px -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}
+  .moonlit-discovery h2{font-size:32px!important;line-height:1.4;word-break:keep-all}
+  .moonlit-entry-grid{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    gap:10px!important;
+    margin:24px -18px 0!important;
+    padding:0 18px 12px!important;
+    background:transparent!important;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none
+  }
+  .moonlit-entry{flex:0 0:76vw!important;min-width:76vw!important;min-height:150px!important;padding:24px 20px!important;border:1px solid rgba(220,230,240,.11)!important;scroll-snap-align:center}
+  .moonlit-serendipity{margin-top:22px!important}
+  .moonlit-serendipity button{min-height:50px!important;font-size:14px}
+  .moonlit-found-line{margin:52px 0!important;padding:0 0 0 18px!important}
+  .moonlit-found-line blockquote{font-size:27px!important;line-height:1.75!important;word-break:keep-all}
+  .moonlit-found-line a{min-height:46px}
 
+  #book{padding-top:58px!important}
+  #book .novels-grid{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    overflow-y:visible!important;
+    scroll-snap-type:x mandatory!important;
+    -webkit-overflow-scrolling:touch
+  }
+  #book .novel-card{
+    flex:0 0 158px!important;
+    width:158px!important;
+    min-width:158px!important;
+    max-width:158px!important;
+    scroll-snap-align:start!important
+  }
+  #book .book-object{width:148px!important;min-width:148px!important;margin:8px 0 16px!important}
+  #book .novel-card h3{font-size:14px!important;line-height:1.55!important;word-break:keep-all}
+
+  #creative{padding-top:54px!important}
+  .creator-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:12px!important;
+    overflow:visible!important;
+    margin:26px 0 0!important;
+    padding:0!important;
+    background:transparent!important;
+    border:0!important
+  }
+  .creator-card{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    border:1px solid rgba(220,230,240,.1)!important
+  }
+  .creator-copy{padding:22px 20px!important}
+  .creator-copy h3{font-size:22px!important;line-height:1.45!important;word-break:keep-all}
+  .creator-copy a{display:flex;align-items:center;min-height:44px}
+
+  #miaoshu-album{padding-top:58px!important}
+  .album-photos{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:24px!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    margin:28px 0 0!important;
+    padding:0!important
+  }
+  .album-photo{width:100%!important;min-width:0!important;max-width:none!important;margin:0!important}
+  .album-photo img{width:100%!important;height:auto!important;aspect-ratio:4/5!important;object-fit:cover!important}
+  .album-photo figcaption{padding:14px 2px!important}
+  .album-photo h3{font-size:20px!important;line-height:1.5!important}
+  .album-photo p{font-size:13px!important;line-height:1.85!important}
+
+  #featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
+
+  .video-preview{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:22px!important;
+    align-items:start!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important
+  }
+  .video-preview iframe{
+    display:block;
+    width:min(78vw,290px)!important;
+    max-width:100%!important;
+    height:auto!important;
+    aspect-ratio:9/16;
+    margin:0 auto!important
+  }
+  .video-preview>div{min-width:0!important;width:100%!important}
+  .video-preview .creator-nav{justify-content:center!important}
+
+  #instagram-reel>div{max-width:100%!important}
+  #instagram-reel iframe{border-radius:0!important}
+
+  .support-actions,.follow-actions,.about-links,.community-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+    width:100%!important;
+    max-width:none!important
+  }
+  .support-actions>*,.follow-actions>*,.about-links>*,.community-actions>*{
+    min-height:48px!important;
+    width:100%!important;
+    min-width:0!important;
+    display:flex!important;
+    align-items:center;
+    justify-content:center;
+    text-align:center
+  }
+
+  .follow-panel{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:22px!important;
+    margin:0!important;
+    padding:38px 18px!important;
+    border-left:1px solid rgba(205,220,232,.13)!important;
+    border-right:1px solid rgba(205,220,232,.13)!important
+  }
+  .follow-panel>div{min-width:0!important}
+  .follow-panel h2{font-size:clamp(28px,8vw,36px)!important;line-height:1.45!important;word-break:keep-all}
+
+  .about-layout{display:block!important}
+  .about-lede{margin-bottom:24px!important}
+  .about-links{margin-top:24px!important}
+
+  .reader-comment-frame iframe{height:680px!important}
+  .moonlit-newsletter-grid{display:block!important}
+  .moonlit-newsletter form{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+  .moonlit-newsletter input,.moonlit-newsletter button{min-height:48px!important;width:100%!important}
+
+  .tonight-grid,.moonlit-entry-grid,#book .novels-grid{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .moonlit-entry-grid::-webkit-scrollbar,#book .novels-grid::-webkit-scrollbar{display:none}
+
+  .wrap{padding:34px 18px 80px!important}
+  .moonlit-cover{min-height:190px}
+  .moonlit-quote-v2{padding-inline:20px}
+}
+
+@media(max-width:380px){
+  .hero h1{font-size:42px!important}
+  .hero-index{font-size:7.5px!important}
+  #book .novel-card{flex-basis:150px!important;width:150px!important;min-width:150px!important;max-width:150px!important}
+  #book .book-object{width:140px!important;min-width:140px!important}
+}
+
+@media(max-width:850px){
+  .moon-phase-progress{flex-basis:100%;margin:6px 0 0;min-height:32px}
+  .reader-crosslink a{display:inline-block;padding:7px 2px;min-height:44px}
+}
+
+@media(max-width:520px){
+  .moonlit-subscribe-row input{font-size:16px}
+}
+
+@media(max-width:650px){
+  .moonlit-curation{margin:12px 16px;padding:25px 18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  @media(max-width:700px){
+    .moonlit-entry-grid,#book .novels-grid{scroll-behavior:auto!important}
+  }
+}
