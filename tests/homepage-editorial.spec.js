@@ -150,7 +150,7 @@ test('homepage has one explicit emotional closing and a quieter support strip', 
   await expect(page.locator('.moonlit-closing h2')).toHaveCount(1);
   await expect(page.locator('.moonlit-breathing-quote')).toBeHidden();
   await expect(page.locator('#newsletter')).toBeVisible();
-  const order=await page.evaluate(()=>['#community','#support','.moonlit-breathing-quote','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
+  const order=await page.evaluate(()=>['#community','#support','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
   expect(order).toEqual([...order].sort((a,b)=>a-b));
 });
 
@@ -232,7 +232,7 @@ test('service worker shell versions match current homepage assets', async ({ req
   const html=await (await request.get('./')).text();
   expect(html).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
   expect(html).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
-  expect(sw).toContain("const CACHE='moonlit-shell-v55'");
+  expect(sw).toContain("const CACHE='moonlit-shell-v56'");
   expect(sw).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
   expect(sw).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
   expect(sw).toContain('assets/moonlit-home-idle.js?v=20261004-mainthread9');
