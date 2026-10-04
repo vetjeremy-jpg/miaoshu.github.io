@@ -57,7 +57,12 @@ if(/s\.src=[^;]*moonlit-home-content\.js|createElement\(["']script["']\)[\s\S]{0
 if(!homeLoader.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('moonlit-home-loader.js 必須保留首頁 idle 與 reading-state orchestration');
 if(/bell-site|miaoshu-bell/.test(homeIdle))errors.push('moonlit-home-idle.js 不得恢復已移除的回訪提醒 bell 邏輯');
 if(!homeIdle.includes("if(!like||!feedback)return"))errors.push('合併後的 support runtime 必須在按讚元件不存在時安全返回');
-if(!homeLoader.includes('moonlit-home-idle.js?v=20261004-immersion2'))errors.push('moonlit-home-loader.js 必須載入最新 immersion2 idle runtime');
+const idleVersion=homeLoader.match(/moonlit-home-idle\.js\?v=([^"'\s]+)/)?.[1];
+if(!idleVersion)errors.push('moonlit-home-loader.js 必須載入版本化 idle runtime');
+else {
+ const sw=await readFile(join(root,'sw.js'),'utf8');
+ if(!sw.includes(`moonlit-home-idle.js?v=${idleVersion}`))errors.push('PWA shell 必須與首頁 loader 使用相同 idle runtime 版本');
+}
 
 const sw=await readFile(join(root,'sw.js'),'utf8');
 if(!sw.includes(`assets/moonlit-v2.js?v=${expected}`))errors.push(`sw.js 未同步 moonlit-v2.js?v=${expected}`);
