@@ -554,3 +554,13 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #community .reader-comment-frame{max-height:270px!important}
   .moonlit-closing nav{opacity:.46!important}
 }
+
+
+/* Recommendation promise language — hook, commitment, one clear action */
+#tonight .pick-commitment{display:block;margin:12px 0 2px;color:#9caeba;font-size:11px;line-height:1.65;letter-spacing:.035em}
+#tonight .pick-commitment::before{content:"◷ ";color:#c9ad76}
+#tonight .tonight-grid article>a{margin-top:12px}
+@media(max-width:430px){
+  #tonight .pick-commitment{margin-top:10px;font-size:11px;line-height:1.6}
+  #tonight .tonight-grid article>a{margin-top:10px}
+}
