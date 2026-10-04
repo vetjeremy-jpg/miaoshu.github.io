@@ -140,12 +140,16 @@ must('mobile bookshelf styling cannot leak above 700px', /@media\(max-width:700p
 must('three-tier mobile comfort pass exists through 430px', /Three-tier mobile comfort pass:[\s\S]*?@media\(max-width:430px\)/.test(homepageMobile));
 must('Tier 2 mobile spacing is compact and readable', /@media\(max-width:430px\)[\s\S]*?#tonight\{[\s\S]*?padding-top:40px!important;[\s\S]*?padding-bottom:44px!important/.test(homepageMobile));
 must('Tier 2 cards use 24px titles on 390–430 class phones', /@media\(max-width:430px\)[\s\S]*?#tonight \.tonight-grid h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
+must('Tier 2 heading sits between Tier 1 and Tier 3 on mobile', /@media\(max-width:430px\)[\s\S]*?#tonight \.section-title\{[\s\S]*?font-size:clamp\(27px,6\.8vw,29px\)!important/.test(homepageMobile));
+must('Tier 1 title is capped at 27px through 430px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature strong\{[\s\S]*?font-size:clamp\(25px,6\.3vw,27px\)/.test(refinement));
+must('Tier 1 to Tier 2 handoff removes duplicate main top gap', /\.moonlit-editorial-feature \+ main\.wrap\{[\s\S]*?padding-top:0!important[\s\S]*?\.moonlit-editorial-feature \+ main\.wrap > #tonight\{[\s\S]*?margin-top:0!important/.test(refinement));
+
 must('Tier 3 primary actions become two columns at 390–430px', /@media\(min-width:390px\) and \(max-width:430px\)[\s\S]*?#featured \.featured-copy \.feature-actions\{[\s\S]*?grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important/.test(homepageMobile));
 must('Tier 3 primary actions stay single-column at 320/375px', /@media\(max-width:375px\)[\s\S]*?#featured \.featured-copy \.feature-actions\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)!important/.test(homepageMobile));
 must('Tier 3 title is capped at 32px on 430px phones', /@media\(max-width:430px\)[\s\S]*?#featured \.featured-copy h2\{[\s\S]*?font-size:clamp\(29px,7\.5vw,32px\)!important/.test(homepageMobile));
 must('Tier 3 exploration tightens to 24px title at 320/375px', /@media\(max-width:375px\)[\s\S]*?#featured \.featured-explore h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
-must('Tier 1 editorial pick uses compact 430px rhythm', /Three-tier mobile hierarchy polish:[\s\S]*?@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin:0 14px 30px;[\s\S]*?padding:22px 18px 24px/.test(refinement));
-must('Tier 1 editorial pick tightens again at 375px', /@media\(max-width:375px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin-bottom:24px;[\s\S]*?padding:20px 16px 22px/.test(refinement));
+must('Tier 1 editorial pick uses compact 430px rhythm', /Three-tier mobile hierarchy polish:[\s\S]*?@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin:0 14px 12px;[\s\S]*?padding:22px 18px 24px/.test(refinement));
+must('Tier 1 editorial pick tightens again at 375px', /@media\(max-width:375px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin-bottom:10px;[\s\S]*?padding:20px 16px 22px/.test(refinement));
 must('mood controls are two columns above 375px and one column at 375px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-moods\{display:grid;grid-template-columns:1fr 1fr/.test(refinement) && /@media\(max-width:375px\)[\s\S]*?\.featured-explore \.moonlit-moods\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)/.test(refinement));
 must('390px compact safety breakpoint exists', /max-width:\s*390px/.test(mobile));
 must('homepage has a 380px narrow-device pass', /max-width:\s*380px/.test(homepageMobile));
