@@ -606,7 +606,6 @@
   #creative .creator-copy{padding:22px 2px!important}
 
   /* Keep CTAs easy to tap without making every action look equally primary. */
-  #support .support-actions button:not(#like-site),
   #community .community-actions button{background:transparent!important;border-color:rgba(220,201,164,.22)!important}
   .moonlit-breathing-quote{margin:58px 0 14px!important;padding-block:38px!important}
   footer{padding:30px 18px 38px!important}
@@ -721,7 +720,7 @@
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
   #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
-  #support .support-actions button{min-height:var(--moonlit-touch)!important;font-size:12px!important}
+  #support .support-actions button{min-height:50px!important;font-size:15px!important}
 
 
   /* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
@@ -761,3 +760,121 @@
   #book .novel-card[data-book-id="fushengsuiyue"] .cover-title{font-size:6px;letter-spacing:0}
 }
 @media(max-width:520px){#miaoshu-album .album-photos{gap:8px}}
+
+/* Support action visibility contract — authoritative at 375/430/700. */
+@media(max-width:700px){
+  #support.stay-with-moonlight .support-actions{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important;margin-top:8px!important}
+  #support.stay-with-moonlight .support-primary{grid-column:1/-1!important;width:100%!important;min-height:56px!important;font-size:16px!important;font-weight:800!important;justify-content:center!important}
+  #support.stay-with-moonlight .support-actions button{width:100%!important;min-height:50px!important;font-size:15px!important;font-weight:700!important;justify-content:center!important;background:rgba(21,45,65,.96)!important;border-color:rgba(226,199,143,.46)!important;color:#f0dfbd!important}
+  #support.stay-with-moonlight .support-actions button[aria-pressed="true"]{background:#d8a84c!important;border-color:#f0d48a!important;color:#071b33!important}
+}
+@media(max-width:375px){
+  #support.stay-with-moonlight .support-actions{grid-template-columns:minmax(0,1fr)!important}
+  #support.stay-with-moonlight .support-primary{grid-column:auto!important}
+}
+
+/* Support invitation hierarchy — make the action-card lead unmistakable. */
+@media(max-width:700px){
+  #support.stay-with-moonlight .support-note{
+    max-width:32em!important;margin:0 0 18px!important;
+    font-size:17px!important;line-height:1.72!important;font-weight:700!important;
+    color:#f1dfba!important;letter-spacing:.015em!important
+  }
+}
+@media(max-width:430px){
+  #support.stay-with-moonlight .support-note{font-size:16px!important;line-height:1.75!important;margin-bottom:16px!important}
+}
+@media(max-width:375px){
+  #support.stay-with-moonlight .support-note{font-size:16px!important;line-height:1.7!important}
+}
+
+/* Support editorial redesign — invitation first, one primary action, two quiet utilities. */
+@media(max-width:700px){
+  #support.stay-with-moonlight{
+    padding:30px 4px 26px!important;background:transparent!important;border:0!important;
+    border-top:1px solid rgba(226,199,143,.22)!important;border-radius:0!important;box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-note{
+    max-width:28em!important;margin:0 0 20px!important;font-size:17px!important;line-height:1.75!important;
+    font-weight:600!important;color:#e8dcc3!important;letter-spacing:.01em!important
+  }
+  #support.stay-with-moonlight .support-actions{
+    display:grid!important;grid-template-columns:1fr auto auto!important;align-items:center!important;
+    gap:8px 18px!important;margin:0!important
+  }
+  #support.stay-with-moonlight .support-primary{
+    grid-column:auto!important;width:auto!important;min-height:48px!important;padding:11px 20px!important;
+    border-radius:999px!important;font-size:15px!important;font-weight:750!important;
+    background:#d9bd84!important;color:#071522!important;border:1px solid #ead39f!important;
+    box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-actions button{
+    width:auto!important;min-height:44px!important;padding:8px 2px!important;border:0!important;border-radius:0!important;
+    border-bottom:1px solid rgba(226,199,143,.32)!important;background:transparent!important;
+    color:#d9c9aa!important;font-size:14px!important;font-weight:650!important;box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-actions button:hover,#support.stay-with-moonlight .support-actions button:focus-visible{
+    background:transparent!important;border-bottom-color:#e2c78f!important;color:#fff0cf!important;transform:none!important
+  }
+  #support.stay-with-moonlight .support-actions button[aria-pressed="true"]{
+    background:transparent!important;border-bottom-color:#e2c78f!important;color:#f0d18f!important;font-weight:750!important
+  }
+}
+@media(max-width:520px){
+  #support.stay-with-moonlight{padding-inline:2px!important}
+  #support.stay-with-moonlight .support-actions{grid-template-columns:1fr 1fr!important;gap:8px 14px!important}
+  #support.stay-with-moonlight .support-primary{grid-column:1/-1!important;width:max-content!important;max-width:100%!important;margin-bottom:4px!important}
+  #support.stay-with-moonlight .support-actions button{width:max-content!important;max-width:100%!important}
+}
+@media(max-width:375px){
+  #support.stay-with-moonlight .support-note{font-size:16px!important}
+  #support.stay-with-moonlight .support-actions{grid-template-columns:1fr!important;justify-items:start!important}
+  #support.stay-with-moonlight .support-primary{grid-column:auto!important}
+}
+
+/* Moonlit Note — final homepage-native support composition. */
+#support.moonlit-note{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"copy action" "tools tools" "status status"!important;gap:28px 42px!important;max-width:1040px!important;margin-inline:auto!important;padding:44px 0 26px!important;background:transparent!important;border:0!important;border-top:1px solid rgba(220,201,164,.2)!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#support.moonlit-note::before{content:"";position:absolute;top:-1px;left:0;width:92px;height:1px;background:#d8b978}
+#support.moonlit-note .moonlit-note-copy{grid-area:copy;max-width:620px}
+#support.moonlit-note .chapter-kicker{display:block!important;margin:0 0 12px!important;color:#9c8964!important;font-size:10px!important;letter-spacing:.18em!important}
+#support.moonlit-note .section-title{display:block!important;margin:0 0 12px!important;color:#eee7dc!important;font-family:"Noto Serif TC","Songti TC",serif!important;font-size:clamp(25px,3vw,36px)!important;line-height:1.5!important;font-weight:500!important}
+#support.moonlit-note .support-note{margin:0!important;max-width:36em!important;color:#91a2b0!important;font-size:14px!important;line-height:1.9!important;font-weight:400!important}
+#support.moonlit-note .moonlit-note-action{grid-area:action;display:flex;align-items:center}
+#support.moonlit-note .support-primary{display:inline-flex!important;align-items:center!important;justify-content:space-between!important;gap:28px!important;min-width:210px!important;min-height:50px!important;padding:10px 2px!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(216,185,120,.62)!important;border-radius:0!important;color:#dfc68f!important;font-size:15px!important;font-weight:650!important;box-shadow:none!important;text-decoration:none!important}
+#support.moonlit-note .support-actions{grid-area:tools;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:14px!important;margin:0!important;padding-top:18px!important;border-top:1px solid rgba(205,225,243,.08)!important;max-width:none!important}
+#support.moonlit-note .support-actions button{width:auto!important;min-height:44px!important;padding:6px 0!important;background:transparent!important;border:0!important;border-radius:0!important;color:#899ba9!important;font-size:13px!important;font-weight:550!important;box-shadow:none!important}
+#support.moonlit-note .support-actions button:hover,#support.moonlit-note .support-actions button:focus-visible{background:transparent!important;color:#ddc99f!important;transform:none!important}
+#support.moonlit-note .support-actions button[aria-pressed="true"]{background:transparent!important;color:#e2c78f!important;font-weight:650!important}
+#support.moonlit-note .support-divider{width:1px;height:14px;background:rgba(205,225,243,.14)}
+#support.moonlit-note .support-status{grid-area:status}#support.moonlit-note .support-feedback:not(:empty){margin:0 0 6px!important;padding:0!important;background:transparent!important;border:0!important;color:#b9a47a!important;font-size:12px!important;font-weight:500!important}
+@media(max-width:700px){#support.moonlit-note{grid-template-columns:1fr!important;grid-template-areas:"copy" "action" "tools" "status"!important;gap:20px!important;padding:38px 0 24px!important}#support.moonlit-note .support-primary{min-width:min(280px,100%)!important}#support.moonlit-note .support-actions{display:flex!important;grid-template-columns:none!important;padding-top:14px!important}}
+@media(max-width:430px){#support.moonlit-note .section-title{font-size:26px!important}#support.moonlit-note .support-actions{gap:12px!important}}
+
+/* Closing actions — no standalone support module; actions belong to the existing ending. */
+.moonlit-closing .closing-actions{display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:6px 18px!important;margin:26px auto 0!important;padding-top:18px!important;border-top:1px solid rgba(220,201,164,.12)!important}
+.moonlit-closing .closing-actions>a,.moonlit-closing .closing-actions>button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:7px 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-decoration:none!important;font-size:13px!important;line-height:1.4!important}
+.moonlit-closing .closing-subscribe{gap:18px!important;color:#d8bd84!important;font-weight:700!important;border-bottom:1px solid rgba(216,189,132,.46)!important}
+.moonlit-closing .closing-actions>button{color:#8799a8!important;font-weight:550!important}
+.moonlit-closing .closing-actions>button:hover,.moonlit-closing .closing-actions>button:focus-visible{color:#d8c59d!important}
+.moonlit-closing .closing-actions>button[aria-pressed="true"]{color:#e0c37f!important;font-weight:650!important}
+.moonlit-closing .closing-status{flex-basis:100%;text-align:center!important}.moonlit-closing .closing-status p{margin:4px 0 0!important;color:#9e8d6d!important;font-size:12px!important}
+@media(max-width:430px){.moonlit-closing .closing-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4px 16px!important;text-align:left!important}.moonlit-closing .closing-subscribe{grid-column:1/-1!important;justify-self:start!important}.moonlit-closing .closing-actions>button{justify-content:flex-start!important}.moonlit-closing .closing-status{grid-column:1/-1!important;text-align:left!important}}
+
+/* Closing action invitation — belongs to the existing ending, not a new module. */
+.moonlit-closing .closing-action-intro{max-width:34em!important;margin:24px auto 0!important;color:#b7aa91!important;font-size:14px!important;line-height:1.8!important;font-weight:500!important;text-align:center!important}
+.moonlit-closing .closing-action-intro+.closing-actions{margin-top:12px!important}
+@media(max-width:430px){.moonlit-closing .closing-action-intro{margin-top:22px!important;font-size:14px!important;line-height:1.75!important;text-align:left!important}.moonlit-closing .closing-action-intro+.closing-actions{margin-top:10px!important}}
+
+/* Moonlit bookmark actions — one editorial primary + two quiet utilities. */
+.moonlit-closing .moonlit-bookmark-actions{display:grid!important;grid-template-columns:minmax(210px,1.2fr) minmax(280px,1fr)!important;align-items:stretch!important;gap:12px!important;max-width:650px!important;margin:12px auto 0!important;padding:0!important;border:0!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-subscribe{position:relative!important;display:flex!important;align-items:center!important;justify-content:space-between!important;min-height:54px!important;padding:0 18px!important;border:1px solid rgba(216,189,132,.42)!important;border-radius:2px!important;background:linear-gradient(90deg,rgba(216,189,132,.09),rgba(216,189,132,.025))!important;color:#ead29d!important;font-size:14px!important;font-weight:700!important;letter-spacing:.035em!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-subscribe::before{content:"";position:absolute;left:-1px;top:10px;bottom:10px;width:2px;background:#d8bd84}
+.moonlit-closing .moonlit-bookmark-actions .action-arrow{font-size:18px!important;font-weight:400!important;transition:transform .2s ease}
+.moonlit-closing .moonlit-bookmark-actions .closing-subscribe:hover .action-arrow,.moonlit-closing .moonlit-bookmark-actions .closing-subscribe:focus-visible .action-arrow{transform:translateX(3px)}
+.moonlit-closing .closing-utilities{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-utilities button{min-width:0!important;width:100%!important;min-height:54px!important;padding:8px 12px!important;border:1px solid rgba(174,194,210,.14)!important;border-radius:2px!important;background:rgba(11,28,43,.34)!important;color:#9eafbb!important;font-size:13px!important;font-weight:600!important;box-shadow:none!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-utilities button:hover,.moonlit-closing .moonlit-bookmark-actions .closing-utilities button:focus-visible{border-color:rgba(216,189,132,.32)!important;background:rgba(216,189,132,.055)!important;color:#ddc99f!important;transform:none!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-utilities button[aria-pressed="true"]{border-color:rgba(216,189,132,.4)!important;background:rgba(216,189,132,.08)!important;color:#e4c984!important}
+.moonlit-closing .moonlit-bookmark-actions .closing-status{grid-column:1/-1!important;min-height:0!important;text-align:left!important}
+@media(max-width:600px){.moonlit-closing .moonlit-bookmark-actions{grid-template-columns:1fr!important;max-width:none!important}.moonlit-closing .moonlit-bookmark-actions .closing-subscribe{min-height:54px!important}.moonlit-closing .moonlit-bookmark-actions .closing-utilities{grid-template-columns:1fr 1fr!important}.moonlit-closing .moonlit-bookmark-actions .closing-utilities button{min-height:48px!important}}
+@media(max-width:350px){.moonlit-closing .moonlit-bookmark-actions .closing-utilities{grid-template-columns:1fr!important}}
