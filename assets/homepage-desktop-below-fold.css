@@ -713,3 +713,22 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #featured .featured-explore{margin-top:88px}
   #tonight .chapter-kicker,#featured .chapter-kicker{letter-spacing:.2em}
 }
+
+
+/* Moonlit navigation pass 13 — nine-entry density without shrinking type — 2026-10-04 */
+@media(min-width:701px){
+  .topbar .navlinks{
+    gap:clamp(8px,1.05vw,17px);
+    min-width:0;
+  }
+  .topbar .navlinks a{
+    min-height:var(--moonlit-touch);
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+  }
+}
+@media(min-width:701px) and (max-width:980px){
+  .topbar .navlinks{gap:6px}
+  .topbar .navlinks a{padding-inline:7px}
+}
