@@ -84,3 +84,15 @@ test('homepage has one explicit emotional closing and a quieter support strip', 
   const order=await page.evaluate(()=>['#community','#support','.moonlit-breathing-quote','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
   expect(order).toEqual([...order].sort((a,b)=>a-b));
 });
+
+
+test('editorial stylesheet stays within the current technical-debt budget', async ({ request }) => {
+  const response=await request.get('assets/homepage-editorial.css');
+  expect(response.ok()).toBeTruthy();
+  const css=await response.text();
+  const important=(css.match(/!important/g)||[]).length;
+  const media=(css.match(/@media/g)||[]).length;
+  expect(important, 'do not grow the editorial !important budget').toBeLessThanOrEqual(195);
+  expect(media, 'consolidate breakpoints instead of adding new media blocks').toBeLessThanOrEqual(15);
+  expect(css.length, 'keep the editorial layer from growing unchecked').toBeLessThanOrEqual(19200);
+});
