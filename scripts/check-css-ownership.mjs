@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:451},
+  'assets/homepage-mobile-below-fold.css':{important:442},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -193,6 +193,9 @@ if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
+const cardSurfaceContractCount=(homepageMobileBelow.match(/Mobile Card Surface Contract/g)||[]).length;
+if(cardSurfaceContractCount!==1)errors.push(`mobile cards must have exactly one shared containment contract (found ${cardSurfaceContractCount})`);
+if(/#creative \.creator-card\{overflow:hidden!important\}/.test(homepageMobileBelow)||/#miaoshu-album \.album-photo\{overflow:hidden!important\}/.test(homepageMobileBelow)||/#featured-short \.moonlit-video-primary\{[^}]*min-width:0!important/.test(homepageMobileBelow))errors.push('mobile card surfaces must defer shared containment to the card contract');
 const typographyRhythmContractCount=(homepageMobileBelow.match(/Mobile Typography Rhythm Contract/g)||[]).length;
 if(typographyRhythmContractCount!==1)errors.push(`mobile typography rhythm must have exactly one shared contract (found ${typographyRhythmContractCount})`);
 if(/\.creator-copy h3\{[^}]*line-height:1\.45!important/.test(homepageMobileBelow)||/#featured-short \.moonlit-video-primary-copy p\{[^}]*line-height:1\.85/.test(homepageMobileBelow))errors.push('mobile work-title/body leading must defer to the typography rhythm contract');
