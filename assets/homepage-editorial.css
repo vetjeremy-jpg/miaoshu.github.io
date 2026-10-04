@@ -619,3 +619,9 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #featured details.moonlit-discovery{margin-top:18px!important}
   #featured details.moonlit-discovery>summary{min-height:48px!important;padding:8px 0!important}
 }
+
+
+/* 320px Hero CTA proximity — preserve H1 and tap target */
+@media(max-width:330px){
+  body#top:not([data-book-id]) .hero-actions{margin-top:17px!important}
+}
