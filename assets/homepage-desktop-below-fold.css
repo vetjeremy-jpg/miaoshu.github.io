@@ -696,3 +696,16 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #featured .featured-copy{align-self:center}
   #featured .featured-visual figcaption{font-size:11px;letter-spacing:.08em;opacity:.72}
 }
+
+
+/* Moonlit immersion pass 9 — navigation restraint and quiet late-page hierarchy — 2026-10-04 */
+@media(min-width:701px){
+  .topbar .navlinks{gap:clamp(12px,1.5vw,22px)}
+  #creative .creator-grid{margin-top:28px}
+  #creative .creator-card{background:rgba(8,21,34,.22);border-color:rgba(205,225,243,.07)}
+  #creative .creator-copy h3{font-size:20px}
+  #about{padding-top:72px;padding-bottom:68px}
+  #community{padding-top:66px}
+  #community .community-note{max-width:52em;color:#748796;font-size:12px}
+  #support.stay-with-moonlight .support-actions button{font-size:12px}
+}
