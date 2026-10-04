@@ -858,3 +858,19 @@
   #support .support-actions{margin-top:4px!important}
   #newsletter .moonlit-newsletter-lede{font-size:clamp(21px,6.4vw,27px)!important;line-height:1.65!important}
 }
+
+
+/* Moonlit immersion pass 6 — progressive disclosure on phones — 2026-10-04 */
+@media(max-width:700px){
+  #featured .moonlit-mood-selector{margin-top:18px!important;padding-top:12px!important}
+  #featured .moonlit-mood-selector>summary{
+    width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;
+    box-sizing:border-box;font-size:13px
+  }
+  #featured .moonlit-mood-selector>summary::after{margin-left:14px}
+  #featured .moonlit-mood-inner{padding-top:12px}
+  #featured .moonlit-moods{gap:7px!important}
+  #featured .moonlit-moods button{min-height:44px!important}
+  .moonlit-found-line{margin-top:42px!important;margin-bottom:44px!important}
+  .moonlit-found-line blockquote{margin-bottom:0!important}
+}
