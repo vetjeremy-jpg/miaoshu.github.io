@@ -323,18 +323,19 @@
     box-sizing:border-box!important
   }
 
-  /* On very narrow phones, keep the same visual ratio instead of crushing content. */
-  @media(max-width:360px){
-    body:not([data-book-id]) main.wrap{
-      padding-left:10px!important;
-      padding-right:10px!important
-    }
-    body:not([data-book-id]) main.wrap >
-    :is(#tonight,#reading-list,#featured,#updates,#book,#creative,#miaoshu-album,
-        #featured-short,#support,#about,#community,#newsletter).panel{
-      padding-left:18px!important;
-      padding-right:18px!important
-    }
+}
+
+/* On very narrow phones, keep the same visual ratio instead of crushing content. */
+@media(max-width:360px){
+  body:not([data-book-id]) main.wrap{
+    padding-left:10px!important;
+    padding-right:10px!important
+  }
+  body:not([data-book-id]) main.wrap >
+  :is(#tonight,#reading-list,#featured,#updates,#book,#creative,#miaoshu-album,
+      #featured-short,#support,#about,#community,#newsletter).panel{
+    padding-left:18px!important;
+    padding-right:18px!important
   }
 }
 
