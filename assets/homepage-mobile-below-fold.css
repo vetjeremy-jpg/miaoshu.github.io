@@ -642,7 +642,7 @@
 
 /* Moonlit 431–700 continuity bridge — prevent a hard rhythm cliff immediately above the phone canonical layer. */
 @media(min-width:431px) and (max-width:700px){
-  #tonight{padding-bottom:62px!important}
+  #creative .creator-art{min-height:120px!important}\n  #creative .creator-nav a{font-size:14px}\n  #tonight{padding-bottom:62px!important}
   #tonight .section-title{font-size:clamp(32px,5vw,36px)!important;line-height:1.42!important;margin:8px 0 14px!important}
   #tonight>.notice{margin:0 0 26px!important;font-size:15px!important;line-height:1.82!important}
   #tonight .tonight-grid{gap:14px!important}
