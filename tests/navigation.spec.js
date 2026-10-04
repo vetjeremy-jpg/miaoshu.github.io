@@ -179,3 +179,28 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     expect(css.flexShrink).toBe('0');
   });
 });
+
+
+test('@p0 skip link moves keyboard focus to the main reading content', async ({ page }) => {
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  await page.keyboard.press('Tab');
+  const skip=page.locator('.skip-link');
+  await expect(skip).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#main')).toBeFocused();
+  await expect(page.locator('#main')).toHaveAttribute('tabindex','-1');
+});
+
+test('@p0 reduced motion removes meaningful homepage transition durations', async ({ browser }) => {
+  const context=await browser.newContext({ reducedMotion:'reduce', viewport:{width:390,height:844} });
+  const page=await context.newPage();
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  const motion=await page.locator('.hero-primary').evaluate(el=>{
+    const s=getComputedStyle(el);
+    return {transition:s.transitionDuration,animation:s.animationDuration,scroll:getComputedStyle(document.documentElement).scrollBehavior};
+  });
+  expect(motion.scroll).toBe('auto');
+  expect(motion.transition.split(',').every(v=>parseFloat(v)<=0.001)).toBeTruthy();
+  expect(motion.animation.split(',').every(v=>parseFloat(v)<=0.001)).toBeTruthy();
+  await context.close();
+});
