@@ -228,3 +228,14 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
     white-space:normal
   }
 }
+
+
+/* Compact tablet polish: 701–780px only; 820/834px keep the main tablet geometry. */
+@media(min-width:701px) and (max-width:780px){
+  #featured .featured-copy h2{
+    font-size:clamp(32px,4.5vw,35px)
+  }
+  #featured .featured-visual{
+    min-height:360px
+  }
+}
