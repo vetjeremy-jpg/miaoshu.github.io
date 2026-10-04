@@ -210,7 +210,8 @@
   .hero h1{font-size:42px!important}
   .hero-index{font-size:7.5px!important}
   #book .novel-card{flex-basis:150px!important;width:150px!important;min-width:150px!important;max-width:150px!important}
-  #book .book-object{width:140px!important;min-width:140px!important}
+  .book-object{width:140px!important}
+  #book .book-object{min-width:140px!important}
 }
 
 @media(max-width:850px){
