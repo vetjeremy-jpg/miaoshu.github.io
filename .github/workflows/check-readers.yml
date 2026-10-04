@@ -1,4 +1,5 @@
 name: Check novel readers
+
 on:
   push:
     branches:
@@ -36,18 +37,62 @@ on:
       - 'scripts/check-moonlit-runtime.mjs'
       - 'scripts/check-css-ownership.mjs'
       - '.github/workflows/check-readers.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: moonlit-contract-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
+    name: Moonlit Contract Gate
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout tested commit
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node books/check-readers.mjs
-      - run: node scripts/check-mobile-rwd.mjs
-      - run: node scripts/check-internal-links.mjs
-      - run: node scripts/check-seo.mjs
-      - run: node scripts/check-moonlit-runtime.mjs
-      - run: node scripts/check-css-ownership.mjs
-      - run: find assets -maxdepth 1 -type f -name 'moonlit-*.js' -print0 | xargs -0 -n1 node --check
+
+      - name: Reader contract
+        run: node books/check-readers.mjs
+
+      - name: Mobile RWD contract
+        run: node scripts/check-mobile-rwd.mjs
+
+      - name: Internal link contract
+        run: node scripts/check-internal-links.mjs
+
+      - name: SEO contract
+        run: node scripts/check-seo.mjs
+
+      - name: Runtime contract
+        run: node scripts/check-moonlit-runtime.mjs
+
+      - name: CSS ownership contract
+        run: node scripts/check-css-ownership.mjs
+
+      - name: JavaScript syntax contract
+        run: find assets -maxdepth 1 -type f -name 'moonlit-*.js' -print0 | xargs -0 -n1 node --check
+
+      - name: Publish Moonlit contract summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Moonlit Contract QA"
+            echo ""
+            echo "- Reader structure and navigation"
+            echo "- Mobile RWD and PWA safety"
+            echo "- Internal links"
+            echo "- SEO"
+            echo "- Runtime invariants"
+            echo "- CSS ownership budgets"
+            echo "- Shared JavaScript syntax"
+            echo "- **Tested commit:** \`${{ github.sha }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
