@@ -684,3 +684,15 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #about .section-title,#community .section-title,#support .section-title,#newsletter .section-title{max-width:17em}
   #community .reader-comment-frame{border-color:rgba(205,225,243,.08)}
 }
+
+
+/* Moonlit immersion pass 8 — explicit editorial arc and transition pacing — 2026-10-04 */
+@media(min-width:701px){
+  .hero+.wrap>#tonight{padding-top:64px}
+  #tonight .chapter-kicker,#featured .chapter-kicker{letter-spacing:.2em}
+  #tonight .pick-number{opacity:.78}
+  #featured .featured-sublabel{opacity:.74}
+  #featured .featured-grid{position:relative}
+  #featured .featured-copy{align-self:center}
+  #featured .featured-visual figcaption{font-size:11px;letter-spacing:.08em;opacity:.72}
+}
