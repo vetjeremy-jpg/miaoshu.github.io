@@ -135,7 +135,7 @@
   .album-photo h3{font-size:20px!important;line-height:1.5!important}
   .album-photo p{font-size:13px!important;line-height:1.85!important}
 
-  #featured-short,#instagram-reel,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
+  #featured-short,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
 
   .video-preview{
     display:grid!important;
@@ -344,7 +344,7 @@
 
   body:not([data-book-id]) main.wrap >
   :is(#tonight,#reading-list,#featured,#updates,#book,#creative,#miaoshu-album,
-      #featured-short,#instagram-reel,#support,#about,#community,#newsletter).panel{
+      #featured-short,#support,#about,#community,#newsletter).panel{
     width:100%!important;
     max-width:100%!important;
     margin-left:0!important;
@@ -382,7 +382,7 @@
     }
     body:not([data-book-id]) main.wrap >
     :is(#tonight,#reading-list,#featured,#updates,#book,#creative,#miaoshu-album,
-        #featured-short,#instagram-reel,#support,#about,#community,#newsletter).panel{
+        #featured-short,#support,#about,#community,#newsletter).panel{
       padding-left:18px!important;
       padding-right:18px!important
     }
@@ -394,5 +394,139 @@
 @media(min-width:401px) and (max-width:430px){
   #featured-short .video-preview iframe{
     width:min(100%,348px)!important
+  }
+}
+
+
+/* Moonlit Video hub mobile composition: primary YouTube, quieter Instagram secondary. */
+@media(max-width:700px){
+  #featured-short.moonlit-video-hub{
+    overflow:hidden!important
+  }
+  #featured-short .moonlit-video-lede{
+    max-width:34em;
+    margin:0;
+    font-size:15px;
+    line-height:1.85
+  }
+  #featured-short .moonlit-video-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:18px!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:24px 0 0!important
+  }
+  #featured-short .moonlit-video-primary{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:18px!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:0 0 20px!important;
+    overflow:hidden!important;
+    box-sizing:border-box!important
+  }
+  #featured-short .moonlit-video-primary-media{
+    width:min(100%,320px)!important;
+    max-width:100%!important;
+    margin:18px auto 2px!important
+  }
+  #featured-short .moonlit-video-primary-media iframe{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    aspect-ratio:9/16!important;
+    margin:0 auto!important;
+    border-radius:10px!important
+  }
+  #featured-short .moonlit-video-primary-copy{
+    width:100%!important;
+    min-width:0!important;
+    padding:0 20px!important;
+    box-sizing:border-box!important
+  }
+  #featured-short .moonlit-video-primary h3{
+    font-size:26px!important;
+    line-height:1.4!important
+  }
+  #featured-short .moonlit-video-primary-copy p{
+    font-size:15px;
+    line-height:1.85
+  }
+  #featured-short .moonlit-video-primary-copy .notice{
+    font-size:13px!important
+  }
+  #featured-short .moonlit-video-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+    width:100%!important;
+    margin-top:18px!important
+  }
+  #featured-short .moonlit-video-actions>*{
+    width:100%!important;
+    min-width:0!important;
+    min-height:46px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    box-sizing:border-box!important
+  }
+  #featured-short #instagram-reel.moonlit-video-secondary{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:20px!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important
+  }
+  #featured-short .moonlit-video-secondary-copy{
+    width:100%!important;
+    margin:0 0 16px!important
+  }
+  #featured-short .moonlit-video-secondary h3{
+    font-size:21px!important;
+    line-height:1.45!important
+  }
+  #featured-short .moonlit-reel-frame{
+    width:min(100%,280px)!important;
+    max-width:100%!important;
+    margin:0 auto 12px!important;
+    aspect-ratio:9/16!important
+  }
+  #featured-short #instagram-reel .moonlit-reel-frame iframe{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    border-radius:10px!important
+  }
+  #featured-short .moonlit-video-secondary>a{
+    width:100%!important;
+    min-height:44px!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important
+  }
+}
+@media(min-width:401px) and (max-width:430px){
+  #featured-short .moonlit-video-primary-media{
+    width:min(100%,348px)!important
+  }
+}
+@media(max-width:360px){
+  #featured-short .moonlit-video-primary-copy{
+    padding-left:16px!important;
+    padding-right:16px!important
+  }
+  #featured-short #instagram-reel.moonlit-video-secondary{
+    padding:18px 16px!important
   }
 }
