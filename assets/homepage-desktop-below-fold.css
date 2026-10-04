@@ -587,3 +587,35 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   transform:translateY(-2px);
   opacity:.96
 }
+
+
+/* Moonlit immersion pass 4 — editorial hierarchy and quieter long-form rhythm — 2026-10-04 */
+@media(min-width:701px){
+  /* Give the opening recommendation arc more air than utility sections. */
+  #tonight{padding-top:54px;padding-bottom:88px}
+  #featured{padding-top:104px;padding-bottom:100px}
+  #tonight .section-title{font-size:clamp(40px,4.5vw,58px)}
+  #tonight>.notice{max-width:650px;margin-bottom:4px}
+  .tonight-grid article{min-height:230px;display:flex;flex-direction:column;justify-content:flex-start}
+  .tonight-grid article a{margin-top:auto;padding-top:18px}
+
+  /* Deep Dive is the visual climax: larger image, calmer controls. */
+  #featured .featured-grid{min-height:520px;align-items:center}
+  #featured .featured-copy{padding-right:clamp(8px,2vw,28px)}
+  #featured .featured-copy h2{max-width:10.5em;letter-spacing:.01em}
+  #featured .featured-copy p{max-width:34em}
+  #featured .feature-actions .cta.secondary{border-color:transparent!important;background:transparent!important;padding-inline:4px!important}
+  #featured .featured-explore{margin-top:88px}
+
+  /* Secondary sections deliberately recede after the opening editorial arc. */
+  #updates,#creative,#support,#about,#community,#newsletter{padding-top:64px;padding-bottom:64px}
+  #updates .section-title,#creative .section-title,#support .section-title,#about .section-title,#community .section-title,#newsletter .section-title{font-size:clamp(28px,3.2vw,40px)}
+  #creative .creator-grid{grid-template-columns:repeat(3,1fr)}
+  #creative .creator-art{min-height:64px;font-size:24px}
+  #creative .creator-copy{padding-top:18px}
+
+  /* A softer landing: closing quote and newsletter read as one final chapter. */
+  .moonlit-breathing-quote{margin-top:70px;margin-bottom:18px}
+  #newsletter{border-bottom:0}
+  footer{padding-top:34px;padding-bottom:42px;color:#718392}
+}
