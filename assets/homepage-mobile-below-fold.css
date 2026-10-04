@@ -752,3 +752,12 @@
 @media(max-width:330px){
   .topbar .navlinks a{padding-inline:7px!important}
 }
+
+/* Cross-stylesheet ownership: phone-only Book/Album refinements live with the mobile owner. */
+@media(max-width:650px){
+  #book .bookshelf-scene{padding:14px 12px 0}
+  #book .cover-title{font-size:12px}
+  #book .novel-card[data-book-id="fushengsuiyue"] .cover-title{font-size:6px;letter-spacing:0}
+}
+@media(max-width:520px){#miaoshu-album .album-photos{gap:8px}}
+@media(max-width:360px){#book .novel-card .book-read{padding:5px 7px}}
