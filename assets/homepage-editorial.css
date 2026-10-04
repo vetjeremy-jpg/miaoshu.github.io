@@ -496,3 +496,29 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #book .novels-grid .novel-card:nth-child(n+4){display:none!important}
   #book::after{content:"精選 3 本 · 完整十本小說可由「小說」進入書房"}
 }
+
+
+/* First-visit conversion */
+#featured .reading-commitment{margin:6px 0 18px!important;color:#aebbc5!important;font-size:12px!important;line-height:1.7!important;letter-spacing:.035em}
+#featured .reading-commitment::before{content:"◷ ";color:#d6bd88}
+#featured .moonlit-discovery{margin-top:34px!important;padding-top:20px!important;border-top:1px solid var(--editorial-rule)!important}
+#featured .moonlit-discovery>h3{font-size:clamp(18px,2vw,24px)!important;color:#c6c0b3!important}
+#featured .moonlit-discovery>p{max-width:42em;color:#7f92a1!important;font-size:13px!important}
+#featured .moonlit-entry-grid{opacity:.72;transition:opacity .2s ease}
+#featured .moonlit-discovery:hover .moonlit-entry-grid,#featured .moonlit-discovery:focus-within .moonlit-entry-grid{opacity:1}
+#book::after{display:none!important}
+#book .library-all{text-align:center;margin:28px 0 0}
+#book .library-all button{min-height:46px;padding:9px 18px;border:0;border-bottom:1px solid rgba(220,201,164,.34);background:transparent;color:#d8c59e;font:inherit;font-size:13px;font-weight:700;letter-spacing:.045em;cursor:pointer}
+#book .library-all button:hover,#book .library-all button:focus-visible{color:#fff0cd;border-bottom-color:#e2c78f}
+#book.show-all-novels .novels-grid .novel-card{display:block!important}
+#book.show-all-novels .novels-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#support .support-actions button{background:transparent!important;border-color:transparent!important;color:#8395a3!important;font-weight:550!important}
+#support .support-actions button:hover,#support .support-actions button:focus-visible{color:#d8c59e!important;border-color:rgba(220,201,164,.22)!important}
+.moonlit-closing .closing-primary{margin:26px 0 8px!important}
+.moonlit-closing .closing-primary a{display:inline-flex;align-items:center;min-height:50px;padding:12px 22px;border:1px solid rgba(232,205,151,.56);border-radius:4px;background:linear-gradient(135deg,#e2c78f,#caa86c);color:#071522!important;font-weight:800;text-decoration:none;letter-spacing:.04em}
+.moonlit-closing .closing-primary a:hover,.moonlit-closing .closing-primary a:focus-visible{background:linear-gradient(135deg,#ecd7a8,#d4b577);transform:translateY(-1px)}
+.moonlit-closing nav{opacity:.72}
+.moonlit-closing nav:hover,.moonlit-closing nav:focus-within{opacity:1}
+@media(max-width:900px){#book.show-all-novels .novels-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){#featured .reading-commitment{display:block;margin-bottom:16px!important}#featured .moonlit-discovery{margin-top:26px!important}#featured .moonlit-entry-grid{opacity:.82}.moonlit-closing .closing-primary a{width:100%;justify-content:center}}
+@media(max-width:430px){#book.show-all-novels .novels-grid{grid-template-columns:1fr!important}}
