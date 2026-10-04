@@ -49,8 +49,20 @@ jobs:
           {
             echo "## Moonlit Production Smoke"
             echo ""
-            echo "- Live homepage and exact 9-entry navigation"
-            echo "- videos / works / search routes"
-            echo "- manifest / service worker / PWA icons"
             echo "- **Site:** https://vetjeremy-jpg.github.io/miaoshu.github.io/"
+            echo "- **Tested commit:** ${{ github.sha }}"
+            if [[ -f production-smoke-report.json ]]; then
+              node -e "const fs=require('fs'),r=JSON.parse(fs.readFileSync('production-smoke-report.json','utf8')); console.log('- **Runtime fingerprint:** '+r.liveRuntime+' ✓'); console.log('- **SW caches:** '+r.serviceWorker.shell+' / '+r.serviceWorker.pages); console.log(''); console.log('| Resource | Content-Type | Cache-Control | Age | Last-Modified |'); console.log('|---|---|---|---:|---|'); for(const x of r.resources) console.log('| '+x.label+' | '+x.contentType+' | '+x.cacheControl+' | '+x.age+' | '+x.lastModified+' |');"
+            else
+              echo "- Diagnostic report unavailable because verification did not reach report generation."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload production diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: production-smoke-diagnostics-${{ github.run_id }}
+          path: production-smoke-report.json
+          if-no-files-found: ignore
+          retention-days: 14
