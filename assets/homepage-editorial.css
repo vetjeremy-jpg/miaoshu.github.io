@@ -318,13 +318,23 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 #support .support-actions{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:8px 16px!important;max-width:none!important}
 #support .support-actions>*{width:auto!important;min-height:44px!important}
 #support .support-primary{
-  grid-column:auto!important;background:transparent!important;border:0!important;
-  border-bottom:1px solid rgba(220,201,164,.28)!important;border-radius:0!important;
-  padding-inline:0!important;color:#d6c49f!important
+  grid-column:auto!important;background:linear-gradient(135deg,#e2c78f,#caa86c)!important;
+  border:1px solid rgba(244,220,170,.72)!important;border-radius:4px!important;
+  padding:11px 20px!important;color:#071522!important;font-weight:750!important;
+  letter-spacing:.04em!important;text-decoration:none!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important
+}
+#support .support-primary:hover,#support .support-primary:focus-visible{
+  background:linear-gradient(135deg,#ecd7a8,#d4b577)!important;transform:translateY(-1px)
 }
 #support .support-actions button{
-  background:transparent!important;border:0!important;border-bottom:1px solid rgba(205,225,243,.14)!important;
-  border-radius:0!important;color:#8fa1af!important;padding-inline:0!important
+  background:rgba(8,24,39,.7)!important;border:1px solid rgba(220,201,164,.28)!important;
+  border-radius:4px!important;color:#d9c8a7!important;padding:10px 16px!important;font-weight:650!important
+}
+#support .support-actions button:hover,#support .support-actions button:focus-visible{
+  background:rgba(220,201,164,.09)!important;border-color:rgba(220,201,164,.5)!important;color:#f0dfbd!important
+}
+#support .support-actions button[aria-pressed="true"]{
+  background:rgba(216,168,76,.18)!important;border-color:rgba(226,199,143,.62)!important;color:#efd9aa!important
 }
 
 /* One emotional ending only. */
@@ -346,7 +356,9 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #creative.explore-more .creator-grid{display:block!important}
   #support.stay-with-moonlight{display:block!important;padding-block:24px!important}
   #support .support-note{margin-bottom:12px!important}
-  #support .support-actions{justify-content:flex-start!important;gap:4px 16px!important}
+  #support .support-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+  #support .support-actions .support-primary{grid-column:1/-1!important;width:100%!important;justify-content:center!important;min-height:50px!important}
+  #support .support-actions button{width:100%!important;justify-content:center!important;min-height:46px!important}
   .moonlit-breathing-quote{margin-top:54px!important;padding-top:38px!important}
   .moonlit-closing{padding-top:30px!important;padding-bottom:40px!important}
   .moonlit-closing nav{display:grid!important;grid-template-columns:1fr 1fr;gap:4px 18px!important;text-align:left}
@@ -355,4 +367,9 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 }
 @media(max-width:375px){
   .moonlit-closing nav{grid-template-columns:1fr!important}
+}
+
+@media(max-width:375px){
+  #support .support-actions{grid-template-columns:1fr!important}
+  #support .support-actions .support-primary{grid-column:auto!important}
 }
