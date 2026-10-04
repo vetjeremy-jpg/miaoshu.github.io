@@ -177,8 +177,6 @@
     box-sizing:border-box!important
   }
 
-  .moonlit-cover{min-height:190px}
-  .moonlit-quote-v2{padding-inline:20px}
 }
 
 @media(max-width:380px){
@@ -535,9 +533,6 @@
     gap:8px!important;
     margin:0!important
   }
-  #support.stay-with-moonlight .support-primary{
-    grid-column:auto!important
-  }
   #support.stay-with-moonlight .support-feedback{
     margin:0!important
   }
@@ -546,9 +541,6 @@
     margin-top:20px!important
   }
 
-  #community .reader-comment-frame{
-    display:none!important
-  }
   #community .comment-direct{
     margin:20px 0 10px!important
   }
@@ -765,20 +757,10 @@
 /* Moonlit inline action rail — refined text actions, no button boxes. */
 #support .moonlit-inline-actions{display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:0!important;min-width:0!important;margin-top:10px!important;padding:4px 0!important;background:transparent!important;border:0!important;box-shadow:none!important}
 #support .moonlit-inline-actions>*{min-height:44px!important}
-#support .moonlit-inline-actions .support-primary,#support .moonlit-inline-actions button{display:inline-flex!important;align-items:center!important;width:auto!important;padding:8px 14px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;white-space:nowrap!important}
-#support .moonlit-inline-actions .support-primary{gap:8px!important;padding-left:0!important;color:#dfc68f!important;font-size:15px!important;font-weight:700!important;letter-spacing:.025em!important}
-#support .moonlit-inline-actions .support-primary .action-mark{font-size:9px!important;color:#cfae69!important;transform:translateY(-1px)}
-#support .moonlit-inline-actions .support-primary span:last-child{border-bottom:1px solid rgba(223,198,143,.38);padding-bottom:3px}
+#support .moonlit-inline-actions button{display:inline-flex!important;align-items:center!important;width:auto!important;padding:8px 14px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;white-space:nowrap!important}
 #support .moonlit-inline-actions button{color:#9caeba!important;font-size:14px!important;font-weight:550!important;letter-spacing:.01em!important}
 #support .moonlit-inline-actions button:hover,#support .moonlit-inline-actions button:focus-visible{background:transparent!important;color:#e2cda3!important;transform:none!important}
 #support .moonlit-inline-actions button[aria-pressed="true"]{background:transparent!important;color:#e3c47e!important;font-weight:650!important}
 #support .moonlit-inline-actions .action-separator{display:block!important;width:1px!important;min-height:16px!important;height:16px!important;margin:0 3px!important;background:rgba(205,225,243,.13)!important}
-@media(max-width:520px){#support .moonlit-inline-actions{display:grid!important;grid-template-columns:auto 1px minmax(0,1fr)!important;align-items:center!important}#support .moonlit-inline-actions .support-primary{grid-column:1/-1!important;padding:6px 0 10px!important;margin-bottom:2px!important}#support .moonlit-inline-actions .support-primary+.action-separator{display:none!important}#support .moonlit-inline-actions button{justify-content:flex-start!important;padding:7px 10px 7px 0!important;white-space:normal!important}#support .moonlit-inline-actions .action-separator{margin:0 12px 0 0!important}}
+@media(max-width:520px){#support .moonlit-inline-actions{display:grid!important;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr)!important;align-items:center!important}#support .moonlit-inline-actions button{justify-content:flex-start!important;padding:7px 10px 7px 0!important;white-space:normal!important}#support .moonlit-inline-actions .action-separator{margin:0 12px 0 0!important}}
 
-/* Newsletter action hover — highlight mark and label as one Moonlit action. */
-#support .moonlit-inline-actions .support-primary:hover,
-#support .moonlit-inline-actions .support-primary:focus-visible{color:#fff1cf!important;background:transparent!important;transform:none!important}
-#support .moonlit-inline-actions .support-primary:hover .action-mark,
-#support .moonlit-inline-actions .support-primary:focus-visible .action-mark{color:#fff1cf!important}
-#support .moonlit-inline-actions .support-primary:hover span:last-child,
-#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{color:#fff1cf!important;border-bottom-color:#f0d18f!important}
