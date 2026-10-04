@@ -237,3 +237,68 @@
 @media(max-width:700px){.moonlit-cover{min-height:190px}.moonlit-quote-v2{padding-inline:20px}}
 @media(max-width:700px){.tonight-grid,.moonlit-entry-grid,.novels-grid,.creator-grid,.album-photos{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tonight-grid::-webkit-scrollbar,.moonlit-entry-grid::-webkit-scrollbar,.novels-grid::-webkit-scrollbar,.creator-grid::-webkit-scrollbar,.album-photos::-webkit-scrollbar{display:none}}
 @media(max-width:700px){.wrap{padding:34px 18px 80px!important}}
+
+
+/* Homepage mobile full-bleed section rhythm — 2026-10-04
+   Match the hero's edge-to-edge blue surface while retaining safe inner gutters. */
+@media(max-width:700px){
+  body:not([data-book-id]) main.wrap{
+    width:100%!important;
+    max-width:none!important;
+    padding-left:0!important;
+    padding-right:0!important
+  }
+
+  body:not([data-book-id]) main.wrap > section.panel{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important
+  }
+
+  #tonight,#reading-list,#featured,#updates,#book,#creative,#miaoshu-album,
+  #featured-short,#instagram-reel,#support,#about,#community,#newsletter{
+    padding-left:18px!important;
+    padding-right:18px!important
+  }
+
+  body:not([data-book-id]) main.wrap > section.moonlit-discovery,
+  body:not([data-book-id]) main.wrap > section.moonlit-found-line,
+  body:not([data-book-id]) main.wrap > section.follow-panel,
+  body:not([data-book-id]) main.wrap > section.moonlit-tonight,
+  body:not([data-book-id]) main.wrap > section.moonlit-curation{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-radius:0!important
+  }
+
+  body:not([data-book-id]) main.wrap > section.moonlit-discovery,
+  body:not([data-book-id]) main.wrap > section.follow-panel,
+  body:not([data-book-id]) main.wrap > section.moonlit-tonight,
+  body:not([data-book-id]) main.wrap > section.moonlit-curation{
+    padding-left:18px!important;
+    padding-right:18px!important
+  }
+
+  body:not([data-book-id]) main.wrap > section.moonlit-found-line{
+    padding-left:18px!important;
+    padding-right:18px!important
+  }
+
+  body:not([data-book-id]) main.wrap > p[style*="text-align:right"]{
+    padding-left:18px!important;
+    padding-right:18px!important
+  }
+
+  body:not([data-book-id]) main.wrap > .continue-box{
+    margin-left:18px!important;
+    margin-right:18px!important
+  }
+}
