@@ -43,6 +43,7 @@ async function walk(dir){
 }
 await walk(root);
 const homeLoader=await readFile(join(root,'assets','moonlit-home-loader.js'),'utf8');
+const homeIdle=await readFile(join(root,'assets','moonlit-home-idle.js'),'utf8');
 const homeContent=await readFile(join(root,'assets','moonlit-home-content.js'),'utf8');
 const experience=await readFile(join(root,'assets','moonlit-experience.js'),'utf8');
 if(!homeLoader.includes('__moonlitHomeLoaderLoaded'))errors.push('moonlit-home-loader.js 缺少全域初始化 guard');
@@ -54,6 +55,10 @@ if(!experience.includes('button.insertAdjacentElement("afterend",box)'))errors.p
 const sharedRuntime=await readFile(join(root,'assets','moonlit-v2.js'),'utf8');
 if(/s\.src=[^;]*moonlit-home-content\.js|createElement\(["']script["']\)[\s\S]{0,240}moonlit-home-content\.js/.test(sharedRuntime))errors.push('moonlit-v2.js 不應再載入 homepage-only moonlit-home-content.js；首頁 orchestration 應由 moonlit-home-loader.js 單獨負責');
 if(!homeLoader.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('moonlit-home-loader.js 必須保留首頁 idle 與 reading-state orchestration');
+if(/bell-site|miaoshu-bell/.test(homeIdle))errors.push('moonlit-home-idle.js 不得恢復已移除的回訪提醒 bell 邏輯');
+if(!homeIdle.includes("if(!like||!feedback)return"))errors.push('合併後的 support runtime 必須在按讚元件不存在時安全返回');
+if(!homeLoader.includes('moonlit-home-idle.js?v=20261004-immersion2'))errors.push('moonlit-home-loader.js 必須載入最新 immersion2 idle runtime');
+
 const sw=await readFile(join(root,'sw.js'),'utf8');
 if(!sw.includes(`assets/moonlit-v2.js?v=${expected}`))errors.push(`sw.js 未同步 moonlit-v2.js?v=${expected}`);
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
