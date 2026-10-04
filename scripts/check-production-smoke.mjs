@@ -69,11 +69,15 @@ must('production homepage must expose the exact nine-entry navigation',JSON.stri
 must('production homepage must link its manifest',home.includes('href="/miaoshu.github.io/site.webmanifest"'));
 
 const routeFingerprints=[];
-for(const route of [
+const criticalRoutes=[
   {path:'videos/',file:'../videos/index.html'},
   {path:'works/',file:'../works/index.html'},
-  {path:'search/',file:'../search/index.html'}
-]){
+  {path:'search/',file:'../search/index.html'},
+  {path:'gallery/',file:'../gallery/index.html'},
+  {path:'posts/',file:'../posts/index.html'},
+  {path:'about/',file:'../about/index.html'}
+];
+for(const route of criticalRoutes){
   const local=await readFile(new URL(route.file,import.meta.url),'utf8');
   const expectedHash=sha256(local);
   const res=await get(route.path);
