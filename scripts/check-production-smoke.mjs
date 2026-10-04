@@ -28,9 +28,20 @@ must('repository service worker must expose shell, page and scope fingerprints',
 const expectedRuntime=localHome.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
 must('repository homepage must expose a versioned Moonlit runtime',Boolean(expectedRuntime));
 
-const home=await (await get('')).text();
-const liveRuntime=home.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
-must(`production runtime must match repository fingerprint (expected ${expectedRuntime}, found ${liveRuntime||'missing'})`,liveRuntime===expectedRuntime);
+async function waitForRuntime(attempts=6){
+  let home='',liveRuntime;
+  for(let i=0;i<attempts;i++){
+    home=await (await get('')).text();
+    liveRuntime=home.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
+    if(liveRuntime===expectedRuntime)return {home,liveRuntime};
+    if(i<attempts-1){
+      console.log(`Production propagation pending: expected runtime ${expectedRuntime}, found ${liveRuntime||'missing'}; retry ${i+1}/${attempts-1}`);
+      await sleep(10000);
+    }
+  }
+  throw new Error(`production runtime must match repository fingerprint (expected ${expectedRuntime}, found ${liveRuntime||'missing'})`);
+}
+const {home,liveRuntime}=await waitForRuntime();
 const nav=home.match(/<nav class="navlinks"[^>]*>([\s\S]*?)<\/nav>/)?.[1]||'';
 const labels=[...nav.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)].map(m=>m[1].replace(/<[^>]+>/g,'').trim());
 const expected=['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','⌕ 搜尋'];
