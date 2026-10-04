@@ -562,7 +562,7 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 #community>.notice,
 #about .about-layout>div>p,
 #support.stay-with-moonlight .support-note{
-  max-width:42em
+  max-width:var(--moonlit-prose)
 }
 
 #about .about-layout>div>p{
@@ -609,7 +609,7 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Moonlit immersion pass 5 — continuity, scan rhythm, CTA discipline — 2026-10-04 */
 .deep-dive-next,.update-more-link{
-  display:inline-flex;align-items:center;min-height:44px;color:#cdbb98;text-decoration:none;
+  display:inline-flex;align-items:center;min-height:var(--moonlit-touch);color:var(--moonlit-gold-muted);text-decoration:none;
   border-bottom:1px solid rgba(205,187,152,.28);font-size:13px
 }
 .deep-dive-next:hover,.update-more-link:hover{color:#eee8dc;border-bottom-color:rgba(238,232,220,.5)}
@@ -618,9 +618,9 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #featured .deep-dive-next{margin-top:4px}
   #updates .update-actions{gap:20px}
   #updates .update-more-link{padding-inline:2px}
-  #book>.notice{max-width:620px}
-  #miaoshu-album>.notice,.moonlit-video-lede{max-width:620px}
-  #support.stay-with-moonlight{border-top:1px solid rgba(220,230,240,.08);border-bottom:0}
+  #book>.notice{max-width:var(--moonlit-prose-wide)}
+  #miaoshu-album>.notice,.moonlit-video-lede{max-width:var(--moonlit-prose-wide)}
+  #support.stay-with-moonlight{border-top:1px solid var(--moonlit-rule);border-bottom:0}
   #community{padding-bottom:54px}
   #support{padding-top:72px}
   #newsletter .moonlit-newsletter-lede{max-width:18em}
@@ -629,20 +629,20 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Moonlit immersion pass 6 — progressive disclosure, fewer simultaneous choices — 2026-10-04 */
 .moonlit-mood-selector{
-  margin-top:26px;padding-top:18px;border-top:1px solid rgba(220,230,240,.08)
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--moonlit-rule)
 }
 .moonlit-mood-selector>summary{
-  display:inline-flex;align-items:center;min-height:44px;cursor:pointer;
-  color:#cdbb98;font:500 13px/1.6 system-ui,sans-serif;letter-spacing:.04em;
+  display:inline-flex;align-items:center;min-height:var(--moonlit-touch);cursor:pointer;
+  color:var(--moonlit-gold-muted);font:500 13px/1.6 system-ui,sans-serif;letter-spacing:.04em;
   list-style:none
 }
 .moonlit-mood-selector>summary::-webkit-details-marker{display:none}
 .moonlit-mood-selector>summary::after{content:"＋";margin-left:10px;color:#7f93a4;font-size:16px}
 .moonlit-mood-selector[open]>summary::after{content:"−"}
 .moonlit-mood-inner{padding-top:18px}
-.moonlit-mood-inner>small{display:block;color:#8194a4}
+.moonlit-mood-inner>small{display:block;color:var(--moonlit-copy-muted)}
 .moonlit-mood-inner h4{margin:8px 0 8px}
-.moonlit-mood-inner>p{max-width:620px;margin-top:0}
+.moonlit-mood-inner>p{max-width:var(--moonlit-prose-wide);margin-top:0}
 .moonlit-found-line blockquote{margin-bottom:0}
 @media(min-width:701px){
   #featured .featured-explore{padding-bottom:30px}
@@ -692,7 +692,7 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #creative .creator-copy h3{font-size:20px}
   #about{padding-top:72px;padding-bottom:68px}
   #community{padding-top:66px}
-  #community .community-note{max-width:52em;color:#748796;font-size:12px}
+  #community .community-note{max-width:52em;color:var(--moonlit-copy-faint);font-size:12px}
   #support.stay-with-moonlight .support-actions button{font-size:12px}
 }
 
