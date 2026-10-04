@@ -522,3 +522,35 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 @media(max-width:900px){#book.show-all-novels .novels-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:700px){#featured .reading-commitment{display:block;margin-bottom:16px!important}#featured .moonlit-discovery{margin-top:26px!important}#featured .moonlit-entry-grid{opacity:.82}.moonlit-closing .closing-primary a{width:100%;justify-content:center}}
 @media(max-width:430px){#book.show-all-novels .novels-grid{grid-template-columns:1fr!important}}
+
+
+/* Mobile rhythm P0/P1 — compact first-visit path — 2026-10-04 */
+#featured details.moonlit-discovery{display:block}
+#featured details.moonlit-discovery>summary{list-style:none;cursor:pointer;min-height:54px;display:flex;align-items:center;padding:4px 0}
+#featured details.moonlit-discovery>summary::-webkit-details-marker{display:none}
+#featured details.moonlit-discovery>summary span{display:grid;gap:5px}
+#featured details.moonlit-discovery>summary small{color:#7f92a1;font-size:10px;letter-spacing:.12em}
+#featured details.moonlit-discovery>summary strong{color:#c6c0b3;font-size:16px;font-weight:650}
+#featured details.moonlit-discovery[open]>summary strong{color:#dfc68f}
+#featured .moonlit-discovery-inner{padding-top:12px}
+#featured .moonlit-discovery-inner>p{max-width:42em;color:#7f92a1;font-size:13px;line-height:1.8}
+
+@media(max-width:430px){
+  #community .reader-comment-frame{max-height:340px!important}
+  .moonlit-closing nav{opacity:.58!important}
+}
+@media(max-width:390px){
+  #community .reader-comment-frame{max-height:300px!important}
+}
+@media(max-width:375px){
+  #community .reader-comment-frame{max-height:290px!important}
+  .moonlit-closing nav{opacity:.52!important}
+}
+@media(max-width:330px){
+  #tonight{padding-top:45px!important;padding-bottom:48px!important}
+  #tonight .tonight-grid{gap:9px!important}
+  #tonight .tonight-grid article{padding:18px 15px!important}
+  #book .book-details p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  #community .reader-comment-frame{max-height:270px!important}
+  .moonlit-closing nav{opacity:.46!important}
+}
