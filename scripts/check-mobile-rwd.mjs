@@ -130,6 +130,9 @@ for (const [page, html] of mainPages) {
 must('tablet featured pass is scoped exactly to 701–850px', /@media\(min-width:701px\) and \(max-width:850px\)/.test(homepageDesktop));
 must('tablet featured pass keeps equal columns', /@media\(min-width:701px\) and \(max-width:850px\)[\s\S]*?#featured \.featured-grid\{[\s\S]*?grid-template-columns:minmax\(0,1fr\) minmax\(0,1fr\)/.test(homepageDesktop));
 must('tablet featured pass keeps 370px image minimum', /@media\(min-width:701px\) and \(max-width:850px\)[\s\S]*?#featured \.featured-visual\{[\s\S]*?min-height:370px/.test(homepageDesktop));
+must('compact tablet featured pass is scoped to 701–780px', /@media\(min-width:701px\) and \(max-width:780px\)/.test(homepageDesktop));
+must('compact tablet featured title stays within 32–35px', /@media\(min-width:701px\) and \(max-width:780px\)[\s\S]*?#featured \.featured-copy h2\{[\s\S]*?font-size:clamp\(32px,4\.5vw,35px\)/.test(homepageDesktop));
+must('compact tablet featured image uses 360px minimum', /@media\(min-width:701px\) and \(max-width:780px\)[\s\S]*?#featured \.featured-visual\{[\s\S]*?min-height:360px/.test(homepageDesktop));
 must('desktop featured base remains 0.9/1.1 after tablet split', /@media\(min-width:701px\)\{#featured\{padding-top:90px\}\.featured-grid\{grid-template-columns:\.9fr 1\.1fr;gap:clamp\(40px,7vw,90px\)\}\.featured-visual\{min-height:440px/.test(homepageDesktop));
 must('desktop bookshelf remains five-column from 701px up', /@media\(min-width:701px\)\{#book\{padding-top:80px\}[\s\S]*?\.novels-grid\{display:grid;grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/.test(homepageDesktop));
 must('mobile bookshelf styling cannot leak above 700px', /@media\(max-width:700px\)[\s\S]*?body:not\(\[data-book-id\]\) #book \.bookshelf-scene/.test(mobile));
