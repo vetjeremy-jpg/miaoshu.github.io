@@ -206,8 +206,6 @@ if((homepage.match(/id="continue-reading"/g)||[]).length!==1||(homepage.match(/i
 if((refinementHome.match(/hero\.insertAdjacentElement\('afterend',box\)/g)||[]).length!==1)errors.push('Tier 1 本期選題 must have exactly one Hero afterend insertion');
 if(/hero\.insertAdjacentElement\((?!'afterend',box)/.test(refinementHome))errors.push('no other dynamic homepage block may be inserted beside the Hero before the three-tier sequence');
 if(/continueBox[^\n]{0,160}insertAdjacentElement\('beforebegin'|reading-list[^\n]{0,160}insertAdjacentElement\('beforebegin'/.test(refinementHome+homeContent+experience))errors.push('dynamic homepage scripts must not inject content before reading-state blocks and disrupt the three-tier sequence');
-const orderFeaturedStart=homepage.indexOf('<section class="panel curation-deep-dive" id="featured"');
-const featuredEnd=featuredStart<0?-1:homepage.indexOf('</section>',featuredStart);
 const featuredStart=homepage.indexOf('<section class="panel curation-deep-dive" id="featured"');
 const featuredEnd=featuredStart<0?-1:homepage.indexOf('</section>',featuredStart);
 const featuredBlock=featuredStart>=0&&featuredEnd>featuredStart?homepage.slice(featuredStart,featuredEnd+10):'';
