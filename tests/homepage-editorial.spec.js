@@ -136,6 +136,48 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     }
   });
 
+  test('approved 320/375/390/430 retention rhythm remains explicit', async ({ page }) => {
+    const expected={
+      320:{comment:280,tonightTop:42,tonightBottom:44,closingPad:48},
+      375:{comment:300,tonightTop:48,tonightBottom:52,closingPad:48},
+      390:{comment:300,tonightTop:54,tonightBottom:58,closingPad:48},
+      430:{comment:340,tonightTop:54,tonightBottom:58,closingPad:48}
+    };
+    for (const width of [320,375,390,430]) {
+      await page.setViewportSize({ width, height:932 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+      const state=await page.evaluate(() => {
+        const px=(el,p)=>Math.round(parseFloat(getComputedStyle(el)[p]));
+        const comment=document.querySelector('#community .reader-comment-frame');
+        const tonight=document.querySelector('#tonight');
+        const closing=document.querySelector('.moonlit-closing');
+        const support=document.querySelector('#support');
+        const newsletter=document.querySelector('#newsletter');
+        return {
+          commentDisplay:getComputedStyle(comment).display,
+          commentMax:Math.round(parseFloat(getComputedStyle(comment).maxHeight)),
+          tonightTop:px(tonight,'paddingTop'),
+          tonightBottom:px(tonight,'paddingBottom'),
+          closingTop:px(closing,'paddingTop'),
+          closingBottom:px(closing,'paddingBottom'),
+          supportBeforeNewsletter:support.getBoundingClientRect().top < newsletter.getBoundingClientRect().top,
+          newsletterButtons:[...newsletter.querySelectorAll('button[type="submit"]')].filter(x=>getComputedStyle(x).display!=='none').length,
+          prematureNewsletterCtas:[...document.querySelectorAll('#support a,#support button,.moonlit-closing a,.moonlit-closing button')].filter(x=>/訂閱月光來信/.test(x.textContent||'')).length
+        };
+      });
+      const target=expected[width];
+      expect(state.commentDisplay, width+'px comment preview remains visible').not.toBe('none');
+      expect(state.commentMax, width+'px comment preview height').toBe(target.comment);
+      expect(state.tonightTop, width+'px Tonight top rhythm').toBe(target.tonightTop);
+      expect(state.tonightBottom, width+'px Tonight bottom rhythm').toBe(target.tonightBottom);
+      expect(state.closingTop, width+'px Closing top padding').toBe(target.closingPad);
+      expect(state.closingBottom, width+'px Closing bottom padding').toBe(target.closingPad);
+      expect(state.supportBeforeNewsletter, width+'px retention order').toBeTruthy();
+      expect(state.prematureNewsletterCtas, width+'px newsletter CTA stays singular').toBe(0);
+      expect(state.newsletterButtons, width+'px actual newsletter submit').toBe(1);
+    }
+  });
+
   test('editorial CSS remains before mobile-safety in source order', async ({ page }) => {
     await open(page, VIEWPORTS[2]);
     const hrefs=await page.locator('link[rel="stylesheet"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')||''));
