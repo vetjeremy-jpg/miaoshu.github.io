@@ -48,8 +48,9 @@ const experience=await readFile(join(root,'assets','moonlit-experience.js'),'utf
 if(!homeLoader.includes('__moonlitHomeLoaderLoaded'))errors.push('moonlit-home-loader.js 缺少全域初始化 guard');
 if(!homeContent.includes('__moonlitHomeContentLoaded'))errors.push('moonlit-home-content.js 缺少全域初始化 guard');
 if(!experience.includes('__moonlitExperienceLoaded'))errors.push('moonlit-experience.js 缺少全域初始化 guard');
-if(!homeContent.includes('!d.querySelector(".moonlit-curation")'))errors.push('moonlit-home-content.js 缺少 moonlit-curation 重複掛載 guard');
+if(/moonlit-curation|TONIGHT AT MOONLIT|phaseItems/.test(homeContent))errors.push('moonlit-home-content.js 不得恢復舊的獨立推薦策展區塊');
 if(!experience.includes('button.dataset.moonlitMounted'))errors.push('moonlit-experience.js 缺少 picker 重複掛載 guard');
+if(!experience.includes('button.insertAdjacentElement("afterend",box)'))errors.push('Moonlit picker 必須掛在第三層探索按鈕之後，不得成為獨立推薦區塊');
 const sharedRuntime=await readFile(join(root,'assets','moonlit-v2.js'),'utf8');
 if(/s\.src=[^;]*moonlit-home-content\.js|createElement\(["']script["']\)[\s\S]{0,240}moonlit-home-content\.js/.test(sharedRuntime))errors.push('moonlit-v2.js 不應再載入 homepage-only moonlit-home-content.js；首頁 orchestration 應由 moonlit-home-loader.js 單獨負責');
 if(!homeLoader.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('moonlit-home-loader.js 必須保留首頁 idle 與 reading-state orchestration');
