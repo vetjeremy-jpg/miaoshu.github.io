@@ -38,6 +38,38 @@ test.describe('Moonlit PWA lifecycle', () => {
     expect(keys.filter(key => key.startsWith('moonlit-pages-'))).toHaveLength(1);
   });
 
+
+  test('P0 keeps novel navigation inside the controlled Moonlit scope @p0', async ({ page }) => {
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    const assertControlled = async label => {
+      const state = await page.evaluate(async () => ({
+        controlled: Boolean(navigator.serviceWorker.controller),
+        scope: (await navigator.serviceWorker.ready).scope
+      }));
+      expect(state.controlled, label).toBe(true);
+      expect(state.scope, label).toBe(new URL('./', page.url()).origin + '/miaoshu.github.io/');
+    };
+
+    await page.goto('./#book', { waitUntil: 'domcontentloaded' });
+    await assertControlled('homepage book shelf');
+
+    await page.locator('a[href="books/fushengsuiyue/index.html#toc"]').first().click();
+    await expect(page).toHaveURL(/\/books\/fushengsuiyue\/index\.html#toc$/);
+    await assertControlled('novel reader');
+
+    await page.locator('#chapter-1 a[href="#chapter-2"]').click();
+    await expect(page).toHaveURL(/#chapter-2$/);
+    await assertControlled('chapter navigation');
+
+    await page.locator('a[href="../../index.html#book"]').last().click();
+    await expect(page).toHaveURL(/\/miaoshu\.github\.io\/(?:index\.html)?#book$/);
+    await expect(page.locator('#book')).toBeVisible();
+    await assertControlled('return to book shelf');
+  });
+
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
     await resetMoonlitPwa(page);
 
