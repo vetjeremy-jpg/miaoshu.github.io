@@ -215,7 +215,7 @@ main.wrap>.editorial-transition:first-child{padding-top:clamp(70px,8vw,104px)}
 }
 
 
-/* Moonlit editorial calibration III — responsive proportions + regression contract — 2026-10-04 */
+/* Moonlit editorial calibration III — responsive proportions + regression contract — 2026-10-04\n   Canonical mobile spacing lives here. Earlier sections intentionally avoid duplicating these breakpoints. */
 body#top:not([data-book-id]) .hero-copy{max-width:720px}
 body#top:not([data-book-id]) .hero h1{max-width:8.8em;text-wrap:balance}
 body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);line-height:1.9}
