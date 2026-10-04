@@ -248,6 +248,18 @@ const albumStart=homepage.indexOf('id="miaoshu-album"');
 const albumEnd=albumStart<0?-1:homepage.indexOf('</section>',albumStart);
 const albumBlock=albumStart>=0&&albumEnd>albumStart?homepage.slice(albumStart,albumEnd+10):'';
 if(!/class="album-actions"[\s\S]*?class="cta" href="gallery\/index\.html"[\s\S]*?class="album-external-link"[^>]*degoo/.test(albumBlock))errors.push('Photography section must keep Moonlit gallery primary and Degoo secondary');
+if((albumBlock.match(/href="gallery\/index\.html#snow-sword"/g)||[]).length!==2)errors.push('Photography preview images must stay inside Moonlit instead of linking directly to Degoo');
+const updatesStart=homepage.indexOf('id="updates"');
+const updatesEnd=updatesStart<0?-1:homepage.indexOf('</section>',updatesStart);
+const updatesBlock=updatesStart>=0&&updatesEnd>updatesStart?homepage.slice(updatesStart,updatesEnd+10):'';
+if(/videos\//.test(updatesBlock)||(updatesBlock.match(/class="cta/g)||[]).length!==2)errors.push('Recent Updates must stay focused on two reading actions and not duplicate the video hub');
+const communityStart=homepage.indexOf('id="community"');
+const communityEnd=communityStart<0?-1:homepage.indexOf('</section>',communityStart);
+const communityBlock=communityStart>=0&&communityEnd>communityStart?homepage.slice(communityStart,communityEnd+10):'';
+const communityActions=(communityBlock.match(/<div class="community-actions">[\s\S]*?<\/div>/)||[''])[0];
+if((communityActions.match(/<(?:a|button)\b/g)||[]).length!==1||!/id="share-site"/.test(communityActions))errors.push('Community must keep one quiet share action');
+if(/social-plugins\.line\.me/.test(communityBlock))errors.push('Community must not restore a duplicate LINE share CTA');
+
 const aboutStart=homepage.indexOf('id="about"');
 const aboutEnd=aboutStart<0?-1:homepage.indexOf('</section>',aboutStart);
 const aboutBlock=aboutStart>=0&&aboutEnd>aboutStart?homepage.slice(aboutStart,aboutEnd+10):'';
