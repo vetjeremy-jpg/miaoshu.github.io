@@ -198,10 +198,8 @@
   .moonlit-subscribe-row input{font-size:16px}
 }
 
-@media(prefers-reduced-motion:reduce){
-  @media(max-width:700px){
-    .moonlit-entry-grid,#book .novels-grid{scroll-behavior:auto!important}
-  }
+@media(prefers-reduced-motion:reduce) and (max-width:700px){
+  .moonlit-entry-grid,#book .novels-grid{scroll-behavior:auto!important}
 }
 
 /* Canonical ownership contract: shared compact-screen helpers live in one breakpoint block. */
