@@ -278,3 +278,89 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #tonight+.editorial-transition{padding-top:54px}
   #featured{padding-top:48px!important;padding-bottom:56px!important}
 }
+
+
+/* Moonlit editorial refinement IV — one ending, fewer decisions — 2026-10-04 */
+
+/* Recent update is a marginal note, not another full chapter. */
+#updates.latest-update{
+  max-width:900px;margin-inline:auto;padding-block:34px!important;
+  border-top:1px solid var(--editorial-rule)!important;border-bottom:1px solid var(--editorial-rule)!important
+}
+#updates .update-heading{align-items:baseline}
+#updates .update-heading .section-title{font-size:clamp(22px,2.5vw,30px)!important;margin-bottom:8px}
+#updates>.notice{font-size:14px;line-height:1.8;color:#8799a8}
+#updates .update-actions .cta{
+  background:transparent!important;border:0!important;border-bottom:1px solid rgba(220,201,164,.28)!important;
+  border-radius:0!important;padding-inline:0!important;color:#d6c49f!important
+}
+
+/* Explore-more is a directory, not a third card family. */
+#creative.explore-more .creator-grid{gap:0!important;border-top:1px solid var(--editorial-rule)}
+#creative.explore-more .creator-card{
+  display:block!important;border:0!important;border-bottom:1px solid var(--editorial-rule)!important;
+  border-radius:0!important;background:transparent!important;box-shadow:none!important
+}
+#creative.explore-more .creator-art{display:none!important}
+#creative.explore-more .creator-copy{padding:22px 2px!important}
+#creative.explore-more .creator-copy h3{margin-top:0}
+#creative.explore-more .creator-copy a{display:inline-flex;min-height:44px;align-items:center}
+
+/* Community remains useful but no longer pretends to be the final CTA. */
+#community .comment-direct .cta{
+  background:transparent!important;border:0!important;border-bottom:1px solid rgba(220,201,164,.26)!important;
+  border-radius:0!important;padding-inline:0!important;color:#d6c49f!important
+}
+#community .community-actions button{
+  background:transparent!important;border-color:rgba(205,225,243,.12)!important;box-shadow:none!important
+}
+
+/* Merge the former support chapter into a quiet pre-closing utility strip. */
+#support.stay-with-moonlight{
+  grid-template-columns:minmax(0,1fr) auto!important;max-width:1040px!important;
+  padding-block:28px!important;border-top:1px solid var(--editorial-rule)!important;
+  border-bottom:0!important
+}
+#support .chapter-kicker,#support .section-title{display:none!important}
+#support .support-note{font-size:13px!important;line-height:1.75!important;color:#7f92a1!important}
+#support .support-actions{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:8px 16px!important;max-width:none!important}
+#support .support-actions>*{width:auto!important;min-height:44px!important}
+#support .support-primary{
+  grid-column:auto!important;background:transparent!important;border:0!important;
+  border-bottom:1px solid rgba(220,201,164,.28)!important;border-radius:0!important;
+  padding-inline:0!important;color:#d6c49f!important
+}
+#support .support-actions button{
+  background:transparent!important;border:0!important;border-bottom:1px solid rgba(205,225,243,.14)!important;
+  border-radius:0!important;color:#8fa1af!important;padding-inline:0!important
+}
+
+/* One emotional ending only. */
+.moonlit-breathing-quote{
+  margin-bottom:0!important;padding-bottom:22px!important
+}
+.moonlit-breathing-quote .quote{font-size:clamp(24px,3vw,38px)!important}
+.moonlit-breathing-quote .notice{opacity:.62}
+.moonlit-closing{
+  margin-top:0!important;border-top:0!important;padding-top:34px!important
+}
+.moonlit-closing::before{top:0}
+.moonlit-closing nav{margin-top:22px}
+#newsletter{margin-top:0!important;padding-top:72px!important}
+
+/* On phones, keep ending actions linear and low-noise. */
+@media(max-width:700px){
+  #updates.latest-update{padding-block:28px!important}
+  #creative.explore-more .creator-grid{display:block!important}
+  #support.stay-with-moonlight{display:block!important;padding-block:24px!important}
+  #support .support-note{margin-bottom:12px!important}
+  #support .support-actions{justify-content:flex-start!important;gap:4px 16px!important}
+  .moonlit-breathing-quote{margin-top:54px!important;padding-top:38px!important}
+  .moonlit-closing{padding-top:30px!important;padding-bottom:40px!important}
+  .moonlit-closing nav{display:grid!important;grid-template-columns:1fr 1fr;gap:4px 18px!important;text-align:left}
+  .moonlit-closing nav a{justify-content:flex-start}
+  #newsletter{padding-top:58px!important}
+}
+@media(max-width:375px){
+  .moonlit-closing nav{grid-template-columns:1fr!important}
+}
