@@ -190,8 +190,10 @@ if(/\.featured-copy h2\{font-size:clamp\(30px,8vw,34px\)!important/.test(homepag
 if(/#featured \.featured-explore\{[^}]*margin:34px 0 0!important/.test(homepageMobileBelow)||/#featured \.featured-explore\{margin-top:52px!important\}/.test(homepageMobileBelow))errors.push('superseded Featured Explore spacing must stay retired');
 if(/#featured \.featured-explore h3\{[^}]*font-size:(?:27|25)px!important/.test(homepageMobileBelow))errors.push('superseded Featured Explore heading sizes must stay retired');
 if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!important;padding-bottom:46px!important\}/.test(homepageMobileBelow))errors.push('superseded secondary-section 46px rhythm must stay retired');
+const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
+if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 const mobileMediaCount=(homepageMobileBelow.match(/@media/g)||[]).length;
-if(mobileMediaCount>29)errors.push(`homepage mobile media-block budget exceeded: ${mobileMediaCount} > 29`);
+if(mobileMediaCount>27)errors.push(`homepage mobile media-block budget exceeded: ${mobileMediaCount} > 27`);
 const compactHelperOwnerCount=(homepageMobileBelow.match(/@media\(max-width:700px\)\{\s*\.moonlit-cover\{min-height:190px\}/g)||[]).length;
 if(compactHelperOwnerCount!==1)errors.push(`compact-screen helper contract must have exactly one canonical media owner (found ${compactHelperOwnerCount})`);
 const mobileWrapOwnerCount=(homepageMobileBelow.match(/\.wrap\{padding:34px 18px 80px!important\}/g)||[]).length;
