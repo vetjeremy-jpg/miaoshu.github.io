@@ -564,3 +564,10 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #tonight .pick-commitment{margin-top:10px;font-size:11px;line-height:1.6}
   #tonight .tonight-grid article>a{margin-top:10px}
 }
+
+
+/* Comment preview rhythm — exact mobile targets — 2026-10-04 */
+@media(max-width:430px){#community .reader-comment-frame{max-height:340px!important}}
+@media(max-width:390px){#community .reader-comment-frame{max-height:300px!important}}
+@media(max-width:375px){#community .reader-comment-frame{max-height:300px!important}}
+@media(max-width:330px){#community .reader-comment-frame{max-height:280px!important}}
