@@ -1,0 +1,43 @@
+name: Production Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * 1,4'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: moonlit-production-smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    name: Live GitHub Pages Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout smoke contract
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Verify production site
+        run: node scripts/check-production-smoke.mjs
+
+      - name: Publish production summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Moonlit Production Smoke"
+            echo ""
+            echo "- Live homepage and exact 9-entry navigation"
+            echo "- videos / works / search routes"
+            echo "- manifest / service worker / PWA icons"
+            echo "- **Site:** https://vetjeremy-jpg.github.io/miaoshu.github.io/"
+          } >> "$GITHUB_STEP_SUMMARY"
