@@ -174,7 +174,7 @@ main.wrap>.editorial-transition:first-child{padding-top:clamp(70px,8vw,104px)}
 #updates.latest-update,#creative.explore-more,#about.about-miaoshu,#community,#support.stay-with-moonlight,#newsletter{
   border-left:0!important;border-right:0!important;background:transparent!important;box-shadow:none!important
 }
-#updates .cta,#creative .cta,#about .cta,#support .support-actions button:not(.support-primary){
+#updates .cta,#creative .cta,#about .cta,#support .support-actions button{
   box-shadow:none!important
 }
 
@@ -317,15 +317,6 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 #support .support-note{font-size:13px!important;line-height:1.75!important;color:#7f92a1!important}
 #support .support-actions{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;gap:8px 16px!important;max-width:none!important}
 #support .support-actions>*{width:auto!important;min-height:44px!important}
-#support .support-primary{
-  grid-column:auto!important;background:linear-gradient(135deg,#e2c78f,#caa86c)!important;
-  border:1px solid rgba(244,220,170,.72)!important;border-radius:4px!important;
-  padding:11px 20px!important;color:#071522!important;font-weight:750!important;
-  letter-spacing:.04em!important;text-decoration:none!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important
-}
-#support .support-primary:hover,#support .support-primary:focus-visible{
-  background:linear-gradient(135deg,#ecd7a8,#d4b577)!important;transform:translateY(-1px)
-}
 #support .support-actions button{
   background:rgba(8,24,39,.7)!important;border:1px solid rgba(220,201,164,.28)!important;
   border-radius:4px!important;color:#d9c8a7!important;padding:10px 16px!important;font-weight:650!important
@@ -357,7 +348,6 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #support.stay-with-moonlight{display:block!important;padding-block:24px!important}
   #support .support-note{margin-bottom:12px!important}
   #support .support-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
-  #support .support-actions .support-primary{grid-column:1/-1!important;width:100%!important;justify-content:center!important;min-height:50px!important}
   #support .support-actions button{width:100%!important;justify-content:center!important;min-height:46px!important}
   .moonlit-breathing-quote{margin-top:54px!important;padding-top:38px!important}
   .moonlit-closing{padding-top:30px!important;padding-bottom:40px!important}
@@ -371,29 +361,9 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 
 @media(max-width:375px){
   #support .support-actions{grid-template-columns:1fr!important}
-  #support .support-actions .support-primary{grid-column:auto!important}
 }
 
 /* Inline newsletter action owns its hover state after legacy support CTA rules. */
-#support .moonlit-inline-actions .support-primary:hover,
-#support .moonlit-inline-actions .support-primary:focus-visible{
-  background:rgba(239,216,168,.12)!important;
-  color:#fff4dc!important;
-  border:0!important;
-  border-radius:2px!important;
-  box-shadow:inset 0 0 0 1px rgba(239,216,168,.22)!important;
-  transform:none!important
-}
-#support .moonlit-inline-actions .support-primary:hover .action-mark,
-#support .moonlit-inline-actions .support-primary:focus-visible .action-mark,
-#support .moonlit-inline-actions .support-primary:hover span:last-child,
-#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{
-  color:#fff4dc!important
-}
-#support .moonlit-inline-actions .support-primary:hover span:last-child,
-#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{
-  border-bottom-color:#f3d99e!important
-}
 
 
 /* Moonlit editorial refinement V — immersion over inventory — 2026-10-04
@@ -638,4 +608,10 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 /* 320px Hero-to-Tonight transition — keep the prose pause, trim only excess air */
 @media(max-width:330px){
   main.wrap>.editorial-transition:first-child{padding-top:40px!important}
+}
+
+
+/* Post-conversion ending calibration — no oversized CTA remains in Closing. */
+@media(max-width:700px){
+  .moonlit-closing{padding-top:48px!important;padding-bottom:48px!important}
 }
