@@ -759,5 +759,8 @@
   #book .cover-title{font-size:12px}
   #book .novel-card[data-book-id="fushengsuiyue"] .cover-title{font-size:6px;letter-spacing:0}
 }
-@media(max-width:520px){#miaoshu-album .album-photos{gap:8px}}
-@media(max-width:360px){#book .novel-card .book-read{padding:5px 7px}}
+@media(max-width:520px){
+  #miaoshu-album .album-photos{gap:8px}
+  #book .novel-card .book-read{padding:5px 7px}
+}
+@media(min-width:361px) and (max-width:520px){#book .novel-card .book-read{padding:revert}}
