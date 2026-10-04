@@ -373,3 +373,24 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   #support .support-actions{grid-template-columns:1fr!important}
   #support .support-actions .support-primary{grid-column:auto!important}
 }
+
+/* Inline newsletter action owns its hover state after legacy support CTA rules. */
+#support .moonlit-inline-actions .support-primary:hover,
+#support .moonlit-inline-actions .support-primary:focus-visible{
+  background:rgba(239,216,168,.12)!important;
+  color:#fff4dc!important;
+  border:0!important;
+  border-radius:2px!important;
+  box-shadow:inset 0 0 0 1px rgba(239,216,168,.22)!important;
+  transform:none!important
+}
+#support .moonlit-inline-actions .support-primary:hover .action-mark,
+#support .moonlit-inline-actions .support-primary:focus-visible .action-mark,
+#support .moonlit-inline-actions .support-primary:hover span:last-child,
+#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{
+  color:#fff4dc!important
+}
+#support .moonlit-inline-actions .support-primary:hover span:last-child,
+#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{
+  border-bottom-color:#f3d99e!important
+}
