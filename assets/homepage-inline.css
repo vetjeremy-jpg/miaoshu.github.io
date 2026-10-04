@@ -1,3 +1,16 @@
+
+/* Moonlit homepage design tokens — canonical shared values — 2026-10-04 */
+body#top:not([data-book-id]){
+  --moonlit-touch:44px;
+  --moonlit-section-space:64px;
+  --moonlit-rule:rgba(220,230,240,.08);
+  --moonlit-gold-muted:#cdbb98;
+  --moonlit-copy-muted:#8194a4;
+  --moonlit-copy-faint:#748796;
+  --moonlit-prose:42em;
+  --moonlit-prose-wide:620px;
+}
+
 /* Moonlit ownership: critical homepage above-fold CSS.
    Keep only first-paint layout and CLS-prevention rules here; migrate non-critical sections to below-fold owners. */
 :root{--gold:#c9ad7d;--gold2:#e6d4b2;--text:#f5f1ea;--muted:#bac6d0;--line:rgba(221,197,156,.22)}/* Homepage styles extracted from index.html for cacheability and a leaner document. */
