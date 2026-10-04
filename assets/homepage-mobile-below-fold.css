@@ -787,3 +787,47 @@
 @media(max-width:375px){
   #support.stay-with-moonlight .support-note{font-size:16px!important;line-height:1.7!important}
 }
+
+/* Support editorial redesign — invitation first, one primary action, two quiet utilities. */
+@media(max-width:700px){
+  #support.stay-with-moonlight{
+    padding:30px 4px 26px!important;background:transparent!important;border:0!important;
+    border-top:1px solid rgba(226,199,143,.22)!important;border-radius:0!important;box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-note{
+    max-width:28em!important;margin:0 0 20px!important;font-size:17px!important;line-height:1.75!important;
+    font-weight:600!important;color:#e8dcc3!important;letter-spacing:.01em!important
+  }
+  #support.stay-with-moonlight .support-actions{
+    display:grid!important;grid-template-columns:1fr auto auto!important;align-items:center!important;
+    gap:8px 18px!important;margin:0!important
+  }
+  #support.stay-with-moonlight .support-primary{
+    grid-column:auto!important;width:auto!important;min-height:48px!important;padding:11px 20px!important;
+    border-radius:999px!important;font-size:15px!important;font-weight:750!important;
+    background:#d9bd84!important;color:#071522!important;border:1px solid #ead39f!important;
+    box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-actions button{
+    width:auto!important;min-height:44px!important;padding:8px 2px!important;border:0!important;border-radius:0!important;
+    border-bottom:1px solid rgba(226,199,143,.32)!important;background:transparent!important;
+    color:#d9c9aa!important;font-size:14px!important;font-weight:650!important;box-shadow:none!important
+  }
+  #support.stay-with-moonlight .support-actions button:hover,#support.stay-with-moonlight .support-actions button:focus-visible{
+    background:transparent!important;border-bottom-color:#e2c78f!important;color:#fff0cf!important;transform:none!important
+  }
+  #support.stay-with-moonlight .support-actions button[aria-pressed="true"]{
+    background:transparent!important;border-bottom-color:#e2c78f!important;color:#f0d18f!important;font-weight:750!important
+  }
+}
+@media(max-width:520px){
+  #support.stay-with-moonlight{padding-inline:2px!important}
+  #support.stay-with-moonlight .support-actions{grid-template-columns:1fr 1fr!important;gap:8px 14px!important}
+  #support.stay-with-moonlight .support-primary{grid-column:1/-1!important;width:max-content!important;max-width:100%!important;margin-bottom:4px!important}
+  #support.stay-with-moonlight .support-actions button{width:max-content!important;max-width:100%!important}
+}
+@media(max-width:375px){
+  #support.stay-with-moonlight .support-note{font-size:16px!important}
+  #support.stay-with-moonlight .support-actions{grid-template-columns:1fr!important;justify-items:start!important}
+  #support.stay-with-moonlight .support-primary{grid-column:auto!important}
+}
