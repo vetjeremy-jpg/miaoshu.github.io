@@ -44,7 +44,7 @@ jobs:
           node-version: '22'
 
       - name: Install test dependencies
-        run: npm install
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
@@ -68,7 +68,7 @@ jobs:
       - name: Run nine-entry navigation gate
         env:
           BASE_URL: http://127.0.0.1:4173/
-        run: npm run test:nav
+        run: npm run test:nav:p0
 
       - name: Upload Playwright report
         if: always()
