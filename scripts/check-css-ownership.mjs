@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:485},
+  'assets/homepage-mobile-below-fold.css':{important:476},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -192,6 +192,7 @@ if(/#featured \.featured-explore h3\{[^}]*font-size:(?:27|25)px!important/.test(
 if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!important;padding-bottom:46px!important\}/.test(homepageMobileBelow))errors.push('superseded secondary-section 46px rhythm must stay retired');
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
+if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
 const mobileGeometryOwnerCount=(homepageMobileBelow.match(/Mobile blue-panel interior polish[\s\S]*Mobile panel geometry[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(mobileGeometryOwnerCount!==1)errors.push(`mobile panel interior and geometry must share one 700px owner (found ${mobileGeometryOwnerCount})`);
 const mobileMediaCount=(homepageMobileBelow.match(/@media/g)||[]).length;
