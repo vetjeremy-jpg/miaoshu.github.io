@@ -70,6 +70,36 @@ test.describe('Moonlit PWA lifecycle', () => {
     await assertControlled('return to book shelf');
   });
 
+  test('P0 reloads a warmed novel while offline and keeps chapter navigation usable @p0', async ({ page, context }) => {
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    const novel='./books/fushengsuiyue/index.html#chapter-1';
+    await page.goto(novel, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#chapter-1')).toBeVisible();
+
+    await expect.poll(async () => page.evaluate(async () => {
+      const cache=await caches.open('moonlit-pages-v3');
+      const keys=await cache.keys();
+      return keys.some(req=>new URL(req.url).pathname.endsWith('/books/fushengsuiyue/index.html'));
+    }), { timeout: 10000 }).toBe(true);
+
+    await context.setOffline(true);
+    try {
+      await page.reload({ waitUntil: 'domcontentloaded' });
+      await expect(page.locator('#chapter-1')).toBeVisible();
+      await expect(page.locator('#chapter-1 .chapter-body')).not.toBeEmpty();
+      await expect(page.evaluate(() => Boolean(navigator.serviceWorker.controller))).resolves.toBe(true);
+
+      await page.locator('#chapter-1 a[href="#chapter-2"]').click();
+      await expect(page).toHaveURL(/#chapter-2$/);
+      await expect(page.locator('#chapter-2')).toBeVisible();
+    } finally {
+      await context.setOffline(false);
+    }
+  });
+
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
     await resetMoonlitPwa(page);
 
