@@ -133,6 +133,54 @@ test.describe('Moonlit PWA lifecycle', () => {
     }
   });
 
+  test('P0 preserves reading, bookmark and audio progress across cache generation cleanup @p0', async ({ page }) => {
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    const novel='./books/fushengsuiyue/index.html';
+    await page.goto(novel+'#chapter-2', { waitUntil: 'domcontentloaded' });
+    await page.locator('#chapter-2').scrollIntoViewIfNeeded();
+
+    await page.evaluate(() => {
+      localStorage.setItem('miaoshu-fushengsuiyue-chapter','chapter-2');
+      localStorage.setItem('miaoshu-fushengsuiyue-bookmarks',JSON.stringify(['chapter-2']));
+      localStorage.setItem('moonlit-audio-progress:fushengsuiyue',JSON.stringify({chapter:'chapter-2',pos:3,rate:'1.15',updatedAt:Date.now()}));
+    });
+
+    await page.evaluate(async () => {
+      await caches.open('moonlit-shell-stale-reader-state');
+      await caches.open('moonlit-pages-stale-reader-state');
+    });
+
+    await page.evaluate(async () => {
+      const registration=await navigator.serviceWorker.getRegistration();
+      await registration?.unregister();
+    });
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    await expect.poll(async () => page.evaluate(async () => {
+      const keys=await caches.keys();
+      return keys.filter(key=>key==='moonlit-shell-stale-reader-state'||key==='moonlit-pages-stale-reader-state');
+    }), { timeout: 10000 }).toEqual([]);
+
+    const state=await page.evaluate(() => ({
+      chapter:localStorage.getItem('miaoshu-fushengsuiyue-chapter'),
+      bookmarks:JSON.parse(localStorage.getItem('miaoshu-fushengsuiyue-bookmarks')||'[]'),
+      audio:JSON.parse(localStorage.getItem('moonlit-audio-progress:fushengsuiyue')||'null')
+    }));
+    expect(state.chapter).toBe('chapter-2');
+    expect(state.bookmarks).toContain('chapter-2');
+    expect(state.audio).toMatchObject({chapter:'chapter-2',pos:3,rate:'1.15'});
+
+    await expect(page.locator('#continue-reading')).toHaveClass(/is-visible/);
+    await expect(page.locator('#continue-link')).toHaveAttribute('href','#chapter-2');
+    await expect(page.locator('#saved-chapters a[href="#chapter-2"]')).toHaveCount(1);
+    await expect(page.locator('#audio-chapter')).toHaveValue('chapter-2');
+    await expect(page.locator('#audio-status')).toContainText('上次聽到');
+  });
+
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
     await resetMoonlitPwa(page);
 
