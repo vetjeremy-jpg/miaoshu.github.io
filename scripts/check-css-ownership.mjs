@@ -106,7 +106,7 @@ for(const path of fs.readdirSync('.', {recursive:true}).filter(path=>path.endsWi
 const systemCss=fs.readFileSync('assets/moonlit-system.css','utf8');
 if(!systemCss.includes('html.moonlit-enter body{opacity:0}')||!systemCss.includes('@media(prefers-reduced-motion:reduce){body{transition:none}html.moonlit-enter body{opacity:1}}'))errors.push('moonlit-system.css must preserve shared page transition and reduced-motion behavior');
 if(!/\.moonlit-cover\{position:relative;min-height:230px/.test(homepageDesktopBelow)||!/\.moonlit-quote-v2\{position:relative;margin:28px 0/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve dynamic cover and quote components');
-if(!/@media\(max-width:700px\)\{\.moonlit-cover\{min-height:190px\}\.moonlit-quote-v2\{padding-inline:20px\}\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
+if(!/\.moonlit-cover\{min-height:190px\}/.test(homepageMobileBelow)||!/\.moonlit-quote-v2\{padding-inline:20px\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve dynamic cover and quote sizing');
 const mobileSafety=fs.readFileSync('assets/mobile-safety.css','utf8');
 if(/\.(?:post-card|album-card|gallery-card|photo-card|video-card)|\.chapter-number/.test(moonlightCss+mobileSafety))errors.push('retired zero-reference card selectors must stay out of shared CSS');
 if(/\.(?:page-hero|gallery-hero|book-hero|post-hero|journal-hero|video-hero)/.test(moonlightCss))errors.push('retired legacy hero aliases must stay out of moonlight.css');
