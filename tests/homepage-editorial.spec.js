@@ -5,6 +5,8 @@ const VIEWPORTS = [
   { name:'375', width:375, height:812 },
   { name:'390', width:390, height:844 },
   { name:'430', width:430, height:932 },
+  { name:'700', width:700, height:900 },
+  { name:'701', width:701, height:900 },
   { name:'768', width:768, height:1024 },
   { name:'1024', width:1024, height:768 },
   { name:'1440', width:1440, height:900 }
@@ -51,6 +53,39 @@ test.describe('Moonlit homepage editorial rhythm', () => {
       expect(m.directory.length).toBe(3);
     });
   }
+
+  test('700/701 breakpoint handoff stays geometrically continuous', async ({ page }) => {
+    const states=[];
+    for (const width of [700,701]) {
+      await page.setViewportSize({ width, height:900 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+      states.push(await page.evaluate(() => {
+        const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {width:r.width,left:r.left,right:r.right}};
+        const nav=document.querySelector('.topbar .navlinks');
+        return {
+          width:innerWidth,
+          overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+          tonight:rect('#tonight'),
+          featured:rect('#featured'),
+          book:rect('#book'),
+          navOverflow:nav.scrollWidth-nav.clientWidth,
+          navLinks:[...nav.querySelectorAll(':scope>a')].every(a=>{const r=a.getBoundingClientRect(),n=nav.getBoundingClientRect();return r.right>n.left&&r.left<n.right})
+        };
+      }));
+    }
+    for (const state of states) {
+      expect(state.overflow, state.width+'px page overflow').toBeLessThanOrEqual(1);
+      expect(state.navOverflow, state.width+'px nav overflow').toBeLessThanOrEqual(1);
+      expect(state.navLinks, state.width+'px navigation visibility').toBeTruthy();
+      expect(state.tonight.width).toBeGreaterThan(0);
+      expect(state.featured.width).toBeGreaterThan(0);
+      expect(state.book.width).toBeGreaterThan(0);
+    }
+    for (const section of ['tonight','featured','book']) {
+      expect(Math.abs(states[0][section].left-states[1][section].left), section+' left edge handoff').toBeLessThanOrEqual(12);
+      expect(Math.abs(states[0][section].right-states[1][section].right), section+' right edge handoff').toBeLessThanOrEqual(12);
+    }
+  });
 
   test('375/390 mobile rhythm deliberately differs from uniform section spacing', async ({ page }) => {
     for (const width of [375,390]) {
