@@ -1,0 +1,11 @@
+{
+  "name": "moonlit-regression-tests",
+  "private": true,
+  "scripts": {
+    "test:nav": "playwright test tests/navigation.spec.js",
+    "test:nav:headed": "playwright test tests/navigation.spec.js --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
