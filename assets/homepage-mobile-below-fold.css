@@ -923,3 +923,18 @@
   #featured .featured-sublabel{opacity:.72}
   #featured .featured-visual figcaption{font-size:11px!important;opacity:.72}
 }
+
+
+/* Moonlit immersion pass 9 — compact navigation and calmer ending — 2026-10-04 */
+@media(max-width:700px){
+  .topbar .navlinks{gap:2px!important}
+  .topbar .navlinks a{padding-left:10px!important;padding-right:10px!important;white-space:nowrap}
+  #creative.explore-more>.notice{margin-bottom:18px!important}
+  #creative .creator-copy h3{font-size:20px!important}
+  #creative .creator-copy p{color:#8fa1af!important}
+  #community .community-note{font-size:12px!important;line-height:1.7!important;color:#748796!important}
+  #support .support-actions button{min-height:44px!important;font-size:12px!important}
+}
+@media(max-width:375px){
+  .topbar .navlinks a{padding-left:9px!important;padding-right:9px!important}
+}
