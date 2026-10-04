@@ -17,5 +17,5 @@ const initLater=()=>{ const progress=document.getElementById('progress');let pro
  like.addEventListener('click',async()=>{like.disabled=true;try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:'site',visitorId:visitor,liked:!active})});const data=await r.json();if(!r.ok)throw Error(data.message||'按讚暫時無法使用。');active=!!data.liked;render(data.count);feedback.textContent=active?'謝謝你喜歡喵叔的作品！':'已取消喜歡。'}catch(e){feedback.textContent=e.message||'按讚暫時無法使用。';like.disabled=false}});
 
  };
- const support=document.getElementById('support');if(support&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();initSupport()}},{rootMargin:'700px 0px'});io.observe(support)}else initSupport(); };if('requestIdleCallback'in window)requestIdleCallback(initLater,{timeout:1500});else setTimeout(initLater,700);
+ const support=document.getElementById('support');if(support&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();initSupport()}},{rootMargin:'180px 0px'});io.observe(support)}else initSupport(); };if('requestIdleCallback'in window)requestIdleCallback(initLater,{timeout:1500});else setTimeout(initLater,700);
 })();
