@@ -665,3 +665,22 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #featured .featured-explore-directory{margin-top:10px}
   .moonlit-found-line{padding-bottom:10px}
 }
+
+
+/* Moonlit immersion pass 7 — editorial seams and canonical section rhythm — 2026-10-04 */
+@media(min-width:701px){
+  main.wrap>section.panel{position:relative}
+  #tonight::after,#featured::after,#book::after,#miaoshu-album::after{
+    content:"";position:absolute;left:50%;bottom:0;width:min(88%,980px);height:1px;
+    transform:translateX(-50%);
+    background:linear-gradient(90deg,transparent,rgba(205,225,243,.09),transparent)
+  }
+  #updates{margin-top:10px}
+  #book{padding-top:92px;padding-bottom:96px}
+  #miaoshu-album{padding-top:88px;padding-bottom:90px}
+  #featured-short{padding-top:84px;padding-bottom:84px}
+  #creative.explore-more{padding-top:78px;padding-bottom:74px}
+  #about,#community,#support,#newsletter{max-width:1040px;margin-inline:auto}
+  #about .section-title,#community .section-title,#support .section-title,#newsletter .section-title{max-width:17em}
+  #community .reader-comment-frame{border-color:rgba(205,225,243,.08)}
+}
