@@ -87,6 +87,7 @@ const refinementCss=fs.readFileSync('assets/moonlit-refinement.css','utf8');
 const refinementHome=fs.readFileSync('assets/moonlit-refinement-home.js','utf8');
 const homeContent=fs.readFileSync('assets/moonlit-home-content.js','utf8');
 const experience=fs.readFileSync('assets/moonlit-experience.js','utf8');
+const homeReadingState=fs.readFileSync('assets/moonlit-home-reading-state.js','utf8');
 if(!/\.album-photos img\{transition:transform \.45s/.test(homepageDesktopBelow))errors.push('homepage owner must preserve album image interaction');
 if(/\.moonlight-emblem\{position:absolute|--moonlight:#dce8f2|\.moonlight-emblem svg\{display:block/.test(moonlightCss))errors.push('moonlight.css must not own homepage crescent primitives');
 if(/@media\(max-width:(?:850|650|520)px\)\{\s*\}/.test(moonlightCss))errors.push('moonlight.css must not contain empty responsive media blocks');
@@ -136,7 +137,7 @@ if(/\.navlinks,\.top nav,\.tonight-grid/.test(mobileSafety))errors.push('mobile 
 if(!/\.tonight-grid,\.moonlit-entry-grid,\.novels-grid,\.creator-grid,\.album-photos\{overscroll-behavior-inline:contain;/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve horizontal scroller containment');
 if(!/\.tonight-grid::-webkit-scrollbar,\.moonlit-entry-grid::-webkit-scrollbar,\.novels-grid::-webkit-scrollbar,\.creator-grid::-webkit-scrollbar,\.album-photos::-webkit-scrollbar\{display:none\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve hidden horizontal scroller bars');
 if(/#featured,#updates,#moonlit-discovery,#book,#creative/.test(mobileSafety))errors.push('mobile safety layer must not own homepage section content visibility');
-if(!/#featured,#updates,#book,#creative,#miaoshu-album,#featured-short,#support,#follow,#about,#community,#newsletter\{content-visibility:auto;contain-intrinsic-size:auto 720px\}/.test(homepageDesktopBelow))errors.push('homepage below-fold owner must preserve section rendering optimization');
+if(!/#featured,#updates,#book,#creative,#miaoshu-album,#featured-short,#support,#about,#community,#newsletter\{content-visibility:auto;contain-intrinsic-size:auto 720px\}/.test(homepageDesktopBelow))errors.push('homepage below-fold owner must preserve section rendering optimization');
 if(/\.moonlit-newsletter\{|\.moonlit-subscribe-shell\{/.test(moonlightCss))errors.push('moonlight.css must not regain homepage-only Newsletter ownership');
 if(!/\.moonlit-newsletter\{overflow:hidden\}/.test(homepageDesktopBelow))errors.push('homepage desktop owner must preserve Newsletter base styles');
 if(!/\.moonlit-subscribe-row input\{font-size:16px\}/.test(homepageMobileBelow))errors.push('homepage mobile owner must preserve Newsletter mobile refinements');
@@ -221,6 +222,37 @@ if(!/hero\.insertAdjacentElement\('afterend',box\)/.test(refinementHome))errors.
 if(/insertBefore\(box,book\)|insertAdjacentElement\(['"]beforebegin['"],box\)/.test(refinementHome))errors.push('refinement must not inject another standalone recommendation block');
 if(/moonlit-curation|TONIGHT AT MOONLIT|phaseItems/.test(homeContent))errors.push('legacy standalone Moonlit curation must stay retired from homepage content');
 if(!/button\.insertAdjacentElement\("afterend",box\)/.test(experience)||!/document\.querySelectorAll\("\[data-moonlit-random\]"\)\.forEach\(mount\)/.test(experience))errors.push('Moonlit picker must remain anchored to the Tier 3 trigger instead of becoming a standalone section');
+
+
+const tailIds=['book','miaoshu-album','featured-short','creative','about','community','support','newsletter'];
+const tailPos=tailIds.map(id=>homepage.indexOf('id="'+id+'"'));
+if(tailPos.some(p=>p<0)||tailPos.some((p,i)=>i&&p<=tailPos[i-1]))errors.push('homepage immersive tail order must remain Books → Photo → Video → Explore → About → Community → Stay → Newsletter');
+const breathingQuotePos=homepage.indexOf('class="moonlit-breathing-quote"');
+if(!(breathingQuotePos>tailPos[6]&&breathingQuotePos<tailPos[7]))errors.push('final Moonlit breathing quote must remain between Stay With Moonlight and Newsletter');
+if(/id="follow"/.test(homepage)||/id="bell-site"/.test(homepage))errors.push('retired Follow section and bell CTA must stay removed');
+if(!/id="support"[\s\S]*?href="#newsletter"[\s\S]*?id="like-site"[\s\S]*?id="save-site"/.test(homepage))errors.push('merged Stay With Moonlight section must keep newsletter, like and save actions');
+if((homepage.match(/id="like-site"/g)||[]).length!==1||(homepage.match(/id="save-site"/g)||[]).length!==1)errors.push('merged Stay With Moonlight actions must remain unique');
+if(!/id="reading-list"[^>]*hidden/.test(homepage))errors.push('empty homepage bookmark shelf must be hidden by default');
+if(!/shelfSection\.hidden=false/.test(homeReadingState)||!/if\(saved\.length\)/.test(homeReadingState))errors.push('homepage bookmark shelf must reveal only when saved items exist');
+if(!/id="updates-title">最近，又有新的故事亮起。<\/h2>/.test(homepage))errors.push('homepage updates title must describe new content rather than reading progress');
+const creativeStart=homepage.indexOf('<section class="panel explore-more" id="creative"');
+const creativeEnd=creativeStart<0?-1:homepage.indexOf('</section>',creativeStart);
+const creativeBlock=creativeStart>=0&&creativeEnd>creativeStart?homepage.slice(creativeStart,creativeEnd+10):'';
+if((creativeBlock.match(/class="creator-card"/g)||[]).length!==3||!/href="posts\/index\.html"/.test(creativeBlock)||!/href="works\/"/.test(creativeBlock)||!/href="about\//.test(creativeBlock))errors.push('Explore More must remain a compact three-path section');
+if(/books\/|gallery\/|videos\//.test(creativeBlock))errors.push('Explore More must not duplicate Books, Photography or Video destinations');
+const albumStart=homepage.indexOf('id="miaoshu-album"');
+const albumEnd=albumStart<0?-1:homepage.indexOf('</section>',albumStart);
+const albumBlock=albumStart>=0&&albumEnd>albumStart?homepage.slice(albumStart,albumEnd+10):'';
+if(!/class="album-actions"[\s\S]*?class="cta" href="gallery\/index\.html"[\s\S]*?class="album-external-link"[^>]*degoo/.test(albumBlock))errors.push('Photography section must keep Moonlit gallery primary and Degoo secondary');
+const aboutStart=homepage.indexOf('id="about"');
+const aboutEnd=aboutStart<0?-1:homepage.indexOf('</section>',aboutStart);
+const aboutBlock=aboutStart>=0&&aboutEnd>aboutStart?homepage.slice(aboutStart,aboutEnd+10):'';
+const aboutLinks=(aboutBlock.match(/<div class="about-links">[\s\S]*?<\/div>/)||[''])[0];
+if((aboutLinks.match(/<a\b/g)||[]).length!==1||!/閱讀完整作者介紹/.test(aboutLinks))errors.push('About must keep one quiet author-introduction action');
+if(!/\.reader-comment-frame iframe\{[\s\S]*?height:420px/.test(homepageDesktopBelow)||!/#community \.reader-comment-frame\{[\s\S]*?display:none!important/.test(homepageMobileBelow))errors.push('Community must remain a compact desktop preview and link-first on mobile');
+if(!/#creative\.explore-more \.creator-grid\{[\s\S]*?grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(homepageDesktopBelow))errors.push('Explore More desktop layout must remain three columns');
+if(!/#support\.stay-with-moonlight\{[\s\S]*?grid-template-columns:minmax\(0,1fr\) minmax\(320px,430px\)/.test(homepageDesktopBelow))errors.push('Stay With Moonlight must keep a quiet two-part desktop layout');
+if(!/\.moonlit-breathing-quote\{[\s\S]*?text-align:center/.test(homepageDesktopBelow)||/<section class="panel moonlit-breathing-quote"/.test(homepage))errors.push('final Moonlit quote must remain an unframed breathing pause');
 
 if(!/id="featured-short"[^>]*[\s\S]*?MOONLIT VIDEO · 月光影像[\s\S]*?id="instagram-reel"/.test(homepage))errors.push('homepage must keep unified Moonlit Video hierarchy');
 if((homepage.match(/<section\b[^>]*id="instagram-reel"/g)||[]).length)errors.push('Instagram reel must remain nested inside Moonlit Video, not a standalone section');
