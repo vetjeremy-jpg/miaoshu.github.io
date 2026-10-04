@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'assets/**'
+      - 'books/**'
       - 'sw.js'
       - 'site.webmanifest'
       - 'apple-touch-icon.png'
@@ -18,6 +19,7 @@ on:
     paths:
       - 'index.html'
       - 'assets/**'
+      - 'books/**'
       - 'sw.js'
       - 'site.webmanifest'
       - 'apple-touch-icon.png'
@@ -107,6 +109,12 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:editorial
 
+      - name: Run novel reader journey gate
+        id: reader_gate
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: npm run test:reader
+
       - name: Run P1 interaction suite before merge or on manual verification
         id: p1_gate
         if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
@@ -124,6 +132,7 @@ jobs:
             echo "- **Release candidate:** ${{ steps.rc_gate.outcome }}"
             echo "- **PWA lifecycle:** ${{ steps.pwa_gate.outcome }}"
             echo "- **Editorial / responsive:** ${{ steps.editorial_gate.outcome }}"
+            echo "- **Novel reader journey:** ${{ steps.reader_gate.outcome }}"
             echo "- **P1 interaction:** ${{ steps.p1_gate.outcome }}"
             echo "- **Viewports:** 320 / 375 / 390 / 430 / 768 / 1024 / 1440"
             echo "- **Tested commit:** ${{ github.sha }}"
