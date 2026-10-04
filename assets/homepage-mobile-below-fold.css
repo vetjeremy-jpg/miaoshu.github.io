@@ -5,7 +5,6 @@
   .tonight-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
-    margin:25px 0 0!important;
     padding:0!important;
     border:0!important;
     overflow:visible!important
@@ -51,18 +50,13 @@
 
   .moonlit-discovery{margin:42px -18px!important;padding:38px 18px!important;border-left:0!important;border-right:0!important}
   .moonlit-discovery h2{font-size:32px!important;line-height:1.4;word-break:keep-all}
+  /* Discovery base tone only; one-column mobile geometry is owned by the composition block below. */
   .moonlit-entry-grid{
-    display:flex!important;
-    flex-wrap:nowrap!important;
-    overflow-x:auto!important;
     gap:10px!important;
-    margin:24px -18px 0!important;
-    padding:0 18px 12px!important;
     background:transparent!important;
-    scroll-snap-type:x mandatory;
     scrollbar-width:none
   }
-  .moonlit-entry{flex:0 0:76vw!important;min-width:76vw!important;min-height:150px!important;padding:24px 20px!important;border:1px solid rgba(220,230,240,.11)!important;scroll-snap-align:center}
+  .moonlit-entry{border:1px solid rgba(220,230,240,.11)!important}
   .moonlit-serendipity{margin-top:22px!important}
   .moonlit-serendipity button{min-height:50px!important;font-size:14px}
   .moonlit-found-line{margin:52px 0!important;padding:0 0 0 18px!important}
