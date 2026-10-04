@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v55';
+const CACHE='moonlit-shell-v56';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -7,7 +7,7 @@ const pageKey=req=>{const u=new URL(req.url);for(const key of [...u.searchParams
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
- SCOPE+'assets/homepage-inline.css?v=20261004-a11y11',
+ SCOPE+'assets/homepage-inline.css?v=20261004-rhythm-p0p1',
  SCOPE+'assets/moonlit-v2.js?v=20261003-runtime28',
  SCOPE+'assets/moonlit-home-loader.js?v=20261004-mainthread9',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
