@@ -296,7 +296,8 @@ if(/\.follow-panel|\.follow-actions|\.follow-feedback/.test(homepageDesktopBelow
 if((homepage.match(/「每個人心中，都有一道尚未醒來的月光。」/g)||[]).length!==1)errors.push('月下拾句 must not be duplicated again in the closing pause');
 if(!/「願你離開這裡時，還帶著一點月光。」/.test(homepage))errors.push('closing breathing pause must keep its distinct Moonlit line');
 
-if(!/id="support"[\s\S]*?href="#newsletter"[\s\S]*?id="like-site"[\s\S]*?id="save-site"/.test(homepage))errors.push('merged Stay With Moonlight section must keep newsletter, like and save actions');
+if(!/id="support"[\s\S]*?id="like-site"[\s\S]*?id="save-site"/.test(homepage))errors.push('Stay With Moonlight must keep like and save actions');
+if((homepage.match(/href=["']#newsletter["']/g)||[]).length!==1)errors.push('Newsletter must keep one primary-navigation shortcut and no duplicate retention shortcut');
 if((homepage.match(/id="like-site"/g)||[]).length!==1||(homepage.match(/id="save-site"/g)||[]).length!==1)errors.push('merged Stay With Moonlight actions must remain unique');
 if(!/id="reading-list"[^>]*hidden/.test(homepage))errors.push('empty homepage bookmark shelf must be hidden by default');
 if(!/shelfSection\.hidden=false/.test(homeReadingState)||!/if\(saved\.length\)/.test(homeReadingState))errors.push('homepage bookmark shelf must reveal only when saved items exist');
@@ -327,7 +328,7 @@ const aboutEnd=aboutStart<0?-1:homepage.indexOf('</section>',aboutStart);
 const aboutBlock=aboutStart>=0&&aboutEnd>aboutStart?homepage.slice(aboutStart,aboutEnd+10):'';
 const aboutLinks=(aboutBlock.match(/<div class="about-links">[\s\S]*?<\/div>/)||[''])[0];
 if((aboutLinks.match(/<a\b/g)||[]).length!==1||!/閱讀完整作者介紹/.test(aboutLinks))errors.push('About must keep one quiet author-introduction action');
-if(!/\.reader-comment-frame iframe\{[\s\S]*?height:420px/.test(homepageDesktopBelow)||!/#community \.reader-comment-frame\{[\s\S]*?display:none!important/.test(homepageMobileBelow))errors.push('Community must remain a compact desktop preview and link-first on mobile');
+if(!/\.reader-comment-frame iframe\{[\s\S]*?height:420px/.test(homepageDesktopBelow)||!/#community \.comment-direct\{[\s\S]*?margin:20px 0 10px!important/.test(homepageMobileBelow))errors.push('Community must keep a compact desktop preview and a prominent direct-link path on mobile');
 if(!/#creative\.explore-more \.creator-grid\{[\s\S]*?grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/.test(homepageDesktopBelow))errors.push('Explore More desktop layout must remain three columns');
 if(!/#support\.stay-with-moonlight\{[\s\S]*?grid-template-columns:minmax\(0,1fr\) minmax\(320px,430px\)/.test(homepageDesktopBelow))errors.push('Stay With Moonlight must keep a quiet two-part desktop layout');
 if(!/\.moonlit-breathing-quote\{[\s\S]*?text-align:center/.test(homepageDesktopBelow)||/<section class="panel moonlit-breathing-quote"/.test(homepage))errors.push('final Moonlit quote must remain an unframed breathing pause');
