@@ -639,3 +639,29 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #support{padding-top:72px}
   #newsletter .moonlit-newsletter-lede{max-width:18em}
 }
+
+
+/* Moonlit immersion pass 6 — progressive disclosure, fewer simultaneous choices — 2026-10-04 */
+.moonlit-mood-selector{
+  margin-top:26px;padding-top:18px;border-top:1px solid rgba(220,230,240,.08)
+}
+.moonlit-mood-selector>summary{
+  display:inline-flex;align-items:center;min-height:44px;cursor:pointer;
+  color:#cdbb98;font:500 13px/1.6 system-ui,sans-serif;letter-spacing:.04em;
+  list-style:none
+}
+.moonlit-mood-selector>summary::-webkit-details-marker{display:none}
+.moonlit-mood-selector>summary::after{content:"＋";margin-left:10px;color:#7f93a4;font-size:16px}
+.moonlit-mood-selector[open]>summary::after{content:"−"}
+.moonlit-mood-inner{padding-top:18px}
+.moonlit-mood-inner>small{display:block;color:#8194a4}
+.moonlit-mood-inner h4{margin:8px 0 8px}
+.moonlit-mood-inner>p{max-width:620px;margin-top:0}
+.moonlit-found-line blockquote{margin-bottom:0}
+@media(min-width:701px){
+  #featured .featured-explore{padding-bottom:30px}
+  #featured .moonlit-entry{transition:background .2s ease,border-color .2s ease,transform .2s ease}
+  #featured .moonlit-entry:hover{transform:translateY(-2px);border-color:rgba(220,201,164,.22)}
+  #featured .featured-explore-directory{margin-top:10px}
+  .moonlit-found-line{padding-bottom:10px}
+}
