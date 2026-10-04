@@ -47,7 +47,11 @@ button{font:inherit}
 .hero-index{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);font-size:13px}
 .chapter-kicker{text-align:left;font-size:12px}
 @media(max-width:850px){.hero-inner{grid-template-columns:1fr;gap:22px}.hero-copy{padding:8px 0}}
-@media(prefers-reduced-motion:reduce){.cta:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+ .cta:hover{transform:none}
+}
 
 /* Moonlit Stories · sculpted private library */
 body{background:radial-gradient(ellipse 75% 25% at 50% 8%,rgba(61,91,119,.23),transparent 70%),linear-gradient(180deg,#061426,#071b33 48%,#08172a 100%);background-attachment:fixed}.hero:before{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(230,196,128,.11);border-radius:24px;box-shadow:inset 0 0 80px rgba(2,9,20,.35);display:none}/* Moonlit editorial gallery: quiet luxury, lightweight book selection */
