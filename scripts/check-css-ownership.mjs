@@ -192,8 +192,10 @@ if(/#featured \.featured-explore h3\{[^}]*font-size:(?:27|25)px!important/.test(
 if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!important;padding-bottom:46px!important\}/.test(homepageMobileBelow))errors.push('superseded secondary-section 46px rhythm must stay retired');
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
+const mobileGeometryOwnerCount=(homepageMobileBelow.match(/Mobile blue-panel interior polish[\s\S]*Mobile panel geometry[\s\S]*@media\(max-width:700px\)/g)||[]).length;
+if(mobileGeometryOwnerCount!==1)errors.push(`mobile panel interior and geometry must share one 700px owner (found ${mobileGeometryOwnerCount})`);
 const mobileMediaCount=(homepageMobileBelow.match(/@media/g)||[]).length;
-if(mobileMediaCount>27)errors.push(`homepage mobile media-block budget exceeded: ${mobileMediaCount} > 27`);
+if(mobileMediaCount>26)errors.push(`homepage mobile media-block budget exceeded: ${mobileMediaCount} > 26`);
 const compactHelperOwnerCount=(homepageMobileBelow.match(/@media\(max-width:700px\)\{\s*\.moonlit-cover\{min-height:190px\}/g)||[]).length;
 if(compactHelperOwnerCount!==1)errors.push(`compact-screen helper contract must have exactly one canonical media owner (found ${compactHelperOwnerCount})`);
 const mobileWrapOwnerCount=(homepageMobileBelow.match(/\.wrap\{padding:34px 18px 80px!important\}/g)||[]).length;
