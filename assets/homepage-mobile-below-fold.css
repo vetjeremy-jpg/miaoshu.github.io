@@ -606,7 +606,6 @@
   #creative .creator-copy{padding:22px 2px!important}
 
   /* Keep CTAs easy to tap without making every action look equally primary. */
-  #support .support-actions button:not(#like-site),
   #community .community-actions button{background:transparent!important;border-color:rgba(220,201,164,.22)!important}
   .moonlit-breathing-quote{margin:58px 0 14px!important;padding-block:38px!important}
   footer{padding:30px 18px 38px!important}
@@ -721,7 +720,7 @@
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
   #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
-  #support .support-actions button{min-height:var(--moonlit-touch)!important;font-size:12px!important}
+  #support .support-actions button{min-height:50px!important;font-size:15px!important}
 
 
   /* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
@@ -761,3 +760,15 @@
   #book .novel-card[data-book-id="fushengsuiyue"] .cover-title{font-size:6px;letter-spacing:0}
 }
 @media(max-width:520px){#miaoshu-album .album-photos{gap:8px}}
+
+/* Support action visibility contract — authoritative at 375/430/700. */
+@media(max-width:700px){
+  #support.stay-with-moonlight .support-actions{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important;margin-top:8px!important}
+  #support.stay-with-moonlight .support-primary{grid-column:1/-1!important;width:100%!important;min-height:56px!important;font-size:16px!important;font-weight:800!important;justify-content:center!important}
+  #support.stay-with-moonlight .support-actions button{width:100%!important;min-height:50px!important;font-size:15px!important;font-weight:700!important;justify-content:center!important;background:rgba(21,45,65,.96)!important;border-color:rgba(226,199,143,.46)!important;color:#f0dfbd!important}
+  #support.stay-with-moonlight .support-actions button[aria-pressed="true"]{background:#d8a84c!important;border-color:#f0d48a!important;color:#071b33!important}
+}
+@media(max-width:375px){
+  #support.stay-with-moonlight .support-actions{grid-template-columns:minmax(0,1fr)!important}
+  #support.stay-with-moonlight .support-primary{grid-column:auto!important}
+}
