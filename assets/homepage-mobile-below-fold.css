@@ -135,7 +135,7 @@
   .album-photo h3{font-size:20px!important;line-height:1.5!important}
   .album-photo p{font-size:13px!important;line-height:1.85!important}
 
-  #featured-short,#support,#follow,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
+  #featured-short,#support,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
 
   .video-preview{
     display:grid!important;
@@ -160,14 +160,14 @@
   #instagram-reel>div{max-width:100%!important}
   #instagram-reel iframe{border-radius:0!important}
 
-  .support-actions,.follow-actions,.about-links,.community-actions{
+  .support-actions,.about-links,.community-actions{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
     gap:8px!important;
     width:100%!important;
     max-width:none!important
   }
-  .support-actions>*,.follow-actions>*,.about-links>*,.community-actions>*{
+  .support-actions>*,.about-links>*,.community-actions>*{
     min-height:48px!important;
     width:100%!important;
     min-width:0!important;
@@ -701,5 +701,118 @@
 @media(max-width:430px){
   #tonight:first-child{
     margin-top:0!important
+  }
+}
+
+
+/* Homepage immersion mobile pass: keep the ending calm and compact. */
+@media(max-width:700px){
+  #reading-list[hidden]{
+    display:none!important
+  }
+
+  #creative.explore-more{
+    padding-top:48px!important;
+    padding-bottom:48px!important
+  }
+  #creative.explore-more .creator-grid{
+    gap:10px!important;
+    margin-top:22px!important
+  }
+  #creative.explore-more .creator-art{
+    min-height:58px!important;
+    padding:10px 18px 0!important;
+    font-size:24px!important
+  }
+  #creative.explore-more .creator-copy{
+    padding:18px!important
+  }
+  #creative.explore-more .creator-copy p{
+    margin:8px 0 12px!important;
+    font-size:14px!important;
+    line-height:1.8!important
+  }
+
+  #miaoshu-album .album-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+    width:100%!important;
+    margin-top:18px!important
+  }
+  #miaoshu-album .album-actions>*{
+    width:100%!important;
+    min-height:48px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    box-sizing:border-box!important
+  }
+
+  #support.stay-with-moonlight{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:20px!important;
+    text-align:left!important
+  }
+  #support.stay-with-moonlight .section-title{
+    margin-bottom:10px!important
+  }
+  #support.stay-with-moonlight .support-note{
+    margin:0!important;
+    font-size:14px!important;
+    line-height:1.8!important
+  }
+  #support.stay-with-moonlight .support-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+    margin:0!important
+  }
+  #support.stay-with-moonlight .support-primary{
+    grid-column:auto!important
+  }
+  #support.stay-with-moonlight .support-feedback{
+    margin:0!important
+  }
+
+  #about .about-links{
+    margin-top:20px!important
+  }
+
+  #community .reader-comment-frame{
+    display:none!important
+  }
+  #community .comment-direct{
+    margin:20px 0 10px!important
+  }
+
+  .moonlit-breathing-quote{
+    margin:48px 0!important;
+    padding:38px 8px!important;
+    text-align:center!important
+  }
+  .moonlit-breathing-quote .quote{
+    margin:0 auto!important;
+    font-size:26px!important;
+    line-height:1.75!important;
+    letter-spacing:.02em!important;
+    word-break:keep-all
+  }
+  .moonlit-breathing-quote .notice{
+    margin:14px auto 0!important;
+    text-align:center!important;
+    font-size:12px!important;
+    line-height:1.7!important
+  }
+}
+@media(max-width:375px){
+  .moonlit-breathing-quote{
+    margin:42px 0!important;
+    padding:32px 4px!important
+  }
+  .moonlit-breathing-quote .quote{
+    font-size:24px!important
   }
 }
