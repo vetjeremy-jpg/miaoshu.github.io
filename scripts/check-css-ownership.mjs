@@ -7,7 +7,7 @@ import fs from 'node:fs';
 const budgets={
   'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
   'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
-  'assets/homepage-mobile-below-fold.css':{important:476},
+  'assets/homepage-mobile-below-fold.css':{important:457},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -193,6 +193,9 @@ if(/#updates,#creative,#support,#about,#community,#newsletter\{padding-top:46px!
 const readingCadenceOwnerCount=(homepageMobileBelow.match(/Moonlit immersion pass 4[\s\S]*Moonlit immersion pass 5[\s\S]*Moonlit immersion pass 6[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(readingCadenceOwnerCount!==1)errors.push(`mobile reading/disclosure passes must share one 700px owner (found ${readingCadenceOwnerCount})`);
 if(/#featured-short \.moonlit-video-grid\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#featured-short #instagram-reel\.moonlit-video-secondary\{[^}]*max-width:100%!important/.test(homepageMobileBelow))errors.push('Video Hub composition must not reclaim shared mobile geometry ownership');
+const actionContractCount=(homepageMobileBelow.match(/Mobile Action Control Contract/g)||[]).length;
+if(actionContractCount!==1)errors.push(`mobile action controls must have exactly one shared contract (found ${actionContractCount})`);
+if(/#featured-short \.moonlit-video-actions>\*\{[^}]*width:100%!important/.test(homepageMobileBelow)||/#miaoshu-album \.album-actions>\*\{[^}]*display:flex!important/.test(homepageMobileBelow))errors.push('section action controls must not duplicate shared touch geometry');
 const mobileGeometryOwnerCount=(homepageMobileBelow.match(/Mobile blue-panel interior polish[\s\S]*Mobile panel geometry[\s\S]*@media\(max-width:700px\)/g)||[]).length;
 if(mobileGeometryOwnerCount!==1)errors.push(`mobile panel interior and geometry must share one 700px owner (found ${mobileGeometryOwnerCount})`);
 const mobileMediaCount=(homepageMobileBelow.match(/@media/g)||[]).length;

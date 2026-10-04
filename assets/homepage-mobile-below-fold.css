@@ -161,15 +161,7 @@
     width:100%!important;
     max-width:none!important
   }
-  .support-actions>*,.about-links>*,.community-actions>*{
-    min-height:48px!important;
-    width:100%!important;
-    min-width:0!important;
-    display:flex!important;
-    align-items:center;
-    justify-content:center;
-    text-align:center
-  }
+  .support-actions>*,.about-links>*,.community-actions>*{min-height:48px!important}
 
   .about-layout{display:block!important}
   .about-lede{margin-bottom:24px!important}
@@ -184,6 +176,17 @@
   .moonlit-entry-grid::-webkit-scrollbar,#book .novels-grid::-webkit-scrollbar{display:none}
 
   .wrap{padding:34px 18px 80px!important}
+  /* Mobile Action Control Contract — shared touch geometry; sections keep only their own height/visual semantics. */
+  :is(.support-actions>*,.about-links>*,.community-actions>*,#featured-short .moonlit-video-actions>*,#featured-short .moonlit-video-secondary>a,#miaoshu-album .album-actions>*,#featured .featured-explore-directory .directory-link){
+    width:100%!important;
+    min-width:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    box-sizing:border-box!important
+  }
+
   .moonlit-cover{min-height:190px}
   .moonlit-quote-v2{padding-inline:20px}
 }
@@ -437,16 +440,7 @@
     width:100%!important;
     margin-top:18px!important
   }
-  #featured-short .moonlit-video-actions>*{
-    width:100%!important;
-    min-width:0!important;
-    min-height:46px!important;
-    display:flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    text-align:center!important;
-    box-sizing:border-box!important
-  }
+  #featured-short .moonlit-video-actions>*{min-height:46px!important}
   #featured-short #instagram-reel.moonlit-video-secondary{
     display:block!important;
     min-width:0!important;
@@ -474,14 +468,7 @@
     margin:0!important;
     border-radius:10px!important
   }
-  #featured-short .moonlit-video-secondary>a{
-    width:100%!important;
-    min-height:44px!important;
-    display:flex!important;
-    justify-content:center!important;
-    align-items:center!important;
-    text-align:center!important
-  }
+  #featured-short .moonlit-video-secondary>a{min-height:44px!important}
 }
 @media(min-width:401px) and (max-width:430px){
   #featured-short .moonlit-video-primary-media{
@@ -533,14 +520,7 @@
     margin:14px 0 0!important;
     text-align:left!important
   }
-  #featured .featured-explore-directory .directory-link{
-    width:100%!important;
-    min-height:46px!important;
-    display:flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    box-sizing:border-box!important
-  }
+  #featured .featured-explore-directory .directory-link{min-height:46px!important}
 }
 @media(max-width:380px){
 }
@@ -583,15 +563,7 @@
     width:100%!important;
     margin-top:18px!important
   }
-  #miaoshu-album .album-actions>*{
-    width:100%!important;
-    min-height:48px!important;
-    display:flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    text-align:center!important;
-    box-sizing:border-box!important
-  }
+  #miaoshu-album .album-actions>*{min-height:48px!important}
 
   #support.stay-with-moonlight{
     display:grid!important;
