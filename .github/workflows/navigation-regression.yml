@@ -6,6 +6,9 @@ on:
     paths:
       - 'index.html'
       - 'assets/**'
+      - 'sw.js'
+      - 'site.webmanifest'
+      - 'apple-touch-icon.png'
       - 'tests/**'
       - 'playwright.config.js'
       - 'package.json'
@@ -15,6 +18,9 @@ on:
     paths:
       - 'index.html'
       - 'assets/**'
+      - 'sw.js'
+      - 'site.webmanifest'
+      - 'apple-touch-icon.png'
       - 'tests/**'
       - 'playwright.config.js'
       - 'package.json'
@@ -76,6 +82,11 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:rc
 
+      - name: Run PWA lifecycle gate
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: npm run test:pwa
+
       - name: Run homepage editorial and responsive gate
         env:
           BASE_URL: http://127.0.0.1:4173/
@@ -94,7 +105,7 @@ jobs:
           {
             echo "## Moonlit Navigation QA"
             echo ""
-            echo "- **P0 gate:** 9 entries, video route, ARIA, mobile rail, 44px targets, overflow and mobile-safety cascade\n            echo \"- **Editorial gate:** hero copy, section order, 320–1440 responsive layout, asymmetric mobile rhythm, closing sequence and CSS debt budget"
+            echo "- **P0 gate:** navigation, release-candidate and real-browser PWA lifecycle\n            echo \"- **Editorial gate:** hero copy, section order, 320–1440 responsive layout, asymmetric mobile rhythm, closing sequence and CSS debt budget"
             echo "- **Viewports:** 320 / 375 / 390 / 430 / 768 / 1024 / 1440"
             if [[ "${{ github.event_name }}" == "pull_request" || "${{ github.event_name }}" == "workflow_dispatch" ]]; then
               echo "- **P1 interaction:** Tab / Shift+Tab / focus visibility"
