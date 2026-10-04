@@ -177,18 +177,6 @@
     text-align:center
   }
 
-  .follow-panel{
-    display:grid!important;
-    grid-template-columns:minmax(0,1fr)!important;
-    gap:22px!important;
-    margin:0!important;
-    padding:38px 18px!important;
-    border-left:1px solid rgba(205,220,232,.13)!important;
-    border-right:1px solid rgba(205,220,232,.13)!important
-  }
-  .follow-panel>div{min-width:0!important}
-  .follow-panel h2{font-size:clamp(28px,8vw,36px)!important;line-height:1.45!important;word-break:keep-all}
-
   .about-layout{display:block!important}
   .about-lede{margin-bottom:24px!important}
   .about-links{margin-top:24px!important}
