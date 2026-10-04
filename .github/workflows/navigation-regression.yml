@@ -43,6 +43,14 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Generate deterministic npm lock candidate
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          echo "MOONLIT_LOCK_BEGIN"
+          base64 -w 0 package-lock.json
+          echo
+          echo "MOONLIT_LOCK_END"
+
       - name: Install test dependencies
         run: npm install --ignore-scripts --no-audit --no-fund
 
