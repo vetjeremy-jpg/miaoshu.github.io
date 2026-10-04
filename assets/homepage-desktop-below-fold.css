@@ -591,21 +591,7 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
 
 /* Moonlit immersion pass 4 — editorial hierarchy and quieter long-form rhythm — 2026-10-04 */
 @media(min-width:701px){
-  /* Give the opening recommendation arc more air than utility sections. */
-  #tonight{padding-top:54px;padding-bottom:88px}
-  #featured{padding-top:104px;padding-bottom:100px}
-  #tonight .section-title{font-size:clamp(40px,4.5vw,58px)}
-  #tonight>.notice{max-width:650px;margin-bottom:4px}
-  .tonight-grid article{min-height:230px;display:flex;flex-direction:column;justify-content:flex-start}
-  .tonight-grid article a{margin-top:auto;padding-top:18px}
-
-  /* Deep Dive is the visual climax: larger image, calmer controls. */
-  #featured .featured-grid{min-height:520px;align-items:center}
-  #featured .featured-copy{padding-right:clamp(8px,2vw,28px)}
-  #featured .featured-copy h2{max-width:10.5em;letter-spacing:.01em}
-  #featured .featured-copy p{max-width:34em}
-  #featured .feature-actions .cta.secondary{border-color:transparent!important;background:transparent!important;padding-inline:4px!important}
-  #featured .featured-explore{margin-top:88px}
+  /* Opening editorial arc sizing is owned by the desktop canonical block below. */
 
   /* Secondary sections deliberately recede after the opening editorial arc. */
   #updates,#creative,#support,#about,#community,#newsletter{padding-top:64px;padding-bottom:64px}
@@ -708,4 +694,22 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   #community{padding-top:66px}
   #community .community-note{max-width:52em;color:#748796;font-size:12px}
   #support.stay-with-moonlight .support-actions button{font-size:12px}
+}
+
+
+/* Moonlit desktop canonical layer — authoritative opening editorial arc — 2026-10-04 */
+@media(min-width:701px){
+  .hero+.wrap>#tonight{padding-top:64px;padding-bottom:88px}
+  #tonight .section-title{font-size:clamp(40px,4.5vw,58px)}
+  #tonight>.notice{max-width:650px;margin-bottom:4px}
+  #tonight .tonight-grid article{min-height:230px;display:flex;flex-direction:column;justify-content:flex-start}
+  #tonight .tonight-grid article a{margin-top:auto;padding-top:18px}
+
+  #featured{padding-top:104px;padding-bottom:100px}
+  #featured .featured-grid{min-height:520px;align-items:center;position:relative}
+  #featured .featured-copy{padding-right:clamp(8px,2vw,28px);align-self:center}
+  #featured .featured-copy h2{max-width:10.5em;letter-spacing:.01em}
+  #featured .featured-copy p{max-width:34em}
+  #featured .featured-explore{margin-top:88px}
+  #tonight .chapter-kicker,#featured .chapter-kicker{letter-spacing:.2em}
 }
