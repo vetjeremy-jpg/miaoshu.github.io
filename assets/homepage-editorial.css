@@ -625,3 +625,11 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
 @media(max-width:330px){
   body#top:not([data-book-id]) .hero-actions{margin-top:17px!important}
 }
+
+
+/* 320px secondary Hero guide — quieter, same tap target */
+@media(max-width:330px){
+  body#top:not([data-book-id]) .hero-actions .hero-text-link{opacity:.56!important}
+  body#top:not([data-book-id]) .hero-actions .hero-text-link:hover,
+  body#top:not([data-book-id]) .hero-actions .hero-text-link:focus-visible{opacity:.88!important}
+}
