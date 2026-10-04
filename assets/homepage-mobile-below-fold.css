@@ -819,3 +819,35 @@
 @media(max-width:375px){
   .topbar .navlinks a{padding-left:9px!important;padding-right:9px!important}
 }
+
+
+/* Moonlit navigation pass 13 — nine-entry compact-screen rail — 2026-10-04 */
+@media(max-width:700px){
+  .topbar .navlinks{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    gap:2px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    scroll-snap-type:x proximity;
+  }
+  .topbar .navlinks::-webkit-scrollbar{display:none}
+  .topbar .navlinks a{
+    flex:0 0 auto;
+    min-height:var(--moonlit-touch)!important;
+    padding-inline:clamp(8px,2.6vw,11px)!important;
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+    scroll-snap-align:start;
+  }
+}
+@media(max-width:375px){
+  .topbar .navlinks a{padding-inline:8px!important}
+}
+@media(max-width:330px){
+  .topbar .navlinks a{padding-inline:7px!important}
+}
