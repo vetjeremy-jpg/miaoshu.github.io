@@ -119,7 +119,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 
 /* Skip layout/paint work for deep homepage sections until they approach the viewport. */
 @supports (content-visibility:auto){
- #featured,#updates,#moonlit-discovery,#book,#creative,#miaoshu-album,#featured-short,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
+ #featured,#updates,#book,#creative,#miaoshu-album,#featured-short,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
 }
 
 /* Dynamic homepage components injected by moonlit-home-content.js. */
@@ -396,4 +396,38 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
     grid-row:2;
     justify-content:flex-start
   }
+}
+
+
+/* Three-tier curation: Tier 3 nests free exploration under Featured instead of another full section. */
+.featured-sublabel{
+  display:block;
+  margin:10px 0 0;
+  color:#8ea1b1;
+  font:600 10px/1.5 system-ui,sans-serif;
+  letter-spacing:.18em
+}
+#featured .featured-explore{
+  margin:clamp(42px,6vw,64px) 0 0;
+  padding:clamp(28px,4vw,40px);
+  border:1px solid rgba(205,225,243,.11)
+}
+#featured .featured-explore h3{
+  margin:8px 0 12px;
+  max-width:760px;
+  color:#eee9df;
+  font:500 clamp(28px,3.2vw,42px)/1.4 "Noto Serif TC","Songti TC",serif;
+  text-wrap:balance
+}
+#featured .featured-explore>p{
+  max-width:700px;
+  margin:0;
+  color:#9eafbe;
+  line-height:1.85
+}
+#featured .featured-explore .moonlit-entry-grid{
+  margin-top:26px
+}
+#featured .featured-explore .moonlit-serendipity{
+  margin-top:22px
 }
