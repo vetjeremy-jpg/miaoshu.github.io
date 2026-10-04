@@ -73,3 +73,14 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     expect(hrefs.findIndex(x=>x.includes('homepage-editorial.css'))).toBeLessThan(hrefs.findIndex(x=>x.includes('mobile-safety.css')));
   });
 });
+
+test('homepage has one explicit emotional closing and a quieter support strip', async ({ page }) => {
+  await page.setViewportSize({ width:390, height:844 });
+  await page.goto('./', { waitUntil:'domcontentloaded' });
+  await expect(page.locator('#support .section-title')).toBeHidden();
+  await expect(page.locator('.moonlit-closing h2')).toHaveCount(1);
+  await expect(page.locator('.moonlit-breathing-quote')).toBeVisible();
+  await expect(page.locator('#newsletter')).toBeVisible();
+  const order=await page.evaluate(()=>['#community','#support','.moonlit-breathing-quote','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
+  expect(order).toEqual([...order].sort((a,b)=>a-b));
+});
