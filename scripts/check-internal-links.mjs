@@ -19,7 +19,7 @@ const failures=[];
 const attrs=/\b(?:href|src)\s*=\s*["']([^"']+)["']/gi;
 function resolveLocal(page,raw){
  const v=raw.trim();
- if(!v || v.startsWith('#') || /^(?:https?:|mailto:|tel:|data:|blob:|javascript:)/i.test(v) || v.startsWith('//')) return null;
+ if(!v || v.startsWith('#') || /^(?:https?:|mailto:|tel:|data:|blob:|javascript:|about:)/i.test(v) || v.startsWith('//')) return null;
  let clean=v.split('#')[0].split('?')[0];
  try{ clean=decodeURIComponent(clean); }catch{}
  if(clean.startsWith('/miaoshu.github.io/')) clean=clean.slice('/miaoshu.github.io/'.length);
