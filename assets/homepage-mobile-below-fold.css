@@ -804,3 +804,39 @@
     font-size:24px!important
   }
 }
+
+
+/* Moonlit immersion pass 4 — mobile reading cadence — 2026-10-04 */
+@media(max-width:700px){
+  /* Opening arc: clear chapter pauses instead of equal-height stacked panels. */
+  #tonight{padding-top:58px!important;padding-bottom:68px!important}
+  #tonight .section-title{font-size:clamp(31px,9vw,38px)!important;margin-bottom:14px!important}
+  #tonight>.notice{max-width:29em;margin-bottom:28px!important}
+  #tonight .tonight-grid{gap:14px!important;margin-top:0!important}
+  #tonight .tonight-grid article{padding:25px 21px!important;background:rgba(9,24,39,.72)!important}
+  #tonight .tonight-grid article:nth-child(2),
+  #tonight .tonight-grid article:nth-child(3){background:rgba(9,24,39,.46)!important}
+
+  #featured{padding-top:68px!important;padding-bottom:72px!important}
+  #featured .featured-grid{gap:28px!important}
+  #featured .featured-visual{aspect-ratio:4/3!important}
+  #featured .featured-copy h2{font-size:clamp(32px,9vw,39px)!important;margin:8px 0 14px!important}
+  #featured .featured-copy p{font-size:15px!important;line-height:1.9!important}
+  #featured .featured-copy .feature-actions{margin-top:8px}
+  #featured .featured-copy .feature-actions .cta.secondary{background:transparent!important;border-color:transparent!important;color:#d9c7a4!important}
+  #featured .featured-explore{margin-top:52px!important}
+
+  /* Reduce UI density once the reader has passed the main recommendations. */
+  #updates,#creative,#support,#about,#community,#newsletter{padding-top:46px!important;padding-bottom:46px!important}
+  #updates .section-title,#creative .section-title,#support .section-title,#about .section-title,#community .section-title,#newsletter .section-title{font-size:clamp(27px,7.6vw,33px)!important}
+  #creative .creator-grid{gap:1px!important;border-top:1px solid rgba(220,230,240,.09)!important}
+  #creative .creator-card{border:0!important;border-bottom:1px solid rgba(220,230,240,.09)!important;background:transparent!important}
+  #creative .creator-art{display:none!important}
+  #creative .creator-copy{padding:22px 2px!important}
+
+  /* Keep CTAs easy to tap without making every action look equally primary. */
+  #support .support-actions button:not(#like-site),
+  #community .community-actions button{background:transparent!important;border-color:rgba(220,201,164,.22)!important}
+  .moonlit-breathing-quote{margin:58px 0 14px!important;padding-block:38px!important}
+  footer{padding:30px 18px 38px!important}
+}
