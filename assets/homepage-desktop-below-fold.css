@@ -119,7 +119,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f1d5a2;outline-offset:4p
 
 /* Skip layout/paint work for deep homepage sections until they approach the viewport. */
 @supports (content-visibility:auto){
- #featured,#updates,#book,#creative,#miaoshu-album,#featured-short,#support,#follow,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
+ #featured,#updates,#book,#creative,#miaoshu-album,#featured-short,#support,#about,#community,#newsletter{content-visibility:auto;contain-intrinsic-size:auto 720px}
 }
 
 /* Dynamic homepage components injected by moonlit-home-content.js. */
@@ -429,4 +429,129 @@ footer{border-top:1px solid rgba(220,230,240,.08);background:#050c14}
   display:inline-flex;
   min-height:44px;
   align-items:center
+}
+
+
+/* Homepage immersion pass: quieter middle/end rhythm and fewer repeated actions. */
+#reading-list[hidden]{
+  display:none!important
+}
+
+#creative.explore-more{
+  padding-top:76px
+}
+#creative.explore-more .creator-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  max-width:980px
+}
+#creative.explore-more .creator-art{
+  min-height:64px;
+  padding-top:10px;
+  font-size:25px
+}
+#creative.explore-more .creator-copy{
+  padding:22px 24px 26px
+}
+#creative.explore-more .creator-copy p{
+  min-height:0;
+  margin-bottom:14px
+}
+
+.album-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin-top:22px
+}
+.album-actions .cta{
+  margin:0
+}
+.album-external-link{
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  color:var(--gold2);
+  text-decoration:none;
+  border-bottom:1px solid rgba(228,210,175,.28)
+}
+
+#support.stay-with-moonlight{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,430px);
+  gap:22px 42px;
+  align-items:center;
+  text-align:left
+}
+#support.stay-with-moonlight .section-title{
+  max-width:760px;
+  margin-bottom:12px
+}
+#support.stay-with-moonlight .support-note{
+  max-width:680px;
+  margin:0;
+  color:#91a3b2;
+  font-size:15px
+}
+#support.stay-with-moonlight .support-actions{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  max-width:430px;
+  margin:0
+}
+#support.stay-with-moonlight .support-actions>*{
+  min-width:0;
+  width:100%;
+  margin:0
+}
+#support.stay-with-moonlight .support-primary{
+  grid-column:1/-1
+}
+#support.stay-with-moonlight .support-feedback{
+  grid-column:1/-1;
+  width:100%;
+  max-width:none;
+  margin:0
+}
+#support.stay-with-moonlight .support-feedback:empty{
+  display:none
+}
+
+#about .about-links{
+  justify-content:flex-start;
+  max-width:max-content
+}
+
+#community .reader-comment-frame{
+  position:relative;
+  max-height:420px
+}
+#community .reader-comment-frame iframe{
+  height:420px
+}
+
+.moonlit-breathing-quote{
+  margin:clamp(62px,8vw,108px) 0;
+  padding:clamp(44px,6vw,78px) 0;
+  text-align:center
+}
+.moonlit-breathing-quote .quote{
+  max-width:860px;
+  margin:0 auto;
+  color:#eee8de;
+  font-family:"Noto Serif TC","Songti TC",serif;
+  font-size:clamp(28px,3.2vw,42px);
+  font-weight:500;
+  line-height:1.7;
+  letter-spacing:.035em;
+  text-wrap:balance
+}
+.moonlit-breathing-quote .notice{
+  margin:18px auto 0;
+  text-align:center;
+  color:#8194a4;
+  font-size:13px;
+  letter-spacing:.12em
 }
