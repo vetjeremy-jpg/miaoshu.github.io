@@ -5,7 +5,6 @@
   .tonight-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
-    gap:12px!important;
     margin:25px 0 0!important;
     padding:0!important;
     border:0!important;
@@ -15,8 +14,6 @@
     width:100%!important;
     min-width:0!important;
     max-width:none!important;
-    min-height:0!important;
-    padding:24px 20px!important;
     border:1px solid rgba(220,201,164,.15)!important;
     background:#091827!important
   }
@@ -31,11 +28,10 @@
   .featured-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
-    gap:22px!important
   }
   .featured-copy{min-width:0!important;padding:0!important}
-  .featured-copy h2{font-size:clamp(30px,8vw,34px)!important;line-height:1.4!important;word-break:keep-all}
-  .featured-copy p{font-size:16px!important;line-height:1.9!important}
+  .featured-copy h2{line-height:1.4!important;word-break:keep-all}
+  .featured-copy p{line-height:1.9!important}
   .featured-copy .feature-actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;width:100%}
   .featured-copy .cta{min-height:48px;display:flex;align-items:center;justify-content:center;width:100%!important}
   .featured-visual{
@@ -687,7 +683,7 @@
 /* Moonlit immersion pass 4 — mobile reading cadence — 2026-10-04 */
 @media(max-width:700px){
   /* Opening arc: clear chapter pauses instead of equal-height stacked panels. */
-  #tonight{padding-top:58px!important;padding-bottom:68px!important}
+  #tonight{padding-bottom:68px!important}
   #tonight .section-title{font-size:clamp(31px,9vw,38px)!important;margin-bottom:14px!important}
   #tonight>.notice{max-width:29em;margin-bottom:28px!important}
   #tonight .tonight-grid{gap:14px!important;margin-top:0!important}
