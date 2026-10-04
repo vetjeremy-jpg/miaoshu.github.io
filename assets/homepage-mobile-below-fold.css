@@ -691,7 +691,6 @@
 
 /* Moonlit immersion pass 8 — explicit editorial arc on compact screens — 2026-10-04 */
 @media(max-width:700px){
-  .hero+.wrap>#tonight{padding-top:54px!important}
   /* Mobile Editorial Spacing Contract — a small cadence vocabulary for label/title/copy/action flow. */
   :root{--moonlit-space-title:14px;--moonlit-space-copy:18px;--moonlit-space-content:22px;--moonlit-space-section:24px}
 
