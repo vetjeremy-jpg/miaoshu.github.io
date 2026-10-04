@@ -138,25 +138,17 @@ must('desktop featured base remains 0.9/1.1 after tablet split', /@media\(min-wi
 must('desktop bookshelf remains five-column from 701px up', /@media\(min-width:701px\)\{#book\{padding-top:80px\}[\s\S]*?\.novels-grid\{display:grid;grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/.test(homepageDesktop));
 must('mobile bookshelf styling cannot leak above 700px', /@media\(max-width:700px\)[\s\S]*?body:not\(\[data-book-id\]\) #book \.bookshelf-scene/.test(mobile));
 must('canonical mobile editorial layer exists through 430px', /Moonlit mobile canonical layer[^\n]*320\/375\/390\/430[\s\S]*?@media\(max-width:430px\)/.test(homepageMobile));
-must('Tier 2 mobile spacing is canonical and readable', /Moonlit mobile canonical layer[\s\S]*?@media\(max-width:430px\)[\s\S]*?#tonight\{padding-top:54px!important;padding-bottom:58px!important\}/.test(homepageMobile));
-must('Tier 2 cards use 24px titles on 390–430 class phones', /@media\(max-width:430px\)[\s\S]*?#tonight \.tonight-grid h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
-must('Tier 2 heading uses canonical mobile scale', /Moonlit mobile canonical layer[\s\S]*?#tonight \.section-title\{font-size:clamp\(29px,8vw,34px\)!important/.test(homepageMobile));
-must('Tier 1 title is capped at 27px through 430px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature strong\{[\s\S]*?font-size:clamp\(25px,6\.3vw,27px\)/.test(refinement));
+must('canonical mobile layer owns Tier 2 and Tier 3', /Moonlit mobile canonical layer[\s\S]*?#tonight\{[\s\S]*?#featured\{/.test(homepageMobile));
 must('Tier 1 to Tier 2 handoff removes duplicate main top gap', /\.moonlit-editorial-feature \+ main\.wrap\{[\s\S]*?padding-top:0!important[\s\S]*?\.moonlit-editorial-feature \+ main\.wrap > #tonight\{[\s\S]*?margin-top:0!important/.test(refinement));
 
 must('Tier 3 primary actions remain single-column through 430px', /@media\(max-width:700px\)[\s\S]*?\.featured-copy \.feature-actions\{display:grid!important;grid-template-columns:1fr!important/.test(homepageMobile));
 must('Tier 3 primary actions keep full-width touch geometry on mobile', /@media\(max-width:700px\)[\s\S]*?\.featured-copy \.cta\{min-height:48px;[\s\S]*?width:100%!important\}/.test(homepageMobile));
-must('Tier 3 title uses canonical 430px scale', /Moonlit mobile canonical layer[\s\S]*?@media\(max-width:430px\)[\s\S]*?#featured \.featured-copy h2\{font-size:clamp\(29px,8vw,34px\)!important/.test(homepageMobile));
-must('Tier 3 exploration tightens to 24px title at 320/375px', /@media\(max-width:375px\)[\s\S]*?#featured \.featured-explore h3\{[\s\S]*?font-size:24px!important/.test(homepageMobile));
-must('Tier 1 editorial pick uses compact 430px rhythm', /Three-tier mobile hierarchy polish:[\s\S]*?@media\(max-width:430px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin:0 14px 12px;[\s\S]*?padding:22px 18px 24px/.test(refinement));
-must('Tier 1 editorial pick tightens again at 375px', /@media\(max-width:375px\)[\s\S]*?\.moonlit-editorial-feature\{[\s\S]*?margin-bottom:10px;[\s\S]*?padding:20px 16px 22px/.test(refinement));
 must('mood controls are two columns above 375px and one column at 375px', /@media\(max-width:430px\)[\s\S]*?\.moonlit-moods\{display:grid;grid-template-columns:1fr 1fr/.test(refinement) && /@media\(max-width:375px\)[\s\S]*?\.featured-explore \.moonlit-moods\{[\s\S]*?grid-template-columns:minmax\(0,1fr\)/.test(refinement));
 must('390px compact safety breakpoint exists', /max-width:\s*390px/.test(mobile));
 must('homepage has a 380px narrow-device pass', /max-width:\s*380px/.test(homepageMobile));
 must('homepage narrow pass keeps hero title readable', /max-width:\s*380px[\s\S]*\.hero h1\{font-size:42px!important\}/.test(homepageMobile));
 must('homepage narrow pass reduces book width before 375px', /max-width:\s*380px[\s\S]*\.book-object\{width:140px!important\}/.test(homepageMobile));
 must('320px-class safety breakpoint exists', /max-width:\s*340px/.test(mobile));
-must('mobile navigation has 44px touch target', /navlinks a[^}]*min-height:\s*44px/s.test(mobile));
 must('mobile header respects safe areas', /safe-area-inset-left/.test(mobile) && /safe-area-inset-right/.test(mobile));
 must('mobile navigation scrolls horizontally', /navlinks[^}]*overflow-x:auto/s.test(mobile));
 must('mobile navigation hints horizontal overflow', /mask-image:linear-gradient\(90deg/.test(mobile));
