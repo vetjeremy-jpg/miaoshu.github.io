@@ -68,9 +68,20 @@ const expected=['首頁','小說','攝影','作品星圖','札記','影片','關
 must('production homepage must expose the exact nine-entry navigation',JSON.stringify(labels)===JSON.stringify(expected));
 must('production homepage must link its manifest',home.includes('href="/miaoshu.github.io/site.webmanifest"'));
 
-for(const path of ['videos/','works/','search/']){
-  const res=await get(path);
-  mustType(path,res,/text\/html/);
+const routeFingerprints=[];
+for(const route of [
+  {path:'videos/',file:'../videos/index.html'},
+  {path:'works/',file:'../works/index.html'},
+  {path:'search/',file:'../search/index.html'}
+]){
+  const local=await readFile(new URL(route.file,import.meta.url),'utf8');
+  const expectedHash=sha256(local);
+  const res=await get(route.path);
+  mustType(route.path,res,/text\/html/);
+  const live=await res.text();
+  const liveHash=sha256(live);
+  must(`production ${route.path} content fingerprint must match repository (expected ${expectedHash.slice(0,12)}, found ${liveHash.slice(0,12)})`,liveHash===expectedHash);
+  routeFingerprints.push({path:route.path,expected:expectedHash,live:liveHash,match:liveHash===expectedHash});
 }
 const manifestRes=await get('site.webmanifest');
 diagnostics.push(headerSnapshot('manifest',manifestRes));
@@ -110,6 +121,7 @@ const report={
   expectedRuntime,
   liveRuntime,
   homepageFingerprint:{expected:expectedHomeHash,live:liveHomeHash,match:liveHomeHash===expectedHomeHash},
+  routeFingerprints,
   serviceWorker:{shell:expectedShell,pages:expectedPages,scope:expectedScope},
   resources:diagnostics.slice(-4)
 };
