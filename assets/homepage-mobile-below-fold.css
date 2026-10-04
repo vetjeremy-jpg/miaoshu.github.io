@@ -143,7 +143,6 @@
   .video-preview>div{min-width:0!important;width:100%!important}
   .video-preview .creator-nav{justify-content:center!important}
 
-  #instagram-reel>div{max-width:100%!important}
   #instagram-reel iframe{border-radius:0!important}
 
   .support-actions,.about-links,.community-actions{
@@ -280,13 +279,8 @@
     box-sizing:border-box;
     overflow:hidden!important
   }
-  #book .novels-grid{
-    max-width:100%!important
-  }
-
   #featured-short .video-preview iframe{
-    width:min(100%,320px)!important;
-    max-width:100%!important
+    width:min(100%,320px)!important
   }
 
   /* Generic reel geometry lives here; Video Hub keeps only its composition-specific sizing below. */
@@ -327,12 +321,6 @@
 
   /* Let media/content use the inner content box without touching the frame. */
   /* Width/max-width for the shared content grids is owned above; only the reel joins the same geometry here. */
-  #instagram-reel>div{
-    width:100%!important;
-    max-width:100%!important;
-    box-sizing:border-box!important
-  }
-
   #tonight .tonight-grid,
   #reading-list .saved-chapters,
   #book .bookshelf-scene{
@@ -477,8 +465,6 @@
     font-size:10px
   }
   #featured .featured-explore{
-    width:100%!important;
-    max-width:100%!important;
     padding:28px 18px!important;
   }
   #featured .featured-explore h3{
