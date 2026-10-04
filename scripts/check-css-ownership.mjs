@@ -196,7 +196,7 @@ const inline=fs.readFileSync('assets/homepage-inline.css','utf8');
 if(!/body:not\(\[data-book-id\]\) > header\.hero \.moonlight-emblem\{display:block;position:absolute/.test(inline)||!/\.moonlight-emblem svg\{display:block;width:100%;height:100%;filter:brightness\(\.78\) saturate\(\.78\)\}/.test(inline))errors.push('homepage inline owner must preserve crescent geometry and rendering');
 const homepage=fs.readFileSync('index.html','utf8');
 const heroClose=homepage.indexOf('</header>');
-const mainOpen=homepage.indexOf('<main class="wrap" id="main">');
+const mainOpen=homepage.search(/<main\b(?=[^>]*\bclass="wrap")(?=[^>]*\bid="main")[^>]*>/);
 const tonightStart=homepage.indexOf('<section class="panel tonight" id="tonight"');
 const tonightEnd=tonightStart<0?-1:homepage.indexOf('</section>',tonightStart)+10;
 const orderFeaturedStart=homepage.indexOf('<section class="panel curation-deep-dive" id="featured"');
