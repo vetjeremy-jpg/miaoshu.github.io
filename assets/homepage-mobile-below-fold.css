@@ -45,7 +45,6 @@
   .featured-visual img{width:100%!important;height:100%!important;object-fit:cover!important}
   .featured-visual figcaption{font-size:13px!important;padding:34px 16px 14px!important}
 
-  #updates{padding:38px 0!important}
   .update-heading{display:block!important}
   .update-heading time{display:block;margin-top:8px}
   .update-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
@@ -90,7 +89,6 @@
   #book .book-object{width:148px!important;min-width:148px!important;margin:8px 0 16px!important}
   #book .novel-card h3{font-size:14px!important;line-height:1.55!important;word-break:keep-all}
 
-  #creative{padding-top:54px!important}
   .creator-grid{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
@@ -111,7 +109,6 @@
   .creator-copy h3{font-size:22px!important;word-break:keep-all}
   .creator-copy a{display:flex;align-items:center;min-height:44px}
 
-  #miaoshu-album{padding-top:58px!important}
   .album-photos{
     display:grid!important;
     grid-template-columns:minmax(0,1fr)!important;
@@ -125,8 +122,6 @@
   .album-photo figcaption{padding:14px 2px!important}
   .album-photo h3{font-size:20px!important;line-height:1.5!important}
   .album-photo p{font-size:13px!important;line-height:1.85!important}
-
-  #featured-short,#support,#about,#community,#newsletter{padding-top:52px!important;padding-bottom:52px!important}
 
   .video-preview{
     display:grid!important;
@@ -503,9 +498,6 @@
   }
   #featured .featured-explore-directory .directory-link{min-height:46px!important}
 }
-@media(max-width:380px){
-}
-
 
 /* Legacy three-tier sizing passes consolidated into the canonical mobile layer below — 2026-10-04. */
 
