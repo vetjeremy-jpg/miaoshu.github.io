@@ -18,6 +18,15 @@ async function get(path, attempts=4){
 const must=(label,ok)=>{if(!ok)throw new Error(label);};
 const contentType=res=>(res.headers.get('content-type')||'').toLowerCase();
 const mustType=(path,res,pattern)=>must(`${path} must return expected Content-Type, found ${contentType(res)||'missing'}`,pattern.test(contentType(res)));
+const headerSnapshot=(label,res)=>({
+  label,
+  contentType:contentType(res)||'missing',
+  cacheControl:res.headers.get('cache-control')||'missing',
+  age:res.headers.get('age')||'missing',
+  etag:res.headers.get('etag')||'missing',
+  lastModified:res.headers.get('last-modified')||'missing'
+});
+const diagnostics=[];
 
 
 const localHome=await readFile(new URL('../index.html',import.meta.url),'utf8');
@@ -34,7 +43,9 @@ must('repository homepage must expose a versioned Moonlit runtime',Boolean(expec
 async function waitForRuntime(attempts=6){
   let home='',liveRuntime;
   for(let i=0;i<attempts;i++){
-    home=await (await get('')).text();
+    const homeRes=await get('');
+    diagnostics.push(headerSnapshot('homepage',homeRes));
+    home=await homeRes.text();
     liveRuntime=home.match(/assets\/moonlit-v2\.js\?v=([^"'\s<]+)/)?.[1];
     if(liveRuntime===expectedRuntime)return {home,liveRuntime};
     if(i<attempts-1){
@@ -56,14 +67,17 @@ for(const path of ['videos/','works/','search/']){
   mustType(path,res,/text\/html/);
 }
 const manifestRes=await get('site.webmanifest');
+diagnostics.push(headerSnapshot('manifest',manifestRes));
 mustType('site.webmanifest',manifestRes,/(application\/manifest\+json|application\/json)/);
 const swRes=await get('sw.js');
+diagnostics.push(headerSnapshot('service-worker',swRes));
 mustType('sw.js',swRes,/(javascript|text\/plain)/);
 for(const path of ['apple-touch-icon.png','assets/icons/icon-192.png','assets/icons/icon-512.png']){
   const res=await get(path);
   mustType(path,res,/image\/png/);
 }
 const runtimeRes=await get(`assets/moonlit-v2.js?v=${expectedRuntime}`);
+diagnostics.push(headerSnapshot('runtime',runtimeRes));
 mustType('canonical Moonlit runtime',runtimeRes,/(javascript|text\/plain)/);
 const runtimeBody=await runtimeRes.text();
 must('canonical Moonlit runtime must be JavaScript, not an HTML fallback',!/<(?:!doctype|html|head|body)\b/i.test(runtimeBody));
@@ -84,4 +98,6 @@ must('production manifest must remain standalone',manifest.display==='standalone
 must('manifest start_url must stay inside Moonlit scope',manifest.start_url==='/miaoshu.github.io/');
 must('manifest must keep 192 and 512 icons',Array.isArray(manifest.icons)&&['192x192','512x512'].every(size=>manifest.icons.some(icon=>icon.sizes===size)));
 
+console.log('Moonlit production cache diagnostics:');
+for(const item of diagnostics.slice(-4)) console.log(JSON.stringify(item));
 console.log('Moonlit production smoke: PASS');
