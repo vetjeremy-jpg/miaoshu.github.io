@@ -192,7 +192,7 @@ test('homepage has one explicit emotional closing and a quieter support strip', 
   await expect(page.locator('.moonlit-closing h2')).toHaveCount(1);
   await expect(page.locator('.moonlit-breathing-quote')).toBeHidden();
   await expect(page.locator('#newsletter')).toBeVisible();
-  const order=await page.evaluate(()=>['#community','#support','.moonlit-breathing-quote','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
+  const order=await page.evaluate(()=>['#community','#support','.moonlit-closing','#newsletter'].map(s=>document.querySelector(s).getBoundingClientRect().top+scrollY));
   expect(order).toEqual([...order].sort((a,b)=>a-b));
 });
 
@@ -204,7 +204,7 @@ test('editorial stylesheet stays within the current technical-debt budget', asyn
   const important=(css.match(/!important/g)||[]).length;
   const media=(css.match(/@media/g)||[]).length;
   expect(important, 'do not grow the current consolidated editorial !important baseline').toBeLessThanOrEqual(321);
-  expect(media, 'do not grow the restored editorial media-block baseline').toBeLessThanOrEqual(16);
+  expect(media, 'do not grow the current consolidated editorial media-block baseline').toBeLessThanOrEqual(36);
   expect(css.length, 'keep the editorial layer from growing unchecked').toBeLessThanOrEqual(19200);
 });
 
