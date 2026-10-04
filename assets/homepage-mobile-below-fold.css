@@ -774,3 +774,11 @@
 #support .moonlit-inline-actions button[aria-pressed="true"]{background:transparent!important;color:#e3c47e!important;font-weight:650!important}
 #support .moonlit-inline-actions .action-separator{display:block!important;width:1px!important;min-height:16px!important;height:16px!important;margin:0 3px!important;background:rgba(205,225,243,.13)!important}
 @media(max-width:520px){#support .moonlit-inline-actions{display:grid!important;grid-template-columns:auto 1px minmax(0,1fr)!important;align-items:center!important}#support .moonlit-inline-actions .support-primary{grid-column:1/-1!important;padding:6px 0 10px!important;margin-bottom:2px!important}#support .moonlit-inline-actions .support-primary+.action-separator{display:none!important}#support .moonlit-inline-actions button{justify-content:flex-start!important;padding:7px 10px 7px 0!important;white-space:normal!important}#support .moonlit-inline-actions .action-separator{margin:0 12px 0 0!important}}
+
+/* Newsletter action hover — highlight mark and label as one Moonlit action. */
+#support .moonlit-inline-actions .support-primary:hover,
+#support .moonlit-inline-actions .support-primary:focus-visible{color:#fff1cf!important;background:transparent!important;transform:none!important}
+#support .moonlit-inline-actions .support-primary:hover .action-mark,
+#support .moonlit-inline-actions .support-primary:focus-visible .action-mark{color:#fff1cf!important}
+#support .moonlit-inline-actions .support-primary:hover span:last-child,
+#support .moonlit-inline-actions .support-primary:focus-visible span:last-child{color:#fff1cf!important;border-bottom-color:#f0d18f!important}
