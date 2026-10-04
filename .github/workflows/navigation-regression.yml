@@ -78,6 +78,7 @@ jobs:
         run: npm run test:nav:p0
 
       - name: Run cross-page release candidate gate
+        id: rc_gate
         env:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:rc
@@ -95,16 +96,19 @@ jobs:
           exit 1
 
       - name: Run PWA lifecycle gate
+        id: pwa_gate
         env:
           BASE_URL: http://127.0.0.1:4174/miaoshu.github.io/
         run: npm run test:pwa
 
       - name: Run homepage editorial and responsive gate
+        id: editorial_gate
         env:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:editorial
 
       - name: Run P1 interaction suite before merge or on manual verification
+        id: p1_gate
         if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         env:
           BASE_URL: http://127.0.0.1:4173/
@@ -117,16 +121,13 @@ jobs:
           {
             echo "## Moonlit Navigation QA"
             echo ""
-            echo "- **P0 gate:** navigation, release-candidate and real-browser PWA lifecycle\n            echo \"- **Editorial gate:** hero copy, section order, 320–1440 responsive layout, asymmetric mobile rhythm, closing sequence and CSS debt budget"
+            echo "- **Release candidate:** ${{ steps.rc_gate.outcome }}"
+            echo "- **PWA lifecycle:** ${{ steps.pwa_gate.outcome }}"
+            echo "- **Editorial / responsive:** ${{ steps.editorial_gate.outcome }}"
+            echo "- **P1 interaction:** ${{ steps.p1_gate.outcome }}"
             echo "- **Viewports:** 320 / 375 / 390 / 430 / 768 / 1024 / 1440"
-            if [[ "${{ github.event_name }}" == "pull_request" || "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-              echo "- **P1 interaction:** Tab / Shift+Tab / focus visibility"
-            else
-              echo "- **P1 interaction:** deferred to PR or manual full verification"
-            fi
-            echo "- **Tested commit:** \`${{ github.sha }}\`"
+            echo "- **Tested commit:** ${{ github.sha }}"
           } >> "$GITHUB_STEP_SUMMARY"
-
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
