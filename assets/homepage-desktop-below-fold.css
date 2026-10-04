@@ -79,13 +79,13 @@
 
 .bookshelf-top span{padding:0;background:none;border:0;box-shadow:none}
 
-.creator-card,.featured-grid,.latest-update,.follow-panel,.video-preview,.reader-comment-frame{box-shadow:none}
+.creator-card,.featured-grid,.latest-update,.video-preview,.reader-comment-frame{box-shadow:none}
 .creator-art,.album-photos a{box-shadow:0 5px 13px #0003}
 
 
 .section-title:after{content:"";display:block;width:56px;height:1px;margin:16px 0 0;background:linear-gradient(90deg,#c9ad7d,transparent)}
 .notice,.shelf-note{color:#c3cbd2;line-height:1.85}
-.creator-card,.latest-update,.featured-grid,.follow-panel{border-radius:9px}
+.creator-card,.latest-update,.featured-grid{border-radius:9px}
 .creator-copy p,.featured-copy p{line-height:1.85}
 .creator-card,.novel-card,.album-photos a{transition:border-color .2s,background .2s}
 #book 
