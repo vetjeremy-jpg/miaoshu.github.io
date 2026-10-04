@@ -13,10 +13,26 @@ if(hero&&canHover){
  let px=0,py=0,raf=0;hero.addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const r=hero.getBoundingClientRect();hero.style.setProperty('--ml-x',((px-r.left)/r.width-.5)*10+'px');hero.style.setProperty('--ml-y',((py-r.top)/r.height-.5)*7+'px')})},{passive:true});
 }
 
-/* Curated "tonight" discovery. */
-if(homeMain&&!$('.moonlit-editorial-feature')){const features=[{k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},{k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},{k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},{k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}];const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');box.className='moonlit-editorial-feature';box.innerHTML='<small>'+pick.k+'</small><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">閱讀本期選題 →</a>';if(hero)hero.insertAdjacentElement('afterend',box)}
+/* Three-tier homepage curation.
+   Tier 1 is the single editorial pick. Tier 2 is the static Tonight trio.
+   Tier 3 keeps Featured + free exploration together, with mood guidance as a nested tool. */
+if(homeMain&&!$('.moonlit-editorial-feature')){
+ const features=[
+  {k:"EDITOR'S PICK · FICTION",t:"《建康劫·聽泉引》",d:"從一座將傾的城開始，看人在刀兵之外仍想守住什麼。",u:"books/jiankangjie-tingquanyin/"},
+  {k:"EDITOR'S PICK · PHOTOGRAPHY",t:"雪庭舞劍",d:"雪色、衣袂與劍光，把一段未說出口的故事留在影像裡。",u:"gallery/#snow-sword"},
+  {k:"EDITOR'S PICK · NOTE",t:"把臺北走成一封給自己的信",d:"一條步道不只通往終點，也通往一個稍微不同的自己。",u:"posts/taipei-grand-trail-20260928/"},
+  {k:"EXPLORE · CONSTELLATION",t:"作品星圖",d:"不照分類走，沿著歷史、夜色、雪、旅行與光影，在作品之間漫遊。",u:"works/"}
+ ];
+ const day=Math.floor(Date.now()/86400000),pick=features[day%features.length],box=document.createElement('aside');
+ box.className='moonlit-editorial-feature';
+ box.setAttribute('aria-label','第一層推薦：本期選題');
+ box.innerHTML='<small>01 · CURATED EDITION / 本期選題</small><span class="moonlit-editorial-kind">'+pick.k+'</span><strong>'+pick.t+'</strong><p>'+pick.d+'</p><a href="'+pick.u+'">進入本期選題 →</a>';
+ if(hero)hero.insertAdjacentElement('afterend',box)
+}
 
-if(homeMain&&book&&!$('.moonlit-tonight'))near(book,()=>{
+const moodBox=$('.moonlit-mood-selector');
+if(homeMain&&moodBox&&!moodBox.dataset.moonlitMounted){
+ moodBox.dataset.moonlitMounted='1';
  const works=[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
   {m:'read',t:'《浮生歲月》',d:'如果今晚想讀記憶、時間與人的選擇，就從這裡開始。',u:'books/fushengsuiyue/index.html#toc'},
@@ -26,12 +42,18 @@ if(homeMain&&book&&!$('.moonlit-tonight'))near(book,()=>{
   {m:'rare',t:'《烏溪月》',d:'舊宅、家族與月色，是今晚比較安靜的一條路。',u:'books/wuxiyue/index.html#toc'},
   {m:'note',t:'把臺北走成一封給自己的信',d:'如果今晚不想進小說，就跟著腳步重新走一次臺北。',u:'posts/taipei-grand-trail-20260928/index.html'}
  ];
- const box=document.createElement('section');box.className='moonlit-tonight';box.setAttribute('aria-labelledby','moonlit-tonight-title');
- box.innerHTML='<small>TONIGHT · BY MOONLIGHT</small><h2 id="moonlit-tonight-title">今晚想把月光帶去哪裡？</h2><p>不是純亂數。先選今晚的心情，Moonlit 再從對應作品裡替你挑一條路。</p><div class="moonlit-moods" role="group" aria-label="今晚的推薦主題"><button data-mood="read">適合閱讀</button><button data-mood="image">適合看影像</button><button data-mood="rare">探索冷門作品</button><button data-mood="note">讀一篇札記</button><button data-mood="any">交給月光</button></div><div class="moonlit-result" aria-live="polite"><div><strong></strong><p></p></div><a>沿著月光前往 →</a></div>';
- book.parentNode.insertBefore(box,book);
- const buttons=$('button',box),result=$('.moonlit-result',box),resultTitle=$('strong',result),resultText=$('p',result),resultLink=$('a',result);
- box.addEventListener('click',e=>{const b=e.target.closest('button[data-mood]');if(!b)return;buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));let pool=b.dataset.mood==='any'?works:works.filter(w=>w.m===b.dataset.mood);const last=safeGet('moonlit-last-pick');let candidates=pool.filter(w=>w.u!==last);if(!candidates.length)candidates=pool;const pick=candidates[Math.floor(Math.random()*candidates.length)];safeSet('moonlit-last-pick',pick.u);resultTitle.textContent=pick.t;resultText.textContent=pick.d;resultLink.href=pick.u;result.classList.add('is-visible')});
-});
+ const buttons=$$('button[data-mood]',moodBox),result=$('.moonlit-result',moodBox),resultTitle=$('strong',result),resultText=$('p',result),resultLink=$('a',result);
+ moodBox.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-mood]');if(!b)return;
+  buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  let pool=b.dataset.mood==='any'?works:works.filter(w=>w.m===b.dataset.mood);
+  const last=safeGet('moonlit-last-pick');
+  let candidates=pool.filter(w=>w.u!==last);if(!candidates.length)candidates=pool;
+  const pick=candidates[Math.floor(Math.random()*candidates.length)];
+  safeSet('moonlit-last-pick',pick.u);
+  resultTitle.textContent=pick.t;resultText.textContent=pick.d;resultLink.href=pick.u;result.classList.add('is-visible')
+ });
+}
 
 /* Surface the latest saved line on homepage as a true “moonlight bookmark”.
    Fast path uses the bookmark index; only legacy data falls back to a full storage scan. */
