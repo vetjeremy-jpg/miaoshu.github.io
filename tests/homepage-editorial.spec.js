@@ -161,10 +161,10 @@ test('support likes stay outside the initial network path', async ({ page }) => 
 test('service worker shell versions match current homepage assets', async ({ request }) => {
   const sw=await (await request.get('sw.js')).text();
   const html=await (await request.get('./')).text();
-  expect(html).toContain('assets/homepage-inline.css?v=20261004-img8');
+  expect(html).toContain('assets/homepage-inline.css?v=20261004-a11y11');
   expect(html).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
-  expect(sw).toContain("const CACHE='moonlit-shell-v54'");
-  expect(sw).toContain('assets/homepage-inline.css?v=20261004-img8');
+  expect(sw).toContain("const CACHE='moonlit-shell-v55'");
+  expect(sw).toContain('assets/homepage-inline.css?v=20261004-a11y11');
   expect(sw).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
   expect(sw).toContain('assets/moonlit-home-idle.js?v=20261004-mainthread9');
 });
