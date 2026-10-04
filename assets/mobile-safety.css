@@ -235,7 +235,7 @@ main,section,article,header,footer,nav,.wrap,.panel{min-width:0}
  }
 }
 @media(max-width:340px){
- .navlinks a,.top nav a{padding-left:9px!important;padding-right:9px!important}
+ body[data-book-id] .navlinks a,body[data-book-id] .top nav a{padding-left:9px!important;padding-right:9px!important}
  body:not([data-book-id]) #book .novels-grid{gap:12px!important}
  body:not([data-book-id]) #book .novel-card{
    flex-basis:136px!important;
