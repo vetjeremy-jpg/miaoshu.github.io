@@ -204,7 +204,8 @@ const orderFeaturedEnd=orderFeaturedStart<0?-1:homepage.indexOf('</section>',ord
 const continueStart=homepage.indexOf('<div class="continue-box" id="continue-reading"');
 const readingListStart=homepage.indexOf('<section class="panel reader-shelf" id="reading-list"');
 if(!(heroClose>=0&&mainOpen>heroClose&&tonightStart>mainOpen&&orderFeaturedStart>tonightStart))errors.push('homepage recommendation tiers must render in Hero → Tier 1 → Tier 2 → Tier 3 order');
-if(tonightEnd<0||orderFeaturedStart<0||homepage.slice(tonightEnd,orderFeaturedStart).trim()!=='')errors.push('Tier 2 今夜三選 and Tier 3 深入作品 must remain contiguous with no intervening homepage block');
+const tierTransition=homepage.slice(tonightEnd,orderFeaturedStart).trim();
+if(tonightEnd<0||orderFeaturedStart<0||!/^(?:<p class="editorial-transition" aria-hidden="true"><span>[^<]+<\/span><\/p>)?$/.test(tierTransition))errors.push('Tier 2 今夜三選 may hand off to Tier 3 only through the single editorial-transition bridge');
 if(!(orderFeaturedEnd>orderFeaturedStart&&continueStart>orderFeaturedEnd&&readingListStart>continueStart))errors.push('reading progress and bookmark blocks must stay after Tier 3, never between recommendation tiers');
 if((homepage.match(/id="continue-reading"/g)||[]).length!==1||(homepage.match(/id="reading-list"/g)||[]).length!==1)errors.push('homepage reading-state blocks must remain unique after Tier 3');
 if((refinementHome.match(/hero\.insertAdjacentElement\('afterend',box\)/g)||[]).length!==1)errors.push('Tier 1 本期選題 must have exactly one Hero afterend insertion');
