@@ -7,7 +7,8 @@
     "test:nav:p0": "playwright test tests/navigation.spec.js --grep @p0",
     "test:nav:p1": "playwright test tests/navigation.spec.js --grep @p1",
     "test:editorial": "playwright test tests/homepage-editorial.spec.js",
-    "test:homepage": "playwright test tests/navigation.spec.js tests/homepage-editorial.spec.js"
+    "test:homepage": "playwright test tests/navigation.spec.js tests/homepage-editorial.spec.js",
+    "test:rc": "playwright test tests/release-candidate.spec.js"
   },
   "devDependencies": {
     "@playwright/test": "1.55.0"
