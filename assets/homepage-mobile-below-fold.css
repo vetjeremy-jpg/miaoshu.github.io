@@ -728,14 +728,14 @@
   #featured .feature-actions .deep-dive-next,
   #updates .update-more-link{
     width:100%;min-height:46px;display:flex;align-items:center;justify-content:flex-start;
-    box-sizing:border-box;padding:6px 2px;color:#cdbb98;text-decoration:none;
+    box-sizing:border-box;padding:6px 2px;color:var(--moonlit-gold-muted);text-decoration:none;
     border:0;border-bottom:1px solid rgba(205,187,152,.2);font-size:13px
   }
   #featured .feature-actions .deep-dive-next{margin-top:2px}
   #updates .update-actions{gap:2px!important}
   #updates .update-more-link{margin-top:4px}
   #book>.notice,#miaoshu-album>.notice,.moonlit-video-lede{max-width:31em}
-  #support.stay-with-moonlight{border-top:1px solid rgba(220,230,240,.08)!important}
+  #support.stay-with-moonlight{border-top:1px solid var(--moonlit-rule)!important}
   #support .support-actions{margin-top:4px!important}
   #newsletter .moonlit-newsletter-lede{font-size:clamp(21px,6.4vw,27px)!important;line-height:1.65!important}
 }
@@ -751,7 +751,7 @@
   #featured .moonlit-mood-selector>summary::after{margin-left:14px}
   #featured .moonlit-mood-inner{padding-top:12px}
   #featured .moonlit-moods{gap:7px!important}
-  #featured .moonlit-moods button{min-height:44px!important}
+  #featured .moonlit-moods button{min-height:var(--moonlit-touch)!important}
   .moonlit-found-line{margin-top:42px!important;margin-bottom:44px!important}
   .moonlit-found-line blockquote{margin-bottom:0!important}
 }
@@ -813,8 +813,8 @@
   #creative.explore-more>.notice{margin-bottom:18px!important}
   #creative .creator-copy h3{font-size:20px!important}
   #creative .creator-copy p{color:#8fa1af!important}
-  #community .community-note{font-size:12px!important;line-height:1.7!important;color:#748796!important}
-  #support .support-actions button{min-height:44px!important;font-size:12px!important}
+  #community .community-note{font-size:12px!important;line-height:1.7!important;color:var(--moonlit-copy-faint)!important}
+  #support .support-actions button{min-height:var(--moonlit-touch)!important;font-size:12px!important}
 }
 @media(max-width:375px){
   .topbar .navlinks a{padding-left:9px!important;padding-right:9px!important}
