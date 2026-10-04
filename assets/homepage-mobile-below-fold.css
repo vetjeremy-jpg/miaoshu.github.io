@@ -840,3 +840,21 @@
   .moonlit-breathing-quote{margin:58px 0 14px!important;padding-block:38px!important}
   footer{padding:30px 18px 38px!important}
 }
+
+
+/* Moonlit immersion pass 5 — narrow-screen editorial continuity — 2026-10-04 */
+@media(max-width:700px){
+  #featured .feature-actions .deep-dive-next,
+  #updates .update-more-link{
+    width:100%;min-height:46px;display:flex;align-items:center;justify-content:flex-start;
+    box-sizing:border-box;padding:6px 2px;color:#cdbb98;text-decoration:none;
+    border:0;border-bottom:1px solid rgba(205,187,152,.2);font-size:13px
+  }
+  #featured .feature-actions .deep-dive-next{margin-top:2px}
+  #updates .update-actions{gap:2px!important}
+  #updates .update-more-link{margin-top:4px}
+  #book>.notice,#miaoshu-album>.notice,.moonlit-video-lede{max-width:31em}
+  #support.stay-with-moonlight{border-top:1px solid rgba(220,230,240,.08)!important}
+  #support .support-actions{margin-top:4px!important}
+  #newsletter .moonlit-newsletter-lede{font-size:clamp(21px,6.4vw,27px)!important;line-height:1.65!important}
+}
