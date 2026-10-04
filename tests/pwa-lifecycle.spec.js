@@ -181,6 +181,58 @@ test.describe('Moonlit PWA lifecycle', () => {
     await expect(page.locator('#audio-status')).toContainText('上次聽到');
   });
 
+  test('P0 keeps an exact-line moonlight bookmark round-trip durable across reopen and cache cleanup @p0', async ({ page, context }) => {
+    await resetMoonlitPwa(page);
+    await page.reload({ waitUntil: 'load' });
+    await waitForControl(page);
+
+    const novel='./books/fushengsuiyue/index.html';
+    await page.goto(novel+'#chapter-1', { waitUntil: 'domcontentloaded' });
+    const paragraph=page.locator('#chapter-1 .chapter-body p').first();
+    await expect(paragraph.locator('.moonlit-line-save')).toBeVisible();
+    const pid=await paragraph.getAttribute('id');
+    const quote=(await paragraph.textContent()).replace(/^☾/,'').trim().slice(0,180);
+
+    await paragraph.locator('.moonlit-line-save').click();
+    await expect(paragraph).toHaveClass(/moonlit-saved-line/);
+    await expect.poll(async () => page.evaluate(() => JSON.parse(localStorage.getItem('moonlit-bookmark-details')||'[]').length)).toBeGreaterThan(0);
+
+    await page.locator('.moonlit-bookmarks-link').click();
+    await expect(page).toHaveURL(/\/bookmarks\/$/);
+    await expect(page.locator('.bookmark')).toHaveCount(1);
+    await expect(page.locator('.bookmark blockquote')).toContainText(quote.slice(0,40));
+    const returnHref=await page.locator('.bookmark .go').getAttribute('href');
+    expect(returnHref).toContain('#'+pid);
+    await page.locator('.bookmark .go').click();
+    await expect(page).toHaveURL(new RegExp('#'+pid+'$'));
+    await expect(page.locator('#'+pid)).toHaveClass(/moonlit-saved-line/);
+
+    await page.close();
+    const reopened=await context.newPage();
+    await reopened.goto('./bookmarks/', { waitUntil: 'domcontentloaded' });
+    await expect(reopened.locator('.bookmark')).toHaveCount(1);
+    await expect(reopened.locator('.bookmark .go')).toHaveAttribute('href',returnHref);
+
+    await reopened.evaluate(async () => {
+      await caches.open('moonlit-shell-stale-bookmark-state');
+      await caches.open('moonlit-pages-stale-bookmark-state');
+      const registration=await navigator.serviceWorker.getRegistration();
+      await registration?.unregister();
+    });
+    await reopened.goto('./', { waitUntil: 'load' });
+    await waitForControl(reopened);
+    await expect.poll(async () => reopened.evaluate(async () => {
+      const keys=await caches.keys();
+      return keys.filter(key=>key==='moonlit-shell-stale-bookmark-state'||key==='moonlit-pages-stale-bookmark-state');
+    }), { timeout: 10000 }).toEqual([]);
+
+    await reopened.goto('./bookmarks/', { waitUntil: 'domcontentloaded' });
+    await expect(reopened.locator('.bookmark')).toHaveCount(1);
+    await expect(reopened.locator('.bookmark blockquote')).toContainText(quote.slice(0,40));
+    await expect(reopened.locator('.bookmark .go')).toHaveAttribute('href',returnHref);
+    await reopened.close();
+  });
+
   test('P0 fresh activation removes stale Moonlit cache generations @p0', async ({ page }) => {
     await resetMoonlitPwa(page);
 
