@@ -48,7 +48,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     const nav = page.locator('.topbar .navlinks');
     const links = nav.locator(':scope > a');
     await expect(links).toHaveCount(9);
-    await expect(links).toHaveAllTextContents(EXPECTED);
+    expect(await links.allTextContents()).toEqual(EXPECTED);
     await expect(nav.getByRole('link', { name: '影片', exact: true })).toHaveAttribute('href', 'videos/');
   });
 
