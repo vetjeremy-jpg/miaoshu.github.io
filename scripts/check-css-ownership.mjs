@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 
+// Ownership budgets are guardrails, not pixel-design locks.
+// Shared CSS stays close to its current canonical footprint; homepage desktop
+// gets one selector of refactor headroom, while !important may not grow.
 const budgets={
-  'assets/moonlight.css':{hero:9,topbar:12,navlinks:2,panel:4,important:22},
-  'assets/homepage-desktop-below-fold.css':{hero:2,topbar:5,navlinks:5,panel:3,important:10},
+  'assets/moonlight.css':{hero:6,topbar:5,navlinks:2,panel:4,important:10},
+  'assets/homepage-desktop-below-fold.css':{hero:3,topbar:6,navlinks:6,panel:4,important:10},
 };
 const patterns={
   hero:/\.hero\b/g,
@@ -311,7 +314,7 @@ for(const [file,budget] of Object.entries(budgets)){
   const css=fs.readFileSync(file,'utf8');
   for(const [key,max] of Object.entries(budget)){
     const count=(css.match(patterns[key])||[]).length;
-    if(count>max)errors.push(`${file}: ${key} grew from budget ${max} to ${count}`);
+    if(count>max)errors.push(`${file}: ${key} ownership grew past guardrail ${max} (found ${count}); consolidate or move the rule to its canonical owner`);
   }
 }
 if(/\.hero \.eyebrow\{[^}]*font-size:11px!important;[^}]*letter-spacing:\.28em!important/.test(premium)&&!/@media\(min-width:701px\)\{body:not\(\[data-book-id\]\) > header \.eyebrow\{font-size:11px!important;letter-spacing:\.28em!important\}\}/.test(premium))errors.push('premium hero eyebrow typography must be desktop/tablet only');
