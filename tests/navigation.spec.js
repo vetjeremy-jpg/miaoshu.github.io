@@ -43,7 +43,7 @@ async function navMetrics(page) {
 }
 
 test.describe('Moonlit 9-entry primary navigation regression', () => {
-  test('has exactly nine entries in the required order, including video', async ({ page }) => {
+  test('@p0 has exactly nine entries in the required order, including video', async ({ page }) => {
     await openHome(page, VIEWPORTS[6]);
     const nav = page.locator('.topbar .navlinks');
     const links = nav.locator(':scope > a');
@@ -52,7 +52,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     await expect(nav.getByRole('link', { name: '影片', exact: true })).toHaveAttribute('href', 'videos/');
   });
 
-  test('ARIA contract is intact', async ({ page }) => {
+  test('@p0 ARIA contract is intact', async ({ page }) => {
     await openHome(page, VIEWPORTS[6]);
     await expect(page.locator('.topbar .navlinks')).toHaveAttribute('aria-label', '網站導覽');
     await expect(page.locator('.topbar .navlinks a').first()).toHaveAttribute('aria-current', 'page');
@@ -60,7 +60,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
   });
 
   for (const vp of VIEWPORTS) {
-    test(`${vp.name}px: layout, visibility and touch geometry`, async ({ page }) => {
+    test(`@p0 ${vp.name}px: layout, visibility and touch geometry`, async ({ page }) => {
       await openHome(page, vp);
       const m = await navMetrics(page);
 
@@ -81,7 +81,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
   }
 
   for (const vp of VIEWPORTS.filter(v => v.width <= 430)) {
-    test(`${vp.name}px: horizontal rail reaches final entries without moving body`, async ({ page }) => {
+    test(`@p0 ${vp.name}px: horizontal rail reaches final entries without moving body`, async ({ page }) => {
       await openHome(page, vp);
       const nav = page.locator('.topbar .navlinks');
       const before = await navMetrics(page);
@@ -97,7 +97,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     });
   }
 
-  test('keyboard Tab follows visual order and every focused entry is visible', async ({ page }) => {
+  test('@p1 keyboard Tab follows visual order and every focused entry is visible', async ({ page }) => {
     await openHome(page, VIEWPORTS[1]);
     const nav = page.locator('.topbar .navlinks');
 
@@ -128,7 +128,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     expect(visited).toEqual(EXPECTED);
   });
 
-  test('Shift+Tab reverses through navigation', async ({ page }) => {
+  test('@p1 Shift+Tab reverses through navigation', async ({ page }) => {
     await openHome(page, VIEWPORTS[6]);
     const links = page.locator('.topbar .navlinks > a');
     await links.last().focus();
@@ -137,7 +137,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     await expect(links.nth(7)).toBeFocused();
   });
 
-  test('mobile-safety.css does not override homepage compact padding at 320px', async ({ page }) => {
+  test('@p0 mobile-safety.css does not override homepage compact padding at 320px', async ({ page }) => {
     await openHome(page, VIEWPORTS[0]);
     const metrics = await navMetrics(page);
     for (const link of metrics.links) {
@@ -157,7 +157,7 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
     expect(sourceContract.touch).toBe('44px');
   });
 
-  test('mobile navigation computed CSS keeps the intended rail contract', async ({ page }) => {
+  test('@p0 mobile navigation computed CSS keeps the intended rail contract', async ({ page }) => {
     await openHome(page, VIEWPORTS[2]);
     const css = await page.locator('.topbar .navlinks').evaluate(nav => {
       const s = getComputedStyle(nav);
