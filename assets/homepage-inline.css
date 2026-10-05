@@ -35,7 +35,7 @@ a{color:inherit}.topbar{position:sticky;top:0;z-index:1000;display:flex;justify-
 
 /* Moonlit editorial redesign */
 
-body:before{content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse at 85% 8%,rgba(45,80,111,.12),transparent 40%);z-index:-1}
+body:before{content:"";pointer-events:none;position:fixed;left:0;top:0;width:100vw;height:100vh;background:radial-gradient(ellipse at 85% 8%,rgba(45,80,111,.12),transparent 40%);z-index:-1}
 button{font:inherit}
 .skip-link{position:fixed;z-index:3000;top:-80px;left:16px;padding:10px 16px;background:var(--gold2);color:#07111d;border-radius:8px}
 .skip-link:focus{top:12px}
