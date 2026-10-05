@@ -5,8 +5,8 @@ const ROOT=process.cwd();
 const errors=[], warnings=[];
 const exists=p=>fs.existsSync(path.join(ROOT,p.replace(/^\//,'')));
 const text=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
-const htmlFiles=[];
-const walk=d=>{for(const e of fs.readdirSync(path.join(ROOT,d),{withFileTypes:true})){const p=path.posix.join(d,e.name);if(['.git','node_modules','playwright-report','test-results'].some(x=>p===x||p.startsWith(x+'/')))continue;if(e.isDirectory())walk(p);else if(/\.html$/i.test(e.name))htmlFiles.push(p)}};
+const htmlFiles=[], referenceFiles=[];
+const walk=d=>{for(const e of fs.readdirSync(path.join(ROOT,d),{withFileTypes:true})){const p=path.posix.join(d,e.name);if(['.git','node_modules','playwright-report','test-results'].some(x=>p===x||p.startsWith(x+'/')))continue;if(e.isDirectory())walk(p);else if(/\.html$/i.test(e.name)){htmlFiles.push(p);referenceFiles.push(p)}else if(/\.(?:css|js|mjs)$/i.test(e.name))referenceFiles.push(p)}};
 walk('.');
 
 for(const file of htmlFiles){
@@ -53,6 +53,11 @@ for(const [p,n] of large){
  else warnings.push(`known performance debt: ${p} ${(n/1024/1024).toFixed(2)} MiB (must not grow)`);
 }
 for(const p of ASSET_BASELINE.keys())if(!exists(p))warnings.push(`performance debt removed or renamed: ${p}; update baseline after verification`);
+for(const p of ASSET_BASELINE.keys()){
+ if(!exists(p)) continue;
+ const referenced=referenceFiles.some(file=>text(file).includes(p)||text(file).includes(encodeURI(p))||text(file).includes(path.posix.basename(p)));
+ if(!referenced) warnings.push(`known large asset appears unreferenced by HTML/CSS/JS: ${p}; candidate for manual removal review`);
+}
 
 console.log(`Quality contract: ${htmlFiles.length} HTML files checked`);
 warnings.forEach(x=>console.warn('WARN '+x));
