@@ -35,10 +35,24 @@ for(const required of ['sw.js','robots.txt','sitemap.xml','apple-touch-icon.png'
 const sitemap=text('sitemap.xml');
 if(!sitemap.includes('https://vetjeremy-jpg.github.io/miaoshu.github.io/'))errors.push('sitemap.xml: canonical site root missing');
 
+const ASSET_BASELINE = new Map([
+  ['gallery/ChatGPT Image 2026年9月3日 下午04_34_30.png', 2635000],
+  ['gallery/ChatGPT Image 2026年9月3日 下午04_36_27.png', 2730000],
+  ['gallery/ChatGPT Image 2026年9月3日 下午04_43_25.png', 2720000],
+  ['logo.PNG', 1910000],
+  ['logo.png', 2400000]
+]);
+const LARGE_ASSET_LIMIT=1024*1024;
 const large=[];
 const scan=d=>{for(const e of fs.readdirSync(path.join(ROOT,d),{withFileTypes:true})){const p=path.posix.join(d,e.name);if(['.git','node_modules','playwright-report','test-results'].some(x=>p===x||p.startsWith(x+'/')))continue;if(e.isDirectory())scan(p);else{const n=fs.statSync(path.join(ROOT,p)).size;if(n>1024*1024)large.push([p,n])}}};
 scan('.');
-for(const [p,n] of large)warnings.push(`large asset: ${p} ${(n/1024/1024).toFixed(2)} MiB`);
+for(const [p,n] of large){
+ const baseline=ASSET_BASELINE.get(p);
+ if(baseline===undefined)errors.push(`new large asset exceeds 1 MiB budget: ${p} ${(n/1024/1024).toFixed(2)} MiB`);
+ else if(n>baseline)errors.push(`existing large asset regressed: ${p} ${n} > baseline ${baseline} bytes`);
+ else warnings.push(`known performance debt: ${p} ${(n/1024/1024).toFixed(2)} MiB (must not grow)`);
+}
+for(const p of ASSET_BASELINE.keys())if(!exists(p))warnings.push(`performance debt removed or renamed: ${p}; update baseline after verification`);
 
 console.log(`Quality contract: ${htmlFiles.length} HTML files checked`);
 warnings.forEach(x=>console.warn('WARN '+x));
