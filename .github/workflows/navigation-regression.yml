@@ -125,7 +125,7 @@ jobs:
       - name: Run runtime zero-error gate
         id: runtime_zero_gate
         env:
-          BASE_URL: http://127.0.0.1:4173/
+          BASE_URL: http://127.0.0.1:4174/miaoshu.github.io/
         run: npm run test:runtime-zero
 
       - name: Run P1 interaction suite
