@@ -75,7 +75,10 @@ const criticalRoutes=[
   {path:'search/',file:'../search/index.html'},
   {path:'gallery/',file:'../gallery/index.html',sentinels:['<h1>喵叔攝影館</h1>','id="degoo-album"','aria-label="攝影作品"']},
   {path:'posts/',file:'../posts/index.html',sentinels:['<h1>寫作札記</h1>','id="journey-timeline"','id="journey-map"']},
-  {path:'about/',file:'../about/index.html',sentinels:['<h1>關於喵叔</h1>','about-crescent-gold','aria-label="主選單"']}
+  {path:'about/',file:'../about/index.html',sentinels:['<h1>關於喵叔</h1>','about-crescent-gold','aria-label="主選單"']},
+  {path:'books/fusheng-suiyue/',file:'../books/fusheng-suiyue/index.html'},
+  {path:'books/two-skies/',file:'../books/two-skies/index.html'},
+  {path:'newsletter/',file:'../newsletter/index.html'}
 ];
 for(const route of criticalRoutes){
   const local=await readFile(new URL(route.file,import.meta.url),'utf8');
@@ -90,6 +93,13 @@ for(const route of criticalRoutes){
     must(`production ${route.path} must retain semantic sentinel: ${sentinel}`,live.includes(sentinel));
   }
   routeFingerprints.push({path:route.path,expected:expectedHash,live:liveHash,match:liveHash===expectedHash,semanticSentinels:(route.sentinels||[]).length});
+}
+for(const path of ['robots.txt','sitemap.xml']){
+  const local=await readFile(new URL('../'+path,import.meta.url),'utf8');
+  const res=await get(path);
+  mustType(path,res,/text\/(?:plain|xml)|application\/xml/);
+  const live=await res.text();
+  must(`production ${path} content fingerprint must match repository`,sha256(live)===sha256(local));
 }
 const manifestRes=await get('site.webmanifest');
 diagnostics.push(headerSnapshot('manifest',manifestRes));
