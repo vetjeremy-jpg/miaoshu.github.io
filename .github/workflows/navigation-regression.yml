@@ -115,9 +115,8 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:reader
 
-      - name: Run P1 interaction suite before merge or on manual verification
+      - name: Run P1 interaction suite
         id: p1_gate
-        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
         env:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:nav:p1

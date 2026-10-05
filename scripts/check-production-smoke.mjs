@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 const BASE='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-async function get(path, attempts=4){
+async function get(path, attempts=6){
   let last;
   for(let i=0;i<attempts;i++){
     try{
@@ -59,7 +59,7 @@ async function waitForRuntime(attempts=6){
   }
   throw new Error(`production runtime must match repository fingerprint (expected ${expectedRuntime}, found ${liveRuntime||'missing'})`);
 }
-const {home,liveRuntime}=await waitForRuntime();
+const {home,liveRuntime}=await waitForRuntime(12);
 const liveHomeHash=sha256(home);
 must(`production homepage content fingerprint must match repository (expected ${expectedHomeHash.slice(0,12)}, found ${liveHomeHash.slice(0,12)})`,liveHomeHash===expectedHomeHash);
 const nav=home.match(/<nav class="navlinks"[^>]*>([\s\S]*?)<\/nav>/)?.[1]||'';
