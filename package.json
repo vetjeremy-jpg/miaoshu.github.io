@@ -23,6 +23,6 @@
     "test:production-contract": "node --check scripts/check-production-smoke.mjs && node scripts/check-production-contract.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "1.55.0"
+    "@playwright/test": "1.63.0"
   }
 }
