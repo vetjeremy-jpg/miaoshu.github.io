@@ -76,8 +76,8 @@ const criticalRoutes=[
   {path:'gallery/',file:'../gallery/index.html',sentinels:['<h1>喵叔攝影館</h1>','id="degoo-album"','aria-label="攝影作品"']},
   {path:'posts/',file:'../posts/index.html',sentinels:['<h1>寫作札記</h1>','id="journey-timeline"','id="journey-map"']},
   {path:'about/',file:'../about/index.html',sentinels:['<h1>關於喵叔</h1>','about-crescent-gold','aria-label="主選單"']},
-  {path:'books/fusheng-suiyue/',file:'../books/fusheng-suiyue/index.html'},
-  {path:'books/two-skies/',file:'../books/two-skies/index.html'},
+  {path:'books/fushengsuiyue/',file:'../books/fushengsuiyue/index.html'},
+  {path:'books/liangzhongtiankong/',file:'../books/liangzhongtiankong/index.html'},
   {path:'newsletter/',file:'../newsletter/index.html'}
 ];
 for(const route of criticalRoutes){
