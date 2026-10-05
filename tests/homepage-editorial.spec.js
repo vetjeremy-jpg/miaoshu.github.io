@@ -136,6 +136,36 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     }
   });
 
+  test('approved 320/375/390/430 retention contract stays intact', async ({ page }) => {
+    const expected={
+      320:{comment:280}, 375:{comment:300}, 390:{comment:300}, 430:{comment:340}
+    };
+    for (const width of [320,375,390,430]) {
+      await page.setViewportSize({ width, height:932 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+      const state=await page.evaluate(() => {
+        const comment=document.querySelector('#community .reader-comment-frame');
+        const support=document.querySelector('#support');
+        const closing=document.querySelector('.moonlit-closing');
+        const newsletter=document.querySelector('#newsletter');
+        return {
+          commentDisplay:getComputedStyle(comment).display,
+          commentMax:Math.round(parseFloat(getComputedStyle(comment).maxHeight)),
+          supportBeforeNewsletter:support.getBoundingClientRect().top < newsletter.getBoundingClientRect().top,
+          prematureNewsletterCtas:[...document.querySelectorAll('#support a,#support button,.moonlit-closing a,.moonlit-closing button')].filter(x=>/訂閱月光來信/.test(x.textContent||'')).length,
+          newsletterButtons:[...newsletter.querySelectorAll('button[type="submit"]')].filter(x=>getComputedStyle(x).display!=='none').length,
+          breathingDisplay:getComputedStyle(document.querySelector('.moonlit-breathing-quote')).display
+        };
+      });
+      expect(state.commentDisplay, width+'px comment preview visible').not.toBe('none');
+      expect(state.commentMax, width+'px comment preview height').toBe(expected[width].comment);
+      expect(state.supportBeforeNewsletter, width+'px support before newsletter').toBeTruthy();
+      expect(state.prematureNewsletterCtas, width+'px no premature newsletter CTA').toBe(0);
+      expect(state.newsletterButtons, width+'px one newsletter submit').toBe(1);
+      expect(state.breathingDisplay, width+'px legacy breathing quote hidden').toBe('none');
+    }
+  });
+
   test('editorial CSS remains before mobile-safety in source order', async ({ page }) => {
     await open(page, VIEWPORTS[2]);
     const hrefs=await page.locator('link[rel="stylesheet"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')||''));
