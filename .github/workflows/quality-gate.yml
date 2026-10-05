@@ -22,11 +22,25 @@ jobs:
     steps:
       - name: Checkout tested commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '22'
+
+      - name: Resolve changed files for strict publishing policy
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"
+          git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" > "$RUNNER_TEMP/moonlit-changed-files.txt"
+          {
+            echo "MOONLIT_CHANGED_FILES<<EOF"
+            cat "$RUNNER_TEMP/moonlit-changed-files.txt"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
 
       - name: Run unified static quality gate
         run: npm run test:static
@@ -41,7 +55,7 @@ jobs:
             echo "- Local links and assets: checked"
             echo "- HTML / PWA contract: checked"
             echo "- SEO / sitemap / canonical: checked"
-            echo "- Publishing contract: checked"
+            echo "- Publishing contract: checked (changed pages use strict media policy)"
             echo "- Large-asset regression budget: checked"
             echo "- Tested commit: ${{ github.sha }}"
           } >> "$GITHUB_STEP_SUMMARY"
