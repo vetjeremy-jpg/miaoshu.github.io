@@ -55,8 +55,24 @@ jobs:
       - name: Install locked test dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
 
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Resolve Playwright version
+        id: playwright_version
+        shell: bash
+        run: node -e "const p=require('./package-lock.json'); console.log('version='+p.packages['node_modules/@playwright/test'].version)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore Playwright browser cache
+        id: playwright_cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.playwright_version.outputs.version }}-chromium
+
+      - name: Install Chromium system dependencies
+        run: npx playwright install-deps chromium
+
+      - name: Install Chromium browser
+        if: steps.playwright_cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium
 
       - name: Start local static site
         run: |
