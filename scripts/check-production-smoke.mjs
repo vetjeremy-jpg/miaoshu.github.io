@@ -67,9 +67,16 @@ const labels=[...nav.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)].map(m=>m[1].replace
 const expected=['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','⌕ 搜尋'];
 must('production homepage must expose the exact nine-entry navigation',JSON.stringify(labels)===JSON.stringify(expected));
 must('production homepage must link its manifest',home.includes('href="/miaoshu.github.io/site.webmanifest"'));
+must('production homepage must retain the newsletter destination',home.includes('id="newsletter"'));
+for(const href of ['books/fushengsuiyue/','books/liangzhongtiankong/']){
+  must(`production homepage must retain core novel discovery: ${href}`,home.includes(href));
+}
 
 const routeFingerprints=[];
 const criticalRoutes=[
+  {path:'books/fushengsuiyue/',file:'../books/fushengsuiyue/index.html',sentinels:['浮生歲月','作者：喵叔']},
+  {path:'books/liangzhongtiankong/',file:'../books/liangzhongtiankong/index.html',sentinels:['兩種天空','作者：喵叔']},
+  {path:'newsletter/',file:'../newsletter/index.html',sentinels:['月光來信','MOONLIT LETTERS']},
   {path:'videos/',file:'../videos/index.html'},
   {path:'works/',file:'../works/index.html'},
   {path:'search/',file:'../search/index.html'},
@@ -91,6 +98,20 @@ for(const route of criticalRoutes){
   }
   routeFingerprints.push({path:route.path,expected:expectedHash,live:liveHash,match:liveHash===expectedHash,semanticSentinels:(route.sentinels||[]).length});
 }
+const robotsRes=await get('robots.txt');
+diagnostics.push(headerSnapshot('robots',robotsRes));
+mustType('robots.txt',robotsRes,/text\/plain/);
+const robots=await robotsRes.text();
+must('production robots.txt must advertise the canonical sitemap',robots.includes(BASE+'sitemap.xml'));
+
+const sitemapRes=await get('sitemap.xml');
+diagnostics.push(headerSnapshot('sitemap',sitemapRes));
+mustType('sitemap.xml',sitemapRes,/(application\/xml|text\/xml)/);
+const liveSitemap=await sitemapRes.text();
+for(const url of [BASE,BASE+'books/fushengsuiyue/',BASE+'books/liangzhongtiankong/']){
+  must(`production sitemap must retain core URL: ${url}`,liveSitemap.includes(`<loc>${url}</loc>`));
+}
+
 const manifestRes=await get('site.webmanifest');
 diagnostics.push(headerSnapshot('manifest',manifestRes));
 mustType('site.webmanifest',manifestRes,/(application\/manifest\+json|application\/json)/);
