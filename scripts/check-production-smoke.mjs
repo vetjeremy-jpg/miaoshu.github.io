@@ -33,6 +33,7 @@ const sha256=s=>createHash('sha256').update(normalizeText(s),'utf8').digest('hex
 
 
 const localHome=await readFile(new URL('../index.html',import.meta.url),'utf8');
+const localJourneys=await readFile(new URL('../posts/journeys.js',import.meta.url),'utf8');
 const localSw=await readFile(new URL('../sw.js',import.meta.url),'utf8');
 const localManifest=JSON.parse(await readFile(new URL('../site.webmanifest',import.meta.url),'utf8'));
 const swValue=(source,name)=>source.match(new RegExp(`const ${name}='([^']+)'`))?.[1];
@@ -72,6 +73,8 @@ const bookBlock=localHome.match(/<!-- BOOKS:START -->([\s\S]*?)<!-- BOOKS:END --
 const novelPaths=[...new Set([...bookBlock.matchAll(/href=["'](?:\.\/)?(books\/[^"'#?]+\/)(?:index\.html)?(?:#[^"']*)?["']/g)].map(m=>m[1]))];
 must('repository homepage bookshelf must expose at least one novel route',novelPaths.length>0);
 for(const href of novelPaths) must(`production homepage must retain novel discovery: ${href}`,home.includes(href));
+const postPaths=[...new Set([...localJourneys.matchAll(/\barticleUrl:\s*["']([^"']+\/?)["']/g)].map(m=>'posts/'+m[1].replace(/^\.\//,'').replace(/index\.html$/,'')))];
+must('repository journey data must expose at least one published post route',postPaths.length>0);
 
 const routeFingerprints=[];
 const criticalRoutes=[
@@ -109,7 +112,7 @@ const sitemapRes=await get('sitemap.xml');
 diagnostics.push(headerSnapshot('sitemap',sitemapRes));
 mustType('sitemap.xml',sitemapRes,/(application\/xml|text\/xml)/);
 const liveSitemap=await sitemapRes.text();
-for(const url of [BASE,...novelPaths.map(path=>BASE+path)]){
+for(const url of [BASE,...novelPaths.map(path=>BASE+path),...postPaths.map(path=>BASE+path)]){
   must(`production sitemap must retain discoverable URL: ${url}`,liveSitemap.includes(`<loc>${url}</loc>`));
 }
 
@@ -162,6 +165,8 @@ const report={
   homepageFingerprint:{expected:expectedHomeHash,live:liveHomeHash,match:liveHomeHash===expectedHomeHash},
   publishedNovelCount:novelPaths.length,
   publishedNovelPaths:novelPaths,
+  publishedPostCount:postPaths.length,
+  publishedPostPaths:postPaths,
   routeFingerprints,
   serviceWorker:{shell:expectedShell,pages:expectedPages,scope:expectedScope},
   resources:diagnostics.slice(-4)
