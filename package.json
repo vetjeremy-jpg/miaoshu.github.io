@@ -11,7 +11,8 @@
     "test:performance": "playwright test tests/homepage-performance.spec.js",
     "test:rc": "playwright test tests/release-candidate.spec.js",
     "test:pwa": "playwright test tests/pwa-lifecycle.spec.js",
-    "test:reader": "playwright test tests/reader-journey.spec.js"
+    "test:reader": "playwright test tests/reader-journey.spec.js",
+    "test:quality": "node scripts/check-quality-contract.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.55.0"
