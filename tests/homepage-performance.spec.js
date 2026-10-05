@@ -72,14 +72,15 @@ test.describe('homepage performance regression contract',()=>{
       const heroDelay=await page.evaluate(start=>performance.now()-start,t0);
       expect(heroDelay,width+'px hero interaction delay').toBeLessThanOrEqual(BUDGET.interactionMs);
 
-      await page.locator('#support').scrollIntoViewIfNeeded();
-      const like=page.locator('#like-site');
-      const before=await like.getAttribute('aria-pressed');
+      await page.locator('#book').scrollIntoViewIfNeeded();
+      const toggle=page.locator('#show-all-novels');
+      await expect(toggle).toBeVisible();
+      const before=await toggle.getAttribute('aria-expanded');
       const t1=await page.evaluate(()=>performance.now());
-      await like.click();
-      await expect(like).not.toHaveAttribute('aria-pressed',before);
-      const likeDelay=await page.evaluate(start=>performance.now()-start,t1);
-      expect(likeDelay,width+'px like interaction delay').toBeLessThanOrEqual(BUDGET.interactionMs);
+      await toggle.click();
+      await expect(toggle).not.toHaveAttribute('aria-expanded',before);
+      const toggleDelay=await page.evaluate(start=>performance.now()-start,t1);
+      expect(toggleDelay,width+'px shelf interaction delay').toBeLessThanOrEqual(BUDGET.interactionMs);
     });
   }
 });
