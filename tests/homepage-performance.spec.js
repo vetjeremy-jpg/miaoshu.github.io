@@ -7,7 +7,7 @@ const BUDGET={
   imageKB:420,
   largestImageKB:275,
   lcpMs:2500,
-  cls:0.40,
+  cls:0.10,
   interactionMs:200
 };
 
@@ -17,13 +17,13 @@ test.describe('homepage performance regression contract',()=>{
       await page.setViewportSize({width,height:932});
 
       await page.addInitScript(()=>{
-        window.__moonlitPerf={lcp:0,cls:0};
+        window.__moonlitPerf={lcp:0,cls:0,shifts:[]};
         new PerformanceObserver(list=>{
           const entries=list.getEntries();
           if(entries.length) window.__moonlitPerf.lcp=entries[entries.length-1].startTime;
         }).observe({type:'largest-contentful-paint',buffered:true});
         new PerformanceObserver(list=>{
-          for(const e of list.getEntries()) if(!e.hadRecentInput) window.__moonlitPerf.cls+=e.value;
+          for(const e of list.getEntries()) if(!e.hadRecentInput){ window.__moonlitPerf.cls+=e.value; window.__moonlitPerf.shifts.push({value:e.value,sources:(e.sources||[]).map(s=>({node:s.node&&s.node.id?'#'+s.node.id:(s.node&&s.node.className?String(s.node.className):s.node&&s.node.tagName),previousRect:s.previousRect,currentRect:s.currentRect}))}); }
         }).observe({type:'layout-shift',buffered:true});
       });
 
@@ -50,6 +50,7 @@ test.describe('homepage performance regression contract',()=>{
           largestImageKB:Math.max(0,...images.map(r=>bytes(r)/1024)),
           lcp:window.__moonlitPerf.lcp,
           cls:window.__moonlitPerf.cls,
+          shifts:window.__moonlitPerf.shifts,
           images:imageEls
         };
       });
@@ -60,7 +61,7 @@ test.describe('homepage performance regression contract',()=>{
       expect(metrics.largestImageKB,width+'px largest image KB').toBeLessThanOrEqual(BUDGET.largestImageKB);
       expect(metrics.lcp,width+'px LCP').toBeGreaterThan(0);
       expect(metrics.lcp,width+'px LCP').toBeLessThanOrEqual(BUDGET.lcpMs);
-      expect(metrics.cls,width+'px CLS').toBeLessThanOrEqual(BUDGET.cls);
+      expect(metrics.cls,width+'px CLS '+JSON.stringify(metrics.shifts)).toBeLessThanOrEqual(BUDGET.cls);
 
       const oversized=metrics.images.filter(img=>img.renderedWidth>0&&img.naturalWidth>Math.max(1200,img.renderedWidth*4));
       expect(oversized,width+'px oversized decoded images').toEqual([]);
