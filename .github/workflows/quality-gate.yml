@@ -45,6 +45,9 @@ jobs:
       - name: Run unified static quality gate
         run: npm run test:static
 
+      - name: Verify production smoke contract is PR-safe
+        run: npm run test:production-contract
+
       - name: Publish quality summary
         if: always()
         shell: bash
