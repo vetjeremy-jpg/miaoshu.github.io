@@ -166,6 +166,46 @@ test.describe('Moonlit homepage editorial rhythm', () => {
     }
   });
 
+  test('320/375/390/430 primary interaction contract stays usable', async ({ page }) => {
+    for (const width of [320,375,390,430]) {
+      await page.setViewportSize({ width, height:932 });
+      await page.goto('./', { waitUntil:'domcontentloaded' });
+
+      const hero=page.locator('.hero-primary');
+      await expect(hero).toHaveAttribute('href','#tonight');
+      await expect(hero).toBeVisible();
+
+      const tonight=page.locator('#tonight .tonight-grid article > a');
+      await expect(tonight).toHaveCount(3);
+      await expect(tonight.nth(0)).toHaveAttribute('href','books/liangzhongtiankong/index.html');
+      await expect(tonight.nth(1)).toHaveAttribute('href','gallery/index.html#degoo-album');
+      await expect(tonight.nth(2)).toHaveAttribute('href','videos/index.html');
+
+      const support=page.locator('#support');
+      await support.scrollIntoViewIfNeeded();
+      await expect(page.locator('#like-site')).toBeVisible();
+      await expect(page.locator('#like-site')).toHaveAttribute('aria-pressed',/^(true|false)$/);
+      await expect(page.locator('#save-site')).toBeVisible();
+
+      const newsletter=page.locator('#newsletter');
+      await newsletter.scrollIntoViewIfNeeded();
+      const email=page.locator('#moonlit-email');
+      const submit=newsletter.locator('button[type="submit"]');
+      await expect(email).toBeVisible();
+      await expect(email).toHaveAttribute('type','email');
+      await expect(email).toHaveAttribute('required','');
+      await expect(submit).toHaveCount(1);
+      await expect(submit).toBeVisible();
+
+      const geometry=await page.evaluate(() => ({
+        overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+        premature:[...document.querySelectorAll('#support a,#support button,.moonlit-closing a,.moonlit-closing button')].filter(x=>/訂閱月光來信/.test(x.textContent||'')).length
+      }));
+      expect(geometry.overflow, width+'px page overflow').toBeLessThanOrEqual(1);
+      expect(geometry.premature, width+'px premature newsletter CTA').toBe(0);
+    }
+  });
+
   test('editorial CSS remains before mobile-safety in source order', async ({ page }) => {
     await open(page, VIEWPORTS[2]);
     const hrefs=await page.locator('link[rel="stylesheet"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')||''));
