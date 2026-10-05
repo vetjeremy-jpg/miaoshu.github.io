@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const ROUTES = ['./','./book.html','./gallery/','./posts/','./videos/','./about/','./works/'];
+const ROUTES = ['./','./gallery/','./posts/','./videos/','./about/','./works/','./books/fushengsuiyue/index.html','./books/liangzhongtiankong/index.html'];
 
 for (const route of ROUTES) {
   test(`critical accessibility contract: ${route}`, async ({ page }) => {
