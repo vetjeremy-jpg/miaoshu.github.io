@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT=process.cwd();
-const errors=[];
+const errors=[], warnings=[];
 const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const exists=p=>fs.existsSync(path.join(ROOT,p));
 const site='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
@@ -35,11 +35,18 @@ const publicPages=['index.html','gallery/index.html','posts/index.html','videos/
 for(const file of publicPages){
   const html=read(file);
   for(const m of html.matchAll(/<img\b([^>]*)>/gi)){
-    if(!/\balt\s*=\s*["'][^"']*["']/i.test(m[1])) errors.push(`${file}: image missing alt attribute`);
+    const attrs=m[1];
+    if(!/\balt\s*=\s*["'][^"']*["']/i.test(attrs)) errors.push(`${file}: image missing alt attribute`);
+    const src=attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1]||'';
+    const isLocal=src && !/^(?:https?:|data:|blob:|\/\/)/i.test(src);
+    const isCritical=/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
+    if(isLocal && !isCritical && !/\bloading\s*=\s*["']lazy["']/i.test(attrs)) warnings.push(`${file}: local non-critical image should use loading="lazy": ${src}`);
+    if(isLocal && !/\b(?:width|height)\s*=\s*["']?\d+/i.test(attrs)) warnings.push(`${file}: local image should declare intrinsic width/height where practical: ${src}`);
   }
 }
 
 console.log(`Publishing contract: ${bookDirs.length} novels, ${postDirs.length} posts, ${publicPages.length} public pages checked`);
+warnings.forEach(e=>console.warn('WARN '+e));
 if(errors.length){
   errors.forEach(e=>console.error('ERROR '+e));
   console.error(`Publishing contract failed with ${errors.length} error(s)`);
