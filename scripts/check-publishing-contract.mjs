@@ -3,6 +3,8 @@ import path from 'node:path';
 
 const ROOT=process.cwd();
 const errors=[], warnings=[];
+const changed=new Set((process.env.MOONLIT_CHANGED_FILES||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean));
+const strictChanged=changed.size>0;
 const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const exists=p=>fs.existsSync(path.join(ROOT,p));
 const site='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
@@ -44,12 +46,18 @@ for(const file of publicPages){
     const isHeroContext=/<(?:header|section)\b[^>]*class=["'][^"']*hero[^"']*["'][^>]*>[\s\S]*$/i.test(before);
     const isCritical=isBrandLogo||isHeroContext||/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
     if(isHeroContext && /\bloading\s*=\s*["']lazy["']/i.test(attrs)) errors.push(`${file}: hero/LCP candidate must not be lazy-loaded: ${src}`);
-    if(isLocal && !isCritical && !/\bloading\s*=\s*["']lazy["']/i.test(attrs)) warnings.push(`${file}: local non-critical image should use loading="lazy": ${src}`);
-    if(isLocal && !isBrandLogo && !/\bwidth\s*=\s*["']?\d+/i.test(attrs) && !/\bheight\s*=\s*["']?\d+/i.test(attrs)) warnings.push(`${file}: local image should declare intrinsic width/height where practical: ${src}`);
+    if(isLocal && !isCritical && !/\bloading\s*=\s*["']lazy["']/i.test(attrs)){
+      const msg=`${file}: local non-critical image should use loading="lazy": ${src}`;
+      if(strictChanged&&changed.has(file)) errors.push(msg); else warnings.push(msg);
+    }
+    if(isLocal && !isBrandLogo && !/\bwidth\s*=\s*["']?\d+/i.test(attrs) && !/\bheight\s*=\s*["']?\d+/i.test(attrs)){
+      const msg=`${file}: local image should declare intrinsic width/height where practical: ${src}`;
+      if(strictChanged&&changed.has(file)) errors.push(msg); else warnings.push(msg);
+    }
   }
 }
 
-console.log(`Publishing contract: ${bookDirs.length} novels, ${postDirs.length} posts, ${publicPages.length} public pages checked`);
+console.log(`Publishing contract: ${bookDirs.length} novels, ${postDirs.length} posts, ${publicPages.length} public pages checked${strictChanged?`, ${changed.size} changed files under strict media policy`:''}`);
 warnings.forEach(e=>console.warn('WARN '+e));
 if(errors.length){
   errors.forEach(e=>console.error('ERROR '+e));
