@@ -428,7 +428,7 @@ body#top:not([data-book-id]) .hero .hero-lede{font-size:clamp(15px,1.35vw,18px);
   margin-top:clamp(54px,7vw,86px)!important
 }
 #creative.explore-more .notice,#about .about-lede,#community>.notice{max-width:42em}
-#community .reader-comment-frame{max-height:560px;overflow:hidden;position:relative}
+#community .reader-comment-frame{display:block!important;max-height:560px;overflow:hidden;position:relative}
 #community .reader-comment-frame::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:90px;pointer-events:none;
   background:linear-gradient(transparent,#07111d)
