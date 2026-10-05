@@ -40,7 +40,10 @@ for(const file of publicPages){
     const src=attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1]||'';
     const isLocal=src && !/^(?:https?:|data:|blob:|\/\/)/i.test(src);
     const isBrandLogo=/(?:^|\/)logo\.(?:webp|png|jpe?g|svg)(?:[?#]|$)/i.test(src);
-    const isCritical=isBrandLogo||/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
+    const before=html.slice(Math.max(0,m.index-240),m.index);
+    const isHeroContext=/<(?:header|section)\b[^>]*class=["'][^"']*hero[^"']*["'][^>]*>[\s\S]*$/i.test(before);
+    const isCritical=isBrandLogo||isHeroContext||/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
+    if(isHeroContext && /\bloading\s*=\s*["']lazy["']/i.test(attrs)) errors.push(`${file}: hero/LCP candidate must not be lazy-loaded: ${src}`);
     if(isLocal && !isCritical && !/\bloading\s*=\s*["']lazy["']/i.test(attrs)) warnings.push(`${file}: local non-critical image should use loading="lazy": ${src}`);
     if(isLocal && !isBrandLogo && !/\bwidth\s*=\s*["']?\d+/i.test(attrs) && !/\bheight\s*=\s*["']?\d+/i.test(attrs)) warnings.push(`${file}: local image should declare intrinsic width/height where practical: ${src}`);
   }
