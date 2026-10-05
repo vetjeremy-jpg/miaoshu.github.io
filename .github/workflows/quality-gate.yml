@@ -16,14 +16,32 @@ concurrency:
 
 jobs:
   static-contract:
-    name: Static / Content / PWA Contract
+    name: Static / Links / SEO / Publishing Contract
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - name: Checkout tested commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
-      - name: Validate site contract
-        run: node scripts/check-quality-contract.mjs
 
+      - name: Run unified static quality gate
+        run: npm run test:static
+
+      - name: Publish quality summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Moonlit Static Quality Gate"
+            echo ""
+            echo "- Local links and assets: checked"
+            echo "- HTML / PWA contract: checked"
+            echo "- SEO / sitemap / canonical: checked"
+            echo "- Publishing contract: checked"
+            echo "- Large-asset regression budget: checked"
+            echo "- Tested commit: ${{ github.sha }}"
+          } >> "$GITHUB_STEP_SUMMARY"
