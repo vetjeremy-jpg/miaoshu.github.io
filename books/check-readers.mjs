@@ -19,12 +19,15 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
   if (library) {
-    const cardStart = library.indexOf(`data-book-id="${entry.name}"`);
-    const nextCard = cardStart >= 0 ? library.indexOf('data-book-id="', cardStart + 1) : -1;
-    const card = cardStart >= 0 ? library.slice(cardStart, nextCard >= 0 ? nextCard : library.length) : '';
+    const bookHref = `books/${entry.name}/index.html#toc`;
+    const linkCount = library.split(bookHref).length - 1;
+    if (linkCount < 2) { console.error(`${entry.name} 的首頁書房卡必須保留封面入口與文字閱讀 CTA`); errors++; }
+    const bookMarker = `data-book-id="${entry.name}"`;
+    const cardStart = library.indexOf(bookMarker);
+    const nextArticle = cardStart >= 0 ? library.indexOf('<article class="novel-card"', cardStart + bookMarker.length) : -1;
+    const card = cardStart >= 0 ? library.slice(cardStart, nextArticle >= 0 ? nextArticle : library.length) : '';
     const summary = card.match(/<div class="book-details">[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1]?.replace(/<[^>]+>/g, '').trim() || '';
     if (!summary) { console.error(`${entry.name} 的首頁書房卡缺少作品簡介`); errors++; }
-    if (!/<a class="book-read"\b[^>]*href="books\//.test(card)) { console.error(`${entry.name} 的首頁書房卡缺少閱讀 CTA`); errors++; }
   }
   if (!/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']\.\.\/reader\.css(?:\?[^"']*)?["']/i.test(html)) { console.error(`${entry.name} 缺少共用樣式 reader.css`); errors++; }
   const requirements = [
