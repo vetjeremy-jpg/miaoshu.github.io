@@ -124,7 +124,16 @@ must('manifest start_url must stay inside Moonlit scope',manifest.start_url==='/
 must('manifest must keep 192 and 512 icons',Array.isArray(manifest.icons)&&['192x192','512x512'].every(size=>manifest.icons.some(icon=>icon.sizes===size)));
 
 const report={
+  schemaVersion:1,
   checkedAt:new Date().toISOString(),
+  provenance:{
+    mainSha:process.env.MOONLIT_MAIN_SHA||'local',
+    eventName:process.env.MOONLIT_EVENT_NAME||'local',
+    actionsRunId:process.env.MOONLIT_ACTIONS_RUN_ID||null,
+    actionsRunAttempt:process.env.MOONLIT_ACTIONS_RUN_ATTEMPT||null,
+    pagesRunId:process.env.MOONLIT_PAGES_RUN_ID||null,
+    pagesRunUrl:process.env.MOONLIT_PAGES_RUN_URL||null
+  },
   base:BASE,
   expectedRuntime,
   liveRuntime,
