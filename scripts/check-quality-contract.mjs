@@ -13,8 +13,8 @@ for(const file of htmlFiles){
  const s=text(file);
  for(const m of s.matchAll(/(?:href|src)=["']([^"'#]+)["']/gi)){
   const u=m[1];
-  if(/^(?:https?:|mailto:|tel:|data:|javascript:|\/\/)/i.test(u))continue;
-  const clean=u.split(/[?#]/)[0]; if(!clean)continue;
+  if(/^(?:https?:|mailto:|tel:|data:|javascript:|about:|blob:|\/\/)/i.test(u))continue;
+  let clean=u.split(/[?#]/)[0]; if(!clean)continue; try{clean=decodeURIComponent(clean)}catch{}
   const base=path.posix.dirname(file);
   let target=clean.startsWith('/miaoshu.github.io/')?clean.slice('/miaoshu.github.io/'.length):path.posix.normalize(path.posix.join(base,clean));
   target=target.replace(/^\.\//,'');
