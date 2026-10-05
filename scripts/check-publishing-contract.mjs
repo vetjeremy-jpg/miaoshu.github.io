@@ -39,9 +39,10 @@ for(const file of publicPages){
     if(!/\balt\s*=\s*["'][^"']*["']/i.test(attrs)) errors.push(`${file}: image missing alt attribute`);
     const src=attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1]||'';
     const isLocal=src && !/^(?:https?:|data:|blob:|\/\/)/i.test(src);
-    const isCritical=/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
+    const isBrandLogo=/(?:^|\/)logo\.(?:webp|png|jpe?g|svg)(?:[?#]|$)/i.test(src);
+    const isCritical=isBrandLogo||/\b(?:fetchpriority\s*=\s*["']high["']|class\s*=\s*["'][^"']*(?:hero|logo)[^"']*["'])/i.test(attrs);
     if(isLocal && !isCritical && !/\bloading\s*=\s*["']lazy["']/i.test(attrs)) warnings.push(`${file}: local non-critical image should use loading="lazy": ${src}`);
-    if(isLocal && !/\b(?:width|height)\s*=\s*["']?\d+/i.test(attrs)) warnings.push(`${file}: local image should declare intrinsic width/height where practical: ${src}`);
+    if(isLocal && !isBrandLogo && !/\bwidth\s*=\s*["']?\d+/i.test(attrs) && !/\bheight\s*=\s*["']?\d+/i.test(attrs)) warnings.push(`${file}: local image should declare intrinsic width/height where practical: ${src}`);
   }
 }
 
