@@ -18,6 +18,15 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
   if (library && (!library.includes(`data-book-id="${entry.name}"`) || !library.includes(`books/${entry.name}/index.html#toc`))) {
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
+  if (library) {
+    const escaped = entry.name.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\  if (library && (!library.includes(`data-book-id="${entry.name}"`) || !library.includes(`books/${entry.name}/index.html#toc`))) {
+    console.error(`${entry.name} 未加入首頁小說書房`); errors++;
+  }');
+    const card = library.match(new RegExp(`<article class="novel-card" data-book-id="${escaped}"[\\s\\S]*?<\\/article>`))?.[0] || '';
+    const summary = card.match(/<div class="book-details">[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1]?.replace(/<[^>]+>/g, '').trim() || '';
+    if (!summary) { console.error(`${entry.name} 的首頁書房卡缺少作品簡介`); errors++; }
+    if (!/<a class="book-read"\b[^>]*href="books\//.test(card)) { console.error(`${entry.name} 的首頁書房卡缺少閱讀 CTA`); errors++; }
+  }
   if (!/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']\.\.\/reader\.css(?:\?[^"']*)?["']/i.test(html)) { console.error(`${entry.name} 缺少共用樣式 reader.css`); errors++; }
   const requirements = [
     ['共用功能', 'src="../reader.js'],
@@ -32,6 +41,12 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
   const toc = [...html.matchAll(/<a href="#chapter-(\d+)"><span>/g)].map(m => +m[1]);
   if (!chapters.length || chapters.some((n, i) => n !== i + 1) || JSON.stringify(chapters) !== JSON.stringify(toc)) {
     console.error(`${entry.name} 的章節與目錄編號不一致`); errors++;
+  }
+  if (entry.name === 'liangzhongtiankong') {
+    if (chapters.length !== 15) { console.error('《兩種天空》第一部必須完整保留十五章'); errors++; }
+    for (const marker of ['作品狀態</dt><dd>本部完結', '預估閱讀</dt><dd>', 'href="#chapter-1">從第一章開始']) {
+      if (!html.includes(marker)) { console.error(`《兩種天空》缺少旗艦閱讀內容契約：${marker}`); errors++; }
+    }
   }
 }
 console.log(`已檢查 ${checked} 本小說；${errors} 項問題。`);
