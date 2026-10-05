@@ -32,6 +32,25 @@ for(const slug of postDirs){
   if(!postsIndex.includes(`${slug}/`)&&!postsIndex.includes(`${slug}/index.html`)) errors.push(`post missing from posts index: posts/${slug}/`);
 }
 
+
+const videosHtml=read('videos/index.html');
+const videoButtons=[...videosHtml.matchAll(/class=["'][^"']*video-pick[^"']*["'][^>]*data-video=["']([^"']+)["']/g)].map(m=>m[1]);
+const videoIds=[...videosHtml.matchAll(/const ids=\[([^\]]+)\]/g)].flatMap(m=>[...m[1].matchAll(/["']([^"']+)["']/g)].map(x=>x[1]));
+if(!videoButtons.length) errors.push('videos: no playable video controls found');
+if(videoButtons.length!==videoIds.length||videoButtons.some((id,i)=>id!==videoIds[i])) errors.push('videos: playlist data-video order must match player ids[]');
+if(!/id=["']youtube-link["'][^>]+href=["']https:\/\/www\.youtube\.com\/watch\?v=/i.test(videosHtml)) errors.push('videos: YouTube player requires a direct external fallback link');
+if(/instagram\.com\/reel\//i.test(videosHtml)){
+  if(!/<iframe\b[^>]+instagram\.com\/reel\/[^>]+title=["'][^"']+["'][^>]*>/i.test(videosHtml)) errors.push('videos: Instagram embed requires an accessible iframe title');
+  if(!/<a\b[^>]+href=["']https:\/\/www\.instagram\.com\/reel\//i.test(videosHtml)) errors.push('videos: Instagram embed requires a direct external fallback link');
+}
+
+const galleryHtml=read('gallery/index.html');
+const externalGalleryImages=[...galleryHtml.matchAll(/<img\b[^>]+src=["']https?:\/\/[^"']+["'][^>]*>/gi)];
+for(const m of externalGalleryImages){
+  const before=galleryHtml.slice(Math.max(0,m.index-500),m.index);
+  if(!/<a\b[^>]+href=["']https?:\/\/[^"']+["'][^>]*>[\s\S]*$/i.test(before)) errors.push('gallery: externally hosted image must retain a clickable external fallback');
+}
+
 const publicPages=['index.html','gallery/index.html','posts/index.html','videos/index.html','about/index.html','works/index.html',
   ...bookDirs.map(s=>`books/${s}/index.html`),...postDirs.map(s=>`posts/${s}/index.html`)];
 for(const file of publicPages){
