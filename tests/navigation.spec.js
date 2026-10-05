@@ -90,9 +90,14 @@ test.describe('Moonlit 9-entry primary navigation regression', () => {
       await page.waitForTimeout(100);
 
       const after = await navMetrics(page);
-      expect(after.scrollLeft).toBeGreaterThan(before.scrollLeft);
-      expect(after.links.at(-1).visible, '搜尋 visible after horizontal scroll').toBeTruthy();
-      expect(after.links.at(-2).visible, '月光來信 visible after horizontal scroll').toBeTruthy();
+      const maxScroll = Math.max(0, before.scrollWidth - before.clientWidth);
+      if (maxScroll > 1) {
+        expect(after.scrollLeft, 'rail reaches its actual scroll end').toBeGreaterThanOrEqual(maxScroll - 2);
+      } else {
+        expect(after.links.every(x => x.visible), 'all nav entries visible when rail fits without scrolling').toBeTruthy();
+      }
+      expect(after.links.at(-1).visible, '搜尋 visible at rail end').toBeTruthy();
+      expect(after.links.at(-2).visible, '月光來信 visible at rail end').toBeTruthy();
       expect(after.bodyOverflow).toBeLessThanOrEqual(1);
     });
   }

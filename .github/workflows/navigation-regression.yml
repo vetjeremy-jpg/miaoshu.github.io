@@ -103,6 +103,7 @@ jobs:
           BASE_URL: http://127.0.0.1:4174/miaoshu.github.io/
         run: npm run test:pwa
 
+      # Four-width retention contract: 320 / 375 / 390 / 430.
       - name: Run homepage editorial and responsive gate
         id: editorial_gate
         env:
