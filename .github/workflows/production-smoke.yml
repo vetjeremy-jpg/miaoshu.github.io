@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -36,14 +37,22 @@ jobs:
         if: github.event_name == 'workflow_run'
         shell: bash
         run: |
-          test "${{ github.event.workflow_run.head_sha }}" = "$(git rev-parse HEAD)" || {
-            echo "::error::Pages deployment SHA does not match current main. A newer main may be pending deployment."
-            echo "deployed=${{ github.event.workflow_run.head_sha }}"
-            echo "main=$(git rev-parse HEAD)"
-            exit 1
-          }
+          deployed="${{ github.event.workflow_run.head_sha }}"
+          current="$(git rev-parse HEAD)"
+          if [[ "$deployed" != "$current" ]]; then
+            if git merge-base --is-ancestor "$deployed" "$current"; then
+              echo "::notice::Skipping superseded Pages deployment: $deployed; current main is $current."
+              echo "MOONLIT_SUPERSEDED_DEPLOYMENT=true" >> "$GITHUB_ENV"
+            else
+              echo "::error::Pages deployment SHA is not current main or an ancestor of it."
+              echo "deployed=$deployed"
+              echo "main=$current"
+              exit 1
+            fi
+          fi
 
       - name: Verify production site
+        if: env.MOONLIT_SUPERSEDED_DEPLOYMENT != 'true'
         env:
           MOONLIT_MAIN_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
           MOONLIT_EVENT_NAME: ${{ github.event_name }}
@@ -63,6 +72,7 @@ jobs:
             echo "- **Site:** https://vetjeremy-jpg.github.io/miaoshu.github.io/"
             echo "- **Main contract commit:** $(git rev-parse HEAD)"
             if [[ "${{ github.event_name }}" == "workflow_run" ]]; then echo "- **Pages deployed commit:** ${{ github.event.workflow_run.head_sha }}"; fi
+            if [[ "${MOONLIT_SUPERSEDED_DEPLOYMENT:-}" == "true" ]]; then echo "- **Result:** superseded deployment skipped ✓"; fi
             if [[ -f production-smoke-report.json ]]; then
               node -e "const fs=require('fs'),r=JSON.parse(fs.readFileSync('production-smoke-report.json','utf8')); console.log('- **Runtime fingerprint:** '+r.liveRuntime+' ✓'); console.log('- **Homepage fingerprint:** '+r.homepageFingerprint.live.slice(0,12)+' ✓'); console.log('- **Published novels verified:** '+r.publishedNovelCount+' ✓'); console.log('- **Published posts verified:** '+r.publishedPostCount+' ✓'); for(const x of r.routeFingerprints||[]) console.log('- **'+x.path+' fingerprint:** '+x.live.slice(0,12)+' ✓'); console.log('- **SW caches:** '+r.serviceWorker.shell+' / '+r.serviceWorker.pages); console.log(''); console.log('| Resource | Content-Type | Cache-Control | Age | Last-Modified |'); console.log('|---|---|---|---:|---|'); for(const x of r.resources) console.log('| '+x.label+' | '+x.contentType+' | '+x.cacheControl+' | '+x.age+' | '+x.lastModified+' |');"
             else
