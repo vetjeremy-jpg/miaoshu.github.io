@@ -53,6 +53,11 @@ for(const [p,n] of large){
  else warnings.push(`known performance debt: ${p} ${(n/1024/1024).toFixed(2)} MiB (must not grow)`);
 }
 for(const p of ASSET_BASELINE.keys())if(!exists(p))warnings.push(`performance debt removed or renamed: ${p}; update baseline after verification`);
+for(const p of ASSET_BASELINE.keys()){
+ if(!exists(p)) continue;
+ const referenced=htmlFiles.some(file=>text(file).includes(p)||text(file).includes(encodeURI(p)));
+ if(!referenced) warnings.push(`known large asset appears unreferenced by HTML: ${p}; verify CSS/JS references before removal`);
+}
 
 console.log(`Quality contract: ${htmlFiles.length} HTML files checked`);
 warnings.forEach(x=>console.warn('WARN '+x));
