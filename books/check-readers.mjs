@@ -19,7 +19,9 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
   if (library) {
-    const card = library.match(new RegExp(`<article class="novel-card" data-book-id="${entry.name}"[\\s\\S]*?<\\/article>`))?.[0] || '';
+    const cardStart = library.indexOf(`data-book-id="${entry.name}"`);
+    const nextCard = cardStart >= 0 ? library.indexOf('data-book-id="', cardStart + 1) : -1;
+    const card = cardStart >= 0 ? library.slice(cardStart, nextCard >= 0 ? nextCard : library.length) : '';
     const summary = card.match(/<div class="book-details">[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1]?.replace(/<[^>]+>/g, '').trim() || '';
     if (!summary) { console.error(`${entry.name} 的首頁書房卡缺少作品簡介`); errors++; }
     if (!/<a class="book-read"\b[^>]*href="books\//.test(card)) { console.error(`${entry.name} 的首頁書房卡缺少閱讀 CTA`); errors++; }
