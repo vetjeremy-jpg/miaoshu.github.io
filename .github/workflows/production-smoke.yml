@@ -1,8 +1,9 @@
 name: Production Smoke
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
   workflow_dispatch:
   schedule:
     - cron: '17 1 * * 1,4'
@@ -17,16 +18,30 @@ concurrency:
 jobs:
   smoke:
     name: Live GitHub Pages Smoke
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout smoke contract
+      - name: Checkout deployed main contract
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
+
+      - name: Verify deployed commit identity
+        if: github.event_name == 'workflow_run'
+        shell: bash
+        run: |
+          test "${{ github.event.workflow_run.head_sha }}" = "$(git rev-parse HEAD)" || {
+            echo "::error::Pages deployment SHA does not match current main. A newer main may be pending deployment."
+            echo "deployed=${{ github.event.workflow_run.head_sha }}"
+            echo "main=$(git rev-parse HEAD)"
+            exit 1
+          }
 
       - name: Verify production site
         run: node scripts/check-production-smoke.mjs
@@ -39,7 +54,8 @@ jobs:
             echo "## Moonlit Production Smoke"
             echo ""
             echo "- **Site:** https://vetjeremy-jpg.github.io/miaoshu.github.io/"
-            echo "- **Tested commit:** ${{ github.sha }}"
+            echo "- **Main contract commit:** $(git rev-parse HEAD)"
+            if [[ "${{ github.event_name }}" == "workflow_run" ]]; then echo "- **Pages deployed commit:** ${{ github.event.workflow_run.head_sha }}"; fi
             if [[ -f production-smoke-report.json ]]; then
               node -e "const fs=require('fs'),r=JSON.parse(fs.readFileSync('production-smoke-report.json','utf8')); console.log('- **Runtime fingerprint:** '+r.liveRuntime+' ✓'); console.log('- **Homepage fingerprint:** '+r.homepageFingerprint.live.slice(0,12)+' ✓'); for(const x of r.routeFingerprints||[]) console.log('- **'+x.path+' fingerprint:** '+x.live.slice(0,12)+' ✓'); console.log('- **SW caches:** '+r.serviceWorker.shell+' / '+r.serviceWorker.pages); console.log(''); console.log('| Resource | Content-Type | Cache-Control | Age | Last-Modified |'); console.log('|---|---|---|---:|---|'); for(const x of r.resources) console.log('| '+x.label+' | '+x.contentType+' | '+x.cacheControl+' | '+x.age+' | '+x.lastModified+' |');"
             else
