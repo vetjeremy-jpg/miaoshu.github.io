@@ -36,12 +36,15 @@ jobs:
         if: github.event_name == 'workflow_run'
         shell: bash
         run: |
-          test "${{ github.event.workflow_run.head_sha }}" = "$(git rev-parse HEAD)" || {
-            echo "::error::Pages deployment SHA does not match current main. A newer main may be pending deployment."
-            echo "deployed=${{ github.event.workflow_run.head_sha }}"
-            echo "main=$(git rev-parse HEAD)"
+          deployed="${{ github.event.workflow_run.head_sha }}"
+          current="$(git rev-parse HEAD)"
+          git merge-base --is-ancestor "$deployed" "$current" || {
+            echo "::error::Pages deployment SHA is not an ancestor of current main."
+            echo "deployed=$deployed"
+            echo "main=$current"
             exit 1
           }
+          echo "Verified deployed commit $deployed is on current main history ($current)."
 
       - name: Verify production site
         env:
