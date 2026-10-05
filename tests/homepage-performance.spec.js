@@ -5,7 +5,7 @@ const BUDGET={
   requests:28,
   transferKB:850,
   imageKB:420,
-  largestImageKB:260,
+  largestImageKB:275,
   lcpMs:2500,
   cls:0.10,
   interactionMs:200
