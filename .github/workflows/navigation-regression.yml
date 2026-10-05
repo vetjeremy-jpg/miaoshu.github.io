@@ -110,6 +110,12 @@ jobs:
           BASE_URL: http://127.0.0.1:4173/
         run: npm run test:editorial
 
+      - name: Run homepage performance regression gate
+        id: performance_gate
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: npm run test:performance
+
       - name: Run novel reader journey gate
         id: reader_gate
         env:
@@ -132,6 +138,7 @@ jobs:
             echo "- **Release candidate:** ${{ steps.rc_gate.outcome }}"
             echo "- **PWA lifecycle:** ${{ steps.pwa_gate.outcome }}"
             echo "- **Editorial / responsive:** ${{ steps.editorial_gate.outcome }}"
+            echo "- **Performance regression:** ${{ steps.performance_gate.outcome }}"
             echo "- **Novel reader journey:** ${{ steps.reader_gate.outcome }}"
             echo "- **P1 interaction:** ${{ steps.p1_gate.outcome }}"
             echo "- **Viewports:** 320 / 375 / 390 / 430 / 768 / 1024 / 1440"
