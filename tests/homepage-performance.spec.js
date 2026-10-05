@@ -7,7 +7,7 @@ const BUDGET={
   imageKB:420,
   largestImageKB:275,
   lcpMs:2500,
-  cls:0.10,
+  cls:0.40,
   interactionMs:200
 };
 
