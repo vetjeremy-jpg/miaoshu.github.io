@@ -19,10 +19,7 @@ for (const entry of entries.filter(entry => entry.isDirectory() && !entry.name.s
     console.error(`${entry.name} 未加入首頁小說書房`); errors++;
   }
   if (library) {
-    const escaped = entry.name.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\  if (library && (!library.includes(`data-book-id="${entry.name}"`) || !library.includes(`books/${entry.name}/index.html#toc`))) {
-    console.error(`${entry.name} 未加入首頁小說書房`); errors++;
-  }');
-    const card = library.match(new RegExp(`<article class="novel-card" data-book-id="${escaped}"[\\s\\S]*?<\\/article>`))?.[0] || '';
+    const card = library.match(new RegExp(`<article class="novel-card" data-book-id="${entry.name}"[\\s\\S]*?<\\/article>`))?.[0] || '';
     const summary = card.match(/<div class="book-details">[\s\S]*?<p>([\s\S]*?)<\/p>/)?.[1]?.replace(/<[^>]+>/g, '').trim() || '';
     if (!summary) { console.error(`${entry.name} 的首頁書房卡缺少作品簡介`); errors++; }
     if (!/<a class="book-read"\b[^>]*href="books\//.test(card)) { console.error(`${entry.name} 的首頁書房卡缺少閱讀 CTA`); errors++; }
