@@ -50,8 +50,8 @@ for(const file of publicPages){
       const msg=`${file}: local non-critical image should use loading="lazy": ${src}`;
       if(strictChanged&&changed.has(file)) errors.push(msg); else warnings.push(msg);
     }
-    if(isLocal && !isBrandLogo && !/\bwidth\s*=\s*["']?\d+/i.test(attrs) && !/\bheight\s*=\s*["']?\d+/i.test(attrs)){
-      const msg=`${file}: local image should declare intrinsic width/height where practical: ${src}`;
+    if(isLocal && !isBrandLogo && (!/\bwidth\s*=\s*["']?\d+/i.test(attrs) || !/\bheight\s*=\s*["']?\d+/i.test(attrs))){
+      const msg=`${file}: local image should declare both intrinsic width and height where practical: ${src}`;
       if(strictChanged&&changed.has(file)) errors.push(msg); else warnings.push(msg);
     }
   }
