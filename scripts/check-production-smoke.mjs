@@ -160,6 +160,8 @@ const report={
   expectedRuntime,
   liveRuntime,
   homepageFingerprint:{expected:expectedHomeHash,live:liveHomeHash,match:liveHomeHash===expectedHomeHash},
+  publishedNovelCount:novelPaths.length,
+  publishedNovelPaths:novelPaths,
   routeFingerprints,
   serviceWorker:{shell:expectedShell,pages:expectedPages,scope:expectedScope},
   resources:diagnostics.slice(-4)
