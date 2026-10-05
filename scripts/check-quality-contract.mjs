@@ -37,7 +37,7 @@ if(!sitemap.includes('https://vetjeremy-jpg.github.io/miaoshu.github.io/'))error
 
 const ASSET_BASELINE = new Map([
   ['gallery/ChatGPT Image 2026年9月3日 下午04_34_30.png', 2635000],
-  ['gallery/ChatGPT Image 2026年9月3日 下午04_36_27.png', 2730000],
+  ['gallery/ChatGPT Image 2026年9月3日 下午04_36_27.png', 2731386],
   ['gallery/ChatGPT Image 2026年9月3日 下午04_43_25.png', 2720000],
   ['logo.PNG', 1910000],
   ['logo.png', 2400000]
