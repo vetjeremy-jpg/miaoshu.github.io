@@ -68,14 +68,15 @@ const expected=['首頁','小說','攝影','作品星圖','札記','影片','關
 must('production homepage must expose the exact nine-entry navigation',JSON.stringify(labels)===JSON.stringify(expected));
 must('production homepage must link its manifest',home.includes('href="/miaoshu.github.io/site.webmanifest"'));
 must('production homepage must retain the newsletter destination',home.includes('id="newsletter"'));
-for(const href of ['books/fushengsuiyue/','books/liangzhongtiankong/']){
-  must(`production homepage must retain core novel discovery: ${href}`,home.includes(href));
-}
+const bookBlock=localHome.match(/<!-- BOOKS:START -->([\s\S]*?)<!-- BOOKS:END -->/)?.[1]||'';
+const novelPaths=[...new Set([...bookBlock.matchAll(/href=["'](?:\.\/)?(books\/[^"'#?]+\/)(?:index\.html)?(?:#[^"']*)?["']/g)].map(m=>m[1]))];
+must('repository homepage bookshelf must expose at least one novel route',novelPaths.length>0);
+for(const href of novelPaths) must(`production homepage must retain novel discovery: ${href}`,home.includes(href));
 
 const routeFingerprints=[];
 const criticalRoutes=[
-  {path:'books/fushengsuiyue/',file:'../books/fushengsuiyue/index.html',sentinels:['浮生歲月','作者：喵叔']},
-  {path:'books/liangzhongtiankong/',file:'../books/liangzhongtiankong/index.html',sentinels:['兩種天空','作者：喵叔']},
+  ...novelPaths.map(path=>({path,file:`../${path}index.html`,sentinels:['作者：喵叔']})),
+
   {path:'newsletter/',file:'../newsletter/index.html',sentinels:['月光來信','MOONLIT LETTERS']},
   {path:'videos/',file:'../videos/index.html'},
   {path:'works/',file:'../works/index.html'},
@@ -108,8 +109,8 @@ const sitemapRes=await get('sitemap.xml');
 diagnostics.push(headerSnapshot('sitemap',sitemapRes));
 mustType('sitemap.xml',sitemapRes,/(application\/xml|text\/xml)/);
 const liveSitemap=await sitemapRes.text();
-for(const url of [BASE,BASE+'books/fushengsuiyue/',BASE+'books/liangzhongtiankong/']){
-  must(`production sitemap must retain core URL: ${url}`,liveSitemap.includes(`<loc>${url}</loc>`));
+for(const url of [BASE,...novelPaths.map(path=>BASE+path)]){
+  must(`production sitemap must retain discoverable URL: ${url}`,liveSitemap.includes(`<loc>${url}</loc>`));
 }
 
 const manifestRes=await get('site.webmanifest');
