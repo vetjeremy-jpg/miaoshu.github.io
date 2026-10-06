@@ -45,6 +45,9 @@ jobs:
       - name: Run unified static quality gate
         run: npm run test:static
 
+      - name: Report large asset references
+        run: npm run report:assets
+
       - name: Publish quality summary
         if: always()
         shell: bash
@@ -57,5 +60,6 @@ jobs:
             echo "- SEO / sitemap / canonical: checked"
             echo "- Publishing contract: checked (changed pages use strict media policy)"
             echo "- Large-asset regression budget: checked"
+            echo "- Large-asset reference map: generated"
             echo "- Tested commit: ${{ github.sha }}"
           } >> "$GITHUB_STEP_SUMMARY"
