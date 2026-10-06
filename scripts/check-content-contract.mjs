@@ -36,7 +36,7 @@ for(const w of novels){
     if(!tag) return '';
     return (tag.match(/\bcontent=["']([^"']*)["']/i)||[])[1]?.trim()||'';
   };
-  const title=(html.match(/<title>([^<]+)<\\/title>/i)||[])[1]?.trim()||'';
+  const title=(html.match(/<title>([^<]+)<\/title>/i)||[])[1]?.trim()||'';
   const description=meta('description');
   const ogTitle=meta('og:title',true);
   const ogDescription=meta('og:description',true);
