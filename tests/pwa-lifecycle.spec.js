@@ -254,40 +254,49 @@ test.describe('Moonlit PWA lifecycle', () => {
     }), { timeout: 10000 }).toEqual([]);
   });
 
-  test('P0 keeps the Home Screen icon contract versioned and gold-cat-only @p0', async ({ page }) => {
-    await page.goto('./', { waitUntil: 'domcontentloaded' });
-    const expectedApple='/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1';
-    const expectedPrecomposed='/miaoshu.github.io/apple-touch-icon-precomposed.png?v=20261006-goldcat1';
-    const expectedManifest='/miaoshu.github.io/site.webmanifest?v=20261006-goldcat1';
-    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', expectedApple);
-    await expect(page.locator('link[rel="apple-touch-icon-precomposed"]')).toHaveAttribute('href', expectedPrecomposed);
-    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', expectedManifest);
 
-    const result=await page.evaluate(async manifestHref => {
-      const manifest=await fetch(manifestHref, { cache: 'reload' }).then(r => r.json());
+  // Home Screen icon contract: keep canonical URLs stable and icon bytes synchronized.
+  test('P0 keeps canonical Home Screen icon sources synchronized @p0', async ({ page }) => {
+    await page.goto('./', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href','/miaoshu.github.io/apple-touch-icon.png');
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href','/miaoshu.github.io/site.webmanifest');
+
+    const result=await page.evaluate(async () => {
+      const manifest=await fetch('/miaoshu.github.io/site.webmanifest', { cache: 'reload' }).then(r => r.json());
+      const sources=[
+        '/miaoshu.github.io/apple-touch-icon.png',
+        '/miaoshu.github.io/assets/icons/apple-touch-icon.png',
+        ...manifest.icons.map(icon=>icon.src)
+      ];
       const dimensions=[];
-      for (const icon of manifest.icons) {
+      for (const src of sources) {
         const size=await new Promise((resolve,reject)=>{
           const img=new Image();
-          img.onload=()=>resolve({src:icon.src,width:img.naturalWidth,height:img.naturalHeight});
-          img.onerror=()=>reject(new Error('Icon failed to load: '+icon.src));
-          img.src=icon.src;
+          img.onload=()=>resolve({src,width:img.naturalWidth,height:img.naturalHeight});
+          img.onerror=()=>reject(new Error('Icon failed to load: '+src));
+          img.src=src;
         });
         dimensions.push(size);
       }
-      return {icons:manifest.icons,dimensions};
-    }, expectedManifest);
+      const [rootBytes,mirrorBytes]=await Promise.all(
+        ['/miaoshu.github.io/apple-touch-icon.png','/miaoshu.github.io/assets/icons/apple-touch-icon.png']
+          .map(async src=>new Uint8Array(await fetch(src,{cache:'reload'}).then(r=>r.arrayBuffer())))
+      );
+      const mirrorMatches=rootBytes.length===mirrorBytes.length && rootBytes.every((value,index)=>value===mirrorBytes[index]);
+      return {icons:manifest.icons,dimensions,mirrorMatches};
+    });
 
     expect(result.icons.map(icon=>icon.src)).toEqual([
-      '/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1',
-      '/miaoshu.github.io/assets/icons/icon-192.png?v=20261006-goldcat1',
-      '/miaoshu.github.io/assets/icons/icon-512.png?v=20261006-goldcat1'
+      '/miaoshu.github.io/assets/icons/icon-192.png',
+      '/miaoshu.github.io/assets/icons/icon-512.png'
     ]);
     expect(result.dimensions).toEqual([
-      {src:'/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1',width:180,height:180},
-      {src:'/miaoshu.github.io/assets/icons/icon-192.png?v=20261006-goldcat1',width:192,height:192},
-      {src:'/miaoshu.github.io/assets/icons/icon-512.png?v=20261006-goldcat1',width:512,height:512}
+      {src:'/miaoshu.github.io/apple-touch-icon.png',width:180,height:180},
+      {src:'/miaoshu.github.io/assets/icons/apple-touch-icon.png',width:180,height:180},
+      {src:'/miaoshu.github.io/assets/icons/icon-192.png',width:192,height:192},
+      {src:'/miaoshu.github.io/assets/icons/icon-512.png',width:512,height:512}
     ]);
+    expect(result.mirrorMatches).toBe(true);
   });
 
 });
