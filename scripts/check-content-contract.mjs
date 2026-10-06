@@ -38,7 +38,7 @@ for(const w of novels){
   const tocStart=html.search(/<section[^>]+id=["']toc["']/i);
   const textStart=html.search(/<div[^>]+id=["']text["']/i);
   const tocBlock=tocStart>=0 ? html.slice(tocStart,textStart>tocStart?textStart:html.length) : '';
-  const tocIds=[...tocBlock.matchAll(/href=["']#(chapter-\d+)["']/gi)].map(m=>m[1]);
+  const tocIds=[...new Set([...tocBlock.matchAll(/href=["']#(chapter-\d+)["']/gi)].map(m=>m[1]))];
   if(tocIds.length!==chapterIds.length) fail(`${w.id} TOC/chapter count mismatch: ${tocIds.length}/${chapterIds.length}`);
   for(const id of tocIds) if(!chapterSet.has(id)) fail(`${w.id} TOC points to missing ${id}`);
   for(const id of chapterIds) if(!tocIds.includes(id)) fail(`${w.id} chapter ${id} missing from TOC`);
