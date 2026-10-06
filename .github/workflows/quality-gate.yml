@@ -58,6 +58,7 @@ jobs:
             echo "- Local links and assets: checked"
             echo "- HTML / PWA contract: checked"
             echo "- SEO / sitemap / canonical: checked"
+            echo "- Content registry / homepage consistency: checked"
             echo "- Publishing contract: checked (changed pages use strict media policy)"
             echo "- Large-asset regression budget: checked"
             echo "- Large-asset reference map: generated"

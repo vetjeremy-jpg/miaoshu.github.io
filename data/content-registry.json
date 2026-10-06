@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "site": "喵叔 Moonlit Stories",
+  "works": [
+    {"id":"fushengsuiyue","title":"浮生歲月：她與他的五個章節","type":"novel","status":"published","url":"books/fushengsuiyue/index.html","author":"喵叔"},
+    {"id":"liangzhongtiankong","title":"兩種天空","type":"novel","status":"published","url":"books/liangzhongtiankong/index.html","author":"喵叔"},
+    {"id":"liangzhongtiankong-part2","title":"兩種天空 第二部：風中的回聲","type":"novel","status":"published","url":"books/liangzhongtiankong-part2/index.html","author":"喵叔"},
+    {"id":"wuxiyue","title":"烏溪月","type":"novel","status":"published","url":"books/wuxiyue/index.html","author":"喵叔"},
+    {"id":"jiankangjie-tingquanyin","title":"建康劫·聽泉引","type":"novel","status":"published","url":"books/jiankangjie-tingquanyin/index.html","author":"喵叔"},
+    {"id":"hiiro-setsugetsusho","title":"緋色雪月抄","type":"novel","status":"published","url":"books/hiiro-setsugetsusho/index.html","author":"喵叔"},
+    {"id":"fengmen-yetan","title":"風門夜譚","type":"novel","status":"published","url":"books/fengmen-yetan/index.html","author":"喵叔"},
+    {"id":"alien-origin-sands","title":"異形：起源之沙","type":"novel","status":"published","url":"books/alien-origin-sands/index.html","author":"喵叔"},
+    {"id":"chenshui-de-huhuan","title":"沉睡的呼喚","type":"novel","status":"published","url":"books/chenshui-de-huhuan/index.html","author":"喵叔"},
+    {"id":"canzhao-xie-longqi","title":"殘照寫龍契","type":"novel","status":"published","url":"books/canzhao-xie-longqi/index.html","author":"喵叔"}
+  ]
+}
