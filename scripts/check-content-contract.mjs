@@ -31,8 +31,10 @@ for(const w of novels){
   if(!html.includes('href="'+canonical+'"')) fail(`${w.id} canonical does not match registry URL`);
   const meta=(name,property=false)=>{
     const attr=property?'property':'name';
-    const m=html.match(new RegExp('<meta[^>]+(?:'+attr+'=["\\\\\']'+name.replace(/[.*+?^$\{\}()|[\]\\\\]/g,'\\\\  if(!html.includes('href="'+canonical+'"')) fail(`${w.id} canonical does not match registry URL`);')+'["\\\\\'])[^>]+content=["\\\\\']([^"\\\\\']+)["\\\\\']','i'));
-    return m?.[1]?.trim()||'';
+    const tags=[...html.matchAll(/<meta\s+[^>]*>/gi)].map(m=>m[0]);
+    const tag=tags.find(t=>new RegExp('\\b'+attr+'=["\\\']'+name.replace(/[.*+?^$\{\}()|[\]\\]/g,'\\$&')+'["\\\']','i').test(t));
+    if(!tag) return '';
+    return (tag.match(/\bcontent=["']([^"']*)["']/i)||[])[1]?.trim()||'';
   };
   const title=(html.match(/<title>([^<]+)<\\/title>/i)||[])[1]?.trim()||'';
   const description=meta('description');
