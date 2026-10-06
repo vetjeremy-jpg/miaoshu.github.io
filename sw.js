@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v56';
+const CACHE='moonlit-shell-v57';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -13,8 +13,9 @@ const SHELL=[
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
- SCOPE+'assets/icons/icon-192.png',
- SCOPE+'assets/icons/icon-512.png',
+ SCOPE+'apple-touch-icon.png?v=20261006-goldcat1',
+ SCOPE+'assets/icons/icon-192.png?v=20261006-goldcat1',
+ SCOPE+'assets/icons/icon-512.png?v=20261006-goldcat1',
  SCOPE+'assets/moonlit-home-content.js?v=20261004-curation-retired1',
  SCOPE+'assets/moonlit-home-idle.js?v=20261004-mainthread9',
  SCOPE+'assets/moonlit-home-reading-state.js?v=20261004-immersion1',
