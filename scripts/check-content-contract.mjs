@@ -29,6 +29,34 @@ for(const w of novels){
   if(!search.includes('"url":"'+searchUrl+'"')) fail(`${w.id} missing from search index`);
   const html=fs.readFileSync(path.join(root,w.url),'utf8');
   if(!html.includes('href="'+canonical+'"')) fail(`${w.id} canonical does not match registry URL`);
+  const meta=(name,property=false)=>{
+    const attr=property?'property':'name';
+    const m=html.match(new RegExp('<meta[^>]+(?:'+attr+'=["\\\\\']'+name.replace(/[.*+?^$\{\}()|[\]\\\\]/g,'\\\\  if(!html.includes('href="'+canonical+'"')) fail(`${w.id} canonical does not match registry URL`);')+'["\\\\\'])[^>]+content=["\\\\\']([^"\\\\\']+)["\\\\\']','i'));
+    return m?.[1]?.trim()||'';
+  };
+  const title=(html.match(/<title>([^<]+)<\\/title>/i)||[])[1]?.trim()||'';
+  const description=meta('description');
+  const ogTitle=meta('og:title',true);
+  const ogDescription=meta('og:description',true);
+  const ogUrl=meta('og:url',true);
+  if(!title || !title.includes(w.title.replace(/^《|》$/g,''))) fail(`${w.id} title missing work name`);
+  if(description.length<25) fail(`${w.id} meta description is missing or too thin`);
+  if(!ogTitle) fail(`${w.id} missing og:title`);
+  if(!ogDescription) fail(`${w.id} missing og:description`);
+  if(ogUrl!==canonical) fail(`${w.id} og:url does not match canonical`);
+  if(meta('og:type',true)!=='book') fail(`${w.id} og:type must be book`);
+  if(meta('og:site_name',true)!=='喵叔 Moonlit Stories') fail(`${w.id} missing Moonlit og:site_name`);
+  if(meta('og:locale',true)!=='zh_TW') fail(`${w.id} og:locale must be zh_TW`);
+  const jsonLdBlocks=[...html.matchAll(/<script[^>]+type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m=>m[1]);
+  let bookLd=null;
+  for(const raw of jsonLdBlocks){try{const v=JSON.parse(raw); if(v?.['@type']==='Book') bookLd=v;}catch{}}
+  if(!bookLd) fail(`${w.id} missing valid Book JSON-LD`);
+  else {
+    if(bookLd.author?.name!=='喵叔') fail(`${w.id} Book JSON-LD author must be 喵叔`);
+    if(bookLd.inLanguage!=='zh-Hant') fail(`${w.id} Book JSON-LD language must be zh-Hant`);
+    if(bookLd.url!==canonical) fail(`${w.id} Book JSON-LD URL does not match canonical`);
+    if(!bookLd.description || bookLd.description.length<25) fail(`${w.id} Book JSON-LD description is missing or too thin`);
+  }
   const chapterIds=[...html.matchAll(/<section[^>]+class=["'][^"']*chapter[^"']*["'][^>]+id=["'](chapter-\d+)["']/gi)].map(m=>m[1]);
   const chapterSet=new Set(chapterIds);
   if(chapterIds.length===0) fail(`${w.id} has no chapter sections`);
