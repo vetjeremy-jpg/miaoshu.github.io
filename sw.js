@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v58';
+const CACHE='moonlit-shell-v56';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
