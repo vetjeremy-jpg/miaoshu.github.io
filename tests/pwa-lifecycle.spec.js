@@ -253,4 +253,41 @@ test.describe('Moonlit PWA lifecycle', () => {
       return keys.filter(key => key === 'moonlit-shell-stale-regression' || key === 'moonlit-pages-stale-regression');
     }), { timeout: 10000 }).toEqual([]);
   });
+
+  test('P0 keeps the Home Screen icon contract versioned and gold-cat-only @p0', async ({ page }) => {
+    await page.goto('./', { waitUntil: 'domcontentloaded' });
+    const expectedApple='/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1';
+    const expectedPrecomposed='/miaoshu.github.io/apple-touch-icon-precomposed.png?v=20261006-goldcat1';
+    const expectedManifest='/miaoshu.github.io/site.webmanifest?v=20261006-goldcat1';
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href', expectedApple);
+    await expect(page.locator('link[rel="apple-touch-icon-precomposed"]')).toHaveAttribute('href', expectedPrecomposed);
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', expectedManifest);
+
+    const result=await page.evaluate(async manifestHref => {
+      const manifest=await fetch(manifestHref, { cache: 'reload' }).then(r => r.json());
+      const dimensions=[];
+      for (const icon of manifest.icons) {
+        const size=await new Promise((resolve,reject)=>{
+          const img=new Image();
+          img.onload=()=>resolve({src:icon.src,width:img.naturalWidth,height:img.naturalHeight});
+          img.onerror=()=>reject(new Error('Icon failed to load: '+icon.src));
+          img.src=icon.src;
+        });
+        dimensions.push(size);
+      }
+      return {icons:manifest.icons,dimensions};
+    }, expectedManifest);
+
+    expect(result.icons.map(icon=>icon.src)).toEqual([
+      '/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1',
+      '/miaoshu.github.io/assets/icons/icon-192.png?v=20261006-goldcat1',
+      '/miaoshu.github.io/assets/icons/icon-512.png?v=20261006-goldcat1'
+    ]);
+    expect(result.dimensions).toEqual([
+      {src:'/miaoshu.github.io/apple-touch-icon.png?v=20261006-goldcat1',width:180,height:180},
+      {src:'/miaoshu.github.io/assets/icons/icon-192.png?v=20261006-goldcat1',width:192,height:192},
+      {src:'/miaoshu.github.io/assets/icons/icon-512.png?v=20261006-goldcat1',width:512,height:512}
+    ]);
+  });
+
 });

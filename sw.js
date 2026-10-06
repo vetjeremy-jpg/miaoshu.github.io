@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v56';
+const CACHE='moonlit-shell-v57';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const SCOPE='/miaoshu.github.io/';
@@ -6,15 +6,17 @@ const trimPages=async cache=>{const keys=await cache.keys();if(keys.length>MAX_P
 const pageKey=req=>{const u=new URL(req.url);for(const key of [...u.searchParams.keys()])if(key==='v'||key==='fbclid'||key==='gclid'||key.startsWith('utm_'))u.searchParams.delete(key);return new Request(u.href,{method:'GET',headers:{accept:'text/html'}})};
 const SHELL=[
  SCOPE,
- SCOPE+'site.webmanifest',
+ SCOPE+'site.webmanifest?v=20261006-goldcat1',
+ SCOPE+'apple-touch-icon.png?v=20261006-goldcat1',
+ SCOPE+'apple-touch-icon-precomposed.png?v=20261006-goldcat1',
  SCOPE+'assets/homepage-inline.css?v=20261004-rhythm-p0p1',
  SCOPE+'assets/moonlit-v2.js?v=20261003-runtime28',
  SCOPE+'assets/moonlit-home-loader.js?v=20261004-mainthread9',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
- SCOPE+'assets/icons/icon-192.png',
- SCOPE+'assets/icons/icon-512.png',
+ SCOPE+'assets/icons/icon-192.png?v=20261006-goldcat1',
+ SCOPE+'assets/icons/icon-512.png?v=20261006-goldcat1',
  SCOPE+'assets/moonlit-home-content.js?v=20261004-curation-retired1',
  SCOPE+'assets/moonlit-home-idle.js?v=20261004-mainthread9',
  SCOPE+'assets/moonlit-home-reading-state.js?v=20261004-immersion1',
