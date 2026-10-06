@@ -40,7 +40,6 @@ const ASSET_BASELINE = new Map([
   ['gallery/ChatGPT Image 2026年9月3日 下午04_36_27.png', 2731386],
   ['gallery/ChatGPT Image 2026年9月3日 下午04_43_25.png', 2720000],
   ['logo.PNG', 1910000],
-  ['logo.png', 2400000]
 ]);
 const LARGE_ASSET_LIMIT=1024*1024;
 const large=[];
