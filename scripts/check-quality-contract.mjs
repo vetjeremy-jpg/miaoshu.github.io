@@ -27,7 +27,7 @@ for(const file of htmlFiles){
 
 const manifest=JSON.parse(text('site.webmanifest'));
 for(const key of ['name','short_name','start_url','scope','display','icons'])if(!manifest[key])errors.push(`site.webmanifest: missing ${key}`);
-for(const icon of manifest.icons||[])if(!exists(icon.src.replace(/^\/miaoshu.github.io\//,'')))errors.push(`site.webmanifest: missing icon ${icon.src}`);
+for(const icon of manifest.icons||[]){const iconPath=icon.src.replace(/[?#].*$/,'').replace(/^\/miaoshu.github.io\//,'');if(!exists(iconPath))errors.push(`site.webmanifest: missing icon ${icon.src}`);}
 if(manifest.start_url!=='/miaoshu.github.io/'||manifest.scope!=='/miaoshu.github.io/')errors.push('site.webmanifest: start_url/scope must stay inside GitHub Pages project scope');
 
 for(const required of ['sw.js','robots.txt','sitemap.xml','apple-touch-icon.png'])if(!exists(required))errors.push(`missing required root asset: ${required}`);

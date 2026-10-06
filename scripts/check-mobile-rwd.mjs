@@ -39,8 +39,8 @@ must('manifest start_url stays on Pages subpath', manifest.start_url === '/miaos
 must('manifest scope stays on Pages subpath', manifest.scope === '/miaoshu.github.io/');
 must('manifest uses standalone display', manifest.display === 'standalone');
 must('manifest keeps Moonlit theme color', manifest.theme_color === '#071521' && manifest.background_color === '#071521');
-must('manifest declares 192px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
-must('manifest declares 512px icon', manifest.icons?.some(i => i.src === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
+must('manifest declares 192px icon', manifest.icons?.some(i => i.src?.replace(/[?#].*$/,'') === '/miaoshu.github.io/assets/icons/icon-192.png' && i.sizes === '192x192'));
+must('manifest declares 512px icon', manifest.icons?.some(i => i.src?.replace(/[?#].*$/,'') === '/miaoshu.github.io/assets/icons/icon-512.png' && i.sizes === '512x512'));
 must('192px icon file exists', fs.existsSync('assets/icons/icon-192.png'));
 must('512px icon file exists', fs.existsSync('assets/icons/icon-512.png'));
 must('Apple touch icon file exists', fs.existsSync('apple-touch-icon.png'));
