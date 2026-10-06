@@ -255,6 +255,7 @@ test.describe('Moonlit PWA lifecycle', () => {
   });
 
 
+  // Home Screen icon contract: keep canonical URLs stable and icon bytes synchronized.
   test('P0 keeps canonical Home Screen icon sources synchronized @p0', async ({ page }) => {
     await page.goto('./', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute('href','/miaoshu.github.io/apple-touch-icon.png');
