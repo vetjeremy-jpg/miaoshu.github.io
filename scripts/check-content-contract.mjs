@@ -29,18 +29,18 @@ for(const w of novels){
   if(!search.includes('"url":"'+searchUrl+'"')) fail(`${w.id} missing from search index`);
   const html=fs.readFileSync(path.join(root,w.url),'utf8');
   if(!html.includes('href="'+canonical+'"')) fail(`${w.id} canonical does not match registry URL`);
-  const chapterIds=[...html.matchAll(/<section[^>]+class=["'][^"']*chapter[^"']*["'][^>]+id=["'](chapter-\\d+)["']/gi)].map(m=>m[1]);
+  const chapterIds=[...html.matchAll(/<section[^>]+class=["'][^"']*chapter[^"']*["'][^>]+id=["'](chapter-\d+)["']/gi)].map(m=>m[1]);
   const chapterSet=new Set(chapterIds);
   if(chapterIds.length===0) fail(`${w.id} has no chapter sections`);
   if(chapterSet.size!==chapterIds.length) fail(`${w.id} has duplicate chapter ids`);
   const nums=chapterIds.map(id=>Number(id.slice(8)));
   for(let i=1;i<=nums.length;i++) if(!nums.includes(i)) fail(`${w.id} chapter sequence missing chapter-${i}`);
-  const tocBlock=(html.match(/<div class=["']toc["'][^>]*>([\\s\\S]*?)<\\/div>/i)||[])[1]||'';
-  const tocIds=[...tocBlock.matchAll(/href=["']#(chapter-\\d+)["']/gi)].map(m=>m[1]);
+  const tocBlock=(html.match(/<div class=["']toc["'][^>]*>([\s\S]*?)<\/div>/i)||[])[1]||'';
+  const tocIds=[...tocBlock.matchAll(/href=["']#(chapter-\d+)["']/gi)].map(m=>m[1]);
   if(tocIds.length!==chapterIds.length) fail(`${w.id} TOC/chapter count mismatch: ${tocIds.length}/${chapterIds.length}`);
   for(const id of tocIds) if(!chapterSet.has(id)) fail(`${w.id} TOC points to missing ${id}`);
   for(const id of chapterIds) if(!tocIds.includes(id)) fail(`${w.id} chapter ${id} missing from TOC`);
-  const localChapterLinks=[...html.matchAll(/href=["']#(chapter-\\d+)["']/gi)].map(m=>m[1]);
+  const localChapterLinks=[...html.matchAll(/href=["']#(chapter-\d+)["']/gi)].map(m=>m[1]);
   for(const id of localChapterLinks) if(!chapterSet.has(id)) fail(`${w.id} internal navigation points to missing ${id}`);
   for(const id of chapterIds){
     const searchUrl='../'+clean+'#'+id;
