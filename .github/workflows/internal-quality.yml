@@ -21,6 +21,12 @@ jobs:
         run: npm ci
       - name: Validate site contracts
         run: npm run test:static
+      - name: Static checks summary
+        if: always()
+        run: |
+          echo '## Moonlit static quality' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Validation includes resources, links, SEO, publishing, production, PWA version and metrics contracts.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'See the Validate site contracts step for pass/fail details.' >> "$GITHUB_STEP_SUMMARY"
   browser-regression:
     runs-on: ubuntu-latest
     timeout-minutes: 25
