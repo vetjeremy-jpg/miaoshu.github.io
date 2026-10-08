@@ -1,0 +1,52 @@
+name: IQ200 Regression Hardening
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iq200-regression-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Verify static contracts
+        run: npm run test:static
+      - name: Verify critical navigation
+        run: npm run test:nav:p0
+      - name: Verify reader journey
+        run: npm run test:reader
+      - name: Verify PWA lifecycle
+        run: npm run test:pwa
+      - name: Verify runtime errors
+        run: npm run test:runtime-zero
+      - name: Verify accessibility
+        run: npm run test:a11y-critical
+      - name: Verify third-party resilience
+        run: npm run test:third-party
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: iq200-playwright-failures
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
