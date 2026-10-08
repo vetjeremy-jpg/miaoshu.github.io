@@ -43,6 +43,8 @@ jobs:
           done
           cat "$RUNNER_TEMP/moonlit-preview.log"
           exit 1
+      - name: Enforce PR preview origin
+        run: npx playwright test tests/preview-origin.spec.js
       - name: Verify static contracts
         run: npm run test:static
       - name: Verify critical navigation
