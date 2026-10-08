@@ -12,7 +12,7 @@ test('all eight specified events have an offline valid contract', () => {
   for (const name of Object.keys(EVENT_FIELDS)) assert.equal(validateEvent(sample(name)), true, name);
 });
 test('rejects unexpected names, fields, and personal data', () => {
-  assert.equal(validateEvent(sample('unknown')), false);
+  assert.equal(validateEvent({ name: 'unknown', properties: {} }), false);
   for (const name of Object.keys(EVENT_FIELDS)) {
     for (const key of ['email','ip','url','user_agent','reading_text','session_id','error_message']) {
       const item = sample(name); item.properties[key] = 'private';
