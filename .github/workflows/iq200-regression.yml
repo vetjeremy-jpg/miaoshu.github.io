@@ -59,6 +59,16 @@ jobs:
         run: npm run test:a11y-critical
       - name: Verify third-party resilience
         run: npm run test:third-party
+      - name: Capture preview server diagnostics
+        if: failure()
+        shell: bash
+        run: |
+          echo '## Preview server diagnostics' >> "$GITHUB_STEP_SUMMARY"
+          if test -f "$RUNNER_TEMP/moonlit-preview.log"; then
+            tail -n 100 "$RUNNER_TEMP/moonlit-preview.log" | tee "$RUNNER_TEMP/moonlit-preview-tail.log"
+          else
+            echo 'Preview log not available' | tee "$RUNNER_TEMP/moonlit-preview-tail.log"
+          fi
       - name: Upload failure artifacts
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -67,5 +77,6 @@ jobs:
           path: |
             playwright-report/
             test-results/
+            ${{ runner.temp }}/moonlit-preview-tail.log
           if-no-files-found: ignore
           retention-days: 7
