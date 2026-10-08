@@ -43,3 +43,9 @@ jobs:
             playwright-report/
           if-no-files-found: ignore
           retention-days: 7
+      - name: Write browser test summary
+        if: always()
+        run: |
+          echo '## Moonlit browser regression' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Checks: navigation, release, PWA, reader, runtime, accessibility, third-party, editorial, performance.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'See job steps for individual outcomes; failure artifacts are retained for 7 days.' >> "$GITHUB_STEP_SUMMARY"
