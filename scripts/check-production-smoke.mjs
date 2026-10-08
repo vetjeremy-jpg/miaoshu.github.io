@@ -8,7 +8,7 @@ async function get(path, attempts=6){
   let last;
   for(let i=0;i<attempts;i++){
     try{
-      const res=await fetch(new URL(path,BASE),{redirect:'follow',headers:{'cache-control':'no-cache'}});
+      const res=await fetch(new URL(path,BASE),{redirect:'follow',headers:{'cache-control':'no-cache'},signal:AbortSignal.timeout(15000)});
       if(res.ok)return res;
       last=new Error(`${path}: HTTP ${res.status}`);
     }catch(err){last=err;}
