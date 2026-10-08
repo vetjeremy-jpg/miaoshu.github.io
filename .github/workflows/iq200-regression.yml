@@ -16,6 +16,8 @@ jobs:
   browser-regression:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    env:
+      BASE_URL: http://127.0.0.1:8765/miaoshu.github.io/
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -26,6 +28,21 @@ jobs:
         run: npm ci
       - name: Install browser
         run: npx playwright install --with-deps chromium
+      - name: Serve PR checkout at production-equivalent subpath
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/moonlit-preview"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/moonlit-preview/miaoshu.github.io"
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 --directory "$RUNNER_TEMP/moonlit-preview" > "$RUNNER_TEMP/moonlit-preview.log" 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent --output /dev/null "$BASE_URL"; then
+              echo "PR preview server ready: $BASE_URL"
+              exit 0
+            fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/moonlit-preview.log"
+          exit 1
       - name: Verify static contracts
         run: npm run test:static
       - name: Verify critical navigation
