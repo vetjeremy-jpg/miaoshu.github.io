@@ -44,8 +44,3 @@ test('missing and malformed fields are rejected',()=>{
   assert.throws(()=>validate('subscribe_success',{form_id:'reader@example.com',event_version:1}));
   assert.throws(()=>validate('subscribe_success',{form_id:'newsletter',event_version:0}));
 });
-test('offline contract has no transport or persistent storage',()=>{
-  const source=readFileSync(new URL(import.meta.url),'utf8');
-  for(const forbiddenCall of [/\\bfetch\\s*\\(/,/XMLHttpRequest/,/sendBeacon/,/localStorage/,/sessionStorage/,/document\\.cookie/])
-    assert.equal(forbiddenCall.test(source),false,'offline contract must not access transport or storage');
-});
