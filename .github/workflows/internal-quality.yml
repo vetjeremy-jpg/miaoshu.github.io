@@ -32,7 +32,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - name: Run release and PWA regression
-        run: npm run test:rc && npm run test:pwa && npm run test:reader && npm run test:runtime-zero
+        run: npm run test:nav:p0 && npm run test:rc && npm run test:pwa && npm run test:reader && npm run test:runtime-zero && npm run test:a11y-critical && npm run test:third-party && npm run test:nav:p1
       - name: Save failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
