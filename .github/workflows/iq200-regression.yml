@@ -26,6 +26,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Verify static contracts
+        run: npm run test:static
       - name: Install browser
         run: npx playwright install --with-deps chromium
       - name: Serve PR checkout at production-equivalent subpath
@@ -45,8 +47,6 @@ jobs:
           exit 1
       - name: Enforce PR preview origin
         run: npx playwright test tests/preview-origin.spec.js
-      - name: Verify static contracts
-        run: npm run test:static
       - name: Verify critical navigation
         run: npm run test:nav:p0
       - name: Verify reader journey
