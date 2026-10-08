@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { dirname, join, normalize, posix } from 'node:path';
 
 const ROOT=process.cwd();
-const SKIP_DIRS=new Set(['.git','node_modules']);
+const SKIP_DIRS=new Set(['.git','node_modules','playwright-report','test-results','coverage']);
 const htmlFiles=[];
 function walk(dir=''){
  for(const name of readdirSync(join(ROOT,dir))){
