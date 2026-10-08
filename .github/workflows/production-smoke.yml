@@ -20,7 +20,8 @@ jobs:
     name: Live GitHub Pages Smoke
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # Runtime propagation retries can exceed five minutes under slow Pages/CDN convergence.
+    timeout-minutes: 20
     steps:
       - name: Checkout deployed main contract
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
