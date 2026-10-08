@@ -20,7 +20,7 @@ jobs:
     name: Live GitHub Pages Smoke
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - name: Checkout deployed main contract
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -60,7 +60,10 @@ jobs:
           MOONLIT_ACTIONS_RUN_ATTEMPT: ${{ github.run_attempt }}
           MOONLIT_PAGES_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || '' }}
           MOONLIT_PAGES_RUN_URL: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.html_url || '' }}
-        run: node scripts/check-production-smoke.mjs
+        shell: bash
+        run: |
+          set -o pipefail
+          node scripts/check-production-smoke.mjs 2>&1 | tee production-smoke-output.log
 
       - name: Publish production summary
         if: always()
@@ -85,6 +88,8 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: production-smoke-diagnostics-${{ github.run_id }}
-          path: production-smoke-report.json
+          path: |
+            production-smoke-report.json
+            production-smoke-output.log
           if-no-files-found: ignore
           retention-days: 30
