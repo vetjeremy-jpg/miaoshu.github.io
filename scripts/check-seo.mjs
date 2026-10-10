@@ -22,7 +22,7 @@ for(const url of novels) must(urls.includes(url),'formal novel missing from site
 const novelIndex=readFileSync(join(root,'books/index.html'),'utf8');
 must(urls.includes(base+'books/'),'novel library hub missing from sitemap');
 for(const url of novels){
- const slug=url.slice((base+'books/').length).replace(/\\/$/,'');
+ const slug=url.slice((base+'books/').length).slice(0,-1);
  must(novelIndex.includes('href="./'+slug+'/"'),'novel library hub missing crawlable link: '+slug);
 }
 
