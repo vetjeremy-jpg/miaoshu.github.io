@@ -26,8 +26,15 @@ for(const url of novels){
  must(novelIndex.includes('href="./'+slug+'/"'),'novel library hub missing crawlable link: '+slug);
 }
 
+const authorHtml=readFileSync(join(root,'about/index.html'),'utf8');
+const collectionHtml=readFileSync(join(root,'books/index.html'),'utf8');
+must(authorHtml.includes('href="../books/"'),'about page links to the full novel collection');
+must(authorHtml.includes('https://schema.org'),'author page provides structured data');
+must(collectionHtml.includes('"@type":"CollectionPage"'),'novel hub declares a collection');
+const seoTitles=new Set();
 for(const url of novels){
  const rel=url.slice(base.length);
+
  const html=readFileSync(join(root,rel,'index.html'),'utf8');
  const expected=url;
  must(/<title>[^<]+<\/title>/i.test(html),'formal novel missing title: '+rel);
@@ -36,6 +43,18 @@ for(const url of novels){
  must(/property=["']og:title["']/i.test(html),'formal novel missing og:title: '+rel);
  must(/property=["']og:description["']/i.test(html),'formal novel missing og:description: '+rel);
  must(html.includes('property="og:url"') && html.includes('content="'+expected+'"'),'formal novel missing og:url: '+rel);
+ const docTitle=html.match(/<title>([^<]+)<\/title>/i)?.[1];
+ must(!!docTitle && !seoTitles.has(docTitle),'formal novel title missing or duplicated: '+rel);
+ if(docTitle) seoTitles.add(docTitle);
+ must(html.includes('href="../../about/"'),'formal novel missing author link: '+rel);
+ must(html.includes('href="../"'),'formal novel missing hub link: '+rel);
+ must(/延伸閱讀：/.test(html),'formal novel missing related reading links: '+rel);
+ const jsonText=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i)?.[1];
+ let parsed=null;
+ try{parsed=JSON.parse(jsonText||'null')}catch{}
+ must(parsed?.['@type']==='Book' && parsed?.author?.['@id']===base+'about/#author','formal novel missing linked author Book schema: '+rel);
+ must(parsed?.genre && parsed?.description && parsed?.isPartOf?.url===base+'books/','formal novel missing genre or collection Book schema: '+rel);
+
 }
 
 
