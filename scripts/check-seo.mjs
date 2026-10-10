@@ -19,6 +19,13 @@ const novels=readdirSync(booksDir,{withFileTypes:true})
  .map(e=>base+'books/'+e.name+'/');
 for(const url of novels) must(urls.includes(url),'formal novel missing from sitemap: '+url);
 
+const novelIndex=readFileSync(join(root,'books/index.html'),'utf8');
+must(urls.includes(base+'books/'),'novel library hub missing from sitemap');
+for(const url of novels){
+ const slug=url.slice((base+'books/').length).replace(/\\/$/,'');
+ must(novelIndex.includes('href="./'+slug+'/"'),'novel library hub missing crawlable link: '+slug);
+}
+
 for(const url of novels){
  const rel=url.slice(base.length);
  const html=readFileSync(join(root,rel,'index.html'),'utf8');
