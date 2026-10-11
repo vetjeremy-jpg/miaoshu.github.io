@@ -38,7 +38,7 @@ const videoButtons=[...videosHtml.matchAll(/class=["'][^"']*video-pick[^"']*["']
 const videoIds=[...videosHtml.matchAll(/const ids=\[([^\]]+)\]/g)].flatMap(m=>[...m[1].matchAll(/["']([^"']+)["']/g)].map(x=>x[1]));
 if(!videoButtons.length) errors.push('videos: no playable video controls found');
 if(videoButtons.length!==videoIds.length||videoButtons.some((id,i)=>id!==videoIds[i])) errors.push('videos: playlist data-video order must match player ids[]');
-if(!/id=["']youtube-link["'][^>]+href=["']https:\/\/www\.youtube\.com\/watch\?v=/i.test(videosHtml)) errors.push('videos: YouTube player requires a direct external fallback link');
+if(!/id=["']youtube-link["'][^>]+href=["']https:\/\/www\.youtube\.com\/(?:watch\?v=|shorts\/)/i.test(videosHtml)) errors.push('videos: YouTube player requires a direct external fallback link');
 if(/instagram\.com\/reel\//i.test(videosHtml)){
   if(!/<iframe\b[^>]+instagram\.com\/reel\/[^>]+title=["'][^"']+["'][^>]*>/i.test(videosHtml)) errors.push('videos: Instagram embed requires an accessible iframe title');
   if(!/<a\b[^>]+href=["']https:\/\/www\.instagram\.com\/reel\//i.test(videosHtml)) errors.push('videos: Instagram embed requires a direct external fallback link');
