@@ -73,7 +73,7 @@ window.MIAOSHU_JOURNEYS = [
     region: "臺北",
     country: "台灣",
     category: "山行",
-    summary: "臺北大縱走第五段・減肥遊記：從圓山的紅色屋簷、觀景平台與天空裡的飛機，到臺北暮色、布袋戲與炸豬排，用 14 張相簿照片把山行寫成一封給自己的信。",
+    summary: "臺北大縱走第五段・減肥遊記。沿著山路看飛機、看城市，留住一片暮色，再好好吃頓飯。把這段路，寫給那個總說明天再出發的自己。",
     articleUrl: "taipei-grand-trail-20260928/",
     documentUrl: "files/taipei-grand-trail-20260928.pdf",
     cover: "https://lh3.googleusercontent.com/HRQzE_t5la7ygSUJdjUewfMAoQuFb_Kx_S5SFzUIKhrvgvhl_L3Z1la8dZ4JKh8PiEUhHLgxhbLGC6YKI_phEmtxX3otMcXDnMTgGo1JYwoTILeWm3E=w1363-h936-rw-sm-pa-nu-v0",
