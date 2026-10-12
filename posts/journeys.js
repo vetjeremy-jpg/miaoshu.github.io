@@ -1,5 +1,40 @@
 window.MIAOSHU_JOURNEYS = [
 {
+  "id": "kawabata-bridge-20261011",
+  "date": "2026-10-11",
+  "title": "回首川端橋",
+  "subtitle": "在新店溪上，讀一座城市的前世與今生",
+  "region": "雙北",
+  "country": "台灣",
+  "category": "河岸",
+  "summary": "2026年10月11日，喵叔從川端橋的拱洞、綠色鋼梁走向新中正橋白拱，在河岸藝術與鐵馬行之間，回看新店溪兩岸的新舊交融。",
+  "articleUrl": "kawabata-bridge-20261011/",
+  "cover": "https://lh3.googleusercontent.com/q0s5qsHtUoMhJ2NokXgmZtD5GgKCffmRt3Iyiq2sKW01-r0nxpnc2yPjYTgsQro6Z2h_8MZ9gYyz8fQyu5BoK7FxR4iGL-7dYFe6uYbHIER-hiqOYgSm=w1363-h936-rw-sm-pa-nu-v0",
+  "location": {
+    "name": "川端橋／中正橋（概略位置）",
+    "lat": 25.0219,
+    "lng": 121.5166,
+    "accuracy": "approximate"
+  },
+  "journeyPoints": [
+    "永和綠光河濱公園",
+    "中正橋河濱公園永和端",
+    "川端橋",
+    "中正橋河濱公園臺北端",
+    "中正橋"
+  ],
+  "tags": [
+    "臺北",
+    "新北",
+    "永和",
+    "川端橋",
+    "中正橋",
+    "新店溪",
+    "旅行札記"
+  ],
+  "featured": true
+},
+{
   "id": "taoyuan-design-expo-20261001",
   "date": "2026-10-01",
   "title": "把一點城市的光帶回家",
