@@ -7,7 +7,7 @@ window.MIAOSHU_JOURNEYS = [
   "region": "雙北",
   "country": "台灣",
   "category": "河岸",
-  "summary": "2026年10月11日，喵叔從川端橋的拱洞、綠色鋼梁走向新中正橋白拱，在河岸藝術與鐵馬行之間，回看新店溪兩岸的新舊交融。",
+  "summary": "2026年10月11日，喵叔從川端橋的拱洞、綠色鋼梁走向新中正橋淺天空藍拱架，在河岸藝術與鐵馬行之間，回看新店溪兩岸的新舊交融。",
   "articleUrl": "kawabata-bridge-20261011/",
   "cover": "https://lh3.googleusercontent.com/q0s5qsHtUoMhJ2NokXgmZtD5GgKCffmRt3Iyiq2sKW01-r0nxpnc2yPjYTgsQro6Z2h_8MZ9gYyz8fQyu5BoK7FxR4iGL-7dYFe6uYbHIER-hiqOYgSm=w1363-h936-rw-sm-pa-nu-v0",
   "location": {
