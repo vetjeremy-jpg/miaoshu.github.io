@@ -1,5 +1,21 @@
 window.MIAOSHU_JOURNEYS = [
 {
+  id: "kawabata-bridge-20261011",
+  date: "2026-10-11",
+  title: "回首川端橋",
+  subtitle: "一座橋，把八十九年的時光還給行人",
+  region: "臺北",
+  country: "台灣",
+  category: "城市漫遊",
+  summary: "漫步新店溪畔，看一座從1937年走到2026年的歷史橋梁，如何把時間、風景與城市生活重新連起來。",
+  articleUrl: "kawabata-bridge-20261011/",
+  externalAlbumUrl: "https://app.degoo.com/share/cueRDFfI6OFkNvRA0TwBpg",
+  location: { name: "川端橋（中正橋舊橋）", lat: 25.0142504, lng: 121.5155803, accuracy: "verified" },
+  journeyPoints: ["新店溪水岸", "川端橋", "新中正橋"],
+  tags: ["川端橋", "臺北", "永和", "新店溪", "歷史建築", "旅行札記"],
+  featured: true
+},
+{
   "id": "taoyuan-design-expo-20261001",
   "date": "2026-10-01",
   "title": "把一點城市的光帶回家",
