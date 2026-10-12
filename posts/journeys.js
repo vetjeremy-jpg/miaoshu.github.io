@@ -9,7 +9,7 @@ window.MIAOSHU_JOURNEYS = [
   "category": "看展",
   "summary": "從拾伍石頭鍋物的午餐，到設計展、光流方舟與城市之鏡，把城市的光帶回自己的故事。",
   "articleUrl": "taoyuan-design-expo-20261001/",
-  "cover": "files/taoyuan-design-expo-20261001-07.webp",
+  "cover": "https://lh3.googleusercontent.com/_zua0eL_Ky2cG2r6CTRKseDvQ3S3Mzyi8xsmYuqvkk8_x2v6qap5M7QIxVbBsROyw0Oi1wy1sTSRufaJiX6QrikerjDPQHd9GMlsWsjVtPVmMDIOBjE=w1363-h936-rw-sm-pa-nu-v0",
   "location": {
     "name": "青埔地區（概略位置）",
     "lat": 25.013,
