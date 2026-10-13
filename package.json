@@ -25,7 +25,7 @@
     "test:pwa-version": "node scripts/check-pwa-version-contract.mjs",
     "test:third-party": "playwright test tests/third-party-resilience.spec.js",
     "test:metrics-contract": "node --test tests/reader-metrics-contract.test.mjs",
-    "test:resilience": "node --test tests/runtime-resilience.test.mjs",
+    "test:resilience": "node --test tests/runtime-resilience.test.mjs tests/navigation-cache.test.mjs",
     "test:photo-viewer": "playwright test tests/photo-viewer-performance.spec.js"
   },
   "devDependencies": {
