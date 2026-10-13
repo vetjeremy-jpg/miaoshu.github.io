@@ -42,20 +42,45 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
    const ratio=getRatio();
    if(progress)progress.style.width=(ratio*100)+'%';
    progressConsumers.forEach(fn=>fn(ratio));
-   let current;
-   for(const chapter of chapters){if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
-   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
+
   });
+ }
+ // Browser-managed visibility avoids measuring skipped long chapters after UI writes.
+ if('IntersectionObserver' in window){
+  const visibleChapters=new Set();
+  const chapterObserver=new IntersectionObserver(entries=>{
+   for(const entry of entries){
+    if(entry.isIntersecting)visibleChapters.add(entry.target);
+    else visibleChapters.delete(entry.target);
+   }
+   const current=chapters.filter(chapter=>visibleChapters.has(chapter)).at(-1);
+   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
+  },{rootMargin:'0px 0px -45% 0px'});
+  chapters.forEach(chapter=>chapterObserver.observe(chapter));
  }
  addEventListener('scroll',onScroll,{passive:true});
  if(location.hash.startsWith('#chapter-'))show(location.hash.slice(1));
  const root=document.documentElement;
+ const chapterBodies=chapters.map(chapter=>chapter.querySelector('.chapter-body')).filter(Boolean);
  let size=Math.max(16,Math.min(24,Number(get('font-size'))||18));
- function applySize(){root.style.setProperty('--reader-size',size+'px');set('font-size',String(size))}
+ let sizeSaveTimer;
+ function applySize(){
+  // Scope inherited style invalidation to prose, leaving page chrome untouched.
+  chapterBodies.forEach(body=>body.style.setProperty('--reader-size',size+'px'));
+  root.dataset.readerSize=String(size);
+  clearTimeout(sizeSaveTimer);
+  sizeSaveTimer=setTimeout(()=>set('font-size',String(size)),150);
+ }
+ const fontControl={
+  adjust(delta){size=Math.max(16,Math.min(24,size+delta));applySize()},
+  reset(){size=18;applySize()}
+ };
+ window.__moonlitReaderFont=fontControl;
+ addEventListener('pagehide',()=>{clearTimeout(sizeSaveTimer);set('font-size',String(size))});
  applySize();
- document.getElementById('font-smaller')?.addEventListener('click',()=>{size=Math.max(16,size-1);applySize()});
- document.getElementById('font-larger')?.addEventListener('click',()=>{size=Math.min(24,size+1);applySize()});
- document.getElementById('font-reset')?.addEventListener('click',()=>{size=18;applySize()});
+ document.getElementById('font-smaller')?.addEventListener('click',()=>fontControl.adjust(-1));
+ document.getElementById('font-larger')?.addEventListener('click',()=>fontControl.adjust(1));
+ document.getElementById('font-reset')?.addEventListener('click',()=>fontControl.reset());
  /* Mobile quick access to the permanent audiobook player. */
  const audioQuick=document.createElement('button');audioQuick.type='button';audioQuick.className='reader-audio-quick';audioQuick.textContent='🎧';audioQuick.setAttribute('aria-label','開啟有聲閱讀');audioQuick.addEventListener('click',()=>{const player=document.getElementById('audiobook-player')||document.getElementById('audiobook-launcher');player?.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('audio-play')?.focus(),350)});document.body.append(audioQuick);
 
