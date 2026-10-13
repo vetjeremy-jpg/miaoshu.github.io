@@ -4,12 +4,12 @@ import vm from 'node:vm';
 import fs from 'node:fs';
 const origin='https://example.test';
 function worker(){
- const handlers={},stores=new Map();let offline=false;
+ const handlers={},stores=new Map();let offline=false,requests=0;
  const cache=name=>{if(!stores.has(name))stores.set(name,new Map());const store=stores.get(name);return {put:async(k,v)=>store.set(k.url||new URL(k,origin).href,v),match:async k=>store.get(k.url||new URL(k,origin).href),delete:async k=>store.delete(k.url||k),keys:async()=>[...store.keys()].map(url=>({url}))}};
  const caches={open:async name=>cache(name),match:async k=>{for(const name of stores.keys()){const hit=await cache(name).match(k);if(hit)return hit}},keys:async()=>[...stores.keys()],delete:async name=>stores.delete(name)};
- const ctx={URL,Request,Response,Set,Promise,location:{origin},caches,fetch:async()=>{if(offline)throw Error('offline');return new Response('resource')},self:{location:{origin},addEventListener:(name,fn)=>handlers[name]=fn}};
+ const ctx={URL,Request,Response,Set,Promise,location:{origin},caches,fetch:async()=>{requests++;if(offline)throw Error('offline');return new Response('resource')},self:{location:{origin},addEventListener:(name,fn)=>handlers[name]=fn}};
  vm.runInNewContext(fs.readFileSync('sw.js','utf8'),ctx);
- return {stores,setOffline:()=>offline=true,request:async(url,destination,mode='cors')=>{const tasks=[];let response;handlers.fetch({request:{url:origin+url,method:'GET',destination,mode},waitUntil:p=>tasks.push(p),respondWith:p=>response=p});if(!response)return;const result=await response;await Promise.all(tasks);return result}};
+ return {stores,networkCount:()=>requests,setOffline:()=>offline=true,request:async(url,destination,mode='cors')=>{const tasks=[];let response;handlers.fetch({request:{url:origin+url,method:'GET',destination,mode},waitUntil:p=>tasks.push(p),respondWith:p=>response=p});if(!response)return;const result=await response;await Promise.all(tasks);return result}};
 }
 test('visited reader resources and pages survive an offline revisit',async()=>{
  const w=worker();const page='/miaoshu.github.io/books/liangzhongtiankong/';
@@ -29,3 +29,10 @@ for(const path of ['books/reader.js','assets/moonlit-home-idle.js']){
   const promise=ctx.requestLikes('/likes');await new Promise(resolve=>setImmediate(resolve));timeout();await assert.rejects(promise,/連線逾時/);assert.equal(cleared,true);
  });
 }
+
+test('versioned reader revisits avoid network; new versions and unversioned files refresh',async()=>{
+ const w=worker();await w.request('/miaoshu.github.io/books/reader.js?v=1','script');const count=w.networkCount();
+ await w.request('/miaoshu.github.io/books/reader.js?v=1','script');assert.equal(w.networkCount(),count);
+ await w.request('/miaoshu.github.io/books/reader.js?v=2','script');assert.equal(w.networkCount(),count+1);
+ await w.request('/miaoshu.github.io/assets/moonlight.css','style');await w.request('/miaoshu.github.io/assets/moonlight.css','style');assert.equal(w.networkCount(),count+3);
+});

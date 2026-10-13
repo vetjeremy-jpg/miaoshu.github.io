@@ -31,3 +31,11 @@ test('visited reader remains usable offline after worker control',async({page,co
  expect(await page.evaluate(()=>getComputedStyle(document.querySelector('.chapter')).fontSize)).not.toBe('');
  await context.setOffline(false);
 });
+
+test('homepage offers responsive external thumbnails without changing full-size source',async({page})=>{
+ await page.setViewportSize({width:375,height:844});await page.goto('./');
+ const photo=page.locator('.album-photo img').first();await page.locator('.album-photo').first().scrollIntoViewIfNeeded();
+ await expect(photo).toHaveAttribute('srcset',/=w640-rw 640w, .*s0-rw 1086w/);
+ await expect(photo).toHaveAttribute('data-full-src',/=s0-rw$/);
+ await expect.poll(()=>photo.evaluate(img=>img.currentSrc)).toContain('=w640-rw');
+});

@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v57';
+const CACHE='moonlit-shell-v58';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const RUNTIME='moonlit-runtime-v1';
@@ -89,9 +89,11 @@ self.addEventListener('fetch',event=>{
  }
  // Cache only first-party styles/scripts after use. Never copy external photos.
  if(['style','script'].includes(req.destination)){
-  event.respondWith(fetch(req).then(res=>{
+  const network=()=>fetch(req).then(res=>{
    if(res.ok){const copy=res.clone();keepAlive(event,caches.open(RUNTIME).then(async cache=>{await cache.put(req,copy);await trimRuntime(cache)}))}
    return res;
-  }).catch(async()=>{const cache=await caches.open(RUNTIME);return await cache.match(req)||Response.error()}));
+  }).catch(async()=>{const cache=await caches.open(RUNTIME);return await cache.match(req)||Response.error()});
+  // Versioned URLs identify immutable releases; revisits need no network round trip.
+  event.respondWith(url.searchParams.get('v')?caches.open(RUNTIME).then(async cache=>await cache.match(req)||network()):network());
  }
 });
