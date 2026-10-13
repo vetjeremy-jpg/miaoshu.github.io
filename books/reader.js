@@ -62,18 +62,34 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  if(location.hash.startsWith('#chapter-'))show(location.hash.slice(1));
  const root=document.documentElement;
  const chapterBodies=chapters.map(chapter=>chapter.querySelector('.chapter-body')).filter(Boolean);
+ const fontControls=document.querySelector('.reader-controls');
+ let fontStatus,fontPreview;
+ if(fontControls){
+  fontStatus=document.createElement('output');fontStatus.id='reader-font-status';fontStatus.setAttribute('aria-live','polite');
+  fontControls.append(fontStatus);
+  fontPreview=document.createElement('p');fontPreview.className='reader-font-preview';fontPreview.textContent='內文預覽：把一點月光留到白天。';
+  fontControls.after(fontPreview);
+  chapterBodies.push(fontPreview);
+ }
  let size=Math.max(16,Math.min(24,Number(get('font-size'))||18));
  let sizeSaveTimer;
+ function refreshFontControls(){
+  if(fontStatus)fontStatus.textContent=size+'px'+(size===16?'（最小）':size===24?'（最大）':'');
+  for(const button of [document.getElementById('font-smaller'),...document.querySelectorAll('.moonlit-reader-dock [data-act="smaller"]')])if(button)button.disabled=size===16;
+  for(const button of [document.getElementById('font-larger'),...document.querySelectorAll('.moonlit-reader-dock [data-act="larger"]')])if(button)button.disabled=size===24;
+ }
  function applySize(){
   // Scope inherited style invalidation to prose, leaving page chrome untouched.
   chapterBodies.forEach(body=>body.style.setProperty('--reader-size',size+'px'));
   root.dataset.readerSize=String(size);
+  refreshFontControls();
   clearTimeout(sizeSaveTimer);
   sizeSaveTimer=setTimeout(()=>set('font-size',String(size)),150);
  }
  const fontControl={
   adjust(delta){size=Math.max(16,Math.min(24,size+delta));applySize()},
-  reset(){size=18;applySize()}
+  reset(){size=18;applySize()},
+  refresh:refreshFontControls
  };
  window.__moonlitReaderFont=fontControl;
  addEventListener('pagehide',()=>{clearTimeout(sizeSaveTimer);set('font-size',String(size))});

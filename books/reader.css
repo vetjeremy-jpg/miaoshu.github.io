@@ -280,3 +280,8 @@ html[data-reading-theme="paper"] .audiobook-launch-button{background:#fbf6ed;col
 html[data-reading-theme="paper"] .reader-controls button[aria-pressed="true"]{background:#dfd2bc;color:#3e2f1b;border-color:#806538}
 
 html[data-reading-theme="paper"] footer{border-color:var(--line)}
+
+/* Visible, immediate feedback beside the font controls. */
+#reader-font-status{font-size:14px;color:var(--gold2);min-width:4em}
+.reader-font-preview{font-size:var(--reader-size,18px);line-height:1.8;margin:10px 0 18px;color:var(--text)}
+.reader-controls button:disabled,.moonlit-reader-dock button:disabled{opacity:.4;cursor:default}

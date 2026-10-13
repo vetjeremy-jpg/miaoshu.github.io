@@ -18,11 +18,19 @@ for(const width of [320,375,390,430]){
    document.getElementById('font-larger').click();
   });
   await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','20px');
+  await expect(page.locator('#reader-font-status')).toHaveText('20px');
+  await expect(page.locator('.reader-font-preview')).toHaveCSS('font-size','20px');
   await page.locator('[data-act="smaller"]').click();
   await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','19px');
   await expect.poll(()=>page.evaluate(()=>localStorage.getItem('miaoshu-xia-ke-xing-font-size'))).toBe('19');
   await page.reload({waitUntil:'domcontentloaded'});
   await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','19px');
+  await page.evaluate(()=>{for(let i=0;i<20;i++)window.__moonlitReaderFont.adjust(-1)});
+  await expect(page.locator('#font-smaller')).toBeDisabled();
+  await expect(page.locator('[data-act="smaller"]')).toBeDisabled();
+  await expect(page.locator('#reader-font-status')).toHaveText('16px（最小）');
+  await page.evaluate(()=>document.getElementById('font-larger').click());
+  await expect(page.locator('#reader-font-status')).toHaveText('17px');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  });
 }
