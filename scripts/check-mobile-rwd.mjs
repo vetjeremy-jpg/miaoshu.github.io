@@ -78,15 +78,15 @@ const homeBookAnchors = (home.match(/<a[^>]*href=["'][^"']*books\/[^"']*["'][^>]
 must('homepage novel links stay same-window', homeBookAnchors.length > 0 && homeBookAnchors.every(tag => !tag.includes('target="_blank"') && !tag.includes("target='_blank'")));
 must('homepage novel links stay inside PWA scope', homeBookAnchors.every(tag => !tag.includes('href="http://') && !tag.includes('href="https://') && !tag.includes("href='http://") && !tag.includes("href='https://") && !tag.includes('href="/')));
 must('shared Moonlit JS does not open new windows', !moonlitV2.includes('window.open('));
-must('standalone PWA keeps internal navigation native', moonlitV2.includes('display-mode: standalone') && moonlitV2.includes('navigator.standalone===true') && moonlitV2.includes('if(standalone)return;'));
+must('standalone PWA keeps internal navigation native', moonlitV2.includes('display-mode: standalone') && moonlitV2.includes('navigator.standalone===true') && !/d\.addEventListener\("click"/.test(moonlitV2));
 must('PWA display mode is resynced on page restore',
- moonlitV2.includes('dataset.displayMode=standalone?"standalone":"browser"') &&
+ moonlitV2.includes('dataset.displayMode=isStandalone()?"standalone":"browser"') &&
  /addEventListener\("pageshow",e=>\{syncDisplayMode\(\)/.test(moonlitV2)
 );
 must('BFCache restore clears transition opacity',
  /if\(e\.persisted\)\{body\.style\.opacity=""[^}]*moonlit-ready/.test(moonlitV2)
 );
-must('browser transition uses same-window navigation', moonlitV2.includes('location.assign(u.href)'));
+must('shared navigation does not delay or blank link clicks', !moonlitV2.includes('location.assign(u.href)') && !moonlitV2.includes('body.style.opacity="0"'));
 must('Moonlit registers scoped service worker', moonlitV2.includes("serviceWorker.register('/miaoshu.github.io/sw.js'") && moonlitV2.includes("scope:'/miaoshu.github.io/'"));
 
 must('service worker scope stays inside Moonlit', serviceWorker.includes("const SCOPE='/miaoshu.github.io/'"));
