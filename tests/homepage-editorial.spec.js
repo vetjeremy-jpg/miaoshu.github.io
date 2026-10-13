@@ -300,10 +300,13 @@ test('support likes stay outside the initial network path', async ({ page }) => 
 test('service worker shell versions match current homepage assets', async ({ request }) => {
   const sw=await (await request.get('sw.js')).text();
   const html=await (await request.get('./')).text();
-  expect(html).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
-  expect(html).toContain('assets/moonlit-home-loader.js?v=20261013-mainthread10');
-  expect(sw).toContain("const CACHE='moonlit-shell-v57'");
-  expect(sw).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
-  expect(sw).toContain('assets/moonlit-home-loader.js?v=20261013-mainthread10');
-  expect(sw).toContain('assets/moonlit-home-idle.js?v=20261004-mainthread9');
+  expect(sw).toMatch(/const CACHE=['"]moonlit-shell-v\d+['"]/);
+  const shell=sw.match(/const SHELL=\[([\s\S]*?)\];/)[1];
+  const assets=[...shell.matchAll(/SCOPE\+['"]([^'"]+\?v=[^'"]+)['"]/g)].map(match=>match[1]);
+  expect(assets.length).toBeGreaterThanOrEqual(4);
+  for(const asset of assets)expect(html,asset+' agrees with homepage').toContain(asset);
+  const loader=html.match(/src="(assets\/moonlit-home-loader\.js\?v=[^"]+)"/)[1];
+  const loaderSource=await (await request.get(loader)).text();
+  const idle=loaderSource.match(/assets\/moonlit-home-idle\.js\?v=[^'"]+/)[0];
+  expect(sw).toContain(idle);
 });

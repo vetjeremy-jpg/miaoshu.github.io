@@ -1,3 +1,6 @@
+(()=>{
+// Keep controls recoverable when the service stalls, including its JSON body.
+const requestLikes=async(url,options={})=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),10000);try{const response=await fetch(url,{...options,signal:controller.signal});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');return data}catch(error){if(error.name==='AbortError')throw Error('連線逾時，請稍後再試。');throw error}finally{clearTimeout(timer)}};
 /* Moonlit homepage idle interactions — loaded after the critical reading state. */
 (()=>{'use strict';
  const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
@@ -13,9 +16,11 @@ const initLater=()=>{ const progress=document.getElementById('progress');let pro
  if(!visitor||!/^[0-9a-f-]{36}$/i.test(visitor)){visitor=crypto.randomUUID();set('miaoshu-anonymous-visitor',visitor)}
  let active=false;like.disabled=true;like.textContent='♡ 喜歡作品 · 載入中';
  function render(count){like.disabled=false;like.setAttribute('aria-pressed',String(active));like.textContent=(active?'♥ 已喜歡作品':'♡ 喜歡作品')+' · '+Number(count||0)}
- fetch(endpoint+'?visitorId='+encodeURIComponent(visitor),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{active=(data.liked||[]).includes('site');render(data.counts?.site)}).catch(()=>{like.disabled=false;like.textContent='♡ 暫時無法按讚';feedback.textContent='共用讚數暫時無法載入，請稍後再試。'});
- like.addEventListener('click',async()=>{like.disabled=true;try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:'site',visitorId:visitor,liked:!active})});const data=await r.json();if(!r.ok)throw Error(data.message||'按讚暫時無法使用。');active=!!data.liked;render(data.count);feedback.textContent=active?'謝謝你喜歡喵叔的作品！':'已取消喜歡。'}catch(e){feedback.textContent=e.message||'按讚暫時無法使用。';like.disabled=false}});
+ requestLikes(endpoint+'?visitorId='+encodeURIComponent(visitor),{cache:'no-store'}).then(data=>{active=(data.liked||[]).includes('site');render(data.counts?.site)}).catch(()=>{like.disabled=false;like.textContent='♡ 暫時無法按讚';feedback.textContent='共用讚數暫時無法載入，請稍後再試。'});
+ like.addEventListener('click',async()=>{like.disabled=true;try{const data=await requestLikes(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:'site',visitorId:visitor,liked:!active})});active=!!data.liked;render(data.count);feedback.textContent=active?'謝謝你喜歡喵叔的作品！':'已取消喜歡。'}catch(e){feedback.textContent=e.message||'按讚暫時無法使用。';like.disabled=false}});
 
  };
  const support=document.getElementById('support');if(support&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();initSupport()}},{rootMargin:'180px 0px'});io.observe(support)}else initSupport(); };if('requestIdleCallback'in window)requestIdleCallback(initLater,{timeout:1500});else setTimeout(initLater,700);
+})();
+
 })();

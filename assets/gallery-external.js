@@ -3,9 +3,9 @@
  'use strict';
  const coastalAlbum='https://app.degoo.com/share/TzMXWs5_IfllpaK4YUz3Ew';
  const snowAlbum='https://app.degoo.com/share/hZYKu2-zGCehoYFY1AkrqA';
- document.querySelectorAll('.gallery figure img[data-external-photo]').forEach(photo=>{
+ document.querySelectorAll('.gallery figure img[data-external-photo], .album-photo img[data-external-photo]').forEach(photo=>{
   const figure=photo.closest('figure');
-  const album=figure.querySelector('a').href.includes('hZYKu2-')?snowAlbum:coastalAlbum;
+  const album=photo.dataset.albumUrl||(figure.querySelector('a').href.includes('hZYKu2-')?snowAlbum:coastalAlbum);
   let message;
   const clear=()=>{photo.hidden=false;message?.remove();message=null;};
   const failed=()=>{
