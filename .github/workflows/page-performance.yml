@@ -1,0 +1,51 @@
+name: Cross-page Performance
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: page-performance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BASE_URL: http://127.0.0.1:8765/miaoshu.github.io/
+      BENCHMARK_BASE_URL: http://127.0.0.1:8766/miaoshu.github.io/
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: .benchmark-base
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Serve baseline and candidate with matching cache policy
+        run: |
+          mkdir -p "$RUNNER_TEMP/candidate" "$RUNNER_TEMP/baseline"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/candidate/miaoshu.github.io"
+          ln -s "$GITHUB_WORKSPACE/.benchmark-base" "$RUNNER_TEMP/baseline/miaoshu.github.io"
+          python3 scripts/serve-performance-preview.py --port 8765 --directory "$RUNNER_TEMP/candidate" &
+          python3 scripts/serve-performance-preview.py --port 8766 --directory "$RUNNER_TEMP/baseline" &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --output /dev/null "$BASE_URL" && curl --fail --silent --output /dev/null "$BENCHMARK_BASE_URL"; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Measure cold visits and revisits across pages
+        run: npx playwright test tests/cross-page-performance.spec.js
+      - name: Retain measurements
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: page-performance-comparison
+          path: |
+            test-results/**/page-metrics.json
+            playwright-report/
+          retention-days: 14
