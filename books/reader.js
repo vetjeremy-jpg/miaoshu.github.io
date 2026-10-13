@@ -1,3 +1,6 @@
+(()=>{
+// Keep controls recoverable when the service stalls, including its JSON body.
+const requestLikes=async(url,options={})=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),10000);try{const response=await fetch(url,{...options,signal:controller.signal});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');return data}catch(error){if(error.name==='AbortError')throw Error('連線逾時，請稍後再試。');throw error}finally{clearTimeout(timer)}};
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  if(window.__moonlitReaderLoaded)return;
@@ -112,11 +115,11 @@
    chapter.querySelector('.chapter-bookmark').after(button);buttons.set(key,button);
    button.addEventListener('click',async()=>{
     button.disabled=true;
-    try{const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,visitorId,liked:!liked.has(key)})});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');counts[key]=data.count;if(data.liked)liked.add(key);else liked.delete(key);render(key)}
+    try{const data=await requestLikes(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,visitorId,liked:!liked.has(key)})});counts[key]=data.count;if(data.liked)liked.add(key);else liked.delete(key);render(key)}
     catch(e){button.disabled=false;button.textContent='♡ 按讚失敗，請重試'}
    });
   });
-  fetch(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(response=>{if(!response.ok)throw Error();return response.json()}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
+  requestLikes(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
   } catch(e) { console.warn('Moonlit chapter likes unavailable; reader continues.',e); }
  // Audiobook is initialized by reader-audio-fallback.js as the single audio core.
  // Mobile/reader quick access to the single audiobook core.
@@ -153,3 +156,5 @@
 
 /* Moon-phase reading progress and a quiet cross-work doorway. */
 (()=>{const chapters=[...document.querySelectorAll(".chapter[id]")];if(!chapters.length)return;const host=document.querySelector(".reader-controls")||document.querySelector(".book-directory");if(host){const phase=document.createElement("span");phase.className="moon-phase-progress";phase.setAttribute("aria-label","閱讀進度月相");phase.innerHTML="<span>○</span><span>◔</span><span>◑</span><span>◕</span><span>●</span>";host.append(phase);const update=ratio=>{const lit=Math.ceil(ratio*5);phase.querySelectorAll("span").forEach((x,i)=>x.classList.toggle("is-lit",i<lit));phase.title="閱讀進度 "+Math.round(ratio*100)+"%"};window.__moonlitReaderProgress?.subscribe(update)}const last=chapters[chapters.length-1];const x=document.createElement("aside");x.className="reader-crosslink";x.innerHTML="如果你還不想離開這個夜晚，<a href=\"../../gallery/\">去攝影館看一束光</a>，或 <a href=\"../../search/\">沿著一個意象繼續探索</a>。";last.insertAdjacentElement("afterend",x)})();
+
+})();
