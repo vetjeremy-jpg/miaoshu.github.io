@@ -302,7 +302,7 @@ test('service worker shell versions match current homepage assets', async ({ req
   const html=await (await request.get('./')).text();
   expect(html).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
   expect(html).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
-  expect(sw).toContain("const CACHE='moonlit-shell-v56'");
+  expect(sw).toContain("const CACHE='moonlit-shell-v57'");
   expect(sw).toContain('assets/homepage-inline.css?v=20261004-rhythm-p0p1');
   expect(sw).toContain('assets/moonlit-home-loader.js?v=20261004-mainthread9');
   expect(sw).toContain('assets/moonlit-home-idle.js?v=20261004-mainthread9');
