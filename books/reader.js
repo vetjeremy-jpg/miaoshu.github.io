@@ -51,11 +51,22 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  if(location.hash.startsWith('#chapter-'))show(location.hash.slice(1));
  const root=document.documentElement;
  let size=Math.max(16,Math.min(24,Number(get('font-size'))||18));
- function applySize(){root.style.setProperty('--reader-size',size+'px');set('font-size',String(size))}
+ let sizeSaveTimer;
+ function applySize(){
+  root.style.setProperty('--reader-size',size+'px');
+  clearTimeout(sizeSaveTimer);
+  sizeSaveTimer=setTimeout(()=>set('font-size',String(size)),150);
+ }
+ const fontControl={
+  adjust(delta){size=Math.max(16,Math.min(24,size+delta));applySize()},
+  reset(){size=18;applySize()}
+ };
+ window.__moonlitReaderFont=fontControl;
+ addEventListener('pagehide',()=>{clearTimeout(sizeSaveTimer);set('font-size',String(size))});
  applySize();
- document.getElementById('font-smaller')?.addEventListener('click',()=>{size=Math.max(16,size-1);applySize()});
- document.getElementById('font-larger')?.addEventListener('click',()=>{size=Math.min(24,size+1);applySize()});
- document.getElementById('font-reset')?.addEventListener('click',()=>{size=18;applySize()});
+ document.getElementById('font-smaller')?.addEventListener('click',()=>fontControl.adjust(-1));
+ document.getElementById('font-larger')?.addEventListener('click',()=>fontControl.adjust(1));
+ document.getElementById('font-reset')?.addEventListener('click',()=>fontControl.reset());
  /* Mobile quick access to the permanent audiobook player. */
  const audioQuick=document.createElement('button');audioQuick.type='button';audioQuick.className='reader-audio-quick';audioQuick.textContent='🎧';audioQuick.setAttribute('aria-label','開啟有聲閱讀');audioQuick.addEventListener('click',()=>{const player=document.getElementById('audiobook-player')||document.getElementById('audiobook-launcher');player?.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('audio-play')?.focus(),350)});document.body.append(audioQuick);
 
