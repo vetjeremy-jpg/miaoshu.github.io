@@ -39,3 +39,23 @@ test('homepage offers responsive external thumbnails without changing full-size 
  await expect(photo).toHaveAttribute('data-full-src',/=s0-rw$/);
  await expect.poll(()=>photo.evaluate(img=>img.currentSrc)).toContain('=w640-rw');
 });
+
+for(const error of ['interrupted','canceled'])test('speech '+error+' keeps position and restores the play button',async({page})=>{
+ await page.addInitScript(error=>{window.__spoken=[];window.SpeechSynthesisUtterance=class {constructor(text){this.text=text}};Object.defineProperty(window,'speechSynthesis',{value:{paused:false,speaking:false,pending:false,cancel(){},resume(){},pause(){},speak(u){window.__spoken.push(u.text);if(window.__spoken.length===1)setTimeout(()=>u.onerror?.({error}),10)}}})},error);
+ await page.goto('books/liangzhongtiankong/');await page.locator('#audio-play').click();
+ await expect(page.locator('#audio-status')).toContainText('語音已中斷');await expect(page.locator('#audio-play')).toContainText('開始朗讀');
+ await page.locator('#audio-play').click();await expect.poll(()=>page.evaluate(()=>window.__spoken.length)).toBe(2);
+ expect(await page.evaluate(()=>window.__spoken[0]===window.__spoken[1])).toBe(true);
+});
+test('invalid saved audio position and rate restore safe defaults',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('moonlit-audio-progress:liangzhongtiankong',JSON.stringify({chapter:'chapter-1',pos:-99,rate:'99'})));
+ await page.goto('books/liangzhongtiankong/');await expect(page.locator('#audio-rate')).toHaveValue('1');
+ await expect(page.locator('#audio-status')).toContainText('第 1 段');await expect(page.locator('#audio-resume')).toBeVisible();
+});
+test('pagehide restores idle audio controls and preserves position',async({page})=>{
+ await page.addInitScript(()=>{window.__spoken=[];window.SpeechSynthesisUtterance=class {constructor(text){this.text=text}};Object.defineProperty(window,'speechSynthesis',{value:{paused:false,speaking:false,pending:false,cancel(){},resume(){},pause(){},speak(u){window.__spoken.push(u.text)}}})});
+ await page.goto('books/liangzhongtiankong/');await page.locator('#audio-play').click();await expect.poll(()=>page.evaluate(()=>window.__spoken.length)).toBe(1);
+ await page.evaluate(()=>dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));
+ await expect(page.locator('#audio-play')).toContainText('開始朗讀');await expect(page.locator('#audio-status')).toContainText('已保留朗讀位置');
+ await page.locator('#audio-play').click();await expect.poll(()=>page.evaluate(()=>window.__spoken.length)).toBe(2);expect(await page.evaluate(()=>window.__spoken[0]===window.__spoken[1])).toBe(true);
+});
