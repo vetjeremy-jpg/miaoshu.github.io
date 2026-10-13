@@ -1,6 +1,7 @@
 const CACHE='moonlit-shell-v59';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
+const NAVIGATION_TIMEOUT=1500;
 const RUNTIME='moonlit-runtime-v1';
 const MAX_RUNTIME=64;
 const keepAlive=(event,work)=>event.waitUntil(work.catch(()=>{}));
@@ -55,25 +56,34 @@ self.addEventListener('fetch',event=>{
  const url=new URL(req.url);
  if(url.origin!==location.origin||!url.pathname.startsWith(SCOPE))return;
 
- // Network-first prevents an installed iPhone Home Screen app from being
- // stranded on an older HTML/CSS/JS shell after a GitHub Pages deployment.
+ // Prefer fresh HTML, but let warmed pages remain usable when the network stalls.
+ // Keep the original request alive so a timeout never cancels the cache refresh.
  if(req.mode==='navigate'){
-  event.respondWith(
-   fetch(req)
-    .then(res=>{
-     if(res&&res.ok){
-      const copy=res.clone(),key=pageKey(req);
-      keepAlive(event,caches.open(PAGES).then(async cache=>{await cache.delete(key);await cache.put(key,copy);await trimPages(cache)}));
-     }
-     return res;
-    })
-    .catch(async()=>{
-     const hit=await caches.match(pageKey(req));
-     if(hit)return hit;
-     if(url.pathname===SCOPE||url.pathname===SCOPE+'index.html')return caches.match(SCOPE);
-     return Response.error();
-    })
-  );
+  let timer;
+  const network=fetch(req)
+   .then(res=>{
+    if(res&&res.ok){
+     const copy=res.clone(),key=pageKey(req);
+     keepAlive(event,caches.open(PAGES).then(async cache=>{await cache.delete(key);await cache.put(key,copy);await trimPages(cache)}));
+    }
+    return res;
+   })
+   .catch(async()=>{
+    const hit=await caches.match(pageKey(req)).catch(()=>undefined);
+    if(hit)return hit;
+    if(url.pathname===SCOPE||url.pathname===SCOPE+'index.html')return await caches.match(SCOPE).catch(()=>undefined)||Response.error();
+    return Response.error();
+   });
+  keepAlive(event,network.then(()=>{}));
+  const cachedAfterDeadline=new Promise(resolve=>{
+   timer=setTimeout(()=>{
+    caches.match(pageKey(req)).then(async hit=>{
+     if(!hit&&(url.pathname===SCOPE||url.pathname===SCOPE+'index.html'))hit=await caches.match(SCOPE);
+     if(hit)resolve(hit); // Cache misses keep waiting for the network.
+    }).catch(()=>{});
+   },NAVIGATION_TIMEOUT);
+  });
+  event.respondWith(Promise.race([network,cachedAfterDeadline]).finally(()=>clearTimeout(timer)));
   return;
  }
 
