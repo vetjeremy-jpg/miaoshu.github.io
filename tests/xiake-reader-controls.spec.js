@@ -17,12 +17,12 @@ for(const width of [320,375,390,430]){
    document.querySelector('[data-act="larger"]').click();
    document.getElementById('font-larger').click();
   });
-  await expect(page.locator('html')).toHaveCSS('--reader-size','20px');
+  await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','20px');
   await page.locator('[data-act="smaller"]').click();
-  await expect(page.locator('html')).toHaveCSS('--reader-size','19px');
+  await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','19px');
   await expect.poll(()=>page.evaluate(()=>localStorage.getItem('miaoshu-xia-ke-xing-font-size'))).toBe('19');
   await page.reload({waitUntil:'domcontentloaded'});
-  await expect(page.locator('html')).toHaveCSS('--reader-size','19px');
+  await expect(page.locator('#chapter-1 .chapter-body')).toHaveCSS('--reader-size','19px');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  });
 }

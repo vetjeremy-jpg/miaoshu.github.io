@@ -42,18 +42,32 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
    const ratio=getRatio();
    if(progress)progress.style.width=(ratio*100)+'%';
    progressConsumers.forEach(fn=>fn(ratio));
-   let current;
-   for(const chapter of chapters){if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
-   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
+
   });
+ }
+ // Browser-managed visibility avoids measuring skipped long chapters after UI writes.
+ if('IntersectionObserver' in window){
+  const visibleChapters=new Set();
+  const chapterObserver=new IntersectionObserver(entries=>{
+   for(const entry of entries){
+    if(entry.isIntersecting)visibleChapters.add(entry.target);
+    else visibleChapters.delete(entry.target);
+   }
+   const current=chapters.filter(chapter=>visibleChapters.has(chapter)).at(-1);
+   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
+  },{rootMargin:'0px 0px -45% 0px'});
+  chapters.forEach(chapter=>chapterObserver.observe(chapter));
  }
  addEventListener('scroll',onScroll,{passive:true});
  if(location.hash.startsWith('#chapter-'))show(location.hash.slice(1));
  const root=document.documentElement;
+ const chapterBodies=chapters.map(chapter=>chapter.querySelector('.chapter-body')).filter(Boolean);
  let size=Math.max(16,Math.min(24,Number(get('font-size'))||18));
  let sizeSaveTimer;
  function applySize(){
-  root.style.setProperty('--reader-size',size+'px');
+  // Scope inherited style invalidation to prose, leaving page chrome untouched.
+  chapterBodies.forEach(body=>body.style.setProperty('--reader-size',size+'px'));
+  root.dataset.readerSize=String(size);
   clearTimeout(sizeSaveTimer);
   sizeSaveTimer=setTimeout(()=>set('font-size',String(size)),150);
  }
