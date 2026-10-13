@@ -12,8 +12,8 @@ const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261004-rhythm-p0p1',
- SCOPE+'assets/moonlit-v2.js?v=20261003-runtime28',
- SCOPE+'assets/moonlit-home-loader.js?v=20261013-resilience1',
+ SCOPE+'assets/moonlit-v2.js?v=20261013-runtime29',
+ SCOPE+'assets/moonlit-home-loader.js?v=20261013-resilience2',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
