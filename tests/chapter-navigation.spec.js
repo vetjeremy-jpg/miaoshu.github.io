@@ -20,7 +20,7 @@ for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing']){
   await page.goto(`books/${slug}/index.html#chapter-14`);
   await expect.poll(()=>page.locator('#chapter-14').evaluate(el=>Math.abs(el.getBoundingClientRect().top-document.querySelector('.topbar').getBoundingClientRect().height-16))).toBeLessThan(3);
   await page.locator('#chapter-14 a[href="#toc"]').click();
-  await page.locator('#chapter-search').fill(slug==='xia-ke-xing'?'封條':'明天照常發車');
+  await page.locator('#chapter-search').fill(slug==='xia-ke-xing'?'第十三回':'明天照常發車');
   await expect(page.locator('#toc .toc a:visible')).toHaveCount(1);
   await page.locator('#toc .toc a:visible').click();
   await page.goBack();
