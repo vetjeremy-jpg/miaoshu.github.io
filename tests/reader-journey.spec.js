@@ -2,7 +2,8 @@ const { test, expect } = require('@playwright/test');
 
 const books = [
   { name: '浮生歲月', path: 'books/fushengsuiyue/index.html' },
-  { name: '兩種天空', path: 'books/liangzhongtiankong/index.html' }
+  { name: '兩種天空', path: 'books/liangzhongtiankong/index.html' },
+  { name: '明天照常發車', path: 'books/the-bus-runs-tomorrow/index.html' }
 ];
 
 for (const book of books) {
@@ -25,6 +26,24 @@ for (const book of books) {
     await page.goto(book.path, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('#chapter-1')).toBeVisible();
     await expect(page.locator('#chapter-2')).toHaveCount(1);
+
+    if (book.name === '明天照常發車') {
+      await expect(page.locator('#toc .toc a')).toHaveCount(16);
+      await expect(page.locator('#chapter-16')).toContainText('（全書完）');
+      const paragraph = page.locator('#chapter-1 .chapter-body p').first();
+      const fontSize = () => paragraph.evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+      for (const width of [320, 375, 390, 430]) {
+        await page.setViewportSize({ width, height: 850 });
+        await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+        const before = await fontSize();
+        await page.locator('#font-larger').click();
+        await expect.poll(fontSize).toBeGreaterThan(before);
+        await page.locator('#font-smaller').click();
+        await expect.poll(fontSize).toBe(before);
+      }
+      await page.locator('#toc .toc a[href="#chapter-16"]').click();
+      await expect(page).toHaveURL(/#chapter-16$/);
+    }
 
     await page.locator('#chapter-1 a[href="#chapter-2"]').click();
     await expect(page).toHaveURL(/#chapter-2$/);
