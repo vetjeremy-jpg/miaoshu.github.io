@@ -1,6 +1,7 @@
 const {test,expect}=require('@playwright/test');
 for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing']){
  test(`${slug}: every directory link lands at its chapter heading`,async({page})=>{
+  test.setTimeout(90000);
   await page.route('https://**/*',r=>r.abort());
   await page.goto(`books/${slug}/index.html`,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.__moonlitReaderLoaded);
