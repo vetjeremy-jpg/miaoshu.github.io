@@ -2,7 +2,7 @@ const {test,expect}=require('@playwright/test');
 for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing']){
  test(`${slug}: every directory link lands at its chapter heading`,async({page})=>{
   await page.route('https://**/*',r=>r.abort());
-  await page.goto(`books/${slug}/index.html`);
+  await page.goto(`books/${slug}/index.html`,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.__moonlitReaderLoaded);
   for(const width of [1280,320,375,390,430]){
    await page.setViewportSize({width,height:850});
@@ -16,6 +16,7 @@ for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing']){
     await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
    }
   }
+  await page.goto('about:blank');
   await page.goto(`books/${slug}/index.html#chapter-14`);
   await expect.poll(()=>page.locator('#chapter-14').evaluate(el=>Math.abs(el.getBoundingClientRect().top-document.querySelector('.topbar').getBoundingClientRect().height-16))).toBeLessThan(3);
   await page.locator('#chapter-14 a[href="#toc"]').click();
