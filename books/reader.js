@@ -6,6 +6,39 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  if(window.__moonlitReaderLoaded)return;
  window.__moonlitReaderLoaded=true;
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ // Use exact chapter geometry and an immediate jump, including repeat clicks.
+ // Native links remain available when JavaScript is disabled.
+ function jumpToTarget(target){
+  const header=document.querySelector('.topbar');
+  const offset=(header?.getBoundingClientRect().height||0)+16;
+  const top=target.getBoundingClientRect().top+scrollY-offset;
+  window.scrollTo({top:Math.max(0,top),behavior:'instant'});
+  const heading=target.querySelector('h2')||target;
+  heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
+  document.querySelectorAll('#toc .toc a').forEach(link=>{
+   if(link.hash==='#'+target.id)link.setAttribute('aria-current','location');
+   else link.removeAttribute('aria-current');
+  });
+ }
+ function hashTarget(){
+  let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return null}
+  const target=document.getElementById(id);
+  return target&&(target.matches('.chapter[id]')||id==='toc')?target:null;
+ }
+ document.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const link=event.target.closest('a[href^="#"]');if(!link||link.hasAttribute('download')||link.target)return;
+  const url=new URL(link.href,location.href);
+  let id;try{id=decodeURIComponent(url.hash.slice(1))}catch{return}
+  const target=document.getElementById(id);
+  if(!target||!(target.matches('.chapter[id]')||id==='toc'))return;
+  event.preventDefault();
+  if(location.hash!==url.hash)history.pushState(null,'',url.hash);
+  jumpToTarget(target);
+ });
+ addEventListener('hashchange',()=>{const target=hashTarget();if(target)jumpToTarget(target)});
+ // Deferred reader enhancements may add content above a deep link.
+ addEventListener('load',()=>{const target=hashTarget();if(target)jumpToTarget(target)},{once:true});
  const bookId=document.body.dataset.bookId||'novel';
  const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
  const prefix='miaoshu-'+bookId+'-';
