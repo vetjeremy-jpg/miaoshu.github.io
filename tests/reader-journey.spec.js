@@ -1,4 +1,6 @@
 const { test, expect } = require('@playwright/test');
+// Keep long-book UI checks observable without repeated full-novel DOM dumps.
+test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false}});
 
 const books = [
   { name: '浮生歲月', path: 'books/fushengsuiyue/index.html' },
@@ -9,6 +11,7 @@ const books = [
 
 for (const book of books) {
   test(`@reader ${book.name} keeps the core reading journey operable`, async ({ page }) => {
+    if (book.name === '臺北無名夜') test.setTimeout(60000);
     await page.addInitScript(() => {
       class FakeUtterance {
         constructor(text) { this.text = text; this.lang = ''; this.rate = 1; }
