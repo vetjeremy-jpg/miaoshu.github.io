@@ -58,6 +58,7 @@ const themes=[
 {id:"lens",name:"光影之間",meta:"攝影・城市・人物",x:48,y:88,desc:"從文字離開之後，讓鏡頭接住同一束夜色與微光。"},
 {id:"road",name:"路上札記",meta:"旅行・城市・日常",x:88,y:86,desc:"把走過的路寫成另一種故事，讓現實與虛構彼此照面。"}];
 const works=[
+{id:"taipei-night-novel",name:"《臺北無名夜》",url:"../books/taipei-wumingye/",x:85,y:53,themes:["human","unknown"]},
 {id:"jiankang",name:"《建康劫·聽泉引》",url:"../books/jiankangjie-tingquanyin/",x:35,y:17,themes:["east"]},
 {id:"wuxi",name:"《烏溪月》",url:"../books/wuxiyue/",x:35,y:31,themes:["east","human"]},
 {id:"fengmen",name:"《風門夜譚》",url:"../books/fengmen-yetan/",x:12,y:43,themes:["east","unknown"]},
@@ -73,7 +74,7 @@ const works=[
 const all=[...themes.map(x=>({...x,type:"theme"})),...works.map(x=>({...x,type:"work"}))];/* On phones, map nodes and SVG edges share positions within the viewport. */
 const smallScreen=window.matchMedia("(max-width:820px)");
 const smallPositions={
-east:[22,8],human:[22,36],unknown:[22,59],snow:[22,76],lens:[22,84],road:[22,92],
+"taipei-night-novel":[71,96],east:[22,8],human:[22,36],unknown:[22,59],snow:[22,76],lens:[22,84],road:[22,92],
 jiankang:[71,4],wuxi:[71,12],fengmen:[71,20],canzhao:[71,28],
 fusheng:[71,36],sky:[71,44],sky2:[71,52],alien:[71,60],sleep:[71,68],
 hiiro:[71,76],gallery:[71,84],trail:[71,92]
