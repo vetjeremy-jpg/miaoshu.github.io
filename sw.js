@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v67';
+const CACHE='moonlit-shell-v68';
 const PAGES='moonlit-pages-v3';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=1500;
@@ -13,7 +13,7 @@ const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261004-rhythm-p0p1',
- SCOPE+'assets/moonlit-v2.js?v=20261018-runtime30',
+ SCOPE+'assets/moonlit-v2.js?v=20261018-runtime31',
  SCOPE+'assets/moonlit-home-loader.js?v=20261013-resilience2',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
@@ -26,7 +26,7 @@ const LAZY_ASSETS=[
  SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
  SCOPE+'assets/moonlit-footer.js?v=20261002-split1',
  SCOPE+'assets/moonlit-refinement-home.js?v=20261004-curation1',
- SCOPE+'assets/moonlit-refinement-reader.js?v=20261018-response2',
+ SCOPE+'assets/moonlit-refinement-reader.js?v=20261018-scenes1',
  SCOPE+'assets/moonlit-refinement.css?v=20261004-comfort2',
  SCOPE+'assets/moonlit-refinement-reader.css?v=20261003-paper1'
 ];
