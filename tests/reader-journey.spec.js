@@ -48,6 +48,14 @@ for (const book of books) {
       }
       await page.locator(`#toc .toc a[href="#chapter-${chapterCount}"]`).click();
       await expect(page).toHaveURL(new RegExp(`#chapter-${chapterCount}$`));
+      await expect(page.locator(`#chapter-${chapterCount}`)).toBeVisible();
+      if(book.name==='臺北無名夜'){
+        await expect(page.locator('.chapter:visible')).toHaveCount(1);
+        await expect(page.locator('#chapter-1')).toBeHidden();
+        await page.locator(`#chapter-${chapterCount} a[href="#toc"]`).click();
+        await page.locator('#toc .toc a[href="#chapter-1"]').click();
+        await expect(page.locator('#chapter-1')).toBeVisible();
+      }
     }
 
     await page.locator('#chapter-1 a[href="#chapter-2"]').click();

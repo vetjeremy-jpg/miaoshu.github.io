@@ -6,24 +6,39 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  if(window.__moonlitReaderLoaded)return;
  window.__moonlitReaderLoaded=true;
  const chapters=[...document.querySelectorAll('.chapter[id]')];
+ const chapterView=document.body.dataset.bookId==='taipei-wumingye';
+ function revealChapter(target){
+  if(!chapterView||!target)return;
+  const selected=target.matches('.chapter[id]')?target:target.closest('.chapter[id]');
+  if(selected)chapters.forEach(chapter=>{chapter.hidden=chapter!==selected});
+ }
+ if(chapterView){const initial=document.getElementById(location.hash.slice(1));revealChapter(initial?.closest('.chapter[id]')||chapters[0])}
  // Use exact chapter geometry and an immediate jump, including repeat clicks.
  // Native links remain available when JavaScript is disabled.
  function jumpToTarget(target){
+  revealChapter(target);
+  const selected=target.closest('.chapter[id]');
+  if(selected)document.dispatchEvent(new CustomEvent('moonlit:chapterchange',{detail:{id:selected.id}}));
+  // Safari must not inherit the page's smooth-scroll animation for chapter jumps.
+  const root=document.documentElement,previous=root.style.scrollBehavior;
+  root.style.scrollBehavior='auto';
   const header=document.querySelector('.topbar');
   const offset=(header?.getBoundingClientRect().height||0)+16;
   const top=target.getBoundingClientRect().top+scrollY-offset;
-  window.scrollTo({top:Math.max(0,top),behavior:'instant'});
+  window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+  root.style.scrollBehavior=previous;
   const heading=target.querySelector('h2')||target;
   heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
   document.querySelectorAll('#toc .toc a').forEach(link=>{
-   if(link.hash==='#'+target.id)link.setAttribute('aria-current','location');
+   if(link.hash==='#'+(target.closest('.chapter[id]')||target).id)link.setAttribute('aria-current','location');
    else link.removeAttribute('aria-current');
   });
  }
+ window.__moonlitNavigateChapter=jumpToTarget;
  function hashTarget(){
   let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return null}
   const target=document.getElementById(id);
-  return target&&(target.matches('.chapter[id]')||id==='toc')?target:null;
+  return target&&(target.closest('.chapter[id]')||id==='toc')?target:null;
  }
  document.addEventListener('click',event=>{
   if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -31,7 +46,7 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
   const url=new URL(link.href,location.href);
   let id;try{id=decodeURIComponent(url.hash.slice(1))}catch{return}
   const target=document.getElementById(id);
-  if(!target||!(target.matches('.chapter[id]')||id==='toc'))return;
+  if(!target||!(target.closest('.chapter[id]')||id==='toc'))return;
   event.preventDefault();
   if(location.hash!==url.hash)history.pushState(null,'',url.hash);
   jumpToTarget(target);
@@ -73,10 +88,11 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
   requestAnimationFrame(()=>{
    queued=false;
    const ratio=getRatio();
+   // Read chapter geometry before progress UI writes to avoid forced layouts.
+   let current;
+   for(const chapter of chapters){if(chapter.hidden)continue;if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
    if(progress)progress.style.width=(ratio*100)+'%';
    progressConsumers.forEach(fn=>fn(ratio));
-   let current;
-   for(const chapter of chapters){if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
    if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
   });
  }
@@ -84,10 +100,11 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  if(location.hash.startsWith('#chapter-'))show(location.hash.slice(1));
  const root=document.documentElement;
  let size=Math.max(16,Math.min(24,Number(get('font-size'))||18));
+ function syncSize(){size=Math.max(16,Math.min(24,parseFloat(root.style.getPropertyValue('--reader-size'))||size))}
  function applySize(){root.style.setProperty('--reader-size',size+'px');set('font-size',String(size))}
  applySize();
- document.getElementById('font-smaller')?.addEventListener('click',()=>{size=Math.max(16,size-1);applySize()});
- document.getElementById('font-larger')?.addEventListener('click',()=>{size=Math.min(24,size+1);applySize()});
+ document.getElementById('font-smaller')?.addEventListener('click',()=>{syncSize();size=Math.max(16,size-1);applySize()});
+ document.getElementById('font-larger')?.addEventListener('click',()=>{syncSize();size=Math.min(24,size+1);applySize()});
  document.getElementById('font-reset')?.addEventListener('click',()=>{size=18;applySize()});
  /* Mobile quick access to the permanent audiobook player. */
  const audioQuick=document.createElement('button');audioQuick.type='button';audioQuick.className='reader-audio-quick';audioQuick.textContent='🎧';audioQuick.setAttribute('aria-label','開啟有聲閱讀');audioQuick.addEventListener('click',()=>{const player=document.getElementById('audiobook-player')||document.getElementById('audiobook-launcher');player?.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('audio-play')?.focus(),350)});document.body.append(audioQuick);
