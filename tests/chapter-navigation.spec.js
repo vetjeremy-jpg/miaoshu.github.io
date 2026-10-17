@@ -1,10 +1,8 @@
 const {test,expect}=require('@playwright/test');
+// Keep action traces and failure screenshots without serializing the full book
+// DOM for every action in the chapter/viewport matrix.
+test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false}});
 for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing','taipei-wumingye']){
- test.describe(slug,()=>{
-  // Recording a full 10,000-paragraph DOM for each matrix action can dominate
-  // the test itself. Keep action traces and failure screenshots, without taking
-  // hundreds of duplicate full-book DOM snapshots for this long novel.
-  if(slug==='taipei-wumingye')test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false}});
  test(`${slug}: every directory link lands at its chapter heading`,async({page})=>{
   const chapterCount=slug==='taipei-wumingye'?60:16;
   test.setTimeout(slug==='taipei-wumingye'?240000:90000);
@@ -32,6 +30,5 @@ for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing','taipei-wumingye']){
   await page.locator('#toc .toc a:visible').click();
   await page.goBack();
   await expect(page).toHaveURL(/#toc$/);
- });
  });
 }
