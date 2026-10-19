@@ -82,7 +82,7 @@ test.describe('Moonlit PWA lifecycle', () => {
     await expect(page.locator('#chapter-1')).toBeVisible();
 
     await expect.poll(async () => page.evaluate(async () => {
-      const cache=await caches.open('moonlit-pages-v3');
+      const cache=await caches.open('moonlit-pages-v4');
       const keys=await cache.keys();
       return keys.some(req=>new URL(req.url).pathname.endsWith('/books/fushengsuiyue/index.html'));
     }), { timeout: 10000 }).toBe(true);
@@ -113,7 +113,7 @@ test.describe('Moonlit PWA lifecycle', () => {
 
     await expect.poll(async () => page.evaluate(() => localStorage.getItem('miaoshu-fushengsuiyue-chapter')), { timeout: 10000 }).toBe('chapter-2');
     await expect.poll(async () => page.evaluate(async () => {
-      const cache=await caches.open('moonlit-pages-v3');
+      const cache=await caches.open('moonlit-pages-v4');
       return (await cache.keys()).some(req=>new URL(req.url).pathname.endsWith('/books/fushengsuiyue/index.html'));
     }), { timeout: 10000 }).toBe(true);
 
