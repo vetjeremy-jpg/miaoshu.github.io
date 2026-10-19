@@ -10,16 +10,16 @@ test('臺北無名夜 can be found from the mobile shelf, collection, search and
  await expect(card.locator('.book-read')).toBeVisible();
  await card.locator('.book-read').click();
  await expect(page).toHaveURL(new RegExp(`${slug}/index.html#toc$`));
- await expect(page.locator('#toc .toc a')).toHaveCount(60);
+ await expect(page.locator('#toc .toc a')).toHaveCount(59);
  await page.goto('books/',{waitUntil:'domcontentloaded'});
  await expect(page.locator(`a[href="./${slug}/"]`).last()).toBeVisible();
  await page.goto('search/?q=臺北無名夜',{waitUntil:'domcontentloaded'});
  await expect(page.locator(`#results a[href="../books/${slug}/"]`)).toBeVisible();
- await page.locator('#q').fill('臺北無名夜 第六十章');
+ await page.locator('#q').fill('臺北無名夜 第五十九章');
  await expect(page.locator('#results .result')).toHaveCount(1);
  await page.locator('#results .result').click();
- await expect(page).toHaveURL(/#chapter-60$/);
- await expect(page.locator('#chapter-60')).toContainText('全書完');
+ await expect(page).toHaveURL(/#chapter-59$/);
+ await expect(page.locator('#chapter-59')).toContainText('全書完');
  for(const width of [320,375,390,430,1280]){
   await page.setViewportSize({width,height:850});
   await page.goto('works/',{waitUntil:'domcontentloaded'});
