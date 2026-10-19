@@ -32,7 +32,7 @@ for (const book of books) {
     await expect(page.locator('#chapter-2')).toHaveCount(1);
 
     if (book.name === '全校最貴的學生' || book.name === '臺北無名夜') {
-      const chapterCount = book.name === '臺北無名夜' ? 60 : 12;
+      const chapterCount = book.name === '臺北無名夜' ? 59 : 12;
       await expect(page.locator('#toc .toc a')).toHaveCount(chapterCount);
       await expect(page.locator(`#chapter-${chapterCount}`)).toContainText(book.name === '全校最貴的學生' ? '（完）' : '全書完');
       const paragraph = page.locator('#chapter-1 .chapter-body p').first();
