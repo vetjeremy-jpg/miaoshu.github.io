@@ -5,7 +5,7 @@ test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false}});
 const books = [
   { name: '浮生歲月', path: 'books/fushengsuiyue/index.html' },
   { name: '兩種天空', path: 'books/liangzhongtiankong/index.html' },
-  { name: '明天照常發車', path: 'books/the-bus-runs-tomorrow/index.html' },
+  { name: '全校最貴的學生', path: 'books/the-bus-runs-tomorrow/index.html' },
   { name: '臺北無名夜', path: 'books/taipei-wumingye/index.html' }
 ];
 
@@ -31,10 +31,10 @@ for (const book of books) {
     await expect(page.locator('#chapter-1')).toBeVisible();
     await expect(page.locator('#chapter-2')).toHaveCount(1);
 
-    if (book.name === '明天照常發車' || book.name === '臺北無名夜') {
-      const chapterCount = book.name === '臺北無名夜' ? 60 : 16;
+    if (book.name === '全校最貴的學生' || book.name === '臺北無名夜') {
+      const chapterCount = book.name === '臺北無名夜' ? 60 : 12;
       await expect(page.locator('#toc .toc a')).toHaveCount(chapterCount);
-      await expect(page.locator(`#chapter-${chapterCount}`)).toContainText('全書完');
+      await expect(page.locator(`#chapter-${chapterCount}`)).toContainText(book.name === '全校最貴的學生' ? '（完）' : '全書完');
       const paragraph = page.locator('#chapter-1 .chapter-body p').first();
       const fontSize = () => paragraph.evaluate(el => parseFloat(getComputedStyle(el).fontSize));
       for (const width of [320, 375, 390, 430]) {

@@ -39,7 +39,7 @@ test('臺北無名夜 bookmarks, reading position and offline chapters survive a
  await page.locator('#chapter-37 .chapter-bookmark').click();
  await expect(page.locator('#chapter-37 .chapter-bookmark')).toHaveAttribute('aria-pressed','true');
  await expect.poll(()=>page.evaluate(()=>localStorage.getItem('miaoshu-taipei-wumingye-chapter'))).toBe('chapter-37');
- await expect.poll(()=>page.evaluate(async()=>{const keys=await (await caches.open('moonlit-pages-v3')).keys();return keys.some(k=>new URL(k.url).pathname.endsWith('/taipei-wumingye/index.html'))})).toBe(true);
+ await expect.poll(()=>page.evaluate(async()=>{const keys=await (await caches.open('moonlit-pages-v4')).keys();return keys.some(k=>new URL(k.url).pathname.endsWith('/taipei-wumingye/index.html'))})).toBe(true);
  await context.setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
  await expect(page.locator('#chapter-37 .chapter-bookmark')).toHaveAttribute('aria-pressed','true');
