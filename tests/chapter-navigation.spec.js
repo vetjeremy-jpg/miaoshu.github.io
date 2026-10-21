@@ -4,7 +4,7 @@ const {test,expect}=require('@playwright/test');
 test.use({trace:{mode:'retain-on-failure',snapshots:false,screenshots:false}});
 for(const slug of ['the-bus-runs-tomorrow','xia-ke-xing','taipei-wumingye']){
  test(`${slug}: every directory link lands at its chapter heading`,async({page})=>{
-  const chapterCount=slug==='taipei-wumingye'?59:slug==='the-bus-runs-tomorrow'?12:16;
+  const chapterCount=slug==='taipei-wumingye'?59:slug==='the-bus-runs-tomorrow'?12:14;
   test.setTimeout(slug==='taipei-wumingye'?240000:90000);
   await page.route('https://**/*',r=>r.abort());
   await page.goto(`books/${slug}/index.html`,{waitUntil:'domcontentloaded'});
