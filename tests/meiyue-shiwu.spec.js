@@ -23,7 +23,7 @@ test('每月十五: complete text, mobile chapter navigation, font, bookmarks an
   await page.locator('#chapter-48 .chapter-nav a[href="#toc"]').click();
   await expect(page).toHaveURL(/#toc$/);
  }
- await page.locator('#chapter-search').fill('十五，十二點半');
+ await page.locator('#chapter-search').fill('第四十八章');
  await expect(page.locator('#toc .toc a:visible')).toHaveCount(1);
  await page.locator('#chapter-search').fill('');
  await page.locator('#toc .toc a[href="#chapter-1"]').click();
