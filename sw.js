@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v71';
+const CACHE='moonlit-shell-v72';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=1500;
