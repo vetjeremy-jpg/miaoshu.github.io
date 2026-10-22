@@ -4,6 +4,9 @@ test('每月十五: complete text, mobile chapter navigation, font, bookmarks an
  await page.goto('books/meiyue-shiwu/index.html',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.__moonlitReaderLoaded);
  await expect(page.locator('.chapter')).toHaveCount(48);
+ const titles=require('../books/meiyue-shiwu.json').chapters.map(c=>c.title);
+ await expect(page.locator('.chapter h2')).toHaveText(titles);
+ await expect(page.locator('#toc .toc a')).toHaveText(titles.map((t,i)=>String(i+1).padStart(2,'0')+t));
  await expect(page.locator('#toc .toc a')).toHaveCount(48);
  await expect(page.locator('.meta')).toHaveText('作者：喵叔');
  await expect(page.locator('#chapter-1')).toContainText('許景衡到的時候，喬喬正在吃飯');
