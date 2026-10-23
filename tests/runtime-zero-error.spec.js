@@ -26,6 +26,10 @@ for (const route of ROUTES) {
     page.on('console', msg => {
       if (msg.type() !== 'error') return;
       const text = msg.text();
+      const source = msg.location().url;
+      // Attribute embed diagnostics by their emitting script, even when the
+      // message includes structured arguments and no useful URL in its text.
+      if (source && /^https?:/.test(source) && !sameOrigin(source, baseURL)) return;
       // Browser/network diagnostics for third-party embeds are intentionally
       // outside this contract; same-origin failures are captured below.
       const urls = msg.args().length ? [] : (text.match(/https?:\/\/[^\s)]+/g) || []);
