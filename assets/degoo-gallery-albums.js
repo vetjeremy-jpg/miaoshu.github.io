@@ -1,4 +1,4 @@
-/* Moonlit — Degoo external albums. Nothing is displayed until verified. No media files are stored here. */
+/* Moonlit — Degoo external albums: link-only until image URLs are verified. No media binaries. */
 (() => {
   'use strict';
   const doc = document;
@@ -11,12 +11,21 @@
     if (typeof value !== 'string' || !value) return false;
     try { return new URL(value).protocol === 'https:'; } catch { return false; }
   };
+  // A Degoo share is a web page, not a direct image. Do not pass it to <img>.
+  const hasPublicShare = album => {
+    if (!album || !['tiger-spirit', 'emergence'].includes(album.id) ||
+        !isHttps(album.shareUrl) || !Array.isArray(album.photos) ||
+        album.photos.length !== 6) return false;
+    const url = new URL(album.shareUrl);
+    const slug = url.pathname.startsWith('/share/') ? url.pathname.slice(7) : '';
+    return url.hostname === 'app.degoo.com' &&
+      /^[A-Za-z0-9_-]+$/.test(slug) && !url.search && !url.hash;
+  };
+  const linkOnly = album => hasPublicShare(album) && album.linkOnly === true && album.verified !== true;
   const approved = album => {
     if (!album || album.verified !== true ||
         !['tiger-spirit', 'emergence'].includes(album.id) ||
-        !isHttps(album.shareUrl) ||
-        new URL(album.shareUrl).hostname !== 'app.degoo.com' ||
-        !Array.isArray(album.photos) || album.photos.length !== 6) return false;
+        !hasPublicShare(album)) return false;
     const images = new Set();
     for (const p of album.photos) {
       if (!p || !isHttps(p.imageUrl) || !isHttps(p.thumbnailUrl) ||
@@ -130,6 +139,41 @@
     return true;
   };
 
+  const renderCloudLink = album => {
+    const id = 'degoo-' + album.id;
+    const card = element('a', 'series-card degoo-cloud-card');
+    card.href = '#' + id;
+    const artwork = element('div', 'degoo-cloud-art');
+    artwork.setAttribute('aria-hidden', 'true');
+    artwork.append(element('span', 'degoo-cloud-number', '06'),
+      element('span', 'degoo-cloud-art-label', 'MOONLIT · DEGOO'));
+    const words = element('span', 'degoo-cloud-words');
+    words.append(element('small', null, '06 PHOTOGRAPHS · DEGOO'),
+      element('strong', null, album.title),
+      element('span', null, album.description));
+    card.append(artwork, words);
+    cards.append(card);
+
+    const navLink = element('a', null, album.title + ' · 6 幅');
+    navLink.href = '#' + id;
+    nav.append(navLink);
+
+    const intro = element('section', 'collection-intro degoo-cloud-intro');
+    intro.id = id;
+    intro.append(element('small', null, album.title + ' · 六幅攝影作品 · Degoo 雲端相簿'),
+      element('h2', null, album.title),
+      element('p', null, album.description));
+    intro.append(element('p', 'degoo-cloud-explainer',
+      '六幅作品存放於 Degoo 雲端。點選下方連結，即可前往欣賞完整相簿；照片不儲存在本站。'));
+    const sourceLink = element('a', 'degoo-cloud-open', '前往 Degoo 欣賞六幅作品 ↗');
+    sourceLink.href = album.shareUrl;
+    sourceLink.target = '_blank';
+    sourceLink.rel = 'noopener noreferrer';
+    sourceLink.referrerPolicy = 'no-referrer';
+    intro.append(sourceLink);
+    main.append(intro);
+  };
+
   const renderAlbum = album => {
     const id = 'degoo-' + album.id;
     const cover = album.photos[0];
@@ -207,7 +251,7 @@
     main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261025-1', {cache:'no-store'})
+  fetch('../data/degoo-gallery-albums.json?v=20261025-2', {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error('Album configuration unavailable');
       return response.json();
@@ -216,9 +260,14 @@
       if (data.schemaVersion !== 1 || !Array.isArray(data.albums)) return;
       const seen = new Set();
       data.albums.forEach(album => {
-        if (!approved(album) || seen.has(album.id)) return;
-        seen.add(album.id);
-        renderAlbum(album);
+        if (seen.has(album.id)) return;
+        if (approved(album)) {
+          seen.add(album.id);
+          renderAlbum(album);
+        } else if (linkOnly(album)) {
+          seen.add(album.id);
+          renderCloudLink(album);
+        }
       });
     })
     .catch(() => { /* Keep all existing galleries fully functional. */ });
