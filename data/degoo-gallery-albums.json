@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "publishingRule": "Each confirmed Degoo folder is visible in link-only mode (linkOnly=true); viewers open the actual Degoo share. Inline six-photo galleries require verified=true plus six distinct HTTPS thumbnails and image URLs with dimensions that have been tested for public embedding. No images are hosted in this repository.",
+  "albums": [
+    {
+      "id": "tiger-spirit",
+      "title": "虎虎生風",
+      "description": "六個畫面，留住光影的節奏。每一張都值得慢慢看。",
+      "shareUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+      "verified": false,
+      "photos": [
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "01｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 1 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "02｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 2 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "03｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 3 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "04｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 4 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "05｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 5 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "06｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《虎虎生風》第 6 張攝影作品"
+        }
+      ],
+      "linkOnly": true
+    },
+    {
+      "id": "emergence",
+      "title": "破繭而出",
+      "description": "有些轉變不必急著命名。讓六個片刻在觀看之間，漸次展開。",
+      "shareUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+      "verified": false,
+      "photos": [
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "01｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 1 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "02｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 2 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "03｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 3 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "04｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 4 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "05｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 5 張攝影作品"
+        },
+        {
+          "imageUrl": "",
+          "thumbnailUrl": "",
+          "pageUrl": "",
+          "width": null,
+          "height": null,
+          "title": "06｜攝影作品",
+          "description": "影像內容待核對。",
+          "alt": "《破繭而出》第 6 張攝影作品"
+        }
+      ],
+      "linkOnly": true
+    }
+  ]
+}
