@@ -1,7 +1,18 @@
-/* Only new, verified Degoo albums; retain the existing Moonlit layout. */
+/* Degoo remote albums. Link-only until individual media URLs are verified; no photos hosted in git. */
 .gallery-page .degoo-album-grid img{width:100%;height:auto;object-fit:contain}
 .gallery-page .degoo-album-grid figure>a{min-height:80px}
 .gallery-page .degoo-album-grid .degoo-thumbnail-error{min-height:160px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--gold2)}
 .gallery-page .series-card.degoo-cover-unavailable{background:linear-gradient(120deg,#161b20,#26231c);min-height:210px}
 .gallery-page .series-card.degoo-cover-unavailable img{display:none}
 .gallery-page .degoo-album-grid figcaption .photo-story{line-height:1.9}
+.gallery-page .degoo-cloud-card .degoo-cloud-art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 25%,#514334 0%,transparent 45%),linear-gradient(140deg,#2b2928 0%,#141618 65%,#322d27 100%);border-bottom:1px solid var(--line)}
+.gallery-page .degoo-cloud-card[href="#degoo-tiger-spirit"] .degoo-cloud-art{background:radial-gradient(ellipse at 65% 25%,#3d493d 0%,transparent 48%),linear-gradient(135deg,#28332c 0%,#111718 56%,#4c3a27 100%)}
+.gallery-page .degoo-cloud-card .degoo-cloud-number{font:400 clamp(62px,7vw,104px)/1 var(--serif);letter-spacing:.06em;color:rgba(229,205,165,.85)}
+.gallery-page .degoo-cloud-card .degoo-cloud-art-label{font:500 10px/1.4 sans-serif;letter-spacing:.25em;color:rgba(240,225,196,.65)}
+.gallery-page .degoo-cloud-card .degoo-cloud-words{display:block;padding:18px}
+.gallery-page .degoo-cloud-card:focus-visible{outline:3px solid var(--gold2);outline-offset:4px}
+.gallery-page .degoo-cloud-intro{border-top:1px solid var(--line)}
+.gallery-page .degoo-cloud-intro .degoo-cloud-explainer{color:var(--muted);font-size:15px}
+.gallery-page .degoo-cloud-intro .degoo-cloud-open{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:14px;padding:9px 21px;border:1px solid var(--gold);border-radius:4px;color:var(--gold2);text-decoration:none;background:rgba(201,173,125,.07)}
+.gallery-page .degoo-cloud-intro .degoo-cloud-open:hover{background:rgba(201,173,125,.17)}
+@media(max-width:650px){.gallery-page .degoo-cloud-card .degoo-cloud-number{font-size:84px}}
