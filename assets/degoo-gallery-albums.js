@@ -85,6 +85,13 @@
     img.hidden = true;
     img.removeAttribute('src');
     img.alt = p.alt;
+    img.referrerPolicy = 'no-referrer';
+    img.onerror = () => {
+      if (request !== serial || !viewer.open) return;
+      img.hidden = true;
+      status.hidden = false;
+      status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
+    };
     status.textContent = '照片載入中…';
     status.hidden = false;
     viewer.querySelector('.photo-viewer-count').textContent =
