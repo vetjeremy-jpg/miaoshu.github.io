@@ -1,146 +1,146 @@
 {
   "schemaVersion": 1,
-  "publishingRule": "Each confirmed Degoo folder is visible in link-only mode (linkOnly=true); viewers open the actual Degoo share. Inline six-photo galleries require verified=true plus six distinct HTTPS thumbnails and image URLs with dimensions that have been tested for public embedding. No images are hosted in this repository.",
+  "publishingRule": "Verified public Degoo image URLs render remote covers and six-photo galleries. No image binaries are stored in this repository.",
   "albums": [
     {
       "id": "tiger-spirit",
       "title": "虎虎生風",
-      "description": "六個畫面，留住光影的節奏。每一張都值得慢慢看。",
+      "description": "林泉、瀑光與虎影，六幅人像寫下柔情與力量。",
       "shareUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
-      "verified": false,
+      "verified": true,
       "photos": [
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "01｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 1 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/lG2El9IHoSKh24t6WrZRSNs2AkY1Bevl14_q3U1f9vP6NNT15MEMjPlRhFc7yuCJU2Yo4d4z4xJ_RWvLS1iIup7VmYlcDp9GmlhiFvE=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/lG2El9IHoSKh24t6WrZRSNs2AkY1Bevl14_q3U1f9vP6NNT15MEMjPlRhFc7yuCJU2Yo4d4z4xJ_RWvLS1iIup7VmYlcDp9GmlhiFvE=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "01｜林泉相伴",
+          "description": "水光在毛色與髮梢間閃動，把相伴的片刻留在林間。",
+          "alt": "虎虎生風：林泉相伴"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "02｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 2 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/8OBhfXG6hkksS_8oBpcpNqaM3Olz9cFjfE6H47yjSJcrXqMlorU9PrVIcR8ojqVpqzFaUmwyiYC98IhJkvENtcSJZN-FcDBSD9VkDw=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/8OBhfXG6hkksS_8oBpcpNqaM3Olz9cFjfE6H47yjSJcrXqMlorU9PrVIcR8ojqVpqzFaUmwyiYC98IhJkvENtcSJZN-FcDBSD9VkDw=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "02｜溪畔凝望",
+          "description": "不急著往前，先聽一會兒溪水的聲音。",
+          "alt": "虎虎生風：溪畔凝望"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "03｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 3 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/klmnEEvouoPlXXnCeK4ZokXEVQ5LhEvkDBaXidqYOALA_G9NO_W4M0td3_YvmUMqQTHebWwV7bfdGr414hitCM7V68y8p1Y_DrhKwsI=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/klmnEEvouoPlXXnCeK4ZokXEVQ5LhEvkDBaXidqYOALA_G9NO_W4M0td3_YvmUMqQTHebWwV7bfdGr414hitCM7V68y8p1Y_DrhKwsI=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "03｜光影低語",
+          "description": "樹葉篩下日光，眼前的一刻便有了溫度。",
+          "alt": "虎虎生風：光影低語"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "04｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 4 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/ufy63lxOSdf09fc_N2TEE5v8sfZhFtgOchPzFWhcN2tUFMs1jAlhHy_UaBHdfZIob_b3PHWBKGJmAF4KuimGmy2X5t0TdlegIc0CrA=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/ufy63lxOSdf09fc_N2TEE5v8sfZhFtgOchPzFWhcN2tUFMs1jAlhHy_UaBHdfZIob_b3PHWBKGJmAF4KuimGmy2X5t0TdlegIc0CrA=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "04｜柔情與鋒芒",
+          "description": "柔和的目光與鮮明的虎紋，在同一束光裡相遇。",
+          "alt": "虎虎生風：柔情與鋒芒"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "05｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 5 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/HbfLRXPZeRx9fhlQ3trj9NcY_grTo-PBtzpMKTIlunwlwtHUmwOfVpPmLFU_bscbXfN_jzA2nItMM2JGCT1YVq5gI7HbfW4VqRCCk94=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/HbfLRXPZeRx9fhlQ3trj9NcY_grTo-PBtzpMKTIlunwlwtHUmwOfVpPmLFU_bscbXfN_jzA2nItMM2JGCT1YVq5gI7HbfW4VqRCCk94=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "05｜近在身旁",
+          "description": "靠近一些，讓陪伴成為畫面裡安定的力量。",
+          "alt": "虎虎生風：近在身旁"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "06｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《虎虎生風》第 6 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/K-YRGTbosulG1TZikVEAUTpvdEGK96VXV4zqG2QkMIyjX5L9XFnqruLSNXmrMObTmtfflpMjGX47oIhcXDQJNwMW3F3H5Dm_9Axy=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/K-YRGTbosulG1TZikVEAUTpvdEGK96VXV4zqG2QkMIyjX5L9XFnqruLSNXmrMObTmtfflpMjGX47oIhcXDQJNwMW3F3H5Dm_9Axy=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
+          "width": 526,
+          "height": 936,
+          "title": "06｜瀑前留影",
+          "description": "瀑布在身後落下，這段光影也有了輕柔的尾聲。",
+          "alt": "虎虎生風：瀑前留影"
         }
       ],
-      "linkOnly": true
+      "linkOnly": false
     },
     {
       "id": "emergence",
       "title": "破繭而出",
-      "description": "有些轉變不必急著命名。讓六個片刻在觀看之間，漸次展開。",
+      "description": "花影、華裳與金色光廊，六幅人像記錄向光而行的片刻。",
       "shareUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
-      "verified": false,
+      "verified": true,
       "photos": [
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "01｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 1 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/Bj9VjH3Apxb4nwkTJ0rO8c78oamZBzaARn_6lCpTbORUtxDtyBd0ugpjKCZbH_qI9F4Jbdnec6L51PNn-L0vUGMGzEopn6PBeznpji8=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/Bj9VjH3Apxb4nwkTJ0rO8c78oamZBzaARn_6lCpTbORUtxDtyBd0ugpjKCZbH_qI9F4Jbdnec6L51PNn-L0vUGMGzEopn6PBeznpji8=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "01｜回眸初光",
+          "description": "她在畫框前回過頭，讓故事從一道目光開始。",
+          "alt": "破繭而出：回眸初光"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "02｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 2 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/yNjml9W8hCBRiFQGvnN_YAAeh06SI2OS6xNCqRhfUS0qmqur5i9NZt4fZbcR8yde4tLloEjqA47DOJZPvu2bbOHXMrtp4lKWDSXN=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/yNjml9W8hCBRiFQGvnN_YAAeh06SI2OS6xNCqRhfUS0qmqur5i9NZt4fZbcR8yde4tLloEjqA47DOJZPvu2bbOHXMrtp4lKWDSXN=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "02｜金色迴廊",
+          "description": "沿著光慢慢走，昨日的心事便留在身後。",
+          "alt": "破繭而出：金色迴廊"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "03｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 3 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/ZKxR18bHdx0PVjdKm4NKE2E6JUBnJDMPMqnrmhPb1ekEFLe0QixFQBsTb02jE7YJafbZfHqeRPySIAEXgmLzwyIVQBCmRjtNfsTkBrY=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/ZKxR18bHdx0PVjdKm4NKE2E6JUBnJDMPMqnrmhPb1ekEFLe0QixFQBsTb02jE7YJafbZfHqeRPySIAEXgmLzwyIVQBCmRjtNfsTkBrY=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "03｜花影漸開",
+          "description": "不必急著盛開，每一次停留都有自己的節奏。",
+          "alt": "破繭而出：花影漸開"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "04｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 4 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/X-QLEso_iYBNEIe9Jvl3HVZ4pIBmc_DH2hdIvb72C4_Wfuyeeyqd2OUnAMPkfQcKdMWFQWdcsTrTDEKtox_U_-qF2EgqU5lQpA8v=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/X-QLEso_iYBNEIe9Jvl3HVZ4pIBmc_DH2hdIvb72C4_Wfuyeeyqd2OUnAMPkfQcKdMWFQWdcsTrTDEKtox_U_-qF2EgqU5lQpA8v=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "04｜向光而行",
+          "description": "當目光轉向明亮的地方，腳步也有了方向。",
+          "alt": "破繭而出：向光而行"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "05｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 5 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/TQJ_8dkAWlsIllnCVBEs6KjZUVLNsTUMo0NGbDD0aa2Pmh6D-U2GEdmfK4gtaEch5P5we--lN8P1mbmSBN4aIeCoCL38ifs6ltxTeA=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/TQJ_8dkAWlsIllnCVBEs6KjZUVLNsTUMo0NGbDD0aa2Pmh6D-U2GEdmfK4gtaEch5P5we--lN8P1mbmSBN4aIeCoCL38ifs6ltxTeA=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "05｜華裳流光",
+          "description": "把流動的光收進衣褶，留住轉身之前的片刻。",
+          "alt": "破繭而出：華裳流光"
         },
         {
-          "imageUrl": "",
-          "thumbnailUrl": "",
-          "pageUrl": "",
-          "width": null,
-          "height": null,
-          "title": "06｜攝影作品",
-          "description": "影像內容待核對。",
-          "alt": "《破繭而出》第 6 張攝影作品"
+          "imageUrl": "https://lh3.googleusercontent.com/gpZ5wArVgqh73nPtzuHuDCPnIyeMP0AsqwrgHXugWIumOr6Bhn3hKLkMqB7t8eJOxRnu5w75LERy6SWfIfq90U0gmEX7T889AQBErA=w1363-h936-rw-sm-pa-nu-v0",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/gpZ5wArVgqh73nPtzuHuDCPnIyeMP0AsqwrgHXugWIumOr6Bhn3hKLkMqB7t8eJOxRnu5w75LERy6SWfIfq90U0gmEX7T889AQBErA=w1363-h936-rw-sm-pa-nu-v0",
+          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
+          "width": 526,
+          "height": 936,
+          "title": "06｜破繭之後",
+          "description": "走過漫長的等待，終於可以用自己的模樣迎向世界。",
+          "alt": "破繭而出：破繭之後"
         }
       ],
-      "linkOnly": true
+      "linkOnly": false
     }
   ]
 }
