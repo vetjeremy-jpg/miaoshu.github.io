@@ -1,0 +1,7 @@
+/* Only new, verified Degoo albums; retain the existing Moonlit layout. */
+.gallery-page .degoo-album-grid img{width:100%;height:auto;object-fit:contain}
+.gallery-page .degoo-album-grid figure>a{min-height:80px}
+.gallery-page .degoo-album-grid .degoo-thumbnail-error{min-height:160px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--gold2)}
+.gallery-page .series-card.degoo-cover-unavailable{background:linear-gradient(120deg,#161b20,#26231c);min-height:210px}
+.gallery-page .series-card.degoo-cover-unavailable img{display:none}
+.gallery-page .degoo-album-grid figcaption .photo-story{line-height:1.9}
