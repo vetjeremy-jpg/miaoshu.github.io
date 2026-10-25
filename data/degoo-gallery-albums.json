@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "publishingRule": "An album appears only when verified=true, the Degoo share URL is provided, and exactly six distinct HTTPS image and thumbnail URLs with dimensions are present. Verify public embed, longevity, order and rights manually before setting verified=true.",
+  "publishingRule": "Each confirmed Degoo folder is visible in link-only mode (linkOnly=true); viewers open the actual Degoo share. Inline six-photo galleries require verified=true plus six distinct HTTPS thumbnails and image URLs with dimensions that have been tested for public embedding. No images are hosted in this repository.",
   "albums": [
     {
       "id": "tiger-spirit",
@@ -69,7 +69,8 @@
           "description": "影像內容待核對。",
           "alt": "《虎虎生風》第 6 張攝影作品"
         }
-      ]
+      ],
+      "linkOnly": true
     },
     {
       "id": "emergence",
@@ -138,7 +139,8 @@
           "description": "影像內容待核對。",
           "alt": "《破繭而出》第 6 張攝影作品"
         }
-      ]
+      ],
+      "linkOnly": true
     }
   ]
 }
