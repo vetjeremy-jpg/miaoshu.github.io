@@ -248,7 +248,10 @@
       figure.append(link, caption);
       gallery.append(figure);
     });
-    main.append(intro, gallery);
+    // Keep new albums before the long existing galleries so lazy layout does not shift their anchors.
+    const firstCollection = main.querySelector('#xiakexing');
+    if (firstCollection) firstCollection.before(intro, gallery);
+    else main.append(intro, gallery);
   };
 
   fetch('../data/degoo-gallery-albums.json?v=20261025-2', {cache:'no-store'})
