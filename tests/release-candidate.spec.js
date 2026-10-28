@@ -43,3 +43,39 @@ for (const path of ['books/fushengsuiyue/','books/liangzhongtiankong/']) {
     await expect(page.locator('link[rel="manifest"]')).toHaveCount(1);
   });
 }
+
+
+// Keep the mobile constellation itself visible; a fallback list alone is not a star map.
+for (const width of MOBILE) {
+  test(`@p0 RC works constellation renders and links on ${width}px mobile`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('works/', { waitUntil: 'domcontentloaded' });
+    const map = page.locator('#star-map');
+    await expect(map).toBeVisible();
+    await expect(map.locator('.theme-node')).toHaveCount(6);
+    expect(await map.locator('.work-node').count()).toBeGreaterThanOrEqual(19);
+    expect(await map.locator('#star-lines line').count()).toBeGreaterThan(0);
+    const novel = map.locator('.work-node[data-id="rain-stops-i-remain"] a');
+    await expect(novel).toBeVisible();
+    await expect(novel).toHaveAttribute('href', '../books/rain-stops-i-remain/');
+    const geometry = await novel.evaluate(link => {
+      const item = link.getBoundingClientRect();
+      const outer = document.getElementById('star-map').getBoundingClientRect();
+      return { within: item.left >= outer.left - 1 && item.right <= outer.right + 1,
+        overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth };
+    });
+    expect(geometry.within, 'work star is not clipped horizontally').toBeTruthy();
+    expect(geometry.overflow, 'no horizontal page scroll').toBeLessThanOrEqual(1);
+    await page.locator('#star-filters button[data-filter="human"]').click();
+    await expect(map.locator('.work-node[data-id="rain-stops-i-remain"]')).toHaveClass(/is-related/);
+    await expect(map.locator('#star-lines line[data-theme="human"][data-work="rain-stops-i-remain"]')).toHaveClass(/is-related/);
+    await expect(page.locator('.mobile-reading-index')).not.toHaveAttribute('open', '');
+  });
+}
+
+test('@p0 RC desktop works constellation remains visible', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('works/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#star-map')).toBeVisible();
+  await expect(page.locator('.work-node[data-id="rain-stops-i-remain"] a')).toBeVisible();
+});
