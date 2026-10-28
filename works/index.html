@@ -8,12 +8,12 @@ body{margin:0;background:#07111d;color:#f3efe8}.wrap{max-width:1180px;margin:aut
 html,body{max-width:100%;overflow-x:clip}
 .wrap{width:100%;max-width:100%;padding:26px 14px 72px;box-sizing:border-box;overflow-x:clip}
 .wrap>*{min-width:0}
-.hero{padding:38px 0 30px}
-.hero h1{font-size:clamp(36px,11vw,48px);overflow-wrap:anywhere}
+.hero{padding:26px 0 18px}
+.hero h1{font-size:clamp(32px,9.2vw,42px);line-height:1.35;overflow-wrap:anywhere}
 .hero p{font-size:15px;line-height:1.85}
 .star-toolbar{display:flex;max-width:540px;margin:0 auto 16px}
 .mobile-map-hint{display:block;max-width:540px;margin:0 auto 12px;color:#91aabd;font-size:13px;line-height:1.7}
-.star-map{display:none}
+.star-map{display:block;width:100%;max-width:540px;min-height:720px;height:auto;margin:0 auto;overflow:hidden}
 .star-map:before{display:none}
 .theme-node button{width:94px;padding:9px;box-sizing:border-box}
 .theme-node strong{font-size:15px}
@@ -23,8 +23,8 @@ html,body{max-width:100%;overflow-x:clip}
 .star-lines line.is-related{stroke:rgba(228,210,175,.85);stroke-width:1.7}
 .star-lines line.is-dim{opacity:.06}
 .star-lines polyline.reading-trail{stroke-width:1.1;stroke-dasharray:5 5}
-.star-detail{display:none}
-.legend{display:none}
+.star-detail{display:block;position:relative;left:auto;bottom:auto;width:100%;max-width:540px;margin:12px auto;padding:16px;box-sizing:border-box}
+.legend{display:flex;max-width:540px;margin:14px auto}
 .mobile-reading-index{display:block;max-width:540px;margin:26px auto 0;border:1px solid rgba(205,225,243,.16);background:rgba(8,22,35,.58)}
 .mobile-reading-index>summary{display:list-item;cursor:pointer;padding:16px 18px;color:#dfcda8;min-height:48px;box-sizing:border-box}
 .fallback-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:0 12px 12px;width:100%;min-width:0;box-sizing:border-box}
@@ -48,7 +48,7 @@ html,body{max-width:100%;overflow-x:clip}
 .star-lines line{stroke:rgba(174,198,219,.38);stroke-width:1}
 .star-lines line.is-related{stroke:rgba(228,210,175,.82);stroke-width:1.6}
 .star-lines polyline.reading-trail{stroke-width:1.2;stroke-dasharray:5 5}
-</style><meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image"></head><body><main class="wrap"><nav><a href="../">← Moonlit Stories</a>　<a href="../search/">搜尋創作</a></nav><header class="hero"><span>WORK CONSTELLATION / 作品星圖</span><h1>不是同一個宇宙，<br>卻在同一片夜色裡。</h1><p>不把彼此獨立的故事硬連成世界觀，而是讓題材、時代與氣質成為星軌；小說、攝影與札記也能彼此照見。滑過或點選一枚題材星，看看哪些作品在月光下彼此靠近。</p></header><div class="star-toolbar" id="star-filters" aria-label="作品星圖篩選"></div><p class="catalogue-status">更新於 2026.10.28 · 15 部小說、3 篇札記與攝影館</p><p class="mobile-map-hint">選擇上方題材，瀏覽相關作品；點選作品卡片即可開始閱讀。</p><section class="star-map" id="star-map" aria-label="互動作品星圖"><svg class="star-lines" id="star-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="star-nodes"></div><div class="star-detail" id="star-detail" aria-live="polite"><span>HOW TO EXPLORE</span><strong>從一枚題材星開始</strong><p>Hover 或點選題材可看見相關作品與星軌；點作品名稱即可進入閱讀。</p></div></section><div class="legend"><span>題材／氣質節點</span><span>作品節點</span></div><section class="mobile-reading-index" aria-label="依題材探索作品"><h2 style="font-size:20px;padding:0 18px">今晚，想讀哪一種故事？</h2><section class="fallback-list" id="fallback-list" aria-label="手機版作品分類"></section></section></main><script>
+</style><meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp"><meta name="twitter:card" content="summary_large_image"></head><body><main class="wrap"><nav><a href="../">← Moonlit Stories</a>　<a href="../search/">搜尋創作</a></nav><header class="hero"><span>WORK CONSTELLATION / 作品星圖</span><h1>不是同一個宇宙，<br>卻在同一片夜色裡。</h1><p>不把彼此獨立的故事硬連成世界觀，而是讓題材、時代與氣質成為星軌；小說、攝影與札記也能彼此照見。滑過或點選一枚題材星，看看哪些作品在月光下彼此靠近。</p></header><div class="star-toolbar" id="star-filters" aria-label="作品星圖篩選"></div><p class="catalogue-status">更新於 2026.10.28 · 15 部小說、3 篇札記與攝影館</p><p class="mobile-map-hint">↓ 下方是真正的互動星圖：點選圓形題材星，可點亮作品與連線；點選作品星即可閱讀。</p><section class="star-map" id="star-map" aria-label="互動作品星圖"><svg class="star-lines" id="star-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="star-nodes"></div><div class="star-detail" id="star-detail" aria-live="polite"><span>HOW TO EXPLORE</span><strong>從一枚題材星開始</strong><p>Hover 或點選題材可看見相關作品與星軌；點作品名稱即可進入閱讀。</p></div></section><div class="legend"><span>題材／氣質節點</span><span>作品節點</span></div><details class="mobile-reading-index" aria-label="依題材探索作品"><summary>依分類清單探索作品（備用閱讀目錄）</summary><section class="fallback-list" id="fallback-list" aria-label="手機版作品分類"></section></details></main><script>
 (function(){const root=document.getElementById("star-map");if(!root)return;
 const themes=[
 {id:"east",name:"刀光與舊夢",meta:"江湖・歷史・東方",x:19,y:23,desc:"城池、江湖、古意與人在時代裡的選擇。"},
@@ -109,6 +109,6 @@ function clear(){document.querySelectorAll(".star-node").forEach(n=>n.classList.
 function select(id){selected=selected===id?null:id;clear();if(selected){highlight(selected);const n=document.querySelector('.star-node[data-id="'+selected+'"]');if(n)n.classList.add("is-selected")}setFilter(selected&&themes.some(t=>t.id===selected)?selected:"all")}
 function show(id){const t=themes.find(x=>x.id===id);if(t){const names=works.filter(w=>w.themes.includes(id)).map(w=>w.name).join("、");detail.innerHTML="<span>"+t.meta+"</span><strong>"+t.name+"</strong><p>"+t.desc+"<br>關聯作品："+names+"</p>";return}const w=works.find(x=>x.id===id);if(w){const names=w.themes.map(id=>themes.find(t=>t.id===id).name).join(" × ");detail.innerHTML="<span>WORK / 作品</span><strong>"+w.name+"</strong><p>關聯題材："+names+"。點作品名稱即可進入閱讀。</p>"}}
 function setFilter(id){filters.querySelectorAll("button").forEach(b=>{const on=b.dataset.filter===id;b.classList.toggle("is-active",on);b.setAttribute("aria-pressed",String(on))});document.querySelectorAll(".mobile-cluster").forEach(c=>{c.hidden=id!=="all"&&c.dataset.theme!==id;if(!c.hidden)c.open=true})}
-layoutStarMap();if(smallScreen.addEventListener){smallScreen.addEventListener("change",layoutStarMap)}else{smallScreen.addListener(layoutStarMap)}const mobile=document.getElementById("fallback-list");const intro=el("p","mobile-path-kicker");intro.textContent="選一條路徑，從今晚想靠近的氣質開始。";mobile.appendChild(intro);themes.forEach((t,i)=>{const a=el("details","mobile-cluster");a.open=true;a.dataset.theme=t.id;const s=el("summary");s.innerHTML="<small>"+t.meta+"</small><h2>"+t.name+"</h2>";a.appendChild(s);const body=el("div","mobile-path-body");const p=el("p");p.textContent=t.desc;body.appendChild(p);works.filter(w=>w.themes.includes(t.id)).forEach(w=>{const x=el("a");x.href=w.url;const label=el("span");label.textContent=w.name;x.appendChild(label);body.appendChild(x)});a.appendChild(body);mobile.appendChild(a)});
+layoutStarMap();setFilter("all");if(smallScreen.addEventListener){smallScreen.addEventListener("change",layoutStarMap)}else{smallScreen.addListener(layoutStarMap)}const mobile=document.getElementById("fallback-list");const intro=el("p","mobile-path-kicker");intro.textContent="選一條路徑，從今晚想靠近的氣質開始。";mobile.appendChild(intro);themes.forEach((t,i)=>{const a=el("details","mobile-cluster");a.open=true;a.dataset.theme=t.id;const s=el("summary");s.innerHTML="<small>"+t.meta+"</small><h2>"+t.name+"</h2>";a.appendChild(s);const body=el("div","mobile-path-body");const p=el("p");p.textContent=t.desc;body.appendChild(p);works.filter(w=>w.themes.includes(t.id)).forEach(w=>{const x=el("a");x.href=w.url;const label=el("span");label.textContent=w.name;x.appendChild(label);body.appendChild(x)});a.appendChild(body);mobile.appendChild(a)});
 })();
 </script><script src="../assets/moonlit-v2.js?v=20261018-runtime31"></script><footer>© 2026 喵叔 Moonlit Stories</footer></body></html>
