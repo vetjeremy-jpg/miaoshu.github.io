@@ -262,7 +262,7 @@
     else main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261029-chunli1', {cache:'no-store'})
+  fetch('../data/degoo-gallery-albums.json?v=20261030-reimport1', {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error('Album configuration unavailable');
       return response.json();
