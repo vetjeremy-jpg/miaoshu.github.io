@@ -13,9 +13,9 @@
   };
   // A Degoo share is a web page, not a direct image. Do not pass it to <img>.
   const hasPublicShare = album => {
-    if (!album || !['tiger-spirit', 'emergence'].includes(album.id) ||
+    if (!album || !['tiger-spirit', 'emergence', 'city-night-portraits'].includes(album.id) ||
         !isHttps(album.shareUrl) || !Array.isArray(album.photos) ||
-        album.photos.length !== 6) return false;
+        album.photos.length !== (album.id === 'city-night-portraits' ? 31 : 6)) return false;
     const url = new URL(album.shareUrl);
     const slug = url.pathname.startsWith('/share/') ? url.pathname.slice(7) : '';
     return url.hostname === 'app.degoo.com' &&
@@ -24,7 +24,7 @@
   const linkOnly = album => hasPublicShare(album) && album.linkOnly === true && album.verified !== true;
   const approved = album => {
     if (!album || album.verified !== true ||
-        !['tiger-spirit', 'emergence'].includes(album.id) ||
+        !['tiger-spirit', 'emergence', 'city-night-portraits'].includes(album.id) ||
         !hasPublicShare(album)) return false;
     const images = new Set();
     for (const p of album.photos) {
@@ -104,7 +104,7 @@
     status.textContent = '照片載入中…';
     status.hidden = false;
     viewer.querySelector('.photo-viewer-count').textContent =
-      activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ 06';
+      activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ ' + String(activeAlbum.photos.length).padStart(2, '0');
     viewer.querySelector('.degoo-photo-title').textContent = p.title;
     viewer.querySelector('.degoo-photo-description').textContent = p.description || '';
     viewer.querySelector('.photo-viewer-source').href = p.pageUrl || activeAlbum.shareUrl;
@@ -154,7 +154,7 @@
     card.append(artwork, words);
     cards.append(card);
 
-    const navLink = element('a', null, album.title + ' · 6 幅');
+    const navLink = element('a', null, album.title + ' · ' + album.photos.length + ' 幅');
     navLink.href = '#' + id;
     nav.append(navLink);
 
@@ -193,18 +193,18 @@
       card.classList.add('degoo-cover-unavailable');
     }, {once:true});
     const words = element('span');
-    words.append(element('small', null, '06 PHOTOGRAPHS'),
+    words.append(element('small', null, String(album.photos.length).padStart(2, '0') + ' PHOTOGRAPHS'),
       element('strong', null, album.title),
       element('span', null, album.description));
     card.append(coverImage, words);
     cards.append(card);
-    const navLink = element('a', null, album.title + ' · 6 幅');
+    const navLink = element('a', null, album.title + ' · ' + album.photos.length + ' 幅');
     navLink.href = '#' + id;
     nav.append(navLink);
 
     const intro = element('section', 'collection-intro');
     intro.id = id;
-    intro.append(element('small', null, album.title + ' · 6 幅 · Degoo 外部攝影系列'),
+    intro.append(element('small', null, album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
       element('h2', null, album.title), element('p', null, album.description));
     const sourceParagraph = element('p');
     const sourceLink = element('a', null, '在 Degoo 開啟原始相簿 ↗');
@@ -254,7 +254,7 @@
     else main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261025-2', {cache:'no-store'})
+  fetch('../data/degoo-gallery-albums.json?v=20261029-1', {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error('Album configuration unavailable');
       return response.json();
