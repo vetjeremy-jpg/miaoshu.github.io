@@ -13,9 +13,9 @@
   };
   // A Degoo share is a web page, not a direct image. Do not pass it to <img>.
   const hasPublicShare = album => {
-    if (!album || !['tiger-spirit', 'emergence', 'city-night-portraits'].includes(album.id) ||
+    if (!album || !['tiger-spirit', 'emergence', 'city-night-portraits', 'chun-li-street'].includes(album.id) ||
         !isHttps(album.shareUrl) || !Array.isArray(album.photos) ||
-        album.photos.length !== (album.id === 'city-night-portraits' ? 31 : 6)) return false;
+        album.photos.length !== (album.id === 'chun-li-street' ? 39 : album.id === 'city-night-portraits' ? 31 : 6)) return false;
     const url = new URL(album.shareUrl);
     const slug = url.pathname.startsWith('/share/') ? url.pathname.slice(7) : '';
     return url.hostname === 'app.degoo.com' &&
@@ -24,15 +24,16 @@
   const linkOnly = album => hasPublicShare(album) && album.linkOnly === true && album.verified !== true;
   const approved = album => {
     if (!album || album.verified !== true ||
-        !['tiger-spirit', 'emergence', 'city-night-portraits'].includes(album.id) ||
+        !['tiger-spirit', 'emergence', 'city-night-portraits', 'chun-li-street'].includes(album.id) ||
         !hasPublicShare(album)) return false;
     const images = new Set();
     for (const p of album.photos) {
+      if (album.id === 'chun-li-street' && p && p.unavailable === true && isHttps(p.pageUrl) && p.title && p.alt) continue;
       if (!p || !isHttps(p.imageUrl) || !isHttps(p.thumbnailUrl) ||
           (p.pageUrl && !isHttps(p.pageUrl)) ||
           !Number.isInteger(p.width) || p.width < 1 ||
           !Number.isInteger(p.height) || p.height < 1 ||
-          !p.alt || !p.title || images.has(p.imageUrl)) return false;
+          !p.alt || !p.title || (album.id !== 'chun-li-street' && images.has(p.imageUrl))) return false;
       images.add(p.imageUrl);
     }
     return true;
@@ -108,6 +109,10 @@
     viewer.querySelector('.degoo-photo-title').textContent = p.title;
     viewer.querySelector('.degoo-photo-description').textContent = p.description || '';
     viewer.querySelector('.photo-viewer-source').href = p.pageUrl || activeAlbum.shareUrl;
+    if (p.unavailable) {
+      status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
+      return;
+    }
     const preload = new Image();
     pending = preload;
     preload.decoding = 'async';
@@ -224,7 +229,7 @@
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', '放大觀看：' + p.alt);
       const img = element('img');
-      img.src = p.thumbnailUrl;
+      if (!p.unavailable) img.src = p.thumbnailUrl;
       img.alt = p.alt;
       img.width = p.width;
       img.height = p.height;
@@ -237,7 +242,9 @@
         const err = element('p', 'degoo-thumbnail-error', '照片暫時無法載入，請在 Degoo 開啟相簿。');
         link.append(err);
       }, {once:true});
-      link.append(img);
+      if (p.unavailable) {
+        link.append(element('p', 'degoo-thumbnail-error', '照片暫時無法載入，前往 Degoo 查看 ↗'));
+      } else { link.append(img); }
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (openPhoto(album, index, link)) event.preventDefault();
@@ -255,7 +262,7 @@
     else main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261029-2', {cache:'no-store'})
+  fetch('../data/degoo-gallery-albums.json?v=20261029-chunli1', {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error('Album configuration unavailable');
       return response.json();
