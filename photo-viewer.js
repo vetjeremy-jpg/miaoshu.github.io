@@ -11,6 +11,13 @@
  document.body.append(dialog);
  const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description'),source=dialog.querySelector('.photo-viewer-source');
  let current=0,returnFocus=null,previousOverflow='',touch=null,requestId=0,pendingFull=null;
+ const neighbors=new Map();
+ function warmNeighbors(){
+  if(navigator.connection&&navigator.connection.saveData)return;
+  const urls=[current,(current+1)%links.length,(current-1+links.length)%links.length].map(i=>{const p=links[i].querySelector('img');return p.currentSrc||p.src});
+  for(const [url,img] of neighbors){if(!urls.includes(url)){img.src='';neighbors.delete(url)}}
+  for(const url of urls.slice(1)){if(neighbors.has(url))continue;const img=new Image();img.decoding='async';img.referrerPolicy=links[current].querySelector('img').referrerPolicy;neighbors.set(url,img);img.src=url}
+ }
  function show(index){
   current=(index+links.length)%links.length;
   const link=links[current],photo=link.querySelector('img'),figure=link.closest('figure'),caption=figure.querySelector('figcaption');
@@ -32,6 +39,7 @@
    original.onerror=()=>{if(id!==requestId)return;pendingFull=null;status.hidden=false;status.textContent='目前顯示預覽；原圖暫時無法載入，可使用下方連結開啟。'};
    original.src=full;
   }
+  warmNeighbors();
  }
  image.addEventListener('load',()=>{image.hidden=false;status.hidden=true});
  image.addEventListener('error',()=>{image.hidden=true;status.hidden=false;status.textContent='照片暫時無法載入，請使用下方連結開啟。'});
@@ -49,7 +57,7 @@
   if(event.key==='ArrowRight'){event.preventDefault();show(current+1)}
  });
  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
- dialog.addEventListener('close',()=>{requestId++;if(pendingFull){pendingFull.onload=null;pendingFull.onerror=null;pendingFull=null}document.body.style.overflow=previousOverflow;returnFocus?.focus({preventScroll:true})});
+ dialog.addEventListener('close',()=>{for(const img of neighbors.values())img.src='';neighbors.clear();requestId++;if(pendingFull){pendingFull.onload=null;pendingFull.onerror=null;pendingFull=null}document.body.style.overflow=previousOverflow;returnFocus?.focus({preventScroll:true})});
  const stage=dialog.querySelector('.photo-viewer-stage');
  stage.addEventListener('touchstart',event=>{touch=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null},{passive:true});
  stage.addEventListener('touchmove',event=>{if(event.touches.length!==1)touch=null},{passive:true});
