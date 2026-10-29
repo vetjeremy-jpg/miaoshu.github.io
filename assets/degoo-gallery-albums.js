@@ -243,8 +243,9 @@
         if (openPhoto(album, index, link)) event.preventDefault();
       });
       const caption = element('figcaption');
-      caption.append(element('strong', null, p.title),
-        element('p', 'photo-story', p.description || ''));
+      caption.append(element('strong', null, p.title));
+      if (p.metadata) caption.append(element('p', null, p.metadata));
+      caption.append(element('p', 'photo-story', p.description || ''));
       figure.append(link, caption);
       gallery.append(figure);
     });
@@ -254,7 +255,7 @@
     else main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261029-1', {cache:'no-store'})
+  fetch('../data/degoo-gallery-albums.json?v=20261029-2', {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error('Album configuration unavailable');
       return response.json();
