@@ -45,6 +45,37 @@
     return node;
   };
 
+  const photoNodes = new WeakMap();
+  const nearbyImages = new Map();
+  const imageRequest = url => {
+    if (nearbyImages.has(url)) return nearbyImages.get(url);
+    const image = new Image();
+    image.decoding = 'async';
+    image.referrerPolicy = 'no-referrer';
+    nearbyImages.set(url, image);
+    image.src = url;
+    return image;
+  };
+  const keepNearby = () => {
+    const photos = activeAlbum.photos;
+    const allowed = new Set([-1, 0, 1].map(offset =>
+      photos[(currentIndex + offset + photos.length) % photos.length].imageUrl).filter(Boolean));
+    for (const [url, image] of nearbyImages) {
+      if (allowed.has(url)) continue;
+      image.onload = null;
+      image.onerror = null;
+      image.src = '';
+      nearbyImages.delete(url);
+    }
+  };
+  const warmNeighbors = () => {
+    if (navigator.connection && navigator.connection.saveData) return;
+    for (const offset of [1, -1]) {
+      const photo = activeAlbum.photos[(currentIndex + offset + activeAlbum.photos.length) % activeAlbum.photos.length];
+      if (!photo.unavailable && photo.imageUrl) imageRequest(photo.imageUrl);
+    }
+  };
+
   let viewer;
   let activeAlbum, currentIndex = 0, returnFocus, prevOverflow = '', touchStart, serial = 0, pending;
   const setupViewer = () => {
@@ -64,7 +95,9 @@
     viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
     viewer.addEventListener('close', () => {
       serial++;
-      if (pending) { pending.onload = null; pending.onerror = null; pending.src = ''; pending = null; }
+      if (pending) { pending.onload = null; pending.onerror = null; pending = null; }
+      for (const image of nearbyImages.values()) { image.onload = null; image.onerror = null; image.src = ''; }
+      nearbyImages.clear();
       doc.body.style.overflow = prevOverflow;
       if (returnFocus) returnFocus.focus({preventScroll:true});
     });
@@ -91,9 +124,13 @@
     const img = viewer.querySelector('.photo-viewer-image');
     const status = viewer.querySelector('.photo-viewer-loading');
     const request = ++serial;
-    if (pending) { pending.onload = null; pending.onerror = null; pending.src = ''; pending = null; }
-    img.hidden = true;
-    img.removeAttribute('src');
+    if (pending) { pending.onload = null; pending.onerror = null; pending = null; }
+    keepNearby();
+    const thumbnail = photoNodes.get(p);
+    const previewReady = thumbnail && thumbnail.complete && thumbnail.naturalWidth > 0;
+    img.hidden = !previewReady;
+    if (previewReady) img.src = thumbnail.currentSrc || thumbnail.src;
+    else img.removeAttribute('src');
     img.alt = p.alt;
     img.referrerPolicy = 'no-referrer';
     img.onerror = () => {
@@ -103,7 +140,7 @@
       status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
     };
     status.textContent = '照片載入中…';
-    status.hidden = false;
+    status.hidden = !!previewReady;
     viewer.querySelector('.photo-viewer-count').textContent =
       activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ ' + String(activeAlbum.photos.length).padStart(2, '0');
     viewer.querySelector('.degoo-photo-title').textContent = p.title;
@@ -113,23 +150,31 @@
       status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
       return;
     }
-    const preload = new Image();
+    const preload = imageRequest(p.imageUrl);
     pending = preload;
-    preload.decoding = 'async';
-    preload.referrerPolicy = 'no-referrer';
-    preload.onload = () => {
+    const ready = () => {
       if (request !== serial || !viewer.open) return;
       pending = null;
       img.src = p.imageUrl;
       img.hidden = false;
       status.hidden = true;
+      warmNeighbors();
     };
-    preload.onerror = () => {
+    const failed = () => {
       if (request !== serial || !viewer.open) return;
       pending = null;
-      status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
+      status.hidden = false;
+      status.textContent = previewReady ?
+        '目前顯示預覽，可使用下方連結前往 Degoo。' :
+        '照片暫時無法載入，可使用下方連結前往 Degoo。';
+      nearbyImages.delete(p.imageUrl);
     };
-    preload.src = p.imageUrl;
+    preload.onload = ready;
+    preload.onerror = failed;
+    if (preload.complete) {
+      if (preload.naturalWidth > 0) ready();
+      else failed();
+    }
   };
   const openPhoto = (album, index, trigger) => {
     setupViewer();
@@ -230,6 +275,7 @@
       link.setAttribute('aria-label', '放大觀看：' + p.alt);
       const img = element('img');
       if (!p.unavailable) img.src = p.thumbnailUrl;
+      photoNodes.set(p, img);
       img.alt = p.alt;
       img.width = p.width;
       img.height = p.height;
