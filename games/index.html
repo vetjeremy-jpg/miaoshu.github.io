@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>月光遊戲館｜喵叔 Moonlit Stories</title>
+<meta name="description" content="在月光下玩一會：攝影翻牌配對、原創互動故事《最後一班月光》，以及貓咪接星星。支援手機觸控，免登入。">
+<meta name="theme-color" content="#091722">
+<link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/games/">
+<meta property="og:title" content="月光遊戲館｜喵叔 Moonlit Stories">
+<meta property="og:description" content="把一點月光留給遊戲。照片配對、分支故事、貓咪接星星，三種輕鬆的小冒險。">
+<meta property="og:url" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/games/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-05.webp">
+<link rel="icon" href="../assets/icons/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="games.css?v=20261031-1">
+<script src="games.js?v=20261031-1" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳至遊戲館</a>
+<header class="top"><a class="brand" href="../"><img src="../assets/optimized/logo.webp" width="44" height="44" alt="">喵叔 <span>Moonlit Stories</span></a><a class="home-link" href="../">← 回到首頁</a></header>
+<main id="main">
+<section class="intro" aria-labelledby="title"><p class="eyebrow">MOONLIT ARCADE · 月光裡的小冒險</p><h1 id="title">把一點月光，<br>留給<span>好玩的時光。</span></h1><p>故事翻到下一頁之前，先在這裡玩一會。<br>三種小冒險，一個不用趕路的夜晚。</p><div class="intro-note">✦ 免登入　✦ 手機也能玩　✦ 紀錄留在這台裝置</div></section>
+<nav class="game-menu" aria-label="選擇小遊戲">
+<a href="#memory" class="game-card"><span class="card-art photo-art" aria-hidden="true"><i>☾</i><i>✦</i><i>☾</i></span><span class="eyebrow">01 / OBSERVE</span><strong>光影翻翻樂</strong><span>把兩個相同的片刻，重新放在一起。</span><b>照片配對 <span aria-hidden="true">↗</span></b></a>
+<a href="#story" class="game-card"><span class="card-art story-art" aria-hidden="true">☾<i>最後一班<br>月光</i></span><span class="eyebrow">02 / CHOOSE</span><strong>最後一班月光</strong><span>每一次選擇，都會讓故事走向不同的地方。</span><b>互動故事 <span aria-hidden="true">↗</span></b></a>
+<a href="#stars" class="game-card"><span class="card-art star-art" aria-hidden="true"><span>✦ · ✧</span><svg viewBox="0 0 100 90"><path d="M18 45 16 8 40 27Q50 22 60 27L84 8 82 45Q97 83 50 86 3 83 18 45"/><path class="cat-lines" d="M32 49h3m30 0h3M43 63q7 9 14 0M8 61l20 3m44 0 20-3"/></svg></span><span class="eyebrow">03 / CATCH</span><strong>月光貓咪接星星</strong><span>替小貓收集星光，小心路過的烏雲。</span><b>60 秒挑戰 <span aria-hidden="true">↗</span></b></a>
+</nav>
+<section id="memory" class="play-section" aria-labelledby="memory-title">
+<div class="section-heading"><div><p class="eyebrow">01 / 光影翻翻樂</p><h2 id="memory-title">記住，光停留的地方。</h2></div><a href="#title">選其他遊戲 ↑</a></div>
+<p>翻開兩張牌，找出 6 組相同照片。不限時，慢慢看也沒關係。</p>
+<div class="toolbar"><div class="stats"><span>已配對 <b id="memory-pairs">0 / 6</b></span><span>翻牌次數 <b id="memory-moves">0</b></span><span>用時 <b id="memory-time">0 秒</b></span></div><div class="actions"><button id="memory-start">開始配對</button><button id="memory-pause" class="secondary" disabled>暫停</button></div></div>
+<p id="memory-message" class="status" role="status">準備好了嗎？按「開始配對」，讓照片亮起來。</p>
+<div id="memory-board" class="memory-board" role="group" aria-label="攝影配對牌"></div>
+<p id="memory-best" class="record"></p><p class="small">照片選自既有攝影作品。<a href="../gallery/">到攝影館看完整作品 →</a></p>
+</section>
+<section id="story" class="play-section" aria-labelledby="story-title">
+<div class="section-heading"><div><p class="eyebrow">02 / 原創互動短篇</p><h2 id="story-title">最後一班月光</h2></div><a href="#title">選其他遊戲 ↑</a></div>
+<p>一座即將關閉的車站，一封沒有地址的信。你的選擇，會把誰送回家？</p>
+<div class="story-layout"><div class="story-aside"><span aria-hidden="true">☾</span><p>有些歸途，<br>從願意停下來開始。</p><small>4 種結局 · 約 3–5 分鐘<br>遊戲獨立原創短篇</small></div><article class="story-page" aria-labelledby="scene-title"><p id="story-chapter" class="eyebrow"></p><h3 id="scene-title" tabindex="-1"></h3><div id="story-text"></div><div id="story-choices" class="story-choices"></div></article></div>
+<div class="story-footer"><p id="story-record" class="record" role="status"></p><button id="story-restart" class="secondary">從頭走一次</button></div>
+</section>
+<section id="stars" class="play-section" aria-labelledby="stars-title">
+<div class="section-heading"><div><p class="eyebrow">03 / 60 秒接星星</p><h2 id="stars-title">今晚，替小貓存一點星光。</h2></div><a href="#title">選其他遊戲 ↑</a></div>
+<p id="stars-help">在畫面上左右拖曳，或使用下方方向鍵。電腦可按 ← →，空白鍵暫停。接星星 +10 分，碰烏雲 −15 分並失去一顆愛心；60 秒或愛心用完即結束。</p>
+<div class="toolbar"><div class="stats"><span>星光 <b id="stars-score">0</b></span><span>剩餘 <b id="stars-time">60 秒</b></span><span>愛心 <b id="stars-lives" aria-label="剩餘 3 顆愛心">♥♥♥</b></span></div><div class="actions"><button id="stars-start">開始接星星</button><button id="stars-pause" class="secondary" disabled>暫停</button></div></div>
+<p id="stars-message" class="status" role="status">小貓就位，等你一起收集星光。</p>
+<div class="stars-wrap"><canvas id="stars-canvas" width="720" height="720" tabindex="0" aria-label="貓咪接星星遊戲區" aria-describedby="stars-help">你的瀏覽器不支援遊戲畫布，仍可玩照片配對與互動故事。</canvas><div class="direction-controls"><button id="stars-left" class="secondary" aria-label="向左移動">← 向左</button><label>貓咪位置<input id="stars-position" type="range" min="6" max="94" value="50" aria-label="貓咪左右位置"></label><button id="stars-right" class="secondary" aria-label="向右移動">向右 →</button></div></div>
+<p id="stars-best" class="record"></p>
+</section>
+<noscript><p class="status">請開啟 JavaScript 才能玩這三款遊戲。你也可以先到<a href="../gallery/">攝影館</a>看作品。</p></noscript>
+</main><footer><span>把一點月光留到白天。</span><a href="../">© 喵叔 Moonlit Stories · 回首頁</a><small id="storage-note">遊戲進度與最佳紀錄僅儲存於目前瀏覽器；清除網站資料後會重置。</small></footer>
+</body></html>
