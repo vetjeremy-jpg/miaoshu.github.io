@@ -108,3 +108,19 @@ test('storage denied still allows all three games', async ({ page }) => {
   await page.locator('#story-choices button').last().click(); await expect(page.locator('#scene-title')).toContainText('結局四');
   await page.locator('#stars-start').click(); await expect(page.locator('#stars-pause')).toBeEnabled();
 });
+
+test('homepage exposes games and video player follows catalogue order', async ({ page }) => {
+  await page.goto('./');
+  await expect(page.getByRole('navigation', { name: '網站導覽' }).getByRole('link', { name: '遊戲館', exact: true })).toHaveAttribute('href', 'games/');
+  await page.goto('videos/');
+  await page.route('https://www.youtube-nocookie.com/**', route => route.fulfill({ body: '<html><body>Video test</body></html>', contentType: 'text/html' }));
+  const buttons = page.locator('.video-pick');
+  const ids = await buttons.evaluateAll(els => els.map(e => e.dataset.video));
+  await expect(page.locator('#youtube-link')).toHaveAttribute('href', 'https://www.youtube.com/shorts/' + ids[0]);
+  for (let i = 0; i < ids.length; i++) {
+    await buttons.nth(i).click();
+    await expect(page.locator('#screen iframe')).toHaveAttribute('src', 'https://www.youtube-nocookie.com/embed/' + ids[i] + '?autoplay=1');
+    await expect(buttons.nth(i)).toHaveAttribute('aria-current', 'true');
+    await expect(page.locator('#youtube-link')).toHaveAttribute('href', 'https://www.youtube.com/shorts/' + ids[i]);
+  }
+});

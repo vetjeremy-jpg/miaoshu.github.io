@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const EXPECTED = ['首頁','小說','攝影','作品星圖','札記','影片','關於','月光來信','⌕ 搜尋'];
+const EXPECTED = ['首頁','小說','攝影','作品星圖','札記','影片','遊戲館','關於','月光來信','⌕ 搜尋'];
 const VIEWPORTS = [
   { name: '320', width: 320, height: 720, mobile: true },
   { name: '375', width: 375, height: 812, mobile: true },
@@ -42,14 +42,15 @@ async function navMetrics(page) {
   });
 }
 
-test.describe('Moonlit 9-entry primary navigation regression', () => {
-  test('@p0 has exactly nine entries in the required order, including video', async ({ page }) => {
+test.describe('Moonlit 10-entry primary navigation regression', () => {
+  test('@p0 has exactly ten entries in the required order, including video and games', async ({ page }) => {
     await openHome(page, VIEWPORTS[6]);
     const nav = page.locator('.topbar .navlinks');
     const links = nav.locator(':scope > a');
-    await expect(links).toHaveCount(9);
+    await expect(links).toHaveCount(10);
     expect(await links.allTextContents()).toEqual(EXPECTED);
     await expect(nav.getByRole('link', { name: '影片', exact: true })).toHaveAttribute('href', 'videos/');
+    await expect(nav.getByRole('link', { name: '遊戲館', exact: true })).toHaveAttribute('href', 'games/');
   });
 
   test('@p0 ARIA contract is intact', async ({ page }) => {
