@@ -326,6 +326,7 @@
           renderCloudLink(album);
         }
       });
+      doc.dispatchEvent(new Event('gallery:albums-ready'));
     })
     .catch(() => { /* Keep all existing galleries fully functional. */ });
 })();
