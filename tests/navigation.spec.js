@@ -109,7 +109,7 @@ test.describe('Moonlit 10-entry primary navigation regression', () => {
 
     await page.locator('body').focus();
     const visited = [];
-    for (let guard = 0; guard < 30 && visited.length < 9; guard++) {
+    for (let guard = 0; guard < 30 && visited.length < EXPECTED.length; guard++) {
       await page.keyboard.press('Tab');
       const state = await page.evaluate(() => {
         const a = document.activeElement;
@@ -140,7 +140,7 @@ test.describe('Moonlit 10-entry primary navigation regression', () => {
     await links.last().focus();
     await expect(links.last()).toBeFocused();
     await page.keyboard.press('Shift+Tab');
-    await expect(links.nth(7)).toBeFocused();
+    await expect(links.nth(EXPECTED.length - 2)).toBeFocused();
   });
 
   test('@p0 mobile-safety.css does not override homepage compact padding at 320px', async ({ page }) => {
