@@ -30,6 +30,7 @@ test('all four story endings, progress restoration and collection persist', asyn
   await page.goto('games/');
   const choose = async text => page.locator('#story-choices').getByRole('button', { name: text }).click();
   await choose('蹲下來，看看小貓守著什麼');
+  await expect(page.locator('#scene-title')).toBeInViewport();
   await page.reload(); await expect(page.locator('#scene-title')).toHaveText('小貓帶路');
   await choose('帶著信，請站長打開候車室');
   await choose('帶著信和收據，去河邊照相館');

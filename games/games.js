@@ -113,7 +113,7 @@ function renderScene(id, focus = false) {
   }
   $('story-record').textContent = `已收藏 ${endings.length} / 4 種結局` + (endings.length ? '：' + endings.map(e => scenes[e].title.split(' / ')[1]).join('、') : ' · 選擇會自動儲存');
   store.set('story', { scene: id, endings });
-  if (focus) $('scene-title').focus({ preventScroll: true });
+  if (focus) $('scene-title').focus();
 }
 $('story-restart').onclick = () => renderScene('platform', true);
 renderScene(sceneId);
