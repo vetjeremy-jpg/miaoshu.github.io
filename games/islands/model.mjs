@@ -48,7 +48,7 @@ export function validCity(s){return !!s&&s.version===1&&Number.isInteger(s.week)
 export const LOCATIONS=[
  {id:'dock',x:8,y:6,name:'潮汐碼頭',icon:'⚓',need:[],intro:'霧裡的渡船只送來你一個人。碼頭的老鐘停在兩點，候船亭還留著前任守燈人的手記。',inspect:'你在候船亭找到一張渡船票。手記寫著：「村口的鎖記得四件事：二道潮痕、七隻海鷗、一聲鐘、四盞岸燈。」',item:'ticket'},
  {id:'village',x:6,y:5,name:'無聲村落',icon:'⌂',need:['ticket'],intro:'石門後是一座安靜的村落，郵差的小木箱上有四位數字鎖。渡船票背面寫著：答案在碼頭。',inspect:'木箱裡也許有地圖。碼頭的四個數量，順序是潮痕、海鷗、鐘聲、岸燈。',puzzle:'code'},
- {id:'garden',x:3,y:6,name:'苔光庭園',icon:'♧',need:['map'],intro:'被青苔包圍的棧道通向一間小亭。你站在左下角，必須踏著安全木板走到右上角。',inspect:'地圖邊緣藏著路線：「往北兩步，向東兩步，再北、再東。」走錯會退回起點，不會失去道具。',puzzle:'path'},
+ {id:'garden',x:3,y:6,name:'苔光庭園',icon:'♧',need:['map'],intro:'被青苔包圍的棧道通向一間小亭。你站在左下角，必須踏著安全木板走到右上角。',inspect:'地圖邊緣藏著路線：「往北兩步，向東兩步，再北、再東。」走錯會留在原地，不會失去進度或道具。',puzzle:'path'},
  {id:'workshop',x:3,y:3,name:'齒輪工坊',icon:'⚙',need:['brassKey'],intro:'黃銅鑰匙打開了工坊。三層刻度環鎖著透明鏡片，外環、中環、內環各有 0–3 四種位置。',inspect:'庭園的拓印寫著：「外環一刻，中環三刻，內環兩刻。」每按一次轉動一格，四格後回到零。',puzzle:'rings'},
  {id:'library',x:5,y:2,name:'潮聲書屋',icon:'▥',need:['rubbing'],intro:'藏書室的門沒有鎖，桌上放著一本缺頁的航海日誌。四枚字印必須按正確順序蓋回封面。',inspect:'拓印下方的小詩：「先聽潮聲，再穿過森林；抬頭見星，最後把月光帶回來。」',puzzle:'words'},
  {id:'observatory',x:7,y:2,name:'星眠觀測所',icon:'✦',need:['lens','starChart'],intro:'裝上鏡片，九盞星燈亮起。每按一盞，它和上下左右的星燈都會切換。讓所有燈熄滅，稜鏡才會出現。',inspect:'星圖提示：「左上角、正中央、右下角，三個位置相互呼應。」相同的星燈再按一次，就能撤回那一步。',puzzle:'lights'},
@@ -76,3 +76,21 @@ export function adventureAction(original,action){const s=structuredClone(origina
   if(!s.solved.includes('lighthouse')||!['home','voyage'].includes(action.id))return fail('請先解開燈塔最後的機關。');s.ending=action.id;message=action.id==='home'?'燈塔再亮起，海上的每一艘船都有了回家的方向。':'你把稜鏡化為一盞航燈，和島民一起把光送往更遠的海岸。';s.journal.unshift(message);
  }else return fail('無法執行這項探索。');s.journal=s.journal.slice(0,40);return {state:s,ok:true,message};}
 export function validAdventure(s){return !!s&&s.version===1&&LOCATIONS.some(l=>l.id===s.location)&&['visited','inspected','solved','items','journal'].every(k=>Array.isArray(s[k]))&&s.items.every(i=>Object.hasOwn(ITEMS,i))&&['visited','inspected','solved'].every(k=>s[k].every(id=>LOCATIONS.some(l=>l.id===id)))&&s.journal.every(x=>typeof x==='string')&&Number.isFinite(s.hints)&&s.hints>=0&&(!s.ending||['home','voyage'].includes(s.ending))&&unlocked(s,s.location);}
+
+// Recommendations use the same rules as manual play and work with existing saves.
+export function cityRecommendation(s){
+ if(s.ended)return null;
+ if(s.pending)return {label:'採用免費的島民互助方案',reason:'先處理事件，不花資源也能繼續。',action:{kind:'event',index:1}};
+ if(!s.actions)return {label:s.week===12?'迎接月光祭':'領取收成，進入下一週',reason:'本週行動已用完，下一週會補滿並收到設施產出。',action:{kind:'advance'}};
+ const buildings=Object.values(s.plots),empty=CITY_PLOTS.find(p=>!s.plots[p.id]);
+ const type=['forest','school','wind','garden','clinic'].find(t=>!buildings.some(b=>b.type===t))||(population(s)<40?'home':empty?'garden':null);
+ if(type){const action=empty?{kind:'build',plot:empty.id,type}:{kind:'upgrade',plot:Object.keys(s.plots).find(id=>s.plots[id].type===type&&s.plots[id].level<3)};
+  if(action.kind==='build'||action.plot){const level=action.kind==='upgrade'?s.plots[action.plot].level+1:1;
+   if(afford(s,cityCost(type,level)))return {label:(action.kind==='build'?'建設':'升級')+BUILDINGS[type].name,reason:type==='forest'?'先穩定木材收入，後續建設更輕鬆。':type==='school'?'學堂每週提供知識。':'補齊島民心願，兼顧人口與三項指標。',action};
+  }
+ }
+ if(type)return {label:'募集物資，補充建設資源',reason:'資源不夠也不用重來，募集不花費金幣。',action:{kind:'gather'}};
+ return afford(s,[8,0,4])?{label:'進行節能研究',reason:'同時提升幸福、生態與電力。',action:{kind:'research'}}:{label:'募集物資',reason:'補充金幣、木材和知識。',action:{kind:'gather'}};
+}
+export function adventureDestination(s){if(s.ending)return null;if(!s.items.includes('ticket'))return 'dock';return LOCATIONS.find(l=>l.puzzle&&unlocked(s,l.id)&&!s.solved.includes(l.id))?.id||'lighthouse';}
+export function assistedDraft(id){const l=LOCATIONS.find(l=>l.id===id);if(!l?.puzzle)return null;const d={code:'',path:[],rings:[0,0,0],words:[],lights:[...LIGHT_START]};if(id==='observatory')d.lights=Array(9).fill(0);else d[{code:'code',path:'path',rings:'rings',words:'words',beacon:'words'}[l.puzzle]]=structuredClone(SOLUTIONS[id]);return d;}

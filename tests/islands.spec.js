@@ -1,6 +1,6 @@
 const {test,expect}=require('@playwright/test');
 const city='games/moonlight-island/',mist='games/mist-island/';
-const travel=async(page,id)=>page.locator(`#sites [data-place="${id}"]`).click();
+const travel=async(page,id)=>{await page.locator('#location-list').evaluate(el=>el.open=true);await page.locator(`#sites [data-place="${id}"]`).click();};
 
 test('island campaign: build, upgrade, advance, event decision, save and confirmed restart',async({page})=>{
  await page.goto(city);await travel(page,'west');await page.locator('[data-build="forest"]').click();
@@ -31,7 +31,7 @@ async function solveAdventure(page,ending){
  await travel(page,'dock');await page.locator('#inspect-site').click();
  await travel(page,'village');await page.locator('#code-answer').fill('0000');await page.locator('#solve-puzzle').click();await expect(page.locator('#message')).toContainText('沒有回應');
  await page.locator('#code-answer').fill('2714');await page.locator('#solve-puzzle').click();
- await travel(page,'garden');await page.locator('#path-W').click();await expect(page.locator('#message')).toContainText('回到起點');
+ await travel(page,'garden');await page.locator('#path-W').click();await expect(page.locator('#message')).toContainText('留在原地');
  for(const dir of ['N','N','E','E','N','E'])await page.locator('#path-'+dir).click();await page.locator('#solve-puzzle').click();
  await travel(page,'workshop');await page.locator('#ring-0').click();
  await page.reload();await expect(page.locator('#ring-0')).toContainText('1');
@@ -58,7 +58,7 @@ for(const width of [320,375,390,430,1280])for(const [route,mode] of [[city,'city
   await page.locator('#zoom-in').click();await expect(page.locator('#island-map')).toHaveAttribute('data-zoom','1.20');
   await page.locator('#zoom-reset').click();await expect(page.locator('#island-map')).toHaveAttribute('data-zoom','1.00');
   if(mode==='city'){await page.locator('[data-site="west"]').press('Enter');await expect(page.locator('#detail')).toContainText('在這裡種下生活');}
-  else{await page.locator('#inspect-site').click();await travel(page,'village');await expect(page.locator('#code-answer')).toBeVisible();}
+  else{await travel(page,'dock');await page.locator('#inspect-site').click();await travel(page,'village');await expect(page.locator('#code-answer')).toBeVisible();}
   expect(errors).toEqual([]);
  });
 }
@@ -75,4 +75,26 @@ test('storage denied still permits construction and investigation',async({page})
  await page.addInitScript(()=>{Storage.prototype.getItem=()=>{throw Error('denied')};Storage.prototype.setItem=()=>{throw Error('denied')}});
  await page.goto(city);await expect(page.locator('#save-note')).toContainText('無法儲存');await travel(page,'west');await page.locator('[data-build="forest"]').click();await expect(page.locator('#detail-title')).toHaveText('永續林場');
  await page.goto(mist);await page.locator('#inspect-site').click();await expect(page.locator('#below')).toContainText('渡船票');
+});
+
+test('phone map opens and closes action sheet; construction returns to island',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.goto(city);
+ await expect(page.locator('#detail')).toBeHidden();await page.locator('[data-site="west"]').click();
+ await expect(page.locator('#detail')).toBeVisible();await page.locator('[data-build="forest"]').click();
+ await expect(page.locator('#detail')).toBeHidden();await expect(page.locator('#message')).toContainText('落成');
+ await page.locator('[data-site="west"]').click();await page.locator('#close-detail').click();await expect(page.locator('#detail')).toBeHidden();
+});
+test('guided exploration and assistance finish all puzzles on a phone with saved drafts',async({page})=>{
+ await page.setViewportSize({width:375,height:844});await page.goto(mist);await page.locator('#guided-action').click();
+ await expect(page.locator('#detail')).toContainText('渡船票');await page.locator('#close-detail').click();
+ for(let i=0;i<6;i++){
+  await page.locator('#guided-action').click();await page.locator('#assist-puzzle').click();
+  if(i===0){await page.reload();await page.locator('#guided-action').click();await expect(page.locator('#code-answer')).toHaveValue('2714');}
+  await page.locator('#solve-puzzle').click();if(i<5)await page.locator('#close-detail').click();
+ }
+ await page.locator('[data-ending="home"]').click();await expect(page.locator('#ending')).toContainText('留燈之人');
+});
+test('a wrong path direction preserves the steps already walked',async({page})=>{
+ await page.goto(mist);await page.locator('#guided-action').click();await page.locator('#guided-action').click();await page.locator('#assist-puzzle').click();await page.locator('#solve-puzzle').click();await page.locator('#guided-action').click();
+ await page.locator('#path-N').click();await page.locator('#path-W').click();await expect(page.locator('#puzzle-host')).toContainText('已走 1 / 6');
 });

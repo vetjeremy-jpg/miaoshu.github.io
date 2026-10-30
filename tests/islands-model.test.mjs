@@ -31,3 +31,12 @@ test('light puzzle is reversible and restart has clean, independently valid stat
  for(let i=0;i<9;i++)assert.deepEqual(toggleLights(toggleLights(LIGHT_START,i),i),LIGHT_START);
  assert.ok(validCity(newCity()));assert.ok(validAdventure(newAdventure()));assert.ok(!validCity({version:1}));assert.ok(!validAdventure({version:1}));assert.equal(LOCATIONS.length,7);
 });
+
+test('new guidance finishes a complete campaign and assisted answers solve all puzzles',async()=>{
+ const {cityRecommendation,adventureDestination,assistedDraft}=await import('../games/islands/model.mjs');
+ let city=newCity(),steps=0;while(!city.ended&&steps++<80){const r=cityAction(city,cityRecommendation(city).action);assert.ok(r.ok,r.message);city=r.state;}
+ assert.ok(city.ended);assert.equal(cityGoals(city).filter(g=>g.done).length,6);assert.equal(cityRecommendation(city),null);
+ let s=newAdventure();assert.equal(adventureDestination(s),'dock');s=adventureAction(s,{kind:'inspect'}).state;
+ for(let i=0;i<6;i++){const id=adventureDestination(s);s=adventureAction(s,{kind:'travel',id}).state;const d=assistedDraft(id),p=LOCATIONS.find(l=>l.id===id).puzzle;const r=adventureAction(s,{kind:'solve',answer:d[p==='beacon'?'words':p]});assert.ok(r.ok,id);s=r.state;}
+ assert.equal(s.solved.length,6);s=adventureAction(s,{kind:'ending',id:'home'}).state;assert.equal(adventureDestination(s),null);
+});
