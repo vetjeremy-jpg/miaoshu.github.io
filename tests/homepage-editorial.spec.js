@@ -41,7 +41,7 @@ test.describe('Moonlit homepage editorial rhythm', () => {
         };
       });
       expect(m.bodyOverflow).toBeLessThanOrEqual(1);
-      expect(m.navCount).toBe(9);
+      expect(m.navCount).toBe(10);
       expect(m.heroText).toContain('讀原創小說');
       expect(m.heroText).toContain('攝影與影像');
       expect(m.tonightTitle).toBe('今夜三選');

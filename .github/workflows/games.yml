@@ -1,0 +1,38 @@
+name: Moonlit Games
+on:
+  pull_request:
+    paths: ['games/**', 'tests/games.spec.js', '.github/workflows/games.yml']
+  push:
+    branches: [main]
+    paths: ['games/**', 'tests/games.spec.js', '.github/workflows/games.yml']
+permissions:
+  contents: read
+jobs:
+  games:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Serve static website
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/moonlit-games-http.log 2>&1 &
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:4173/games/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Play all three games and check mobile layouts
+        run: npx playwright test tests/games.spec.js
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: moonlit-games-test-results
+          path: test-results/
