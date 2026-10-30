@@ -64,8 +64,9 @@ for(const width of [320,375,390,430,1280])for(const [route,mode] of [[city,'city
 }
 
 test('map pointer selection, panning and reset work',async({page})=>{
+ await page.setViewportSize({width:1280,height:1000});
  await page.goto(city);await page.locator('[data-site="west"]').click();await expect(page.locator('#detail')).toContainText('西岸空地');
- const map=page.locator('#island-map');const box=await map.boundingBox();const before=await page.locator('#map-world').getAttribute('transform');
+ const map=page.locator('#island-map');await map.scrollIntoViewIfNeeded();const box=await map.boundingBox();const before=await page.locator('#map-world').getAttribute('transform');
  await page.mouse.move(box.x+box.width*.3,box.y+box.height*.8);await page.mouse.down();await page.mouse.move(box.x+box.width*.5,box.y+box.height*.7,{steps:6});await page.mouse.up();
  expect(await page.locator('#map-world').getAttribute('transform')).not.toBe(before);await page.locator('#zoom-reset').click();await expect(page.locator('#map-world')).toHaveAttribute('transform',before);
 });
