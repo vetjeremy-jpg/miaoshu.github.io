@@ -1,10 +1,10 @@
 name: Moonlit Games
 on:
   pull_request:
-    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', '.github/workflows/games.yml']
+    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
   push:
     branches: [main]
-    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', '.github/workflows/games.yml']
+    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
 permissions:
   contents: read
 jobs:
@@ -28,7 +28,7 @@ jobs:
           done
           exit 1
       - name: Play all five games and check mobile layouts
-        run: node --test tests/islands-model.test.mjs && npx playwright test tests/games.spec.js tests/islands.spec.js
+        run: node --test tests/islands-model.test.mjs tests/cat-island-model.test.mjs && npx playwright test tests/games.spec.js tests/islands.spec.js tests/cat-island.spec.js
         env:
           BASE_URL: http://127.0.0.1:4173/
       - uses: actions/upload-artifact@v4
