@@ -1,3 +1,4 @@
+import {sound} from '../arcade/sound.mjs?v=20261031-sound1';
 import {W,H,LEVELS,NAMES,fresh,valid,blocked,move,objects,nearest,interact,hit,patrols,distance} from './action-model.mjs?v=20261031-action1';
 const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d'),KEY='moonlit-cat-action-v2';let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}if(!valid(state))state=fresh();if(blocked(state.x,state.y,state.level))[state.x,state.y]=LEVELS[state.level].spawn;
 let running=false,time=0,last=0,saveTimer=0,toastTimer=0,invulnerable=0,burst=0,cooldown=0,keys=new Set(),held=new Map(),facing=[1,0],camera={x:0,y:0},vw=500,vh=500,scale=1,catMoves=new Map(),particles=[],dirty=false,albumFrom='menu';
@@ -5,14 +6,14 @@ const colors=['#e7ab64','#67717e','#fff0d0','#9fbcab','#b7845f','#e3aca0','#bdb0
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{$('save-note').textContent='目前瀏覽器無法存檔；仍能玩完，離開後可能重置。';}dirty=false;}
 function say(text,duration=4){$('toast').textContent=text;toastTimer=duration;}
 function clearInput(){keys.clear();held.clear();burst=0;}
-function pause(){if(!running)return;running=false;clearInput();save();showMenu();}
+function pause(){sound.stop();if(!running)return;running=false;clearInput();save();showMenu();}
 function start(){if(state.won){showWin();return;}running=true;last=performance.now();clearInput();canvas.focus({preventScroll:true});say(state.cats.length?'歡迎回來，繼續帶朋友回家！':'往右走，靠近布丁後按「餵魚」。');}
 function showMenu(){$('menu-title').textContent=LEVELS[state.level].name;$('progress').textContent=`貓咪 ${state.cats.length}/9 · 金幣 ${state.coins} · 已取得：${state.tools.map(i=>LEVELS[i].tool).join('、')||'還沒有工具'}`;drawMini();if(!$('menu').open)$('menu').showModal();}
-function showWin(){running=false;clearInput();$('win-text').textContent=`你穿過三座島，取得三件工具，把九位朋友平安帶回家，收集了 ${state.coins} 枚金幣。再玩一次，可以挑戰更少受傷的路線。`;if(!$('win').open)$('win').showModal();}
+function showWin(){sound.play('win');running=false;clearInput();$('win-text').textContent=`你穿過三座島，取得三件工具，把九位朋友平安帶回家，收集了 ${state.coins} 枚金幣。再玩一次，可以挑戰更少受傷的路線。`;if(!$('win').open)$('win').showModal();}
 function cats(){return objects(state).map(o=>{const m=catMoves.get(o.id);return o.kind==='cat'&&m?{...o,x:m.x,y:m.y}:o;});}
 function target(){return nearest(state,cats().filter(o=>o.kind!=='exit'||distance(state,o)<76));}
-function act(){if(!running)return;const o=target();const r=interact(state,o);say(r.text,r.kind==='tool'?6:4);if(r.ok){dirty=true;save();if(r.kind==='cat'||r.kind==='tool')spark(o.x,o.y);if(r.kind==='level'){catMoves.clear();particles=[];invulnerable=2;time=0;clearInput();}if(r.kind==='win')showWin();hud();}}
-function dash(){if(!running)return;if(!state.tools.includes(0)){say('找金色寶箱，拿到輕跑靴就能衝刺。');return;}if(cooldown>0)return;burst=.32;cooldown=1.7;}
+function act(){if(!running)return;const o=target();const r=interact(state,o);say(r.text,r.kind==='tool'?6:4);sound.play(!r.ok?'error':r.kind==='cat'?'cat':r.kind==='tool'?'tool':r.kind==='level'?'door':'collect');if(r.ok){dirty=true;save();if(r.kind==='cat'||r.kind==='tool')spark(o.x,o.y);if(r.kind==='level'){catMoves.clear();particles=[];invulnerable=2;time=0;clearInput();}if(r.kind==='win')showWin();hud();}}
+function dash(){if(!running)return;if(!state.tools.includes(0)){say('找金色寶箱，拿到輕跑靴就能衝刺。');return;}if(cooldown>0)return;sound.play('dash');burst=.32;cooldown=1.7;}
 $('act').onclick=act;$('dash').onclick=dash;$('pause').onclick=pause;$('stop').onclick=clearInput;
 for(const b of document.querySelectorAll('[data-dir]')){b.addEventListener('pointerdown',e=>{e.preventDefault();held.set(e.pointerId,b.dataset.dir);b.setPointerCapture(e.pointerId);});for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,e=>held.delete(e.pointerId));b.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();held.set('keyboard-'+b.dataset.dir,b.dataset.dir);}});b.addEventListener('keyup',()=>held.delete('keyboard-'+b.dataset.dir));b.addEventListener('blur',()=>held.delete('keyboard-'+b.dataset.dir));}
 const movement={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'};
@@ -26,8 +27,8 @@ function spark(x,y){for(let i=0;i<16;i++)particles.push({x,y,vx:(Math.random()-.
 function update(dt){time+=dt;cooldown=Math.max(0,cooldown-dt);burst=Math.max(0,burst-dt);invulnerable=Math.max(0,invulnerable-dt);if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)$('toast').textContent='';}
  const dirs=new Set([...keys,...held.values()]);let dx=(dirs.has('right')?1:0)-(dirs.has('left')?1:0),dy=(dirs.has('down')?1:0)-(dirs.has('up')?1:0);const len=Math.hypot(dx,dy);if(len){dx/=len;dy/=len;facing=[dx,dy];}if(burst>0&&!len)[dx,dy]=facing;const speed=burst>0?390:145;const before=[state.x,state.y];move(state,dx*speed*dt,dy*speed*dt);if(state.x!==before[0]||state.y!==before[1])dirty=true;
  for(const o of objects(state).filter(o=>o.kind==='cat'&&!o.hidden)){let m=catMoves.get(o.id);if(!m){m={x:o.x,y:o.y,flee:0};catMoves.set(o.id,m);}if(burst>0&&distance(state,m)<110&&m.flee===0){m.flee=1.2;say('貓咪被腳步嚇到了！慢慢走近，再按餵魚。',2);}if(m.flee>0){m.flee=Math.max(0,m.flee-dt);const a=Math.atan2(m.y-state.y,m.x-state.x);const xx=m.x+Math.cos(a)*155*dt,yy=m.y+Math.sin(a)*155*dt;if(!blocked(xx,yy,state.level,12)){m.x=xx;m.y=yy;}}else if(distance(state,m)>120){const a=Math.atan2(o.y-m.y,o.x-m.x);if(Math.hypot(o.x-m.x,o.y-m.y)>3){const xx=m.x+Math.cos(a)*35*dt,yy=m.y+Math.sin(a)*35*dt;if(!blocked(xx,yy,state.level,12)){m.x=xx;m.y=yy;}}}}
- if(!invulnerable&&burst<=0)for(const p of patrols(state.level,time)){if(distance(state,p)<36){say(hit(state));invulnerable=2.2;spark(state.x,state.y);dirty=true;save();break;}}
- const pickups=[[216,180],[672,300],[432,600],[936,744]];pickups.forEach(([x,y],i)=>{const id=state.level*4+i;if(!state.pickups.includes(id)&&Math.hypot(state.x-x,state.y-y)<30){state.pickups.push(id);state.coins+=5;spark(x,y);say('+5 金幣',1);dirty=true;}});
+ if(!invulnerable&&burst<=0)for(const p of patrols(state.level,time)){if(distance(state,p)<36){sound.play('hurt');say(hit(state));invulnerable=2.2;spark(state.x,state.y);dirty=true;save();break;}}
+ const pickups=[[216,180],[672,300],[432,600],[936,744]];pickups.forEach(([x,y],i)=>{const id=state.level*4+i;if(!state.pickups.includes(id)&&Math.hypot(state.x-x,state.y-y)<30){state.pickups.push(id);state.coins+=5;sound.play('collect');spark(x,y);say('+5 金幣',1);dirty=true;}});
  particles=particles.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=150*dt;p.life-=dt;return p.life>0;});saveTimer+=dt;if(saveTimer>1){if(dirty)save();saveTimer=0;}hud();}
 function ellipse(x,y,rx,ry,color){ctx.fillStyle=color;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
 function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h);}
