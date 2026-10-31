@@ -17,8 +17,8 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="stylesheet" href="games.css?v=20261031-islands1">
 <script src="games.js?v=20261031-1" defer></script>
-</head>
-<body>
+<link rel="stylesheet" href="game-actions.css?v=actions1"><script defer src="game-actions.js?v=actions1"></script></head>
+<body><nav class="game-actions" aria-label="遊戲操作"><a href="./">✕ 退出遊戲</a><button type="button">↻ 重新開始</button></nav>
 <a class="skip" href="#main">跳至遊戲館</a>
 <header class="top"><a class="brand" href="../"><img src="../assets/optimized/logo.webp" width="44" height="44" alt="">喵叔 <span>Moonlit Stories</span></a><a class="home-link" href="../">← 回到首頁</a></header>
 <main id="main">
@@ -53,4 +53,4 @@
 </section>
 <noscript><p class="status">請開啟 JavaScript 才能玩這三款遊戲。你也可以先到<a href="../gallery/">攝影館</a>看作品。</p></noscript>
 </main><footer><span>把一點月光留到白天。</span><a href="../">© 喵叔 Moonlit Stories · 回首頁</a><small id="storage-note">遊戲進度與最佳紀錄僅儲存於目前瀏覽器；清除網站資料後會重置。</small></footer>
-</body></html>
+<dialog id="game-restart-choice"><h2>重新開始哪個遊戲？</h2><button data-classic-restart="memory-start">光影翻翻樂</button><button data-classic-restart="stars-start">接星星</button><button data-classic-restart="story-restart">月台故事</button><button id="game-restart-cancel">取消</button></dialog></body></html>

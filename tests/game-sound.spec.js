@@ -8,3 +8,15 @@ test('explicit test sound restores audible settings after saved mute and zero vo
 
 test('test sound uses a decodable media clip and reports playback, even without AudioContext',async({page})=>{await page.addInitScript(()=>{window.AudioContext=undefined;window.webkitAudioContext=undefined;});await page.goto('games/crystal-vault/');await page.locator('#sound-test').click();await expect(page.locator('.sound-status')).toContainText('播放器已啟動');});
 test('rejected media playback is visible and retry works',async({page})=>{await page.addInitScript(()=>{const play=HTMLMediaElement.prototype.play;window.__rejectAudio=true;HTMLMediaElement.prototype.play=function(){return window.__rejectAudio?Promise.reject(new DOMException('Blocked','NotAllowedError')):play.call(this);};});await page.goto('games/crystal-vault/');await page.locator('#sound-test').click();await expect(page.locator('.sound-status')).toContainText('播放被阻擋');await page.evaluate(()=>window.__rejectAudio=false);await page.locator('#sound-test').click();await expect(page.locator('.sound-status')).toContainText('播放器已啟動');});
+for(const route of ['cat-island/','cat-island/relaxed.html','crystal-vault/','night-train/','star-runner/','prism-garden/','moonlight-island/','mist-island/','classic.html'])test(`exit and restart execute in ${route}`,async({page})=>{
+ await page.setViewportSize({width:390,height:700});await page.goto('games/'+route);
+ // Dismiss initial onboarding so the persistent in-game controls are exercised.
+ await page.evaluate(()=>document.querySelectorAll('dialog[open]').forEach(d=>d.close()));
+ const bar=page.locator('nav.game-actions'),restart=bar.locator('button');
+ const box=await restart.boundingBox();expect(box.y).toBeGreaterThanOrEqual(0);expect(box.y+box.height).toBeLessThanOrEqual(700);
+ await restart.click();
+ if(route==='classic.html'){await expect(page.locator('#game-restart-choice')).toBeVisible();await page.locator('[data-classic-restart="story-restart"]').click();await expect(page.locator('#game-restart-choice')).not.toBeVisible();}
+ else if(route.includes('moonlight')||route.includes('mist-island')){await expect(page.locator('#restart-confirm')).toBeVisible();await page.locator('#confirm-restart').click();await expect(page.locator('#restart-confirm')).not.toBeVisible();}
+ else{const yes=page.locator(route.includes('relaxed')?'#reset-yes':'#yes');await expect(yes).toBeVisible();await yes.click();await expect(yes).not.toBeVisible();}
+ await bar.locator('a').click();await expect(page).toHaveURL(/\/games\/$/);
+});
