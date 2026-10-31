@@ -1,4 +1,4 @@
-import {sound} from '../arcade/sound.mjs?v=20261031-sound2';
+import {sound} from '../arcade/sound.mjs?v=20261031-sound3';
 import {W,H,LEVELS,NAMES,fresh,valid,blocked,move,objects,nearest,interact,hit,patrols,distance} from './action-model.mjs?v=20261031-action1';
 const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d'),KEY='moonlit-cat-action-v2';let state;try{state=JSON.parse(localStorage.getItem(KEY));}catch{}if(!valid(state))state=fresh();if(blocked(state.x,state.y,state.level))[state.x,state.y]=LEVELS[state.level].spawn;
 let running=false,time=0,last=0,saveTimer=0,toastTimer=0,invulnerable=0,burst=0,cooldown=0,keys=new Set(),held=new Map(),facing=[1,0],camera={x:0,y:0},vw=500,vh=500,scale=1,catMoves=new Map(),particles=[],dirty=false,albumFrom='menu';
