@@ -1,10 +1,10 @@
 name: Moonlit Games
 on:
   pull_request:
-    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-action.spec.js', 'tests/cat-action-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
+    paths: ['games/**', 'tests/arcade.spec.js', 'tests/arcade-model.test.mjs', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-action.spec.js', 'tests/cat-action-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
   push:
     branches: [main]
-    paths: ['games/**', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-action.spec.js', 'tests/cat-action-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
+    paths: ['games/**', 'tests/arcade.spec.js', 'tests/arcade-model.test.mjs', 'tests/games.spec.js', 'tests/islands.spec.js', 'tests/islands-model.test.mjs', 'tests/cat-action.spec.js', 'tests/cat-action-model.test.mjs', 'tests/cat-island.spec.js', 'tests/cat-island-model.test.mjs', '.github/workflows/games.yml']
 permissions:
   contents: read
 jobs:
@@ -27,8 +27,8 @@ jobs:
             sleep 1
           done
           exit 1
-      - name: Play all five games and check mobile layouts
-        run: node --test tests/islands-model.test.mjs tests/cat-island-model.test.mjs tests/cat-action-model.test.mjs && npx playwright test tests/games.spec.js tests/islands.spec.js tests/cat-island.spec.js tests/cat-action.spec.js
+      - name: Play current and archived games and check mobile layouts
+        run: node --test tests/islands-model.test.mjs tests/cat-island-model.test.mjs tests/cat-action-model.test.mjs tests/arcade-model.test.mjs && npx playwright test tests/games.spec.js tests/islands.spec.js tests/cat-island.spec.js tests/cat-action.spec.js tests/arcade.spec.js
         env:
           BASE_URL: http://127.0.0.1:4173/
       - uses: actions/upload-artifact@v4
