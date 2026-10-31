@@ -24,7 +24,7 @@ export function createMediaSound(cues,{createAudio=()=>new globalThis.Audio(),st
  }
  function play(name,testing=false){if(!active||muted||!volume||hidden()||unavailable||!cues[name]||!pool.length)return false;
   const time=now();if(time-(last.get(name)??-Infinity)<(name==='move'?90:45))return false;last.set(name,time);
-  const a=pool[cursor++%pool.length],ticket=serial;
+  const a=pool[cursor++%pool.length],ticket=++serial;
   try{a.pause();a.src=clip(name);a.volume=volume;a.muted=false;const result=a.play();
    Promise.resolve(result).then(()=>{if(testing&&ticket===serial){status='播放器已啟動，是否聽見測試音？';notify();}},()=>{if(ticket===serial){status='播放被阻擋，請再點一次測試聲音';notify();}});return true;
   }catch{status='播放失敗，請再點一次測試聲音';notify();return false;}
