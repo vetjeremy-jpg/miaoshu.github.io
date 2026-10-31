@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('photography pairs complete, lock mismatches, pause and retain best record', async ({ page }) => {
   await page.clock.install();
-  await page.goto('games/');
+  await page.goto('games/classic.html');
   await page.locator('#memory-start').click();
   const cards = page.locator('.memory-card');
   await expect(cards).toHaveCount(12);
@@ -27,7 +27,7 @@ test('photography pairs complete, lock mismatches, pause and retain best record'
 });
 
 test('all four story endings, progress restoration and collection persist', async ({ page }) => {
-  await page.goto('games/');
+  await page.goto('games/classic.html');
   const choose = async text => page.locator('#story-choices').getByRole('button', { name: text }).click();
   await choose('蹲下來，看看小貓守著什麼');
   await expect(page.locator('#scene-title')).toBeInViewport();
@@ -54,7 +54,7 @@ test('all four story endings, progress restoration and collection persist', asyn
 
 test('star scoring, pause, sixty-second finish and local best', async ({ page }) => {
   await page.addInitScript(() => { Math.random = () => .5; });
-  await page.clock.install(); await page.goto('games/');
+  await page.clock.install(); await page.goto('games/classic.html');
   await page.locator('#stars-start').click();
   await page.clock.runFor(4000);
   await expect(page.locator('#stars-score')).not.toHaveText('0');
@@ -70,7 +70,7 @@ test('star scoring, pause, sixty-second finish and local best', async ({ page })
 
 test('clouds remove hearts and end a round; restart resets state', async ({ page }) => {
   await page.addInitScript(() => { Math.random = () => .1; });
-  await page.clock.install(); await page.goto('games/');
+  await page.clock.install(); await page.goto('games/classic.html');
   await page.locator('#stars-start').click();
   await page.locator('#stars-position').fill('14');
   await page.clock.runFor(5500);
@@ -85,7 +85,7 @@ for (const width of [320, 375, 390, 430, 1280]) {
   test(`game controls and layout at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     const errors = []; page.on('pageerror', e => errors.push(e.message));
-    await page.goto('games/');
+    await page.goto('games/classic.html');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.locator('#stars-start').click();
     await page.locator('#stars-right').click();
@@ -103,7 +103,7 @@ test('storage denied still allows all three games', async ({ page }) => {
     Storage.prototype.getItem = () => { throw new Error('Storage denied'); };
     Storage.prototype.setItem = () => { throw new Error('Storage denied'); };
   });
-  await page.goto('games/');
+  await page.goto('games/classic.html');
   await expect(page.locator('#storage-note')).toContainText('無法儲存');
   await page.locator('#memory-start').click(); await expect(page.locator('.memory-card').first()).toBeEnabled();
   await page.locator('#story-choices button').last().click(); await expect(page.locator('#scene-title')).toContainText('結局四');
