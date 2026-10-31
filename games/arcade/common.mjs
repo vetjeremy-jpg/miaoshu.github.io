@@ -1,4 +1,4 @@
-import {sound} from './sound.mjs?v=20261031-sound1';
+import {sound} from './sound.mjs?v=20261031-sound2';
 export {sound};
 export const $=id=>document.getElementById(id);
 export function read(key,fallback,valid){try{const s=JSON.parse(localStorage.getItem('moonlit-arcade-v1-'+key));return valid(s)?s:fallback;}catch{return fallback;}}
