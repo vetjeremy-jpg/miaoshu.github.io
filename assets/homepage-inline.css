@@ -220,3 +220,14 @@ body#top:not([data-book-id]) > header.hero::after{
  radial-gradient(circle at 88% 18%,rgba(213,227,242,0.31) 0 0.6px,transparent 1.2999999999999998px);
  background-repeat:no-repeat;
 }
+
+/* Current collection: direct native entrances and fast tap feedback. */
+a,button,summary,select{touch-action:manipulation}
+button:active,.cta:active,.homepage-shortcuts a:active{filter:brightness(1.18)}
+.homepage-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:24px;max-width:600px}
+.homepage-shortcuts a{display:flex;min-height:62px;flex-direction:column;justify-content:center;gap:4px;padding:10px 12px;border:1px solid #d5bc8644;background:#102537bd;text-decoration:none;font-size:14px;color:#eee2cd}
+.homepage-shortcuts span{font-size:10px;color:#aebdca;letter-spacing:.02em}
+body:not([data-book-id])>.hero .hero-index{display:flex!important;gap:12px!important;margin-top:20px!important;font-size:11px!important;color:#bdc8d0}
+.hero .hero-index span:last-child{display:block}
+.hero .hero-index b{font-size:16px;color:#e2c68f}
+@media(max-width:700px){.homepage-shortcuts{gap:7px;margin-top:18px}.homepage-shortcuts a{font-size:12px;padding:9px;min-height:58px}.homepage-shortcuts span{font-size:9px}.hero .hero-text-link{flex-basis:100%;justify-content:flex-start}.hero .hero-index{justify-content:space-between}}

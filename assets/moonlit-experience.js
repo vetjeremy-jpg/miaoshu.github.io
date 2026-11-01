@@ -1,5 +1,5 @@
 (()=>{if(window.__moonlitExperienceLoaded)return;window.__moonlitExperienceLoaded=true;const ROOT="/miaoshu.github.io/";
-const works=[
+const works=window.MOONLIT_CATALOG?.works||[
  {id:"fusheng",featured:true,type:"小說",title:"《浮生歲月》",note:"從青春走進上一代的戰火與記憶。",url:"books/fushengsuiyue/index.html#toc"},
  {id:"sky1",type:"小說",title:"《兩種天空》",note:"在兩種人生與天空之間開始一段故事。",url:"books/liangzhongtiankong/index.html#toc"},
  {id:"sky2",type:"小說",title:"《兩種天空 II》",note:"沿著未完的天空，繼續下一章。",url:"books/liangzhongtiankong-part2/index.html#toc"},

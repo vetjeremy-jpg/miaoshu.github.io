@@ -315,7 +315,7 @@ if((albumBlock.match(/href="gallery\/index\.html#snow-sword"/g)||[]).length!==2)
 const updatesStart=homepage.indexOf('id="updates"');
 const updatesEnd=updatesStart<0?-1:homepage.indexOf('</section>',updatesStart);
 const updatesBlock=updatesStart>=0&&updatesEnd>updatesStart?homepage.slice(updatesStart,updatesEnd+10):'';
-if(/videos\//.test(updatesBlock)||(updatesBlock.match(/<a\b/g)||[]).length!==2||!/books\/fengmen-yetan/.test(updatesBlock)||!/href="#book"/.test(updatesBlock))errors.push('Recent Updates must stay focused on two reading actions and not duplicate the video hub');
+if(/videos\//.test(updatesBlock)||(updatesBlock.match(/<a\b/g)||[]).length!==2||!/href="books\/[a-z0-9-]+\//.test(updatesBlock)||!/href="#book"/.test(updatesBlock))errors.push('Recent Updates must stay focused on two reading actions and not duplicate the video hub');
 const communityStart=homepage.indexOf('id="community"');
 const communityEnd=communityStart<0?-1:homepage.indexOf('</section>',communityStart);
 const communityBlock=communityStart>=0&&communityEnd>communityStart?homepage.slice(communityStart,communityEnd+10):'';

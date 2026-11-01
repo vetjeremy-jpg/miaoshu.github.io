@@ -177,9 +177,9 @@ test.describe('Moonlit homepage editorial rhythm', () => {
 
       const tonight=page.locator('#tonight .tonight-grid article > a');
       await expect(tonight).toHaveCount(3);
-      await expect(tonight.nth(0)).toHaveAttribute('href','books/liangzhongtiankong/index.html');
-      await expect(tonight.nth(1)).toHaveAttribute('href','gallery/index.html#degoo-album');
-      await expect(tonight.nth(2)).toHaveAttribute('href','videos/index.html');
+      await expect(tonight.nth(0)).toHaveAttribute('href','books/rain-stops-i-remain/');
+      await expect(tonight.nth(1)).toHaveAttribute('href','books/jiankangjie-tingquanyin/comic/');
+      await expect(tonight.nth(2)).toHaveAttribute('href','gallery/#degoo-street-daylight');
 
       const support=page.locator('#support');
       await support.scrollIntoViewIfNeeded();

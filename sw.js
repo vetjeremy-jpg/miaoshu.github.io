@@ -1,7 +1,7 @@
-const CACHE='moonlit-shell-v77';
+const CACHE='moonlit-shell-v78';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
-const NAVIGATION_TIMEOUT=1500;
+const NAVIGATION_TIMEOUT=180;
 const RUNTIME='moonlit-runtime-v1';
 const MAX_RUNTIME=64;
 const keepAlive=(event,work)=>event.waitUntil(work.catch(()=>{}));
@@ -12,20 +12,20 @@ const pageKey=req=>{const u=new URL(req.url);for(const key of [...u.searchParams
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
- SCOPE+'assets/homepage-inline.css?v=20261004-rhythm-p0p1',
+ SCOPE+'assets/homepage-inline.css?v=20261101-current1',
  SCOPE+'assets/moonlit-v2.js?v=20261018-runtime31',
- SCOPE+'assets/moonlit-home-loader.js?v=20261013-resilience2',
+ SCOPE+'assets/moonlit-home-loader.js?v=20261101-responsive1',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
  SCOPE+'assets/icons/icon-192.png',
  SCOPE+'assets/icons/icon-512.png',
  SCOPE+'assets/moonlit-home-content.js?v=20261004-curation-retired1',
- SCOPE+'assets/moonlit-home-idle.js?v=20261013-resilience1',
+ SCOPE+'assets/moonlit-home-idle.js?v=20261101-responsive1',
  SCOPE+'assets/moonlit-home-reading-state.js?v=20261004-immersion1',
  SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
  SCOPE+'assets/moonlit-footer.js?v=20261002-split1',
- SCOPE+'assets/moonlit-refinement-home.js?v=20261004-curation1',
+ SCOPE+'assets/moonlit-refinement-home.js?v=20261101-current1',
  SCOPE+'assets/moonlit-refinement-reader.js?v=20261018-scenes1',
  SCOPE+'assets/moonlit-refinement.css?v=20261004-comfort2',
  SCOPE+'assets/moonlit-refinement-reader.css?v=20261003-paper1'
@@ -42,43 +42,26 @@ self.addEventListener('install',event=>{
  );
 });
 
-// Replace only stale comic documents, then refresh open comic windows after activation.
-// Preserve other reading pages and leave offline comic copies available on fetch failure.
-const refreshComicWindows=async()=>{
- const comicPath=SCOPE+'books/jiankangjie-tingquanyin/comic/';
- const isComic=value=>{const u=new URL(value,self.location.origin);return u.pathname===comicPath||u.pathname===comicPath+'index.html'};
- const windows=await self.clients.matchAll({type:'window'});
- const readers=windows.filter(client=>isComic(client.url));
- if(!readers.length)return;
- try{
-  const fresh=await fetch(new URL(comicPath,self.location.origin).href,{cache:'reload'});
-  if(!fresh.ok)return;
-  const cache=await caches.open(PAGES);
-  const keys=await cache.keys();
-  await Promise.all(keys.filter(request=>isComic(request.url)).map(request=>cache.delete(request)));
-  await cache.put(new URL(comicPath,self.location.origin).href,fresh);
-  readers.forEach(client=>client.postMessage({type:'moonlit:comic-update'}));
- }catch{/* Keep the existing offline page if the network is unavailable. */}
-};
-
-// Refresh the shared novel exit controls for existing versioned reader pages.
-const refreshNovelExitControls=async()=>{
- try{
-  const fresh=await fetch(SCOPE+'books/reader.js?v=20261101-exits',{cache:'reload'});
-  if(!fresh.ok)return;
-  const cache=await caches.open(RUNTIME);
-  for(const version of ['20261018-response2','20260930-reading-mode'])await cache.put(SCOPE+'books/reader.js?v='+version,fresh.clone());
- }catch{/* Existing offline reader controls remain available. */}
-};
-
 self.addEventListener('activate',event=>{
  event.waitUntil(
   caches.keys()
    .then(keys=>Promise.all(keys.filter(key=>(key.startsWith('moonlit-shell-')&&key!==CACHE)||(key.startsWith('moonlit-pages-')&&key!==PAGES)||(key.startsWith('moonlit-runtime-')&&key!==RUNTIME)).map(key=>caches.delete(key))))
+   
+   .then(async()=>{const cache=await caches.open(PAGES);for(const request of await cache.keys()){const path=new URL(request.url,self.location.origin).pathname;if(path===SCOPE||path===SCOPE+'index.html')await cache.delete(request)}})
    .then(()=>self.clients.claim())
-   .then(refreshNovelExitControls)
-   .then(refreshComicWindows)
  );
+});
+
+const recentlyWarmed=new Map(),warming=new Set();
+self.addEventListener('message',event=>{
+ if(event.data?.type!=='moonlit:prefetch')return;
+ let url;try{url=new URL(event.data.url,self.location.origin)}catch{return}
+ if(url.origin!==self.location.origin||!url.pathname.startsWith(SCOPE)||!(/\/$|\.html$/.test(url.pathname)))return;
+ const key=url.origin+url.pathname;
+ if(warming.has(key)||warming.size>=3||(recentlyWarmed.has(key)&&Date.now()-recentlyWarmed.get(key)<30000))return;warming.add(key);
+ if(recentlyWarmed.size>8)recentlyWarmed.delete(recentlyWarmed.keys().next().value);
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);
+ event.waitUntil(fetch(url.href,{cache:'no-cache',signal:controller.signal,priority:'low'}).then(async res=>{if(!res.ok)return;const cache=await caches.open(PAGES);const request=pageKey({url:url.href});await cache.delete(request);await cache.put(request,res);recentlyWarmed.set(key,Date.now());await trimPages(cache)}).catch(()=>{}).finally(()=>{warming.delete(key);clearTimeout(timer)}));
 });
 
 self.addEventListener('fetch',event=>{
@@ -114,10 +97,19 @@ self.addEventListener('fetch',event=>{
     }).catch(()=>{});
    },NAVIGATION_TIMEOUT);
   });
-  event.respondWith(Promise.race([network,cachedAfterDeadline]).finally(()=>clearTimeout(timer)));
+  const warm=recentlyWarmed.get(url.origin+url.pathname);
+  event.respondWith((warm&&Date.now()-warm<30000?caches.match(pageKey(req)).then(hit=>hit||network):Promise.race([network,cachedAfterDeadline])).finally(()=>clearTimeout(timer)));
   return;
  }
 
+ // Upgrade older novel documents without discarding their offline fallback.
+ if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode'].includes(url.searchParams.get('v'))){
+  const current=new URL(url.href);current.searchParams.set('v','20261101-responsive1');
+  event.respondWith(caches.open(RUNTIME).then(async cache=>{
+   const hit=await cache.match(current.href);if(hit)return hit;
+   try{const res=await fetch(current.href,{cache:'reload'});if(!res.ok)throw Error('reader unavailable');const copy=res.clone();keepAlive(event,cache.put(current.href,copy));return res}catch{return await cache.match(req)||Response.error()}
+  }));return;
+ }
  const assetKey=url.pathname+url.search;
  if(VERSIONED_ASSETS.has(assetKey)){
   event.respondWith(

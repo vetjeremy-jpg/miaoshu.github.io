@@ -1,6 +1,6 @@
 (()=>{
 // Keep controls recoverable when the service stalls, including its JSON body.
-const requestLikes=async(url,options={})=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),10000);try{const response=await fetch(url,{...options,signal:controller.signal});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');return data}catch(error){if(error.name==='AbortError')throw Error('連線逾時，請稍後再試。');throw error}finally{clearTimeout(timer)}};
+const requestLikes=async(url,options={})=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),4000);try{const response=await fetch(url,{...options,signal:controller.signal});const data=await response.json();if(!response.ok)throw Error(data.message||'按讚暫時無法使用。');return data}catch(error){if(error.name==='AbortError')throw Error('連線逾時，請稍後再試。');throw error}finally{clearTimeout(timer)}};
 /* Shared reader behavior for every novel page. Set data-book-id and data-book-title on body. */
 (()=>{
  if(window.__moonlitReaderLoaded)return;
@@ -163,19 +163,19 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
   // Keep the original keys for 《浮生歲月》 so existing likes are preserved.
   // Other books use book-scoped keys to avoid sharing counts across novels.
   const likeKey=chapter=>bookId==='fushengsuiyue'?chapter.id:bookId+'-'+chapter.id;
-  const buttons=new Map(),counts={},liked=new Set();
+  const buttons=new Map(),counts={},liked=new Set(),touched=new Set();
   function render(key){const button=buttons.get(key);if(!button)return;const active=liked.has(key);button.disabled=false;button.setAttribute('aria-pressed',String(active));button.textContent=(active?'♥ 已喜歡本章':'♡ 喜歡本章')+' · '+Number(counts[key]||0)}
   chapters.forEach(chapter=>{
-   const button=document.createElement('button');button.type='button';button.className='chapter-like';button.disabled=true;button.textContent='♡ 喜歡本章 · 載入中';button.setAttribute('aria-label','喜歡或取消喜歡'+chapter.querySelector('h2').textContent);
+   const button=document.createElement('button');button.type='button';button.className='chapter-like';button.disabled=false;button.textContent='♡ 喜歡本章';button.setAttribute('aria-label','喜歡或取消喜歡'+chapter.querySelector('h2').textContent);
    const key=likeKey(chapter);
    chapter.querySelector('.chapter-bookmark').after(button);buttons.set(key,button);
    button.addEventListener('click',async()=>{
-    button.disabled=true;
+    button.disabled=true;button.setAttribute('aria-busy','true');button.textContent='正在儲存喜歡…';touched.add(key);
     try{const data=await requestLikes(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,visitorId,liked:!liked.has(key)})});counts[key]=data.count;if(data.liked)liked.add(key);else liked.delete(key);render(key)}
-    catch(e){button.disabled=false;button.textContent='♡ 按讚失敗，請重試'}
+    catch(e){button.textContent='♡ 連線失敗，點此重試'}finally{button.disabled=false;button.removeAttribute('aria-busy')}
    });
   });
-  requestLikes(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(data=>{Object.assign(counts,data.counts||{});(data.liked||[]).forEach(key=>liked.add(key));for(const key of buttons.keys())render(key)}).catch(()=>{for(const button of buttons.values())button.textContent='♡ 暫時無法按讚'});
+  requestLikes(endpoint+'?visitorId='+encodeURIComponent(visitorId),{cache:'no-store'}).then(data=>{for(const [key,count] of Object.entries(data.counts||{}))if(!touched.has(key))counts[key]=count;(data.liked||[]).forEach(key=>{if(!touched.has(key))liked.add(key)});for(const key of buttons.keys())if(!touched.has(key))render(key)}).catch(()=>{for(const [key,button] of buttons)if(!touched.has(key)){button.disabled=false;button.textContent='♡ 喜歡本章（點此重試）'}});
   } catch(e) { console.warn('Moonlit chapter likes unavailable; reader continues.',e); }
  // Audiobook is initialized by reader-audio-fallback.js as the single audio core.
  // Mobile/reader quick access to the single audiobook core.

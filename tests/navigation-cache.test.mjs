@@ -35,7 +35,7 @@ function worker({cached=true,shell=false,cacheBroken=false}={}){
     respondWith:p=>result=p,waitUntil:p=>tasks.push(p)});
    return {result,finish:async()=>{for(let i=0;i<tasks.length;i++)await tasks[i]}};
   },
-  deadline:async()=>{assert.equal(timers.size,1);const timer=[...timers.values()][0];assert.equal(timer.ms,1500);timer.fn();await flush()}
+  deadline:async()=>{assert.equal(timers.size,1);const timer=[...timers.values()][0];assert.equal(timer.ms,180);timer.fn();await flush()}
  };
 }
 
