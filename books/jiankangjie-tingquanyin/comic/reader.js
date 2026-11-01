@@ -1,5 +1,10 @@
 (() => {
 'use strict';
+document.querySelectorAll('p.source').forEach(el=>el.remove());
+if('serviceWorker' in navigator){
+ const scope='/miaoshu.github.io/';
+ navigator.serviceWorker.register(scope+'sw.js',{scope,updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{});
+}
 const $ = id => document.getElementById(id);
 const book=$('book'), select=$('chapters'), zoom=$('zoom'), zoomImage=$('zoom-image');
 const wide=matchMedia('(min-width: 900px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -90,5 +95,5 @@ fetch('pages.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('目錄載�
  pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
-}).catch(()=>{book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請重新整理，或開啟下方原始漫畫相簿。';book.setAttribute('aria-busy','false')});
+}).catch(()=>{book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請重新整理頁面後再試。';book.setAttribute('aria-busy','false')});
 })();
