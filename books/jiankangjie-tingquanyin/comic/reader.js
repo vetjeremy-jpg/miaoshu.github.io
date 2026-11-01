@@ -4,13 +4,35 @@ const $ = id => document.getElementById(id);
 const book=$('book'), select=$('chapters'), zoom=$('zoom'), zoomImage=$('zoom-image');
 const wide=matchMedia('(min-width: 900px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const key='moonlit-tingquan-comic-v1';
-let pages=[], page=0, single=false, busy=false, touch=null, lastSwipe=0;
+let pages=[], page=0, single=false, busy=false, touch=null, lastSwipe=0, immersive=false;
 const read=(k)=>{try{return localStorage.getItem(k)}catch{return null}};
 const save=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
 single=read(key+'-single')==='true';
-const spread=()=>wide.matches&&!single;
+const spread=()=>wide.matches&&!single&&!immersive;
 const count=()=>spread()?2:1;
 function setHash(){history.replaceState(null,'','#page-'+(page+1))}
+function setImmersive(enabled){
+ immersive=enabled;document.body.classList.toggle('immersive',enabled);
+ $('immersive-bar').hidden=!enabled;$('expand').setAttribute('aria-pressed',String(enabled));
+ save(key+'-immersive',enabled);
+ if(pages.length)render();
+ if(enabled)$('collapse').focus({preventScroll:true});else $('expand').focus({preventScroll:true});
+}
+$('expand').onclick=()=>{
+ setImmersive(true);
+ // CSS viewport mode also works on iPhone browsers without Fullscreen API.
+ if(document.documentElement.requestFullscreen&&!document.fullscreenElement){
+  try{const request=document.documentElement.requestFullscreen();if(request?.catch)request.catch(()=>{})}catch{}
+ }
+};
+function collapse(){
+ setImmersive(false);
+ if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});
+}
+$('collapse').onclick=collapse;
+$('immersive-zoom').onclick=()=>{if(pages.length)openZoom(page)};
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&immersive)setImmersive(false)});
+
 function openZoom(index){
  const p=pages[index]; zoomImage.src=p.imageUrl;zoomImage.alt=p.title;
  zoomImage.classList.remove('actual');$('zoom-size').textContent='原尺寸細讀';
@@ -40,7 +62,7 @@ function render(direction=0){
  book.replaceChildren();book.classList.toggle('double',spread()&&page+1<pages.length);
  book.append(makeSheet(page));if(spread()&&page+1<pages.length)book.append(makeSheet(page+1));
  if(leaf){book.append(leaf);busy=true;setTimeout(()=>{leaf.remove();busy=false},500)}
- book.setAttribute('aria-busy','false');select.value=String(page);
+ book.setAttribute('aria-busy','false');select.value=String(page);$('immersive-title').textContent=pages[page].title;
  $('counter').textContent=(spread()&&page+1<pages.length?(page+1)+'–'+(page+2):page+1)+' / '+pages.length;
  $('status').textContent=pages[page].title+(spread()&&page+1<pages.length?' ／ '+pages[page+1].title:'');
  $('prev').disabled=page===0;$('next').disabled=page+count()>=pages.length;
@@ -62,10 +84,11 @@ zoom.addEventListener('close',()=>{zoomImage.removeAttribute('src')});
 book.addEventListener('touchstart',e=>{if(e.touches.length===1){const t=e.touches[0];touch={x:t.clientX,y:t.clientY}}else touch=null},{passive:true});
 book.addEventListener('touchend',e=>{if(!touch)return;const t=e.changedTouches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;touch=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){lastSwipe=Date.now();turn(dx<0?1:-1)}},{passive:true});
 book.addEventListener('touchcancel',()=>touch=null,{passive:true});
-document.addEventListener('keydown',e=>{if(zoom.open||/SELECT|INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'){e.preventDefault();turn(1)}if(e.key==='ArrowLeft'){e.preventDefault();turn(-1)}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&immersive&&!zoom.open){collapse();return}if(zoom.open||/SELECT|INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'){e.preventDefault();turn(1)}if(e.key==='ArrowLeft'){e.preventDefault();turn(-1)}});
 fetch('pages.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==39)throw Error('目錄不完整');
  pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
- const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);
+ const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
+ const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
 }).catch(()=>{book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請重新整理，或開啟下方原始漫畫相簿。';book.setAttribute('aria-busy','false')});
 })();
