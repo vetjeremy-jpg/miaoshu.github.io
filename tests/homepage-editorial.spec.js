@@ -276,12 +276,12 @@ test('homepage image priority and intrinsic geometry stay stable', async ({ page
 });
 
 
-test('heavy homepage enhancements are proximity driven, not early-idle forced', async ({ page }) => {
+test('image viewing stays proximity driven while first-click controls load immediately', async ({ page }) => {
   await page.setViewportSize({ width:390, height:844 });
   await page.goto('./', { waitUntil:'domcontentloaded' });
   await page.waitForTimeout(2600);
   await expect(page.locator('script[src*="photo-viewer.js"]')).toHaveCount(0);
-  await expect(page.locator('script[src*="moonlit-experience.js"]')).toHaveCount(0);
+  await expect(page.locator('script[src*="moonlit-experience.js"]')).toHaveCount(1);
   await page.locator('#featured').scrollIntoViewIfNeeded();
   await expect.poll(async()=>page.locator('script[src*="photo-viewer.js"]').count()).toBe(1);
   await expect.poll(async()=>page.locator('script[src*="moonlit-experience.js"]').count()).toBe(1);
@@ -307,6 +307,6 @@ test('service worker shell versions match current homepage assets', async ({ req
   for(const asset of assets)expect(html,asset+' agrees with homepage').toContain(asset);
   const loader=html.match(/src="(assets\/moonlit-home-loader\.js\?v=[^"]+)"/)[1];
   const loaderSource=await (await request.get(loader)).text();
-  const idle=loaderSource.match(/assets\/moonlit-home-idle\.js\?v=[^'"]+/)[0];
+  const idle=html.match(/assets\/moonlit-home-idle\.js\?v=[^'"]+/)[0];
   expect(sw).toContain(idle);
 });
