@@ -39,10 +39,11 @@ let videoIds=[...videosHtml.matchAll(/const ids=\[([^\]]+)\]/g)].flatMap(m=>[...
 // The playlist now derives both IDs and titles directly from its buttons.
 // Keep supporting the earlier literal-array player, while validating the new
 // single-source mapping and its selected-video consumer before accepting it.
-const derivesVideoIds = videosHtml.includes("const buttons=[...document.querySelectorAll('.video-pick')];")
-  && videosHtml.includes('const videos=buttons.map(button=>({id:button.dataset.video,')
-  && videosHtml.includes("frame.src='https://www.youtube-nocookie.com/embed/'+videos[selected].id")
-  && videosHtml.includes("link.href='https://www.youtube.com/shorts/'+videos[selected].id");
+const videoRuntime=videosHtml.includes('src="player.js?')?read('videos/player.js'):videosHtml;
+const derivesVideoIds = videoRuntime.includes("buttons=[...document.querySelectorAll('.video-pick')]")
+  && videoRuntime.includes('const videos=buttons.map(button=>({id:button.dataset.video,')
+  && videoRuntime.includes("frame.src='https://www.youtube-nocookie.com/embed/'+videos[selected].id")
+  && videoRuntime.includes("link.href='https://www.youtube.com/shorts/'+videos[selected].id");
 if(!videoIds.length && derivesVideoIds) videoIds=videoButtons;
 if(new Set(videoButtons).size!==videoButtons.length || videoButtons.some(id=>!/^[-_a-zA-Z0-9]{11}$/.test(id))) errors.push('videos: playlist requires unique valid YouTube video IDs');
 if(!videoButtons.length) errors.push('videos: no playable video controls found');

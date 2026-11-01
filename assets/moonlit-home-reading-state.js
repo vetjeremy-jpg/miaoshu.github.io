@@ -11,7 +11,9 @@
   const n=Number(id.slice(8));
   return titles?.[id]||(book.id==='fushengsuiyue'?legacyTitles[n-1]:null)||'第 '+n+' 章';
  };
+ function refresh(){
  const reading=books.map(book=>({book,id:chapterId(book.id),time:Number(get('miaoshu-'+book.id+'-last-read-at'))||0})).filter(item=>validChapter(item.id)).sort((a,b)=>b.time-a.time)[0];
+ const continueBox=document.getElementById('continue-reading');continueBox?.classList.remove('is-visible');
  if(reading){
   const box=document.getElementById('continue-reading');
   document.getElementById('continue-label').textContent='上次讀到'+reading.book.title+'：'+chapterTitle(reading.book,reading.id);
@@ -24,5 +26,12 @@
   let ids;try{ids=JSON.parse(get('miaoshu-'+book.id+'-bookmarks')||(book.id==='fushengsuiyue'?get('miaoshu-saved-chapters'):null)||'[]')}catch(e){ids=[]}
   return Array.isArray(ids)?[...new Set(ids)].filter(validChapter).map(id=>({book,id})):[];
  });
+ if(shelfSection)shelfSection.hidden=!saved.length;
+ if(shelf)shelf.replaceChildren();
  if(saved.length){if(shelfSection)shelfSection.hidden=false;shelf.replaceChildren();saved.forEach(({book,id})=>{const li=document.createElement('li'),a=document.createElement('a');a.href=book.url+'#'+id;a.textContent=book.title+' · '+chapterTitle(book,id);li.append(a);shelf.append(li)})}
+ }
+ refresh();
+ addEventListener('pageshow',refresh);
+ addEventListener('storage',event=>{if(event.key===null||event.key.startsWith('miaoshu-'))refresh()});
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh()});
 })();

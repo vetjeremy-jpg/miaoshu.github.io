@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v78';
+const CACHE='moonlit-shell-v79';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=180;
@@ -14,7 +14,7 @@ const SHELL=[
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261101-current1',
  SCOPE+'assets/moonlit-v2.js?v=20261018-runtime31',
- SCOPE+'assets/moonlit-home-loader.js?v=20261101-responsive1',
+ SCOPE+'assets/moonlit-home-loader.js?v=20261101-live-state1',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
@@ -22,7 +22,7 @@ const LAZY_ASSETS=[
  SCOPE+'assets/icons/icon-512.png',
  SCOPE+'assets/moonlit-home-content.js?v=20261004-curation-retired1',
  SCOPE+'assets/moonlit-home-idle.js?v=20261101-responsive1',
- SCOPE+'assets/moonlit-home-reading-state.js?v=20261004-immersion1',
+ SCOPE+'assets/moonlit-home-reading-state.js?v=20261101-live-state1',
  SCOPE+'assets/moonlit-gallery-content.js?v=20261002-split1',
  SCOPE+'assets/moonlit-footer.js?v=20261002-split1',
  SCOPE+'assets/moonlit-refinement-home.js?v=20261101-current1',
@@ -103,8 +103,8 @@ self.addEventListener('fetch',event=>{
  }
 
  // Upgrade older novel documents without discarding their offline fallback.
- if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode'].includes(url.searchParams.get('v'))){
-  const current=new URL(url.href);current.searchParams.set('v','20261101-responsive1');
+ if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode','20261101-responsive1'].includes(url.searchParams.get('v'))){
+  const current=new URL(url.href);current.searchParams.set('v','20261101-sharing1');
   event.respondWith(caches.open(RUNTIME).then(async cache=>{
    const hit=await cache.match(current.href);if(hit)return hit;
    try{const res=await fetch(current.href,{cache:'reload'});if(!res.ok)throw Error('reader unavailable');const copy=res.clone();keepAlive(event,cache.put(current.href,copy));return res}catch{return await cache.match(req)||Response.error()}

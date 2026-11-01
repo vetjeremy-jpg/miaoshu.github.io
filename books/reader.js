@@ -138,7 +138,7 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
   const tools=document.createElement('div');tools.className='chapter-tools';
   const share=document.createElement('button');share.type='button';share.textContent='分享本章 ↗';
   const url=location.origin+location.pathname+'#'+chapter.id;
-  share.addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:bookTitle+'・'+title,url});else if(navigator.clipboard){await navigator.clipboard.writeText(url);share.textContent='章節連結已複製 ✓';setTimeout(()=>share.textContent='分享本章 ↗',2500)}else location.href=url}catch(e){}});
+  share.addEventListener('click',async()=>{share.disabled=true;share.setAttribute('aria-busy','true');feedback.textContent='正在開啟分享…';try{if(navigator.share){await navigator.share({title:bookTitle+'・'+title,url});feedback.textContent='分享視窗已關閉。'}else if(navigator.clipboard){await navigator.clipboard.writeText(url);feedback.textContent='章節連結已複製。'}else feedback.textContent='請使用瀏覽器分享功能，或複製網址：'+url}catch(e){feedback.textContent=e.name==='AbortError'?'已取消分享。':'分享未完成，可再試一次，或使用下方 LINE 連結。'}finally{share.disabled=false;share.removeAttribute('aria-busy')}});
   const line=document.createElement('a');line.href='https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(url);line.target='_blank';line.rel='noopener noreferrer';line.textContent='分享到 LINE ↗';
   const quote=document.createElement('button');quote.type='button';quote.textContent='分享選取文字';
   const feedback=document.createElement('p');feedback.className='chapter-share-feedback';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
