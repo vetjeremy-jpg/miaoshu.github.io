@@ -18,3 +18,13 @@ body.immersive .controls{position:fixed;inset:auto 0 0;min-height:64px;padding:8
 body.immersive .progress{position:fixed;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));z-index:6}
 body.immersive .turn-leaf{height:100%;background:#05090d}
 body.immersive .turn-leaf img{height:100%;object-fit:contain}
+
+/* Always reachable exits in normal, viewport, native fullscreen and zoom reading. */
+body{padding-top:calc(58px + env(safe-area-inset-top))}
+.top.reader-exits{position:fixed;inset:0 0 auto;z-index:50;min-height:54px;padding:calc(6px + env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 6px max(12px,env(safe-area-inset-left));background:#101a22;border-bottom:1px solid #c5ab7744}
+.reader-exits a,.zoom-exits a{display:inline-flex;align-items:center;min-height:44px;font-size:.85rem;font-weight:600;text-decoration:none;padding:0 10px;border:1px solid #bfa37466;border-radius:6px}
+body.immersive>.top.reader-exits{display:flex}
+body.immersive .immersive-bar{top:calc(58px + env(safe-area-inset-top));padding-top:4px}
+body.immersive .book{top:calc(110px + env(safe-area-inset-top))}
+.zoom-exits{display:flex;justify-content:space-between;gap:12px;padding:calc(6px + env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 6px max(12px,env(safe-area-inset-left));background:#101a22}
+#zoom-scroll{height:calc(100% - 164px - env(safe-area-inset-top))}

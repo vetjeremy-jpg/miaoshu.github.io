@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v75';
+const CACHE='moonlit-shell-v76';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=1500;
@@ -61,11 +61,22 @@ const refreshComicWindows=async()=>{
  }catch{/* Keep the existing offline page if the network is unavailable. */}
 };
 
+// Refresh the shared novel exit controls for existing versioned reader pages.
+const refreshNovelExitControls=async()=>{
+ try{
+  const fresh=await fetch(SCOPE+'books/reader.js?v=20261101-exits',{cache:'reload'});
+  if(!fresh.ok)return;
+  const cache=await caches.open(RUNTIME);
+  for(const version of ['20261018-response2','20260930-reading-mode'])await cache.put(SCOPE+'books/reader.js?v='+version,fresh.clone());
+ }catch{/* Existing offline reader controls remain available. */}
+};
+
 self.addEventListener('activate',event=>{
  event.waitUntil(
   caches.keys()
    .then(keys=>Promise.all(keys.filter(key=>(key.startsWith('moonlit-shell-')&&key!==CACHE)||(key.startsWith('moonlit-pages-')&&key!==PAGES)||(key.startsWith('moonlit-runtime-')&&key!==RUNTIME)).map(key=>caches.delete(key))))
    .then(()=>self.clients.claim())
+   .then(refreshNovelExitControls)
    .then(refreshComicWindows)
  );
 });
