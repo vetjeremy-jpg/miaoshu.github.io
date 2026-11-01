@@ -2,6 +2,7 @@
 'use strict';
 document.querySelectorAll('p.source').forEach(el=>el.remove());
 if('serviceWorker' in navigator){
+ navigator.serviceWorker.addEventListener('message',event=>{if(event.data?.type==='moonlit:comic-update')location.reload()});
  const scope='/miaoshu.github.io/';
  navigator.serviceWorker.register(scope+'sw.js',{scope,updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{});
 }
