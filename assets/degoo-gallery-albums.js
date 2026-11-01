@@ -77,14 +77,15 @@
   };
 
   let viewer;
-  let activeAlbum, currentIndex = 0, returnFocus, prevOverflow = '', touchStart, serial = 0, pending;
+  let activeAlbum, currentIndex = 0, returnFocus, prevOverflow = '', touchStart, serial = 0, pending, loadTimer;
   const setupViewer = () => {
     if (viewer || !window.HTMLDialogElement || !HTMLDialogElement.prototype.showModal) return;
     viewer = element('dialog', 'photo-viewer degoo-photo-viewer');
     viewer.setAttribute('aria-label', 'Degoo 攝影作品放大瀏覽');
-    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="degoo-photo-title"></h2><p class="degoo-photo-description"></p><a class="photo-viewer-source" target="_blank" rel="noopener noreferrer">在 Degoo 開啟相簿 ↗</a><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="degoo-photo-title"></h2><p class="degoo-photo-description"></p><a class="photo-viewer-source" target="_blank" rel="noopener noreferrer">在 Degoo 開啟相簿 ↗</a><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
     doc.body.append(viewer);
     viewer.querySelector('.photo-viewer-close').addEventListener('click', () => viewer.close());
+    viewer.querySelector('.photo-viewer-retry').addEventListener('click', () => { nearbyImages.delete(activeAlbum.photos[currentIndex].imageUrl); show(currentIndex); });
     viewer.querySelector('.photo-viewer-prev').addEventListener('click', () => show(currentIndex - 1));
     viewer.querySelector('.photo-viewer-next').addEventListener('click', () => show(currentIndex + 1));
     viewer.addEventListener('keydown', event => {
@@ -95,6 +96,7 @@
     viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
     viewer.addEventListener('close', () => {
       serial++;
+      clearTimeout(loadTimer);
       if (pending) { pending.onload = null; pending.onerror = null; pending = null; }
       for (const image of nearbyImages.values()) { image.onload = null; image.onerror = null; image.src = ''; }
       nearbyImages.clear();
@@ -119,6 +121,8 @@
 
   const show = index => {
     if (!viewer || !activeAlbum) return;
+    clearTimeout(loadTimer);
+    viewer.querySelector('.photo-viewer-retry').hidden = true;
     currentIndex = (index + activeAlbum.photos.length) % activeAlbum.photos.length;
     const p = activeAlbum.photos[currentIndex];
     const img = viewer.querySelector('.photo-viewer-image');
@@ -135,6 +139,8 @@
     img.referrerPolicy = 'no-referrer';
     img.onerror = () => {
       if (request !== serial || !viewer.open) return;
+      clearTimeout(loadTimer);
+      viewer.querySelector('.photo-viewer-retry').hidden = !!p.unavailable;
       img.hidden = true;
       status.hidden = false;
       status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
@@ -154,6 +160,8 @@
     pending = preload;
     const ready = () => {
       if (request !== serial || !viewer.open) return;
+      clearTimeout(loadTimer);
+      viewer.querySelector('.photo-viewer-retry').hidden = true;
       pending = null;
       img.src = p.imageUrl;
       img.hidden = false;
@@ -162,6 +170,8 @@
     };
     const failed = () => {
       if (request !== serial || !viewer.open) return;
+      clearTimeout(loadTimer);
+      viewer.querySelector('.photo-viewer-retry').hidden = false;
       pending = null;
       status.hidden = false;
       status.textContent = previewReady ?
@@ -169,6 +179,11 @@
         '照片暫時無法載入，可使用下方連結前往 Degoo。';
       nearbyImages.delete(p.imageUrl);
     };
+    loadTimer = setTimeout(() => {
+      if (request !== serial || !viewer.open) return;
+      status.hidden = false;status.textContent = previewReady ? '完整照片載入較慢，目前顯示預覽。可重試或繼續看下一張。' : '照片載入較慢，可重試或繼續看下一張。';
+      viewer.querySelector('.photo-viewer-retry').hidden = false;
+    }, 8000);
     preload.onload = ready;
     preload.onerror = failed;
     if (preload.complete) {
@@ -309,25 +324,22 @@
     else main.append(intro, gallery);
   };
 
-  fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1', {cache:'no-store'})
-    .then(response => {
-      if (!response.ok) throw new Error('Album configuration unavailable');
-      return response.json();
-    })
-    .then(data => {
-      if (data.schemaVersion !== 1 || !Array.isArray(data.albums)) return;
-      const seen = new Set();
-      data.albums.forEach(album => {
-        if (seen.has(album.id)) return;
-        if (approved(album)) {
-          seen.add(album.id);
-          renderAlbum(album);
-        } else if (linkOnly(album)) {
-          seen.add(album.id);
-          renderCloudLink(album);
-        }
-      });
-      doc.dispatchEvent(new Event('gallery:albums-ready'));
-    })
-    .catch(() => { /* Keep all existing galleries fully functional. */ });
+  const notice = element('div', 'degoo-album-status');
+  const message = element('p');message.setAttribute('role','status');
+  const retry = element('button', null, '重新載入相簿');retry.type='button';retry.hidden=true;
+  notice.append(message,retry);cards.after(notice);
+  const mounted = new Set();let loading=false;
+  const loadAlbums = async () => {
+    if(loading)return;loading=true;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+    try{
+      const response=await fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1',{cache:'no-store',signal:controller.signal});
+      if(!response.ok)throw Error('Album configuration unavailable');
+      const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
+      for(const album of data.albums){if(mounted.has(album.id))continue;if(approved(album)){renderAlbum(album);mounted.add(album.id)}else if(linkOnly(album)){renderCloudLink(album);mounted.add(album.id)}}
+      notice.hidden=true;doc.dispatchEvent(new Event('gallery:albums-ready'));
+    }catch{notice.hidden=false;message.textContent='雲端相簿目錄暫時無法載入，其他攝影作品仍可正常欣賞。';retry.hidden=false}
+    finally{clearTimeout(timer);loading=false;notice.removeAttribute('aria-busy')}
+  };
+  retry.addEventListener('click',loadAlbums);loadAlbums();
 })();

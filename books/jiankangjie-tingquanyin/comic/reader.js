@@ -93,10 +93,19 @@ book.addEventListener('touchstart',e=>{if(e.touches.length===1){const t=e.touche
 book.addEventListener('touchend',e=>{if(!touch)return;const t=e.changedTouches[0],dx=t.clientX-touch.x,dy=t.clientY-touch.y;touch=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){lastSwipe=Date.now();turn(dx<0?1:-1)}},{passive:true});
 book.addEventListener('touchcancel',()=>touch=null,{passive:true});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&immersive&&!zoom.open){collapse();return}if(zoom.open||/SELECT|INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'){e.preventDefault();turn(1)}if(e.key==='ArrowLeft'){e.preventDefault();turn(-1)}});
-fetch('pages.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
+let loadingCatalog=false;
+function loadCatalog(){
+ if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄…';
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+ fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==39)throw Error('目錄不完整');
  pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
-}).catch(()=>{book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請重新整理頁面後再試。';book.setAttribute('aria-busy','false')});
+}).catch(()=>{
+ book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請點擊重試。';
+ const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入漫畫目錄';retry.className='catalog-retry';retry.onclick=()=>{retry.disabled=true;retry.textContent='正在重新載入…';loadCatalog()};book.append(retry);
+ }).finally(()=>{clearTimeout(timer);loadingCatalog=false;book.setAttribute('aria-busy','false')});
+}
+loadCatalog();
 })();

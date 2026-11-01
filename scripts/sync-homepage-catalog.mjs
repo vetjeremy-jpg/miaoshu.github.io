@@ -27,6 +27,9 @@ for(const n of novels){
  const book=read(n.url+'index.html');
  for(const m of book.matchAll(/<section class="chapter" id="([^"]+)"[\s\S]*?<h2[^>]*>(.*?)<\/h2>[\s\S]*?<div class="chapter-body"><p>(.*?)<\/p>/g))search.push({title:m[2].replace(/<[^>]+>/g,''),category:'章節',url:'../'+n.url+'#'+m[1],text:n.title+' '+m[3].replace(/<[^>]+>/g,'')});
 }
+// Keep discoverable media alongside novels, without copying external images.
+const media=[{title:'《建康劫·聽泉引》全本漫畫',category:'漫畫',url:'../books/jiankangjie-tingquanyin/comic/',text:'39頁全本漫畫電子書，從序章到終章，手機滑動翻頁。'},...comic.pages.map((p,i)=>({title:p.title,category:'漫畫',url:'../books/jiankangjie-tingquanyin/comic/#page-'+(i+1),text:'建康劫 聽泉引 漫畫 第'+(i+1)+'頁'})),...albums.map(a=>({title:a.title,category:'攝影',url:'../gallery/#degoo-'+a.id,text:a.description}))];
+for(const row of media){const old=search.findIndex(x=>x.url===row.url);if(old<0)search.push(row);else search[old]=row}
 const files=[['assets/homepage-catalog.js',generated],['index.html',home],['books/index.html',books],['data/content-registry.json',JSON.stringify(registry,null,2)+'\n'],['search/index-data.js','window.MOONLIT_SEARCH_INDEX='+JSON.stringify(search)+';\n']];
 if(process.argv.includes('--check')){const stale=files.filter(([p,s])=>!fs.existsSync(p)||read(p)!==s).map(([p])=>p);if(stale.length){console.error('Homepage catalog needs regeneration: '+stale.join(', '));process.exit(1)}}else for(const [p,s] of files)fs.writeFileSync(p,s);
 console.log('Published catalog:',JSON.stringify(counts));
