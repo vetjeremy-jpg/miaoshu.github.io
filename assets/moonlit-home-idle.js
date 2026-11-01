@@ -15,7 +15,7 @@ document.getElementById('share-site')?.addEventListener('click',async()=>{
 document.getElementById('save-site')?.addEventListener('click',async()=>{feedback('save-feedback','正在複製連結…');try{await navigator.clipboard.writeText(location.origin+location.pathname);feedback('save-feedback','網站連結已複製。')}catch{feedback('save-feedback','請從網址列複製連結。')}});
 const like=document.getElementById('like-site'),endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
 if(!like)return;
-let visitor=get('miaoshu-anonymous-visitor');if(!visitor||!/^[0-9a-f-]{36}$/i.test(visitor)){visitor=crypto.randomUUID();set('miaoshu-anonymous-visitor',visitor)}
+let visitor=get('miaoshu-anonymous-visitor');if(!visitor||!/^[0-9a-f-]{36}$/i.test(visitor)){visitor=(crypto.randomUUID?crypto.randomUUID():"10000000-1000-4000-8000-100000000000".replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16)));set('miaoshu-anonymous-visitor',visitor)}
 let active=false,generation=0;const render=count=>{like.disabled=false;like.setAttribute('aria-pressed',String(active));like.textContent=(active?'♥ 已喜歡作品':'♡ 喜歡作品')+(count===undefined?'':' · '+Number(count||0))};
 render();
 like.addEventListener('click',async()=>{

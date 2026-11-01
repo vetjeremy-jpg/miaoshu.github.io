@@ -159,7 +159,7 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
   const endpoint='https://miaoshu-comments.vetjeremy.chatgpt.site/api/likes';
   let visitorId;
   try{visitorId=localStorage.getItem('miaoshu-anonymous-visitor')}catch(e){}
-  if(!visitorId||!/^[0-9a-f-]{36}$/i.test(visitorId)){visitorId=crypto.randomUUID();try{localStorage.setItem('miaoshu-anonymous-visitor',visitorId)}catch(e){}}
+  if(!visitorId||!/^[0-9a-f-]{36}$/i.test(visitorId)){visitorId=(crypto.randomUUID?crypto.randomUUID():"10000000-1000-4000-8000-100000000000".replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16)));try{localStorage.setItem('miaoshu-anonymous-visitor',visitorId)}catch(e){}}
   // Keep the original keys for 《浮生歲月》 so existing likes are preserved.
   // Other books use book-scoped keys to avoid sharing counts across novels.
   const likeKey=chapter=>bookId==='fushengsuiyue'?chapter.id:bookId+'-'+chapter.id;
