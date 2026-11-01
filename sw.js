@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v74';
+const CACHE='moonlit-shell-v75';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=1500;
@@ -42,11 +42,31 @@ self.addEventListener('install',event=>{
  );
 });
 
+// Replace only stale comic documents, then refresh open comic windows after activation.
+// Preserve other reading pages and leave offline comic copies available on fetch failure.
+const refreshComicWindows=async()=>{
+ const comicPath=SCOPE+'books/jiankangjie-tingquanyin/comic/';
+ const isComic=value=>{const u=new URL(value,self.location.origin);return u.pathname===comicPath||u.pathname===comicPath+'index.html'};
+ const windows=await self.clients.matchAll({type:'window'});
+ const readers=windows.filter(client=>isComic(client.url));
+ if(!readers.length)return;
+ try{
+  const fresh=await fetch(new URL(comicPath,self.location.origin).href,{cache:'reload'});
+  if(!fresh.ok)return;
+  const cache=await caches.open(PAGES);
+  const keys=await cache.keys();
+  await Promise.all(keys.filter(request=>isComic(request.url)).map(request=>cache.delete(request)));
+  await cache.put(new URL(comicPath,self.location.origin).href,fresh);
+  await Promise.all(readers.map(client=>{const u=new URL(client.url);u.searchParams.set('v','20261101-source-clean');return client.navigate(u.href).catch(()=>{})}));
+ }catch{/* Keep the existing offline page if the network is unavailable. */}
+};
+
 self.addEventListener('activate',event=>{
  event.waitUntil(
   caches.keys()
    .then(keys=>Promise.all(keys.filter(key=>(key.startsWith('moonlit-shell-')&&key!==CACHE)||(key.startsWith('moonlit-pages-')&&key!==PAGES)||(key.startsWith('moonlit-runtime-')&&key!==RUNTIME)).map(key=>caches.delete(key))))
    .then(()=>self.clients.claim())
+   .then(refreshComicWindows)
  );
 });
 
