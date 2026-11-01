@@ -117,11 +117,16 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
 
  const input=document.getElementById('chapter-search'),status=document.getElementById('chapter-search-status');
  const links=[...document.querySelectorAll('#toc .toc a[href^="#chapter-"]')];
- input?.addEventListener('input',()=>{
-  const term=input.value.trim().toLocaleLowerCase('zh-Hant');let count=0;
-  links.forEach(link=>{const chapter=valid(link.getAttribute('href').slice(1));const match=!term||link.textContent.toLocaleLowerCase('zh-Hant').includes(term)||chapter?.querySelector('.chapter-body')?.textContent?.toLocaleLowerCase('zh-Hant').includes(term);link.hidden=!match;if(match)count++});
-  status.textContent=term?count+' 個符合的章節':'';
- });
+ const normalizeSearch=text=>String(text||'').toLocaleLowerCase('zh-Hant').replace(/台/g,'臺');
+ let chapterIndex;
+ const clearSearch=document.createElement('button');clearSearch.type='button';clearSearch.textContent='清除章節搜尋';clearSearch.hidden=true;clearSearch.style.cssText='min-height:44px;padding:8px 12px;margin:8px 0;font:inherit;cursor:pointer';input?.after(clearSearch);
+ function filterChapters(){
+  const term=normalizeSearch(input.value.trim());let count=0;
+  if(term&&!chapterIndex)chapterIndex=links.map(link=>({link,text:normalizeSearch(link.textContent+' '+(valid(link.getAttribute('href').slice(1))?.querySelector('.chapter-body')?.textContent||''))}));
+  if(term)chapterIndex.forEach(({link,text})=>{const match=text.includes(term);link.hidden=!match;if(match)count++});else links.forEach(link=>link.hidden=false);
+  clearSearch.hidden=!term;if(status)status.textContent=term?count+' 個符合的章節'+(!count?'，可縮短關鍵字或清除搜尋。':''):'';
+ }
+ input?.addEventListener('input',filterChapters);clearSearch.addEventListener('click',()=>{input.value='';filterChapters();input.focus({preventScroll:true})});
  const shelf=document.getElementById('saved-chapters');
  const bookmarks=()=>{
   try{return JSON.parse(get('bookmarks')||'[]').filter(valid)}catch(e){return []}
