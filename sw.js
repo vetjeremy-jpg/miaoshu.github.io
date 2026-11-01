@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v76';
+const CACHE='moonlit-shell-v77';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=1500;
@@ -57,7 +57,7 @@ const refreshComicWindows=async()=>{
   const keys=await cache.keys();
   await Promise.all(keys.filter(request=>isComic(request.url)).map(request=>cache.delete(request)));
   await cache.put(new URL(comicPath,self.location.origin).href,fresh);
-  await Promise.all(readers.map(client=>{const u=new URL(client.url);u.searchParams.set('v','20261101-source-clean');return client.navigate(u.href).catch(()=>{})}));
+  readers.forEach(client=>client.postMessage({type:'moonlit:comic-update'}));
  }catch{/* Keep the existing offline page if the network is unavailable. */}
 };
 
