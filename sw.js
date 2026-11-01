@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v79';
+const CACHE='moonlit-shell-v80';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=180;
@@ -103,12 +103,16 @@ self.addEventListener('fetch',event=>{
  }
 
  // Upgrade older novel documents without discarding their offline fallback.
- if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode','20261101-responsive1'].includes(url.searchParams.get('v'))){
-  const current=new URL(url.href);current.searchParams.set('v','20261101-sharing1');
+ if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode','20261101-responsive1','20261101-sharing1'].includes(url.searchParams.get('v'))){
+  const current=new URL(url.href);current.searchParams.set('v','20261101-search2');
   event.respondWith(caches.open(RUNTIME).then(async cache=>{
    const hit=await cache.match(current.href);if(hit)return hit;
    try{const res=await fetch(current.href,{cache:'reload'});if(!res.ok)throw Error('reader unavailable');const copy=res.clone();keepAlive(event,cache.put(current.href,copy));return res}catch{return await cache.match(req)||Response.error()}
   }));return;
+ }
+ if(url.pathname===SCOPE+'books/reader-audio-fallback.js'&&url.searchParams.get('v')==='20261018-response2'){
+  const current=new URL(url.href);current.searchParams.set('v','20261101-controls2');
+  event.respondWith(caches.open(RUNTIME).then(async cache=>{const hit=await cache.match(current.href);if(hit)return hit;try{const res=await fetch(current.href,{cache:'reload'});if(!res.ok)throw Error('audio reader unavailable');const copy=res.clone();keepAlive(event,cache.put(current.href,copy));return res}catch{return await cache.match(req)||Response.error()}}));return;
  }
  const assetKey=url.pathname+url.search;
  if(VERSIONED_ASSETS.has(assetKey)){
