@@ -26,7 +26,7 @@ if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySel
  const own=document.currentScript?.src||[...document.scripts].map(s=>s.src).find(src=>/\/assets\/moonlit-v2\.js/.test(src));
  if(!own)return;
  const base=new URL("./",own);
- const load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL(isReader?"moonlit-refinement-reader.css?v=20261003-reader-layout1":"moonlit-refinement.css?v=20261004-comfort2",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL(isReader?"moonlit-refinement-reader.js?v=20261018-scenes1":"moonlit-refinement-home.js?v=20261004-curation1",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};
+ const load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL(isReader?"moonlit-refinement-reader.css?v=20261003-reader-layout1":"moonlit-refinement.css?v=20261004-comfort2",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL(isReader?"moonlit-refinement-reader.js?v=20261018-scenes1":"moonlit-refinement-home.js?v=20261101-current1",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};
  const schedule=()=>{"requestIdleCallback"in window?requestIdleCallback(load,{timeout:1200}):setTimeout(load,0)};
  const scheduleHomeTouch=()=>{const anchor=document.querySelector("#continue-reading")||document.querySelector("#book");if(anchor&&"IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();load()}},{rootMargin:"900px 0px"});io.observe(anchor)}else schedule()};
  const start=()=>{if(isHome&&!matchMedia("(hover:hover) and (pointer:fine)").matches)scheduleHomeTouch();else schedule()};
@@ -55,3 +55,22 @@ if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySel
 
 /* PWA shell: keep iOS Home Screen navigation inside the Moonlit scope. */
 if('serviceWorker' in navigator){let swReg,lastSWCheck=0;const checkSW=()=>{const now=Date.now();if(swReg&&now-lastSWCheck>300000){lastSWCheck=now;swReg.update().catch(()=>{})}};addEventListener('load',()=>navigator.serviceWorker.register('/miaoshu.github.io/sw.js',{scope:'/miaoshu.github.io/'}).then(reg=>{swReg=reg;lastSWCheck=Date.now()}).catch(()=>{}),{once:true});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkSW()});addEventListener('pageshow',checkSW);}
+
+/* Native links respond immediately; warm intended destinations without intercepting navigation. */
+(()=>{
+ const root='/miaoshu.github.io/';let status,timer;
+ const internal=target=>{const a=target?.closest?.('a[href]');if(!a||a.target||a.hasAttribute('download'))return;let u;try{u=new URL(a.href,location.href)}catch{return}if(u.origin!==location.origin||!u.pathname.startsWith(root)||!(/\/$|\.html$/.test(u.pathname))||u.pathname===location.pathname)return;return {a,u}};
+ const warm=e=>{const link=internal(e.target);if(link)navigator.serviceWorker?.controller?.postMessage({type:'moonlit:prefetch',url:link.u.href})};
+ for(const type of ['pointerover','pointerdown','focusin'])document.addEventListener(type,warm,{passive:true});
+ const reset=()=>{clearTimeout(timer);status?.remove();status=null;document.querySelectorAll('[data-navigation-pending]').forEach(a=>{a.removeAttribute('aria-busy');delete a.dataset.navigationPending})};
+ document.addEventListener('click',e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  const link=internal(e.target);if(!link)return;reset();link.a.setAttribute('aria-busy','true');link.a.dataset.navigationPending='';
+  status=document.createElement('div');status.setAttribute('role','status');status.style.cssText='position:fixed;top:0;left:0;right:0;z-index:10000;padding:calc(8px + env(safe-area-inset-top)) 16px 8px;background:#dec99f;color:#101a22;font:14px/1.5 sans-serif;pointer-events:none';status.textContent='正在開啟 '+(link.a.textContent.trim().slice(0,32)||'作品')+'…';document.body.append(status);
+  timer=setTimeout(()=>{if(status)status.textContent='連線較慢，仍在載入；可再次點擊連結重試。'},4000);
+ });
+ addEventListener('pageshow',reset);addEventListener('pagehide',reset);
+})();
+
+// Gallery sections arrive asynchronously; honor direct album links once mounted.
+document.addEventListener('gallery:albums-ready',()=>{if(!location.hash.startsWith('#degoo-'))return;const target=document.getElementById(location.hash.slice(1));target?.scrollIntoView({block:'start',behavior:'auto'})});

@@ -33,7 +33,7 @@ if(homeMain&&!$('.moonlit-editorial-feature')){
 const moodBox=$('.moonlit-mood-selector');
 if(homeMain&&moodBox&&!moodBox.dataset.moonlitMounted){
  moodBox.dataset.moonlitMounted='1';
- const works=[
+ const works=window.MOONLIT_CATALOG?.works.map(w=>({...w,t:w.title,d:w.note,u:w.url,m:w.type==='攝影'?'image':w.type==='札記'?'note':w.type==='漫畫'?'rare':'read'}))||[
   {m:'read',t:'《建康劫·聽泉引》',d:'今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。',u:'books/jiankangjie-tingquanyin/index.html#toc'},
   {m:'read',t:'《浮生歲月》',d:'如果今晚想讀記憶、時間與人的選擇，就從這裡開始。',u:'books/fushengsuiyue/index.html#toc'},
   {m:'image',t:'雪庭舞劍',d:'今晚少一點文字，讓雪色、衣袖與劍光替你說故事。',u:'gallery/index.html#snow-sword'},

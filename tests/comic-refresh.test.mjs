@@ -16,11 +16,9 @@ async function activate(offline=false){
  });
  handlers.activate({waitUntil:p=>work=p});await work;return {pages,navigations,messages,requests};
 }
-test('activation replaces stale comic aliases and refreshes only open comics, preserving page number',async()=>{
- const r=await activate();assert.equal(r.pages.get(comic),'<main>updated comic</main>');assert.equal(r.pages.has(comic+'index.html'),false);
- assert.equal(r.pages.get(origin+'/miaoshu.github.io/books/other/'),'novel progress');assert.equal(r.navigations.length,0);assert.equal(r.messages.length,1);assert.equal(r.messages[0].type,'moonlit:comic-update');
- assert.equal(r.requests[0].options.cache,'reload');
+test('activation never waits for a remote fetch or a client navigation',async()=>{
+ const r=await activate();assert.equal(r.requests.length,0);assert.equal(r.navigations.length,0);assert.equal(r.messages.length,0);assert.equal(r.pages.get(comic),'old source caption');assert.equal(r.pages.get(origin+'/miaoshu.github.io/books/other/'),'novel progress');
 });
-test('offline activation keeps cached comic and avoids a disruptive refresh',async()=>{
- const r=await activate(true);assert.equal(r.pages.get(comic),'old source caption');assert.equal(r.navigations.length,0);
+test('offline activation preserves cached reading pages',async()=>{
+ const r=await activate(true);assert.equal(r.pages.get(comic),'old source caption');assert.equal(r.requests.length,0);assert.equal(r.navigations.length,0);
 });

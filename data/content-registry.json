@@ -113,6 +113,14 @@
       "status": "published",
       "url": "books/meiyue-shiwu/index.html",
       "author": "喵叔"
+    },
+    {
+      "id": "rain-stops-i-remain",
+      "title": "雨停以後，我還在",
+      "type": "novel",
+      "status": "published",
+      "url": "books/rain-stops-i-remain/index.html",
+      "author": "喵叔"
     }
   ]
 }

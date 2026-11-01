@@ -10,6 +10,7 @@ const $ = id => document.getElementById(id);
 const book=$('book'), select=$('chapters'), zoom=$('zoom'), zoomImage=$('zoom-image');
 const wide=matchMedia('(min-width: 900px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const key='moonlit-tingquan-comic-v1';
+let animationTimer;
 let pages=[], page=0, single=false, busy=false, touch=null, lastSwipe=0, immersive=false;
 const read=(k)=>{try{return localStorage.getItem(k)}catch{return null}};
 const save=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
@@ -62,12 +63,13 @@ function makeSheet(index){
  sheet.append(button,folio);img.src=p.imageUrl;return sheet;
 }
 function render(direction=0){
+ clearTimeout(animationTimer);busy=false;
  const old=book.querySelector('.sheet'+(direction>0&&spread()?':nth-child(2)':'')+' img.loaded');
  const leaf=old&&direction&&!reduced.matches?document.createElement('div'):null;
  if(leaf){leaf.className='turn-leaf '+(direction>0?'turn-forward':'turn-backward');leaf.setAttribute('aria-hidden','true');leaf.append(old.cloneNode());}
  book.replaceChildren();book.classList.toggle('double',spread()&&page+1<pages.length);
  book.append(makeSheet(page));if(spread()&&page+1<pages.length)book.append(makeSheet(page+1));
- if(leaf){book.append(leaf);busy=true;setTimeout(()=>{leaf.remove();busy=false},500)}
+ if(leaf){book.append(leaf);busy=true;animationTimer=setTimeout(()=>{leaf.remove();busy=false},240)}
  book.setAttribute('aria-busy','false');select.value=String(page);$('immersive-title').textContent=pages[page].title;
  $('counter').textContent=(spread()&&page+1<pages.length?(page+1)+'–'+(page+2):page+1)+' / '+pages.length;
  $('status').textContent=pages[page].title+(spread()&&page+1<pages.length?' ／ '+pages[page+1].title:'');
@@ -78,7 +80,7 @@ function render(direction=0){
  $('finish').hidden=page+count()<pages.length;
  save(key,page);setHash();
 }
-function go(next,direction=0){if(!pages.length||busy)return;page=Math.max(0,Math.min(pages.length-1,next));render(direction)}
+function go(next,direction=0){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,next));render(direction)}
 function turn(direction){const n=page+direction*count();if(direction>0&&n>=pages.length||direction<0&&page===0)return;go(n,direction)}
 $('prev').onclick=()=>turn(-1);$('next').onclick=()=>turn(1);
 $('first').onclick=()=>go(0);select.onchange=()=>go(Number(select.value));

@@ -62,10 +62,10 @@ if(!experience.includes('button.dataset.moonlitMounted'))errors.push('moonlit-ex
 if(!experience.includes('button.insertAdjacentElement("afterend",box)'))errors.push('Moonlit picker 必須掛在第三層探索按鈕之後，不得成為獨立推薦區塊');
 const sharedRuntime=await readFile(join(root,'assets','moonlit-v2.js'),'utf8');
 if(/s\.src=[^;]*moonlit-home-content\.js|createElement\(["']script["']\)[\s\S]{0,240}moonlit-home-content\.js/.test(sharedRuntime))errors.push('moonlit-v2.js 不應再載入 homepage-only moonlit-home-content.js；首頁 orchestration 應由 moonlit-home-loader.js 單獨負責');
-if(!homeLoader.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('moonlit-home-loader.js 必須保留首頁 idle 與 reading-state orchestration');
+if(!index.includes('moonlit-home-idle.js')||!homeLoader.includes('moonlit-home-reading-state.js'))errors.push('首頁互動必須直接載入，reading-state 仍由首頁 loader 管理');
 if(/bell-site|miaoshu-bell/.test(homeIdle))errors.push('moonlit-home-idle.js 不得恢復已移除的回訪提醒 bell 邏輯');
-if(!homeIdle.includes("if(!like||!feedback)return"))errors.push('合併後的 support runtime 必須在按讚元件不存在時安全返回');
-const idleVersion=homeLoader.match(/moonlit-home-idle\.js\?v=([^"'\s]+)/)?.[1];
+if(!homeIdle.includes("if(!like)return"))errors.push('合併後的 support runtime 必須在按讚元件不存在時安全返回');
+const idleVersion=index.match(/moonlit-home-idle\.js\?v=([^"'\s]+)/)?.[1];
 if(!idleVersion)errors.push('moonlit-home-loader.js 必須載入版本化 idle runtime');
 else {
  const sw=await readFile(join(root,'sw.js'),'utf8');
