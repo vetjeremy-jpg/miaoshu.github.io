@@ -48,3 +48,25 @@ if(failures.length){
  process.exit(1);
 }
 console.log(`Internal links/assets OK across ${htmlFiles.length} HTML files.`);
+
+// Validate document fragments too, including the explicitly registered dynamic anchors.
+const base='https://vetjeremy-jpg.github.io/miaoshu.github.io/';
+const documents=new Map(htmlFiles.map(path=>[path,readFileSync(join(ROOT,path),'utf8')]));
+const ids=new Map([...documents].map(([path,html])=>[path,new Set([...html.matchAll(/\b(?:id|name)\s*=\s*["']([^"']+)["']/g)].map(m=>m[1]))]));
+const albums=JSON.parse(readFileSync(join(ROOT,'data/degoo-gallery-albums.json'),'utf8')).albums;
+const missing=[];
+for(const [page,html] of documents){for(const match of html.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi)){
+ let url;try{url=new URL(match[1],base+page)}catch{continue}
+ if(url.origin!==new URL(base).origin||!url.pathname.startsWith('/miaoshu.github.io/')||!url.hash)continue;
+ let path=decodeURIComponent(url.pathname.slice('/miaoshu.github.io/'.length));if(path.endsWith('/'))path+='index.html';
+ if(!documents.has(path))continue;
+ let id;try{id=decodeURIComponent(url.hash.slice(1))}catch{missing.push(`${page} -> ${match[1]} (invalid fragment)`);continue}
+ if(ids.get(path).has(id))continue;
+ const target=documents.get(path);
+ if(id==='audiobook-player'&&target.includes('reader-audio-fallback.js'))continue;
+ if(path==='gallery/index.html'&&target.includes('degoo-gallery-albums.js')&&albums.some(a=>id==='degoo-'+a.id))continue;
+ const comic=id.match(/^page-(\d+)$/);if(path==='books/jiankangjie-tingquanyin/comic/index.html'&&comic&&Number(comic[1])>=1&&Number(comic[1])<=39)continue;
+ missing.push(`${page} -> ${match[1]}`);
+}}
+if(missing.length){console.error('Broken document anchors:\n'+missing.map(x=>' - '+x).join('\n'));process.exit(1)}
+console.log('Internal HTML anchors OK, including registered dynamic sections.');
