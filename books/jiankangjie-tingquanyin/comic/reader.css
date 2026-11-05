@@ -28,3 +28,13 @@ body.immersive .immersive-bar{top:calc(58px + env(safe-area-inset-top));padding-
 body.immersive .book{top:calc(110px + env(safe-area-inset-top))}
 .zoom-exits{display:flex;justify-content:space-between;gap:12px;padding:calc(6px + env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 6px max(12px,env(safe-area-inset-left));background:#101a22}
 #zoom-scroll{height:calc(100% - 164px - env(safe-area-inset-top))}
+
+/* One landscape spread per turn, at the proportions of its source image. */
+.landscape-comic .book{min-height:0}
+.landscape-comic .sheet{max-width:none}
+.landscape-comic .page-button{aspect-ratio:var(--page-ratio,3 / 2)}
+.landscape-comic #zoom-image{max-width:none}
+.landscape-comic #zoom-image.actual{width:var(--original-width,1500px)}
+.landscape-comic .turn-leaf{animation-duration:.42s}
+.landscape-comic .turn-leaf::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0005,transparent 32%,#fff1 65%,#0004);pointer-events:none}
+.landscape-comic .turn-backward::after{transform:scaleX(-1)}

@@ -9,13 +9,17 @@ if('serviceWorker' in navigator){
 const $ = id => document.getElementById(id);
 const book=$('book'), select=$('chapters'), zoom=$('zoom'), zoomImage=$('zoom-image');
 const wide=matchMedia('(min-width: 900px)'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const key='moonlit-tingquan-comic-v1';
+const key=document.body.dataset.comicKey||'moonlit-tingquan-comic-v1';
+const expectedPages=Number(document.body.dataset.comicPages)||39;
+const mode=$('mode');
+const turnDuration=mode?240:420;
+let shareUrl='https://app.degoo.com/share/UjmLUCKjcSSp7RoqROdWiA';
 let animationTimer;
-let pages=[], page=0, single=false, busy=false, touch=null, lastSwipe=0, immersive=false;
+let pages=[], page=0, single=false, touch=null, lastSwipe=0, immersive=false;
 const read=(k)=>{try{return localStorage.getItem(k)}catch{return null}};
 const save=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
 single=read(key+'-single')==='true';
-const spread=()=>wide.matches&&!single&&!immersive;
+const spread=()=>mode&&wide.matches&&!single&&!immersive;
 const count=()=>spread()?2:1;
 function setHash(){history.replaceState(null,'','#page-'+(page+1))}
 function setImmersive(enabled){
@@ -41,13 +45,13 @@ $('immersive-zoom').onclick=()=>{if(pages.length)openZoom(page)};
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&immersive)setImmersive(false)});
 
 function openZoom(index){
- const p=pages[index]; zoomImage.src=p.imageUrl;zoomImage.alt=p.title;
+ const p=pages[index]; zoomImage.style.setProperty('--original-width',p.width?p.width+'px':'1500px');zoomImage.referrerPolicy='no-referrer';zoomImage.src=p.imageUrl;zoomImage.alt=p.title;
  zoomImage.classList.remove('actual');$('zoom-size').textContent='原尺寸細讀';
  $('zoom-title').textContent=p.title;zoom.showModal();$('zoom-scroll').scrollTo(0,0);
 }
 function makeSheet(index){
  const p=pages[index], sheet=document.createElement('section');sheet.className='sheet';sheet.setAttribute('aria-label',p.title);
- const button=document.createElement('button');button.type='button';button.className='page-button';button.setAttribute('aria-label','放大閱讀：'+p.title);
+ const button=document.createElement('button');button.type='button';button.className='page-button';if(p.width&&p.height)button.style.setProperty('--page-ratio',p.width+' / '+p.height);button.setAttribute('aria-label','放大閱讀：'+p.title);
  const img=new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding='async';img.referrerPolicy='no-referrer';
  const placeholder=document.createElement('span');placeholder.className='placeholder';placeholder.textContent='正在載入第 '+(index+1)+' 頁…';
  img.onload=()=>{img.classList.add('loaded');button.setAttribute('aria-busy','false')};
@@ -55,7 +59,7 @@ function makeSheet(index){
   button.remove();const error=document.createElement('div');error.className='error';
   const text=document.createElement('p');text.textContent='這一頁暫時無法載入。';
   const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入';retry.onclick=()=>{sheet.replaceWith(makeSheet(index))};
-  const a=document.createElement('a');a.href='https://app.degoo.com/share/UjmLUCKjcSSp7RoqROdWiA';a.target='_blank';a.rel='noopener noreferrer';a.textContent='開啟原始相簿 ↗';
+  const a=document.createElement('a');a.href=shareUrl;a.target='_blank';a.rel='noopener noreferrer';a.textContent='開啟原始相簿 ↗';
   error.append(text,retry,document.createElement('br'),a);sheet.prepend(error);
  };
  button.setAttribute('aria-busy','true');button.append(img,placeholder);button.onclick=()=>{if(Date.now()-lastSwipe>450)openZoom(index)};
@@ -63,19 +67,19 @@ function makeSheet(index){
  sheet.append(button,folio);img.src=p.imageUrl;return sheet;
 }
 function render(direction=0){
- clearTimeout(animationTimer);busy=false;
+ clearTimeout(animationTimer);
  const old=book.querySelector('.sheet'+(direction>0&&spread()?':nth-child(2)':'')+' img.loaded');
  const leaf=old&&direction&&!reduced.matches?document.createElement('div'):null;
  if(leaf){leaf.className='turn-leaf '+(direction>0?'turn-forward':'turn-backward');leaf.setAttribute('aria-hidden','true');leaf.append(old.cloneNode());}
  book.replaceChildren();book.classList.toggle('double',spread()&&page+1<pages.length);
  book.append(makeSheet(page));if(spread()&&page+1<pages.length)book.append(makeSheet(page+1));
- if(leaf){book.append(leaf);busy=true;animationTimer=setTimeout(()=>{leaf.remove();busy=false},240)}
+ if(leaf){book.append(leaf);animationTimer=setTimeout(()=>leaf.remove(),turnDuration)}
  book.setAttribute('aria-busy','false');select.value=String(page);$('immersive-title').textContent=pages[page].title;
  $('counter').textContent=(spread()&&page+1<pages.length?(page+1)+'–'+(page+2):page+1)+' / '+pages.length;
  $('status').textContent=pages[page].title+(spread()&&page+1<pages.length?' ／ '+pages[page+1].title:'');
  $('prev').disabled=page===0;$('next').disabled=page+count()>=pages.length;
  $('prev').textContent=spread()?'← 上一跨頁':'← 上一頁';$('next').textContent=spread()?'下一跨頁 →':'下一頁 →';
- $('mode').textContent=single?'雙頁閱讀':'單頁閱讀';$('mode').setAttribute('aria-pressed',String(single));$('mode').hidden=!wide.matches;
+ if(mode){mode.textContent=single?'雙頁閱讀':'單頁閱讀';mode.setAttribute('aria-pressed',String(single));mode.hidden=!wide.matches}
  $('progress').style.width=(Math.min(page+count(),pages.length)/pages.length*100)+'%';
  $('finish').hidden=page+count()<pages.length;
  save(key,page);setHash();
@@ -84,7 +88,7 @@ function go(next,direction=0){if(!pages.length)return;page=Math.max(0,Math.min(p
 function turn(direction){const n=page+direction*count();if(direction>0&&n>=pages.length||direction<0&&page===0)return;go(n,direction)}
 $('prev').onclick=()=>turn(-1);$('next').onclick=()=>turn(1);
 $('first').onclick=()=>go(0);select.onchange=()=>go(Number(select.value));
-$('mode').onclick=()=>{single=!single;save(key+'-single',single);go(page)};
+if(mode)mode.onclick=()=>{single=!single;save(key+'-single',single);go(page)};
 wide.addEventListener('change',()=>{if(pages.length)render()});
 $('zoom-close').onclick=()=>zoom.close();
 $('zoom-size').onclick=()=>{const actual=zoomImage.classList.toggle('actual');$('zoom-size').textContent=actual?'適合螢幕':'原尺寸細讀';$('zoom-scroll').scrollTo(0,0)};
@@ -98,8 +102,8 @@ function loadCatalog(){
  if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄…';
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
  fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
- if(!Array.isArray(data.pages)||data.pages.length!==39)throw Error('目錄不完整');
- pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
+ if(!Array.isArray(data.pages)||data.pages.length!==expectedPages)throw Error('目錄不完整');
+ shareUrl=data.shareUrl||shareUrl;pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
 }).catch(()=>{
