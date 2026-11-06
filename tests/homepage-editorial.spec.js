@@ -278,9 +278,9 @@ test('homepage image priority and intrinsic geometry stay stable', async ({ page
   });
   expect(contract.logo.width).toBe('512');
   expect(contract.logo.height).toBe('512');
-  expect(contract.logo.priority).toBe('auto');
+  expect(contract.logo.priority).toBe('high');
   expect(contract.logo.ratio).toBe('1 / 1');
-  expect(contract.high).toBe(0);
+  expect(contract.high).toBe(1);
   expect(contract.featured).toEqual({width:'1086',height:'1448',loading:'lazy',priority:'low'});
   expect(contract.album).toHaveLength(2);
   expect(contract.album.every(x=>x.width==='1086'&&x.height==='1448'&&x.loading==='lazy'&&x.priority==='low')).toBeTruthy();
