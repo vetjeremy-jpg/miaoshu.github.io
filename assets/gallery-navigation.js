@@ -23,5 +23,41 @@
   });
   addEventListener('hashchange', alignAlbum);
   document.addEventListener('gallery:albums-ready', alignAlbum);
+  const mountPhotoButtons = () => {
+    for (const gallery of document.querySelectorAll('main .gallery')) {
+      let photos = [];
+      const albums = [photos];
+      for (const item of gallery.children) {
+        if (item.matches('.collection-heading') && item.id !== 'snow-sword') {
+          photos = [];
+          albums.push(photos);
+        }
+        if (item.matches('figure') && item.querySelector(':scope > a')) photos.push(item);
+      }
+      for (const album of albums) {
+        album.forEach((figure, index) => {
+          if (figure.querySelector(':scope > .gallery-photo-step')) return;
+          figure.classList.add('gallery-photo-steps');
+          for (const step of [-1, 1]) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'gallery-photo-step ' + (step < 0 ? 'gallery-photo-prev' : 'gallery-photo-next');
+            button.textContent = step < 0 ? '‹' : '›';
+            button.setAttribute('aria-label', step < 0 ? '上一張照片' : '下一張照片');
+            const target = album[index + step];
+            button.disabled = !target;
+            button.addEventListener('click', () => {
+              const destination = target.querySelector(':scope > a');
+              destination.focus({preventScroll: true});
+              destination.scrollIntoView({block: 'start', inline: 'nearest'});
+            });
+            figure.append(button);
+          }
+        });
+      }
+    }
+  };
+  document.addEventListener('gallery:albums-ready', mountPhotoButtons);
+  mountPhotoButtons();
   alignAlbum();
 })();
