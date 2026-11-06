@@ -7,9 +7,10 @@
  dialog.className='photo-viewer';
  dialog.setAttribute('aria-labelledby','photo-viewer-title');
  dialog.setAttribute('aria-describedby','photo-viewer-description');
- dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+ dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-reload" hidden>重試照片</button><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
  document.body.append(dialog);
  const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description');
+ const retry=dialog.querySelector('.photo-viewer-reload');
  let current=0,returnFocus=null,previousOverflow='',touch=null,requestId=0,pendingFull=null;
  const neighbors=new Map();
  function warmNeighbors(){
@@ -25,7 +26,7 @@
   description.textContent=caption?[...caption.querySelectorAll('p')].map(p=>p.textContent).join('　'):'';
   count.textContent=(current+1)+' ／ '+links.length;
   image.alt=photo.alt;
-  status.hidden=false;status.textContent='照片載入中…';
+  retry.hidden=true;status.hidden=false;status.textContent='照片載入中…';
   // The already-loaded thumbnail gives immediate feedback while the original downloads.
   const id=++requestId,preview=photo.currentSrc||photo.src,full=photo.dataset.fullSrc||preview;
   if(pendingFull){pendingFull.onload=null;pendingFull.onerror=null;pendingFull=null}
@@ -35,14 +36,19 @@
   if(full!==preview){
    const original=new Image();pendingFull=original;
    original.decoding='async';original.referrerPolicy=photo.referrerPolicy;
-   original.onload=()=>{if(id!==requestId)return;pendingFull=null;image.src=full;image.hidden=false;status.hidden=true};
-   original.onerror=()=>{if(id!==requestId)return;pendingFull=null};
+   original.onload=()=>{if(id!==requestId)return;pendingFull=null;retry.hidden=true;image.src=full;image.hidden=false;status.hidden=true};
+   original.onerror=()=>{if(id!==requestId)return;pendingFull=null;retry.hidden=false};
    original.src=full;
   }
   warmNeighbors();
  }
  image.addEventListener('load',()=>{image.hidden=false;status.hidden=true});
- image.addEventListener('error',()=>{image.hidden=true;status.hidden=false;status.textContent='照片暫時無法載入。'});
+ image.addEventListener('error',()=>{image.hidden=true;status.hidden=false;status.textContent='照片暫時無法載入。';retry.hidden=false});
+ retry.addEventListener('click',()=>{
+  dialog.querySelector('.photo-viewer-close').focus({preventScroll:true});
+  image.removeAttribute('src');
+  show(current);
+ });
  links.forEach((link,index)=>link.addEventListener('click',event=>{
   if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
   event.preventDefault();returnFocus=link;show(index);previousOverflow=document.body.style.overflow;
