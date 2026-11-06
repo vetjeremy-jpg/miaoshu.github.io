@@ -55,11 +55,14 @@ if(/instagram\.com\/reel\//i.test(videosHtml)){
 }
 
 const galleryHtml=read('gallery/index.html');
-const externalGalleryImages=[...galleryHtml.matchAll(/<img\b[^>]+src=["']https?:\/\/[^"']+["'][^>]*>/gi)];
-for(const m of externalGalleryImages){
-  const before=galleryHtml.slice(Math.max(0,m.index-500),m.index);
-  if(!/<a\b[^>]+href=["']https?:\/\/[^"']+["'][^>]*>[\s\S]*$/i.test(before)) errors.push('gallery: externally hosted image must retain a clickable external fallback');
-}
+const galleryLinks=[...galleryHtml.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)];
+const externalImage=/<img\b[^>]+src=["']https?:\/\/[^"']+["'][^>]*>/gi;
+const linkedExternalImages=galleryLinks.flatMap(([,attrs,body])=>{
+  const href=attrs.match(/\shref=["']([^"']+)["']/i)?.[1]||'';
+  const albumCover=/\sclass=["']series-card["']/i.test(attrs)&&href.startsWith('#')&&galleryHtml.includes('id="'+href.slice(1)+'"');
+  return /^(https?:\/\/|\.\.\/assets\/optimized\/)/i.test(href)||albumCover ? [...body.matchAll(externalImage)] : [];
+});
+if(linkedExternalImages.length!==[...galleryHtml.matchAll(externalImage)].length) errors.push('gallery: each externally hosted image needs a working photo or album link');
 
 const publicPages=['index.html','gallery/index.html','posts/index.html','videos/index.html','about/index.html','works/index.html',
   ...bookDirs.map(s=>`books/${s}/index.html`),...postDirs.map(s=>`posts/${s}/index.html`)];

@@ -49,7 +49,7 @@
             button.addEventListener('click', () => {
               const destination = target.querySelector(':scope > a');
               destination.focus({preventScroll: true});
-              destination.scrollIntoView({block: 'start', inline: 'nearest'});
+              destination.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'});
             });
             figure.append(button);
           }
