@@ -250,3 +250,15 @@ for(const path of readers)test('failed first image retry then next previous cach
  await expect(page.locator('#book .placeholder')).toBeHidden();await expect(page.locator('#book .error')).toHaveCount(0);await expect(page.locator('#book .page-button')).toHaveAttribute('aria-busy','false');
  expect(requests.get(firstUrl)||0).toBe(afterRetry);
 });
+
+
+for(const path of readers)test('Safari image retry has consistent touch disabled busy and keyboard focus states',async({page})=>{
+ await page.setViewportSize({width:390,height:844});let fail=true;
+ await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{if(fail){fail=false;await route.abort('failed')}else{await new Promise(r=>setTimeout(r,350));await route.continue()}});
+ await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+ const retry=page.getByRole('button',{name:'重新載入這一頁'});await expect(retry).toBeVisible();
+ const box=await retry.boundingBox();expect(box.width).toBeGreaterThanOrEqual(44);expect(box.height).toBeGreaterThanOrEqual(44);
+ await retry.focus();await expect(retry).toBeFocused();expect(await retry.evaluate(el=>getComputedStyle(el).outlineStyle)).not.toBe('none');
+ await retry.click();await expect(page.getByRole('button',{name:'正在重新載入…'})).toBeDisabled();await expect(page.getByRole('button',{name:'正在重新載入…'})).toHaveAttribute('aria-busy','true');
+ await expect(page.locator('#book [role="status"]')).toBeVisible();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);await expect(page.locator('#book .error')).toHaveCount(0);
+});
