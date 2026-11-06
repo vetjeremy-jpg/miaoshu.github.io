@@ -65,3 +65,23 @@ html{scroll-behavior:smooth}
 .controls button,.immersive-bar button,.reader-exits a,.zoom-exits a{touch-action:manipulation}
 @media(max-width:760px){.controls button,.immersive-bar button{min-height:44px}.reader-exits a,.zoom-exits a{min-width:44px}.status{line-height:1.55}.book{scroll-margin-top:72px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+/* Mobile comfort pass: legible type, thumb-safe controls, and stable rotation. */
+@media(max-width:760px){
+ body{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ .top.reader-exits{gap:8px}
+ .reader-exits a,.zoom-exits a,.controls button,.immersive-bar button{min-height:48px}
+ .controls{gap:10px;padding-left:max(10px,env(safe-area-inset-left));padding-right:max(10px,env(safe-area-inset-right))}
+ .controls button{min-width:48px;padding:10px 12px;font-size:.9rem}
+ .immersive-bar>span{font-size:.82rem}
+ .reading-tools select,.reading-tools button{min-height:44px;font-size:.9rem}
+ .folio,.hint,footer{font-size:.8rem;line-height:1.55}
+}
+@media(max-width:899px) and (orientation:landscape){
+ .top.reader-exits{min-height:52px}
+ .reader-exits a{min-height:48px}
+ body.immersive .controls{min-height:68px;gap:12px}
+ body.immersive .book{bottom:calc(68px + env(safe-area-inset-bottom))}
+ body.immersive .progress{bottom:calc(68px + env(safe-area-inset-bottom))}
+}
