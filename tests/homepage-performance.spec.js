@@ -1,11 +1,19 @@
 const { test, expect } = require('@playwright/test');
 
 const VIEWPORTS=[320,375,390,430];
+const IMAGE_SCENARIOS=VIEWPORTS.flatMap(width=>[
+  {name:width+'px-fast-dpr1',width,dpr:1,latency:20,download:5_000_000},
+  {name:width+'px-slow4g-dpr1',width,dpr:1,latency:150,download:1_600_000},
+  {name:width+'px-slow4g-dpr2',width,dpr:2,latency:150,download:1_600_000},
+  {name:width+'px-slow4g-dpr3',width,dpr:3,latency:150,download:1_600_000}
+]);
 const BUDGET={
-  requests:28,
-  transferKB:850,
+  requests:26,
+  transferKB:800,
   imageKB:420,
   largestImageKB:275,
+  initialImageRequests:1,
+  decodeMs:50,
   lcpMs:2500,
   cls:0.40,
   interactionMs:200
@@ -17,7 +25,7 @@ test.describe('homepage performance regression contract',()=>{
       await page.setViewportSize({width,height:932});
 
       await page.addInitScript(()=>{
-        window.__moonlitPerf={lcp:0,cls:0};
+        window.__moonlitPerf={lcp:0,cls:0,decodeMs:0};
         new PerformanceObserver(list=>{
           const entries=list.getEntries();
           if(entries.length) window.__moonlitPerf.lcp=entries[entries.length-1].startTime;
@@ -29,6 +37,10 @@ test.describe('homepage performance regression contract',()=>{
 
       await page.goto('./',{waitUntil:'load'});
       await page.waitForTimeout(600);
+      const decodeMs=await page.evaluate(async()=>{
+        const visible=[...document.images].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight&&r.width>0&&r.height>0});
+        const t=performance.now();await Promise.all(visible.map(img=>img.decode?.().catch(()=>{})));return performance.now()-t;
+      });
 
       const metrics=await page.evaluate(()=>{
         const resources=performance.getEntriesByType('resource');
@@ -48,6 +60,8 @@ test.describe('homepage performance regression contract',()=>{
           transferKB:local.reduce((n,r)=>n+bytes(r),0)/1024,
           imageKB:images.reduce((n,r)=>n+bytes(r),0)/1024,
           largestImageKB:Math.max(0,...images.map(r=>bytes(r)/1024)),
+          initialImageRequests:images.length,
+          decodeMs,
           lcp:window.__moonlitPerf.lcp,
           cls:window.__moonlitPerf.cls,
           images:imageEls
@@ -58,6 +72,8 @@ test.describe('homepage performance regression contract',()=>{
       expect(metrics.transferKB,width+'px transferred KB').toBeLessThanOrEqual(BUDGET.transferKB);
       expect(metrics.imageKB,width+'px image KB').toBeLessThanOrEqual(BUDGET.imageKB);
       expect(metrics.largestImageKB,width+'px largest image KB').toBeLessThanOrEqual(BUDGET.largestImageKB);
+      expect(metrics.initialImageRequests,width+'px initial image request count').toBeLessThanOrEqual(BUDGET.initialImageRequests);
+      expect(metrics.decodeMs,width+'px visible image decode time').toBeLessThanOrEqual(BUDGET.decodeMs);
       expect(metrics.lcp,width+'px LCP').toBeGreaterThan(0);
       expect(metrics.lcp,width+'px LCP').toBeLessThanOrEqual(BUDGET.lcpMs);
       expect(metrics.cls,width+'px CLS').toBeLessThanOrEqual(BUDGET.cls);
@@ -81,6 +97,42 @@ test.describe('homepage performance regression contract',()=>{
       await expect(toggle).not.toHaveAttribute('aria-expanded',before);
       const toggleDelay=await page.evaluate(start=>performance.now()-start,t1);
       expect(toggleDelay,width+'px shelf interaction delay').toBeLessThanOrEqual(BUDGET.interactionMs);
+    });
+  }
+});
+
+
+test.describe('first-screen image network and DPR regression',()=>{
+  for(const scenario of IMAGE_SCENARIOS){
+    test(scenario.name+' keeps first-screen image inside current budgets',async({browser})=>{
+      const context=await browser.newContext({viewport:{width:scenario.width,height:932},deviceScaleFactor:scenario.dpr});
+      const page=await context.newPage();
+      const session=await context.newCDPSession(page);
+      await session.send('Network.enable');
+      await session.send('Network.emulateNetworkConditions',{offline:false,latency:scenario.latency,downloadThroughput:scenario.download/8,uploadThroughput:750_000/8,connectionType:'cellular4g'});
+      await page.addInitScript(()=>{
+        window.__moonlitPerf={lcp:0,cls:0};
+        new PerformanceObserver(list=>{const e=list.getEntries();if(e.length)window.__moonlitPerf.lcp=e[e.length-1].startTime}).observe({type:'largest-contentful-paint',buffered:true});
+        new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.__moonlitPerf.cls+=e.value}).observe({type:'layout-shift',buffered:true});
+      });
+      await page.goto('./',{waitUntil:'load'});await page.waitForTimeout(600);
+      const m=await page.evaluate(async()=>{
+        const local=performance.getEntriesByType('resource').filter(r=>r.name.startsWith(location.origin));
+        const images=local.filter(r=>r.initiatorType==='img'),bytes=r=>r.transferSize||r.encodedBodySize||0;
+        const visible=[...document.images].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight&&r.width>0&&r.height>0});
+        const t=performance.now();await Promise.all(visible.map(img=>img.decode?.().catch(()=>{})));const decodeMs=performance.now()-t;
+        return {requests:local.length,transferKB:local.reduce((n,r)=>n+bytes(r),0)/1024,imageKB:images.reduce((n,r)=>n+bytes(r),0)/1024,largestImageKB:Math.max(0,...images.map(r=>bytes(r)/1024)),imageRequests:images.length,decodeMs,lcp:window.__moonlitPerf.lcp,cls:window.__moonlitPerf.cls,dpr:devicePixelRatio};
+      });
+      expect(m.dpr).toBe(scenario.dpr);
+      expect(m.requests).toBeLessThanOrEqual(BUDGET.requests);
+      expect(m.transferKB).toBeLessThanOrEqual(BUDGET.transferKB);
+      expect(m.imageKB).toBeLessThanOrEqual(BUDGET.imageKB);
+      expect(m.largestImageKB).toBeLessThanOrEqual(BUDGET.largestImageKB);
+      expect(m.imageRequests).toBeLessThanOrEqual(BUDGET.initialImageRequests);
+      expect(m.decodeMs).toBeLessThanOrEqual(BUDGET.decodeMs);
+      expect(m.lcp).toBeGreaterThan(0);expect(m.lcp).toBeLessThanOrEqual(BUDGET.lcpMs);
+      expect(m.cls).toBeLessThanOrEqual(BUDGET.cls);
+      await context.close();
     });
   }
 });
