@@ -88,3 +88,5 @@ html{scroll-behavior:smooth}
 
 .catalog-loading,.catalog-retry,.error{min-height:180px;display:grid;place-items:center;text-align:center;padding:24px;border-radius:16px}.catalog-loading{opacity:.82}.catalog-retry{width:min(100%,360px);margin:18px auto;min-height:52px}.error{gap:12px}.error button{min-height:48px;min-width:160px}
 @media(max-width:760px){.catalog-loading,.catalog-retry,.error{min-height:150px}}
+
+.error button,.catalog-retry{min-width:44px;min-height:48px;padding:10px 16px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.error button:disabled,.catalog-retry:disabled{cursor:wait;opacity:.72}.error button:focus-visible,.catalog-retry:focus-visible{outline:3px solid currentColor;outline-offset:3px}
