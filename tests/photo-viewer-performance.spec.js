@@ -30,14 +30,15 @@ test('shows existing preview while original is pending, then upgrades', async ({
  await expect(image).toHaveAttribute('src','/original-a.svg');
 });
 
-test('failed original keeps preview available and reports fallback', async ({page})=>{
+test('failed original keeps preview available and offers retry', async ({page})=>{
  const pending=await setup(page);
  await page.locator('.gallery a').first().click();
  await expect.poll(()=>pending.has('/original-a.svg')).toBe(true);
  await pending.get('/original-a.svg')(true);
  await expect(page.locator('.photo-viewer-image')).toBeVisible();
  await expect(page.locator('.photo-viewer-image')).toHaveAttribute('src',/preview-a/);
- await expect(page.locator('.photo-viewer-loading')).toContainText('目前顯示預覽');
+ await expect(page.locator('.photo-viewer-reload')).toBeVisible();
+ await expect(page.locator('.photo-viewer-loading')).toBeHidden();
 });
 
 test('late original from previous photo cannot replace current photo', async ({page})=>{
