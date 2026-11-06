@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 
 const VIEWPORTS=[320,375,390,430];
-const IMAGE_SCENARIOS=[
-  {name:'fast-dpr1',width:390,dpr:1,latency:20,download:5_000_000},
-  {name:'slow4g-dpr1',width:390,dpr:1,latency:150,download:1_600_000},
-  {name:'slow4g-dpr2',width:390,dpr:2,latency:150,download:1_600_000},
-  {name:'slow4g-dpr3',width:390,dpr:3,latency:150,download:1_600_000}
-];
+const IMAGE_SCENARIOS=VIEWPORTS.flatMap(width=>[
+  {name:width+'px-fast-dpr1',width,dpr:1,latency:20,download:5_000_000},
+  {name:width+'px-slow4g-dpr1',width,dpr:1,latency:150,download:1_600_000},
+  {name:width+'px-slow4g-dpr2',width,dpr:2,latency:150,download:1_600_000},
+  {name:width+'px-slow4g-dpr3',width,dpr:3,latency:150,download:1_600_000}
+]);
 const BUDGET={
   requests:26,
   transferKB:800,
