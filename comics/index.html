@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>喵叔漫畫書架｜《俠客行》《建康劫·聽泉引》線上閱讀</title>
+<meta property="og:title" content="喵叔漫畫書架｜《俠客行》《建康劫·聽泉引》線上閱讀">
+<meta property="og:description" content="翻閱喵叔的漫畫電子書《俠客行》與《建康劫·聽泉引》。">
 <meta name="description" content="翻閱喵叔的漫畫電子書《俠客行》與《建康劫·聽泉引》。">
 <link rel="canonical" href="https://vetjeremy-jpg.github.io/miaoshu.github.io/comics/">
-<meta property="og:title" content="漫畫書架｜喵叔 Moonlit Stories">
-<meta property="og:description" content="翻閱喵叔的漫畫電子書《俠客行》與《建康劫·聽泉引》。">
 <link rel="stylesheet" href="../editorial-interiors.css">
 <link rel="stylesheet" href="../assets/moonlight.css?v=20261002-async1">
 <link rel="stylesheet" href="../assets/moonlit-system.css?v=20261002-async1">
@@ -15,14 +15,16 @@
 <link rel="stylesheet" href="../assets/homepage-mobile-below-fold.css?v=20261004-legacy-clean3">
 <link rel="stylesheet" href="../assets/mobile-safety.css?v=20261004-books1">
 <style>
-#book .book-cover {
-  background-image: linear-gradient(180deg, #08111a30, #08111ab0 72%), var(--comic-cover);
-  background-size: cover;
-  background-position: left center;
+/* Keep the artwork above the shared mobile bookshelf background. */
+body.comics-shelf #book .novel-card .book-cover {
+  background: linear-gradient(180deg, #08111a20, #08111a94 72%),
+    var(--comic-cover) left center / cover no-repeat,
+    linear-gradient(150deg, var(--cover-top), var(--cover-bottom)) !important;
+  text-shadow: 0 1px 4px #08111a;
 }
 </style>
 </head>
-<body>
+<body class="comics-shelf">
 <header class="top"><a class="brand" href="../">喵叔 Moonlit Stories</a><nav aria-label="網站導覽"><a href="../">回首頁</a></nav></header>
 <main class="wrap">
 <section class="hero"><p class="eyebrow">MOONLIT COMICS</p><h1>漫畫書架</h1><p>選一本漫畫，翻開來讀。</p><div class="rule"></div></section>
