@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/</loc></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/books/</loc></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/about/</loc></url>
@@ -11,7 +11,26 @@
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/books/hiiro-setsugetsusho/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/books/fengmen-yetan/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/posts/</loc></url>
-  <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/gallery/</loc></url>
+  <url>
+    <loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/gallery/</loc>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-06.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-07.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-08.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-09.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-10.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-11.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-12.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-13.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-03.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-04.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-02.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-05.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-18.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-16.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-17.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-15.webp</image:loc></image:image>
+    <image:image><image:loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/assets/optimized/photo-14.webp</image:loc></image:image>
+  </url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/videos/</loc></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/books/alien-origin-sands/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://vetjeremy-jpg.github.io/miaoshu.github.io/books/chenshui-de-huhuan/</loc><lastmod>2026-10-10</lastmod></url>
