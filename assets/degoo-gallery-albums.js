@@ -13,9 +13,8 @@
   };
   // A Degoo share is a web page, not a direct image. Do not pass it to <img>.
   const hasPublicShare = album => {
-    if (!album || !['tiger-spirit', 'emergence', 'city-night-portraits', 'chun-li-street', 'street-daylight'].includes(album.id) ||
-        !isHttps(album.shareUrl) || !Array.isArray(album.photos) ||
-        album.photos.length !== (album.id === 'street-daylight' ? 55 : album.id === 'chun-li-street' ? 39 : album.id === 'city-night-portraits' ? 31 : 6)) return false;
+    if (!album || typeof album.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(album.id) ||
+        !isHttps(album.shareUrl) || !Array.isArray(album.photos) || !album.photos.length) return false;
     const url = new URL(album.shareUrl);
     const slug = url.pathname.startsWith('/share/') ? url.pathname.slice(7) : '';
     return url.hostname === 'app.degoo.com' &&
@@ -23,9 +22,7 @@
   };
   const linkOnly = album => hasPublicShare(album) && album.linkOnly === true && album.verified !== true;
   const approved = album => {
-    if (!album || album.verified !== true ||
-        !['tiger-spirit', 'emergence', 'city-night-portraits', 'chun-li-street', 'street-daylight'].includes(album.id) ||
-        !hasPublicShare(album)) return false;
+    if (!hasPublicShare(album) || album.verified !== true) return false;
     const images = new Set();
     for (const p of album.photos) {
       if (album.id === 'chun-li-street' && p && p.unavailable === true && isHttps(p.pageUrl) && p.title && p.alt) continue;
@@ -264,17 +261,13 @@
     navLink.href = '#' + id;
     nav.append(navLink);
 
-    const intro = element('section', 'collection-intro');
+    const intro = element('div', 'collection-heading');
     intro.id = id;
     intro.append(element('small', null, album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
       element('h2', null, album.title), element('p', null, album.description));
 
     const gallery = element('section', 'gallery degoo-album-grid');
-    const useCollectionHeading = album.id === 'street-daylight';
-    if (useCollectionHeading) {
-      intro.className = 'collection-heading';
-      gallery.append(intro);
-    }
+    gallery.append(intro);
     gallery.setAttribute('aria-label', album.title + '攝影系列');
     album.photos.forEach((p, index) => {
       const figure = element('figure');
@@ -316,9 +309,8 @@
     });
     // Keep new albums before the long existing galleries so lazy layout does not shift their anchors.
     const firstCollection = main.querySelector('#xiakexing');
-    const sections = useCollectionHeading ? [gallery] : [intro, gallery];
-    if (firstCollection) firstCollection.before(...sections);
-    else main.append(...sections);
+    if (firstCollection) firstCollection.before(gallery);
+    else main.append(gallery);
   };
 
   const notice = element('div', 'degoo-album-status');
