@@ -29,7 +29,7 @@ if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySel
  const load=()=>{if(!document.querySelector('link[data-moonlit-refinement]')){const l=document.createElement("link");l.rel="stylesheet";l.href=new URL(isReader?"moonlit-refinement-reader.css?v=20261003-reader-layout1":"moonlit-refinement.css?v=20261004-comfort2",base);l.dataset.moonlitRefinement="";document.head.append(l)}if(!document.querySelector("script[data-moonlit-refinement]")){const s=document.createElement("script");s.src=new URL(isReader?"moonlit-refinement-reader.js?v=20261102-lines1":"moonlit-refinement-home.js?v=20261101-current1",base);s.dataset.moonlitRefinement="";s.defer=true;document.head.append(s)}};
  const schedule=()=>{"requestIdleCallback"in window?requestIdleCallback(load,{timeout:1200}):setTimeout(load,0)};
  const scheduleHomeTouch=()=>{const anchor=document.querySelector("#continue-reading")||document.querySelector("#book");if(anchor&&"IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();load()}},{rootMargin:"900px 0px"});io.observe(anchor)}else schedule()};
- const start=()=>{if(isHome&&!matchMedia("(hover:hover) and (pointer:fine)").matches)scheduleHomeTouch();else schedule()};
+ const start=()=>{if(isHome)scheduleHomeTouch();else schedule()};
  if(document.readyState==="loading")addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
 
