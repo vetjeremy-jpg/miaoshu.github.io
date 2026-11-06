@@ -122,7 +122,7 @@ window.addEventListener('orientationchange',()=>setTimeout(()=>{if(pages.length)
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&immersive&&!zoom.open){collapse();return}if(zoom.open||/SELECT|INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'){e.preventDefault();turn(1)}if(e.key==='ArrowLeft'){e.preventDefault();turn(-1)}});
 let loadingCatalog=false;
 function loadCatalog(){
- if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄，請稍候…';
+ if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄，請稍候…';const catalogFallback=document.createElement('div');catalogFallback.className='catalog-loading';catalogFallback.setAttribute('role','status');catalogFallback.setAttribute('aria-live','polite');catalogFallback.textContent='漫畫內容準備中…';book.replaceChildren(catalogFallback);
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
  fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==expectedPages)throw Error('目錄不完整');
