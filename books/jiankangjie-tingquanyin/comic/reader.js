@@ -49,6 +49,11 @@ function openZoom(index){
  $('zoom-title').textContent=p.title;zoom.showModal();$('zoom-scroll').scrollTo(0,0);
 }
 const warmedPages = new Set();
+const imageCache = new Map();
+function cacheImage(url,priority='low'){
+ if(imageCache.has(url))return imageCache.get(url);
+ const image=new Image();image.referrerPolicy='no-referrer';image.decoding='async';image.fetchPriority=priority;image.src=url;imageCache.set(url,image);image.onerror=()=>imageCache.delete(url);return image;
+}
 function warmNextSpread() {
  if (navigator.connection?.saveData || /^(slow-)?2g$/.test(navigator.connection?.effectiveType || '')) return;
  const visible = book.querySelectorAll('.sheet');
@@ -56,17 +61,14 @@ function warmNextSpread() {
  for (const next of pages.slice(page + count(), page + 2 * count())) {
   if (warmedPages.has(next.imageUrl)) continue;
   warmedPages.add(next.imageUrl);
-  const image = new Image();
-  image.referrerPolicy = 'no-referrer';
-  image.fetchPriority = 'low';
-  image.onerror = () => warmedPages.delete(next.imageUrl);
-  image.src = next.imageUrl;
+  const image = cacheImage(next.imageUrl,'low');
+  image.onerror = () => { warmedPages.delete(next.imageUrl); imageCache.delete(next.imageUrl); };
  }
 }
 function makeSheet(index){
  const p=pages[index], sheet=document.createElement('section');sheet.className='sheet';sheet.setAttribute('aria-label',p.title);
  const button=document.createElement('button');button.type='button';button.className='page-button';if(p.width&&p.height)button.style.setProperty('--page-ratio',p.width+' / '+p.height);button.setAttribute('aria-label','放大閱讀：'+p.title);
- const img=new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding='async';img.referrerPolicy='no-referrer';img.fetchPriority='high';
+ const cached=imageCache.get(p.imageUrl);const img=cached||new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding=index===page?'sync':'async';img.referrerPolicy='no-referrer';img.fetchPriority=index===page?'high':'low';img.loading=index===page?'eager':'lazy';
  const placeholder=document.createElement('span');placeholder.className='placeholder';placeholder.textContent='正在載入第 '+(index+1)+' 頁…';
  img.onload=()=>{img.classList.add('loaded');button.setAttribute('aria-busy','false');if(sheet.isConnected)warmNextSpread()};
  img.onerror=()=>{
@@ -81,7 +83,7 @@ function makeSheet(index){
  };
  button.setAttribute('aria-busy','true');button.append(img,placeholder);button.onclick=()=>{if(Date.now()-lastSwipe>450)openZoom(index)};
  const folio=document.createElement('p');folio.className='folio';folio.textContent=p.title+'　·　'+(index+1);
- sheet.append(button,folio);img.src=p.imageUrl;return sheet;
+ sheet.append(button,folio);if(!cached)img.src=p.imageUrl;imageCache.set(p.imageUrl,img);return sheet;
 }
 function render(direction=0){
  clearTimeout(animationTimer);
@@ -123,7 +125,7 @@ function loadCatalog(){
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
  fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==expectedPages)throw Error('目錄不完整');
- pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
+ pages=data.pages;cacheImage(pages[0].imageUrl,'high');select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
 }).catch(()=>{
