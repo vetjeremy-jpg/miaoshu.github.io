@@ -11,11 +11,14 @@ test('speech errors retry the same passage and preserve position',async({page})=
  await page.locator('#audio-play').click();await expect.poll(()=>page.evaluate(()=>window.__spoken.length)).toBeGreaterThan(3);
  expect(await page.evaluate(()=>window.__spoken[3])).toBe(spoken[0]);
 });
-test('homepage external photo failure keeps a usable album link',async({page})=>{
+test('homepage external photo failure preserves gallery entry without intrusive error copy',async({page})=>{
  await page.route('**/lh3.googleusercontent.com/**',route=>route.abort());
- await page.goto('./');const photo=page.locator('.album-photo').first();await photo.scrollIntoViewIfNeeded();
- await expect(photo.locator('.external-photo-error')).toContainText('照片暫時無法載入');
- await expect(photo.locator('.external-photo-error a')).toHaveAttribute('href','https://app.degoo.com/share/hZYKu2-zGCehoYFY1AkrqA');
+ await page.goto('./');
+ const photo=page.locator('.album-photo').first();
+ await photo.scrollIntoViewIfNeeded();
+ await expect(photo.getByRole('link',{name:/攝影館/})).toHaveAttribute('href',/gallery\/index\.html#/);
+ await expect(photo.locator('.external-photo-error')).toHaveCount(0);
+ await expect(photo).not.toContainText('照片暫時無法載入');
 });
 for(const width of [320,375,390,430])test('reader keeps its layout at '+width,async({page})=>{
  await page.setViewportSize({width,height:844});await page.goto('books/liangzhongtiankong/');
