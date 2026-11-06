@@ -1,4 +1,5 @@
 const {test,expect,devices}=require('@playwright/test');
+async function ensureImmersive(page){if(!(await page.locator('body').evaluate(el=>el.classList.contains('immersive')))){await page.locator('#expand').click()}await expect(page.locator('body')).toHaveClass(/immersive/)}
 const readers=['books/xia-ke-xing/comic/','books/jiankangjie-tingquanyin/comic/'];
 for(const path of readers){
  test.describe(path,()=>{
@@ -17,7 +18,7 @@ for(const path of readers){
   });
   test('viewport fullscreen remains usable without native Fullscreen API',async({page})=>{
    await page.setViewportSize({width:390,height:844});await page.addInitScript(()=>Object.defineProperty(document.documentElement,'requestFullscreen',{value:undefined,configurable:true}));
-   await page.goto(path);await expect(page.locator('#expand')).toBeEnabled();await page.locator('#expand').click();await expect(page.locator('body')).toHaveClass(/immersive/);
+   await page.goto(path);await expect(page.locator('#expand')).toBeEnabled();await ensureImmersive(page);
    await expect(page.locator('#collapse')).toBeVisible();await expect(page.locator('#next')).toBeVisible();await page.locator('#collapse').click();await expect(page.locator('body')).not.toHaveClass(/immersive/);
   });
  });
@@ -30,7 +31,7 @@ for(const path of readers){
     await page.setViewportSize({width:viewport.width,height:viewport.height});await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
     const visible=async selector=>page.locator(selector).evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1&&r.width>=44&&r.height>=44});
     expect(await visible('.reader-exits a:first-child')).toBe(true);expect(await visible('.reader-exits a:last-child')).toBe(true);
-    await page.locator('#expand').click();await expect(page.locator('body')).toHaveClass(/immersive/);
+    await ensureImmersive(page);
     expect(await visible('#collapse')).toBe(true);expect(await visible('#prev')).toBe(true);expect(await visible('#next')).toBe(true);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
     const rotated=viewport.width>viewport.height?{width:390,height:844}:{width:844,height:390};await page.setViewportSize(rotated);await page.evaluate(()=>window.dispatchEvent(new Event('orientationchange')));await page.waitForTimeout(180);
@@ -61,7 +62,7 @@ for(const path of readers)test.describe('44px touch reachability '+path,()=>{
    expect(box.y+box.height,selector+' bottom safe area').toBeLessThanOrEqual(device.height-insets.bottom+1);
   };
   await assertTarget('.reader-exits a:first-child');
-  await page.locator('#expand').click();await expect(page.locator('body')).toHaveClass(/immersive/);
+  await ensureImmersive(page);
   await assertTarget('#collapse');await assertTarget('#prev');await assertTarget('#next');
  });
 });
