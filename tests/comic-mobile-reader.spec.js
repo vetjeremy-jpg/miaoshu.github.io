@@ -22,3 +22,20 @@ for(const path of readers){
   });
  });
 }
+
+for(const path of readers){
+ test.describe('iPhone safe areas '+path,()=>{
+  for(const viewport of [{name:'portrait',width:390,height:844},{name:'landscape',width:844,height:390}]){
+   test(viewport.name+' rotation keeps notch and home-indicator controls reachable',async({page})=>{
+    await page.setViewportSize({width:viewport.width,height:viewport.height});await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+    const visible=async selector=>page.locator(selector).evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1&&r.width>=44&&r.height>=44});
+    expect(await visible('.reader-exits a:first-child')).toBe(true);expect(await visible('.reader-exits a:last-child')).toBe(true);
+    await page.locator('#expand').click();await expect(page.locator('body')).toHaveClass(/immersive/);
+    expect(await visible('#collapse')).toBe(true);expect(await visible('#prev')).toBe(true);expect(await visible('#next')).toBe(true);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+    const rotated=viewport.width>viewport.height?{width:390,height:844}:{width:844,height:390};await page.setViewportSize(rotated);await page.evaluate(()=>window.dispatchEvent(new Event('orientationchange')));await page.waitForTimeout(180);
+    expect(await visible('#collapse')).toBe(true);expect(await visible('#next')).toBe(true);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+   });
+  }
+ });
+}
