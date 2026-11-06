@@ -59,10 +59,15 @@ jobs:
           roots=(.)
           [[ -d build ]] && roots+=(build)
           [[ -d dist ]] && roots+=(dist)
-          bad=$(find "${roots[@]}" -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.avif' \\) | grep -E '/(comic|comics)/' || true)
-          if [[ -n "$bad" ]]; then echo "Comic image files must remain external:"; echo "$bad"; exit 1; fi
-          if grep -RInE --include='*.html' --include='*.js' '(src|href|imageUrl)[^\n]*(http://|/(books/.*/comic|comics)/[^"'"' ]+\.(jpg|jpeg|png|webp|avif))' "${roots[@]}"; then
-            echo 'Comic deployment output contains non-HTTPS or same-origin comic image references.'; exit 1
+          find "${roots[@]}" -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.avif' \\) -print | sort | tee "$RUNNER_TEMP/comic-image-files.txt"
+          grep -RhoE --include='*.html' --include='*.js' 'https?://[^" ]+\.(jpg|jpeg|png|webp|avif)(\?[^" ]*)?' "${roots[@]}" | sort -u | tee "$RUNNER_TEMP/comic-image-urls.txt" || true
+          echo '### Comic deployment image inventory' >> "$GITHUB_STEP_SUMMARY"
+          echo '**Image files**' >> "$GITHUB_STEP_SUMMARY"; sed 's/^/- /' "$RUNNER_TEMP/comic-image-files.txt" >> "$GITHUB_STEP_SUMMARY"
+          echo '**Image URLs**' >> "$GITHUB_STEP_SUMMARY"; sed 's/^/- /' "$RUNNER_TEMP/comic-image-urls.txt" >> "$GITHUB_STEP_SUMMARY"
+          bad=$(grep -E '/(comic|comics)/' "$RUNNER_TEMP/comic-image-files.txt" || true)
+          if [[ -n "$bad" ]]; then echo 'ERROR: external comic images were copied into same-origin deployment assets:'; echo "$bad"; exit 1; fi
+          if grep -RInE --include='*.html' --include='*.js' '(src|href|imageUrl)[^\n]*(http://|/(books/.*/comic|comics)/[^" ]+\.(jpg|jpeg|png|webp|avif))' "${roots[@]}"; then
+            echo 'ERROR: comic deployment output contains non-HTTPS or same-origin comic image references.'; exit 1
           fi
       - name: Run comic external-image browser contract
         run: npx playwright test tests/comic-mobile-reader.spec.js
