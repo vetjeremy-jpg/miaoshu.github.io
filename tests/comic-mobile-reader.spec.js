@@ -65,3 +65,10 @@ for(const path of readers)test.describe('44px touch reachability '+path,()=>{
   await assertTarget('#collapse');await assertTarget('#prev');await assertTarget('#next');
  });
 });
+
+for(const path of readers)test('image loading policy '+path,async({page})=>{
+ await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+ const first=page.locator('#book img').first();await expect(first).toHaveAttribute('loading','eager');await expect(first).toHaveAttribute('fetchpriority','high');
+ await page.locator('#next').click();const current=page.locator('#book img').first();await expect(current).toHaveAttribute('loading','eager');await expect(current).toHaveAttribute('fetchpriority','high');
+ const urls=await page.locator('#book img').evaluateAll(imgs=>imgs.map(i=>i.src));expect(urls.every(u=>!u.startsWith(location.origin))).toBe(true);
+});
