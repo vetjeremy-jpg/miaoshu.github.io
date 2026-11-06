@@ -19,7 +19,7 @@ test('comic catalogue can recover without reloading the page',async({page})=>{
 test('a failed full photo retries in the viewer and keeps navigation available',async({page})=>{
  let allow=false;const pixel=Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7','base64');
  await page.route('**/*',route=>route.request().resourceType()==='image'?(allow?route.fulfill({status:200,contentType:'image/gif',body:pixel}):route.abort()):route.continue());
- await page.goto('gallery/',{waitUntil:'domcontentloaded'});await page.locator('#degoo-tiger-spirit + .gallery a').first().click();
+ await page.goto('gallery/',{waitUntil:'domcontentloaded'});await page.locator('#degoo-street-daylight + .gallery a').first().click();
  const viewer=page.locator('.degoo-photo-viewer');await expect(viewer).toBeVisible();await expect(viewer.locator('.photo-viewer-retry')).toBeVisible();
  allow=true;await viewer.getByRole('button',{name:'重新載入照片',exact:true}).click();await expect(viewer.locator('.photo-viewer-retry')).toBeHidden();await expect(viewer.locator('.photo-viewer-image')).toBeVisible();await viewer.getByRole('button',{name:'下一張',exact:true}).click();await expect(viewer.locator('.photo-viewer-count')).toContainText('02');await viewer.getByRole('button',{name:'關閉',exact:true}).click();await expect(viewer).toBeHidden();
 });
