@@ -270,7 +270,11 @@
       element('h2', null, album.title), element('p', null, album.description));
 
     const gallery = element('section', 'gallery degoo-album-grid');
-    if (album.id === 'street-daylight') gallery.classList.add('degoo-editorial-album');
+    const useCollectionHeading = album.id === 'street-daylight';
+    if (useCollectionHeading) {
+      intro.className = 'collection-heading';
+      gallery.append(intro);
+    }
     gallery.setAttribute('aria-label', album.title + '攝影系列');
     album.photos.forEach((p, index) => {
       const figure = element('figure');
@@ -312,8 +316,9 @@
     });
     // Keep new albums before the long existing galleries so lazy layout does not shift their anchors.
     const firstCollection = main.querySelector('#xiakexing');
-    if (firstCollection) firstCollection.before(intro, gallery);
-    else main.append(intro, gallery);
+    const sections = useCollectionHeading ? [gallery] : [intro, gallery];
+    if (firstCollection) firstCollection.before(...sections);
+    else main.append(...sections);
   };
 
   const notice = element('div', 'degoo-album-status');
