@@ -237,19 +237,30 @@ test('editorial stylesheet stays within the current technical-debt budget', asyn
 });
 
 
-test('third-party embeds stay inert until they approach the viewport', async ({ page }) => {
+test('homepage video players load only after a reader activates them', async ({ page }) => {
   await page.setViewportSize({ width:390, height:844 });
+  const players = /youtube-nocookie\.com\/embed|instagram\.com\/reel\/.*\/embed/;
+  const requests = [];
+  await page.route(players, route => {
+    requests.push(route.request().url());
+    return route.fulfill({ contentType:'text/html', body:'<!doctype html><p>Player</p>' });
+  });
   await page.goto('./', { waitUntil:'domcontentloaded' });
-  const frames=page.locator('iframe[data-lazy-src]');
-  await expect(frames).toHaveCount(3);
-  const initial=await frames.evaluateAll(xs=>xs.map(x=>({src:x.getAttribute('src'),lazy:x.dataset.lazySrc})));
-  expect(initial.every(x=>x.src==='about:blank' && /^https:/.test(x.lazy))).toBeTruthy();
-  await page.locator('#featured-short').scrollIntoViewIfNeeded();
-  await expect.poll(async()=>page.locator('.moonlit-video-primary iframe').getAttribute('data-lazy-src')).toBeNull();
-  await expect(page.locator('.moonlit-video-primary iframe')).toHaveAttribute('src',/youtube-nocookie\.com/);
-  await expect(page.locator('#community iframe')).toHaveAttribute('data-lazy-src',/chatgpt\.site/);
+  for (const [container, provider] of [
+    ['.moonlit-video-primary-media', /youtube-nocookie\.com/],
+    ['.moonlit-reel-frame', /instagram\.com/]
+  ]) {
+    const section = page.locator(container);
+    const trigger = section.getByRole('link');
+    await trigger.scrollIntoViewIfNeeded();
+    await expect(section.locator('iframe')).toHaveCount(0);
+    expect(requests.filter(url => provider.test(url))).toEqual([]);
+    await trigger.focus();
+    await page.keyboard.press('Enter');
+    await expect(section.locator('iframe')).toHaveAttribute('src', provider);
+    await expect.poll(() => requests.filter(url => provider.test(url)).length).toBe(1);
+  }
 });
-
 
 test('homepage image priority and intrinsic geometry stay stable', async ({ page }) => {
   await page.setViewportSize({ width:390, height:844 });

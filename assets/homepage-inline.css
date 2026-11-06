@@ -231,3 +231,18 @@ body:not([data-book-id])>.hero .hero-index{display:flex!important;gap:12px!impor
 .hero .hero-index span:last-child{display:block}
 .hero .hero-index b{font-size:16px;color:#e2c68f}
 @media(max-width:700px){.homepage-shortcuts{gap:7px;margin-top:18px}.homepage-shortcuts a{font-size:12px;padding:9px;min-height:58px}.homepage-shortcuts span{font-size:9px}.hero .hero-text-link{flex-basis:100%;justify-content:flex-start}.hero .hero-index{justify-content:space-between}}
+
+.moonlit-video-launch{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:.6em;
+ width:100%;
+ aspect-ratio:9/16;
+ border:1px solid rgba(205,225,243,.25);
+ border-radius:10px;
+ background:linear-gradient(155deg,#203952,#06162a);
+ color:#fff;
+ font-weight:700;
+}
+.moonlit-video-launch:focus-visible{outline:2px solid #ffd48a;outline-offset:3px}

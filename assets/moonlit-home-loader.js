@@ -5,4 +5,14 @@
 (()=>{let loaded=false;const later=()=>{if(loaded)return;loaded=true;for(const src of ['photo-viewer.js?v=20261013-preview1','assets/moonlit-experience.js?v=20261101-catalog1']){if([...document.scripts].some(s=>s.getAttribute('src')===src))continue;const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)}};const target=document.querySelector('#featured,#creative,#miaoshu-album,.gallery');if(target&&'IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){io.disconnect();later()}},{rootMargin:'700px 0px'});io.observe(target)}const warm=e=>{if(!e.target.closest?.('#featured,#creative,#miaoshu-album,.gallery'))return;for(const type of ['pointerover','touchstart','focusin'])document.removeEventListener(type,warm);later()};for(const type of ['pointerover','touchstart','focusin'])document.addEventListener(type,warm,{passive:type!=='focusin'});/* Heavy visual enhancements are proximity/intent driven; do not force them during early idle. */})();
 
 (()=>{const frames=[...document.querySelectorAll('iframe[data-lazy-src]')];if(!frames.length)return;const load=f=>{const src=f.dataset.lazySrc;if(src){f.src=src;delete f.dataset.lazySrc}};if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){load(e.target);io.unobserve(e.target)}}),{rootMargin:'180px 0px'});frames.forEach(f=>io.observe(f))}else frames.forEach(load)})();
+document.querySelectorAll('.moonlit-video-launch').forEach(link=>{
+ const player=link.nextElementSibling.content.firstElementChild;
+ link.addEventListener('click',event=>{
+  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  const frame=player.cloneNode(true);
+  link.replaceWith(frame);
+  frame.focus({preventScroll:true});
+ });
+});
 })();

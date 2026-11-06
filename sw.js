@@ -1,4 +1,4 @@
-const CACHE='moonlit-shell-v81';
+const CACHE='moonlit-shell-v82';
 const PAGES='moonlit-pages-v4';
 const MAX_PAGES=24;
 const NAVIGATION_TIMEOUT=180;
@@ -12,9 +12,9 @@ const pageKey=req=>{const u=new URL(req.url);for(const key of [...u.searchParams
 const SHELL=[
  SCOPE,
  SCOPE+'site.webmanifest',
- SCOPE+'assets/homepage-inline.css?v=20261101-current1',
+ SCOPE+'assets/homepage-inline.css?v=20261106-video-optin',
  SCOPE+'assets/moonlit-v2.js?v=20261018-runtime31',
- SCOPE+'assets/moonlit-home-loader.js?v=20261101-live-state1',
+ SCOPE+'assets/moonlit-home-loader.js?v=20261106-video-optin',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
