@@ -14,7 +14,7 @@ const SHELL=[
  SCOPE+'site.webmanifest',
  SCOPE+'assets/homepage-inline.css?v=20261106-video-optin',
  SCOPE+'assets/moonlit-v2.js?v=20261018-runtime31',
- SCOPE+'assets/moonlit-home-loader.js?v=20261106-video-optin',
+ SCOPE+'assets/moonlit-home-loader.js?v=20261106-photo-retry',
  SCOPE+'assets/mobile-safety.css?v=20261004-books1'
 ];
 const LAZY_ASSETS=[
