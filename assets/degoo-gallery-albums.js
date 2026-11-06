@@ -318,17 +318,29 @@
   const retry = element('button', null, '重新載入相簿');retry.type='button';retry.hidden=true;
   notice.append(message,retry);cards.after(notice);
   const mounted = new Set();let loading=false;
-  const loadAlbums = async () => {
-    if(loading)return;loading=true;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
+  const loadAlbums = async (refresh = false) => {
+    if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1',{signal:controller.signal});
+      const response=await fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
-      for(const album of data.albums){if(mounted.has(album.id))continue;if(approved(album)){renderAlbum(album);mounted.add(album.id)}else if(linkOnly(album)){renderCloudLink(album);mounted.add(album.id)}}
-      notice.hidden=true;doc.dispatchEvent(new Event('gallery:albums-ready'));
+      let unavailable = false;
+      for (const album of data.albums) {
+        if (mounted.has(album?.id)) continue;
+        if (approved(album)) renderAlbum(album);
+        else if (linkOnly(album)) renderCloudLink(album);
+        else { unavailable = true; continue; }
+        mounted.add(album.id);
+      }
+      notice.hidden = !unavailable;
+      if (unavailable) {
+        message.textContent = '部分雲端相簿暫時無法顯示，其他攝影作品仍可正常欣賞。';
+        retry.hidden = false;
+      }
+      doc.dispatchEvent(new Event('gallery:albums-ready'));
     }catch{notice.hidden=false;message.textContent='雲端相簿目錄暫時無法載入，其他攝影作品仍可正常欣賞。';retry.hidden=false}
     finally{clearTimeout(timer);loading=false;notice.removeAttribute('aria-busy')}
   };
-  retry.addEventListener('click',loadAlbums);loadAlbums();
+  retry.addEventListener('click',()=>loadAlbums(true));loadAlbums();
 })();
