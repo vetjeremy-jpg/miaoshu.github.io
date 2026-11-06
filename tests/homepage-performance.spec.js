@@ -6,6 +6,8 @@ const BUDGET={
   transferKB:800,
   imageKB:420,
   largestImageKB:275,
+  initialImageRequests:1,
+  decodeMs:50,
   lcpMs:2500,
   cls:0.40,
   interactionMs:200
@@ -17,7 +19,7 @@ test.describe('homepage performance regression contract',()=>{
       await page.setViewportSize({width,height:932});
 
       await page.addInitScript(()=>{
-        window.__moonlitPerf={lcp:0,cls:0};
+        window.__moonlitPerf={lcp:0,cls:0,decodeMs:0};
         new PerformanceObserver(list=>{
           const entries=list.getEntries();
           if(entries.length) window.__moonlitPerf.lcp=entries[entries.length-1].startTime;
@@ -29,6 +31,10 @@ test.describe('homepage performance regression contract',()=>{
 
       await page.goto('./',{waitUntil:'load'});
       await page.waitForTimeout(600);
+      const decodeMs=await page.evaluate(async()=>{
+        const visible=[...document.images].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight&&r.width>0&&r.height>0});
+        const t=performance.now();await Promise.all(visible.map(img=>img.decode?.().catch(()=>{})));return performance.now()-t;
+      });
 
       const metrics=await page.evaluate(()=>{
         const resources=performance.getEntriesByType('resource');
@@ -48,6 +54,8 @@ test.describe('homepage performance regression contract',()=>{
           transferKB:local.reduce((n,r)=>n+bytes(r),0)/1024,
           imageKB:images.reduce((n,r)=>n+bytes(r),0)/1024,
           largestImageKB:Math.max(0,...images.map(r=>bytes(r)/1024)),
+          initialImageRequests:images.length,
+          decodeMs,
           lcp:window.__moonlitPerf.lcp,
           cls:window.__moonlitPerf.cls,
           images:imageEls
@@ -58,6 +66,8 @@ test.describe('homepage performance regression contract',()=>{
       expect(metrics.transferKB,width+'px transferred KB').toBeLessThanOrEqual(BUDGET.transferKB);
       expect(metrics.imageKB,width+'px image KB').toBeLessThanOrEqual(BUDGET.imageKB);
       expect(metrics.largestImageKB,width+'px largest image KB').toBeLessThanOrEqual(BUDGET.largestImageKB);
+      expect(metrics.initialImageRequests,width+'px initial image request count').toBeLessThanOrEqual(BUDGET.initialImageRequests);
+      expect(metrics.decodeMs,width+'px visible image decode time').toBeLessThanOrEqual(BUDGET.decodeMs);
       expect(metrics.lcp,width+'px LCP').toBeGreaterThan(0);
       expect(metrics.lcp,width+'px LCP').toBeLessThanOrEqual(BUDGET.lcpMs);
       expect(metrics.cls,width+'px CLS').toBeLessThanOrEqual(BUDGET.cls);
