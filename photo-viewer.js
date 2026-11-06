@@ -8,6 +8,15 @@
  dialog.setAttribute('aria-labelledby','photo-viewer-title');
  dialog.setAttribute('aria-describedby','photo-viewer-description');
  dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-reload" hidden>重試照片</button><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+ let returnToGallery=false;
+ const galleryHeading=document.querySelector('.gallery-page h1');
+ if(galleryHeading){
+  const back=document.createElement('button');
+  back.type='button';
+  back.textContent='返回攝影館';
+  back.addEventListener('click',()=>{returnToGallery=true;dialog.close()});
+  dialog.querySelector('.photo-viewer-bar').prepend(back);
+ }
  document.body.append(dialog);
  const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description');
  const retry=dialog.querySelector('.photo-viewer-reload');
@@ -63,7 +72,13 @@
   if(event.key==='ArrowRight'){event.preventDefault();show(current+1)}
  });
  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
- dialog.addEventListener('close',()=>{for(const img of neighbors.values())img.src='';neighbors.clear();requestId++;if(pendingFull){pendingFull.onload=null;pendingFull.onerror=null;pendingFull=null}document.body.style.overflow=previousOverflow;returnFocus?.focus({preventScroll:true})});
+ dialog.addEventListener('close',()=>{for(const img of neighbors.values())img.src='';neighbors.clear();requestId++;if(pendingFull){pendingFull.onload=null;pendingFull.onerror=null;pendingFull=null}document.body.style.overflow=previousOverflow;if(returnToGallery){
+  returnToGallery=false;
+  if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);
+  galleryHeading.setAttribute('tabindex','-1');
+  galleryHeading.focus({preventScroll:true});
+  window.scrollTo({top:0,behavior:'instant'});
+ }else{returnFocus?.focus({preventScroll:true})}});
  const stage=dialog.querySelector('.photo-viewer-stage');
  stage.addEventListener('touchstart',event=>{touch=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null},{passive:true});
  stage.addEventListener('touchmove',event=>{if(event.touches.length!==1)touch=null},{passive:true});
