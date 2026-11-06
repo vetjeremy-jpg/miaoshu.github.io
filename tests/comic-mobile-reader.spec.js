@@ -180,3 +180,16 @@ for(const path of readers)test('measures first-screen slow-network states withou
  expect(blank).toBe(false);
  console.log('COMIC_FIRST_SCREEN_TIMING',path,JSON.stringify(timings));
 });
+
+
+for(const path of readers)test('slow paging keeps previous next and cached return nonblank without duplicate requests',async({page})=>{
+ const counts=new Map();
+ page.on('request',r=>{if(r.resourceType()==='image')counts.set(r.url(),(counts.get(r.url())||0)+1)});
+ await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{await new Promise(r=>setTimeout(r,350));await route.continue()});
+ await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+ const assertNonblank=async()=>expect(await page.evaluate(()=>{const b=document.querySelector('#book');return !!b.querySelector('img.loaded,.placeholder,.error')&&b.getBoundingClientRect().height>0})).toBe(true);
+ await assertNonblank();const first=await page.locator('#book img').first().getAttribute('src');await expect(page.locator('#book img').first()).toHaveClass(/loaded/);
+ await page.locator('#next').click();await assertNonblank();await expect(page.locator('#book [role="status"]')).toBeVisible();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);
+ await page.locator('#prev').click();await assertNonblank();await expect(page.locator('#book img').first()).toHaveAttribute('src',first);await expect(page.locator('#book .placeholder')).toBeHidden();
+ expect(counts.get(first)||0).toBeLessThanOrEqual(1);
+});
