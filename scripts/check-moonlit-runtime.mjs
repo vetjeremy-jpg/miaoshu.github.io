@@ -45,7 +45,9 @@ async function walk(dir){
   else if(entry.name.endsWith('.html')){
    const html=await readFile(full,'utf8');
    const refs=[...html.matchAll(/moonlit-v2\.js\?v=([^"'\s<]+)/g)].map(m=>m[1]);
-   for(const ref of refs)if(ref!==expected)errors.push(`${relative(root,full)} 使用 ${ref}，應為 ${expected}`);
+   const rel=relative(root,full).replaceAll('\\','/');
+   const allowed=new Set([expected,...(rel==='gallery/index.html'?['20261106-album-focus']:[])]);
+   for(const ref of refs)if(!allowed.has(ref))errors.push(`${rel} 使用 ${ref}，應為 ${expected}${rel==='gallery/index.html'?' 或攝影館專用 20261106-album-focus':''}`);
   }
  }
 }
