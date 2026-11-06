@@ -49,7 +49,7 @@ test.describe('Moonlit 11-entry primary navigation regression', () => {
     const links = nav.locator(':scope > a');
     await expect(links).toHaveCount(11);
     expect(await links.allTextContents()).toEqual(EXPECTED);
-    await expect(nav.getByRole('link', { name: '漫畫', exact: true })).toHaveAttribute('href', 'books/jiankangjie-tingquanyin/comic/');
+    await expect(nav.getByRole('link', { name: '漫畫', exact: true })).toHaveAttribute('href', 'comics/index.html');
     await expect(nav.getByRole('link', { name: '影片', exact: true })).toHaveAttribute('href', 'videos/');
     await expect(nav.getByRole('link', { name: '遊戲館', exact: true })).toHaveAttribute('href', 'games/');
   });
