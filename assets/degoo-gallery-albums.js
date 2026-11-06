@@ -82,7 +82,7 @@
     if (viewer || !window.HTMLDialogElement || !HTMLDialogElement.prototype.showModal) return;
     viewer = element('dialog', 'photo-viewer degoo-photo-viewer');
     viewer.setAttribute('aria-label', 'Degoo 攝影作品放大瀏覽');
-    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="degoo-photo-title"></h2><p class="degoo-photo-description"></p><a class="photo-viewer-source" target="_blank" rel="noopener noreferrer">在 Degoo 開啟相簿 ↗</a><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="degoo-photo-title"></h2><p class="degoo-photo-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
     doc.body.append(viewer);
     viewer.querySelector('.photo-viewer-close').addEventListener('click', () => viewer.close());
     viewer.querySelector('.photo-viewer-retry').addEventListener('click', () => { nearbyImages.delete(activeAlbum.photos[currentIndex].imageUrl); show(currentIndex); });
@@ -143,7 +143,7 @@
       viewer.querySelector('.photo-viewer-retry').hidden = !!p.unavailable;
       img.hidden = true;
       status.hidden = false;
-      status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
+      status.textContent = '照片暫時無法載入。';
     };
     status.textContent = '照片載入中…';
     status.hidden = !!previewReady;
@@ -151,9 +151,8 @@
       activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ ' + String(activeAlbum.photos.length).padStart(2, '0');
     viewer.querySelector('.degoo-photo-title').textContent = p.title;
     viewer.querySelector('.degoo-photo-description').textContent = p.description || '';
-    viewer.querySelector('.photo-viewer-source').href = p.pageUrl || activeAlbum.shareUrl;
     if (p.unavailable) {
-      status.textContent = '照片暫時無法載入，可使用下方連結前往 Degoo。';
+      status.textContent = '照片暫時無法載入。';
       return;
     }
     const preload = imageRequest(p.imageUrl);
@@ -175,8 +174,8 @@
       pending = null;
       status.hidden = false;
       status.textContent = previewReady ?
-        '目前顯示預覽，可使用下方連結前往 Degoo。' :
-        '照片暫時無法載入，可使用下方連結前往 Degoo。';
+        '目前顯示預覽。' :
+        '照片暫時無法載入。';
       nearbyImages.delete(p.imageUrl);
     };
     loadTimer = setTimeout(() => {
@@ -228,14 +227,7 @@
     intro.append(element('small', null, album.title + ' · 六幅攝影作品 · Degoo 雲端相簿'),
       element('h2', null, album.title),
       element('p', null, album.description));
-    intro.append(element('p', 'degoo-cloud-explainer',
-      '六幅作品存放於 Degoo 雲端。點選下方連結，即可前往欣賞完整相簿；照片不儲存在本站。'));
-    const sourceLink = element('a', 'degoo-cloud-open', '前往 Degoo 欣賞六幅作品 ↗');
-    sourceLink.href = album.shareUrl;
-    sourceLink.target = '_blank';
-    sourceLink.rel = 'noopener noreferrer';
-    sourceLink.referrerPolicy = 'no-referrer';
-    intro.append(sourceLink);
+    intro.append(element('p', null, '這組作品目前無法在站內顯示。'));
     main.append(intro);
   };
 
@@ -271,13 +263,6 @@
     intro.id = id;
     intro.append(element('small', null, album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
       element('h2', null, album.title), element('p', null, album.description));
-    const sourceParagraph = element('p');
-    const sourceLink = element('a', null, '在 Degoo 開啟原始相簿 ↗');
-    sourceLink.href = album.shareUrl;
-    sourceLink.target = '_blank';
-    sourceLink.rel = 'noopener noreferrer';
-    sourceParagraph.append(sourceLink);
-    intro.append(sourceParagraph);
 
     const gallery = element('section', 'gallery degoo-album-grid');
     if (album.id === 'street-daylight') gallery.classList.add('degoo-editorial-album');
@@ -285,7 +270,7 @@
     album.photos.forEach((p, index) => {
       const figure = element('figure');
       const link = element('a');
-      link.href = p.pageUrl || album.shareUrl;
+      link.href = p.unavailable ? '#' + id : p.imageUrl;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', '放大觀看：' + p.alt);
@@ -301,11 +286,11 @@
       img.sizes = '(max-width: 650px) calc(100vw - 36px), (max-width: 1100px) calc(50vw - 36px), 550px';
       img.addEventListener('error', () => {
         img.hidden = true;
-        const err = element('p', 'degoo-thumbnail-error', '照片暫時無法載入，請在 Degoo 開啟相簿。');
+        const err = element('p', 'degoo-thumbnail-error', '照片暫時無法載入。');
         link.append(err);
       }, {once:true});
       if (p.unavailable) {
-        link.append(element('p', 'degoo-thumbnail-error', '照片暫時無法載入，前往 Degoo 查看 ↗'));
+        link.append(element('p', 'degoo-thumbnail-error', '照片暫時無法載入'));
       } else { link.append(img); }
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
