@@ -103,12 +103,13 @@ function render(direction=0){
  $('finish').hidden=page+count()<pages.length;
  save(key,page);setHash();
 }
-function go(next,direction=0){if(!pages.length)return;page=Math.max(0,Math.min(pages.length-1,next));render(direction)}
+function go(next,direction=0){if(!pages.length)return;const target=Math.max(0,Math.min(pages.length-1,next));if(target===page&&book.querySelector('.sheet'))return;page=target;render(direction)}
 function turn(direction){const n=page+direction*count();if(direction>0&&n>=pages.length||direction<0&&page===0)return;go(n,direction)}
 $('prev').onclick=()=>turn(-1);$('next').onclick=()=>turn(1);
 $('first').onclick=()=>go(0);select.onchange=()=>go(Number(select.value));
 if(mode)mode.onclick=()=>{single=!single;save(key+'-single',single);go(page)};
 wide.addEventListener('change',()=>{if(pages.length)render()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)return;const current=book.querySelector('.sheet img');if(current&&!current.complete)current.fetchPriority='high'});
 $('zoom-close').onclick=()=>zoom.close();
 $('zoom-size').onclick=()=>{const actual=zoomImage.classList.toggle('actual');$('zoom-size').textContent=actual?'適合螢幕':'原尺寸細讀';$('zoom-scroll').scrollTo(0,0)};
 zoom.addEventListener('close',()=>{zoomImage.removeAttribute('src')});
