@@ -66,7 +66,7 @@ for(const path of readers)test.describe('44px touch reachability '+path,()=>{
  });
 });
 
-for(const path of readers)test('image loading policy '+path,async({page})=>{
+for(const path of readers)test(path+' ' + 'image loading policy '+path,async({page})=>{
  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
  const first=page.locator('#book img').first();await expect(first).toHaveAttribute('loading','eager');await expect(first).toHaveAttribute('fetchpriority','high');
  await page.locator('#next').click();const current=page.locator('#book img').first();await expect(current).toHaveAttribute('loading','eager');await expect(current).toHaveAttribute('fetchpriority','high');
@@ -166,7 +166,7 @@ for(const path of readers)test.describe('Safari slow-network recovery '+path,()=
 });
 
 
-for(const path of readers)test('measures first-screen slow-network states without blank frame',async({page})=>{
+for(const path of readers)test(path+' ' + 'measures first-screen slow-network states without blank frame',async({page})=>{
  const timings={};const start=Date.now();
  await page.route('**/pages.json',async route=>{await new Promise(r=>setTimeout(r,300));await route.continue()});
  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{await new Promise(r=>setTimeout(r,500));await route.continue()});
@@ -182,7 +182,7 @@ for(const path of readers)test('measures first-screen slow-network states withou
 });
 
 
-for(const path of readers)test('slow paging keeps previous next and cached return nonblank without duplicate requests',async({page})=>{
+for(const path of readers)test(path+' ' + 'slow paging keeps previous next and cached return nonblank without duplicate requests',async({page})=>{
  const counts=new Map();
  page.on('request',r=>{if(r.resourceType()==='image')counts.set(r.url(),(counts.get(r.url())||0)+1)});
  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{await new Promise(r=>setTimeout(r,350));await route.continue()});
@@ -216,7 +216,7 @@ for(const path of readers)test.describe('catalog and first-image fallback contin
 });
 
 
-for(const path of readers)test('image retry sends a new request and fully restores the page',async({page})=>{
+for(const path of readers)test(path+' ' + 'image retry sends a new request and fully restores the page',async({page})=>{
  const seen=[];let failFirst=true;
  page.on('request',r=>{if(r.resourceType()==='image')seen.push(r.url())});
  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{
@@ -234,7 +234,7 @@ for(const path of readers)test('image retry sends a new request and fully restor
 });
 
 
-for(const path of readers)test('failed first image retry then next previous cache stays nonblank and request-stable',async({page})=>{
+for(const path of readers)test(path+' ' + 'failed first image retry then next previous cache stays nonblank and request-stable',async({page})=>{
  const requests=new Map();let failFirst=true;
  page.on('request',r=>{if(r.resourceType()==='image')requests.set(r.url(),(requests.get(r.url())||0)+1)});
  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{
@@ -252,7 +252,7 @@ for(const path of readers)test('failed first image retry then next previous cach
 });
 
 
-for(const path of readers)test('Safari image retry has consistent touch disabled busy and keyboard focus states',async({page})=>{
+for(const path of readers)test(path+' ' + 'Safari image retry has consistent touch disabled busy and keyboard focus states',async({page})=>{
  await page.setViewportSize({width:390,height:844});let fail=true;
  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{if(fail){fail=false;await route.abort('failed')}else{await new Promise(r=>setTimeout(r,350));await route.continue()}});
  await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
