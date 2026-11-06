@@ -7,9 +7,9 @@
  dialog.className='photo-viewer';
  dialog.setAttribute('aria-labelledby','photo-viewer-title');
  dialog.setAttribute('aria-describedby','photo-viewer-description');
- dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><a class="photo-viewer-source" target="_blank" rel="noopener noreferrer">開啟原始照片／相簿 ↗</a><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+ dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
  document.body.append(dialog);
- const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description'),source=dialog.querySelector('.photo-viewer-source');
+ const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description');
  let current=0,returnFocus=null,previousOverflow='',touch=null,requestId=0,pendingFull=null;
  const neighbors=new Map();
  function warmNeighbors(){
@@ -24,7 +24,7 @@
   title.textContent=caption?.querySelector('h3,strong')?.textContent||photo.alt||'攝影作品';
   description.textContent=caption?[...caption.querySelectorAll('p')].map(p=>p.textContent).join('　'):'';
   count.textContent=(current+1)+' ／ '+links.length;
-  source.href=link.href;image.alt=photo.alt;
+  image.alt=photo.alt;
   status.hidden=false;status.textContent='照片載入中…';
   // The already-loaded thumbnail gives immediate feedback while the original downloads.
   const id=++requestId,preview=photo.currentSrc||photo.src,full=photo.dataset.fullSrc||preview;
