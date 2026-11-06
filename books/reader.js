@@ -13,18 +13,26 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
 
  const chapters=[...document.querySelectorAll('.chapter[id]')];
  const chapterView=document.body.dataset.bookId==='taipei-wumingye';
+ let visibleChapter, chapterNavigated=false;
  function revealChapter(target){
   if(!chapterView||!target)return;
   const selected=target.matches('.chapter[id]')?target:target.closest('.chapter[id]');
-  if(selected)chapters.forEach(chapter=>{chapter.hidden=chapter!==selected});
+  if(!selected||selected===visibleChapter)return;
+  if(visibleChapter){visibleChapter.hidden=true;selected.hidden=false}
+  else chapters.forEach(chapter=>{chapter.hidden=chapter!==selected});
+  visibleChapter=selected;
  }
  if(chapterView){const initial=document.getElementById(location.hash.slice(1));revealChapter(initial?.closest('.chapter[id]')||chapters[0])}
  // Use exact chapter geometry and an immediate jump, including repeat clicks.
  // Native links remain available when JavaScript is disabled.
  function jumpToTarget(target){
+  chapterNavigated=true;
   revealChapter(target);
   const selected=target.closest('.chapter[id]');
-  if(selected)document.dispatchEvent(new CustomEvent('moonlit:chapterchange',{detail:{id:selected.id}}));
+  if(selected){
+   rememberChapter(selected.id);
+   document.dispatchEvent(new CustomEvent('moonlit:chapterchange',{detail:{id:selected.id}}));
+  }
   // Safari must not inherit the page's smooth-scroll animation for chapter jumps.
   const root=document.documentElement,previous=root.style.scrollBehavior;
   root.style.scrollBehavior='auto';
@@ -59,7 +67,7 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  });
  addEventListener('hashchange',()=>{const target=hashTarget();if(target)jumpToTarget(target)});
  // Deferred reader enhancements may add content above a deep link.
- addEventListener('load',()=>{const target=hashTarget();if(target)jumpToTarget(target)},{once:true});
+ addEventListener('load',()=>{if(chapterNavigated)return;const target=hashTarget();if(target)jumpToTarget(target)},{once:true});
  const bookId=document.body.dataset.bookId||'novel';
  const bookTitle=document.body.dataset.bookTitle||document.querySelector('h1')?.textContent||'喵叔小說';
  const prefix='miaoshu-'+bookId+'-';
@@ -89,6 +97,10 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  const progressConsumers=new Set();window.__moonlitReaderProgress={subscribe(fn){if(typeof fn==='function'){progressConsumers.add(fn);fn(getRatio())}return()=>progressConsumers.delete(fn)}};
  const getRatio=()=>{const doc=document.documentElement,h=doc.scrollHeight-doc.clientHeight;return h?Math.max(0,Math.min(1,scrollY/h)):0};
  let queued=false,last='';
+ function rememberChapter(id){
+  if(id===last)return;
+  last=id;set('chapter',id);set('last-read-at',String(Date.now()));show(id);
+ }
  function onScroll(){
   if(queued)return;queued=true;
   requestAnimationFrame(()=>{
@@ -96,10 +108,10 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
    const ratio=getRatio();
    // Read chapter geometry before progress UI writes to avoid forced layouts.
    let current;
-   for(const chapter of chapters){if(chapter.hidden)continue;if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
+   for(const chapter of visibleChapter?[visibleChapter]:chapters){if(chapter.hidden)continue;if(chapter.getBoundingClientRect().top<innerHeight*.55)current=chapter;else break}
    if(progress)progress.style.width=(ratio*100)+'%';
    progressConsumers.forEach(fn=>fn(ratio));
-   if(current&&last!==current.id){last=current.id;set('chapter',last);set('last-read-at',String(Date.now()));show(last)}
+   if(current)rememberChapter(current.id);
   });
  }
  addEventListener('scroll',onScroll,{passive:true});
