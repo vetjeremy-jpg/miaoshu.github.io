@@ -1,28 +1,41 @@
 /* Resolve static and asynchronously inserted album anchors using real layout. */
 (() => {
   if (!document.body.classList.contains('gallery-page')) return;
-  const alignAlbum = () => {
+  const alignAlbum = ({focus = false} = {}) => {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = id && document.getElementById(id);
-    if (!target || !target.matches('.collection-intro,.collection-heading')) return;
+    if (!target || !target.matches('.collection-intro,.collection-heading')) return false;
     const header = document.querySelector('.top');
     const offset = Math.max(0, header?.getBoundingClientRect().bottom || 0) + 16;
     window.scrollTo({top: Math.max(0, scrollY + target.getBoundingClientRect().top - offset), behavior: 'instant'});
+    const heading = target.querySelector('h2');
+    if (focus && heading) {
+      heading.tabIndex = -1;
+      heading.focus({preventScroll: true});
+    }
+    return true;
   };
+  let pendingAlbumHash;
   document.addEventListener('click', event => {
     const link = event.target.closest('a');
-    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!link || link.target || link.hasAttribute('download') || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return;
     const target = document.getElementById(url.hash.slice(1));
     if (!target?.matches('.collection-intro,.collection-heading')) return;
     event.preventDefault();
     if (location.hash !== url.hash) history.pushState(null, '', url.hash);
-    alignAlbum();
+    pendingAlbumHash = undefined;
+    alignAlbum({focus: true});
   });
-  addEventListener('hashchange', alignAlbum);
-  document.addEventListener('gallery:albums-ready', alignAlbum);
+  const alignOrWait = () => {
+    pendingAlbumHash = alignAlbum() ? undefined : location.hash;
+  };
+  addEventListener('hashchange', alignOrWait);
+  document.addEventListener('gallery:albums-ready', () => {
+    if (pendingAlbumHash && pendingAlbumHash === location.hash) alignOrWait();
+  });
   const mountPhotoButtons = () => {
     for (const gallery of document.querySelectorAll('main .gallery')) {
       let photos = [];
@@ -59,5 +72,5 @@
   };
   document.addEventListener('gallery:albums-ready', mountPhotoButtons);
   mountPhotoButtons();
-  alignAlbum();
+  alignOrWait();
 })();
