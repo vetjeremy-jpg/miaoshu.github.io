@@ -121,3 +121,26 @@ test('comic source and browser requests stay HTTPS cross-origin with no same-ori
   for(const raw of imageRequests.filter(u=>comicUrls.includes(u))){const u=new URL(raw);expect(u.protocol).toBe('https:');expect(u.origin).not.toBe(origin);}
  }
 });
+
+
+for(const path of readers)test.describe('loading and failure states '+path,()=>{
+ test('first screen exposes a clear loading status without a blank reader',async({page})=>{
+  await page.route('**/pages.json',async route=>{await new Promise(r=>setTimeout(r,350));await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#status')).toContainText('正在載入漫畫目錄');
+  await expect(page.locator('#book')).toHaveAttribute('aria-busy','true');
+  await expect(page.locator('#counter')).not.toContainText('—');
+ });
+ test('failed comic image shows actionable error and retry control',async({page})=>{
+  let failed=false;
+  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{if(!failed){failed=true;await route.abort('failed')}else await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+  await expect(page.locator('#book .error')).toContainText('圖片載入失敗');
+  await expect(page.getByRole('button',{name:'重新載入這一頁'})).toBeVisible();
+ });
+ test('slow first image keeps a visible per-page loading message',async({page})=>{
+  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{await new Promise(r=>setTimeout(r,500));await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+  await expect(page.locator('#book [role="status"]')).toContainText('網路較慢時請稍候');
+ });
+});
