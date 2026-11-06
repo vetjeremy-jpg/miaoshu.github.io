@@ -47,10 +47,15 @@
 
   const photoNodes = new WeakMap();
   const nearbyImages = new Map();
-  const imageRequest = url => {
-    if (nearbyImages.has(url)) return nearbyImages.get(url);
+  const imageRequest = (url, priority) => {
+    const existing = nearbyImages.get(url);
+    if (existing && (!existing.complete || existing.naturalWidth > 0)) {
+      if (priority === 'high') existing.fetchPriority = priority;
+      return existing;
+    }
     const image = new Image();
     image.decoding = 'async';
+    image.fetchPriority = priority;
     image.referrerPolicy = 'no-referrer';
     nearbyImages.set(url, image);
     image.src = url;
@@ -72,7 +77,7 @@
     if (navigator.connection && navigator.connection.saveData) return;
     for (const offset of [1, -1]) {
       const photo = activeAlbum.photos[(currentIndex + offset + activeAlbum.photos.length) % activeAlbum.photos.length];
-      if (!photo.unavailable && photo.imageUrl) imageRequest(photo.imageUrl);
+      if (!photo.unavailable && photo.imageUrl) imageRequest(photo.imageUrl, 'low');
     }
   };
 
@@ -155,7 +160,7 @@
       status.textContent = '照片暫時無法載入。';
       return;
     }
-    const preload = imageRequest(p.imageUrl);
+    const preload = imageRequest(p.imageUrl, 'high');
     pending = preload;
     const ready = () => {
       if (request !== serial || !viewer.open) return;
@@ -275,7 +280,6 @@
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', '放大觀看：' + p.alt);
       const img = element('img');
-      if (!p.unavailable) img.src = p.thumbnailUrl;
       photoNodes.set(p, img);
       img.alt = p.alt;
       img.width = p.width;
@@ -291,7 +295,10 @@
       }, {once:true});
       if (p.unavailable) {
         link.append(element('p', 'degoo-thumbnail-error', '照片暫時無法載入'));
-      } else { link.append(img); }
+      } else {
+        img.src = p.thumbnailUrl;
+        link.append(img);
+      }
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (openPhoto(album, index, link)) event.preventDefault();
@@ -318,7 +325,7 @@
     if(loading)return;loading=true;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1',{cache:'no-store',signal:controller.signal});
+      const response=await fetch('../data/degoo-gallery-albums.json?v=20261031-daylight1',{signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       for(const album of data.albums){if(mounted.has(album.id))continue;if(approved(album)){renderAlbum(album);mounted.add(album.id)}else if(linkOnly(album)){renderCloudLink(album);mounted.add(album.id)}}
