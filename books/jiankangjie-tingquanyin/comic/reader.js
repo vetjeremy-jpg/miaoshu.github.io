@@ -48,16 +48,35 @@ function openZoom(index){
  zoomImage.classList.remove('actual');$('zoom-size').textContent='原尺寸細讀';
  $('zoom-title').textContent=p.title;zoom.showModal();$('zoom-scroll').scrollTo(0,0);
 }
+const warmedPages = new Set();
+function warmNextSpread() {
+ if (navigator.connection?.saveData || /^(slow-)?2g$/.test(navigator.connection?.effectiveType || '')) return;
+ const visible = book.querySelectorAll('.sheet');
+ if ([...visible].some(sheet => !sheet.querySelector('img.loaded'))) return;
+ for (const next of pages.slice(page + count(), page + 2 * count())) {
+  if (warmedPages.has(next.imageUrl)) continue;
+  warmedPages.add(next.imageUrl);
+  const image = new Image();
+  image.referrerPolicy = 'no-referrer';
+  image.fetchPriority = 'low';
+  image.onerror = () => warmedPages.delete(next.imageUrl);
+  image.src = next.imageUrl;
+ }
+}
 function makeSheet(index){
  const p=pages[index], sheet=document.createElement('section');sheet.className='sheet';sheet.setAttribute('aria-label',p.title);
  const button=document.createElement('button');button.type='button';button.className='page-button';if(p.width&&p.height)button.style.setProperty('--page-ratio',p.width+' / '+p.height);button.setAttribute('aria-label','放大閱讀：'+p.title);
- const img=new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding='async';img.referrerPolicy='no-referrer';
+ const img=new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding='async';img.referrerPolicy='no-referrer';img.fetchPriority='high';
  const placeholder=document.createElement('span');placeholder.className='placeholder';placeholder.textContent='正在載入第 '+(index+1)+' 頁…';
- img.onload=()=>{img.classList.add('loaded');button.setAttribute('aria-busy','false')};
+ img.onload=()=>{img.classList.add('loaded');button.setAttribute('aria-busy','false');if(sheet.isConnected)warmNextSpread()};
  img.onerror=()=>{
   button.remove();const error=document.createElement('div');error.className='error';
   const text=document.createElement('p');text.textContent='這一頁暫時無法載入。';
-  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入';retry.onclick=()=>{sheet.replaceWith(makeSheet(index))};
+  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入';retry.onclick=()=>{
+   const replacement=makeSheet(index);
+   sheet.replaceWith(replacement);
+   replacement.querySelector('.page-button').focus({preventScroll:true});
+  };
   error.append(text,retry);sheet.prepend(error);
  };
  button.setAttribute('aria-busy','true');button.append(img,placeholder);button.onclick=()=>{if(Date.now()-lastSwipe>450)openZoom(index)};
