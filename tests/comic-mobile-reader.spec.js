@@ -144,3 +144,23 @@ for(const path of readers)test.describe('loading and failure states '+path,()=>{
   await expect(page.locator('#book [role="status"]')).toContainText('網路較慢時請稍候');
  });
 });
+
+
+for(const path of readers)test.describe('Safari slow-network recovery '+path,()=>{
+ test('cached image cannot leave a stale loading overlay',async({page})=>{
+  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+  const img=page.locator('#book img').first();await expect(img).toHaveClass(/loaded/);
+  await page.locator('#next').click();await page.locator('#prev').click();
+  await expect(page.locator('#book .placeholder')).toBeHidden();
+  await expect(page.locator('#book .page-button')).toHaveAttribute('aria-busy','false');
+ });
+ test('retry disables itself while recovering and restores the page',async({page})=>{
+  let failures=1;
+  await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{if(failures-- > 0)await route.abort('failed');else await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+  const retry=page.getByRole('button',{name:'重新載入這一頁'});await expect(retry).toBeVisible();await retry.click();
+  await expect(page.locator('#book img')).toHaveClass(/loaded/);
+  await expect(page.locator('#book .error')).toHaveCount(0);
+  await expect(page.locator('#book .placeholder')).toBeHidden();
+ });
+});
