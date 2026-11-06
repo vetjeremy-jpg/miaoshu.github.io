@@ -292,7 +292,7 @@ test('image viewing stays proximity driven while first-click controls load immed
   await page.goto('./', { waitUntil:'domcontentloaded' });
   await page.waitForTimeout(2600);
   await expect(page.locator('script[src*="photo-viewer.js"]')).toHaveCount(0);
-  await expect(page.locator('script[src*="moonlit-experience.js"]')).toHaveCount(1);
+  await expect(page.locator('script[src*="moonlit-experience.js"]')).toHaveCount(0);
   await page.locator('#featured').scrollIntoViewIfNeeded();
   await expect.poll(async()=>page.locator('script[src*="photo-viewer.js"]').count()).toBe(1);
   await expect.poll(async()=>page.locator('script[src*="moonlit-experience.js"]').count()).toBe(1);
