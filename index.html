@@ -237,6 +237,9 @@
 
 
 <script src="assets/gallery-external.js?v=20261106-no-source" defer></script><script src="assets/homepage-catalog.js?v=20261101-catalog1" defer></script><script src="assets/moonlit-home-idle.js?v=20261101-responsive1" defer></script><script src="assets/moonlit-home-loader.js?v=20261106-photo-retry" defer></script><script>document.addEventListener("click",function(e){var b=e.target.closest("#show-all-novels");if(!b)return;var s=document.getElementById("book");var open=s.classList.toggle("show-all-novels");b.setAttribute("aria-expanded",String(open));b.textContent=open?"收起完整書房 ↑":"查看全部 "+s.querySelectorAll(".novel-card").length+" 本小說 ↓";});</script>
+<script>
+(()=>{const box=document.querySelector('.moonlit-mood-selector');if(!box)return;box.addEventListener('click',e=>{const b=e.target.closest('button[data-mood]');if(!b||box.dataset.moonlitMounted)return;const fallback={read:['《建康劫·聽泉引》','今晚適合走進亂世與人心之間，慢慢讀一段有重量的故事。','books/jiankangjie-tingquanyin/index.html#toc'],image:['雪庭舞劍','今晚少一點文字，讓雪色、衣袖與劍光替你說故事。','gallery/index.html#snow-sword'],rare:['《風門夜譚》','繞開最醒目的入口，去讀一個夜裡還沒說完的故事。','books/fengmen-yetan/index.html#toc'],note:['把臺北走成一封給自己的信','如果今晚不想進小說，就跟著腳步重新走一次臺北。','posts/taipei-grand-trail-20260928/index.html'],any:['《浮生歲月》','如果今晚想讀記憶、時間與人的選擇，就從這裡開始。','books/fushengsuiyue/index.html#toc']}[b.dataset.mood]||null;if(!fallback)return;box.querySelectorAll('button[data-mood]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const r=box.querySelector('.moonlit-result');r.querySelector('strong').textContent=fallback[0];r.querySelector('p').textContent=fallback[1];r.querySelector('a').href=fallback[2];r.classList.add('is-visible')})})();
+</script>
 <script src="assets/moonlit-v2.js?v=20261018-runtime31" defer></script></body>
 </html>
 
