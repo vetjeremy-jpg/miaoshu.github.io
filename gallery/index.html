@@ -21,11 +21,15 @@
 @media(max-width:650px){.gallery-page main .gallery.gallery{grid-template-columns:minmax(0,1fr);gap:28px}}
 .gallery-page{--gallery-arrow-size:44px;--gallery-arrow-gap:6px}
 .gallery-page .gallery figure.gallery-photo-steps{display:grid;grid-template-columns:var(--gallery-arrow-size) minmax(0,1fr) var(--gallery-arrow-size);column-gap:var(--gallery-arrow-gap);align-content:start}
-.gallery-photo-steps > a{grid-area:1/2;min-width:0;scroll-margin-top:clamp(6rem,18vh,12rem)}
+.gallery-photo-steps > a{grid-area:1/2;min-width:0;align-self:start}
+.gallery-page.curated-view main .gallery.gallery{
+  grid-template-columns:minmax(0,1fr);
+  max-width:820px;
+}
 .gallery-page.curated-view .gallery-photo-steps > a{
   scroll-margin-top:max(8px,env(safe-area-inset-top));
 }
-.gallery-page.curated-view .gallery figure.gallery-photo-steps:last-child{
+.gallery-page .gallery figure.gallery-photo-steps:last-child{
   min-block-size:100vh;
   min-block-size:100svh;
 }
@@ -145,6 +149,6 @@
 <figure><a href="https://lh3.googleusercontent.com/muikXJs5aiaUom_G8TqOzi9JX0W8061mADSuV8HzQRknFTlCO7JEasTf9pXFW94fTNibGMfX2yai7j11PdNCQde6s11W6uYjbzVSNg=s0-rw" target="_blank" rel="noopener noreferrer" aria-label="放大檢視：月下紅衣女劍客第 67 幅"><img src="https://lh3.googleusercontent.com/muikXJs5aiaUom_G8TqOzi9JX0W8061mADSuV8HzQRknFTlCO7JEasTf9pXFW94fTNibGMfX2yai7j11PdNCQde6s11W6uYjbzVSNg=w1200-h1600-rw-sm-pa-nu-v0" alt="月下紅衣女劍客第 67 幅" width="900" height="1600" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-external-photo="true" data-full-src="https://lh3.googleusercontent.com/muikXJs5aiaUom_G8TqOzi9JX0W8061mADSuV8HzQRknFTlCO7JEasTf9pXFW94fTNibGMfX2yai7j11PdNCQde6s11W6uYjbzVSNg=s0-rw" data-album-url="https://app.degoo.com/share/uaGwnLgTpEG-kvLl3qzJZA"></a><figcaption><strong>67｜月下紅衣女劍客</strong></figcaption></figure>
 <figure><a href="https://lh3.googleusercontent.com/MIU5ioW7snvjJLkCzKONGhYfpURAl717iG55AQbjHhXSbp-6zZIIbwyBDGE81Yw1aIWsvVJMDri8HZ8wCbBH0oe10Q-YoxKN0L0O8R8=s0-rw" target="_blank" rel="noopener noreferrer" aria-label="放大檢視：月下紅衣女劍客第 68 幅"><img src="https://lh3.googleusercontent.com/MIU5ioW7snvjJLkCzKONGhYfpURAl717iG55AQbjHhXSbp-6zZIIbwyBDGE81Yw1aIWsvVJMDri8HZ8wCbBH0oe10Q-YoxKN0L0O8R8=w1200-h1600-rw-sm-pa-nu-v0" alt="月下紅衣女劍客第 68 幅" width="900" height="1600" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer" data-external-photo="true" data-full-src="https://lh3.googleusercontent.com/MIU5ioW7snvjJLkCzKONGhYfpURAl717iG55AQbjHhXSbp-6zZIIbwyBDGE81Yw1aIWsvVJMDri8HZ8wCbBH0oe10Q-YoxKN0L0O8R8=s0-rw" data-album-url="https://app.degoo.com/share/uaGwnLgTpEG-kvLl3qzJZA"></a><figcaption><strong>68｜月下紅衣女劍客</strong></figcaption></figure>
 </section>
-</main><footer>© 2026 喵叔 Moonlit Stories · <a href="../index.html">回到首頁</a></footer><script src="../assets/gallery-navigation.js?v=20261106-album-focus" defer></script><script src="../assets/gallery-external.js?v=20261106-no-source" defer></script><script src="../assets/degoo-gallery-albums.js?v=20261106-album-recovery" defer></script><script src="../photo-viewer.js?v=20261106-photo-retry" defer></script>
+</main><footer>© 2026 喵叔 Moonlit Stories · <a href="../index.html">回到首頁</a></footer><script src="../assets/gallery-navigation.js?v=20261106-photo-position" defer></script><script src="../assets/gallery-external.js?v=20261106-no-source" defer></script><script src="../assets/degoo-gallery-albums.js?v=20261106-album-recovery" defer></script><script src="../photo-viewer.js?v=20261106-photo-retry" defer></script>
 <button class="gallery-curation-toggle" type="button" aria-pressed="false">專注策展模式</button><script>(()=>{const b=document.querySelector(".gallery-curation-toggle");b?.addEventListener("click",()=>{const on=document.body.classList.toggle("curated-view");b.setAttribute("aria-pressed",String(on));b.textContent=on?"退出策展模式":"專注策展模式"})})();</script><script src="../assets/moonlit-v2.js?v=20261106-album-focus"></script></body></html>
 
