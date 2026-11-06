@@ -271,8 +271,8 @@ test('homepage image priority and intrinsic geometry stay stable', async ({ page
     const album=[...document.querySelectorAll('#miaoshu-album img')];
     return {
       logo:{width:logo?.getAttribute('width'),height:logo?.getAttribute('height'),priority:logo?.getAttribute('fetchpriority'),ratio:getComputedStyle(logo).aspectRatio},
-      featured:{width:featured?.getAttribute('width'),height:featured?.getAttribute('height'),loading:featured?.getAttribute('loading'),priority:featured?.getAttribute('fetchpriority')},
-      album:album.map(img=>({width:img.getAttribute('width'),height:img.getAttribute('height'),loading:img.getAttribute('loading'),priority:img.getAttribute('fetchpriority')})),
+      featured:{width:featured?.getAttribute('width'),height:featured?.getAttribute('height'),loading:featured?.getAttribute('loading'),decoding:featured?.getAttribute('decoding'),priority:featured?.getAttribute('fetchpriority'),format:featured?.getAttribute('src'),sizes:featured?.getAttribute('sizes')},
+      album:album.map(img=>({width:img.getAttribute('width'),height:img.getAttribute('height'),loading:img.getAttribute('loading'),decoding:img.getAttribute('decoding'),priority:img.getAttribute('fetchpriority'),srcset:img.getAttribute('srcset'),sizes:img.getAttribute('sizes')})),
       high:[...document.querySelectorAll('img[fetchpriority="high"]')].length
     };
   });
@@ -281,9 +281,9 @@ test('homepage image priority and intrinsic geometry stay stable', async ({ page
   expect(contract.logo.priority).toBe('high');
   expect(contract.logo.ratio).toBe('1 / 1');
   expect(contract.high).toBe(1);
-  expect(contract.featured).toEqual({width:'1086',height:'1448',loading:'lazy',priority:'low'});
+  expect(contract.featured).toEqual({width:'1086',height:'1448',loading:'lazy',decoding:'async',priority:'low',format:'assets/optimized/photo-15.webp',sizes:'(max-width: 700px) calc(100vw - 32px), (max-width: 1100px) 55vw, 660px'});
   expect(contract.album).toHaveLength(2);
-  expect(contract.album.every(x=>x.width==='1086'&&x.height==='1448'&&x.loading==='lazy'&&x.priority==='low')).toBeTruthy();
+  expect(contract.album.every(x=>x.width==='1086'&&x.height==='1448'&&x.loading==='lazy'&&x.decoding==='async'&&x.priority==='low'&&x.srcset.includes(' 480w')&&x.srcset.includes(' 640w')&&x.srcset.includes(' 1086w')&&x.sizes.includes('760px'))).toBeTruthy();
 });
 
 
