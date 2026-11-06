@@ -69,12 +69,12 @@ function makeSheet(index){
  const p=pages[index], sheet=document.createElement('section');sheet.className='sheet';sheet.setAttribute('aria-label',p.title);
  const button=document.createElement('button');button.type='button';button.className='page-button';if(p.width&&p.height)button.style.setProperty('--page-ratio',p.width+' / '+p.height);button.setAttribute('aria-label','放大閱讀：'+p.title);
  const cached=imageCache.get(p.imageUrl);const img=cached||new Image();img.alt=p.title+'｜漫畫第 '+(index+1)+' 頁';img.decoding=index===page?'sync':'async';img.referrerPolicy='no-referrer';img.fetchPriority=index===page?'high':'low';img.loading=index===page?'eager':'lazy';
- const placeholder=document.createElement('span');placeholder.className='placeholder';placeholder.textContent='正在載入第 '+(index+1)+' 頁…';
+ const placeholder=document.createElement('span');placeholder.className='placeholder';placeholder.setAttribute('role','status');placeholder.setAttribute('aria-live','polite');placeholder.textContent='正在載入第 '+(index+1)+' 頁，網路較慢時請稍候…';
  img.onload=()=>{img.classList.add('loaded');button.setAttribute('aria-busy','false');if(sheet.isConnected)warmNextSpread()};
  img.onerror=()=>{
-  button.remove();const error=document.createElement('div');error.className='error';
-  const text=document.createElement('p');text.textContent='這一頁暫時無法載入。';
-  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入';retry.onclick=()=>{
+  imageCache.delete(p.imageUrl);warmedPages.delete(p.imageUrl);button.remove();const error=document.createElement('div');error.className='error';error.setAttribute('role','alert');
+  const text=document.createElement('p');text.textContent='第 '+(index+1)+' 頁圖片載入失敗，可能是網路不穩或外部圖片暫時無法連線。';
+  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入這一頁';retry.onclick=()=>{
    const replacement=makeSheet(index);
    sheet.replaceWith(replacement);
    replacement.querySelector('.page-button').focus({preventScroll:true});
@@ -122,7 +122,7 @@ window.addEventListener('orientationchange',()=>setTimeout(()=>{if(pages.length)
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&immersive&&!zoom.open){collapse();return}if(zoom.open||/SELECT|INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'){e.preventDefault();turn(1)}if(e.key==='ArrowLeft'){e.preventDefault();turn(-1)}});
 let loadingCatalog=false;
 function loadCatalog(){
- if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄…';
+ if(loadingCatalog)return;loadingCatalog=true;book.setAttribute('aria-busy','true');$('status').textContent='正在載入漫畫目錄，請稍候…';
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
  fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==expectedPages)throw Error('目錄不完整');
@@ -130,7 +130,7 @@ function loadCatalog(){
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
 }).catch(()=>{
- book.replaceChildren();$('status').textContent='漫畫目錄暫時無法載入，請點擊重試。';
+ book.replaceChildren();$('status').textContent='漫畫目錄載入失敗，可能是網路不穩，請重新載入。';
  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入漫畫目錄';retry.className='catalog-retry';retry.onclick=()=>{retry.disabled=true;retry.textContent='正在重新載入…';loadCatalog()};book.append(retry);
  }).finally(()=>{clearTimeout(timer);loadingCatalog=false;book.setAttribute('aria-busy','false')});
 }
