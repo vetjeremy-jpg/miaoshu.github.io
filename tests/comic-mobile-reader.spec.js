@@ -39,3 +39,29 @@ for(const path of readers){
   }
  });
 }
+
+const IPHONE_REACHABILITY=[
+ {name:'iPhone SE portrait',width:375,height:667,insets:{top:0,right:0,bottom:0,left:0}},
+ {name:'iPhone 13 mini portrait',width:375,height:812,insets:{top:47,right:0,bottom:34,left:0}},
+ {name:'iPhone 14 Pro portrait',width:393,height:852,insets:{top:59,right:0,bottom:34,left:0}},
+ {name:'iPhone 15 Pro Max portrait',width:430,height:932,insets:{top:59,right:0,bottom:34,left:0}},
+ {name:'iPhone 13 landscape',width:844,height:390,insets:{top:0,right:47,bottom:21,left:47}},
+ {name:'iPhone 15 Pro Max landscape',width:932,height:430,insets:{top:0,right:59,bottom:21,left:59}}
+];
+for(const path of readers)test.describe('44px touch reachability '+path,()=>{
+ for(const device of IPHONE_REACHABILITY)test(device.name,async({page})=>{
+  await page.setViewportSize({width:device.width,height:device.height});
+  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+  const assertTarget=async(selector,insets=device.insets)=>{
+   const box=await page.locator(selector).boundingBox();expect(box,selector+' bounding box').toBeTruthy();
+   expect(box.width,selector+' width').toBeGreaterThanOrEqual(44);expect(box.height,selector+' height').toBeGreaterThanOrEqual(44);
+   expect(box.x,selector+' left safe area').toBeGreaterThanOrEqual(insets.left);
+   expect(box.y,selector+' top safe area').toBeGreaterThanOrEqual(insets.top);
+   expect(box.x+box.width,selector+' right safe area').toBeLessThanOrEqual(device.width-insets.right+1);
+   expect(box.y+box.height,selector+' bottom safe area').toBeLessThanOrEqual(device.height-insets.bottom+1);
+  };
+  await assertTarget('.reader-exits a:first-child');
+  await page.locator('#expand').click();await expect(page.locator('body')).toHaveClass(/immersive/);
+  await assertTarget('#collapse');await assertTarget('#prev');await assertTarget('#next');
+ });
+});
