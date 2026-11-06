@@ -10,7 +10,7 @@
     "test:homepage": "playwright test tests/navigation.spec.js tests/homepage-editorial.spec.js",
     "test:performance": "playwright test tests/homepage-performance.spec.js tests/homepage-responsiveness.spec.js",
     "test:rc": "playwright test tests/release-candidate.spec.js tests/site-recovery.spec.js tests/reader-video-usability.spec.js tests/discovery-map-usability.spec.js tests/audio-controls.spec.js tests/bookmark-integrity.spec.js",
-    "test:pwa": "playwright test tests/pwa-lifecycle.spec.js",
+    "test:pwa": "playwright test tests/pwa-lifecycle.spec.js tests/pwa-install-surface.spec.js",
     "test:reader": "playwright test tests/reader-journey.spec.js tests/chapter-navigation.spec.js tests/taipei-wumingye-discovery.spec.js tests/meiyue-shiwu.spec.js",
     "test:quality": "node scripts/check-quality-contract.mjs",
     "test:runtime-zero": "playwright test tests/runtime-zero-error.spec.js",
