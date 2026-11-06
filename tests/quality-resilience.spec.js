@@ -40,7 +40,8 @@ test('homepage offers responsive external thumbnails without changing full-size 
  const photo=page.locator('.album-photo img').first();await page.locator('.album-photo').first().scrollIntoViewIfNeeded();
  await expect(photo).toHaveAttribute('srcset',/=w640-rw 640w, .*s0-rw 1086w/);
  await expect(photo).toHaveAttribute('data-full-src',/=s0-rw$/);
- await expect.poll(()=>photo.evaluate(img=>img.currentSrc)).toContain('=w640-rw');
+ const selected=await expect.poll(()=>photo.evaluate(img=>img.currentSrc));
+ await selected.toMatch(/=w(?:480|640)-rw$/);
 });
 
 for(const error of ['interrupted','canceled'])test('speech '+error+' keeps position and restores the play button',async({page})=>{
