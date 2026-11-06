@@ -88,3 +88,18 @@ for(const path of readers)test.describe('comic image cache and slow network '+pa
   await page.waitForTimeout(250);expect(new Set(requests).size).toBeLessThanOrEqual(2);
  });
 });
+
+test('comic repository contract keeps page images external',async({request})=>{
+ for(const path of readers){
+  const html=await (await request.get(path)).text();
+  expect(html).not.toMatch(/(?:src|href)=["'][^"']*\.(?:jpe?g|png|webp|avif)(?:[?#][^"']*)?["']/i);
+ }
+});
+test('comic page assets never resolve to deployment origin',async({page})=>{
+ for(const path of readers){
+  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+  const urls=await page.locator('#book img').evaluateAll(imgs=>imgs.map(img=>new URL(img.currentSrc||img.src)));
+  expect(urls.length).toBeGreaterThan(0);
+  for(const url of urls){expect(url.origin).not.toBe(location.origin);expect(url.protocol).toBe('https:');}
+ }
+});
