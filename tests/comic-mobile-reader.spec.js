@@ -193,3 +193,24 @@ for(const path of readers)test('slow paging keeps previous next and cached retur
  await page.locator('#prev').click();await assertNonblank();await expect(page.locator('#book img').first()).toHaveAttribute('src',first);await expect(page.locator('#book .placeholder')).toBeHidden();
  expect(counts.get(first)||0).toBeLessThanOrEqual(1);
 });
+
+
+for(const path of readers)test.describe('catalog and first-image fallback continuity '+path,()=>{
+ test('delayed pages catalog keeps a visible nonblank fallback',async({page})=>{
+  await page.route('**/pages.json',async route=>{await new Promise(r=>setTimeout(r,600));await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});
+  const fallback=page.locator('#book .catalog-loading');await expect(fallback).toBeVisible();await expect(fallback).toContainText('漫畫內容準備中');
+  expect((await fallback.boundingBox()).height).toBeGreaterThanOrEqual(150);
+  await expect(page.locator('#counter')).not.toContainText('—');
+ });
+ test('catalog failure retry never leaves the book blank',async({page})=>{
+  let fail=true;await page.route('**/pages.json',async route=>{if(fail){fail=false;await route.abort('failed')}else await route.continue()});
+  await page.goto(path,{waitUntil:'domcontentloaded'});const retry=page.getByRole('button',{name:'重新載入漫畫目錄'});await expect(retry).toBeVisible();
+  await retry.click();await expect(page.locator('#book .catalog-loading')).toBeVisible();await expect(page.locator('#counter')).not.toContainText('—');await expect(page.locator('#book img').first()).toBeVisible();
+ });
+ test('first image failure keeps error fallback visible until retry succeeds',async({page})=>{
+  let fail=true;await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{if(fail){fail=false;await route.abort('failed')}else{await new Promise(r=>setTimeout(r,300));await route.continue()}});
+  await page.goto(path,{waitUntil:'domcontentloaded'});const error=page.locator('#book .error');await expect(error).toBeVisible();expect((await error.boundingBox()).height).toBeGreaterThanOrEqual(150);
+  await page.getByRole('button',{name:'重新載入這一頁'}).click();await expect(page.locator('#book [role="status"]')).toBeVisible();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);await expect(error).toHaveCount(0);
+ });
+});
