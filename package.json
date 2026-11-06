@@ -27,7 +27,8 @@
     "test:metrics-contract": "node --test tests/reader-metrics-contract.test.mjs",
     "test:resilience": "node --test tests/runtime-resilience.test.mjs tests/navigation-cache.test.mjs tests/comic-refresh.test.mjs tests/instant-navigation.test.mjs",
     "test:photo-viewer": "playwright test tests/photo-viewer-performance.spec.js",
-    "sync:catalog": "node scripts/sync-homepage-catalog.mjs"
+    "sync:catalog": "node scripts/sync-homepage-catalog.mjs",
+    "test:pwa-install": "node scripts/check-pwa-install-contract.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0"
