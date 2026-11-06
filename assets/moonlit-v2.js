@@ -73,4 +73,3 @@ if('serviceWorker' in navigator){let swReg,lastSWCheck=0;const checkSW=()=>{cons
 })();
 
 // Gallery sections arrive asynchronously; honor direct album links once mounted.
-document.addEventListener('gallery:albums-ready',()=>{if(!location.hash.startsWith('#degoo-'))return;const target=document.getElementById(location.hash.slice(1));target?.scrollIntoView({block:'start',behavior:'auto'})});
