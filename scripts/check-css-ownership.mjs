@@ -310,7 +310,8 @@ if(/books\/|gallery\/|videos\/|about\//.test(creativeBlock))errors.push('Explore
 const albumStart=homepage.indexOf('id="miaoshu-album"');
 const albumEnd=albumStart<0?-1:homepage.indexOf('</section>',albumStart);
 const albumBlock=albumStart>=0&&albumEnd>albumStart?homepage.slice(albumStart,albumEnd+10):'';
-if(!/class="album-actions"[\s\S]*?class="cta" href="gallery\/index\.html"[\s\S]*?class="album-external-link"[^>]*degoo/.test(albumBlock))errors.push('Photography section must keep Moonlit gallery primary and Degoo secondary');
+if(!/class="album-actions"[\s\S]*?class="cta" href="gallery\/index\.html"/.test(albumBlock))errors.push('Photography section must keep Moonlit gallery as the primary internal destination');
+if(/class="album-external-link"|app\.degoo\.com\/share/.test(albumBlock))errors.push('Photography section must not restore the retired external album CTA');
 if((albumBlock.match(/href="gallery\/index\.html#snow-sword"/g)||[]).length!==2)errors.push('Photography preview images must stay inside Moonlit instead of linking directly to Degoo');
 const updatesStart=homepage.indexOf('id="updates"');
 const updatesEnd=updatesStart<0?-1:homepage.indexOf('</section>',updatesStart);
