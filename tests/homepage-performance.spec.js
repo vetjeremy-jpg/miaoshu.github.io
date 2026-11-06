@@ -2,8 +2,8 @@ const { test, expect } = require('@playwright/test');
 
 const VIEWPORTS=[320,375,390,430];
 const BUDGET={
-  requests:28,
-  transferKB:850,
+  requests:26,
+  transferKB:800,
   imageKB:420,
   largestImageKB:275,
   lcpMs:2500,
