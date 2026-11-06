@@ -74,8 +74,8 @@ function makeSheet(index){
  img.onerror=()=>{
   imageCache.delete(p.imageUrl);warmedPages.delete(p.imageUrl);button.remove();const error=document.createElement('div');error.className='error';error.setAttribute('role','alert');
   const text=document.createElement('p');text.textContent='第 '+(index+1)+' 頁圖片載入失敗，可能是網路不穩或外部圖片暫時無法連線。';
-  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入這一頁';retry.onclick=()=>{
-   retry.disabled=true;retry.textContent='正在重新載入…';imageCache.delete(p.imageUrl);warmedPages.delete(p.imageUrl);const replacement=makeSheet(index);
+  const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入這一頁';retry.setAttribute('aria-describedby','comic-image-error-'+index);text.id='comic-image-error-'+index;retry.onclick=()=>{
+   retry.disabled=true;retry.setAttribute('aria-busy','true');retry.textContent='正在重新載入…';imageCache.delete(p.imageUrl);warmedPages.delete(p.imageUrl);const replacement=makeSheet(index);
    sheet.replaceWith(replacement);
    replacement.querySelector('.page-button').focus({preventScroll:true});
   };
