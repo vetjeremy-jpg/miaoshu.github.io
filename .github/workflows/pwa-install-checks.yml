@@ -1,0 +1,62 @@
+name: PWA Cross-Platform Web Checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'site.webmanifest'
+      - 'sw.js'
+      - 'index.html'
+      - 'assets/icons/**'
+      - 'tests/pwa-*.spec.js'
+      - 'package.json'
+      - '.github/workflows/pwa-install-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pwa-install:
+    name: PWA install and lifecycle (branch preview)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Verify manifest, icon files and app scope without a browser
+        run: npm run test:pwa-install
+      - run: npx playwright install --with-deps --only-shell chromium
+      - name: Serve checked-out branch at its real GitHub Pages path
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/moonlit-preview"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/moonlit-preview/miaoshu.github.io"
+          cd "$RUNNER_TEMP/moonlit-preview"
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/moonlit-preview.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/moonlit-preview.pid"
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8765/miaoshu.github.io/site.webmanifest > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/moonlit-preview.log"
+          exit 1
+      - name: Test branch PWA (never production)
+        env:
+          BASE_URL: http://127.0.0.1:8765/miaoshu.github.io/
+        run: npm run test:pwa
+      - name: Upload Playwright failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pwa-playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
