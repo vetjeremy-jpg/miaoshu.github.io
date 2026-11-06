@@ -62,7 +62,13 @@
             button.addEventListener('click', () => {
               const destination = target.querySelector(':scope > a');
               destination.focus({preventScroll: true});
-              destination.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'});
+              if (document.body.classList.contains('curated-view')) {
+                destination.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'});
+                return;
+              }
+              const headerBottom = document.querySelector('.top')?.getBoundingClientRect().bottom ?? 0;
+              const offset = Math.max(0, headerBottom) + 8;
+              window.scrollTo({top: Math.max(0, scrollY + destination.getBoundingClientRect().top - offset), behavior: 'instant'});
             });
             figure.append(button);
           }
