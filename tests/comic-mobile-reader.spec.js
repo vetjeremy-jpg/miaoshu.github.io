@@ -164,3 +164,19 @@ for(const path of readers)test.describe('Safari slow-network recovery '+path,()=
   await expect(page.locator('#book .placeholder')).toBeHidden();
  });
 });
+
+
+for(const path of readers)test('measures first-screen slow-network states without blank frame',async({page})=>{
+ const timings={};const start=Date.now();
+ await page.route('**/pages.json',async route=>{await new Promise(r=>setTimeout(r,300));await route.continue()});
+ await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{await new Promise(r=>setTimeout(r,500));await route.continue()});
+ await page.goto(path,{waitUntil:'domcontentloaded'});timings.dom=Date.now()-start;
+ await expect(page.locator('#status')).toContainText('正在載入漫畫目錄');timings.catalogHint=Date.now()-start;
+ await expect(page.locator('#counter')).not.toContainText('—');timings.catalogReady=Date.now()-start;
+ const placeholder=page.locator('#book [role="status"]').first();await expect(placeholder).toBeVisible();timings.imageHint=Date.now()-start;
+ await expect(page.locator('#book img').first()).toHaveClass(/loaded/);timings.firstImage=Date.now()-start;
+ await expect(placeholder).toBeHidden();
+ const blank=await page.evaluate(()=>{const book=document.querySelector('#book');const r=book.getBoundingClientRect();return r.width<1||r.height<1||(!book.querySelector('img,.placeholder,.error,.catalog-retry'))});
+ expect(blank).toBe(false);
+ console.log('COMIC_FIRST_SCREEN_TIMING',path,JSON.stringify(timings));
+});
