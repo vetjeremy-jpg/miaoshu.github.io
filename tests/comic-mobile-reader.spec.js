@@ -103,3 +103,21 @@ test('comic page assets never resolve to deployment origin',async({page})=>{
   for(const url of urls){expect(url.origin).not.toBe(location.origin);expect(url.protocol).toBe('https:');}
  }
 });
+
+test('comic source and browser requests stay HTTPS cross-origin with no same-origin comic image assets',async({page,request})=>{
+ const imageExt=/\.(?:jpe?g|png|webp|avif)(?:[?#].*)?$/i;
+ for(const path of readers){
+  const source=await (await request.get(path)).text();
+  const sourceImageRefs=[...source.matchAll(/(?:src|href)=["']([^"']+)["']/gi)].map(m=>m[1]).filter(u=>imageExt.test(u));
+  expect(sourceImageRefs,'source must not embed local comic image files').toEqual([]);
+  const imageRequests=[];
+  page.on('request',r=>{if(r.resourceType()==='image')imageRequests.push(r.url())});
+  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');
+  await page.locator('#next').click();await page.waitForTimeout(150);
+  const origin=new URL(page.url()).origin;
+  const comicUrls=await page.locator('#book img').evaluateAll(imgs=>imgs.map(i=>i.currentSrc||i.src));
+  expect(comicUrls.length).toBeGreaterThan(0);
+  for(const raw of comicUrls){const u=new URL(raw);expect(u.protocol).toBe('https:');expect(u.origin).not.toBe(origin);}
+  for(const raw of imageRequests.filter(u=>comicUrls.includes(u))){const u=new URL(raw);expect(u.protocol).toBe('https:');expect(u.origin).not.toBe(origin);}
+ }
+});
