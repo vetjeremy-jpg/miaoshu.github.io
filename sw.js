@@ -103,8 +103,8 @@ self.addEventListener('fetch',event=>{
  }
 
  // Upgrade older novel documents without discarding their offline fallback.
- if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode','20261101-responsive1','20261101-sharing1'].includes(url.searchParams.get('v'))){
-  const current=new URL(url.href);current.searchParams.set('v','20261101-search2');
+ if(url.pathname===SCOPE+'books/reader.js'&&['20261018-response2','20260930-reading-mode','20261101-responsive1','20261101-sharing1','20261101-search2'].includes(url.searchParams.get('v'))){
+  const current=new URL(url.href);current.searchParams.set('v','20261106-bookshelf');
   event.respondWith(caches.open(RUNTIME).then(async cache=>{
    const hit=await cache.match(current.href);if(hit)return hit;
    try{const res=await fetch(current.href,{cache:'reload'});if(!res.ok)throw Error('reader unavailable');const copy=res.clone();keepAlive(event,cache.put(current.href,copy));return res}catch{return await cache.match(req)||Response.error()}

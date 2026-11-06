@@ -7,7 +7,7 @@ const requestLikes=async(url,options={})=>{const controller=new AbortController(
  window.__moonlitReaderLoaded=true;
  // Native links remain usable in focus mode, deep chapters, and during service stalls.
  const exitNav=document.createElement('nav');exitNav.className='reader-exit-nav';exitNav.setAttribute('aria-label','離開閱讀');
- exitNav.innerHTML='<a href="/miaoshu.github.io/">← 回首頁</a><a href="/miaoshu.github.io/books/">選其它作品 →</a>';
+ exitNav.innerHTML='<a href="/miaoshu.github.io/">← 回首頁</a><a href="/miaoshu.github.io/#book">回小說書架 →</a>';
  const exitStyle=document.createElement('style');exitStyle.textContent='.reader-exit-nav{position:fixed;inset:auto 0 0;z-index:2000;display:flex;justify-content:space-between;gap:12px;padding:8px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:#101a22;border-top:1px solid #c5ab7744}.reader-exit-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:#dfc28e;text-decoration:none;font:600 14px/1.5 -apple-system,sans-serif;border:1px solid #bfa37466;border-radius:6px}.moonlit-reader-dock{bottom:calc(78px + env(safe-area-inset-bottom))!important}.reader-audio-quick{bottom:calc(144px + env(safe-area-inset-bottom))!important}body[data-book-id]{padding-bottom:calc(82px + env(safe-area-inset-bottom))}';
  document.head.append(exitStyle);document.body.append(exitNav);
 
