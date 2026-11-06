@@ -214,3 +214,21 @@ for(const path of readers)test.describe('catalog and first-image fallback contin
   await page.getByRole('button',{name:'重新載入這一頁'}).click();await expect(page.locator('#book [role="status"]')).toBeVisible();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);await expect(error).toHaveCount(0);
  });
 });
+
+
+for(const path of readers)test('image retry sends a new request and fully restores the page',async({page})=>{
+ const seen=[];let failFirst=true;
+ page.on('request',r=>{if(r.resourceType()==='image')seen.push(r.url())});
+ await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{
+  if(failFirst){failFirst=false;await route.abort('failed')}else await route.continue();
+ });
+ await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+ const error=page.locator('#book .error');await expect(error).toBeVisible();
+ const failedUrl=seen[0];expect(failedUrl).toBeTruthy();
+ const retry=page.getByRole('button',{name:'重新載入這一頁'});
+ const before=seen.filter(u=>u===failedUrl).length;await retry.click();
+ await expect(page.locator('#book img').first()).toHaveClass(/loaded/);
+ await expect(error).toHaveCount(0);await expect(page.locator('#book .placeholder')).toBeHidden();
+ await expect(page.locator('#book .page-button')).toHaveAttribute('aria-busy','false');
+ expect(seen.filter(u=>u===failedUrl).length).toBeGreaterThan(before);
+});
