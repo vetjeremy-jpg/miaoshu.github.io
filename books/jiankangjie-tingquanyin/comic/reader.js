@@ -13,7 +13,6 @@ const key=document.body.dataset.comicKey||'moonlit-tingquan-comic-v1';
 const expectedPages=Number(document.body.dataset.comicPages)||39;
 const mode=$('mode');
 const turnDuration=mode?240:420;
-let shareUrl='https://app.degoo.com/share/UjmLUCKjcSSp7RoqROdWiA';
 let animationTimer;
 let pages=[], page=0, single=false, touch=null, lastSwipe=0, immersive=false;
 const read=(k)=>{try{return localStorage.getItem(k)}catch{return null}};
@@ -59,8 +58,7 @@ function makeSheet(index){
   button.remove();const error=document.createElement('div');error.className='error';
   const text=document.createElement('p');text.textContent='這一頁暫時無法載入。';
   const retry=document.createElement('button');retry.type='button';retry.textContent='重新載入';retry.onclick=()=>{sheet.replaceWith(makeSheet(index))};
-  const a=document.createElement('a');a.href=shareUrl;a.target='_blank';a.rel='noopener noreferrer';a.textContent='開啟原始相簿 ↗';
-  error.append(text,retry,document.createElement('br'),a);sheet.prepend(error);
+  error.append(text,retry);sheet.prepend(error);
  };
  button.setAttribute('aria-busy','true');button.append(img,placeholder);button.onclick=()=>{if(Date.now()-lastSwipe>450)openZoom(index)};
  const folio=document.createElement('p');folio.className='folio';folio.textContent=p.title+'　·　'+(index+1);
@@ -103,7 +101,7 @@ function loadCatalog(){
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
  fetch('pages.json',{cache:'no-cache',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('目錄載入失敗');return r.json()}).then(data=>{
  if(!Array.isArray(data.pages)||data.pages.length!==expectedPages)throw Error('目錄不完整');
- shareUrl=data.shareUrl||shareUrl;pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
+ pages=data.pages;select.replaceChildren();pages.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=String(i+1).padStart(2,'0')+' · '+p.title;select.append(o)});select.disabled=false;
  const hash=location.hash.match(/^#page-(\d+)$/);const saved=hash?Number(hash[1])-1:Number(read(key)||0);go(Number.isInteger(saved)?saved:0);$('expand').disabled=false;
  const preferred=read(key+'-immersive');if(preferred==='true'||(preferred===null&&!wide.matches))setImmersive(true);
 }).catch(()=>{
