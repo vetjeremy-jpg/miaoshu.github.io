@@ -28,6 +28,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Verify manifest, icon files and app scope without a browser
+        run: npm run test:pwa-install
       - run: npx playwright install --with-deps chromium
       - name: Serve checked-out branch at its real GitHub Pages path
         shell: bash
