@@ -232,3 +232,21 @@ for(const path of readers)test('image retry sends a new request and fully restor
  await expect(page.locator('#book .page-button')).toHaveAttribute('aria-busy','false');
  expect(seen.filter(u=>u===failedUrl).length).toBeGreaterThan(before);
 });
+
+
+for(const path of readers)test('failed first image retry then next previous cache stays nonblank and request-stable',async({page})=>{
+ const requests=new Map();let failFirst=true;
+ page.on('request',r=>{if(r.resourceType()==='image')requests.set(r.url(),(requests.get(r.url())||0)+1)});
+ await page.route(/https:\/\/.+\.(?:jpg|jpeg|png|webp|avif)(?:\?.*)?$/i,async route=>{
+  if(failFirst){failFirst=false;await route.abort('failed')}else{await new Promise(r=>setTimeout(r,220));await route.continue()}
+ });
+ const nonblank=async()=>expect(await page.evaluate(()=>{const b=document.querySelector('#book'),r=b.getBoundingClientRect();return r.height>0&&!!b.querySelector('img.loaded,.placeholder,.error,.catalog-loading,.catalog-retry')})).toBe(true);
+ await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');await nonblank();
+ const error=page.locator('#book .error');await expect(error).toBeVisible();const firstUrl=await page.locator('#book img').first().getAttribute('src');const failedCount=requests.get(firstUrl)||0;
+ await page.getByRole('button',{name:'重新載入這一頁'}).click();await nonblank();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);await expect(error).toHaveCount(0);await expect(page.locator('#book .placeholder')).toBeHidden();
+ expect(requests.get(firstUrl)||0).toBeGreaterThan(failedCount);const afterRetry=requests.get(firstUrl)||0;
+ await page.locator('#next').click();await nonblank();await expect(page.locator('#book img').first()).toHaveClass(/loaded/);
+ await page.locator('#prev').click();await nonblank();await expect(page.locator('#book img').first()).toHaveAttribute('src',firstUrl);await expect(page.locator('#book img').first()).toHaveClass(/loaded/);
+ await expect(page.locator('#book .placeholder')).toBeHidden();await expect(page.locator('#book .error')).toHaveCount(0);await expect(page.locator('#book .page-button')).toHaveAttribute('aria-busy','false');
+ expect(requests.get(firstUrl)||0).toBe(afterRetry);
+});
