@@ -72,3 +72,19 @@ for(const path of readers)test('image loading policy '+path,async({page})=>{
  await page.locator('#next').click();const current=page.locator('#book img').first();await expect(current).toHaveAttribute('loading','eager');await expect(current).toHaveAttribute('fetchpriority','high');
  const urls=await page.locator('#book img').evaluateAll(imgs=>imgs.map(i=>i.src));expect(urls.every(u=>!u.startsWith(location.origin))).toBe(true);
 });
+
+for(const path of readers)test.describe('comic image cache and slow network '+path,()=>{
+ test('next then previous does not duplicate the same external image request',async({page})=>{
+  const requests=[];page.on('request',r=>{if(r.resourceType()==='image')requests.push(r.url())});
+  await page.goto(path);await expect(page.locator('#counter')).not.toContainText('—');const first=await page.locator('#book img').first().getAttribute('src');
+  await page.locator('#next').click();await expect(page.locator('#counter')).not.toContainText('1 /');
+  await page.locator('#prev').click();await expect(page.locator('#book img').first()).toHaveAttribute('src',first);
+  expect(requests.filter(u=>u===first).length).toBeLessThanOrEqual(1);
+ });
+ test('slow network keeps first page prioritized and avoids eager page flood',async({page,context})=>{
+  const client=await context.newCDPSession(page);await client.send('Network.enable');await client.send('Network.emulateNetworkConditions',{offline:false,latency:150,downloadThroughput:200000,uploadThroughput:75000});
+  const requests=[];page.on('request',r=>{if(r.resourceType()==='image')requests.push(r.url())});await page.goto(path,{waitUntil:'domcontentloaded'});await expect(page.locator('#counter')).not.toContainText('—');
+  const first=page.locator('#book img').first();await expect(first).toHaveAttribute('loading','eager');await expect(first).toHaveAttribute('fetchpriority','high');
+  await page.waitForTimeout(250);expect(new Set(requests).size).toBeLessThanOrEqual(2);
+ });
+});
