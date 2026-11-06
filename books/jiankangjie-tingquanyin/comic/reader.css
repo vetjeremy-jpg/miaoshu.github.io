@@ -56,3 +56,12 @@ body.immersive .book{top:calc(110px + env(safe-area-inset-top))}
  body.immersive .book{height:calc(100dvh - 110px - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
  #zoom-scroll{-webkit-overflow-scrolling:touch}
 }
+
+
+/* Reading comfort: stable viewport, clearer focus, and calmer long-session controls. */
+html{scroll-behavior:smooth}
+.page-button:focus-visible,.controls button:focus-visible,.reader-exits a:focus-visible,.immersive-bar button:focus-visible,.zoom-tools button:focus-visible,.zoom-exits a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.page-button img{content-visibility:auto}
+.controls button,.immersive-bar button,.reader-exits a,.zoom-exits a{touch-action:manipulation}
+@media(max-width:760px){.controls button,.immersive-bar button{min-height:44px}.reader-exits a,.zoom-exits a{min-width:44px}.status{line-height:1.55}.book{scroll-margin-top:72px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
