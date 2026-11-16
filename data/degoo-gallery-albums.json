@@ -4,8 +4,8 @@
   "albums": [
     {
       "id": "november-photo-collection",
-      "title": "十一月光影",
-      "description": "六十幅攝影作品",
+      "title": "彈電吉它的女孩",
+      "description": "窗光穿過白紗簾，落在奶油白的電吉它上。從站在窗邊試音，到坐下翻書、扶琴回望，六十五幅人像記下彈奏與歇息之間的片刻。",
       "shareUrl": "https://app.degoo.com/share/IlZPxdjF8G73sIHQ7pNHPA",
       "verified": true,
       "linkOnly": false,
@@ -16,480 +16,650 @@
           "thumbnailUrl": "https://lh3.googleusercontent.com/247R8-l7s7A4Ql90PpxaoPjkb4Ci8kChsM6iNqLHTOM2xu0GQjWQCerxq1_Unt7NRWk8zg5EaoBtLHgTDKkQSS3qu6ZwAAABGosQ8Rw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "01｜十一月光影",
-          "alt": "十一月光影第 1 張"
+          "title": "01｜倚琴迎光",
+          "alt": "彈電吉它的女孩：倚琴迎光",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她把雙手疊在琴頭，微微側坐，窗光落在垂下的髮梢。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/YnCl0HfRVvVswwQbxpwlAfOJRvhgnsOiegChXu0GkRGVgqibrJwonwdd9tiK4aH8tgi_G5496NEcUvOsSZX4GaTASMfPQVIPdySv=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/YnCl0HfRVvVswwQbxpwlAfOJRvhgnsOiegChXu0GkRGVgqibrJwonwdd9tiK4aH8tgi_G5496NEcUvOsSZX4GaTASMfPQVIPdySv=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "02｜十一月光影",
-          "alt": "十一月光影第 2 張"
+          "title": "02｜窗邊序曲",
+          "alt": "彈電吉它的女孩：窗邊序曲",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "一手扶著琴頸，一手放在腰側，她站在白紗簾前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/nwyV7tTEd8HIC2J4SC18cdMwiicfTQOAbaxs0HWaDhHtqvvQyyAjPehASt_bhcNGwpJ7ps5c5D4HjTCqSrsqFnosUhxefzg192Mw8w=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/nwyV7tTEd8HIC2J4SC18cdMwiicfTQOAbaxs0HWaDhHtqvvQyyAjPehASt_bhcNGwpJ7ps5c5D4HjTCqSrsqFnosUhxefzg192Mw8w=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "03｜十一月光影",
-          "alt": "十一月光影第 3 張"
+          "title": "03｜坐著試音",
+          "alt": "彈電吉它的女孩：坐著試音",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她將電吉它橫放膝上，抬眼望來，左手仍搭在指板上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/_t2u6-y3AZPsob8L9GdtJ2XyyX3ECiWep_WDcm3TkFOJ4zgM_-pGbxaMSmOJxJ-DFXehSe7TJbaWm6T31QwEZGBf39KFs3_5DzayRg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/_t2u6-y3AZPsob8L9GdtJ2XyyX3ECiWep_WDcm3TkFOJ4zgM_-pGbxaMSmOJxJ-DFXehSe7TJbaWm6T31QwEZGBf39KFs3_5DzayRg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "04｜十一月光影",
-          "alt": "十一月光影第 4 張"
+          "title": "04｜提琴轉身",
+          "alt": "彈電吉它的女孩：提琴轉身",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "琴頸垂向地板，針織袖沿手臂滑落，日光照亮她的側身。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/mErt-uy4YMvr0g1_V3RRdkMWiQJ9Lg9PBoFOrQK9I4GyF04B94ZXYlbWam3lt7t94gktx0uw9fr_uThmKSTubZDt6NpIFie1Eoo_iCQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/mErt-uy4YMvr0g1_V3RRdkMWiQJ9Lg9PBoFOrQK9I4GyF04B94ZXYlbWam3lt7t94gktx0uw9fr_uThmKSTubZDt6NpIFie1Eoo_iCQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "05｜十一月光影",
-          "alt": "十一月光影第 5 張"
+          "title": "05｜低頭撥弦",
+          "alt": "彈電吉它的女孩：低頭撥弦",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭看向琴弦，淺色琴身映著窗前的光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/AQsJqMgsm6IgGuynswpLtXYeHivwTfg7dg2ZH8W7Tkw1c9OUJdTmZZZdphYzpQ0F_jwHqlcQiCfm9cuso-sJc7fX5hbVY7-DoMl-kA=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/AQsJqMgsm6IgGuynswpLtXYeHivwTfg7dg2ZH8W7Tkw1c9OUJdTmZZZdphYzpQ0F_jwHqlcQiCfm9cuso-sJc7fX5hbVY7-DoMl-kA=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "06｜十一月光影",
-          "alt": "十一月光影第 6 張"
+          "title": "06｜弦上的早晨",
+          "alt": "彈電吉它的女孩：弦上的早晨",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "左手在琴頸上換位，右手在拾音器上方輕撥。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/nh_HKWYLLGW6-jJVa5FTiA1eR9hmPnnc81Zhuzi7ttxVxjM805_XkM6rAPGwtmVKWuLM_67CHG8HlUWz_YAWLnNg9UmYzjec4ZesSQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/nh_HKWYLLGW6-jJVa5FTiA1eR9hmPnnc81Zhuzi7ttxVxjM805_XkM6rAPGwtmVKWuLM_67CHG8HlUWz_YAWLnNg9UmYzjec4ZesSQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "07｜十一月光影",
-          "alt": "十一月光影第 7 張"
+          "title": "07｜琴頸斜向窗",
+          "alt": "彈電吉它的女孩：琴頸斜向窗",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "木色琴頸斜穿畫面，她低頭看著自己按弦的手。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/c4geeFRi2KV421DRBM46-usB1J3LFDQl98CSBP4jeMdZgK5yM5kQqR3vMYN_cQ-LpfEiIq4vlzwHiumWR5IWl0UhVXWGWBPDz2IB=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/c4geeFRi2KV421DRBM46-usB1J3LFDQl98CSBP4jeMdZgK5yM5kQqR3vMYN_cQ-LpfEiIq4vlzwHiumWR5IWl0UhVXWGWBPDz2IB=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "08｜十一月光影",
-          "alt": "十一月光影第 8 張"
+          "title": "08｜回肩與琴帶",
+          "alt": "彈電吉它的女孩：回肩與琴帶",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身扶著黑色背帶，淺色電吉它停在腰間。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/3e6hXEn3F9oO38KzRCxo283l5RbVT0nT37kiNQqkSwZdpsQOcBRVLPkaLp732bO_7htqAoPr1hXQ_NL3Jdv7p91dIWT6Zge7M-wHzco=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/3e6hXEn3F9oO38KzRCxo283l5RbVT0nT37kiNQqkSwZdpsQOcBRVLPkaLp732bO_7htqAoPr1hXQ_NL3Jdv7p91dIWT6Zge7M-wHzco=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "09｜十一月光影",
-          "alt": "十一月光影第 9 張"
+          "title": "09｜托腮望來",
+          "alt": "彈電吉它的女孩：托腮望來",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她托著臉頰朝鏡頭微笑，身後的白簾透著光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/EasLH2k6pbsLI7Pb85ebz-l3emQ-sFVMI7g5MyShTmtfOf6eH1Tc021zTUKylyXQIxGq5_wyi1Y-ulUIFkqFyxste2REpI4f1Kvx=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/EasLH2k6pbsLI7Pb85ebz-l3emQ-sFVMI7g5MyShTmtfOf6eH1Tc021zTUKylyXQIxGq5_wyi1Y-ulUIFkqFyxste2REpI4f1Kvx=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "10｜十一月光影",
-          "alt": "十一月光影第 10 張"
+          "title": "10｜窗前和弦",
+          "alt": "彈電吉它的女孩：窗前和弦",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她在窗邊站著彈琴，深色背帶勾出一條清晰的斜線。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/oI4UCCxZUXhgXExTwqxlxs-uBZQUvBAh_d9RsDUpAvFucbuI4UPiPPg4QbOg9NrJWiRT_BbhynAIPN-GCfz7xtrh4bEI-t3FnTmQeQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oI4UCCxZUXhgXExTwqxlxs-uBZQUvBAh_d9RsDUpAvFucbuI4UPiPPg4QbOg9NrJWiRT_BbhynAIPN-GCfz7xtrh4bEI-t3FnTmQeQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "11｜十一月光影",
-          "alt": "十一月光影第 11 張"
+          "title": "11｜捕捉一拍",
+          "alt": "彈電吉它的女孩：捕捉一拍",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭彈奏，吉它導線從琴身一路垂向地面。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/HH5_Y7SQBgEQIsWPg78RQDVn10ygUXQSqa6PQeectuonfRrbEotj8T5xx-qqQq7FSfhhlENZrLs7wQ-QBI2VHP4LOK1ukKRCGYLZTmc=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/HH5_Y7SQBgEQIsWPg78RQDVn10ygUXQSqa6PQeectuonfRrbEotj8T5xx-qqQq7FSfhhlENZrLs7wQ-QBI2VHP4LOK1ukKRCGYLZTmc=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "12｜十一月光影",
-          "alt": "十一月光影第 12 張"
+          "title": "12｜捧杯片刻",
+          "alt": "彈電吉它的女孩：捧杯片刻",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "雙手捧起白杯，粗針織袖口貼著杯緣。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Xc30sx9LN9PcpY3CWjEHWsGzzZo3ZZV7zks9wVB0j4h__eKo29goyFJ4JDQ4vvBany-69CnhmhF8LSiZKndaGWgYbeo3AxA6qbkj=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Xc30sx9LN9PcpY3CWjEHWsGzzZo3ZZV7zks9wVB0j4h__eKo29goyFJ4JDQ4vvBany-69CnhmhF8LSiZKndaGWgYbeo3AxA6qbkj=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "13｜十一月光影",
-          "alt": "十一月光影第 13 張"
+          "title": "13｜翻書時間",
+          "alt": "彈電吉它的女孩：翻書時間",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在窗邊翻書，日光照亮膝上的書頁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/9XeHr1ZRgFkeCimp4Mnqgt_N5fIUo7JwKVLAvvOV1Uesc7nOD9T_pnFb0PbWMaM166-gbgWyCP9Q0wKNpgiVqlGOvSEP8klAbo3StQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/9XeHr1ZRgFkeCimp4Mnqgt_N5fIUo7JwKVLAvvOV1Uesc7nOD9T_pnFb0PbWMaM166-gbgWyCP9Q0wKNpgiVqlGOvSEP8klAbo3StQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "14｜十一月光影",
-          "alt": "十一月光影第 14 張"
+          "title": "14｜指尖扶琴",
+          "alt": "彈電吉它的女孩：指尖扶琴",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在窗前扶住琴頭，微微歪頭望向鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/J_E4-bel3pLMCwFq8KeIi4uFhi3OZhFUHO6DHLETsp727_5W1_1iWMg-KJjRqH2LBtLPZFSBz0-eD6Gnw96899DFQbAmjDOKFzvc3w=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/J_E4-bel3pLMCwFq8KeIi4uFhi3OZhFUHO6DHLETsp727_5W1_1iWMg-KJjRqH2LBtLPZFSBz0-eD6Gnw96899DFQbAmjDOKFzvc3w=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "15｜十一月光影",
-          "alt": "十一月光影第 15 張"
+          "title": "15｜琴立膝旁",
+          "alt": "彈電吉它的女孩：琴立膝旁",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側坐扶琴，琴身在白簾前露出一抹淺色。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/POGEhQ3cgXMl5fPtPPLn-ZYB-4RdTY-Z9v2CP9rLFTdrlsjE8ZlKfvkNsHYuj8oTql7LHSjD3rUsAjy3RLT6wKOfLulPcUf0dr_9NQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/POGEhQ3cgXMl5fPtPPLn-ZYB-4RdTY-Z9v2CP9rLFTdrlsjE8ZlKfvkNsHYuj8oTql7LHSjD3rUsAjy3RLT6wKOfLulPcUf0dr_9NQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "16｜十一月光影",
-          "alt": "十一月光影第 16 張"
+          "title": "16｜坐姿撥奏",
+          "alt": "彈電吉它的女孩：坐姿撥奏",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭彈琴，窗沿的光落在肩頭和木色指板上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/6PG3k0u-tjcfcWvizi5z9nuWH2BqwZilTyKSAxCF4UQWt_qXzaN7I60YRyZLLayO5xzqccyxLdLwbHLbZv-ySYIChvZyha5uWKC4=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/6PG3k0u-tjcfcWvizi5z9nuWH2BqwZilTyKSAxCF4UQWt_qXzaN7I60YRyZLLayO5xzqccyxLdLwbHLbZv-ySYIChvZyha5uWKC4=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "17｜十一月光影",
-          "alt": "十一月光影第 17 張"
+          "title": "17｜枕在琴身",
+          "alt": "彈電吉它的女孩：枕在琴身",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她將手臂搭在琴身上，靠近鏡頭的一側看得見琴橋與旋鈕。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ahsb/AKsBbyPP6oIGFnU02fJzjvWso54bhavTFPiZA_VWrieG1_M2kC-buJ0CuQrquVFVMd38hvZ-ziphLS9cn1EQcEnbmvL1VxE2bZn8niRQNiQKDgKy1A=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ahsb/AKsBbyPP6oIGFnU02fJzjvWso54bhavTFPiZA_VWrieG1_M2kC-buJ0CuQrquVFVMd38hvZ-ziphLS9cn1EQcEnbmvL1VxE2bZn8niRQNiQKDgKy1A=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "18｜十一月光影",
-          "alt": "十一月光影第 18 張"
+          "title": "18｜背向白簾",
+          "alt": "彈電吉它的女孩：背向白簾",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身抱著豎起的琴，袖口遮住了半邊手掌。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Nt5RODoAGkGdxYCTB_lpzG04LB2JFNgVxSBsWhrrqirvKY455YFLKrqrUwbXg98as9CH6qIxvx_svMHuRSHBJd3xaPTkSZ3wgu1yiA=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Nt5RODoAGkGdxYCTB_lpzG04LB2JFNgVxSBsWhrrqirvKY455YFLKrqrUwbXg98as9CH6qIxvx_svMHuRSHBJd3xaPTkSZ3wgu1yiA=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "19｜十一月光影",
-          "alt": "十一月光影第 19 張"
+          "title": "19｜窗框裡的回身",
+          "alt": "彈電吉它的女孩：窗框裡的回身",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她回過肩來，琴身貼著身側，導線垂落在窗下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/st07be3dVQUPst0zPTRE4pQxg9i1L077P5J1sYC1j7G1EXRUUuPCtlhME7EzAtGwyTqo2o8zn_oGtk9yFRrx04xJ78wl5woi426S=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/st07be3dVQUPst0zPTRE4pQxg9i1L077P5J1sYC1j7G1EXRUUuPCtlhME7EzAtGwyTqo2o8zn_oGtk9yFRrx04xJ78wl5woi426S=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "20｜十一月光影",
-          "alt": "十一月光影第 20 張"
+          "title": "20｜琴頭旁的手",
+          "alt": "彈電吉它的女孩：琴頭旁的手",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站在窗前，手指鬆鬆搭上琴頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/pUrXmBvBDBj5V38qcHrUjdGdaA5fnne8DEo0NVnCkha1-unmL_kKtOVOsvTRWgmB4cvmJQ_OJTsSFke7aVTCyjJfsGsrG3JE60GHGg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/pUrXmBvBDBj5V38qcHrUjdGdaA5fnne8DEo0NVnCkha1-unmL_kKtOVOsvTRWgmB4cvmJQ_OJTsSFke7aVTCyjJfsGsrG3JE60GHGg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "21｜十一月光影",
-          "alt": "十一月光影第 21 張"
+          "title": "21｜低垂的袖口",
+          "alt": "彈電吉它的女孩：低垂的袖口",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她手扶琴頸站著，寬鬆的針織袖垂在手腕旁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/lbvwL4anwaGc8pqInFH9Q0J7Ew7ng3JKrr4IXhHzXTVJFw98XC9enD69Od4pNgARj9rt9i_AlAbxZT7i8i4y4dClE6NlKQ2kjEXIIw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/lbvwL4anwaGc8pqInFH9Q0J7Ew7ng3JKrr4IXhHzXTVJFw98XC9enD69Od4pNgARj9rt9i_AlAbxZT7i8i4y4dClE6NlKQ2kjEXIIw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "22｜十一月光影",
-          "alt": "十一月光影第 22 張"
+          "title": "22｜靠近琴頭",
+          "alt": "彈電吉它的女孩：靠近琴頭",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她把前臂輕搭在琴頭，略偏著臉望向鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/_hsI62x-i1be2Uk4vejb2HcDZXZLwgfhKATyPpbQoUm1sjoZ_cForSCppc6jeXQW1BW1GdB9oXFCqSkWO7bL8fUyx4gDk_VSw5Mr=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/_hsI62x-i1be2Uk4vejb2HcDZXZLwgfhKATyPpbQoUm1sjoZ_cForSCppc6jeXQW1BW1GdB9oXFCqSkWO7bL8fUyx4gDk_VSw5Mr=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "23｜十一月光影",
-          "alt": "十一月光影第 23 張"
+          "title": "23｜坐在窗光裡",
+          "alt": "彈電吉它的女孩：坐在窗光裡",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在暖氣片前扶琴，白窗格襯著拾音器與淺色琴身。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/LCgCRyyDlilxamW8y3dGQNsmWQpYSzQz6OYJUNdchMVjwiV-kitGrLEyQ-oYqUcX9n2xaiZ3D-HuKdmEuwypez5OGJyferZEe22GOYs=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/LCgCRyyDlilxamW8y3dGQNsmWQpYSzQz6OYJUNdchMVjwiV-kitGrLEyQ-oYqUcX9n2xaiZ3D-HuKdmEuwypez5OGJyferZEe22GOYs=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "24｜十一月光影",
-          "alt": "十一月光影第 24 張"
+          "title": "24｜提著電吉它",
+          "alt": "彈電吉它的女孩：提著電吉它",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她把琴提在身旁，一手合攏胸前的針織外套。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/qlDJogVRRfUY7fJwYZM8JLhIdvp1rTATQuzobyrvEK99NQowCfWBX1zAtfE6VIthETBN3YH07T8E2pdaFf2r66r7jDSnGT9tXN23DA=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/qlDJogVRRfUY7fJwYZM8JLhIdvp1rTATQuzobyrvEK99NQowCfWBX1zAtfE6VIthETBN3YH07T8E2pdaFf2r66r7jDSnGT9tXN23DA=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "25｜十一月光影",
-          "alt": "十一月光影第 25 張"
+          "title": "25｜側身試奏",
+          "alt": "彈電吉它的女孩：側身試奏",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站在白簾前，琴頸往窗外的亮處伸出。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/DnWcGxa1Eawa2rUE1zMQLPLcM8AKLIdo1yjpeMrO2HYEfdTusQ2pUPq8zFbEx6dziTBCdDDOrHadNsCV9ZHzySAaR_RqJic6jx-b8Q=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/DnWcGxa1Eawa2rUE1zMQLPLcM8AKLIdo1yjpeMrO2HYEfdTusQ2pUPq8zFbEx6dziTBCdDDOrHadNsCV9ZHzySAaR_RqJic6jx-b8Q=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "26｜十一月光影",
-          "alt": "十一月光影第 26 張"
+          "title": "26｜看向琴身",
+          "alt": "彈電吉它的女孩：看向琴身",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐著扶琴，目光沿琴頸落向淺色琴身。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/PyebIhLA7zj4eHsW97FGHav3UjGw_ZEjSFuZk0QaIQ8wJLrvE7vWt-ZXWgvLA1Yk1dhSu2ilP-bIe8d9dZNDgnzJb6ZqwEMGVfhqYA=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/PyebIhLA7zj4eHsW97FGHav3UjGw_ZEjSFuZk0QaIQ8wJLrvE7vWt-ZXWgvLA1Yk1dhSu2ilP-bIe8d9dZNDgnzJb6ZqwEMGVfhqYA=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "27｜十一月光影",
-          "alt": "十一月光影第 27 張"
+          "title": "27｜手搭窗沿",
+          "alt": "彈電吉它的女孩：手搭窗沿",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身靠近窗子，手指輕觸窗框，長髮沿背垂下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/_Vb463h23mipUZYtLZuu_Edkw7nZ2UZmWM2pEALUwIchy9pbQ9AxnXJXNiLFF0nIaQz0gc9WmKgE4FTRzcaxW2rGPBgC7pfW4XIncq4=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/_Vb463h23mipUZYtLZuu_Edkw7nZ2UZmWM2pEALUwIchy9pbQ9AxnXJXNiLFF0nIaQz0gc9WmKgE4FTRzcaxW2rGPBgC7pfW4XIncq4=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "28｜十一月光影",
-          "alt": "十一月光影第 28 張"
+          "title": "28｜雙手抱住琴頸",
+          "alt": "彈電吉它的女孩：雙手抱住琴頸",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她閉著眼靠近豎起的琴頸，雙手在木色指板前交疊。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/etQqVPirrgPuy09H-h9175WO8z2fJeVXwETMkk95yrA92SIreltrpNPtl06Bo10Ooqx1QXQpX-ykcmKQZ6OVRi8K2JgpBJHCj6Oe=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/etQqVPirrgPuy09H-h9175WO8z2fJeVXwETMkk95yrA92SIreltrpNPtl06Bo10Ooqx1QXQpX-ykcmKQZ6OVRi8K2JgpBJHCj6Oe=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "29｜十一月光影",
-          "alt": "十一月光影第 29 張"
+          "title": "29｜膝前的琴",
+          "alt": "彈電吉它的女孩：膝前的琴",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她將琴橫放身前，柔軟的袖口靠近琴弦。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/0AdHuFsWqzHL8gok6I8m9mxWK1ac49YaakS8bLHBYf9XAwPkXgr2NcPTAIRhHHLMSVqT7SEp6iOhDgm9lWoaiKDE4nB9UqoHNkI6GIc=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/0AdHuFsWqzHL8gok6I8m9mxWK1ac49YaakS8bLHBYf9XAwPkXgr2NcPTAIRhHHLMSVqT7SEp6iOhDgm9lWoaiKDE4nB9UqoHNkI6GIc=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "30｜十一月光影",
-          "alt": "十一月光影第 30 張"
+          "title": "30｜抬眼續彈",
+          "alt": "彈電吉它的女孩：抬眼續彈",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在窗邊抬眼望來，琴頸仍朝畫面右側伸出。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/J-1S3MZQALTZoHom4GhZYfoiEGlh2CAhxl2KXpus72STeclQW0mbHZlVfUwiMpn9RJQa0pcXO76KDCKbw2BdHcqJNxEbd5HbAzB1JPg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/J-1S3MZQALTZoHom4GhZYfoiEGlh2CAhxl2KXpus72STeclQW0mbHZlVfUwiMpn9RJQa0pcXO76KDCKbw2BdHcqJNxEbd5HbAzB1JPg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "31｜十一月光影",
-          "alt": "十一月光影第 31 張"
+          "title": "31｜從窗前起奏",
+          "alt": "彈電吉它的女孩：從窗前起奏",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她背起電吉它站在明亮窗格前，右手停在琴弦上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/XtP-q7355Dw-wEmaa9jRwPlfYDr5dWSYt6JsNiK7uN4gCFU0AYuhzqFgDjxmXz5jnqKGBUduJMrS1SDqKLjHN_zUfzYg-jfMMjhVIg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/XtP-q7355Dw-wEmaa9jRwPlfYDr5dWSYt6JsNiK7uN4gCFU0AYuhzqFgDjxmXz5jnqKGBUduJMrS1SDqKLjHN_zUfzYg-jfMMjhVIg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "32｜十一月光影",
-          "alt": "十一月光影第 32 張"
+          "title": "32｜沙發上的停拍",
+          "alt": "彈電吉它的女孩：沙發上的停拍",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她合攏雙膝，雙手托著臉，目光轉向窗光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/NENjASf9S8eZiAUFA6-Rufl_nE-oLLMvtZilvqQ4M-ev4mK47wRX5zFXv6iXhJ1ilYzDbo8NW4auJSatgH3Ew7iwST7SnQQFXtaSkw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/NENjASf9S8eZiAUFA6-Rufl_nE-oLLMvtZilvqQ4M-ev4mK47wRX5zFXv6iXhJ1ilYzDbo8NW4auJSatgH3Ew7iwST7SnQQFXtaSkw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "33｜十一月光影",
-          "alt": "十一月光影第 33 張"
+          "title": "33｜一手托腮",
+          "alt": "彈電吉它的女孩：一手托腮",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在窗下，以指節輕抵臉側，髮飾在側光裡閃亮。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Bb0dUvcb3dSOn2l7Op-wmF1Gx2zYMVDnKZX0hRA4HsNCpoA48pibfILvHPuGXHEpKVMdisQGZyTiYVi2ulF1B_I7MFdXo_P231X3jg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Bb0dUvcb3dSOn2l7Op-wmF1Gx2zYMVDnKZX0hRA4HsNCpoA48pibfILvHPuGXHEpKVMdisQGZyTiYVi2ulF1B_I7MFdXo_P231X3jg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "34｜十一月光影",
-          "alt": "十一月光影第 34 張"
+          "title": "34｜斜背電吉它",
+          "alt": "彈電吉它的女孩：斜背電吉它",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身站定，琴頸朝上斜伸，深色琴帶落在肩上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/tXiKyxDvaVij6ioUt4qzyq2XmSLZIcmhCPofN0k-Jw7UaaBoNzwRiDzPPEjj-YadCU_iRI_-NBN63ReJb8f08m3AsZthfOpm69c-=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/tXiKyxDvaVij6ioUt4qzyq2XmSLZIcmhCPofN0k-Jw7UaaBoNzwRiDzPPEjj-YadCU_iRI_-NBN63ReJb8f08m3AsZthfOpm69c-=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "35｜十一月光影",
-          "alt": "十一月光影第 35 張"
+          "title": "35｜循弦低望",
+          "alt": "彈電吉它的女孩：循弦低望",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭按弦，琴橋與垂落的導線都留在畫面裡。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/z8tQYTdHKmlI63iUh9KxLk_r6R1gkvTbfhQRiOz9Y5orBsTD9uujNfbF-zNvXsTrUgI3XzWtLDvliSnnQCU6hYT8diOyupm5Rl1L8UY=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/z8tQYTdHKmlI63iUh9KxLk_r6R1gkvTbfhQRiOz9Y5orBsTD9uujNfbF-zNvXsTrUgI3XzWtLDvliSnnQCU6hYT8diOyupm5Rl1L8UY=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "36｜十一月光影",
-          "alt": "十一月光影第 36 張"
+          "title": "36｜指板上的光",
+          "alt": "彈電吉它的女孩：指板上的光",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站在窗子前低頭彈琴，木色指板和白窗框一明一暖。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/sLMu_KK7I2HCsA6geaTmmT5B8BluHzYZ_t6GQW5UKQdSqNUX8udHVxAbrdUfEGjw36kI0zsfujxBrmivvLcjpHi2D3sUpzlpylc5=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/sLMu_KK7I2HCsA6geaTmmT5B8BluHzYZ_t6GQW5UKQdSqNUX8udHVxAbrdUfEGjw36kI0zsfujxBrmivvLcjpHi2D3sUpzlpylc5=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "37｜十一月光影",
-          "alt": "十一月光影第 37 張"
+          "title": "37｜琴橫膝上",
+          "alt": "彈電吉它的女孩：琴橫膝上",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側坐望來，淺色電吉它橫過膝上，窗邊花束在身後。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/W9iekDco4sfA6g5xtRLktXkfeB4AEnKSXlyIwuOtcgh2noIeIe4uzYftZ4EXwQlmKg-hUx1VdficWKdprGfpjVSUQFEhrkW9aunb4w=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/W9iekDco4sfA6g5xtRLktXkfeB4AEnKSXlyIwuOtcgh2noIeIe4uzYftZ4EXwQlmKg-hUx1VdficWKdprGfpjVSUQFEhrkW9aunb4w=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "38｜十一月光影",
-          "alt": "十一月光影第 38 張"
+          "title": "38｜轉身看窗",
+          "alt": "彈電吉它的女孩：轉身看窗",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身面向窗光，針織外套垂靠手肘，露出肩背的輪廓。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ztOLZ6dVh872EkVcpiGaqNO7n2aBVvpGQ0M4S0qJ1V1mj9uZtYhAK1tU1gnITlCL4K31aKHue3Owf-wTk5RxE7yYwwzJrV2jW_ZEX24=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ztOLZ6dVh872EkVcpiGaqNO7n2aBVvpGQ0M4S0qJ1V1mj9uZtYhAK1tU1gnITlCL4K31aKHue3Owf-wTk5RxE7yYwwzJrV2jW_ZEX24=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "39｜十一月光影",
-          "alt": "十一月光影第 39 張"
+          "title": "39｜指尖勾住琴帶",
+          "alt": "彈電吉它的女孩：指尖勾住琴帶",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她一手提著背帶，另一手扶穩琴頸，琴身貼在身側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ZDncvoMl5gyfQa-bh-komRm0YVLEFaiUKgblJtbL8rBEEqdqVhK6JlILDbt-Pmp9OxIcIhpnzDslRrnkwGf4b2M4ME99THrS-eNIJw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ZDncvoMl5gyfQa-bh-komRm0YVLEFaiUKgblJtbL8rBEEqdqVhK6JlILDbt-Pmp9OxIcIhpnzDslRrnkwGf4b2M4ME99THrS-eNIJw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "40｜十一月光影",
-          "alt": "十一月光影第 40 張"
+          "title": "40｜站定一拍",
+          "alt": "彈電吉它的女孩：站定一拍",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站在窗格前彈琴，琴頸與垂直的窗框交出斜角。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/pt8jsyXHp3amKnXo4UYXvr3RpxuDqphwphTCdiDWXyAeFqspUXuwVzUhB7w-3ctCR-bCGUermVnv5NDHRqvSnx2tom3JzWLeveGvCQ=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/pt8jsyXHp3amKnXo4UYXvr3RpxuDqphwphTCdiDWXyAeFqspUXuwVzUhB7w-3ctCR-bCGUermVnv5NDHRqvSnx2tom3JzWLeveGvCQ=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "41｜十一月光影",
-          "alt": "十一月光影第 41 張"
+          "title": "41｜暖色指板",
+          "alt": "彈電吉它的女孩：暖色指板",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她在白紗簾旁按住琴弦，溫暖的木色在明亮背景前格外清楚。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ZRY_Qds3WjZ_iB5JSZiv1eQMMd6hPQHiB1OCkOA-_CNualy2QTwH1ImXx72yTXGOC-gANbtcrkPrVStTkR1ufVQeLOu6MlKgawTs=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ZRY_Qds3WjZ_iB5JSZiv1eQMMd6hPQHiB1OCkOA-_CNualy2QTwH1ImXx72yTXGOC-gANbtcrkPrVStTkR1ufVQeLOu6MlKgawTs=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "42｜十一月光影",
-          "alt": "十一月光影第 42 張"
+          "title": "42｜扶琴停一會",
+          "alt": "彈電吉它的女孩：扶琴停一會",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她雙手停在琴頭旁，視線垂下，身後仍是一整面日光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/8BQBBvmA4Z_-ksarx0us2FP9bT1JFvETHevmtbh7AOdHvzMDwpYmupZ8tSLVSgWm2mCFvQVtfOe-QBktViZa-7wR4wu7U1VUfCHZHw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8BQBBvmA4Z_-ksarx0us2FP9bT1JFvETHevmtbh7AOdHvzMDwpYmupZ8tSLVSgWm2mCFvQVtfOe-QBktViZa-7wR4wu7U1VUfCHZHw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "43｜十一月光影",
-          "alt": "十一月光影第 43 張"
+          "title": "43｜微微低頭",
+          "alt": "彈電吉它的女孩：微微低頭",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站著彈奏，袖口露出的手指貼著指板。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/C1jHysGc8OAq1HSDN6_4_AowIDQW_Wp3VZbJt26K7-jTLCKxccjmuXV3CAClR8QvKi_g8qMK7yp65xcRyOoTdVn5XZHTRdkCOFGl=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/C1jHysGc8OAq1HSDN6_4_AowIDQW_Wp3VZbJt26K7-jTLCKxccjmuXV3CAClR8QvKi_g8qMK7yp65xcRyOoTdVn5XZHTRdkCOFGl=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "44｜十一月光影",
-          "alt": "十一月光影第 44 張"
+          "title": "44｜耳機裡的片刻",
+          "alt": "彈電吉它的女孩：耳機裡的片刻",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她閉眼扶住耳罩，捲髮和花飾沐在窗邊的光裡。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/2rmcg7qIBpsM02W2r9Aq2Xu3mxaOsZBgIz1-N1WXPg2PJniDAH0Hr7dXdyaYTnyNLM-RMXB21Nsql86AJyuyKB9uaPbp0AWRo9Qb=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/2rmcg7qIBpsM02W2r9Aq2Xu3mxaOsZBgIz1-N1WXPg2PJniDAH0Hr7dXdyaYTnyNLM-RMXB21Nsql86AJyuyKB9uaPbp0AWRo9Qb=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "45｜十一月光影",
-          "alt": "十一月光影第 45 張"
+          "title": "45｜指間的髮梢",
+          "alt": "彈電吉它的女孩：指間的髮梢",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她在窗前抬手碰了碰頭髮，電吉它立在身旁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/UDDlhqiCZ3fnStHkIJxpzp5kSu0lwDxRBsSV3QK-B2FLOQy1i_rianCg7Zlda1gNnp4uFrUNCW3xzpbso8_1bWIjeEEHexm-8kFUag=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/UDDlhqiCZ3fnStHkIJxpzp5kSu0lwDxRBsSV3QK-B2FLOQy1i_rianCg7Zlda1gNnp4uFrUNCW3xzpbso8_1bWIjeEEHexm-8kFUag=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "46｜十一月光影",
-          "alt": "十一月光影第 46 張"
+          "title": "46｜把琴抱近",
+          "alt": "彈電吉它的女孩：把琴抱近",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她將琴抱在身前，目光落向琴頸，針織袖覆在手背上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/fFOF1ykQwhYhyhUF2lvitAtu6-wJ7j5WlrY9Y_M-cpGigPAWC0UbKDCmaRp88w0EPcMhlagd2Mu69Mzzn-E5ws0LSbg3HEqYw33iUg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/fFOF1ykQwhYhyhUF2lvitAtu6-wJ7j5WlrY9Y_M-cpGigPAWC0UbKDCmaRp88w0EPcMhlagd2Mu69Mzzn-E5ws0LSbg3HEqYw33iUg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "47｜十一月光影",
-          "alt": "十一月光影第 47 張"
+          "title": "47｜翹膝撥弦",
+          "alt": "彈電吉它的女孩：翹膝撥弦",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她讓琴身靠近抬起的膝，左手沿琴頸找到位置。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/bEErKiL50W9xkf1nhxun1-dmDekMTrPayAyZIbXzG_zpwVoC0u5p-yJyDXbHE8GGTl7w89rN9j1SwFrD0Szrd_PhL3WaoWEt-iAGAg=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/bEErKiL50W9xkf1nhxun1-dmDekMTrPayAyZIbXzG_zpwVoC0u5p-yJyDXbHE8GGTl7w89rN9j1SwFrD0Szrd_PhL3WaoWEt-iAGAg=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "48｜十一月光影",
-          "alt": "十一月光影第 48 張"
+          "title": "48｜向光抬眼",
+          "alt": "彈電吉它的女孩：向光抬眼",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐在窗邊望向上方，垂落的耳環在側光中映亮。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/cO0WMcPjaI3sog_k_4VjsY8Y1MQkV8tXNgAceQC-Rqe8nMkEn5KKpv2lY39cY_wENtRnDY7TwDxrLnsnIBq6pHLemTeIUJdWVWGmR3I=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/cO0WMcPjaI3sog_k_4VjsY8Y1MQkV8tXNgAceQC-Rqe8nMkEn5KKpv2lY39cY_wENtRnDY7TwDxrLnsnIBq6pHLemTeIUJdWVWGmR3I=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "49｜十一月光影",
-          "alt": "十一月光影第 49 張"
+          "title": "49｜握著背帶回身",
+          "alt": "彈電吉它的女孩：握著背帶回身",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側身扶住琴帶，淺色琴身與深色導線落在窗下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/-c7cT3-Z1QA8-X6lzqk5VpHIOdPZGJuHxU25MB34ySmGpcEWi15Vn6ASzQiKdEqU4Opo4VHPyd1d4M3mYLIYlLSUqXS_CiAyTi8eLw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/-c7cT3-Z1QA8-X6lzqk5VpHIOdPZGJuHxU25MB34ySmGpcEWi15Vn6ASzQiKdEqU4Opo4VHPyd1d4M3mYLIYlLSUqXS_CiAyTi8eLw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "50｜十一月光影",
-          "alt": "十一月光影第 50 張"
+          "title": "50｜在紙上留一筆",
+          "alt": "彈電吉它的女孩：在紙上留一筆",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭寫字，攤開的本子擱在膝上，窗光照著手背。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Qzc1-tDX4Cpwl4tgiX4RoknUCGIPsWuVL0NMlAYREma-0gM-E7AEpEcZSUbb-ctthiBqeXXcm6InLXiafUIgp4KX_40kJK9JBelr7Q=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Qzc1-tDX4Cpwl4tgiX4RoknUCGIPsWuVL0NMlAYREma-0gM-E7AEpEcZSUbb-ctthiBqeXXcm6InLXiafUIgp4KX_40kJK9JBelr7Q=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "51｜十一月光影",
-          "alt": "十一月光影第 51 張"
+          "title": "51｜靠窗彈一段",
+          "alt": "彈電吉它的女孩：靠窗彈一段",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她站在白簾邊撥弦，琴頸沿著畫面斜向上方。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Un5T1R-CX9dvQ3e8ysDHiHNI6jwzR6b0ZPG8nruujuzKNp0usr2IdARujXZeXrYEc-v27IvZPvd9cXJs-nvjk773VdQlyB1wdplb=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Un5T1R-CX9dvQ3e8ysDHiHNI6jwzR6b0ZPG8nruujuzKNp0usr2IdARujXZeXrYEc-v27IvZPvd9cXJs-nvjk773VdQlyB1wdplb=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "52｜十一月光影",
-          "alt": "十一月光影第 52 張"
+          "title": "52｜髮間的白花",
+          "alt": "彈電吉它的女孩：髮間的白花",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "特寫掠過髮飾與垂墜耳環，窗光照亮側臉和肩頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/c7Q4jjFHtUpeh8Yk-cg_G8a-qA8x-_Wrbhe5mTcNtvxiV9m82ergjklTJYsy_P9zxbkHtp5nMBou0_uSNBzYOXd3ESOrWAS1KvJe9uc=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/c7Q4jjFHtUpeh8Yk-cg_G8a-qA8x-_Wrbhe5mTcNtvxiV9m82ergjklTJYsy_P9zxbkHtp5nMBou0_uSNBzYOXd3ESOrWAS1KvJe9uc=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "53｜十一月光影",
-          "alt": "十一月光影第 53 張"
+          "title": "53｜窗格前的樂句",
+          "alt": "彈電吉它的女孩：窗格前的樂句",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她將琴攬在身前，指尖與琴弦落在同一片窗光裡。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/8qxe43WVf_BETSbQ8c5UYcTYAzOBKBb0Ape0EaGfFNrvDIlqkRzkuxv8CjD3m6r2lw9hgGVtEDOMmCWe5exQZxW9u2e5i0pLsQYnDiY=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8qxe43WVf_BETSbQ8c5UYcTYAzOBKBb0Ape0EaGfFNrvDIlqkRzkuxv8CjD3m6r2lw9hgGVtEDOMmCWe5exQZxW9u2e5i0pLsQYnDiY=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "54｜十一月光影",
-          "alt": "十一月光影第 54 張"
+          "title": "54｜低頭聽琴",
+          "alt": "彈電吉它的女孩：低頭聽琴",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她微低著頭站在窗前，長髮垂落在琴帶一側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/fMl94CAuKZAARqtaNyEZiCefFOdLX8Tx0NTQsTCcBH0oo3PJ8FQKOOy8jKr-podk_FsycGOCzeqPOR3BmW0fEA4w_JiBNb2xZD_p=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/fMl94CAuKZAARqtaNyEZiCefFOdLX8Tx0NTQsTCcBH0oo3PJ8FQKOOy8jKr-podk_FsycGOCzeqPOR3BmW0fEA4w_JiBNb2xZD_p=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "55｜十一月光影",
-          "alt": "十一月光影第 55 張"
+          "title": "55｜坐著續一段",
+          "alt": "彈電吉它的女孩：坐著續一段",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她低頭彈琴，身後的窗與花束襯出安靜的室內光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/2R6e7B4E66q8NuICnVTlzPol-0_v1ELABZ8FtjdSIHRy09wrW6pg1igY4RahEP_bQYLAFR93hvo13vNZEzLQ8ICKMTsdoGhHGFbkWHE=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/2R6e7B4E66q8NuICnVTlzPol-0_v1ELABZ8FtjdSIHRy09wrW6pg1igY4RahEP_bQYLAFR93hvo13vNZEzLQ8ICKMTsdoGhHGFbkWHE=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "56｜十一月光影",
-          "alt": "十一月光影第 56 張"
+          "title": "56｜趴著望來",
+          "alt": "彈電吉它的女孩：趴著望來",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她趴著托腮，雙腳在身後翹起，視線剛好迎向鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gXqWeg4tAsXiflxtw296cwsNhMO6rrQAfykqp7aetZ2U1bFxbGetE001us17qbcZAhiaFbxdE7-2cpzBjBIsJ5EHG2lfCUar0Ht2Jw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/gXqWeg4tAsXiflxtw296cwsNhMO6rrQAfykqp7aetZ2U1bFxbGetE001us17qbcZAhiaFbxdE7-2cpzBjBIsJ5EHG2lfCUar0Ht2Jw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "57｜十一月光影",
-          "alt": "十一月光影第 57 張"
+          "title": "57｜臉靠琴頸",
+          "alt": "彈電吉它的女孩：臉靠琴頸",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她把臉靠近豎起的琴頸，從木色指板旁望來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/sV4VfIJKePfvEGcGUTysZ8i9GEyy0jlrllEXiR8qRrOhenwYH6DhYzWmVTmAGuo1t_CQjjXzFbKBrfqHfdOAH-go0o82SK5U99dw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/sV4VfIJKePfvEGcGUTysZ8i9GEyy0jlrllEXiR8qRrOhenwYH6DhYzWmVTmAGuo1t_CQjjXzFbKBrfqHfdOAH-go0o82SK5U99dw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "58｜十一月光影",
-          "alt": "十一月光影第 58 張"
+          "title": "58｜白簾前倚琴",
+          "alt": "彈電吉它的女孩：白簾前倚琴",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側坐在明亮窗前，雙手輕搭琴頭，微微偏著臉。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/OoOqg51rxF2wPNw1SwGTFoUV3K62Yz5sfeOWeVmjhyZPYoHWKKPmq0fAt1W_-Otx8PxLg-ZwQAoZ9U6ekvV2dt4aqcFO50Sz94V7pw=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/OoOqg51rxF2wPNw1SwGTFoUV3K62Yz5sfeOWeVmjhyZPYoHWKKPmq0fAt1W_-Otx8PxLg-ZwQAoZ9U6ekvV2dt4aqcFO50Sz94V7pw=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "59｜十一月光影",
-          "alt": "十一月光影第 59 張"
+          "title": "59｜抱膝的歇息",
+          "alt": "彈電吉它的女孩：抱膝的歇息",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她雙手環著屈起的膝蓋，寬袖在雙臂之間堆疊。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/6E5fjik0ITukqGypg2paNBALJr19agFUOuCupEgLpPN2CQaiNc0JfUwZCwMgw1dvDxzCCRFddCWE7KsdwLY6whAo5St3qgMedS2A2g=s0-rw",
           "thumbnailUrl": "https://lh3.googleusercontent.com/6E5fjik0ITukqGypg2paNBALJr19agFUOuCupEgLpPN2CQaiNc0JfUwZCwMgw1dvDxzCCRFddCWE7KsdwLY6whAo5St3qgMedS2A2g=w640-h960-rw-sm-pa-nu-v0",
           "width": 900,
           "height": 1600,
-          "title": "60｜十一月光影",
-          "alt": "十一月光影第 60 張"
+          "title": "60｜琴在窗腳",
+          "alt": "彈電吉它的女孩：琴在窗腳",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她扶著座椅站在窗前，電吉它安靜地立在一旁。"
+        },
+        {
+          "imageUrl": "https://lh3.googleusercontent.com/5sR-4FZR_mRs6cfBuhn8tRQnVfHEXx00a6eE4ya4m_AcpP-LuIXP1ghzmzu2BxNf8iQzH0aV50AGlm0Re5lzS8iUj6Njts-heq46=s0-rw",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/5sR-4FZR_mRs6cfBuhn8tRQnVfHEXx00a6eE4ya4m_AcpP-LuIXP1ghzmzu2BxNf8iQzH0aV50AGlm0Re5lzS8iUj6Njts-heq46=w640-h960-rw-sm-pa-nu-v0",
+          "width": 900,
+          "height": 1600,
+          "title": "61｜窗前再起奏",
+          "alt": "彈電吉它的女孩：窗前再起奏",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "深色琴帶從肩頭斜下，她在明亮窗格前重新撥弦。"
+        },
+        {
+          "imageUrl": "https://lh3.googleusercontent.com/6FrZ_rj7QSRLEZFXwd_-6ZEiVuaorNnXKomfeJCE7d4RRTtAoQV1HnHAGiPLep6-0GIR5ae8xHJj4W4GesqqS0uwCbJ-itx0tOvc=s0-rw",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/6FrZ_rj7QSRLEZFXwd_-6ZEiVuaorNnXKomfeJCE7d4RRTtAoQV1HnHAGiPLep6-0GIR5ae8xHJj4W4GesqqS0uwCbJ-itx0tOvc=w640-h960-rw-sm-pa-nu-v0",
+          "width": 900,
+          "height": 1600,
+          "title": "62｜琴頸貼肩",
+          "alt": "彈電吉它的女孩：琴頸貼肩",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她坐著扶琴，琴頭升到臉側，窗光照亮木色指板。"
+        },
+        {
+          "imageUrl": "https://lh3.googleusercontent.com/Bs-UiH45wQlkiBSxJCCpnxwJAXWRuse77dDla6pqGVedaoeu6yD_E5djuMSMVSc8RzxzPW3kYfoo5KFFl-NLmswjwHEbRobljsAO51I=s0-rw",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/Bs-UiH45wQlkiBSxJCCpnxwJAXWRuse77dDla6pqGVedaoeu6yD_E5djuMSMVSc8RzxzPW3kYfoo5KFFl-NLmswjwHEbRobljsAO51I=w640-h960-rw-sm-pa-nu-v0",
+          "width": 900,
+          "height": 1600,
+          "title": "63｜雙手托住晨光",
+          "alt": "彈電吉它的女孩：雙手托住晨光",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她以雙手托腮望向窗邊，袖口沿著臉頰收攏。"
+        },
+        {
+          "imageUrl": "https://lh3.googleusercontent.com/lMvsDbk668f0UCh8X4q_TCOU1QRvatlvFrg--lPehvEAYKdV8KPpVjc71jr2-gXW7D_jrhkBt4C2HTEvqbdFvD-ROuSKCEMD-e02yA=s0-rw",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/lMvsDbk668f0UCh8X4q_TCOU1QRvatlvFrg--lPehvEAYKdV8KPpVjc71jr2-gXW7D_jrhkBt4C2HTEvqbdFvD-ROuSKCEMD-e02yA=w640-h960-rw-sm-pa-nu-v0",
+          "width": 900,
+          "height": 1600,
+          "title": "64｜拂髮扶琴",
+          "alt": "彈電吉它的女孩：拂髮扶琴",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她一手抬到髮旁，一手留在琴頭，白紗簾立在身後。"
+        },
+        {
+          "imageUrl": "https://lh3.googleusercontent.com/Ig_yIbV0hEiBNgIVCTs7ZP0blGbhvXJlM3tqaSFN4vS0wSsZuB72vqRZ8wRtWbN2CIxO9JdzLVbA9cnZ0vpJwHRa2Hkp7QCUGlXcbg=s0-rw",
+          "thumbnailUrl": "https://lh3.googleusercontent.com/Ig_yIbV0hEiBNgIVCTs7ZP0blGbhvXJlM3tqaSFN4vS0wSsZuB72vqRZ8wRtWbN2CIxO9JdzLVbA9cnZ0vpJwHRa2Hkp7QCUGlXcbg=w640-h960-rw-sm-pa-nu-v0",
+          "width": 900,
+          "height": 1600,
+          "title": "65｜側坐收尾",
+          "alt": "彈電吉它的女孩：側坐收尾",
+          "metadata": "彈電吉它的女孩 · 2026.11",
+          "description": "她側坐在窗前，一手扶住琴頭，回望鏡頭。"
         }
       ]
     },
