@@ -1,89 +1,86 @@
-/* Resolve static and asynchronously inserted album anchors using real layout. */
+/* Show the album directory or the selected album, with shareable URLs. */
 (() => {
   if (!document.body.classList.contains('gallery-page')) return;
+  const main = document.querySelector('main');
+  const directory = main.querySelector('.intro');
+  const controls = main.querySelector('.gallery-album-controls');
+  const back = controls.querySelector('button');
+  const cards = directory.querySelector('.series-grid');
+  let activeAlbum;
+  let directoryScroll = 0;
+  let returnLink;
+
   const normalizeAlbumHash = () => {
     const hash = location.hash;
     if (!hash.startsWith('#degoo-')) return;
     const target = hash === '#degoo-album' ? '#snow-sword' : '#album-' + hash.slice(7);
     history.replaceState(history.state, '', target);
   };
-  const alignAlbum = ({focus = false} = {}) => {
-    let id;
-    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
-    const target = id && document.getElementById(id);
-    if (!target || !target.matches('.collection-intro,.collection-heading')) return false;
-    const header = document.querySelector('.top');
-    const offset = Math.max(0, header?.getBoundingClientRect().bottom || 0) + 16;
-    window.scrollTo({top: Math.max(0, scrollY + target.getBoundingClientRect().top - offset), behavior: 'instant'});
-    const heading = target.querySelector('h2');
-    if (focus && heading) {
-      heading.tabIndex = -1;
-      heading.focus({preventScroll: true});
+  const show = ({focus = false, restore = true} = {}) => {
+    normalizeAlbumHash();
+    const heading = document.getElementById(location.hash.slice(1));
+    const album = heading?.matches('.collection-heading') ? heading.parentElement : null;
+    const previousAlbum = activeAlbum;
+    if (album && !previousAlbum) directoryScroll = scrollY;
+    activeAlbum = album;
+    directory.hidden = !!album;
+    controls.hidden = !album;
+    for (const section of main.querySelectorAll(':scope > .gallery')) {
+      section.hidden = section !== album;
     }
-    return true;
+    if (previousAlbum === album) return;
+    if (album) {
+      const firstPhoto = album.querySelector('figure > a');
+      if (firstPhoto && !heading.querySelector('.gallery-start')) {
+        const start = document.createElement('button');
+        start.className = 'gallery-start';
+        start.type = 'button';
+        start.textContent = '從第一張開始';
+        start.addEventListener('click', () => {
+          start.focus({preventScroll: true});
+          firstPhoto.click();
+        });
+        heading.append(start);
+      }
+      const header = document.querySelector('.top');
+      const offset = Math.max(0, header?.getBoundingClientRect().bottom || 0) + 12;
+      window.scrollTo({top: Math.max(0, scrollY + heading.getBoundingClientRect().top - offset), behavior: 'instant'});
+      const title = heading.querySelector('h2');
+      if (title) {
+        title.tabIndex = -1;
+        if (focus) title.focus({preventScroll: true});
+      }
+    } else if (previousAlbum) {
+      window.scrollTo({top: restore ? directoryScroll : 0, behavior: 'instant'});
+      const cover = returnLink && cards.contains(returnLink) ? returnLink :
+        [...cards.querySelectorAll('a')].find(link => link.hash.slice(1) === previousAlbum.querySelector('.collection-heading')?.id);
+      if (focus) ((restore && cover) || directory.querySelector('h1'))?.focus({preventScroll: true});
+    }
   };
-  let pendingAlbumHash;
+
+  directory.querySelector('h1').tabIndex = -1;
+  document.body.classList.add('gallery-directory-enabled');
   document.addEventListener('click', event => {
     const link = event.target.closest('a');
-    if (!link || link.target || link.hasAttribute('download') || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!link || !directory.contains(link) || link.target || event.defaultPrevented ||
+        event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return;
-    const target = document.getElementById(url.hash.slice(1));
-    if (!target?.matches('.collection-intro,.collection-heading')) return;
+    if (!document.getElementById(url.hash.slice(1))?.matches('.collection-heading')) return;
     event.preventDefault();
-    if (location.hash !== url.hash) history.pushState(null, '', url.hash);
-    pendingAlbumHash = undefined;
-    alignAlbum({focus: true});
+    returnLink = link;
+    history.pushState({galleryDirectory: true}, '', url.hash);
+    show({focus: true});
   });
-  const alignOrWait = () => {
-    normalizeAlbumHash();
-    pendingAlbumHash = alignAlbum() ? undefined : location.hash;
-  };
-  addEventListener('hashchange', alignOrWait);
-  document.addEventListener('gallery:albums-ready', () => {
-    if (pendingAlbumHash && pendingAlbumHash === location.hash) alignOrWait();
-  });
-  const mountPhotoButtons = () => {
-    for (const gallery of document.querySelectorAll('main .gallery')) {
-      let photos = [];
-      const albums = [photos];
-      for (const item of gallery.children) {
-        if (item.matches('.collection-heading')) {
-          photos = [];
-          albums.push(photos);
-        }
-        if (item.matches('figure') && item.querySelector(':scope > a')) photos.push(item);
-      }
-      for (const album of albums) {
-        album.forEach((figure, index) => {
-          if (figure.querySelector(':scope > .gallery-photo-step')) return;
-          figure.classList.add('gallery-photo-steps');
-          for (const step of [-1, 1]) {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'gallery-photo-step ' + (step < 0 ? 'gallery-photo-prev' : 'gallery-photo-next');
-            button.textContent = step < 0 ? '‹' : '›';
-            button.setAttribute('aria-label', step < 0 ? '上一張照片' : '下一張照片');
-            const target = album[index + step];
-            button.disabled = !target;
-            button.addEventListener('click', () => {
-              const destination = target.querySelector(':scope > a');
-              destination.focus({preventScroll: true});
-              if (document.body.classList.contains('curated-view')) {
-                destination.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'});
-                return;
-              }
-              const headerBottom = document.querySelector('.top')?.getBoundingClientRect().bottom ?? 0;
-              const offset = Math.max(0, headerBottom) + 8;
-              window.scrollTo({top: Math.max(0, scrollY + destination.getBoundingClientRect().top - offset), behavior: 'instant'});
-            });
-            figure.append(button);
-          }
-        });
-      }
+  back.addEventListener('click', () => {
+    if (history.state?.galleryDirectory) {
+      history.back();
+      return;
     }
-  };
-  document.addEventListener('gallery:albums-ready', mountPhotoButtons);
-  mountPhotoButtons();
-  alignOrWait();
+    history.replaceState(history.state, '', location.pathname + location.search);
+    show({focus: true, restore: false});
+  });
+  addEventListener('hashchange', () => show({focus: true}));
+  document.addEventListener('gallery:albums-ready', () => show());
+  show();
 })();

@@ -247,7 +247,8 @@
       link.append(img);
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (openPhoto(album, index, link)) event.preventDefault();
+        const trigger = doc.activeElement?.matches('.gallery-start') ? doc.activeElement : link;
+        if (openPhoto(album, index, trigger)) event.preventDefault();
       });
       const caption = element('figcaption');
       caption.append(element('strong', null, p.title));
@@ -256,10 +257,7 @@
       figure.append(link, caption);
       gallery.append(figure);
     });
-    // Keep new albums before the long existing galleries so lazy layout does not shift their anchors.
-    const firstCollection = main.querySelector('#xiakexing');
-    if (firstCollection) firstCollection.before(gallery);
-    else main.append(gallery);
+    main.append(gallery);
   };
 
   const notice = element('div', 'gallery-album-status');

@@ -19,7 +19,29 @@ test('comic catalogue can recover without reloading the page',async({page})=>{
 test('a failed full photo retries in the viewer and keeps navigation available',async({page})=>{
  let allow=false;const pixel=Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7','base64');
  await page.route('**/*',route=>route.request().resourceType()==='image'?(allow?route.fulfill({status:200,contentType:'image/gif',body:pixel}):route.abort()):route.continue());
- await page.goto('gallery/',{waitUntil:'domcontentloaded'});await page.locator('.gallery-album-grid:has(#album-street-daylight) figure a').first().click();
+ await page.goto('gallery/#album-street-daylight',{waitUntil:'domcontentloaded'});await page.locator('.gallery-album-grid:has(#album-street-daylight) figure a').first().click();
  const viewer=page.locator('.gallery-photo-viewer');await expect(viewer).toBeVisible();await expect(viewer.locator('.photo-viewer-retry')).toBeVisible();
  allow=true;await viewer.getByRole('button',{name:'重新載入照片',exact:true}).click();await expect(viewer.locator('.photo-viewer-retry')).toBeHidden();await expect(viewer.locator('.photo-viewer-image')).toBeVisible();await viewer.getByRole('button',{name:'下一張',exact:true}).click();await expect(viewer.locator('.photo-viewer-count')).toContainText('02');await viewer.getByRole('button',{name:'關閉',exact:true}).click();await expect(viewer).toBeHidden();
+});
+
+test('gallery opens one album and returns to the same cover on mobile', async ({page}) => {
+ await page.setViewportSize({width:390,height:844});
+ await page.goto('gallery/');
+ const cover=page.locator('.series-grid a[href="#album-street-daylight"]');
+ await expect(cover).toBeVisible();
+ await expect(page.locator('main > .gallery:visible')).toHaveCount(0);
+ await cover.click();
+ await expect(page).toHaveURL(/#album-street-daylight$/);
+ await expect(page.locator('main > .gallery:visible')).toHaveCount(1);
+ const start=page.getByRole('button',{name:'從第一張開始'});
+ await start.click();
+ const viewer=page.locator('dialog[open]');
+ await expect(viewer).toHaveCount(1);
+ await viewer.getByRole('button',{name:'下一張',exact:true}).click();
+ await expect(viewer.locator('.photo-viewer-count')).toContainText('02');
+ await viewer.getByRole('button',{name:'關閉',exact:true}).click();
+ await expect(start).toBeFocused();
+ await page.getByRole('button',{name:'相簿列表'}).click();
+ await expect(page.locator('main > .gallery:visible')).toHaveCount(0);
+ await expect(cover).toBeFocused();
 });
