@@ -30,7 +30,7 @@
           (p.pageUrl && !isHttps(p.pageUrl)) ||
           !Number.isInteger(p.width) || p.width < 1 ||
           !Number.isInteger(p.height) || p.height < 1 ||
-          !p.alt || !p.title || (!['chun-li-street', 'street-daylight'].includes(album.id) && images.has(p.imageUrl))) return false;
+          !p.alt || !p.title || (!['chun-li-street', 'street-daylight', 'long-leg-portraits'].includes(album.id) && images.has(p.imageUrl))) return false;
       images.add(p.imageUrl);
     }
     return true;
@@ -263,7 +263,8 @@
 
     const intro = element('div', 'collection-heading');
     intro.id = id;
-    intro.append(element('small', null, album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
+    intro.append(element('small', null, album.edition ? 'DEGOO ALBUM · ' + album.edition :
+      album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
       element('h2', null, album.title), element('p', null, album.description));
 
     const gallery = element('section', 'gallery degoo-album-grid');
@@ -322,7 +323,7 @@
     if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/degoo-gallery-albums.json?v=20261116-guitar-61',{cache:refresh?'reload':'default',signal:controller.signal});
+      const response=await fetch('../data/degoo-gallery-albums.json?v=20261120-long-leg-portraits',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       let unavailable = false;
