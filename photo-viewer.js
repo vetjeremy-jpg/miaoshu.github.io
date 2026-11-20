@@ -62,7 +62,7 @@
  });
  for(const albumLinks of albums.values())albumLinks.forEach((link,index)=>link.addEventListener('click',event=>{
   if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-  event.preventDefault();links=albumLinks;returnFocus=link;show(index);previousOverflow=document.body.style.overflow;
+  event.preventDefault();links=albumLinks;returnFocus=document.activeElement?.matches('.gallery-start')?document.activeElement:link;show(index);previousOverflow=document.body.style.overflow;
   document.body.style.overflow='hidden';dialog.showModal();dialog.querySelector('.photo-viewer-close').focus();
  }));
  dialog.querySelector('.photo-viewer-close').addEventListener('click',()=>dialog.close());
