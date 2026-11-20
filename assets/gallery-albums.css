@@ -1,0 +1,7 @@
+.gallery-page .gallery-album-grid img{width:100%;height:auto;object-fit:contain}
+.gallery-page .gallery-album-grid figure>a{min-height:80px}
+.gallery-page .gallery-album-grid .gallery-thumbnail-error{min-height:160px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--gold2)}
+.gallery-page .series-card.gallery-cover-unavailable{background:linear-gradient(120deg,#161b20,#26231c);min-height:210px}
+.gallery-page .series-card.gallery-cover-unavailable img{display:none}
+.gallery-page .gallery-album-grid figcaption .photo-story{line-height:1.9}
+.gallery-album-status{padding:16px;border:1px solid #bca47466;margin:16px 0}.gallery-album-status button,.photo-viewer-retry{font:inherit;min-height:48px;padding:10px 16px;border:1px solid #d2b57d;border-radius:8px;background:#172b38;color:#efdbb4;cursor:pointer;touch-action:manipulation}.photo-viewer-retry{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:4}[hidden]{display:none!important}
