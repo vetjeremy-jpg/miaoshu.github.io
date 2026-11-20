@@ -1,7 +1,7 @@
 /* Accessible photo exhibition for homepage and gallery. */
 (()=>{
  if(!window.HTMLDialogElement||!HTMLDialogElement.prototype.showModal)return;
- const photoLinks=document.querySelectorAll('.gallery figure>a:has(img),#miaoshu-album .album-photo>a:has(img)');
+ const photoLinks=document.querySelectorAll('.gallery:not(.gallery-album-grid) figure>a:has(img),#miaoshu-album .album-photo>a:has(img)');
  if(!photoLinks.length)return;
  const albums=new Map();
  for(const link of photoLinks){
