@@ -179,7 +179,7 @@ test.describe('Moonlit homepage editorial rhythm', () => {
       await expect(tonight).toHaveCount(3);
       await expect(tonight.nth(0)).toHaveAttribute('href','books/rain-stops-i-remain/');
       await expect(tonight.nth(1)).toHaveAttribute('href','books/jiankangjie-tingquanyin/comic/');
-      await expect(tonight.nth(2)).toHaveAttribute('href','gallery/#degoo-street-daylight');
+      await expect(tonight.nth(2)).toHaveAttribute('href','gallery/#album-street-daylight');
 
       const support=page.locator('#support');
       await support.scrollIntoViewIfNeeded();

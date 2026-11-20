@@ -11,7 +11,7 @@ const works=window.MOONLIT_CATALOG?.works||[
  {id:"sleep",type:"小說",title:"《沉睡的呼喚》",note:"沿著夢境的救生索，潛入沉睡深處。",url:"books/chenshui-de-huhuan/index.html#toc"},
  {id:"dragon",type:"小說",title:"《殘照寫龍契》",note:"殘照之下，歷史與命運留下裂痕。",url:"books/canzhao-xie-longqi/index.html#toc"},
  {id:"trail",type:"札記",title:"〈把臺北走成一封給自己的信〉",note:"沿著臺北大縱走第五段，把一天走成一封信。",url:"posts/taipei-grand-trail-20260928/index.html"},
- {id:"sword",featured:true,type:"攝影",title:"雪庭舞劍",note:"雪色與劍光之間，一段由靜到動的影像敘事。",url:"gallery/index.html#degoo-album"},
+ {id:"sword",featured:true,type:"攝影",title:"雪庭舞劍",note:"雪色與劍光之間，一段由靜到動的影像敘事。",url:"gallery/index.html#snow-sword"},
  {id:"trees",type:"攝影",title:"林蔭午後",note:"在樹影與舊鐵道旁，把午後放慢。",url:"gallery/index.html#earlier-work"},
  {id:"sky",type:"攝影",title:"月映晚霞",note:"白晝未盡，月色已來。",url:"gallery/index.html#moonlit-sky"},
  {id:"taipei",featured:true,type:"攝影",title:"台北夜色",note:"從暮光走到燈海，看城市慢慢入夜。",url:"gallery/index.html#taipei-night"}

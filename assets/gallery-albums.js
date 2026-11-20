@@ -1,4 +1,4 @@
-/* Moonlit — Degoo external albums: link-only until image URLs are verified. No media binaries. */
+/* External photography albums use the same caption layout as the main gallery. */
 (() => {
   'use strict';
   const doc = document;
@@ -11,30 +11,14 @@
     if (typeof value !== 'string' || !value) return false;
     try { return new URL(value).protocol === 'https:'; } catch { return false; }
   };
-  // A Degoo share is a web page, not a direct image. Do not pass it to <img>.
-  const hasPublicShare = album => {
-    if (!album || typeof album.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(album.id) ||
-        !isHttps(album.shareUrl) || !Array.isArray(album.photos) || !album.photos.length) return false;
-    const url = new URL(album.shareUrl);
-    const slug = url.pathname.startsWith('/share/') ? url.pathname.slice(7) : '';
-    return url.hostname === 'app.degoo.com' &&
-      /^[A-Za-z0-9_-]+$/.test(slug) && !url.search && !url.hash;
-  };
-  const linkOnly = album => hasPublicShare(album) && album.linkOnly === true && album.verified !== true;
-  const approved = album => {
-    if (!hasPublicShare(album) || album.verified !== true) return false;
-    const images = new Set();
-    for (const p of album.photos) {
-      if (album.id === 'chun-li-street' && p && p.unavailable === true && isHttps(p.pageUrl) && p.title && p.alt) continue;
-      if (!p || !isHttps(p.imageUrl) || !isHttps(p.thumbnailUrl) ||
-          (p.pageUrl && !isHttps(p.pageUrl)) ||
-          !Number.isInteger(p.width) || p.width < 1 ||
-          !Number.isInteger(p.height) || p.height < 1 ||
-          !p.alt || !p.title || (!['chun-li-street', 'street-daylight', 'long-leg-portraits'].includes(album.id) && images.has(p.imageUrl))) return false;
-      images.add(p.imageUrl);
-    }
-    return true;
-  };
+  const approved = album => album &&
+    typeof album.id === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(album.id) &&
+    Array.isArray(album.photos) && album.photos.length > 0 &&
+    album.photos.every(photo => photo &&
+      isHttps(photo.imageUrl) && isHttps(photo.thumbnailUrl) &&
+      Number.isInteger(photo.width) && photo.width > 0 &&
+      Number.isInteger(photo.height) && photo.height > 0 &&
+      photo.alt && photo.title && photo.metadata && photo.description);
   const element = (tag, cls, text) => {
     const node = doc.createElement(tag);
     if (cls) node.className = cls;
@@ -74,7 +58,7 @@
     if (navigator.connection && navigator.connection.saveData) return;
     for (const offset of [1, -1]) {
       const photo = activeAlbum.photos[(currentIndex + offset + activeAlbum.photos.length) % activeAlbum.photos.length];
-      if (!photo.unavailable && photo.imageUrl) imageRequest(photo.imageUrl, 'low');
+      imageRequest(photo.imageUrl, 'low');
     }
   };
 
@@ -82,9 +66,9 @@
   let activeAlbum, currentIndex = 0, returnFocus, prevOverflow = '', touchStart, serial = 0, pending, loadTimer;
   const setupViewer = () => {
     if (viewer || !window.HTMLDialogElement || !HTMLDialogElement.prototype.showModal) return;
-    viewer = element('dialog', 'photo-viewer degoo-photo-viewer');
-    viewer.setAttribute('aria-label', 'Degoo 攝影作品放大瀏覽');
-    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="degoo-photo-title"></h2><p class="degoo-photo-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+    viewer = element('dialog', 'photo-viewer gallery-photo-viewer');
+    viewer.setAttribute('aria-label', '攝影作品放大瀏覽');
+    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="gallery-photo-title"></h2><p class="photo-meta"></p><p class="gallery-photo-description photo-story"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
     doc.body.append(viewer);
     viewer.querySelector('.photo-viewer-close').addEventListener('click', () => viewer.close());
     viewer.querySelector('.photo-viewer-retry').addEventListener('click', () => { nearbyImages.delete(activeAlbum.photos[currentIndex].imageUrl); show(currentIndex); });
@@ -142,7 +126,7 @@
     img.onerror = () => {
       if (request !== serial || !viewer.open) return;
       clearTimeout(loadTimer);
-      viewer.querySelector('.photo-viewer-retry').hidden = !!p.unavailable;
+      viewer.querySelector('.photo-viewer-retry').hidden = false;
       img.hidden = true;
       status.hidden = false;
       status.textContent = '照片暫時無法載入。';
@@ -151,12 +135,9 @@
     status.hidden = !!previewReady;
     viewer.querySelector('.photo-viewer-count').textContent =
       activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ ' + String(activeAlbum.photos.length).padStart(2, '0');
-    viewer.querySelector('.degoo-photo-title').textContent = p.title;
-    viewer.querySelector('.degoo-photo-description').textContent = p.description || '';
-    if (p.unavailable) {
-      status.textContent = '照片暫時無法載入。';
-      return;
-    }
+    viewer.querySelector('.gallery-photo-title').textContent = p.title;
+    viewer.querySelector('.photo-meta').textContent = p.metadata;
+    viewer.querySelector('.gallery-photo-description').textContent = p.description;
     const preload = imageRequest(p.imageUrl, 'high');
     pending = preload;
     const ready = () => {
@@ -205,36 +186,8 @@
     return true;
   };
 
-  const renderCloudLink = album => {
-    const id = 'degoo-' + album.id;
-    const card = element('a', 'series-card degoo-cloud-card');
-    card.href = '#' + id;
-    const artwork = element('div', 'degoo-cloud-art');
-    artwork.setAttribute('aria-hidden', 'true');
-    artwork.append(element('span', 'degoo-cloud-number', '06'),
-      element('span', 'degoo-cloud-art-label', 'MOONLIT · DEGOO'));
-    const words = element('span', 'degoo-cloud-words');
-    words.append(element('small', null, '06 PHOTOGRAPHS · DEGOO'),
-      element('strong', null, album.title),
-      element('span', null, album.description));
-    card.append(artwork, words);
-    cards.append(card);
-
-    const navLink = element('a', null, album.title + ' · ' + album.photos.length + ' 幅');
-    navLink.href = '#' + id;
-    nav.append(navLink);
-
-    const intro = element('section', 'collection-intro degoo-cloud-intro');
-    intro.id = id;
-    intro.append(element('small', null, album.title + ' · 六幅攝影作品 · Degoo 雲端相簿'),
-      element('h2', null, album.title),
-      element('p', null, album.description));
-    intro.append(element('p', null, '這組作品目前無法在站內顯示。'));
-    main.append(intro);
-  };
-
   const renderAlbum = album => {
-    const id = 'degoo-' + album.id;
+    const id = 'album-' + album.id;
     const cover = album.photos[0];
     const card = element('a', 'series-card');
     card.href = '#' + id;
@@ -249,7 +202,7 @@
     coverImage.sizes = '(max-width: 650px) calc(100vw - 32px), (max-width: 1100px) calc(50vw - 36px), 520px';
     coverImage.addEventListener('error', () => {
       coverImage.hidden = true;
-      card.classList.add('degoo-cover-unavailable');
+      card.classList.add('gallery-cover-unavailable');
     }, {once:true});
     const words = element('span');
     words.append(element('small', null, String(album.photos.length).padStart(2, '0') + ' PHOTOGRAPHS'),
@@ -263,17 +216,16 @@
 
     const intro = element('div', 'collection-heading');
     intro.id = id;
-    intro.append(element('small', null, album.edition ? 'DEGOO ALBUM · ' + album.edition :
-      album.title + ' · ' + album.photos.length + ' 幅 · Degoo 外部攝影系列'),
+    intro.append(element('small', null, '攝影系列 · ' + album.photos.length + ' 幅' + (album.edition ? ' · ' + album.edition : '')),
       element('h2', null, album.title), element('p', null, album.description));
 
-    const gallery = element('section', 'gallery degoo-album-grid');
+    const gallery = element('section', 'gallery gallery-album-grid');
     gallery.append(intro);
     gallery.setAttribute('aria-label', album.title + '攝影系列');
     album.photos.forEach((p, index) => {
       const figure = element('figure');
       const link = element('a');
-      link.href = p.unavailable ? '#' + id : p.imageUrl;
+      link.href = p.imageUrl;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.setAttribute('aria-label', '放大觀看：' + p.alt);
@@ -288,22 +240,18 @@
       img.sizes = '(max-width: 650px) calc(100vw - 36px), (max-width: 1100px) calc(50vw - 36px), 550px';
       img.addEventListener('error', () => {
         img.hidden = true;
-        const err = element('p', 'degoo-thumbnail-error', '照片暫時無法載入。');
+        const err = element('p', 'gallery-thumbnail-error', '照片暫時無法載入。');
         link.append(err);
       }, {once:true});
-      if (p.unavailable) {
-        link.append(element('p', 'degoo-thumbnail-error', '照片暫時無法載入'));
-      } else {
-        img.src = p.thumbnailUrl;
-        link.append(img);
-      }
+      img.src = p.thumbnailUrl;
+      link.append(img);
       link.addEventListener('click', event => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (openPhoto(album, index, link)) event.preventDefault();
       });
       const caption = element('figcaption');
       caption.append(element('strong', null, p.title));
-      if (p.metadata) caption.append(element('p', null, p.metadata));
+      caption.append(element('p', 'photo-meta', p.metadata));
       caption.append(element('p', 'photo-story', p.description || ''));
       figure.append(link, caption);
       gallery.append(figure);
@@ -314,7 +262,7 @@
     else main.append(gallery);
   };
 
-  const notice = element('div', 'degoo-album-status');
+  const notice = element('div', 'gallery-album-status');
   const message = element('p');message.setAttribute('role','status');
   const retry = element('button', null, '重新載入相簿');retry.type='button';retry.hidden=true;
   notice.append(message,retry);cards.after(notice);
@@ -323,14 +271,13 @@
     if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/degoo-gallery-albums.json?v=20261120-long-leg-portraits-v2',{cache:refresh?'reload':'default',signal:controller.signal});
+      const response=await fetch('../data/gallery-albums.json?v=20261120-unified',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       let unavailable = false;
       for (const album of data.albums) {
         if (mounted.has(album?.id)) continue;
         if (approved(album)) renderAlbum(album);
-        else if (linkOnly(album)) renderCloudLink(album);
         else { unavailable = true; continue; }
         mounted.add(album.id);
       }

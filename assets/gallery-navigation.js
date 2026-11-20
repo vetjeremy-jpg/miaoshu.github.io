@@ -1,6 +1,12 @@
 /* Resolve static and asynchronously inserted album anchors using real layout. */
 (() => {
   if (!document.body.classList.contains('gallery-page')) return;
+  const normalizeAlbumHash = () => {
+    const hash = location.hash;
+    if (!hash.startsWith('#degoo-')) return;
+    const target = hash === '#degoo-album' ? '#snow-sword' : '#album-' + hash.slice(7);
+    history.replaceState(history.state, '', target);
+  };
   const alignAlbum = ({focus = false} = {}) => {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
@@ -30,6 +36,7 @@
     alignAlbum({focus: true});
   });
   const alignOrWait = () => {
+    normalizeAlbumHash();
     pendingAlbumHash = alignAlbum() ? undefined : location.hash;
   };
   addEventListener('hashchange', alignOrWait);
@@ -41,7 +48,7 @@
       let photos = [];
       const albums = [photos];
       for (const item of gallery.children) {
-        if (item.matches('.collection-heading') && item.id !== 'snow-sword') {
+        if (item.matches('.collection-heading')) {
           photos = [];
           albums.push(photos);
         }

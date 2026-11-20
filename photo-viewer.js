@@ -1,15 +1,23 @@
 /* Accessible photo exhibition for homepage and gallery. */
 (()=>{
  if(!window.HTMLDialogElement||!HTMLDialogElement.prototype.showModal)return;
- const links=[...document.querySelectorAll('.gallery figure>a:has(img),#miaoshu-album .album-photo>a:has(img)')];
- if(!links.length)return;
+ const photoLinks=document.querySelectorAll('.gallery figure>a:has(img),#miaoshu-album .album-photo>a:has(img)');
+ if(!photoLinks.length)return;
+ const albums=new Map();
+ for(const link of photoLinks){
+  const album=link.closest('.gallery,#miaoshu-album');
+  if(!albums.has(album))albums.set(album,[]);
+  albums.get(album).push(link);
+ }
+ let links=[];
  const dialog=document.createElement('dialog');
  dialog.className='photo-viewer';
  dialog.setAttribute('aria-labelledby','photo-viewer-title');
  dialog.setAttribute('aria-describedby','photo-viewer-description');
- dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-reload" hidden>重試照片</button><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p id="photo-viewer-description"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+ dialog.innerHTML='<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-reload" hidden>重試照片</button><button type="button" class="photo-viewer-close" aria-label="關閉照片展覽">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張照片">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status">照片載入中…</p><button type="button" class="photo-viewer-next" aria-label="下一張照片">›</button></div><footer class="photo-viewer-caption"><h2 id="photo-viewer-title"></h2><p class="photo-meta" hidden></p><p id="photo-viewer-description" class="photo-story"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
  document.body.append(dialog);
  const image=dialog.querySelector('.photo-viewer-image'),status=dialog.querySelector('.photo-viewer-loading'),count=dialog.querySelector('.photo-viewer-count'),title=dialog.querySelector('h2'),description=dialog.querySelector('#photo-viewer-description');
+ const metadata=dialog.querySelector('.photo-meta');
  const retry=dialog.querySelector('.photo-viewer-reload');
  let current=0,returnFocus=null,previousOverflow='',touch=null,requestId=0,pendingFull=null;
  const neighbors=new Map();
@@ -23,7 +31,10 @@
   current=(index+links.length)%links.length;
   const link=links[current],photo=link.querySelector('img'),figure=link.closest('figure'),caption=figure.querySelector('figcaption');
   title.textContent=caption?.querySelector('h3,strong')?.textContent||photo.alt||'攝影作品';
-  description.textContent=caption?[...caption.querySelectorAll('p')].map(p=>p.textContent).join('　'):'';
+  metadata.textContent=caption?.querySelector('.photo-meta')?.textContent||'';
+  metadata.hidden=!metadata.textContent;
+  description.textContent=caption?.querySelector('.photo-story')?.textContent ||
+   (caption?[...caption.querySelectorAll('p:not(.photo-meta)')].map(p=>p.textContent).join('　'):'');
   count.textContent=(current+1)+' ／ '+links.length;
   image.alt=photo.alt;
   retry.hidden=true;status.hidden=false;status.textContent='照片載入中…';
@@ -49,9 +60,9 @@
   image.removeAttribute('src');
   show(current);
  });
- links.forEach((link,index)=>link.addEventListener('click',event=>{
+ for(const albumLinks of albums.values())albumLinks.forEach((link,index)=>link.addEventListener('click',event=>{
   if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-  event.preventDefault();returnFocus=link;show(index);previousOverflow=document.body.style.overflow;
+  event.preventDefault();links=albumLinks;returnFocus=link;show(index);previousOverflow=document.body.style.overflow;
   document.body.style.overflow='hidden';dialog.showModal();dialog.querySelector('.photo-viewer-close').focus();
  }));
  dialog.querySelector('.photo-viewer-close').addEventListener('click',()=>dialog.close());

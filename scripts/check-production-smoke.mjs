@@ -84,7 +84,7 @@ const criticalRoutes=[
   {path:'videos/',file:'../videos/index.html'},
   {path:'works/',file:'../works/index.html'},
   {path:'search/',file:'../search/index.html'},
-  {path:'gallery/',file:'../gallery/index.html',sentinels:['<h1>喵叔攝影館</h1>','id="degoo-album"','aria-label="攝影作品"']},
+  {path:'gallery/',file:'../gallery/index.html',sentinels:['<h1>喵叔攝影館</h1>','id="snow-sword"','aria-label="攝影作品"']},
   {path:'posts/',file:'../posts/index.html',sentinels:['<h1>寫作札記</h1>','id="journey-timeline"','id="journey-map"']},
   {path:'about/',file:'../about/index.html',sentinels:['<h1>關於喵叔</h1>','about-crescent-gold','aria-label="主選單"']}
 ];

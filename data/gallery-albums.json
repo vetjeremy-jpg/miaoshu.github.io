@@ -1,14 +1,11 @@
 {
   "schemaVersion": 1,
-  "publishingRule": "Verified public Degoo image URLs render remote covers and six-photo galleries. No image binaries are stored in this repository.",
+  "publishingRule": "Photos load directly from external image URLs. The site stores captions and image references.",
   "albums": [
     {
       "id": "long-leg-portraits",
       "title": "長腿姐姐",
       "description": "一百二十七幅室內人像，在暖燈、深色石紋與窗框之間展開。白襯衫與牛仔短褲映著柔光，黑裙與長褲的剪影穿過走廊，收下一次次轉身、倚坐與回望。",
-      "shareUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w",
-      "verified": true,
-      "linkOnly": false,
       "lastImportedOn": "2026-11-20",
       "edition": "2026.11",
       "photos": [
@@ -20,8 +17,7 @@
           "title": "01｜牆邊初見",
           "alt": "長腿姐姐：她側倚石牆，指尖停在領口，身後留著一點燈光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她側倚石牆，指尖停在領口，身後留著一點燈光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816906"
+          "description": "她側倚石牆，指尖停在領口，身後留著一點燈光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/T557AgpTyucIyg1iIvlDyaWqhIbFS3qO-Y783ok2WZeaJa44D1Rmpm97dY4wTxj7_dbNX-HRjCSkcKV9ytjI3-N9ahfHnoGikMb4Vw=w1200-h1600-rw-sm-pa-nu-v0",
@@ -31,8 +27,7 @@
           "title": "02｜扶額而坐",
           "alt": "長腿姐姐：手肘搭上椅背，她交疊雙腿，抬眼看向鏡頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "手肘搭上椅背，她交疊雙腿，抬眼看向鏡頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817000"
+          "description": "手肘搭上椅背，她交疊雙腿，抬眼看向鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Zm8Trxy15YKuBuG3qyxQX_xi8PlTtayn1l3CMIjJycf2sATKM9wgbL5y9WgN-lqbjNzg311zQrsW5rwKA1Tmd8rNxz-GWHzt1O5g=s0-rw",
@@ -42,8 +37,7 @@
           "title": "03｜石檯回眸",
           "alt": "長腿姐姐：雙手扶住石檯，她轉過肩，馬尾垂在背後。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙手扶住石檯，她轉過肩，馬尾垂在背後。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817110"
+          "description": "雙手扶住石檯，她轉過肩，馬尾垂在背後。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/y7ZkXPDLo6peyo9MASQjieR3u8mLPxAFhKsWRgksFtOXxQJVlBrVDQjKjQQQD592H9_UlViiI_6_-NZE498uj111XVr4cLSfk7hSLQ=s0-rw",
@@ -53,8 +47,7 @@
           "title": "04｜膝上雙手",
           "alt": "長腿姐姐：她把雙手輕放膝上，白襯衫在暖光裡透出細褶。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把雙手輕放膝上，白襯衫在暖光裡透出細褶。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816959"
+          "description": "她把雙手輕放膝上，白襯衫在暖光裡透出細褶。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/vzyq7RL609AtxfP_80tfprfV26hr5dFz5LkTJAmirYNCWpfxjUprkVDUgScutrhTLCtPDksF0tSt9sxoIUKA3D4UG6H3__yqdopsLkA=s0-rw",
@@ -64,8 +57,7 @@
           "title": "05｜沙發一隅",
           "alt": "長腿姐姐：她跪坐在灰色坐墊上，黑色直框襯出白襯衫的輪廓。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她跪坐在灰色坐墊上，黑色直框襯出白襯衫的輪廓。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816919"
+          "description": "她跪坐在灰色坐墊上，黑色直框襯出白襯衫的輪廓。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/s0xrJBF-0anf_JqrH8HxuQAMm1TtiusmRU_RRybamTmk1Xev2HpC-cRAM6_y3sZCU8P0apNNDcJHCtFJUdZKT-5NKJKZf17uY19tFQ=s0-rw",
@@ -75,8 +67,7 @@
           "title": "06｜黑衣初章",
           "alt": "長腿姐姐：黑色細肩帶取代淺色衣襟，她在沙發上抬手輕觸下巴。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "黑色細肩帶取代淺色衣襟，她在沙發上抬手輕觸下巴。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816924"
+          "description": "黑色細肩帶取代淺色衣襟，她在沙發上抬手輕觸下巴。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/99Xp9oj96W5oXwioUL-SwzwfeK7De6bkEft8n0YA8U0JhGzmxB-cUR6xv41roxecXieJrsYa70t5R_wyvKGjPy8jkrz4N54e7IIp_Q=s0-rw",
@@ -86,8 +77,7 @@
           "title": "07｜近一點的目光",
           "alt": "長腿姐姐：她扶著檯面朝鏡頭微微前傾，窗框退在肩後。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她扶著檯面朝鏡頭微微前傾，窗框退在肩後。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817015"
+          "description": "她扶著檯面朝鏡頭微微前傾，窗框退在肩後。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/9fVUQ5h_gbXf42M-slM2NiVkmEfzgW3lf9eOOo6bNahv0aIFBi8N3XFau30kbUMOf2I_M-pcOqe3iyGji6kQ4Atb1DHvbgDGwBj9zw=s0-rw",
@@ -97,8 +87,7 @@
           "title": "08｜椅上的黑色剪影",
           "alt": "長腿姐姐：黑衣與長褲連成俐落的線條，她斜坐在椅上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "黑衣與長褲連成俐落的線條，她斜坐在椅上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817029"
+          "description": "黑衣與長褲連成俐落的線條，她斜坐在椅上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/oxvgJEqimiIzip8Pvem5JDVWjBjNCQF7bs4f_EaPhPkSUORyFZbyezGAAn5exSFsqyXDEullLjWeQ21vmrrJw1JaWFdZ7CCfPaer=s0-rw",
@@ -108,8 +97,7 @@
           "title": "09｜手停腰側",
           "alt": "長腿姐姐：一手搭腰，她側過身，暖燈在後方留下一抹金色。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手搭腰，她側過身，暖燈在後方留下一抹金色。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817031"
+          "description": "一手搭腰，她側過身，暖燈在後方留下一抹金色。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/8jefeEV6eSF5qZoHjK3ZOGuT0lW8xCaj8WhKQUMdXxlSnlaurbI50aXIiMGGh-YbdiHwmIdICOVHz8uwSsyNzy4ENWlXRaHH6DCsV8o=s0-rw",
@@ -119,8 +107,7 @@
           "title": "10｜椅邊理襟",
           "alt": "長腿姐姐：她坐在椅邊，指尖輕碰衣襟，目光仍留在鏡頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她坐在椅邊，指尖輕碰衣襟，目光仍留在鏡頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816965"
+          "description": "她坐在椅邊，指尖輕碰衣襟，目光仍留在鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/FmePxLqoOrANDpTyUG9-o23HA8vC2J7DqY6UYcDCCLoC_7KLK1IYciuHexbD99l9hxhpEDoPRAbL2-l6IuajYAKGfCAtGAu8KlzDmw=s0-rw",
@@ -130,8 +117,7 @@
           "title": "11｜抬手理髮",
           "alt": "長腿姐姐：雙手抬至髮側，白袖和馬尾一同帶動了畫面。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙手抬至髮側，白袖和馬尾一同帶動了畫面。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817023"
+          "description": "雙手抬至髮側，白袖和馬尾一同帶動了畫面。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/6rSxkIxv0pzZ0FwS3gkDaUm4hqr8S3JspJtqAkbBi3UM66AJg4i1CQ4eev-9GYzVPa0XWBDtCfFg79YuF57U1D_GrTKQkzjtFqghiA=s0-rw",
@@ -141,8 +127,7 @@
           "title": "12｜走廊裡的黑裙",
           "alt": "長腿姐姐：她穿著黑色短裙站在走廊，細帶鞋映著石地的光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿著黑色短裙站在走廊，細帶鞋映著石地的光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816993"
+          "description": "她穿著黑色短裙站在走廊，細帶鞋映著石地的光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/P3c6gqd2z3w--QyQ0DiPP1DVEHXQQZry0x3PrvDdft5GzqOe5ClZd9iOoKURItdzvEo2JuTEYASxZ4YJmh6cSf5FMlZ_U4GXqDpn=s0-rw",
@@ -152,8 +137,7 @@
           "title": "13｜靠墊旁的凝望",
           "alt": "長腿姐姐：她側靠灰色沙發，一手托住臉，視線從靠墊上方望來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她側靠灰色沙發，一手托住臉，視線從靠墊上方望來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817114"
+          "description": "她側靠灰色沙發，一手托住臉，視線從靠墊上方望來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gYjiKKxLcLaAaKuUIjbtWp5k2rJnRdZbkgmmVnhCHGAoGTHZV2zsFVCdeivZrrcxRUFpWSPXts9GStZTMjpumi9I4u5HJo4ETxRtZtA=w1200-h1600-rw-sm-pa-nu-v0",
@@ -163,8 +147,7 @@
           "title": "14｜借椅歇息",
           "alt": "長腿姐姐：手肘倚在椅背上，她收攏坐姿，窗邊的暗框落在身後。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "手肘倚在椅背上，她收攏坐姿，窗邊的暗框落在身後。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817112"
+          "description": "手肘倚在椅背上，她收攏坐姿，窗邊的暗框落在身後。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/lzp3WRVKgtlslLFxf7qvlS2kFE9s9fhkWPQLP6RBMDvDt8zQv0QnbLwDprghf7BdRsJ9SE_eg8ncQycDTcKW-clOZijHOaCTauoubQ=w1200-h1600-rw-sm-pa-nu-v0",
@@ -174,8 +157,7 @@
           "title": "15｜雙掌落檯",
           "alt": "長腿姐姐：指尖在深色石面上分開，她順著肩線回望。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "指尖在深色石面上分開，她順著肩線回望。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816937"
+          "description": "指尖在深色石面上分開，她順著肩線回望。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/QWnw-snCdFJH4438l0Ko4EfbAVcftCm_6pPeLlBvf-4IckfyA9_kW9_tl6SDbtoghkPfWa__IY_McvfoLxl5OAAsReRFCgsrUE6WbaA=s0-rw",
@@ -185,8 +167,7 @@
           "title": "16｜靜坐片刻",
           "alt": "長腿姐姐：她略歪著頭，雙手落在腿上，燈光在左側散開。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她略歪著頭，雙手落在腿上，燈光在左側散開。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816952"
+          "description": "她略歪著頭，雙手落在腿上，燈光在左側散開。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/FCo6xNe-Ii294NZo6HADPnV2w7cb3__dKJfvMoPdvSWqL9Gpx1KDq1cTKkrveqRZrEMI2Dnck1t94p59d78dWdnmSMH-wRhrIHEv8g=s0-rw",
@@ -196,8 +177,7 @@
           "title": "17｜沙發上的前傾",
           "alt": "長腿姐姐：她用雙手撐住坐墊，長髮順著前傾的肩膀滑下。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她用雙手撐住坐墊，長髮順著前傾的肩膀滑下。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816988"
+          "description": "她用雙手撐住坐墊，長髮順著前傾的肩膀滑下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Zre7wsi4-uLNHuFrCYUSiB99hrUaiTuU-NF3V6PmlPaKRtYVniNtybw3OAKA6ufDVBrkPx_wOdHT5kuGBWEEC6u7Kh8pvLUrXUyBMQ=w1200-h1600-rw-sm-pa-nu-v0",
@@ -207,8 +187,7 @@
           "title": "18｜牆前側影",
           "alt": "長腿姐姐：她在牆前側身屈膝，目光越過肩頭回來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在牆前側身屈膝，目光越過肩頭回來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816976"
+          "description": "她在牆前側身屈膝，目光越過肩頭回來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/dwJ80iaWp826aJn19ytjqkCm0jG-t9ln4TiIip_vMI_J5AMhbwPLRoitFerHwu4BG79ibwYbY-xG02zx3FVz8mZRBg6BX5kH9uKBQw=s0-rw",
@@ -218,8 +197,7 @@
           "title": "19｜收手安坐",
           "alt": "長腿姐姐：她跪坐在軟墊上，雙手收在身前，袖口堆出柔細摺痕。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她跪坐在軟墊上，雙手收在身前，袖口堆出柔細摺痕。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816990"
+          "description": "她跪坐在軟墊上，雙手收在身前，袖口堆出柔細摺痕。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/chwKRHreHcRHuNDCoLOrNioIG8rHeX1lqO_Jyx432OS6RVJLmyPvojOkvrxi4tFE5KXe1z2It7d8ZmSfBIeMOnKzx2x6IFQmorl6=s0-rw",
@@ -229,8 +207,7 @@
           "title": "20｜轉肩一瞬",
           "alt": "長腿姐姐：她背向石檯轉回臉，灰黑色石紋沿著畫面橫過。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她背向石檯轉回臉，灰黑色石紋沿著畫面橫過。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817121"
+          "description": "她背向石檯轉回臉，灰黑色石紋沿著畫面橫過。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/dB_XSHLHURvMOF0wpIz1DiQqOAuZVEN_-9x-f143Ma7ttbi4rxSF2qnfHIZ0BsvG2VA3CDIsLsK8oaqg8NGRUBGgEa5bdTe78Mz-aGM=s0-rw",
@@ -240,8 +217,7 @@
           "title": "21｜伸手向窗",
           "alt": "長腿姐姐：她抬手扶向高處的窗框，身形沿直框舒展。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她抬手扶向高處的窗框，身形沿直框舒展。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816950"
+          "description": "她抬手扶向高處的窗框，身形沿直框舒展。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/qXpm-xPyLbwcRIurr66zBnN4My-yGoI2iwErTZxgT4kjhgkIgzTOXS4BVZ5Oq_twVVLj6YAFukpq6pTym_jeIq_SP4n1eMgrcJoAqw=s0-rw",
@@ -251,8 +227,7 @@
           "title": "22｜衣角隨身",
           "alt": "長腿姐姐：她轉身時展開一側手臂，白色衣角也跟著揚起。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她轉身時展開一側手臂，白色衣角也跟著揚起。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817026"
+          "description": "她轉身時展開一側手臂，白色衣角也跟著揚起。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/69_2kHwKIhYnWMVAbrYjP3u0sgL_06RqkSVej7NHcgFmqycvrF8_Cr_TsOeEE4JclgwgXZexCWSSOOIrdAX0gqkdTQfwHKkRoAY_=s0-rw",
@@ -262,8 +237,7 @@
           "title": "23｜抱臂倚牆",
           "alt": "長腿姐姐：她在牆邊交抱雙臂，一膝微屈，目光平靜地落向前方。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在牆邊交抱雙臂，一膝微屈，目光平靜地落向前方。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816916"
+          "description": "她在牆邊交抱雙臂，一膝微屈，目光平靜地落向前方。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/0oPJdplMANgpGJRtbIiGBPErBUYhqxVim2C7r6LEuCj3qiELuSI3vuh88NTGYASdleQw_bA2o8KZJ0XNG6Yyl_YpfDT4zh-XqZgElA=s0-rw",
@@ -273,8 +247,7 @@
           "title": "24｜側坐回看",
           "alt": "長腿姐姐：她在灰色坐墊上轉過頭，留下一道從肩到袖口的亮邊。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在灰色坐墊上轉過頭，留下一道從肩到袖口的亮邊。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817125"
+          "description": "她在灰色坐墊上轉過頭，留下一道從肩到袖口的亮邊。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/bI6Y84KOFt-GC4o4w0BzCe_KKECKX16iVNk9iFkYx9c9BDPEOipHdVxypExpRORyKIKa57nqXjubSoSEXuwNhzoJzyTrhrWZa40wWA=s0-rw",
@@ -284,8 +257,7 @@
           "title": "25｜指尖近耳",
           "alt": "長腿姐姐：坐在椅上的她抬手靠近耳側，另一手扶住椅面。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "坐在椅上的她抬手靠近耳側，另一手扶住椅面。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816960"
+          "description": "坐在椅上的她抬手靠近耳側，另一手扶住椅面。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gYjiKKxLcLaAaKuUIjbtWp5k2rJnRdZbkgmmVnhCHGAoGTHZV2zsFVCdeivZrrcxRUFpWSPXts9GStZTMjpumi9I4u5HJo4ETxRtZtA=w1200-h1600-rw-sm-pa-nu-v0",
@@ -295,8 +267,7 @@
           "title": "26｜椅背一靠",
           "alt": "長腿姐姐：她把手肘擱在椅背，交疊雙腿，讓姿勢自然停住。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把手肘擱在椅背，交疊雙腿，讓姿勢自然停住。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816889"
+          "description": "她把手肘擱在椅背，交疊雙腿，讓姿勢自然停住。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ojA5yZrohrAhqf6HbazGOXwVTG0pvNu6-_dOBFI-gLrCxEroCzzrCjcDPd2wuBcS-YG8hCHOkdspJbbPIFfzsvlSrQQ1kE1ho4lxRw=s0-rw",
@@ -306,8 +277,7 @@
           "title": "27｜石紋之上",
           "alt": "長腿姐姐：兩手扶著深色檯面，她回望時，背後的窗框仍清晰。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "兩手扶著深色檯面，她回望時，背後的窗框仍清晰。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816890"
+          "description": "兩手扶著深色檯面，她回望時，背後的窗框仍清晰。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/COtY5MP4_xrATfCXiQA3LHhwLLe7RYmHrcaWMLWkAefsYU6BSkJsAOpDSJEtjZJYg5U5k7URJDVJf503iA6mHiy7P7EdHkQ_Oo7xIQ=s0-rw",
@@ -317,8 +287,7 @@
           "title": "28｜半倚石檯",
           "alt": "長腿姐姐：她一手扶檯，一手停在唇邊，將身形斜倚進暖光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她一手扶檯，一手停在唇邊，將身形斜倚進暖光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816956"
+          "description": "她一手扶檯，一手停在唇邊，將身形斜倚進暖光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/MHFuyqmm8zmfahKaGvwGmbhDL9aMbefmvjQRP0LZzPDVL-XKKv6eGdXOhZo_muin_cQXhsphgNrR8mTQkRw20U5iugwxSdUiYbQdOg=s0-rw",
@@ -328,8 +297,7 @@
           "title": "29｜背光轉身",
           "alt": "長腿姐姐：她從側背轉頭望來，長髮把肩後的亮光分成兩半。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她從側背轉頭望來，長髮把肩後的亮光分成兩半。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817035"
+          "description": "她從側背轉頭望來，長髮把肩後的亮光分成兩半。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/CW0BlVpfMAnlGSevqTabPIMX-UadRQG-C1bIiP4W0WDdjIm3sYwsNT6EUNl_jd-B14I27GaHLh_wFBVGD1eJHVWNgZjSnKjMGMmc=s0-rw",
@@ -339,8 +307,7 @@
           "title": "30｜伸來的手",
           "alt": "長腿姐姐：她朝鏡頭伸手，指尖先進入前景，衣襬在身後翻動。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她朝鏡頭伸手，指尖先進入前景，衣襬在身後翻動。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816913"
+          "description": "她朝鏡頭伸手，指尖先進入前景，衣襬在身後翻動。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ekICVZz-BrWftP0gz0NAWfI_1DV8dFUw_tuWFFllDHqp15F_m911loDBccrJVDMuzfyBdwKjwRHw7-c2FUjnt3GDHW4aIEF8RjUU=s0-rw",
@@ -350,8 +317,7 @@
           "title": "31｜檯邊停步",
           "alt": "長腿姐姐：一手扶檯，一手靠近肩側，她在走廊邊停了下來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手扶檯，一手靠近肩側，她在走廊邊停了下來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816940"
+          "description": "一手扶檯，一手靠近肩側，她在走廊邊停了下來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/JLzj1VPKoI1Y-qM2eB5iZ2-teog2h4rzyyDsvtiDjMlg9Pem_PEUV1bWI0jylUtiUL5mMVqS3O_43kARSAMo-NaG11MB96LafgBb4Ec=s0-rw",
@@ -361,8 +327,7 @@
           "title": "32｜黑衣靜坐",
           "alt": "長腿姐姐：她穿黑色短裙跪坐，雙手輕垂，燈光貼著沙發邊緣。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿黑色短裙跪坐，雙手輕垂，燈光貼著沙發邊緣。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816986"
+          "description": "她穿黑色短裙跪坐，雙手輕垂，燈光貼著沙發邊緣。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kBZokxf0hBZliIWsOglFP3bzDAkesmz9db5lLl8tp7xohVGXbOaoUQDxh_9sXrRc6Z87XjQMhBt-d6Oj28T1n51Ol2aEGB7NEYev5b4=w1200-h1600-rw-sm-pa-nu-v0",
@@ -372,8 +337,7 @@
           "title": "33｜仰起下巴",
           "alt": "長腿姐姐：她將手收至背後，微抬下巴，白襯衫襯著深色石材。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將手收至背後，微抬下巴，白襯衫襯著深色石材。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817021"
+          "description": "她將手收至背後，微抬下巴，白襯衫襯著深色石材。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/d-Rgu-u3sXMZw4FlPt5gwPUNFN4wodF9tmUOerujAchGCL8e9uGjAvuLAmntz49vJyi10TF-j2VMRz2njsFzywwl3hpJb_JfBRXWX6w=s0-rw",
@@ -383,8 +347,7 @@
           "title": "34｜袖側留光",
           "alt": "長腿姐姐：她側身回看，垂下的手臂末端留著一段暖色反光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她側身回看，垂下的手臂末端留著一段暖色反光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816945"
+          "description": "她側身回看，垂下的手臂末端留著一段暖色反光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/0DeX3NgHWJJaHIOfcLvW8DgXa3S-HxCL7bl1vji3jjJsM2V_6rczE_oQufnJAZlo0m-Lsn9p0siYc2z32xwT3PN7-mpH-Cb1zgqR=s0-rw",
@@ -394,8 +357,7 @@
           "title": "35｜一身墨色",
           "alt": "長腿姐姐：黑色長褲順著腿線垂落，她在石牆旁回首。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "黑色長褲順著腿線垂落，她在石牆旁回首。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816999"
+          "description": "黑色長褲順著腿線垂落，她在石牆旁回首。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/CxphZoU17rbL1HifK3Lyh3oEIqEGAyfdkWyIYZixskLyXiEYAg7dRjluelzAt1UkdK4YgdDXWsy5EzEV7aP7fbgurLPCcmQnRK0h740=w1200-h1600-rw-sm-pa-nu-v0",
@@ -405,8 +367,7 @@
           "title": "36｜沙發側坐",
           "alt": "長腿姐姐：她把雙腿收在身側，雙手疊在腿前，轉臉接住鏡頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把雙腿收在身側，雙手疊在腿前，轉臉接住鏡頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817106"
+          "description": "她把雙腿收在身側，雙手疊在腿前，轉臉接住鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/NuSf2QhwvjPSuB9TjmDeTwOnKrRVwVDpaO2OQuQ8xWc50QOZDjuy7ueMgzS6c5v9U2ilCMNcI3Kn8bXitkcjjxa6a96cDaI1bK4A=s0-rw",
@@ -416,8 +377,7 @@
           "title": "37｜披衣走近",
           "alt": "長腿姐姐：黑色外衣垂在手邊，她沿著有倒影的走廊走來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "黑色外衣垂在手邊，她沿著有倒影的走廊走來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817105"
+          "description": "黑色外衣垂在手邊，她沿著有倒影的走廊走來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/XRmEKZFM4VvuqAVPZXfbCHWgSZ9HBQH84hgXOGpBZmVFK3A1AsF_KsMmXjnqNly_6USHeBkebOL3UzqAnUiJ5lrZlNi9dMFwe9npSQ=s0-rw",
@@ -427,8 +387,7 @@
           "title": "38｜窗線與身影",
           "alt": "長腿姐姐：她伸手觸向窗框，腳跟微抬，身影和窗的直線並列。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她伸手觸向窗框，腳跟微抬，身影和窗的直線並列。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816918"
+          "description": "她伸手觸向窗框，腳跟微抬，身影和窗的直線並列。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/yk-ZnYVfFKG97MqBK-vEnhGOVIwtM4diaaSAck6lhQc3Ocdd0-_j0_EhXq8GkkAiQA0Jq46bSfmq22tSQEm1HIpPT_7CPI0csL24pw=s0-rw",
@@ -438,8 +397,7 @@
           "title": "39｜回首垂手",
           "alt": "長腿姐姐：她把手放低，從肩後望來，淺藍牛仔布把畫面提亮。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把手放低，從肩後望來，淺藍牛仔布把畫面提亮。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817108"
+          "description": "她把手放低，從肩後望來，淺藍牛仔布把畫面提亮。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/BX1gq4XRtimUgb4yUO9SmTzqBgTG1JX6SeW3RMj5SEEeHzAXzNJLKm02thHdb4AIOjQLfvwybu1JZDER5XGWNKxMq2LvlT3S1iZQ0w=s0-rw",
@@ -449,8 +407,7 @@
           "title": "40｜近看一笑",
           "alt": "長腿姐姐：雙手壓住坐墊，她俯身靠近，嘴角帶著一點笑意。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙手壓住坐墊，她俯身靠近，嘴角帶著一點笑意。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816921"
+          "description": "雙手壓住坐墊，她俯身靠近，嘴角帶著一點笑意。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/FXu9bOQcVxTYpDXGDcz5Ie51zJLpfRK3uWAQ-lsO4XIVC17vbexiP9Hn6TmcnTox8EHaVlQmUBJ6udBuI9DB2t_lk863RbX2jXUj3Q=s0-rw",
@@ -460,8 +417,7 @@
           "title": "41｜短裙與石柱",
           "alt": "長腿姐姐：她在石柱邊屈起一腿，細帶鞋的輪廓落在亮地上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在石柱邊屈起一腿，細帶鞋的輪廓落在亮地上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816923"
+          "description": "她在石柱邊屈起一腿，細帶鞋的輪廓落在亮地上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/q26K_rWVDDZtvBOmP3BMPkSqqQ1gwUYL_a81uuIeWV2BrPMAx0orYQtWBuK3Vm7aM7n59X3pDlurTpJ_n_tNjHgw9X1IWJkU_7I6vnQ=s0-rw",
@@ -471,8 +427,7 @@
           "title": "42｜黑衣倚立",
           "alt": "長腿姐姐：雙臂交抱，一腳抬起，她把重心留在石牆旁。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙臂交抱，一腳抬起，她把重心留在石牆旁。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816994"
+          "description": "雙臂交抱，一腳抬起，她把重心留在石牆旁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/GydzacmSan220fst-sHT0mOJIDzgjSBYUcQK_Q-y3xs3FuQwLlnIVzLG21zMwCvIgaGYQ8iPVmp-l2QLxHT_eB8WVo7Ee4fyGYzt_A=s0-rw",
@@ -482,8 +437,7 @@
           "title": "43｜膝前微笑",
           "alt": "長腿姐姐：她坐在沙發邊緣，雙手靠近膝頭，身旁的燈映在玻璃上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她坐在沙發邊緣，雙手靠近膝頭，身旁的燈映在玻璃上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816943"
+          "description": "她坐在沙發邊緣，雙手靠近膝頭，身旁的燈映在玻璃上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/vDyRU01FKI1DB1jS9q04knNoW08XaZ8dQ53d3k0a6sdASPASu7w1uUS8l0hLkk-wTKSabMI2fQZoz-jyztApYZEqIaxfOU6PByKE=s0-rw",
@@ -493,8 +447,7 @@
           "title": "44｜短裙正步",
           "alt": "長腿姐姐：她面向鏡頭站在石地上，黑裙下的雙腿前後錯開。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她面向鏡頭站在石地上，黑裙下的雙腿前後錯開。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816973"
+          "description": "她面向鏡頭站在石地上，黑裙下的雙腿前後錯開。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/L6P4UPH3dhU4E8O_-75OyMmsM0MCjS2K5xZJeQ9NxcOry3dyxUzzE5p9qZibxEKoRaeO3bUlVrJCTgE_468qv64_wniqqSa65y5rTw=s0-rw",
@@ -504,8 +457,7 @@
           "title": "45｜坐墊上的暖色",
           "alt": "長腿姐姐：她扶著坐墊略微前傾，馬尾落向一側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她扶著坐墊略微前傾，馬尾落向一側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816935"
+          "description": "她扶著坐墊略微前傾，馬尾落向一側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/-myClNgx5O9xqEkwyl_Poub5darF4EMWe0sr9nCo4ksazRdtObUFERbAowuXdsdkh9zqNI6fT9wl86FYDaXoZ2f2j-USYNb2F1E2ww=w1200-h1600-rw-sm-pa-nu-v0",
@@ -515,8 +467,7 @@
           "title": "46｜坐穩回望",
           "alt": "長腿姐姐：她把雙手分放在腿側和坐面，身形在暖燈前站穩視線。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把雙手分放在腿側和坐面，身形在暖燈前站穩視線。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817008"
+          "description": "她把雙手分放在腿側和坐面，身形在暖燈前站穩視線。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/L9UwH6epdrbyCDDN6NAEIKOljCI_dDYSGmi_r4RS3cPbrWcC97Hi5T3JtVUXgnY9rIKuZgO-WE4D8EzvG0OKvrGU0JBGvbI-f-X6HQ=s0-rw",
@@ -526,8 +477,7 @@
           "title": "47｜扶額再望",
           "alt": "長腿姐姐：她將手肘靠在椅背，斜坐的輪廓順著椅面延伸。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將手肘靠在椅背，斜坐的輪廓順著椅面延伸。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817116"
+          "description": "她將手肘靠在椅背，斜坐的輪廓順著椅面延伸。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/3gwwPQFavdppTmpVSwZeDd0DjAMZ98xvvVig1khvNHsSIztrffTld-lksFHI_eQZX6iOJPfxuWaNuSyle70sz8RaK0AAkKrJC2GoXA=s0-rw",
@@ -537,8 +487,7 @@
           "title": "48｜背身向光",
           "alt": "長腿姐姐：她背對鏡頭，轉回臉時，髮梢掃過白襯衫肩頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她背對鏡頭，轉回臉時，髮梢掃過白襯衫肩頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816979"
+          "description": "她背對鏡頭，轉回臉時，髮梢掃過白襯衫肩頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kBZokxf0hBZliIWsOglFP3bzDAkesmz9db5lLl8tp7xohVGXbOaoUQDxh_9sXrRc6Z87XjQMhBt-d6Oj28T1n51Ol2aEGB7NEYev5b4=w1200-h1600-rw-sm-pa-nu-v0",
@@ -548,8 +497,7 @@
           "title": "49｜雙手收後",
           "alt": "長腿姐姐：她挺直背線，把雙手收向身後，窗框將背景分成數格。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她挺直背線，把雙手收向身後，窗框將背景分成數格。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817004"
+          "description": "她挺直背線，把雙手收向身後，窗框將背景分成數格。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/VNNi12QpFIFDH9xZnCiueb78rG9rCLQEZc8OhXF4flMEgnQfTDbD5fvim6vJeR04KYBshdqzl1m3FiWZnrXjpfkLcR3pXqymW7jM8A=s0-rw",
@@ -559,8 +507,7 @@
           "title": "50｜牛仔與石紋",
           "alt": "長腿姐姐：她以側身回看，淺藍短褲和深灰石面在腰際相接。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她以側身回看，淺藍短褲和深灰石面在腰際相接。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816955"
+          "description": "她以側身回看，淺藍短褲和深灰石面在腰際相接。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/mp-85SB9BenTsLX0VXpjhaI3zu30-J0MdO_07Ou5z3mbOfz-UK9b2t_Bj16i1s5l2LnUeDVKUtaXuHVZ68MGtKMDVh5kWQMXODAQVQ=s0-rw",
@@ -570,8 +517,7 @@
           "title": "51｜黑色長線",
           "alt": "長腿姐姐：她穿黑色長褲站在走廊，斜交的雙腿帶出步伐感。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿黑色長褲站在走廊，斜交的雙腿帶出步伐感。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816997"
+          "description": "她穿黑色長褲站在走廊，斜交的雙腿帶出步伐感。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/zRG4OzPlnq3_0NJfwx5xn7NPt7KOqKiYSZqwnnQ7-FwFPgYrNyBE_nXxIBKsCbW3bDFNqrmnuLYaHiT7G7VOLYT7HNrwX2wIRDpg=s0-rw",
@@ -581,8 +527,7 @@
           "title": "52｜鞋帶旁的光",
           "alt": "長腿姐姐：她在石柱邊抬膝，鞋上的細帶在亮地前格外清楚。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在石柱邊抬膝，鞋上的細帶在亮地前格外清楚。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816984"
+          "description": "她在石柱邊抬膝，鞋上的細帶在亮地前格外清楚。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/RruPlKokAJiuElgUXbYgPaVDdqbUgq140c9ZST8XSCTd1QLXgm8vEBp0Ga58M6lncVfhwOgNViqwBi3-X-jL9-fxvpZKKN44eEmOig=s0-rw",
@@ -592,8 +537,7 @@
           "title": "53｜手探髮間",
           "alt": "長腿姐姐：一手插入髮間，一手扶腰，白袖沿手臂散開。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手插入髮間，一手扶腰，白袖沿手臂散開。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816897"
+          "description": "一手插入髮間，一手扶腰，白袖沿手臂散開。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Uuj-j0409RBLZ8dP_rBwBSSDfznx-A-IlIXOAzPAmJg3OTGHXZ-af5l2EfujVrCLMpukpQTVYZVfs8s0EFTOHF9O4KXH54HOy0yglY8=s0-rw",
@@ -603,8 +547,7 @@
           "title": "54｜跪坐扶髮",
           "alt": "長腿姐姐：她在沙發上抬手理髮，另一隻手停在膝前。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在沙發上抬手理髮，另一隻手停在膝前。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816900"
+          "description": "她在沙發上抬手理髮，另一隻手停在膝前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/pvYRUzkOGtESvxcOlWP1sVdaP8hSwRjOitu5qcz7ViGpTsbEtncNitvMVQA6Z_tOatOky1nwag6T3VcRN82fA0WdsZ1tMxZB3WdDUQ=s0-rw",
@@ -614,8 +557,7 @@
           "title": "55｜室內柔光",
           "alt": "長腿姐姐：她在坐墊上略微前傾，髮絲與衣領一起映出暖色。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在坐墊上略微前傾，髮絲與衣領一起映出暖色。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817010"
+          "description": "她在坐墊上略微前傾，髮絲與衣領一起映出暖色。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/yPzOlOfL4t6MmLFn6EoRPW_1ftZHzSan0MGFZqqy0oxbRwzwYPOKR3c3Mx7VvaW8g0yobSh8rJ6T2vgQBtKmbu6ANujynWZMSjjzNtI=s0-rw",
@@ -625,8 +567,7 @@
           "title": "56｜雙袖揚起",
           "alt": "長腿姐姐：雙手靠近頭髮，揚起的白袖剛好框住臉側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙手靠近頭髮，揚起的白袖剛好框住臉側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816909"
+          "description": "雙手靠近頭髮，揚起的白袖剛好框住臉側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/skyWlTvzmvdc-_kNXsB9scIdEECu9g9oTe9zCIJG-H26iQsONRsVGXeP5qHA-iMzPXt8J_vMtrOsY73daMw6gHBWk5JubkuEU7Ies3k=s0-rw",
@@ -636,8 +577,7 @@
           "title": "57｜掌心與坐墊",
           "alt": "長腿姐姐：她用雙掌撐住沙發，燈在身後映出一點琥珀色。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她用雙掌撐住沙發，燈在身後映出一點琥珀色。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817126"
+          "description": "她用雙掌撐住沙發，燈在身後映出一點琥珀色。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/mVEd2kK4sItdNP_crOCbXTan5s6KyJHIEpWBGpiFVF-0MZBpfyG-QtEZWSOVxfsRv2o4suhY_YvLlkdUJeAA3TquRGJL3z8FIb5S=s0-rw",
@@ -647,8 +587,7 @@
           "title": "58｜掌中側顏",
           "alt": "長腿姐姐：她以掌心托住下巴，另一臂沿著座面自然放低。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她以掌心托住下巴，另一臂沿著座面自然放低。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817118"
+          "description": "她以掌心托住下巴，另一臂沿著座面自然放低。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/wN9tjHOZht2rs-317iS5XH2tqf3s52emtKfCql5O0H-IqY3Ihj0E9bNAIh48UC5vWLZoPCXsYUuSQWN-IwfjvpEQdpiQMNaKm0qNqg=s0-rw",
@@ -658,8 +597,7 @@
           "title": "59｜收腰回望",
           "alt": "長腿姐姐：她略轉肩膀，一臂收在腰際，馬尾順背筆直垂下。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她略轉肩膀，一臂收在腰際，馬尾順背筆直垂下。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817011"
+          "description": "她略轉肩膀，一臂收在腰際，馬尾順背筆直垂下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/-myClNgx5O9xqEkwyl_Poub5darF4EMWe0sr9nCo4ksazRdtObUFERbAowuXdsdkh9zqNI6fT9wl86FYDaXoZ2f2j-USYNb2F1E2ww=w1200-h1600-rw-sm-pa-nu-v0",
@@ -669,8 +607,7 @@
           "title": "60｜素白與灰椅",
           "alt": "長腿姐姐：她在灰色座面上坐直，白袖沿著身體垂落。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在灰色座面上坐直，白袖沿著身體垂落。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817019"
+          "description": "她在灰色座面上坐直，白袖沿著身體垂落。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/iTRQtiagbtQ0cZ0kUheptO8sR92rvGZgCtmBjYfuH3MnqPthRat_BIwLBgMQIrV2Wk6Mmjb1ky_U72Dm0sY11vy0gqh5030sSSsO=s0-rw",
@@ -680,8 +617,7 @@
           "title": "61｜指間揚髮",
           "alt": "長腿姐姐：她抬臂掠過髮頂，另一手停腰，姿勢沿著窗框舒展。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她抬臂掠過髮頂，另一手停腰，姿勢沿著窗框舒展。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816991"
+          "description": "她抬臂掠過髮頂，另一手停腰，姿勢沿著窗框舒展。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/2MdnyeOVGgsZNnJvB6eAKbIiaoKe6E577GZIi07oMfvUgio61RcIrlTg2_mFO4JNiBoVeFyRhMRLXGxm0YzqKwiud4bbD37LCed72g=s0-rw",
@@ -691,8 +627,7 @@
           "title": "62｜長椅斜坐",
           "alt": "長腿姐姐：她靠在長椅上屈腿，斜向的身形順著坐墊延伸。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她靠在長椅上屈腿，斜向的身形順著坐墊延伸。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816964"
+          "description": "她靠在長椅上屈腿，斜向的身形順著坐墊延伸。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ipZNF7nScQgPurnPb1_cRiAJLD34qGVQ6KKPdoNJBSFU6UT9iuH1bYd_7IefkX9LD71W_Mlz-C2wOsvxAuSVPjGsDJmcTyK_XAb9=s0-rw",
@@ -702,8 +637,7 @@
           "title": "63｜沙發旁理髮",
           "alt": "長腿姐姐：一手扶著沙發，一手觸向髮側，她轉臉迎光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手扶著沙發，一手觸向髮側，她轉臉迎光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816953"
+          "description": "一手扶著沙發，一手觸向髮側，她轉臉迎光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/deUQXOsgILMbDoScnIoEr1fjwRKg1G_plsXmDJ7K_5SzoJwhDlKJA2VOenEhFosePnroJyvhYPx7-mqUj6Jz0yzWQKgCKgoZXnrb5g=s0-rw",
@@ -713,8 +647,7 @@
           "title": "64｜椅沿斜影",
           "alt": "長腿姐姐：她穿黑衣斜坐椅沿，一隻手搭上椅背，細帶鞋落在石地。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿黑衣斜坐椅沿，一隻手搭上椅背，細帶鞋落在石地。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817037"
+          "description": "她穿黑衣斜坐椅沿，一隻手搭上椅背，細帶鞋落在石地。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/2r49WROSH6VPY9k_dEZLNPFNqW0EHZ9_rczCaqw85QT-k1Q_fv6Gxrki0EuKIeB8ylqQAFSsWvYfOaKFNtHYt5VtLMi5xNP4wobC_YA=s0-rw",
@@ -724,8 +657,7 @@
           "title": "65｜側坐直肩",
           "alt": "長腿姐姐：她收著雙腿坐穩，肩背挺起，回眸留在畫面上方。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她收著雙腿坐穩，肩背挺起，回眸留在畫面上方。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817016"
+          "description": "她收著雙腿坐穩，肩背挺起，回眸留在畫面上方。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kcx9ZTGvtZt9jPOzJmEhL33lq0gfaAZxrQyK-nAj5W999ALZVzna1CwkSUnaq6JokEAzXJTfF5m_fvbVwZWRYhn3AJ3p7I4L3spQ9pM=s0-rw",
@@ -735,8 +667,7 @@
           "title": "66｜倚檯背影",
           "alt": "長腿姐姐：一手沿著石檯撐住身體，她從肩後望向鏡頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手沿著石檯撐住身體，她從肩後望向鏡頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816974"
+          "description": "一手沿著石檯撐住身體，她從肩後望向鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/l6W61xvR6GPgLVXW4DrAtxZIQ1515W56VCW21BFyKz7TUWUP37SDpP6t2RMM3MveKEjq8PRD-VqbDbd9TY_OLdio5EYbg-3z36-xw-k=s0-rw",
@@ -746,8 +677,7 @@
           "title": "67｜站姿回身",
           "alt": "長腿姐姐：牛仔短褲與白襯衫疊出淺亮色塊，她側身停在檯前。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "牛仔短褲與白襯衫疊出淺亮色塊，她側身停在檯前。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817007"
+          "description": "牛仔短褲與白襯衫疊出淺亮色塊，她側身停在檯前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/OmpB3Ib1CSQbGSpnl7W32w8PtJjT8hJY8ziMhw-JVr-qTHKlCpgg8NhML0RtfagiZ19_E5TYLwqkvwhohFoNWBsxn_zvND1-Zw71Mg=s0-rw",
@@ -757,8 +687,7 @@
           "title": "68｜手近耳畔",
           "alt": "長腿姐姐：她在深色石檯前抬手碰髮，目光仍朝正前方。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在深色石檯前抬手碰髮，目光仍朝正前方。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817018"
+          "description": "她在深色石檯前抬手碰髮，目光仍朝正前方。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/fVDN4iHnsdfpVzEf96Grv6EZ4B2EnqugjvELN9j4LIYcUiD2Pqfnrzj7CNNFnL3myYymFL28nT_G0rB4dVMnV_yfewUzGU5xLw7ddA=s0-rw",
@@ -768,8 +697,7 @@
           "title": "69｜扶腮跪坐",
           "alt": "長腿姐姐：她一手扶腮，一手支住沙發，將姿勢收進灰色靠墊之間。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她一手扶腮，一手支住沙發，將姿勢收進灰色靠墊之間。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816932"
+          "description": "她一手扶腮，一手支住沙發，將姿勢收進灰色靠墊之間。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Hj1VuAEuI-XFNBKQD-S3SaYxSP00Gma3RFv3uS3WewBhzAZ6KTjGMZ8HdyqeLzdCpWYB-fZJow7P4OqGJGYbMjx5ZUDhSScnwP-umQ=s0-rw",
@@ -779,8 +707,7 @@
           "title": "70｜灰沙發上的斜線",
           "alt": "長腿姐姐：靠在沙發上的她把雙腿斜放，手肘安穩落在靠墊旁。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "靠在沙發上的她把雙腿斜放，手肘安穩落在靠墊旁。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816904"
+          "description": "靠在沙發上的她把雙腿斜放，手肘安穩落在靠墊旁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/fgEyOoOpP2PhLztqKZTBWLgy5XJYilH775wF_Wks2JePqjLflThaRa6cA7DmgAIIj5C2ZTzMe02--uGpK2_Qhi9v3Y-mDg3iA2XU=s0-rw",
@@ -790,8 +717,7 @@
           "title": "71｜黑裙與灰墊",
           "alt": "長腿姐姐：黑色衣料在灰色坐墊上落下銳利邊線，她微向前坐。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "黑色衣料在灰色坐墊上落下銳利邊線，她微向前坐。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816934"
+          "description": "黑色衣料在灰色坐墊上落下銳利邊線，她微向前坐。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/N6AATzeBdcG9txujqaDQVDxj8IU1zPDQ5h3nqnLjmA0sqYQqyIL-mR1YL_WK_kGBSEVMp3Qk_P9oiyjUdMzkFAtWms9fx4kYSXpmiA=s0-rw",
@@ -801,8 +727,7 @@
           "title": "72｜坐在門窗前",
           "alt": "長腿姐姐：她坐在沙發靠外的位置，手掌沿著腿側放下。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她坐在沙發靠外的位置，手掌沿著腿側放下。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816962"
+          "description": "她坐在沙發靠外的位置，手掌沿著腿側放下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/yWBoFzSECfnGq4EVr0NyrCigV4me2FgbeSEqrtABne4pApOW_Ln9MvhQEskq7vBEv0jo_TvsX49aDYGCK5sCx0sn0_6UTUj3VbyYcOs=w1200-h1600-rw-sm-pa-nu-v0",
@@ -812,8 +737,7 @@
           "title": "73｜指尖梳過",
           "alt": "長腿姐姐：她將手指帶向鬢邊，袖口在木色與石紋之間亮起。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將手指帶向鬢邊，袖口在木色與石紋之間亮起。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817124"
+          "description": "她將手指帶向鬢邊，袖口在木色與石紋之間亮起。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gVBRA74IOtkRtVQke-XjXuX86nrVnV6-ZkT6K1sffUgC5AtoEZRJ7Zw6IGDrV6MVf573FpJ1hKfnsN32bgmWD2XeYwOJi3EcdRUK=s0-rw",
@@ -823,8 +747,7 @@
           "title": "74｜抱臂單膝",
           "alt": "長腿姐姐：她借石牆停住身形，交疊的手臂與屈起的膝頭彼此呼應。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她借石牆停住身形，交疊的手臂與屈起的膝頭彼此呼應。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817030"
+          "description": "她借石牆停住身形，交疊的手臂與屈起的膝頭彼此呼應。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Zre7wsi4-uLNHuFrCYUSiB99hrUaiTuU-NF3V6PmlPaKRtYVniNtybw3OAKA6ufDVBrkPx_wOdHT5kuGBWEEC6u7Kh8pvLUrXUyBMQ=w1200-h1600-rw-sm-pa-nu-v0",
@@ -834,8 +757,7 @@
           "title": "75｜石柱旁的回眸",
           "alt": "長腿姐姐：肩背靠近石柱，屈起的腿讓斜倚的身形更鬆弛。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "肩背靠近石柱，屈起的腿讓斜倚的身形更鬆弛。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817109"
+          "description": "肩背靠近石柱，屈起的腿讓斜倚的身形更鬆弛。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gE1sIL99v3JsGVSq8O2PxVTIFUD6Pqqx3x5LUaqTf28Mh5lxmm4l-TEzLB_ZAR3oOH7FymEuv_c6o8J4nUuRuPJFjSiFmA7zRMPilg=s0-rw",
@@ -845,8 +767,7 @@
           "title": "76｜垂手一望",
           "alt": "長腿姐姐：她在檯邊側站，手自然下垂，視線從白衣上方迎來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在檯邊側站，手自然下垂，視線從白衣上方迎來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816938"
+          "description": "她在檯邊側站，手自然下垂，視線從白衣上方迎來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/L7b6HoetNTX1STjqVkNE8GzSQPNWUWA8z_hgdnXv_TnmA-0KjAmlcx56mpHdkyXP3iBl26qGOAbvYJW-5SaxESITZpHWa4V0XV2cMQ=s0-rw",
@@ -856,8 +777,7 @@
           "title": "77｜地面上的黑衣",
           "alt": "長腿姐姐：她穿黑衣單膝靠地，一手停在臉側，地面映出柔亮灰紋。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿黑衣單膝靠地，一手停在臉側，地面映出柔亮灰紋。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817102"
+          "description": "她穿黑衣單膝靠地，一手停在臉側，地面映出柔亮灰紋。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/oeo6-wCCzYqtcWF4lTfBdY14irbHK0BC5oHgO8bPyUGb1H55pJOt8RAJsLdmoRRt_Gn_SVwxa3gGY07g3AsJyABDuj6CQrk8H-Co2w=s0-rw",
@@ -867,8 +787,7 @@
           "title": "78｜腰前交手",
           "alt": "長腿姐姐：一臂收在腰前，她向後轉頭，暖光從馬尾旁掠過。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一臂收在腰前，她向後轉頭，暖光從馬尾旁掠過。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816912"
+          "description": "一臂收在腰前，她向後轉頭，暖光從馬尾旁掠過。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/M5Kgr38I_MvuNJiFOjfOkw261pdEZ_a-ICnSNCJZT20k1yZxwvrVWJlbcdFqsUXlOINAWa6w18y04247rg5dQUo2ODVgQdQ3bFBlrSo=s0-rw",
@@ -878,8 +797,7 @@
           "title": "79｜長廊來影",
           "alt": "長腿姐姐：她穿一身黑走向鏡頭，抬手理髮，身後的走廊透出亮光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她穿一身黑走向鏡頭，抬手理髮，身後的走廊透出亮光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816995"
+          "description": "她穿一身黑走向鏡頭，抬手理髮，身後的走廊透出亮光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/cW01qXHQGP_knT60-cwTryCBXuRbz37b629ZA5mFER2_lTtTS2k-u4tBk_2jAJHs-7BM250DWNispyt2pnbi8iHTRLDgQJZtTbjkDQ=s0-rw",
@@ -889,8 +807,7 @@
           "title": "80｜長椅屈膝",
           "alt": "長腿姐姐：她側坐椅上，一條腿屈起，手抬向臉旁。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她側坐椅上，一條腿屈起，手抬向臉旁。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817005"
+          "description": "她側坐椅上，一條腿屈起，手抬向臉旁。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/7ljAylUxP23ZIjo8NyKJnkmH5e7Sp1mpbwQ3VM9h_NOc_NY3STW87BJZWlPiWb_PMFIhrZe1mxe8hU-RSJ45UoYdw3MNCDjnB53Y=s0-rw",
@@ -900,8 +817,7 @@
           "title": "81｜手臂作框",
           "alt": "長腿姐姐：她把手抬至頭頂，另一手扶腰，白衣勾出清楚的線條。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把手抬至頭頂，另一手扶腰，白衣勾出清楚的線條。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817117"
+          "description": "她把手抬至頭頂，另一手扶腰，白衣勾出清楚的線條。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/aX7YqThneCJaFYgpUmZKGGmVWAtMlOK3duh6ThkjNe-FryiN-y3cSFaY3_V6jhrsQL4ZMXAdpJ7OIALhilMcTcX2ngEcOmPAqhzDeA=s0-rw",
@@ -911,8 +827,7 @@
           "title": "82｜橫坐沙發",
           "alt": "長腿姐姐：一手撐住座面，她向後仰起視線，雙腿順著長椅斜放。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手撐住座面，她向後仰起視線，雙腿順著長椅斜放。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816978"
+          "description": "一手撐住座面，她向後仰起視線，雙腿順著長椅斜放。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/s2vPLgE8KEW5vUtPvMc8aSo-Bnllt8YiQmAEd2GuW3sFaWm7tpR2oTVORBE5XFhb8zzPpL5HFcQm3zbvh96Gyp7SsxB0zblELOOT=s0-rw",
@@ -922,8 +837,7 @@
           "title": "83｜石檯側背",
           "alt": "長腿姐姐：她扶檯回身，牛仔短褲的淺色襯著石面的暗紋。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她扶檯回身，牛仔短褲的淺色襯著石面的暗紋。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817113"
+          "description": "她扶檯回身，牛仔短褲的淺色襯著石面的暗紋。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/FwMJcvh6_1TyULjqv17jRvKrb3Buj21DlNHdJunZbGaNhkyBESYBSc7Q5kSJC_CHWV5Z6hLDXerbx2qyANpRaCZpr23Se_faNC32Hw=s0-rw",
@@ -933,8 +847,7 @@
           "title": "84｜借背而坐",
           "alt": "長腿姐姐：手肘在靠背上找到支點，交疊的腿使坐姿安定下來。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "手肘在靠背上找到支點，交疊的腿使坐姿安定下來。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816903"
+          "description": "手肘在靠背上找到支點，交疊的腿使坐姿安定下來。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/nUdiapDoLft4uIb3tvyHkIq3sUuNnetGvMt8mSxML6NBdIGgddLTZ0_OCGXmkXQd09jWdQERlffbKdc4JUM3DHGhd9qpK0GGDjgl8g=s0-rw",
@@ -944,8 +857,7 @@
           "title": "85｜白衣回身",
           "alt": "長腿姐姐：她轉過肩線望來，袖口與髮尾皆落在身後。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她轉過肩線望來，袖口與髮尾皆落在身後。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816927"
+          "description": "她轉過肩線望來，袖口與髮尾皆落在身後。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ElDYkdmTBXtkGpa-ebCcPppKUalbya9oTWxPeBD5woYfqTt9rvRwLds1fzgGELsiL071cZeurTWBjpHN2nJbZO8DPmDXafU4od1gdQ=s0-rw",
@@ -955,8 +867,7 @@
           "title": "86｜貼近檯面",
           "alt": "長腿姐姐：她雙手扶著檯緣，稍稍傾身，石面的反光把前景照亮。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她雙手扶著檯緣，稍稍傾身，石面的反光把前景照亮。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817101"
+          "description": "她雙手扶著檯緣，稍稍傾身，石面的反光把前景照亮。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/4ESXqm0ULFBXyTEjZU2JpLeTqubhNPACLEEzc4HC7mkrZeIOGrg0fTuQWtBoXnKG7ruaKnvi2w4gbt0tVhWBnH4b4qOyyhA7DGfnm9A=s0-rw",
@@ -966,8 +877,7 @@
           "title": "87｜雙手靠腰",
           "alt": "長腿姐姐：她將雙手收在腰際，身後燈點延向走廊深處。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將雙手收在腰際，身後燈點延向走廊深處。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816946"
+          "description": "她將雙手收在腰際，身後燈點延向走廊深處。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/SlTtPyW47F_--EVRhFmkqmOs4kXEyip3cWLk6wd7pevzBJBC4hViAoSrKNeQTFk2H9f7sPhjLX9vHLh7814K_aFoHTy_ZVgnrKzvDQ=s0-rw",
@@ -977,8 +887,7 @@
           "title": "88｜黑裙回首",
           "alt": "長腿姐姐：她背向鏡頭站在沙發旁，回過臉，腳下留著細帶鞋的倒影。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她背向鏡頭站在沙發旁，回過臉，腳下留著細帶鞋的倒影。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816987"
+          "description": "她背向鏡頭站在沙發旁，回過臉，腳下留著細帶鞋的倒影。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/WsGPQ3yc_ibn-rWBLwh2uzM4K5_ugMAvTzKbSOdmGLcWsphN_wsXM_TytOtzIni5OcJOr87FNMjvuVr06Ge9ziRPRgjqYQB1_y9s3Q=s0-rw",
@@ -988,8 +897,7 @@
           "title": "89｜椅邊笑意",
           "alt": "長腿姐姐：她把手放在腿前，交疊雙膝，稍稍前傾迎向目光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把手放在腿前，交疊雙膝，稍稍前傾迎向目光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816929"
+          "description": "她把手放在腿前，交疊雙膝，稍稍前傾迎向目光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Yqx4wv2ukBg8WHh_Iey4zRvzRm2kokP3Q93LV46q9j79uBP5bGh2fbc7j5G2Lej5PpUq1qqkdwzI8j4vu-rVCJz0T25MtgQ8KMjt574=s0-rw",
@@ -999,8 +907,7 @@
           "title": "90｜髮尾輕提",
           "alt": "長腿姐姐：她在沙發上抬手帶起一撮頭髮，另一手仍安放膝上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在沙發上抬手帶起一撮頭髮，另一手仍安放膝上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816915"
+          "description": "她在沙發上抬手帶起一撮頭髮，另一手仍安放膝上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/RScNq7FR3vHpbXPg4163XFCz1MMUkmTV1YMPdJM3_MFMI43J8-A0vk8S7wuYzzDWg9ahQof2uwhPYvhXZ35wUeAKhbaQbV0aQIb2pw=s0-rw",
@@ -1010,8 +917,7 @@
           "title": "91｜背向窗框",
           "alt": "長腿姐姐：她背身靠近檯邊，往肩上回望，黑框在身旁垂直落下。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她背身靠近檯邊，往肩上回望，黑框在身旁垂直落下。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816972"
+          "description": "她背身靠近檯邊，往肩上回望，黑框在身旁垂直落下。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Zo9aju9io3uaVErbcjX9WEaZpng9_3Nm9uwWS2OH4YY41mboVfTjyHbFUNGMbXFF-c4KNmx4h1KRocKDh4h-ydvRB3RUvL-IoqoXKl4=s0-rw",
@@ -1021,8 +927,7 @@
           "title": "92｜雙手後撐",
           "alt": "長腿姐姐：她把雙掌壓在石檯上，回望的臉停在暗亮交界。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把雙掌壓在石檯上，回望的臉停在暗亮交界。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817119"
+          "description": "她把雙掌壓在石檯上，回望的臉停在暗亮交界。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/op7AXDIJ6gQ0xvUc4lN18vXalhK7MK_57z7lYn1IeRPqg0mhvkiSui0vynGCaqQ98A6cBYhRNiLVgER_o4GLsEKAxg3sHQz9vO0j5Z8=s0-rw",
@@ -1032,8 +937,7 @@
           "title": "93｜黑衣扶腰",
           "alt": "長腿姐姐：她在走廊裡一手扶腰、一手靠近臉側，雙腿順著石地交錯。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在走廊裡一手扶腰、一手靠近臉側，雙腿順著石地交錯。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817003"
+          "description": "她在走廊裡一手扶腰、一手靠近臉側，雙腿順著石地交錯。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/HThpTmkjprg7Ji1owAgaIbfgN_Wt21eNG7rDTBAVmQFlmZ7ke1eseOQhDdVcJC-jqMFRqo9TdiijUGDLGc7nedwr9z1KThDo9mp3=s0-rw",
@@ -1043,8 +947,7 @@
           "title": "94｜靠枕旁伸展",
           "alt": "長腿姐姐：她斜倚在沙發，手臂抬過頭頂，一腿順著椅面伸展。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她斜倚在沙發，手臂抬過頭頂，一腿順著椅面伸展。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816969"
+          "description": "她斜倚在沙發，手臂抬過頭頂，一腿順著椅面伸展。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/VY_nH46GjUnXW-2OkBmd3tLNnPh6fYunNWp2u0QgkLD0XyBtT2eMIyHyAGzDx45GlRaFdmdDX9aTUPNzVfX-ahWfZRzdkrQxIhaGEA=s0-rw",
@@ -1054,8 +957,7 @@
           "title": "95｜側身與馬尾",
           "alt": "長腿姐姐：轉回來的目光越過肩線，馬尾垂在淺色衣料上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "轉回來的目光越過肩線，馬尾垂在淺色衣料上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817033"
+          "description": "轉回來的目光越過肩線，馬尾垂在淺色衣料上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/tDH_s9RIQKn6NACd3PDdLGC5zqoLHKFWPfR2jEaPJ6Wh1EMe7LNSVvCDRG540-PB_OyT--hjvx3082ot62bNELeKW_fpIy4ggKOioA=s0-rw",
@@ -1065,8 +967,7 @@
           "title": "96｜前傾停格",
           "alt": "長腿姐姐：她把雙手撐在軟墊上，傾身時，白襯衫在室內暖光中發亮。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她把雙手撐在軟墊上，傾身時，白襯衫在室內暖光中發亮。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816931"
+          "description": "她把雙手撐在軟墊上，傾身時，白襯衫在室內暖光中發亮。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/E1dpu_csf1hy7rG6sC8JcZBREM98ztdETms869oClb6xXLAoi4ig0X6ljflcBR77JOU9u98z6EcIQygkN6Nu6F9lYFXAx4XoRVMk=s0-rw",
@@ -1076,8 +977,7 @@
           "title": "97｜椅邊托頭",
           "alt": "長腿姐姐：她歪頭靠近手掌，交疊的坐姿延續了沙發線條。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她歪頭靠近手掌，交疊的坐姿延續了沙發線條。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817127"
+          "description": "她歪頭靠近手掌，交疊的坐姿延續了沙發線條。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/T557AgpTyucIyg1iIvlDyaWqhIbFS3qO-Y783ok2WZeaJa44D1Rmpm97dY4wTxj7_dbNX-HRjCSkcKV9ytjI3-N9ahfHnoGikMb4Vw=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1087,8 +987,7 @@
           "title": "98｜再見扶額",
           "alt": "長腿姐姐：扶額的手與椅背相接，另一掌停在坐面外側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "扶額的手與椅背相接，另一掌停在坐面外側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817107"
+          "description": "扶額的手與椅背相接，另一掌停在坐面外側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/BX5tj_Ej0aqNTfFSf7-Bh9hh5n0X2RQf42DvN9gyoEslzs0loe5NQaqYOWumVhC2dL9txXc5vf5CAkrOYB3de4ofjcHbnkr2yI-ykg=s0-rw",
@@ -1098,8 +997,7 @@
           "title": "99｜深檯回看",
           "alt": "長腿姐姐：她手撐石檯，背身轉頭，讓大理石的暗面留在前景。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她手撐石檯，背身轉頭，讓大理石的暗面留在前景。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816981"
+          "description": "她手撐石檯，背身轉頭，讓大理石的暗面留在前景。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/66WSsmF2CRyxohB6QLBIV3vKjBpUIZnROFdRWxtEgX80AIA_V-W31QITn5oc3xvrOn5XHhm_TtOr8MhhWKnn2YuHMBfaIkve4sOA=s0-rw",
@@ -1109,8 +1007,7 @@
           "title": "100｜手托下巴",
           "alt": "長腿姐姐：她歪頭將臉靠在掌中，另一臂自然斜落膝前。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她歪頭將臉靠在掌中，另一臂自然斜落膝前。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817001"
+          "description": "她歪頭將臉靠在掌中，另一臂自然斜落膝前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/lzp3WRVKgtlslLFxf7qvlS2kFE9s9fhkWPQLP6RBMDvDt8zQv0QnbLwDprghf7BdRsJ9SE_eg8ncQycDTcKW-clOZijHOaCTauoubQ=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1120,8 +1017,7 @@
           "title": "101｜暖光斜靠",
           "alt": "長腿姐姐：她扶著石檯向前靠近，背後的細窄燈光映在髮側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她扶著石檯向前靠近，背後的細窄燈光映在髮側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817104"
+          "description": "她扶著石檯向前靠近，背後的細窄燈光映在髮側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kBZokxf0hBZliIWsOglFP3bzDAkesmz9db5lLl8tp7xohVGXbOaoUQDxh_9sXrRc6Z87XjQMhBt-d6Oj28T1n51Ol2aEGB7NEYev5b4=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1131,8 +1027,7 @@
           "title": "102｜抬肩站穩",
           "alt": "長腿姐姐：她將手收到背後，肩線略抬，身後的玻璃映著室內光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將手收到背後，肩線略抬，身後的玻璃映著室內光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816941"
+          "description": "她將手收到背後，肩線略抬，身後的玻璃映著室內光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/hAjunr3IpESiFHpQa--F6Xdj0Y_vJ0XoHIFg65vGYFRai3cT9WTOmleUMKPbRDFW1yYTzrEICBv6vl0LW0omIbwox4dZo7w00zGIyQ=s0-rw",
@@ -1142,8 +1037,7 @@
           "title": "103｜腿線與椅面",
           "alt": "長腿姐姐：她側坐交腿，一手扶椅，另一手貼近膝側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她側坐交腿，一手扶椅，另一手貼近膝側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816949"
+          "description": "她側坐交腿，一手扶椅，另一手貼近膝側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Hs4t-r9rBG6u_cysO_K6HvzHPfKQkAnIwNn1K4wTg_2J_GT6JztBoa3ofkM_yzA9GOeLWqyWRPJeEChLe0s-uM-KTGZxJArrlZaG6GE=s0-rw",
@@ -1153,8 +1047,7 @@
           "title": "104｜短褲回影",
           "alt": "長腿姐姐：她向後看，髮梢隨轉身垂落，淺藍牛仔布立在暗窗前。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她向後看，髮梢隨轉身垂落，淺藍牛仔布立在暗窗前。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816892"
+          "description": "她向後看，髮梢隨轉身垂落，淺藍牛仔布立在暗窗前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/oAovmdV_24WaebY2CVy7OnuvGJCoHqnCXGEXBkEOG3ageyX-4FuHXWtUN4CJACNSyVYt9s34B3_zJLVVop4U-QIUKRlemDtjiZjyfA=s0-rw",
@@ -1164,8 +1057,7 @@
           "title": "105｜雙膝前的暖意",
           "alt": "長腿姐姐：她在沙發上收攏雙手，朝鏡頭微偏著頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在沙發上收攏雙手，朝鏡頭微偏著頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817115"
+          "description": "她在沙發上收攏雙手，朝鏡頭微偏著頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/K83TqGK2VqChP9Eu1Fw5JCemu0DHzpzR6Zrx1P4IdifUQKb2TnVyZQyNT-QvJMunVMTJQi0VWpDdfhTYmnd3ABoIMtyzbogHBPlZdw=s0-rw",
@@ -1175,8 +1067,7 @@
           "title": "106｜掌貼腰側",
           "alt": "長腿姐姐：她將一手貼在腰間，白色衣袖在石檯前留下一道亮線。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她將一手貼在腰間，白色衣袖在石檯前留下一道亮線。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817027"
+          "description": "她將一手貼在腰間，白色衣袖在石檯前留下一道亮線。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/hefB4Iza90Aks0BrTp5KyNun-GWA5eJS3lY1SFkFuagZ0Un01CyUMfw9u55lwm0RYvTUnO8OlWoKWX_8sm9FSoS4or_2e1RRCDRpOA=s0-rw",
@@ -1186,8 +1077,7 @@
           "title": "107｜斜椅上的黑裙",
           "alt": "長腿姐姐：她沿椅背斜靠，雙腿舒展，黑裙與灰布相映。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她沿椅背斜靠，雙腿舒展，黑裙與灰布相映。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817022"
+          "description": "她沿椅背斜靠，雙腿舒展，黑裙與灰布相映。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/4D_8uYUkulZ5TipLj-sh9l1ScaIcZnlFo40oERC6llpk2iD547XN4AsW-DzZ_r_TKystxuePXEJG8EoHmhBt5ZmiC7nGci_RrhJUDw=s0-rw",
@@ -1197,8 +1087,7 @@
           "title": "108｜走道全身像",
           "alt": "長腿姐姐：她站在石地上，一腿向前交疊，白襯衫與細帶鞋同入鏡。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她站在石地上，一腿向前交疊，白襯衫與細帶鞋同入鏡。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816966"
+          "description": "她站在石地上，一腿向前交疊，白襯衫與細帶鞋同入鏡。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/fmiPBO56Kfgp2ljfZxG0qP8j_v0Mneg-0-Hw_kUOL27Tr3_U4JUhDRMpLkz1mQx1Nc1Z-zUWxl5Kcu3N7y_aVM4CPM4dDwUCp2nwRg=s0-rw",
@@ -1208,8 +1097,7 @@
           "title": "109｜坐墊旁撫襟",
           "alt": "長腿姐姐：她坐著仰起下巴，手指在衣領前停了一瞬。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她坐著仰起下巴，手指在衣領前停了一瞬。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816947"
+          "description": "她坐著仰起下巴，手指在衣領前停了一瞬。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/71ghUako0_U7Dwpx1GcmY3QRs2czy02VCmOpdRPRr_ibFl8Ey-8zdXfssydW_5l5y16lSiCU_36hEKak3QPC48TAaeQEQbA3PICZ=s0-rw",
@@ -1219,8 +1107,7 @@
           "title": "110｜屈膝靠牆",
           "alt": "長腿姐姐：肩背靠近牆面，她屈起一腿，一手抬到髮邊。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "肩背靠近牆面，她屈起一腿，一手抬到髮邊。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817111"
+          "description": "肩背靠近牆面，她屈起一腿，一手抬到髮邊。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/DIPLQTEUybYkOcp_MwkGyUr86vcqyf1X8TShsut5efsiAPA3LF2pI0x4UA7qvlcCw0ma7rajk9GUEJRtCkA4_j3_Wroe3FIgaCi1ow=s0-rw",
@@ -1230,8 +1117,7 @@
           "title": "111｜回眸垂肩",
           "alt": "長腿姐姐：背身轉頭時，深色直框與白衣肩線一明一暗。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "背身轉頭時，深色直框與白衣肩線一明一暗。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816982"
+          "description": "背身轉頭時，深色直框與白衣肩線一明一暗。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/genDIeZWg3Nos1WyBIO6EzVxUIUumHCWlkZqxjGTBj95Vx3xW9AGAtWk1byurWnmREvE-fBs9ncl6aa7gcb0ormbjEbaEjNpGqOPkA=s0-rw",
@@ -1241,8 +1127,7 @@
           "title": "112｜黑裙與高跟鞋",
           "alt": "長腿姐姐：她在石柱旁站穩，單手扶腰，細帶鞋映在亮地上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在石柱旁站穩，單手扶腰，細帶鞋映在亮地上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817103"
+          "description": "她在石柱旁站穩，單手扶腰，細帶鞋映在亮地上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/yWBoFzSECfnGq4EVr0NyrCigV4me2FgbeSEqrtABne4pApOW_Ln9MvhQEskq7vBEv0jo_TvsX49aDYGCK5sCx0sn0_6UTUj3VbyYcOs=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1252,8 +1137,7 @@
           "title": "113｜鬢邊一手",
           "alt": "長腿姐姐：她輕碰髮側，身體朝石檯靠近，燈光柔柔落在衣袖。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她輕碰髮側，身體朝石檯靠近，燈光柔柔落在衣袖。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817013"
+          "description": "她輕碰髮側，身體朝石檯靠近，燈光柔柔落在衣袖。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/jwEwJYiy0phMgoj7ZD72Heic4enljszYlYAksYE8PyYbnO0Usdc4KBxgNjPgGvn80g-m30PUW8c8l0sQjh4z5c7nFQXaC9fALWxzpQ=s0-rw",
@@ -1263,8 +1147,7 @@
           "title": "114｜檯前俯身",
           "alt": "長腿姐姐：她雙手落在檯緣，向前一傾，讓淺色衣料成為畫面重心。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她雙手落在檯緣，向前一傾，讓淺色衣料成為畫面重心。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817034"
+          "description": "她雙手落在檯緣，向前一傾，讓淺色衣料成為畫面重心。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/UFT1BW84qdogMQd6WpD9umEEvaQNDAPoOYE0ITOCJVC6Ya64QO12HU-FH8uFPqP1Ns-_WxynaAj5Cbh1nLVo48_b0N_GLQNTmHzjuQ=s0-rw",
@@ -1274,8 +1157,7 @@
           "title": "115｜沙發斜靠",
           "alt": "長腿姐姐：她抬起手肘倚住靠背，雙腿交疊在沙發邊緣。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她抬起手肘倚住靠背，雙腿交疊在沙發邊緣。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817012"
+          "description": "她抬起手肘倚住靠背，雙腿交疊在沙發邊緣。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/_a5IlImF97kjQ9o63rn4juDyFBh_tb5RpSag8dNEvrekLdgmEjli0EYRyiM_F6ZzbBxAGaclzLTMkZiZ4z9baPJqFTo76FLhAzja=s0-rw",
@@ -1285,8 +1167,7 @@
           "title": "116｜指停唇旁",
           "alt": "長腿姐姐：一膝抬近身前，她用手托著臉側，把視線留在鏡頭。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一膝抬近身前，她用手托著臉側，把視線留在鏡頭。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816958"
+          "description": "一膝抬近身前，她用手托著臉側，把視線留在鏡頭。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/t3oC5J2fgR_kdR3FcqsiMZHnpYZj73gxLbnrcYr0IPQdg1D2l6eNPmraDzj9Ws6rCxZxlf1a8HLHtjwBSQGgUNbkBzo0UsyJD6Hkvw=s0-rw",
@@ -1296,8 +1177,7 @@
           "title": "117｜雙掌撐檯",
           "alt": "長腿姐姐：她朝石檯靠近，手掌平放，回眸穿過明亮的白袖。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她朝石檯靠近，手掌平放，回眸穿過明亮的白袖。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816970"
+          "description": "她朝石檯靠近，手掌平放，回眸穿過明亮的白袖。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/Mu7SZTol0mJ3_jp3nAe_gmluCw48vWFV3QDCg35Wrt8NuTyVy8e5btmK7l-zCQYxJdS6Z2zM6doEcslmcGpvDl7YGoE2rAFABNuok5U=s0-rw",
@@ -1307,8 +1187,7 @@
           "title": "118｜坐姿理襟",
           "alt": "長腿姐姐：一手支住椅面，一手貼近領口，坐姿延向畫面側邊。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手支住椅面，一手貼近領口，坐姿延向畫面側邊。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816926"
+          "description": "一手支住椅面，一手貼近領口，坐姿延向畫面側邊。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kBZokxf0hBZliIWsOglFP3bzDAkesmz9db5lLl8tp7xohVGXbOaoUQDxh_9sXrRc6Z87XjQMhBt-d6Oj28T1n51Ol2aEGB7NEYev5b4=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1318,8 +1197,7 @@
           "title": "119｜白衣挺身",
           "alt": "長腿姐姐：雙臂往身後收，她略抬臉，迎著室內暖光站定。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "雙臂往身後收，她略抬臉，迎著室內暖光站定。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817025"
+          "description": "雙臂往身後收，她略抬臉，迎著室內暖光站定。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/CxphZoU17rbL1HifK3Lyh3oEIqEGAyfdkWyIYZixskLyXiEYAg7dRjluelzAt1UkdK4YgdDXWsy5EzEV7aP7fbgurLPCcmQnRK0h740=w1200-h1600-rw-sm-pa-nu-v0",
@@ -1329,8 +1207,7 @@
           "title": "120｜收膝回首",
           "alt": "長腿姐姐：她跪坐在沙發上轉過肩，兩手收在身前。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她跪坐在沙發上轉過肩，兩手收在身前。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816886"
+          "description": "她跪坐在沙發上轉過肩，兩手收在身前。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/oWBkI0W3C_tqU5PpVJZihTXk98ll9SAIgzVu9JGlMSDdKrrf-QlclKifkgUY8vRE5BHnx19MF8YiO603qTAr7xQqKKh-Dih1AjUF=s0-rw",
@@ -1340,8 +1217,7 @@
           "title": "121｜椅背托腮",
           "alt": "長腿姐姐：一手托腮，另一手扶住坐墊，她將雙腿收在沙發上。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手托腮，另一手扶住坐墊，她將雙腿收在沙發上。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817120"
+          "description": "一手托腮，另一手扶住坐墊，她將雙腿收在沙發上。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/kxyKvcCjGDAPh_KDT5QLxjMk00WZ0IjJXVkEs8d5EivkZJpAnGL7HHojtJ3NeWhiGhoP1uO4yROc1BzzTBWCNB80EKmd-N6tv9jze4c=s0-rw",
@@ -1351,8 +1227,7 @@
           "title": "122｜跪坐前傾",
           "alt": "長腿姐姐：她在坐墊上以雙掌支撐，頭微偏向一側，迎著柔光。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她在坐墊上以雙掌支撐，頭微偏向一側，迎著柔光。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817123"
+          "description": "她在坐墊上以雙掌支撐，頭微偏向一側，迎著柔光。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ezdtbPsvTZe91y2Ki5q9XtLkE8lhBKyCjaykbh10nroI5JSlBykuoKbWnOAt0PWM7oo2gCuTd3-f1jTWhMGUwjRMmS5aTzUtkNUANg=s0-rw",
@@ -1362,8 +1237,7 @@
           "title": "123｜伸腿側靠",
           "alt": "長腿姐姐：她靠坐在沙發，手貼住椅面，一腿斜出畫面軸線。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她靠坐在沙發，手貼住椅面，一腿斜出畫面軸線。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816968"
+          "description": "她靠坐在沙發，手貼住椅面，一腿斜出畫面軸線。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/jcB-hRLCflwD2vXsNhLueYSWFlojgGTZxqfW-q3XwckaGc1uYGihgGmzGlpzFg4ixoF_PZSmCnEyvCv4Zi84aUHKIcU8phGMooV_=s0-rw",
@@ -1373,8 +1247,7 @@
           "title": "124｜石牆靜靠",
           "alt": "長腿姐姐：她抱臂倚著石牆，單膝微彎，窗框在肩旁留出深色。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她抱臂倚著石牆，單膝微彎，窗框在肩旁留出深色。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978817122"
+          "description": "她抱臂倚著石牆，單膝微彎，窗框在肩旁留出深色。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/KaUf2P_fUf9-ujZHHSdEbIYXib9C4cNtalbZ5_1LQrbm9O38bV48AEOPUo_ca-L573UvKN9ZBZEzD7krltGxkS-LrzfnQYIRpz24SA=s0-rw",
@@ -1384,8 +1257,7 @@
           "title": "125｜短褲與細帶鞋",
           "alt": "長腿姐姐：她站在窗邊石地上，一手扶腰，另一手抬近髮側。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她站在窗邊石地上，一手扶腰，另一手抬近髮側。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816895"
+          "description": "她站在窗邊石地上，一手扶腰，另一手抬近髮側。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/2HlF5HqlC0GXzpPXCDxnOtrpoabEw5MLvXA4X2zOun-TWSapR3zfTa_a4qEDqu7pGlMT7UTv8kHCxSNYvIGbXem6juaL8yd1t3wmYA=s0-rw",
@@ -1395,8 +1267,7 @@
           "title": "126｜抬腕扶髮",
           "alt": "長腿姐姐：一手掠過頭頂，一手停在腰側，白袖在燈影前展成弧線。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "一手掠過頭頂，一手停在腰側，白袖在燈影前展成弧線。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816922"
+          "description": "一手掠過頭頂，一手停在腰側，白袖在燈影前展成弧線。"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/1fVs1iVPb1g9OeZn4Z4GVGMUT-3Nf_gh554nbWmnW0T8VeWZFf1KG6S9569RIvFQONj0KexLu6sNgO3nQkVHJpopL383L3exw1uA4Q=s0-rw",
@@ -1406,8 +1277,7 @@
           "title": "127｜暖燈前的末幅",
           "alt": "長腿姐姐：她交腿坐在椅上，把臉輕托在掌中，讓目光在暖光裡停住。",
           "metadata": "長腿姐姐 · 2026.11",
-          "description": "她交腿坐在椅上，把臉輕托在掌中，讓目光在暖光裡停住。",
-          "pageUrl": "https://app.degoo.com/share/0AoEzgSPV8oeRqlLWoit5w?ID=20978816910"
+          "description": "她交腿坐在椅上，把臉輕托在掌中，讓目光在暖光裡停住。"
         }
       ]
     },
@@ -1415,9 +1285,6 @@
       "id": "november-photo-collection",
       "title": "彈電吉它的女孩",
       "description": "窗光穿過白紗簾，落在奶油白的電吉它上。從站在窗邊試音，到坐下翻書、扶琴回望，六十一幅人像記下彈奏與歇息之間的片刻。",
-      "shareUrl": "https://app.degoo.com/share/IlZPxdjF8G73sIHQ7pNHPA",
-      "verified": true,
-      "linkOnly": false,
       "lastImportedOn": "2026-11-16",
       "photos": [
         {
@@ -2030,21 +1897,18 @@
           "metadata": "彈電吉它的女孩 · 2026.11",
           "description": "深色琴帶從肩頭斜下，她在明亮窗格前重新撥弦。"
         }
-      ]
+      ],
+      "edition": "2026.11"
     },
     {
       "id": "street-daylight",
       "title": "街角暖陽｜日常的光",
       "description": "五十五幅便利商店前的日光人像，從回眸、托腮到一口冰飲，收藏平凡街角裡明亮而自在的片刻。",
-      "shareUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
-      "verified": true,
-      "linkOnly": false,
       "lastImportedOn": "2026-10-31",
       "photos": [
         {
           "imageUrl": "https://lh3.googleusercontent.com/6yBdH-RbhHYbnJosk72iNkmGFw4Rqy2S9MoHxmhvH9oQNxLGwZxmEsgah3CDvmAeTG5gaq4s0tjqsV7jgw3JrYsV2fA8r67uLGNA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/6yBdH-RbhHYbnJosk72iNkmGFw4Rqy2S9MoHxmhvH9oQNxLGwZxmEsgah3CDvmAeTG5gaq4s0tjqsV7jgw3JrYsV2fA8r67uLGNA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "01｜抬手迎光",
@@ -2055,7 +1919,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/Rt1FrVtVha5u4oP5piLe6FW_cPvh_7FrYsAXpeKV6cPqsgKxIhnwJq-L6HDaGOAkV3rBfCmLGhKO4LUVnO_UzoLZfp_fyZ-V8r_DuA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Rt1FrVtVha5u4oP5piLe6FW_cPvh_7FrYsAXpeKV6cPqsgKxIhnwJq-L6HDaGOAkV3rBfCmLGhKO4LUVnO_UzoLZfp_fyZ-V8r_DuA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "02｜肩上的午後",
@@ -2066,7 +1929,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/X35Iw7WIMZZQwN2S1tG9l15MZcykrMVoTughhz0TKdazLNEMFgHlGdzZha41A3RUdQE5Z2FEnavn15FZU_o4kL9S2qBuVAob1jmskw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/X35Iw7WIMZZQwN2S1tG9l15MZcykrMVoTughhz0TKdazLNEMFgHlGdzZha41A3RUdQE5Z2FEnavn15FZU_o4kL9S2qBuVAob1jmskw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "03｜門前小坐",
@@ -2077,7 +1939,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/81S8YYAI_olwZfgmZETGbXAliNili0-Yolu0bvABBPDp5pEzd3IIbvjYhqeVKwk8YA-RN_Z_aFAfrTFJLEd3i4hZ9YMrhMWFFaI07A=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/81S8YYAI_olwZfgmZETGbXAliNili0-Yolu0bvABBPDp5pEzd3IIbvjYhqeVKwk8YA-RN_Z_aFAfrTFJLEd3i4hZ9YMrhMWFFaI07A=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "04｜指間髮語",
@@ -2088,7 +1949,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/AOOAAo-p0fkVJqiKsICKCecv_ZMmvabn9aUmPU5wBweSJrxw0hrK3ez-J-S7GynSAb9ntJwLWLhN3iXobe4N01PgT8GOviY-Ock6LQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/AOOAAo-p0fkVJqiKsICKCecv_ZMmvabn9aUmPU5wBweSJrxw0hrK3ez-J-S7GynSAb9ntJwLWLhN3iXobe4N01PgT8GOviY-Ock6LQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "05｜伏桌聽風",
@@ -2099,7 +1959,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/GGVIr5lvgj9Dpdjl4o4fUwoEd0TA67PTQld_-qenylCtyoH75itdjppNfnNvR0fQQB-QFvWMCloLuljJPGl8WYdzS1u-_yWkM8QkJA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/GGVIr5lvgj9Dpdjl4o4fUwoEd0TA67PTQld_-qenylCtyoH75itdjppNfnNvR0fQQB-QFvWMCloLuljJPGl8WYdzS1u-_yWkM8QkJA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "06｜伸展晴日",
@@ -2110,7 +1969,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/Uw3VAokvU8YYsa-Ra_wxUwkUGcbYDtyEIL4-G9Zvb850AcR3_1s6ZZfmCew5Civ1QoaiAD3dlXyREQaTrrEF4e0dvC-7KSIenDnDZw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Uw3VAokvU8YYsa-Ra_wxUwkUGcbYDtyEIL4-G9Zvb850AcR3_1s6ZZfmCew5Civ1QoaiAD3dlXyREQaTrrEF4e0dvC-7KSIenDnDZw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "07｜街邊停步",
@@ -2121,7 +1979,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/bPIdj_jxcASULJL_dnSOoaty9vQkguL3VXvwjDJv6BIwvI0xdQ5yT1aZVu-eOq5tPYJjClQzopCyN-ZNdZ2E6Wm3ufz6LN2S6XxDpf4=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/bPIdj_jxcASULJL_dnSOoaty9vQkguL3VXvwjDJv6BIwvI0xdQ5yT1aZVu-eOq5tPYJjClQzopCyN-ZNdZ2E6Wm3ufz6LN2S6XxDpf4=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "08｜一口清涼",
@@ -2132,7 +1989,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/5CoNaHqw2hPQHx8Mlj7CY0A8_XM8V-S47ARZK6w5IjJ9C1kTIaOhqqhYhzJixcaMFKgXzhcjPldOQ8HGOESOPBJs-cGXolG5ybDHfw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/5CoNaHqw2hPQHx8Mlj7CY0A8_XM8V-S47ARZK6w5IjJ9C1kTIaOhqqhYhzJixcaMFKgXzhcjPldOQ8HGOESOPBJs-cGXolG5ybDHfw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "09｜掌心的溫柔",
@@ -2143,7 +1999,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/1GJaVgM2NQHtTjRF970qVcEB2VL8nhzcfKq2iDiXD_LP6OPdIevSDza75cLRExJrSrlTbnuVQ8pDiMfx0fTVsD2PYP4qo2uGsAPe=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/1GJaVgM2NQHtTjRF970qVcEB2VL8nhzcfKq2iDiXD_LP6OPdIevSDza75cLRExJrSrlTbnuVQ8pDiMfx0fTVsD2PYP4qo2uGsAPe=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 895,
           "height": 1600,
           "title": "10｜向你靠近",
@@ -2154,7 +2009,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/UQUG9R9dJZQOtESSW1xvAmFIgYMjo4X5ippA8ceiTZHHmY08L1knb2zkiXp2CUGTlboEIUfli6FxaKtKqP7OJrI6dyQJyoyBjuj7=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/UQUG9R9dJZQOtESSW1xvAmFIgYMjo4X5ippA8ceiTZHHmY08L1knb2zkiXp2CUGTlboEIUfli6FxaKtKqP7OJrI6dyQJyoyBjuj7=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "11｜站在光裡",
@@ -2165,7 +2019,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/KYnSoZfXm8mZJB2FL2qjkltuvdPEyQVmqIYKsd7WOGp9LVNeWYloqS06EHiD9I4YqtqDAvxiV1phw4wO7P6J22il9o0nzfpA5ien8w=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/KYnSoZfXm8mZJB2FL2qjkltuvdPEyQVmqIYKsd7WOGp9LVNeWYloqS06EHiD9I4YqtqDAvxiV1phw4wO7P6J22il9o0nzfpA5ien8w=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "12｜側坐晴窗",
@@ -2176,7 +2029,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/wt5cdqMY99Q4shAvkU47gtAuhBzoL5eVWEh-xlRa4XRHnYLrbdMu2fmzrCFuv6rBMIO_-Vbij3RvvsN_8dLBZgaNeUEOvPBCt1RuzKo=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/wt5cdqMY99Q4shAvkU47gtAuhBzoL5eVWEh-xlRa4XRHnYLrbdMu2fmzrCFuv6rBMIO_-Vbij3RvvsN_8dLBZgaNeUEOvPBCt1RuzKo=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "13｜蹲下的片刻",
@@ -2187,7 +2039,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/GH6--5tVdrdTC6T_-r1yK0BwKQFJClY9AaIQVqHGHx5CUJ0RPd-uyI_E-T4hO8nG6YjpY9UI9g0aIkt4R4jeq1V08RCLCQ0anp6Q=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/GH6--5tVdrdTC6T_-r1yK0BwKQFJClY9AaIQVqHGHx5CUJ0RPd-uyI_E-T4hO8nG6YjpY9UI9g0aIkt4R4jeq1V08RCLCQ0anp6Q=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "14｜慢慢等你",
@@ -2198,7 +2049,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/xfSOpBXdRJg9oj810N_edXrN6ExwBBW5ma71eAmqZlKZ7tvwsP_YAuSajtYIeHiNCzBEQVTXqkq721_8qnMlGZi-MCb8h1RucmDU0g=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/xfSOpBXdRJg9oj810N_edXrN6ExwBBW5ma71eAmqZlKZ7tvwsP_YAuSajtYIeHiNCzBEQVTXqkq721_8qnMlGZi-MCb8h1RucmDU0g=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "15｜樹影作伴",
@@ -2209,7 +2059,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/DCLeZBQ54wZEtGuqqSa877IJzOAQhjaEiOOGwohH18jQomCoP_q97IHeBPiphCSWCETFzVwDZMpLjeBi3LyJVintTuZah5uO5TClMW0=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/DCLeZBQ54wZEtGuqqSa877IJzOAQhjaEiOOGwohH18jQomCoP_q97IHeBPiphCSWCETFzVwDZMpLjeBi3LyJVintTuZah5uO5TClMW0=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "16｜雙手捧光",
@@ -2220,7 +2069,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oMP9gMImq47iTAx8Yq5DdGjUcGWRSWOuxHD0lc8HEiJc4U04lmH9ZQ13jd5gYQAAsTb2MyxTKX_DRi9Paxt-m7e0iE7BVVHV3VXTeUc=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oMP9gMImq47iTAx8Yq5DdGjUcGWRSWOuxHD0lc8HEiJc4U04lmH9ZQ13jd5gYQAAsTb2MyxTKX_DRi9Paxt-m7e0iE7BVVHV3VXTeUc=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "17｜日常相遇",
@@ -2231,7 +2079,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/8BHjgDAHgVGg3KmHdRD2EUts0g_fpl5ZHFdr22Y4nPEHHB64MdfvUYtaWM7r2L8UomTAKEzKpWuUUNX3gWYENj8fuI45x1p9J4S8aA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8BHjgDAHgVGg3KmHdRD2EUts0g_fpl5ZHFdr22Y4nPEHHB64MdfvUYtaWM7r2L8UomTAKEzKpWuUUNX3gWYENj8fuI45x1p9J4S8aA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "18｜輕聲問候",
@@ -2242,7 +2089,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/4cunRuIYwG4RuBPsW5aJd7E4FzpveC_plNCiKrk5Vf2F37PWbEDQJjsy6Or03A6j-OWdetpHhDwSwkfy_7AQCR2Ct0xed5Ez0CB4_A=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/4cunRuIYwG4RuBPsW5aJd7E4FzpveC_plNCiKrk5Vf2F37PWbEDQJjsy6Or03A6j-OWdetpHhDwSwkfy_7AQCR2Ct0xed5Ez0CB4_A=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "19｜髮後的陽光",
@@ -2253,7 +2099,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/izn3MtvZFURWRdNm29yy5Pg1ai5V-rl5U27NdXugTamg0O5nVwlWqPBrAh2hEwKtiNzH6cCMTxm7pUdWFW0Jkag1KKRXIRnpYsq1AQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/izn3MtvZFURWRdNm29yy5Pg1ai5V-rl5U27NdXugTamg0O5nVwlWqPBrAh2hEwKtiNzH6cCMTxm7pUdWFW0Jkag1KKRXIRnpYsq1AQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "20｜笑意初生",
@@ -2264,7 +2109,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/OMv2CxJVeMnMXvJIbEvVRajFFWu65myhTD6hpfYclidqmE45vnk9MES_GtMkGzgbS6_a_7wvl05szAZfNxmkzyU1Uc3JpDEzpDybK-4=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/OMv2CxJVeMnMXvJIbEvVRajFFWu65myhTD6hpfYclidqmE45vnk9MES_GtMkGzgbS6_a_7wvl05szAZfNxmkzyU1Uc3JpDEzpDybK-4=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "21｜午後小憩",
@@ -2275,7 +2119,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/rTZQPDGPx86z9k_q8AyDhxEEa6lCio5f4VDfJkiEsM3azV9sfMyb7H83nevh2k9SJmypXMAsX_ev8rv8t4s49jDMzqdMF1FJp5_jHw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/rTZQPDGPx86z9k_q8AyDhxEEa6lCio5f4VDfJkiEsM3azV9sfMyb7H83nevh2k9SJmypXMAsX_ev8rv8t4s49jDMzqdMF1FJp5_jHw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "22｜唇邊心事",
@@ -2286,7 +2129,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/AvhubXgzu4282DQ7sBEzLAy3nPmKRIqKO6hK2N6Q_p-2-wh6gEIDYZQnRJOM8he_NNvYGOdVJTD5vttC2RzaYb1eTRvg8BWdXbVLCw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/AvhubXgzu4282DQ7sBEzLAy3nPmKRIqKO6hK2N6Q_p-2-wh6gEIDYZQnRJOM8he_NNvYGOdVJTD5vttC2RzaYb1eTRvg8BWdXbVLCw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "23｜一眼晴朗",
@@ -2297,7 +2139,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/f4Z4YpvA7t74pbXgTaQDyjIp38Q0dgQIX9vhMezXkFvPfj9n0EdLZNyW8j6MCwhU5nmta-Gv84etjcL6SD-31X5KeOL_7ZfG0fYeBpc=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/f4Z4YpvA7t74pbXgTaQDyjIp38Q0dgQIX9vhMezXkFvPfj9n0EdLZNyW8j6MCwhU5nmta-Gv84etjcL6SD-31X5KeOL_7ZfG0fYeBpc=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "24｜轉肩微光",
@@ -2308,7 +2149,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/u5KHV0hqevk7-v3aCj0Q1mhBrFQVmAYE1i6WWf9o9NM0YaGddl9QvOsNMkgQ28d1bdg98xh-YFB3PSlaUUhti5wTRuwq2FgtE1_pgw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/u5KHV0hqevk7-v3aCj0Q1mhBrFQVmAYE1i6WWf9o9NM0YaGddl9QvOsNMkgQ28d1bdg98xh-YFB3PSlaUUhti5wTRuwq2FgtE1_pgw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "25｜耳畔輕語",
@@ -2319,7 +2159,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/RIlitjCLmgsYsYaSsACXbpdXiYjhq4pFXqHco2ZJukHXUhGzxfyL0T0ps978pzo1yidQsVs_rYxOP7qLAo751v9a8dOMcjUfU9Cx=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/RIlitjCLmgsYsYaSsACXbpdXiYjhq4pFXqHco2ZJukHXUhGzxfyL0T0ps978pzo1yidQsVs_rYxOP7qLAo751v9a8dOMcjUfU9Cx=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "26｜門口的約定",
@@ -2330,7 +2169,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/h76LUMFfQN9EwdUgVzPZoVuGBsHdf2ZRU4WTjTo52rupzEi7i8iMrMfanwi9AoY8E6qt7zh4iFGkwhbP8Bu67l2nsitXRS6ifChjlw=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/h76LUMFfQN9EwdUgVzPZoVuGBsHdf2ZRU4WTjTo52rupzEi7i8iMrMfanwi9AoY8E6qt7zh4iFGkwhbP8Bu67l2nsitXRS6ifChjlw=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "27｜俏皮眨眼",
@@ -2341,7 +2179,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/OabzeWDTb3BEksx-bOPuNaoyiGCOLwob2S8n2VoCl0-636gW-le-V7eZ1OE35wsGwF0rOU5791HaI3a0Oudhih6hazlZ5AP0WRqOrQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/OabzeWDTb3BEksx-bOPuNaoyiGCOLwob2S8n2VoCl0-636gW-le-V7eZ1OE35wsGwF0rOU5791HaI3a0Oudhih6hazlZ5AP0WRqOrQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "28｜坐看人來",
@@ -2352,7 +2189,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oMP9gMImq47iTAx8Yq5DdGjUcGWRSWOuxHD0lc8HEiJc4U04lmH9ZQ13jd5gYQAAsTb2MyxTKX_DRi9Paxt-m7e0iE7BVVHV3VXTeUc=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oMP9gMImq47iTAx8Yq5DdGjUcGWRSWOuxHD0lc8HEiJc4U04lmH9ZQ13jd5gYQAAsTb2MyxTKX_DRi9Paxt-m7e0iE7BVVHV3VXTeUc=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "29｜再近一點",
@@ -2363,7 +2199,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/iO1Jpe6X_hUpJFfzUXZ5vR0UEWryorGnG3xG4rYYyl27GDT_3rqFzt495ffnXEq-8hOAqvP5WEWJbJ-odymgLUrNnihwZee3reZ1jg=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/iO1Jpe6X_hUpJFfzUXZ5vR0UEWryorGnG3xG4rYYyl27GDT_3rqFzt495ffnXEq-8hOAqvP5WEWJbJ-odymgLUrNnihwZee3reZ1jg=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "30｜迎風伸展",
@@ -2374,7 +2209,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/tJYOngxhYFDE8vnEcIigKXuqyxFFzYxZw3IAqg53QJtFEYY19NYUetVnb_z6nWBTzDAsPZoRlFIskvWfiERmLHl0s3BO6gCiFmjr=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/tJYOngxhYFDE8vnEcIigKXuqyxFFzYxZw3IAqg53QJtFEYY19NYUetVnb_z6nWBTzDAsPZoRlFIskvWfiERmLHl0s3BO6gCiFmjr=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "31｜石臺上的光",
@@ -2385,7 +2219,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/ywuijJq0Uz-x23Rl6-dBkZj9l5ENrYD5WKZRT-6HSjP4uRMRxfmVqNAa5OXgsvsUD984EVtSaRLPVCGRBepCI5wQuvuTdeuV3iWNeA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ywuijJq0Uz-x23Rl6-dBkZj9l5ENrYD5WKZRT-6HSjP4uRMRxfmVqNAa5OXgsvsUD984EVtSaRLPVCGRBepCI5wQuvuTdeuV3iWNeA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "32｜蹲坐問晴",
@@ -2396,7 +2229,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oVc0p1pV0FPgxG2sGBUe-6w_izmKH6TqAbDfeX1I6HKkadINaREJYgdrQVYyz7OR6qJV1FT-m5XVyRYtczZw463bdQUvKBSYGYZqUQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oVc0p1pV0FPgxG2sGBUe-6w_izmKH6TqAbDfeX1I6HKkadINaREJYgdrQVYyz7OR6qJV1FT-m5XVyRYtczZw463bdQUvKBSYGYZqUQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "33｜藏不住的笑",
@@ -2407,7 +2239,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/N-UaNd2sMG-wUXctnVupw6LmKTl1uRL5yvNufqn5J1mOaQyQIdcvbXjWPUwZQ3vzHB8DfTCCsKzdwEj0f8vaeHEJZ1JABQNLACs9yA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/N-UaNd2sMG-wUXctnVupw6LmKTl1uRL5yvNufqn5J1mOaQyQIdcvbXjWPUwZQ3vzHB8DfTCCsKzdwEj0f8vaeHEJZ1JABQNLACs9yA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "34｜杯中的午後",
@@ -2418,7 +2249,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/r1dZKAUr3kRTW5F1Y9u8uee0jhFPavMAR4rCM61xV3hO1FuyS6g1mgArBOyxDcsvN7PPnvULyTXoO6DwPGnENBwGPjRQc_IkdYv3BA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/r1dZKAUr3kRTW5F1Y9u8uee0jhFPavMAR4rCM61xV3hO1FuyS6g1mgArBOyxDcsvN7PPnvULyTXoO6DwPGnENBwGPjRQc_IkdYv3BA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "35｜側身回應",
@@ -2429,7 +2259,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/mnwLlQr5L5g-zmzArBufomYhDzMntNqr3orrGL_Az00l61EUvSEDprhen6tjdZheWTnbpTMwhjHbmR-Ep33C7tbeeqruKGUa-uRhfg=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/mnwLlQr5L5g-zmzArBufomYhDzMntNqr3orrGL_Az00l61EUvSEDprhen6tjdZheWTnbpTMwhjHbmR-Ep33C7tbeeqruKGUa-uRhfg=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "36｜臺邊靜坐",
@@ -2440,7 +2269,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/OjTWfevi1zISV6hBpZAsDdxPbQQ64IFdEM7kn4U9voPOLgaUvy4poXh3AIfYwBP3MCGDIFPxAifYoGoq2sFXsJnNZusnRkShXOFrG18=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/OjTWfevi1zISV6hBpZAsDdxPbQQ64IFdEM7kn4U9voPOLgaUvy4poXh3AIfYwBP3MCGDIFPxAifYoGoq2sFXsJnNZusnRkShXOFrG18=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "37｜晴光留座",
@@ -2451,7 +2279,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/_cGfDvniE-QzUrzee7hZyMNp_ujjUVQ7Qc561BY08rlLaai6THA0gyAfwfdsfSjVuoXLg7VmNvNqsXHiUepvJVOseTH7HTOTUXt2=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/_cGfDvniE-QzUrzee7hZyMNp_ujjUVQ7Qc561BY08rlLaai6THA0gyAfwfdsfSjVuoXLg7VmNvNqsXHiUepvJVOseTH7HTOTUXt2=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "38｜一步之前",
@@ -2462,7 +2289,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/feF16BREq8B1ZfobuXtEwGJNQrBEZQQUA6U0dhCXaY2U2UUIUJ4XVUWRRvifL9X1uQKFEfAoqhPs6bUxybGqCG0zrhelPLt5euGiNQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/feF16BREq8B1ZfobuXtEwGJNQrBEZQQUA6U0dhCXaY2U2UUIUJ4XVUWRRvifL9X1uQKFEfAoqhPs6bUxybGqCG0zrhelPLt5euGiNQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "39｜手心的心事",
@@ -2473,7 +2299,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/ta8e1PrXQVqrfpdxG8LWiHEyZ0ylny6UznJE9CuxOIEgElveEnJlk_97TVnPL2eby6Dv-XbvoZ-YGyz3Rm7Tx8J5JKPjk4nX4rFT=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ta8e1PrXQVqrfpdxG8LWiHEyZ0ylny6UznJE9CuxOIEgElveEnJlk_97TVnPL2eby6Dv-XbvoZ-YGyz3Rm7Tx8J5JKPjk4nX4rFT=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "40｜聽你說話",
@@ -2484,7 +2309,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/kPj_4O224C3qhcQzPLR2oUtsH9nt2uot2jneSrWBkP3adP3HOue0Buth09crkuHN6IH2V1TOKulWJaEDPlwOolbTBTlj5WbacQhuBQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/kPj_4O224C3qhcQzPLR2oUtsH9nt2uot2jneSrWBkP3adP3HOue0Buth09crkuHN6IH2V1TOKulWJaEDPlwOolbTBTlj5WbacQhuBQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "41｜回眸近景",
@@ -2495,7 +2319,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/DKKFK87-o3h1HQj3q9rQRmCiSlD1ojBPcMCyPUDvNfuJ_vK1O25CuTbILQubvWti-FmHC-OGkjSEcWKB6hFWjaUJPkpbDg1P78f5ug=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/DKKFK87-o3h1HQj3q9rQRmCiSlD1ojBPcMCyPUDvNfuJ_vK1O25CuTbILQubvWti-FmHC-OGkjSEcWKB6hFWjaUJPkpbDg1P78f5ug=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "42｜門前再見",
@@ -2506,7 +2329,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/ViRYayfUG8RTSPvyoH4G8-fuhiAF7z5GPZElxFah99QffvEQiMMz3oO_dBLEamwJnYNN9Be2RHD-WuZi9FlDz1jLbULIj4l3HayQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ViRYayfUG8RTSPvyoH4G8-fuhiAF7z5GPZElxFah99QffvEQiMMz3oO_dBLEamwJnYNN9Be2RHD-WuZi9FlDz1jLbULIj4l3HayQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "43｜靠近晴天",
@@ -2517,7 +2339,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/U1V6HKlYBxcrF8VIKVemt9nwUUI66YL1Z58c3NzyVdkMzArnfkT6J_A81UDrPs3W0SUg9vsk5b7199tUbjF_ePGc6zV4X0LkGIHTA6A=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/U1V6HKlYBxcrF8VIKVemt9nwUUI66YL1Z58c3NzyVdkMzArnfkT6J_A81UDrPs3W0SUg9vsk5b7199tUbjF_ePGc6zV4X0LkGIHTA6A=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "44｜轉身街角",
@@ -2528,7 +2349,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/PYPIRTSHkXkDZzTow9lsTwncIoM6hdiCeUz_9p2z8ZewdBA_yYnKm7JOpz_U_p23dgvG8R5ajubhxJglMMunj-AbhIup2QYVQOER=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/PYPIRTSHkXkDZzTow9lsTwncIoM6hdiCeUz_9p2z8ZewdBA_yYnKm7JOpz_U_p23dgvG8R5ajubhxJglMMunj-AbhIup2QYVQOER=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "45｜掌心停格",
@@ -2539,7 +2359,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/ulYsu6pSwZZMZJ0e2b9sissdzjQp7Rze-kwA_7Gds2QzJYuVpeW-XgC5ytgg2r57kEtTv2tbWJmCs0fPJWsZyDhAe59BmwJzV8wqo5o=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ulYsu6pSwZZMZJ0e2b9sissdzjQp7Rze-kwA_7Gds2QzJYuVpeW-XgC5ytgg2r57kEtTv2tbWJmCs0fPJWsZyDhAe59BmwJzV8wqo5o=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "46｜站成日常",
@@ -2550,7 +2369,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/3KBwzt5y0teAlROhhmLjfGRgyWJyCUId8sdG43TD-Hl98XKSwcnwPD5ImcJ5e7Hj4_qoVpnG9SbK2B40QAFI_fgl6gWFSLL57AKEcGE=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/3KBwzt5y0teAlROhhmLjfGRgyWJyCUId8sdG43TD-Hl98XKSwcnwPD5ImcJ5e7Hj4_qoVpnG9SbK2B40QAFI_fgl6gWFSLL57AKEcGE=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "47｜微笑暗號",
@@ -2561,7 +2379,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/u3YJewlkjt8hjd0tIuD6mSgiiZlkeI-mCo3MyfLAXYkDSlOXGsqPRLssJhhh7NM1Iffw6O-9nfMsJj5-wyFVlqVlSiNP12tBuxQ2=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/u3YJewlkjt8hjd0tIuD6mSgiiZlkeI-mCo3MyfLAXYkDSlOXGsqPRLssJhhh7NM1Iffw6O-9nfMsJj5-wyFVlqVlSiNP12tBuxQ2=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "48｜交疊的時光",
@@ -2572,7 +2389,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/Gmj0zar53V232Tqcj6ZZoiw3HO_JbraDwW4d0L_Bt555WmN6K_pCngA_YQYZq4652nNNbEsADtCadfJVj5IKc8JtCxYnZYR9JN00wA=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Gmj0zar53V232Tqcj6ZZoiw3HO_JbraDwW4d0L_Bt555WmN6K_pCngA_YQYZq4652nNNbEsADtCadfJVj5IKc8JtCxYnZYR9JN00wA=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "49｜倚著午後",
@@ -2583,7 +2399,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oniZgdF4WDV-dY5pq_eQPTqUGRVdjKaQSAK3P6nADpNyguf90uZZMFuHmtb-XcEfkoZ0oULpStLLwIksEyOIm7WATxdH3Ogye9Qv0w=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oniZgdF4WDV-dY5pq_eQPTqUGRVdjKaQSAK3P6nADpNyguf90uZZMFuHmtb-XcEfkoZ0oULpStLLwIksEyOIm7WATxdH3Ogye9Qv0w=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "50｜桌邊凝望",
@@ -2594,7 +2409,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/TMY6wtk7b7FN6_Z949caaPZbtol5Zx7aHDDE9vZJZBmeSVzdhShHvLcw3aSc3P_HMuTQQQvP7gxQGzJZmNmKktUdrPOrkrTuOIEr=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/TMY6wtk7b7FN6_Z949caaPZbtol5Zx7aHDDE9vZJZBmeSVzdhShHvLcw3aSc3P_HMuTQQQvP7gxQGzJZmNmKktUdrPOrkrTuOIEr=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "51｜晴日長椅",
@@ -2605,7 +2419,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/6qMt4PQel-1jA0dzmtVYd_scDehvOjZt-Jh9GXNMeNjIUdlsysL-oOEJgtpdzV30Zsq3uUimEhtxHTsxv9ARQkAmWDS_eCY8QhEz=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/6qMt4PQel-1jA0dzmtVYd_scDehvOjZt-Jh9GXNMeNjIUdlsysL-oOEJgtpdzV30Zsq3uUimEhtxHTsxv9ARQkAmWDS_eCY8QhEz=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "52｜髮梢有風",
@@ -2616,7 +2429,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/iUifgjTw-K7x4SknPvZv47PuXi3oKjQj207A_smy8y6gHL5vuiEYhmxjB6C3jsH3J5C7BWx-ofQY7OByA11HuMJtsducHsbnDtwZng=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/iUifgjTw-K7x4SknPvZv47PuXi3oKjQj207A_smy8y6gHL5vuiEYhmxjB6C3jsH3J5C7BWx-ofQY7OByA11HuMJtsducHsbnDtwZng=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "53｜伸手留光",
@@ -2627,7 +2439,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/lQHP_qnj7Bf9PVSJyOVXEatjk-q5WptzPmxo1uTGVh8Jj-j2Q8cqR8FRLBFjdwEf0AxuNN088ThyEwocjbUq5U7ZHuhXbLFC9SKuPQ=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/lQHP_qnj7Bf9PVSJyOVXEatjk-q5WptzPmxo1uTGVh8Jj-j2Q8cqR8FRLBFjdwEf0AxuNN088ThyEwocjbUq5U7ZHuhXbLFC9SKuPQ=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "54｜回到門前",
@@ -2638,7 +2449,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/mGlxQNSHCyEqkZh3ki7-JIM5U70si7oRVbI05OQ1vQDB29vy1IgqqUycfvGBq2U3m8DeptIhs-VOSy0wG450iBc5_mwUjpolC1lcjlo=w1200-h1600-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/mGlxQNSHCyEqkZh3ki7-JIM5U70si7oRVbI05OQ1vQDB29vy1IgqqUycfvGBq2U3m8DeptIhs-VOSy0wG450iBc5_mwUjpolC1lcjlo=w1200-h1600-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/SD8RZ0tlWxNlqyKbQITi0Q",
           "width": 900,
           "height": 1600,
           "title": "55｜回首日常",
@@ -2646,160 +2456,151 @@
           "alt": "街角暖陽：回首日常",
           "metadata": "街角暖陽 · 2026.10"
         }
-      ]
+      ],
+      "edition": "2026.10"
     },
     {
       "id": "tiger-spirit",
       "title": "虎虎生風",
       "description": "林泉、瀑光與虎影，六幅人像寫下柔情與力量。",
-      "shareUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
-      "verified": true,
       "photos": [
         {
           "imageUrl": "https://lh3.googleusercontent.com/lG2El9IHoSKh24t6WrZRSNs2AkY1Bevl14_q3U1f9vP6NNT15MEMjPlRhFc7yuCJU2Yo4d4z4xJ_RWvLS1iIup7VmYlcDp9GmlhiFvE=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/lG2El9IHoSKh24t6WrZRSNs2AkY1Bevl14_q3U1f9vP6NNT15MEMjPlRhFc7yuCJU2Yo4d4z4xJ_RWvLS1iIup7VmYlcDp9GmlhiFvE=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "01｜林泉相伴",
           "description": "水光在毛色與髮梢間閃動，把相伴的片刻留在林間。",
-          "alt": "虎虎生風：林泉相伴"
+          "alt": "虎虎生風：林泉相伴",
+          "metadata": "虎虎生風"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/8OBhfXG6hkksS_8oBpcpNqaM3Olz9cFjfE6H47yjSJcrXqMlorU9PrVIcR8ojqVpqzFaUmwyiYC98IhJkvENtcSJZN-FcDBSD9VkDw=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8OBhfXG6hkksS_8oBpcpNqaM3Olz9cFjfE6H47yjSJcrXqMlorU9PrVIcR8ojqVpqzFaUmwyiYC98IhJkvENtcSJZN-FcDBSD9VkDw=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "02｜溪畔凝望",
           "description": "不急著往前，先聽一會兒溪水的聲音。",
-          "alt": "虎虎生風：溪畔凝望"
+          "alt": "虎虎生風：溪畔凝望",
+          "metadata": "虎虎生風"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/klmnEEvouoPlXXnCeK4ZokXEVQ5LhEvkDBaXidqYOALA_G9NO_W4M0td3_YvmUMqQTHebWwV7bfdGr414hitCM7V68y8p1Y_DrhKwsI=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/klmnEEvouoPlXXnCeK4ZokXEVQ5LhEvkDBaXidqYOALA_G9NO_W4M0td3_YvmUMqQTHebWwV7bfdGr414hitCM7V68y8p1Y_DrhKwsI=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "03｜光影低語",
           "description": "樹葉篩下日光，眼前的一刻便有了溫度。",
-          "alt": "虎虎生風：光影低語"
+          "alt": "虎虎生風：光影低語",
+          "metadata": "虎虎生風"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ufy63lxOSdf09fc_N2TEE5v8sfZhFtgOchPzFWhcN2tUFMs1jAlhHy_UaBHdfZIob_b3PHWBKGJmAF4KuimGmy2X5t0TdlegIc0CrA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ufy63lxOSdf09fc_N2TEE5v8sfZhFtgOchPzFWhcN2tUFMs1jAlhHy_UaBHdfZIob_b3PHWBKGJmAF4KuimGmy2X5t0TdlegIc0CrA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "04｜柔情與鋒芒",
           "description": "柔和的目光與鮮明的虎紋，在同一束光裡相遇。",
-          "alt": "虎虎生風：柔情與鋒芒"
+          "alt": "虎虎生風：柔情與鋒芒",
+          "metadata": "虎虎生風"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/HbfLRXPZeRx9fhlQ3trj9NcY_grTo-PBtzpMKTIlunwlwtHUmwOfVpPmLFU_bscbXfN_jzA2nItMM2JGCT1YVq5gI7HbfW4VqRCCk94=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/HbfLRXPZeRx9fhlQ3trj9NcY_grTo-PBtzpMKTIlunwlwtHUmwOfVpPmLFU_bscbXfN_jzA2nItMM2JGCT1YVq5gI7HbfW4VqRCCk94=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "05｜近在身旁",
           "description": "靠近一些，讓陪伴成為畫面裡安定的力量。",
-          "alt": "虎虎生風：近在身旁"
+          "alt": "虎虎生風：近在身旁",
+          "metadata": "虎虎生風"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/K-YRGTbosulG1TZikVEAUTpvdEGK96VXV4zqG2QkMIyjX5L9XFnqruLSNXmrMObTmtfflpMjGX47oIhcXDQJNwMW3F3H5Dm_9Axy=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/K-YRGTbosulG1TZikVEAUTpvdEGK96VXV4zqG2QkMIyjX5L9XFnqruLSNXmrMObTmtfflpMjGX47oIhcXDQJNwMW3F3H5Dm_9Axy=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/EZpGZe7q2Tg-cYsBHxOvIQ",
           "width": 526,
           "height": 936,
           "title": "06｜瀑前留影",
           "description": "瀑布在身後落下，這段光影也有了輕柔的尾聲。",
-          "alt": "虎虎生風：瀑前留影"
+          "alt": "虎虎生風：瀑前留影",
+          "metadata": "虎虎生風"
         }
-      ],
-      "linkOnly": false
+      ]
     },
     {
       "id": "emergence",
       "title": "破繭而出",
       "description": "花影、華裳與金色光廊，六幅人像記錄向光而行的片刻。",
-      "shareUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
-      "verified": true,
       "photos": [
         {
           "imageUrl": "https://lh3.googleusercontent.com/Bj9VjH3Apxb4nwkTJ0rO8c78oamZBzaARn_6lCpTbORUtxDtyBd0ugpjKCZbH_qI9F4Jbdnec6L51PNn-L0vUGMGzEopn6PBeznpji8=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Bj9VjH3Apxb4nwkTJ0rO8c78oamZBzaARn_6lCpTbORUtxDtyBd0ugpjKCZbH_qI9F4Jbdnec6L51PNn-L0vUGMGzEopn6PBeznpji8=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "01｜回眸初光",
           "description": "她在畫框前回過頭，讓故事從一道目光開始。",
-          "alt": "破繭而出：回眸初光"
+          "alt": "破繭而出：回眸初光",
+          "metadata": "破繭而出"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/yNjml9W8hCBRiFQGvnN_YAAeh06SI2OS6xNCqRhfUS0qmqur5i9NZt4fZbcR8yde4tLloEjqA47DOJZPvu2bbOHXMrtp4lKWDSXN=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/yNjml9W8hCBRiFQGvnN_YAAeh06SI2OS6xNCqRhfUS0qmqur5i9NZt4fZbcR8yde4tLloEjqA47DOJZPvu2bbOHXMrtp4lKWDSXN=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "02｜金色迴廊",
           "description": "沿著光慢慢走，昨日的心事便留在身後。",
-          "alt": "破繭而出：金色迴廊"
+          "alt": "破繭而出：金色迴廊",
+          "metadata": "破繭而出"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/ZKxR18bHdx0PVjdKm4NKE2E6JUBnJDMPMqnrmhPb1ekEFLe0QixFQBsTb02jE7YJafbZfHqeRPySIAEXgmLzwyIVQBCmRjtNfsTkBrY=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ZKxR18bHdx0PVjdKm4NKE2E6JUBnJDMPMqnrmhPb1ekEFLe0QixFQBsTb02jE7YJafbZfHqeRPySIAEXgmLzwyIVQBCmRjtNfsTkBrY=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "03｜花影漸開",
           "description": "不必急著盛開，每一次停留都有自己的節奏。",
-          "alt": "破繭而出：花影漸開"
+          "alt": "破繭而出：花影漸開",
+          "metadata": "破繭而出"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/X-QLEso_iYBNEIe9Jvl3HVZ4pIBmc_DH2hdIvb72C4_Wfuyeeyqd2OUnAMPkfQcKdMWFQWdcsTrTDEKtox_U_-qF2EgqU5lQpA8v=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/X-QLEso_iYBNEIe9Jvl3HVZ4pIBmc_DH2hdIvb72C4_Wfuyeeyqd2OUnAMPkfQcKdMWFQWdcsTrTDEKtox_U_-qF2EgqU5lQpA8v=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "04｜向光而行",
           "description": "當目光轉向明亮的地方，腳步也有了方向。",
-          "alt": "破繭而出：向光而行"
+          "alt": "破繭而出：向光而行",
+          "metadata": "破繭而出"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/TQJ_8dkAWlsIllnCVBEs6KjZUVLNsTUMo0NGbDD0aa2Pmh6D-U2GEdmfK4gtaEch5P5we--lN8P1mbmSBN4aIeCoCL38ifs6ltxTeA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/TQJ_8dkAWlsIllnCVBEs6KjZUVLNsTUMo0NGbDD0aa2Pmh6D-U2GEdmfK4gtaEch5P5we--lN8P1mbmSBN4aIeCoCL38ifs6ltxTeA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "05｜華裳流光",
           "description": "把流動的光收進衣褶，留住轉身之前的片刻。",
-          "alt": "破繭而出：華裳流光"
+          "alt": "破繭而出：華裳流光",
+          "metadata": "破繭而出"
         },
         {
           "imageUrl": "https://lh3.googleusercontent.com/gpZ5wArVgqh73nPtzuHuDCPnIyeMP0AsqwrgHXugWIumOr6Bhn3hKLkMqB7t8eJOxRnu5w75LERy6SWfIfq90U0gmEX7T889AQBErA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/gpZ5wArVgqh73nPtzuHuDCPnIyeMP0AsqwrgHXugWIumOr6Bhn3hKLkMqB7t8eJOxRnu5w75LERy6SWfIfq90U0gmEX7T889AQBErA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/7N76e9wlCVnE_IrmD0O1AQ",
           "width": 526,
           "height": 936,
           "title": "06｜破繭之後",
           "description": "走過漫長的等待，終於可以用自己的模樣迎向世界。",
-          "alt": "破繭而出：破繭之後"
+          "alt": "破繭而出：破繭之後",
+          "metadata": "破繭而出"
         }
-      ],
-      "linkOnly": false
+      ]
     },
     {
       "id": "city-night-portraits",
       "title": "夜色街角",
       "description": "三十一幅夜間街頭人像，收藏城市燈火中的凝望與回眸。",
-      "shareUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
-      "verified": true,
-      "linkOnly": false,
       "photos": [
         {
           "imageUrl": "https://lh3.googleusercontent.com/z7zMpYd0Nz2qWd9Nalp4oiEUxV3BRRjLxEsA97BWIshjMG4x5n2Ufo-IfPMS6vKuoJSxqJbDdC7KoOSoyWv-tXMIXjCS7HMycDLHeg=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/z7zMpYd0Nz2qWd9Nalp4oiEUxV3BRRjLxEsA97BWIshjMG4x5n2Ufo-IfPMS6vKuoJSxqJbDdC7KoOSoyWv-tXMIXjCS7HMycDLHeg=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "01｜初入燈河",
@@ -2810,7 +2611,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/h2J_G8r_DEzyQiaMToCY8Lf5uGGA5BC7173EOMBCmULuZ60LWZesqUvWEqCp6Tvx69JWwNjwdVRRDGbJ5or_XFcBvfqkkPiY2Rs8Rw=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/h2J_G8r_DEzyQiaMToCY8Lf5uGGA5BC7173EOMBCmULuZ60LWZesqUvWEqCp6Tvx69JWwNjwdVRRDGbJ5or_XFcBvfqkkPiY2Rs8Rw=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "02｜掌心微光",
@@ -2821,7 +2621,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/ESl3pVYvFu0T8DZOLXkzdBBy8D2e6yU3TjYuROhBm5YIgfZL1UfUxtUuG_Wy3dVk6LKHE1xl_kBu7hjyhe5zFUDiBZ2MGXb4HvmNGA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/ESl3pVYvFu0T8DZOLXkzdBBy8D2e6yU3TjYuROhBm5YIgfZL1UfUxtUuG_Wy3dVk6LKHE1xl_kBu7hjyhe5zFUDiBZ2MGXb4HvmNGA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "03｜披衣望遠",
@@ -2832,7 +2631,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/i0PEDdASBsLh7Q2wihk3h23EuoSvLLcND78TjNr3HR70DwAlahpDpj6jC7KBqTl0nwENprlgtp6_cXkGwyb-gKykBnuGs245xYFw9w=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/i0PEDdASBsLh7Q2wihk3h23EuoSvLLcND78TjNr3HR70DwAlahpDpj6jC7KBqTl0nwENprlgtp6_cXkGwyb-gKykBnuGs245xYFw9w=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "04｜抬手留夜",
@@ -2843,7 +2641,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/8Zk3dJBgYjrYZ11UKVvL8pVlk1Pf0fVFK7F0bU_JTJQV5s-ojPPc0Qrv566izLJw9Qa5knARR6oqWko0yQsdvRQgzj11Zza2e61pkrA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8Zk3dJBgYjrYZ11UKVvL8pVlk1Pf0fVFK7F0bU_JTJQV5s-ojPPc0Qrv566izLJw9Qa5knARR6oqWko0yQsdvRQgzj11Zza2e61pkrA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "05｜桌邊靜語",
@@ -2854,7 +2651,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/kDzbrchDX04Q8Vg8hsKoEy6TFIbxnlQocO7AQtzGU6bTw8w2c3x4BhY19DRDqpydi5bMQ4XP17ZhSIjEFKCNJDGTTXFRDN263NB3=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/kDzbrchDX04Q8Vg8hsKoEy6TFIbxnlQocO7AQtzGU6bTw8w2c3x4BhY19DRDqpydi5bMQ4XP17ZhSIjEFKCNJDGTTXFRDN263NB3=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "06｜凝眸之間",
@@ -2865,7 +2661,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/Z1OcTML74y4-HjdevsHeGWNzXDXjpjKEuhiPryvYPHgcusJnS4tW8fTHU25dTnIagcec1uIXsilXZRf43GVIActAgaI_brNcnOIh=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Z1OcTML74y4-HjdevsHeGWNzXDXjpjKEuhiPryvYPHgcusJnS4tW8fTHU25dTnIagcec1uIXsilXZRf43GVIActAgaI_brNcnOIh=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "07｜倚柱小憩",
@@ -2876,7 +2671,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oRySMU_Yih8sd3ryGzEO6MO554nwiDCmD7-vCuyQA9C_T4EqSFZ4QgYCiPSyKnuMuIxu8Ytt_T52rECTRsY9ZGC1Qi56WuxQnuuxLaE=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oRySMU_Yih8sd3ryGzEO6MO554nwiDCmD7-vCuyQA9C_T4EqSFZ4QgYCiPSyKnuMuIxu8Ytt_T52rECTRsY9ZGC1Qi56WuxQnuuxLaE=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "08｜風向左邊",
@@ -2887,7 +2681,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/EuK_LOvT2SB3xiej5RNv6AmQK9_aoA7krmKDOmYgCbpVa7LYOCc-hwoNfdR3iO5DGenWdAyW2GCUfExJVlOInPTVGjSgs8cWwi-dzA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/EuK_LOvT2SB3xiej5RNv6AmQK9_aoA7krmKDOmYgCbpVa7LYOCc-hwoNfdR3iO5DGenWdAyW2GCUfExJVlOInPTVGjSgs8cWwi-dzA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "09｜仰望一刻",
@@ -2898,7 +2691,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/pRa9OC0xNqhzXrQJGQhdkD_bj_sL6a2SUKOPDFDEwLTB2qjVwLMWzCWDROSVbBfkRIgZDDZ1VLC57RnSjHucymBcgmAFVeBNrf1W=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/pRa9OC0xNqhzXrQJGQhdkD_bj_sL6a2SUKOPDFDEwLTB2qjVwLMWzCWDROSVbBfkRIgZDDZ1VLC57RnSjHucymBcgmAFVeBNrf1W=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "10｜耳畔燈影",
@@ -2909,7 +2701,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/lqyai2flI5t1XGYuaINoi_yOB8u_1jPLWXbjZHBIZCLH1N4oh7xtDDK5TucZCRjmdiHqViBKADjxI3LtMISX5XzrtequNqNcT-9l=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/lqyai2flI5t1XGYuaINoi_yOB8u_1jPLWXbjZHBIZCLH1N4oh7xtDDK5TucZCRjmdiHqViBKADjxI3LtMISX5XzrtequNqNcT-9l=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "11｜髮後的風",
@@ -2920,7 +2711,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/oe-C3xZ1ufevvmef4Zv0_uiX2LOmJE2XMTO3FmFcT2KNgoVZuS5v-ff2ppNauHMQzsZlkwhP3WTZL5nW2NidcnTZFbZ71_xkJnt7r38=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/oe-C3xZ1ufevvmef4Zv0_uiX2LOmJE2XMTO3FmFcT2KNgoVZuS5v-ff2ppNauHMQzsZlkwhP3WTZL5nW2NidcnTZFbZ71_xkJnt7r38=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "12｜俯身聽夜",
@@ -2931,7 +2721,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/eOBPoTVJXITmUCKTwbjiW539HLHKRR2hHzul1hcnNzig4HI-a2_XVo3Q8onua2zZJsSU-U6rA_b5FlrkcEpn4tpGZ3dMVYYQDeG-oHM=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/eOBPoTVJXITmUCKTwbjiW539HLHKRR2hHzul1hcnNzig4HI-a2_XVo3Q8onua2zZJsSU-U6rA_b5FlrkcEpn4tpGZ3dMVYYQDeG-oHM=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "13｜牽手向前",
@@ -2942,7 +2731,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/8PXsL0TXspjkNB5tJzCy6goReeuvEZWQmGHER7GdV1vyqDVVD9opg7IFyQiHNbJQKW_NO4ZI1240O1XQUoxG3glDbGshTkvsorOcJxk=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/8PXsL0TXspjkNB5tJzCy6goReeuvEZWQmGHER7GdV1vyqDVVD9opg7IFyQiHNbJQKW_NO4ZI1240O1XQUoxG3glDbGshTkvsorOcJxk=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "14｜雙臂成弧",
@@ -2953,7 +2741,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/0NWqlA4JBjrape2DOjW_Cf4RyQOsADSFwYLD6QGDKhzUWt6zk5bjRfAQcP5Fd_gdwaxkOdpwqMdr4fH4ag7gL2uTlsdYqM3pJFQGPQ=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/0NWqlA4JBjrape2DOjW_Cf4RyQOsADSFwYLD6QGDKhzUWt6zk5bjRfAQcP5Fd_gdwaxkOdpwqMdr4fH4ag7gL2uTlsdYqM3pJFQGPQ=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "15｜夜裡舒展",
@@ -2964,7 +2751,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/miOK4-R7JQQRko4taMt78gtOKjluEWptatVg-Kj5Higp6ufzsVpbd1RsSY1wW9odKwWR4cF991yUcXTs2uNFpOaiWk4CYxLrqRSyQfw=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/miOK4-R7JQQRko4taMt78gtOKjluEWptatVg-Kj5Higp6ufzsVpbd1RsSY1wW9odKwWR4cF991yUcXTs2uNFpOaiWk4CYxLrqRSyQfw=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "16｜一手理髮",
@@ -2975,7 +2761,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/JcOfV8N5JTf_8c1s686_heYSFRQYOn8eKc7lrHUbtwoImx8G4qyibzk73OmiADLezC4qHpqVgFy7oHkxR4fFD4GMLQQX_KZTADBP0Q=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/JcOfV8N5JTf_8c1s686_heYSFRQYOn8eKc7lrHUbtwoImx8G4qyibzk73OmiADLezC4qHpqVgFy7oHkxR4fFD4GMLQQX_KZTADBP0Q=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "17｜街角前傾",
@@ -2986,7 +2771,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/VqL18w59fql3jyqG-CjZ62CA5TFSth99rHW8ngdEK15MiwDlqydBGoTCNL57Y0hyctO4G1qhyvcNrPQ9ylh4slLx-6NkrBM6Igsy9Q=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/VqL18w59fql3jyqG-CjZ62CA5TFSth99rHW8ngdEK15MiwDlqydBGoTCNL57Y0hyctO4G1qhyvcNrPQ9ylh4slLx-6NkrBM6Igsy9Q=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "18｜暗牆獨坐",
@@ -2997,7 +2781,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/45IExRzl6vrgh0oyKJUValBhyB15FOI9SkN-FSyz5u3zPa5Kzr6xpPA1XMyPPwN1Pay-xb9g7NH5IPagHIguLLvVwEghnlBOyMVjIgk=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/45IExRzl6vrgh0oyKJUValBhyB15FOI9SkN-FSyz5u3zPa5Kzr6xpPA1XMyPPwN1Pay-xb9g7NH5IPagHIguLLvVwEghnlBOyMVjIgk=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "19｜窗旁午後",
@@ -3008,7 +2791,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/35Uh2sF5smkOxeoNI2azOJYYBvKkbVYo707nFXMqIBY4aAz9kDfXJvBf7RluqQFDzW9AoXvbqfn7u0_PdR9tTUXRTit7F7YR1XCZj5Q=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/35Uh2sF5smkOxeoNI2azOJYYBvKkbVYo707nFXMqIBY4aAz9kDfXJvBf7RluqQFDzW9AoXvbqfn7u0_PdR9tTUXRTit7F7YR1XCZj5Q=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "20｜晨光未語",
@@ -3019,7 +2801,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/mkzJc5QSrfGH6FCObo5UUu_1P3xXV01QUp8gHQ0uLWdlkyKuxtjOQoGzNqRpEe-Ir2vTrDOZ0yZzL6JCrPU1JGPzs0ozm53Zcqk3pdw=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/mkzJc5QSrfGH6FCObo5UUu_1P3xXV01QUp8gHQ0uLWdlkyKuxtjOQoGzNqRpEe-Ir2vTrDOZ0yZzL6JCrPU1JGPzs0ozm53Zcqk3pdw=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "21｜欄邊抬眸",
@@ -3030,7 +2811,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/-GVbvhPW-eKxYKP2ZME0bkZwp5zy2Y5M_dI5vshmveXKCpmL17GP29P4e_r-71gg-80oZzn3E60IQ2umZ1929nrvJbRcDQ3f_RMb=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/-GVbvhPW-eKxYKP2ZME0bkZwp5zy2Y5M_dI5vshmveXKCpmL17GP29P4e_r-71gg-80oZzn3E60IQ2umZ1929nrvJbRcDQ3f_RMb=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "22｜石階歇腳",
@@ -3041,7 +2821,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/PrJLtxKkldKhSb6Ps6m5d9DLcj2t5wIrfsh7l5YOLHdJEplqf4FFWjWDXizxwcSWVdLln6hrjzWhDTyG4FhSW_jQyZKuTc3V6pljUWQ=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/PrJLtxKkldKhSb6Ps6m5d9DLcj2t5wIrfsh7l5YOLHdJEplqf4FFWjWDXizxwcSWVdLln6hrjzWhDTyG4FhSW_jQyZKuTc3V6pljUWQ=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "23｜回首燈闌",
@@ -3052,7 +2831,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/tr_a0kEZc_YpsSYnjMtzRUucq7WBFdJLBGG7Wlx8IpJgIRRKL3WbOQAOuJBOpey0OPi9gDFcwl-zqtj1sPk9nh0rNNigfVMnLAfy=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/tr_a0kEZc_YpsSYnjMtzRUucq7WBFdJLBGG7Wlx8IpJgIRRKL3WbOQAOuJBOpey0OPi9gDFcwl-zqtj1sPk9nh0rNNigfVMnLAfy=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "24｜抱膝聽風",
@@ -3063,7 +2841,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/Ey3b2PJmYOLJgo_GleGOoJ9Mc8ttb586FGHxRnd4dZq32r6uA-k4TJv_qmpS8H1MjGiWKCu-9y1gM9qJs5qmcRBKNWOd5eFpo7H94w=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/Ey3b2PJmYOLJgo_GleGOoJ9Mc8ttb586FGHxRnd4dZq32r6uA-k4TJv_qmpS8H1MjGiWKCu-9y1gM9qJs5qmcRBKNWOd5eFpo7H94w=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "25｜托腮遠想",
@@ -3074,7 +2851,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/aEnhv6_nIo9XYXN4kjoV3mUB5HaRhzu7PvRzV9JqWHF5jF8jHr4nCeczdVozEIH0uk7C0OkY5tN2CnA7Q9ghzpGHdpDgLurATcv1f_A=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/aEnhv6_nIo9XYXN4kjoV3mUB5HaRhzu7PvRzV9JqWHF5jF8jHr4nCeczdVozEIH0uk7C0OkY5tN2CnA7Q9ghzpGHdpDgLurATcv1f_A=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "26｜轉身微笑",
@@ -3085,7 +2861,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/XsrWieXouoQAv217XEFPk-x27egSqy4vWiuZFFNPKnPtJN85Xi5A-snqVF5PmGL4a3CTtyO1D3rh3B6WsCwCs9481YZc1NRRzP6z=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/XsrWieXouoQAv217XEFPk-x27egSqy4vWiuZFFNPKnPtJN85Xi5A-snqVF5PmGL4a3CTtyO1D3rh3B6WsCwCs9481YZc1NRRzP6z=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "27｜回眸倚坐",
@@ -3096,7 +2871,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/s_VgMh5LiwQrTiHSiCg3zS21oCpluH1q7-iM_EVJLDKC-E_GDi2nFaygJjWrba0dr4r_C0v6GsDXhoUZ4YhclP4j6UksWY9OCOsGsq8=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/s_VgMh5LiwQrTiHSiCg3zS21oCpluH1q7-iM_EVJLDKC-E_GDi2nFaygJjWrba0dr4r_C0v6GsDXhoUZ4YhclP4j6UksWY9OCOsGsq8=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "28｜正面相逢",
@@ -3107,7 +2881,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/LK-bUYx7Y3Y8ms41YVtXIdgEB_ML8CJFGRADxl-E1yLplG2Sqnu09P62ongAO8Eow_D7pm8DNMqreF2uPrtTdfu2uE1G2sxJNRsE4Q=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/LK-bUYx7Y3Y8ms41YVtXIdgEB_ML8CJFGRADxl-E1yLplG2Sqnu09P62ongAO8Eow_D7pm8DNMqreF2uPrtTdfu2uE1G2sxJNRsE4Q=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "29｜階上心事",
@@ -3118,7 +2891,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/MZP1UMs-sxbnlsdAecakeDZXKbjKwxwFMH7l_CktrvuaeaW0dpnQqxQ1KjafWq1YrT4HekZTFusZB3GgHAN6jvXgbUn0CjixUEur61A=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/MZP1UMs-sxbnlsdAecakeDZXKbjKwxwFMH7l_CktrvuaeaW0dpnQqxQ1KjafWq1YrT4HekZTFusZB3GgHAN6jvXgbUn0CjixUEur61A=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 526,
           "height": 936,
           "title": "30｜回頭等光",
@@ -3129,7 +2901,6 @@
         {
           "imageUrl": "https://lh3.googleusercontent.com/LD9UUuQ3K6ZMjka4Wic22OR2VV0MX49tAQMBptqZh_7Skt-Rznh01N0Sj8EgBxawR6aEOnFM1LqGtOSmGSd99wE1dq6Q58h4OdqtoA=w1363-h936-rw-sm-pa-nu-v0",
           "thumbnailUrl": "https://lh3.googleusercontent.com/LD9UUuQ3K6ZMjka4Wic22OR2VV0MX49tAQMBptqZh_7Skt-Rznh01N0Sj8EgBxawR6aEOnFM1LqGtOSmGSd99wE1dq6Q58h4OdqtoA=w1363-h936-rw-sm-pa-nu-v0",
-          "pageUrl": "https://app.degoo.com/share/_8_viTRx8a_5ambDtR4VJQ",
           "width": 702,
           "height": 936,
           "title": "31｜夜色定格",
@@ -3137,22 +2908,19 @@
           "description": "手臂輕舉過頭，鏡頭以較寬的近景收住她的神情。深藍牛仔、微亮的項鍊與身後綠葉，替這段街頭影像留下最後一眼。",
           "metadata": "夜色街角 · 2026.10"
         }
-      ]
+      ],
+      "edition": "2026.10"
     },
     {
       "id": "chun-li-street",
       "title": "春麗街影",
       "description": "青藍旗袍、雙髻與城市燈火，三十九幅街頭影像串起一段雨夜漫行。",
-      "shareUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q",
-      "verified": true,
-      "linkOnly": false,
       "photos": [
         {
           "title": "01｜初入燈河",
           "description": "她在欄邊托腮坐著，街燈沿著肩側落下，替夜行留下一個安靜的開場。",
           "alt": "春麗街影：初入燈河",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999697",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/2s-qXjzj9vUgv3GNbKU1ktubHo2CXU9gb6Vl_S3FC9AmsZ0FhholhnpnqkyurkfZdkr6ULPUiEVD05w4WRIW_ugnD4kkTFBqrK2o=w1363-h936-rw-sm-pa-nu-v0",
@@ -3164,7 +2932,6 @@
           "description": "她倚著燈柱側坐，指尖停在領口；青藍衣褶收住一點暖光。",
           "alt": "春麗街影：回眸微雨",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999663",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/Ac55tS43r2-CD4yJIsbt5QxnKN_hu2WlK8QKOc_GsEZ3MOgVUgN9m-tGgvv5Y9GinZEf9A1hCcvI3Iouxo20w4QYTv864T0p8M-knA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3176,7 +2943,6 @@
           "description": "她微微俯身回望，身後的車燈把街道延伸成一條明亮的線。",
           "alt": "春麗街影：青衣映夜",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999638",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/QKgqj74Olpnfj5BhcuQjXCSBmj28nsnsEBpau9OkHtJp25KHPQlp8xiz9YxlIpxnz2v6nVTJR5Vq1hKgD9Ex8G8pkXcX4snnNZPDdw=w1363-h936-rw-sm-pa-nu-v0",
@@ -3188,7 +2954,6 @@
           "description": "手臂輕舉過頭，回眸停在鏡頭前；濕亮的路面接住城市的光。",
           "alt": "春麗街影：街角停步",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999655",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/MlbpQcGlOihgMrHT9DzFK07pMZKS8FbfHvyiE66HoQpdnziQd-kaEeSL7lBA4AaT9px63eyBg2kOrDTeZYxdM85ji7mQoxPcu9J6R6k=w1363-h936-rw-sm-pa-nu-v0",
@@ -3200,7 +2965,6 @@
           "description": "掌心托住臉側，交疊的雙腿讓街角的停留多了一份自在。",
           "alt": "春麗街影：簷下聽雨",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999659",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/s3r7BH2LDYNnPnXNeRrsuvbdFDONOERNugbXvx9mEIivX4bDVwZzB5n93Xz2ZjNFwHrM8ZLqIpMxNBIu5iAL-tg6pR1N1g62cNwQpQ=w1363-h936-rw-sm-pa-nu-v0",
@@ -3212,7 +2976,6 @@
           "description": "她轉身看來，雙髻與旗袍背面的光影，留住夜風經過的片刻。",
           "alt": "春麗街影：霓虹低語",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999661",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/aQzcAdGM_pKSWbkm-6X1TsjB8g6aVJiW6YpIzKguo5qYMWdlAfINiUgXK-1TNhSfzr46ig4eEmHvRHa4QyP1HWWWVzYgp1XbVVNiSw=w1363-h936-rw-sm-pa-nu-v0",
@@ -3224,7 +2987,6 @@
           "description": "她站在路旁，指尖輕扶立柱；腳下的倒影將燈火拉得更長。",
           "alt": "春麗街影：雙髻流光",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999698",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/16jNj_lx9WTYEiGLrsRlg8y8Q6rtgb33Epl79LWD4hkySmLKAytdjpEHNvLdDDKTwYhcrHZj7HYkbSr8XBAP8uQrHa6mglh6VSvfoyQ=w1363-h936-rw-sm-pa-nu-v0",
@@ -3236,7 +2998,6 @@
           "description": "她向鏡頭輕輕前傾，手落在膝前，目光從繁亮街景中靠近。",
           "alt": "春麗街影：暖燈留影",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999653",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/QsKMtmfK-tBjnIXeCwl4vw5WKbJ26rc-f1ApLF8RoCwxsi6SfDnCxRfDbKr5bvdiO9DPlD4pglkhk0bYufS1uWf-yWaaX8v87h6Scw=w1363-h936-rw-sm-pa-nu-v0",
@@ -3248,7 +3009,6 @@
           "description": "她在路邊蹲下，手掌輕托臉側；雨後的燈影就在身旁閃動。",
           "alt": "春麗街影：夜路漫步",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999633",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/ECEqCp8LS6_talpQIKGtsfTzY8xCzZJNBVHkqB9nrKM87G9GACtlm1fYTyb_-vUZrQvBWLqu6EAwHihJ9heRH6tCA04TioM0JrXDIQ=w1363-h936-rw-sm-pa-nu-v0",
@@ -3260,7 +3020,6 @@
           "description": "白鞋停在石磚上，她屈膝凝望，讓夜裡的腳步暫歇。",
           "alt": "春麗街影：城市微光",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999643",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/tKE0hUcmsv-AjhB33Z8grtWIkApobev3_KNz8Rur4phthKLN0T_vtJUIQaarZB-Ihvo1V7t7dgZebZ_rTAWT81qUJ1PP0SHDfcnwIw=w1363-h936-rw-sm-pa-nu-v0",
@@ -3272,7 +3031,6 @@
           "description": "雙手收在身前，她倚著深色牆面，安靜望向街上的光。",
           "alt": "春麗街影：藍緞夜曲",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999690",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/DXJL5_UF1BYrgIKbgJ4MIcSgXym-VeeoXENhhJiJGOtaRU5PVV-6KapMaLAA2Xbx_g_VQsiPUMxoqOqr2xbXo1dwRxef7yvzSJ4ZTzI=w1363-h936-rw-sm-pa-nu-v0",
@@ -3284,7 +3042,6 @@
           "description": "身體朝著遠方，目光卻回到鏡頭前；一個轉身便接起兩段夜色。",
           "alt": "春麗街影：倚牆片刻",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999631",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/zMB8TJwziIn7YVlRlOGJCcNuORtpZnQjzygMHsTo-zVUo2UsZBs-5qPFFHA-91Lk50uI2NRBx7N8dxFYaKjm-vBIplRljUbxX716JA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3296,7 +3053,6 @@
           "description": "她靠在牆邊側望，街燈描出肩背，也照亮青藍衣料的紋理。",
           "alt": "春麗街影：風過髮梢",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999651",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/O-fhNb7npuRfaEg2DvRLpew3FkjfuIo9yBC4BVX6Z0M4D951b5529p-C19zGEMM6ajqsA3CSf3zFOBLZ7vc_i7SUpiBDTbH7gpzp=w1363-h936-rw-sm-pa-nu-v0",
@@ -3308,7 +3064,6 @@
           "description": "她坐在石臺邊，托腮望向一側，像在等一句遲來的問候。",
           "alt": "春麗街影：眉間燈影",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999693",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/ST4Mj5-YLQCl4sb1kSp0j1MewskkafeT-XaxitgMqLaQK-wQiLTZswzw5luzLBphbRDqq4Xk8nHVYGQk-8XDt3RGLZlFraDgoAJqLr4=w1363-h936-rw-sm-pa-nu-v0",
@@ -3320,7 +3075,6 @@
           "description": "她蹲在路邊稍稍仰望，讓濕潤街道成為目光背後的底色。",
           "alt": "春麗街影：雨巷回聲",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999695",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/tdWhPRwZf_R8yuZwDixWHB1nQkgnTdaljWSXeR-wc9xHapYnfz_bEYvFgadEh5Fx1EIu0qep-NvjR0KRL7QAF8WWK4Nw0kZpJg_E8Q=w1363-h936-rw-sm-pa-nu-v0",
@@ -3332,7 +3086,6 @@
           "description": "掌心輕貼臉側，黑色鞋帶與青藍衣褶，將夜晚收進細節。",
           "alt": "春麗街影：青藍心事",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999694",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/exJ91QW3d7VYFVXBeNz4otcqRYtvGKG9DI8tBfkzrq1TFrXkp_LGpEeuBjW4rrrJncPxzxPTIkea8eaOEDVQMZ37mlXQZDSfhUb_kA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3344,7 +3097,6 @@
           "description": "她倚著燈柱微仰下巴，視線越過畫外，留下一點未說出口的心事。",
           "alt": "春麗街影：街邊凝望",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999680",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/qVOoaW3xcugc_0BaV9HPj4ayDPsQJv1YC1PHc1R2jAMXTbWLDUVAn-ouSvS9hFOg8G0seYjx7HdS_KKa3u9Qk7NCRnjXV7O5ji8Z=w1363-h936-rw-sm-pa-nu-v0",
@@ -3356,7 +3108,6 @@
           "description": "她在欄邊坐定，臉側輕靠掌心；城市仍明亮，這一刻卻很安靜。",
           "alt": "春麗街影：燈下靜語",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999672",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/Zi40S9JmHcHQzEyNC2GXIuqTrYypLj1F4GXFncxwr7H260B_TciMjx6KqdsWE7l2Wbb3f2AcJ8MorVKFV1iVo6UWVRROezCk56Jsdg8=w1363-h936-rw-sm-pa-nu-v0",
@@ -3368,7 +3119,6 @@
           "description": "雙手扶著欄杆，她回過肩來，把街上的燈火留在身後。",
           "alt": "春麗街影：夜色停格",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999696",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/c9l8Q4r3r5-1jRNhJ3SwHtRTIEAmPIiEpIGiWiHXTx9zNSjIYb9Ze6jcIRYuOthuvuzvl-AmTQ3h0qGEN2IYfG36aiN6nqoUAK_Xaw=w1363-h936-rw-sm-pa-nu-v0",
@@ -3380,7 +3130,6 @@
           "description": "指尖輕放領口，側坐的姿態接住燈光，像故事裡再次出現的一頁。",
           "alt": "春麗街影：再見微光",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999676",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/Ac55tS43r2-CD4yJIsbt5QxnKN_hu2WlK8QKOc_GsEZ3MOgVUgN9m-tGgvv5Y9GinZEf9A1hCcvI3Iouxo20w4QYTv864T0p8M-knA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3392,7 +3141,6 @@
           "description": "她在眼側比出輕巧的手勢，讓夜色裡的相遇多了一點俏皮。",
           "alt": "春麗街影：長街如夢",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999636",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/GvfntJn6nb_H0Pn8JWb_j_hbBAW1jGTT6xw-V6mWR5dGbAVbxwWZUiDsQ-9mgH-5buf0oU_lw7Ke4XveBPFMsaHuQOglwlFZ-9IC=w1363-h936-rw-sm-pa-nu-v0",
@@ -3404,7 +3152,6 @@
           "description": "手勢停在眼邊，另一隻手自然垂落；路燈替青藍旗袍鍍上暖色。",
           "alt": "春麗街影：轉身之間",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999648",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/jzKgj686rP7GXYsmZ9NgXi4pMAIziUBEzsSYv0aqabfICKsXiIwFIqEPmB6pRe_FntLInzVrmR1RMeVKeFF3KyZbxCnQ-ogVHXarog=w1363-h936-rw-sm-pa-nu-v0",
@@ -3416,7 +3163,6 @@
           "description": "她微微前傾，雙手靠近膝前，抬眼望向鏡頭旁的光。",
           "alt": "春麗街影：雨後燈河",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999624",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/NhckSyOa9J8PBETg3juNcJgi77ARJ5QwC9kQOXYKV2yfFX0FueaIkbN-iLuY0n_K5C7_xR4alUwvX8wfXzaWlqFBcG48qjPHAyKx=w1363-h936-rw-sm-pa-nu-v0",
@@ -3428,7 +3174,6 @@
           "description": "一手搭在腦後，她靠著深色牆面，把匆忙暫時留在街外。",
           "alt": "春麗街影：一眼入夜",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999641",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/7idT0QN7N_XslFkd1SBQRRC_uZG1UFZ0ujlVQwfXphBO3uyHnUOCM8sNaZeARn4U5onz6oRf8_qtJdCq5BsRKAG3OhqOSkSo-Z08=w1363-h936-rw-sm-pa-nu-v0",
@@ -3440,7 +3185,6 @@
           "description": "她雙手輕扶欄杆，俯身望向鏡頭；身後的車燈與濕亮街道，接住這一刻靠近的目光。",
           "alt": "春麗街影：待續的光",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999629",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/CAoKOB5MfeNnRrftAzGBsNMwtnc3gUlOnXSb_23it-m1q--L81d3QasiUKIKmWsnEZZA8DT5n6vxFDHwEioCVkHUfR4BsfiVfnZaIA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3452,7 +3196,6 @@
           "description": "她一手輕搭髮後，側身倚在深色立柱旁。青藍旗袍映著路燈，回眸讓夜色多留片刻。",
           "alt": "春麗街影：尚未抵達",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999626",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/e0dRRRlP3HoMiDqUxB6UZe8X4g8hEWXQ07ndWxrQUpfztuwy5NcvKNWd-TmMYoJTP02INt3wr2NTc7F3z0iGiOsPSHGKnCSnAp8fzCk=w1363-h936-rw-sm-pa-nu-v0",
@@ -3464,7 +3207,6 @@
           "description": "手臂在頭頂畫出弧線，她站在燈河前，神情平靜而直接。",
           "alt": "春麗街影：霓虹映衣",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999634",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/ffdtbbvzXzC1lmamWRKmm4edG_xTyExqTAkdb5PmiL6WnqXyhfD01kw6BTHBmy4b0u1mrSCdxSEfMcEGqnFh9FSjwyRTp3GlFrif=w1363-h936-rw-sm-pa-nu-v0",
@@ -3476,7 +3218,6 @@
           "description": "她站在濕亮街道旁，指尖停在耳畔，細細的鞋跟接住夜行的節奏。",
           "alt": "春麗街影：步履輕聲",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999688",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/TrCeCFP_3agFNiCaWCCnq3baeWflz4IqtdCNtOdBExrD6hCrNMLbmGLonpexPcqENUjb2-m-Q80xsNy7d5DN40YQy806wAPLMcL2jQ=w1363-h936-rw-sm-pa-nu-v0",
@@ -3488,7 +3229,6 @@
           "description": "她倚著燈柱抬手理髮，目光向遠處延伸，讓繁亮背景有了留白。",
           "alt": "春麗街影：夜裡相逢",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999664",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/lRq24bnKjBiTTqaJKtTAPgKcvSXMbJmJyD0jYGruGmBdSX6isrkgyHAuFghel1Hatpzf-qjVeItWGryFaKcxmA5E49BNRN9j5rACZg=w1363-h936-rw-sm-pa-nu-v0",
@@ -3500,7 +3240,6 @@
           "description": "雙手輕攏在膝前，她向鏡頭靠近，長街在身後慢慢散開。",
           "alt": "春麗街影：藍色序章",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999646",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/alLFJTcTQcI18xkcuGKED02UPARfcSjElD7ZTpqxNfJeyBr-DWCQLs-L0sD637EGlTkF1ie_6cwbbRv7pUpGX0vF8USjCvYvCcdZJvM=w1363-h936-rw-sm-pa-nu-v0",
@@ -3512,7 +3251,6 @@
           "description": "她在欄邊托著臉，雙腿自然交疊，把晚風留在坐姿的空隙。",
           "alt": "春麗街影：街燈作伴",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999674",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/gJDMWrB9xM2qGC5PZj98odLE1zPgJwqICUONNDlXleTc3Y6F_Q8kyF54XRjjMe1BiPbfvFvjC573ONmSQSaWgaZF1po8rXkLTgFeGkc=w1363-h936-rw-sm-pa-nu-v0",
@@ -3524,7 +3262,6 @@
           "description": "她在石磚路邊蹲下，掌心輕托臉側；黑色細跟鞋與交疊的腿線，替城市燈火留出一刻安靜。",
           "alt": "春麗街影：留白一刻",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999691",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/uC6hSU5NVK2xkjtJfRvb8ofbRrj5xJpaEjYTYnqC_ia37RTC7wOotPB_9zSb1tAtHBfgJsGPm2LpkuFkae1nYsamC0HcDrqpHhA-5w=w1363-h936-rw-sm-pa-nu-v0",
@@ -3536,7 +3273,6 @@
           "description": "她輕靠掌心望來，石臺與路燈相伴，像一段願意重新讀過的夜晚。",
           "alt": "春麗街影：光影重逢",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999657",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/Zi40S9JmHcHQzEyNC2GXIuqTrYypLj1F4GXFncxwr7H260B_TciMjx6KqdsWE7l2Wbb3f2AcJ8MorVKFV1iVo6UWVRROezCk56Jsdg8=w1363-h936-rw-sm-pa-nu-v0",
@@ -3548,7 +3284,6 @@
           "description": "手掌放在髮頂，她側身望向鏡頭，肩側的光讓輪廓更清楚。",
           "alt": "春麗街影：晚風輕拂",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999678",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/awpiGCmgxQgEz1wDs0PWtIN91NZqilFHwxTpIU6kB8Dl7mOCdF6CKt5qPm94aMH4UunirGtJAgOXplGWegZqYJQNHzDLdiegds8qLA=w1363-h936-rw-sm-pa-nu-v0",
@@ -3560,7 +3295,6 @@
           "description": "雙手扶住欄杆，她俯身回望；青藍衣褶與濕地倒影各自閃著光。",
           "alt": "春麗街影：深巷微明",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999666",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/GDT3-AtyhNXDfxTP6t_RvLyroqFc9aM_nEw-8PxI255wH-g5VYXXSjhtpSd0yci-HU85oRmdilUuEqlgQOgBJu21p-GZjojvuAsoVl0=w1363-h936-rw-sm-pa-nu-v0",
@@ -3572,7 +3306,6 @@
           "description": "她在街旁站定，指尖靠近耳邊，讓全身的姿態融進長長的燈列。",
           "alt": "春麗街影：斑斕夜雨",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999692",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/TVgtqoJZ2em2GTInwCbDisPpR2h7mJVKD-UEiibQMDGm306NCWK4oGvxXaXrDuTbiOizkNkCm4CUYwQhFLuDKc1pMwB06ZpgW1opNQ=w1363-h936-rw-sm-pa-nu-v0",
@@ -3584,7 +3317,6 @@
           "description": "她倚著欄邊回眸，雙髻在暗處收住輪廓，目光卻仍然明亮。",
           "alt": "春麗街影：燈火未眠",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999667",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/DAYdb3IOo3K2eGQkqzjX0i8QZ6y62FqpOIEZFVMnbTUOcTkrysiLb9mhgqMgrUex5GWdBmXFLqu7YBp8iZqByOlg33lhf3HK6w2bCg=w1363-h936-rw-sm-pa-nu-v0",
@@ -3596,7 +3328,6 @@
           "description": "一手輕搭腦後，另一手扶欄；轉身的線條替街景添了一點從容。",
           "alt": "春麗街影：回首城市",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999669",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/38dJUt5FrR6uO2w1JOwhFcdReArLo0Ha5gng-fjdzsc0oP5adApnvQOj47m38blGCSqC7rg7KC-Z-y3G0uJYkSYIwXk8NoLTirQwrqY=w1363-h936-rw-sm-pa-nu-v0",
@@ -3608,7 +3339,6 @@
           "description": "她回頭站在雨後街道，銀色鞋跟映著路燈，為這段漫行留下最後一眼。",
           "alt": "春麗街影：夜色歸途",
           "metadata": "春麗街影 · 2026.10",
-          "pageUrl": "https://app.degoo.com/share/liAVH4P2mv2AuMJk6HoG1Q?ID=20969999683",
           "width": 526,
           "height": 936,
           "imageUrl": "https://lh3.googleusercontent.com/Nr3qofEyfodr3jBSBcjOQFzazTnvlDWboDZATPGlrFGQbtgYa18zhc4E6CzAJHlrFI9J04Xt-hZauQ2GcpQZ8e-E0k1sf5t4QAVH_w=w1363-h936-rw-sm-pa-nu-v0",
@@ -3616,7 +3346,8 @@
           "sourceId": "20969999683"
         }
       ],
-      "lastImportedOn": "2026-10-30"
+      "lastImportedOn": "2026-10-30",
+      "edition": "2026.10"
     }
   ]
 }
