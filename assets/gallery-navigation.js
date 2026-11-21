@@ -47,6 +47,10 @@
           firstPhoto.click();
         });
         heading.append(start);
+        const note = document.createElement('p');
+        note.className = 'gallery-story-note gallery-reading-note';
+        note.textContent = '點照片可放大，左右滑動或使用方向鍵切換。';
+        heading.after(note);
       }
       const header = document.querySelector('.top');
       const offset = Math.max(0, header?.getBoundingClientRect().bottom || 0) + 12;
