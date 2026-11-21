@@ -301,7 +301,7 @@
     if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/gallery-albums.json?v=20261121-captions',{cache:refresh?'reload':'default',signal:controller.signal});
+      const response=await fetch('../data/gallery-albums.json?v=20261121-poetry',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       let unavailable = false;
