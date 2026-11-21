@@ -12,7 +12,7 @@ const hour=new Date().getHours(),phase=hour>=18&&hour<23?"evening":hour>=23||hou
 /* Homepage night label injection removed: the permanent hero-side-caption in index.html is the single moonlight caption. */
 const isHome=location.pathname==="/miaoshu.github.io/"||location.pathname==="/miaoshu.github.io/index.html";
 /* Homepage below-fold orchestration is owned by moonlit-home-loader.js. Keep this shared runtime free of duplicate homepage loaders. */
-if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySelector("script[data-moonlit-gallery-content]"))return;const s=d.createElement("script");s.src="/miaoshu.github.io/assets/moonlit-gallery-content.js?v=20261002-split1";s.dataset.moonlitGalleryContent="";d.head.append(s)};"requestIdleCallback"in window?requestIdleCallback(loadGallery,{timeout:1200}):setTimeout(loadGallery,0)}
+if(location.pathname.includes("/gallery/")){const loadGallery=()=>{if(d.querySelector("script[data-moonlit-gallery-content]"))return;const s=d.createElement("script");s.src="/miaoshu.github.io/assets/moonlit-gallery-content.js?v=20261121-caption-title";s.dataset.moonlitGalleryContent="";d.head.append(s)};"requestIdleCallback"in window?requestIdleCallback(loadGallery,{timeout:1200}):setTimeout(loadGallery,0)}
 })();
 
 /* Moonlit footer: load the full enhancement only near the page end. */
