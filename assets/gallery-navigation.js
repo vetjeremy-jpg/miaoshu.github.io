@@ -30,7 +30,13 @@
     }
     if (previousAlbum === album) return;
     if (album) {
+      album.dispatchEvent(new Event('gallery:open-album'));
       const firstPhoto = album.querySelector('figure > a');
+      const firstImage = firstPhoto?.querySelector('img');
+      if (firstImage) {
+        firstImage.fetchPriority = 'high';
+        firstImage.loading = 'eager';
+      }
       if (firstPhoto && !heading.querySelector('.gallery-start')) {
         const start = document.createElement('button');
         start.className = 'gallery-start';

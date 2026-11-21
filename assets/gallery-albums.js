@@ -56,10 +56,8 @@
   };
   const warmNeighbors = () => {
     if (navigator.connection && navigator.connection.saveData) return;
-    for (const offset of [1, -1]) {
-      const photo = activeAlbum.photos[(currentIndex + offset + activeAlbum.photos.length) % activeAlbum.photos.length];
-      imageRequest(photo.imageUrl, 'low');
-    }
+    const photos = activeAlbum.photos;
+    imageRequest(photos[(currentIndex + 1) % photos.length].imageUrl, 'low');
   };
 
   let viewer;
@@ -117,7 +115,7 @@
     if (pending) { pending.onload = null; pending.onerror = null; pending = null; }
     keepNearby();
     const thumbnail = photoNodes.get(p);
-    const previewReady = thumbnail && thumbnail.complete && thumbnail.naturalWidth > 0;
+    let previewReady = thumbnail && thumbnail.complete && thumbnail.naturalWidth > 0;
     img.hidden = !previewReady;
     if (previewReady) img.src = thumbnail.currentSrc || thumbnail.src;
     else img.removeAttribute('src');
@@ -138,6 +136,20 @@
     viewer.querySelector('.gallery-photo-title').textContent = p.title;
     viewer.querySelector('.photo-meta').textContent = p.metadata;
     viewer.querySelector('.gallery-photo-description').textContent = p.description;
+    let fullReady = false;
+    if (!previewReady) {
+      const preview = new Image();
+      preview.decoding = 'async';
+      preview.referrerPolicy = 'no-referrer';
+      preview.onload = () => {
+        if (request !== serial || !viewer.open || fullReady) return;
+        previewReady = true;
+        img.src = preview.src;
+        img.hidden = false;
+        status.hidden = true;
+      };
+      preview.src = previewUrl(p.thumbnailUrl);
+    }
     const preload = imageRequest(p.imageUrl, 'high');
     pending = preload;
     const ready = () => {
@@ -145,6 +157,7 @@
       clearTimeout(loadTimer);
       viewer.querySelector('.photo-viewer-retry').hidden = true;
       pending = null;
+      fullReady = true;
       img.src = p.imageUrl;
       img.hidden = false;
       status.hidden = true;
@@ -186,13 +199,31 @@
     return true;
   };
 
+  // Reuse the same lighter preview for the cover, album and viewer.
+  const previewUrl = source => source.replace(
+    /^(https:\/\/lh3\.googleusercontent\.com\/[^=]+)=w(\d+)-h(\d+)(-rw-sm-pa-nu-v0)$/,
+    (url, base, width, height, suffix) => {
+      const scale = Math.min(1, 760 / width, 1120 / height);
+      return scale === 1 ? url :
+        base + '=w' + Math.round(width * scale) + '-h' + Math.round(height * scale) + suffix;
+    }
+  );
+  const loadPreview = (image, photo, onFailure) => {
+    const preview = previewUrl(photo.thumbnailUrl);
+    image.addEventListener('error', () => {
+      if (image.getAttribute('src') === preview && preview !== photo.thumbnailUrl) {
+        image.src = photo.thumbnailUrl;
+      } else onFailure();
+    });
+    image.src = preview;
+  };
+
   const renderAlbum = album => {
     const id = 'album-' + album.id;
     const cover = album.photos[0];
     const card = element('a', 'series-card');
     card.href = '#' + id;
     const coverImage = element('img');
-    coverImage.src = cover.thumbnailUrl;
     coverImage.alt = cover.alt;
     coverImage.width = cover.width;
     coverImage.height = cover.height;
@@ -200,10 +231,10 @@
     coverImage.decoding = 'async';
     coverImage.referrerPolicy = 'no-referrer';
     coverImage.sizes = '(max-width: 650px) calc(100vw - 32px), (max-width: 1100px) calc(50vw - 36px), 520px';
-    coverImage.addEventListener('error', () => {
+    loadPreview(coverImage, cover, () => {
       coverImage.hidden = true;
       card.classList.add('gallery-cover-unavailable');
-    }, {once:true});
+    });
     const words = element('span');
     words.append(element('small', null, String(album.photos.length).padStart(2, '0') + ' PHOTOGRAPHS'),
       element('strong', null, album.title),
@@ -222,41 +253,44 @@
     const gallery = element('section', 'gallery gallery-album-grid');
     gallery.append(intro);
     gallery.setAttribute('aria-label', album.title + '攝影系列');
-    album.photos.forEach((p, index) => {
-      const figure = element('figure');
-      const link = element('a');
-      link.href = p.imageUrl;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.setAttribute('aria-label', '放大觀看：' + p.alt);
-      const img = element('img');
-      photoNodes.set(p, img);
-      img.alt = p.alt;
-      img.width = p.width;
-      img.height = p.height;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.referrerPolicy = 'no-referrer';
-      img.sizes = '(max-width: 650px) calc(100vw - 36px), (max-width: 1100px) calc(50vw - 36px), 550px';
-      img.addEventListener('error', () => {
-        img.hidden = true;
-        const err = element('p', 'gallery-thumbnail-error', '照片暫時無法載入。');
-        link.append(err);
-      }, {once:true});
-      img.src = p.thumbnailUrl;
-      link.append(img);
-      link.addEventListener('click', event => {
-        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        const trigger = doc.activeElement?.matches('.gallery-start') ? doc.activeElement : link;
-        if (openPhoto(album, index, trigger)) event.preventDefault();
+    gallery.addEventListener('gallery:open-album', () => {
+      const figures = doc.createDocumentFragment();
+      album.photos.forEach((p, index) => {
+        const figure = element('figure');
+        const link = element('a');
+        link.href = p.imageUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('aria-label', '放大觀看：' + p.alt);
+        const img = element('img');
+        photoNodes.set(p, img);
+        img.alt = p.alt;
+        img.width = p.width;
+        img.height = p.height;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.referrerPolicy = 'no-referrer';
+        img.sizes = '(max-width: 650px) calc(100vw - 36px), (max-width: 1100px) calc(50vw - 36px), 550px';
+        loadPreview(img, p, () => {
+          img.hidden = true;
+          const err = element('p', 'gallery-thumbnail-error', '照片暫時無法載入。');
+          link.append(err);
+        });
+        link.append(img);
+        link.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          const trigger = doc.activeElement?.matches('.gallery-start') ? doc.activeElement : link;
+          if (openPhoto(album, index, trigger)) event.preventDefault();
+        });
+        const caption = element('figcaption');
+        caption.append(element('strong', null, p.title));
+        caption.append(element('p', 'photo-meta', p.metadata));
+        caption.append(element('p', 'photo-story', p.description || ''));
+        figure.append(link, caption);
+        figures.append(figure);
       });
-      const caption = element('figcaption');
-      caption.append(element('strong', null, p.title));
-      caption.append(element('p', 'photo-meta', p.metadata));
-      caption.append(element('p', 'photo-story', p.description || ''));
-      figure.append(link, caption);
-      gallery.append(figure);
-    });
+      gallery.append(figures);
+    }, {once:true});
     main.append(gallery);
   };
 
@@ -269,7 +303,7 @@
     if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/gallery-albums.json?v=20261120-unified',{cache:refresh?'reload':'default',signal:controller.signal});
+      const response=await fetch('../data/gallery-albums.json?v=20261121-edit',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       let unavailable = false;
