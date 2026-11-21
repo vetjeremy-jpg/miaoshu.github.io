@@ -238,7 +238,7 @@
     const words = element('span');
     words.append(element('small', null, String(album.photos.length).padStart(2, '0') + ' PHOTOGRAPHS'),
       element('strong', null, album.title),
-      element('span', null, album.description));
+      element('span', null, album.coverDescription || album.description));
     card.append(coverImage, words);
     cards.append(card);
     const navLink = element('a', null, album.title + ' · ' + album.photos.length + ' 幅');
@@ -303,7 +303,7 @@
     if(loading)return;loading=true;notice.hidden=false;retry.hidden=true;message.textContent='正在載入雲端相簿…';notice.setAttribute('aria-busy','true');
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
     try{
-      const response=await fetch('../data/gallery-albums.json?v=20261121-edit',{cache:refresh?'reload':'default',signal:controller.signal});
+      const response=await fetch('../data/gallery-albums.json?v=20261121-captions',{cache:refresh?'reload':'default',signal:controller.signal});
       if(!response.ok)throw Error('Album configuration unavailable');
       const data=await response.json();if(data.schemaVersion!==1||!Array.isArray(data.albums))throw Error('Invalid album configuration');
       let unavailable = false;
