@@ -66,7 +66,7 @@
     if (viewer || !window.HTMLDialogElement || !HTMLDialogElement.prototype.showModal) return;
     viewer = element('dialog', 'photo-viewer gallery-photo-viewer');
     viewer.setAttribute('aria-label', '攝影作品放大瀏覽');
-    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="gallery-photo-title"></h2><p class="photo-meta"></p><p class="gallery-photo-description photo-story"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
+    viewer.innerHTML = '<div class="photo-viewer-shell"><header class="photo-viewer-bar"><span class="photo-viewer-count" role="status" aria-live="polite"></span><button type="button" class="photo-viewer-close" aria-label="關閉">關閉 ×</button></header><div class="photo-viewer-stage"><button type="button" class="photo-viewer-prev" aria-label="上一張">‹</button><img class="photo-viewer-image" alt=""><p class="photo-viewer-loading" role="status" aria-live="polite">照片載入中…</p><button type="button" class="photo-viewer-retry" hidden>重新載入照片</button><button type="button" class="photo-viewer-next" aria-label="下一張">›</button></div><footer class="photo-viewer-caption"><h2 class="gallery-photo-title"></h2><p class="gallery-photo-description photo-story"></p><span class="photo-viewer-hint">左右滑動或使用方向鍵切換 · Esc 關閉</span></footer></div>';
     doc.body.append(viewer);
     viewer.querySelector('.photo-viewer-close').addEventListener('click', () => viewer.close());
     viewer.querySelector('.photo-viewer-retry').addEventListener('click', () => { nearbyImages.delete(activeAlbum.photos[currentIndex].imageUrl); show(currentIndex); });
@@ -134,7 +134,6 @@
     viewer.querySelector('.photo-viewer-count').textContent =
       activeAlbum.title + ' · ' + String(currentIndex + 1).padStart(2,'0') + ' ／ ' + String(activeAlbum.photos.length).padStart(2, '0');
     viewer.querySelector('.gallery-photo-title').textContent = p.title;
-    viewer.querySelector('.photo-meta').textContent = p.metadata;
     viewer.querySelector('.gallery-photo-description').textContent = p.description;
     let fullReady = false;
     if (!previewReady) {
@@ -284,7 +283,6 @@
         });
         const caption = element('figcaption');
         caption.append(element('strong', null, p.title));
-        caption.append(element('p', 'photo-meta', p.metadata));
         caption.append(element('p', 'photo-story', p.description || ''));
         figure.append(link, caption);
         figures.append(figure);
