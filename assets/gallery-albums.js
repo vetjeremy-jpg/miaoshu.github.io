@@ -246,7 +246,7 @@
 
     const intro = element('div', 'collection-heading');
     intro.id = id;
-    intro.append(element('small', null, '攝影系列 · ' + album.photos.length + ' 幅' + (album.edition ? ' · ' + album.edition : '')),
+    intro.append(element('small', null, '攝影系列 · ' + album.photos.length + ' 幅'),
       element('h2', null, album.title), element('p', null, album.description));
 
     const gallery = element('section', 'gallery gallery-album-grid');
