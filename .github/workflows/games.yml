@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
@@ -31,7 +31,7 @@ jobs:
         run: node --test tests/islands-model.test.mjs tests/cat-island-model.test.mjs tests/cat-action-model.test.mjs tests/arcade-model.test.mjs tests/game-sound.test.mjs && npx playwright test tests/games.spec.js tests/islands.spec.js tests/cat-island.spec.js tests/cat-action.spec.js tests/arcade.spec.js tests/game-sound.spec.js
         env:
           BASE_URL: http://127.0.0.1:4173/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: moonlit-games-test-results
